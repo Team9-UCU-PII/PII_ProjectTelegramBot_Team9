@@ -1,0 +1,210 @@
+[
+  {
+    "name": "Residuo",
+    "superclasses": "",
+    "subclasses": "",
+    "type": 1,
+    "responsibilities": [
+      "Saber especificaciones del residuo (categoria, descripción, unidad de medida, habilitación necesaria)",
+      "",
+      ""
+    ],
+    "collaborators": [
+      ""
+    ]
+  },
+  {
+    "name": "Publicación",
+    "superclasses": "",
+    "subclasses": "Publicación Recurrente",
+    "type": 1,
+    "responsibilities": [
+      "Conocer el residuo",
+      "Conocer precio(moneda), cantidad y lugar de retiro",
+      "Conocer la empresa"
+    ],
+    "collaborators": [
+      "Empresa",
+      "Residuo"
+    ]
+  },
+  {
+    "name": "Publicación recurrente",
+    "superclasses": "Publicación",
+    "subclasses": "",
+    "type": 1,
+    "responsibilities": [
+      " Conocer Frecuencia de restock"
+    ],
+    "collaborators": [
+      "Empresa",
+      "Residuo"
+    ]
+  },
+  {
+    "name": "Empresa",
+    "superclasses": "",
+    "subclasses": "",
+    "type": 1,
+    "responsibilities": [
+      "Conocer la empresa (Nombre, lugar, descripción, contacto, palabras clave identificadoras)",
+      "Datos de login",
+      ""
+    ],
+    "collaborators": [
+      "Auth"
+    ]
+  },
+  {
+    "name": "Emprendedor",
+    "superclasses": "",
+    "subclasses": "",
+    "type": 1,
+    "responsibilities": [
+      "Conocer al emprendedor (Nombre, lugar, rubro, habilitaciones y especialización)",
+      "Datos del login"
+    ],
+    "collaborators": [
+      "Auth"
+    ]
+  },
+  {
+    "name": "Busqueda",
+    "superclasses": "",
+    "subclasses": "",
+    "type": 1,
+    "responsibilities": [
+      "Buscar entre publicaciones activas",
+      "Filtrar por: categoria, recurrencia, habilitación, zona, palabras clave"
+    ],
+    "collaborators": [
+      "Publicación",
+      "Publicación recurrente",
+      "IDatabase",
+      "Chatbot"
+    ]
+  },
+  {
+    "name": "IDatabase",
+    "superclasses": "",
+    "subclasses": "",
+    "type": 3,
+    "responsibilities": [
+      "Almacenar y recuperar información"
+    ],
+    "collaborators": [
+      ""
+    ]
+  },
+  {
+    "name": "DataSourceArchivos",
+    "superclasses": "",
+    "subclasses": "",
+    "type": 1,
+    "responsibilities": [
+      "Guardar/recuperar info de empresas, emprendedores, publicaciones, etc"
+    ],
+    "collaborators": [
+      ""
+    ]
+  },
+  {
+    "name": "Historial",
+    "superclasses": "",
+    "subclasses": "",
+    "type": 1,
+    "responsibilities": [
+      "Almacenar las ventas de la empresa/emprendedor"
+    ],
+    "collaborators": [
+      "Venta",
+      "Empresa",
+      "Emprendedor"
+    ]
+  },
+  {
+    "name": "Autenticacion",
+    "superclasses": "",
+    "subclasses": "",
+    "type": 1,
+    "responsibilities": [
+      "Tomar datos del registrante",
+      "Comprobar el login del registrado"
+    ],
+    "collaborators": [
+      "Empresa",
+      "Emprendedor"
+    ]
+  },
+  {
+    "name": "DataAccess",
+    "superclasses": "",
+    "subclasses": "",
+    "type": 1,
+    "responsibilities": [
+      "Guardar data en base de datos",
+      "Actualizar data",
+      "Eliminar data",
+      "Obtener data"
+    ],
+    "collaborators": [
+      "IDatabase"
+    ]
+  },
+  {
+    "name": "ChatBot",
+    "superclasses": "",
+    "subclasses": "",
+    "type": 1,
+    "responsibilities": [
+      "Enviar mensajes",
+      "Procesar mensajes"
+    ],
+    "collaborators": [
+      "DataAccess",
+      "Auth"
+    ]
+  },
+  {
+    "name": "Reporte",
+    "superclasses": "",
+    "subclasses": "",
+    "type": 1,
+    "responsibilities": [
+      "Dar formato a lista de publicaciones puntuales/recurrentes",
+      ""
+    ],
+    "collaborators": [
+      "Historial",
+      "Busqueda",
+      "Chatbot"
+    ]
+  },
+  {
+    "name": "GestionInvitacion",
+    "superclasses": "",
+    "subclasses": "",
+    "type": 1,
+    "responsibilities": [
+      "Enviar invitación",
+      "Validar Invitación"
+    ],
+    "collaborators": [
+      "ChatBot"
+    ]
+  },
+  {
+    "name": "Venta",
+    "superclasses": "",
+    "subclasses": "",
+    "type": 1,
+    "responsibilities": [
+      "Conocer publicación comprada",
+      "Conocer quien compró"
+    ],
+    "collaborators": [
+      "Publicación",
+      "Emprendedor"
+    ]
+  }
+]
