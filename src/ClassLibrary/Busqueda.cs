@@ -20,7 +20,7 @@ namespace ChatBot
 
         private Busqueda(){}
 
-        public List<Publicacion> BuscarPublicaciones(Dictionary PublicacionesActivas, string PalabraClave)
+        public List<Publicacion> BuscarPublicaciones(Dictionary<string, Publicacion> PublicacionesActivas, string PalabraClave)
         {
             List<Publicacion> result = new List<Publicacion>();
             foreach (string i in PublicacionesActivas.Keys)
