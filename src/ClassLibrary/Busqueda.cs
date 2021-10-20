@@ -20,16 +20,31 @@ namespace ChatBot
 
         private Busqueda(){}
 
-        public List<Publicacion> BuscarPublicaciones(Dictionary<string, Publicacion> PublicacionesActivas, string PalabraClave)
+        private enum FiltrosPosibles
+        {
+            Vendedor,
+            Residuo,
+            LugarRetiro,
+            PrecioMaximo,
+            FrecuenciaRestock
+
+        }
+        public List<Publicacion> BuscarPublicaciones(Dictionary<string, object> PublicacionesASeparar)
         {
             List<Publicacion> result = new List<Publicacion>();
-            foreach (string i in PublicacionesActivas.Keys)
+            List<Publicacion> publicacionesActivas = DataAccess.Obtener<Publicacion>();
+            
+            foreach (var Elemento in PublicacionesASeparar)
             {
-                if (i == PalabraClave)
+                foreach (Publicacion suspect in publicacionesActivas)
                 {
-                    result.Add(PublicacionesActivas[i]);
+                    switch (Elemento.Value)
+                    {
+                        case 1 ();
+                    }
                 }
             }
+
             return result;
         }
     }
