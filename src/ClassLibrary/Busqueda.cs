@@ -22,29 +22,58 @@ namespace ChatBot
 
         private enum FiltrosPosibles
         {
-            Vendedor,
+            Empresa,
             Residuo,
             LugarRetiro,
             PrecioMaximo,
             FrecuenciaRestock
-
         }
         public List<Publicacion> BuscarPublicaciones(Dictionary<string, object> PublicacionesASeparar)
         {
             List<Publicacion> result = new List<Publicacion>();
             List<Publicacion> publicacionesActivas = DataAccess.Obtener<Publicacion>();
             
-            foreach (var Elemento in PublicacionesASeparar)
+            foreach (var Filtro in PublicacionesASeparar)
             {
                 foreach (Publicacion suspect in publicacionesActivas)
                 {
-                    switch (Elemento.Value)
+                    switch (Filtro.Value.GetType())
                     {
-                        case 1 ();
+                        case Empresa:
+                            if (suspect.Vendedor.Nombre == Filtro.Key)
+                            {
+                                result.Add(suspect);
+                            }
+                            break;
+                        case Residuo:
+                            if (suspect.Residuo.Descripcion == Filtro.Key)
+                            {
+                                result.Add(suspect);
+                            }
+                            break;
+                        case LugarRetiro:
+                            if (suspect.LugarRetiro == Filtro.Key)
+                            {
+                                result.Add(suspect);
+                            }
+                            break;
+                        case PrecioMaximo:
+                            if (suspect.Precio <= Filtro.Key)
+                            {
+                                result.Add(suspect);
+                            }
+                            break;
+                        case FrecuenciaRestock:
+                            if (suspect is PublicacionRecurrente && suspect.FrecuenciaAnualRestock == Filtro.Key)
+                            {
+                                result.Add(suspect);
+                            }
+                            break;
+                        default:
+                            break;
                     }
                 }
             }
-
             return result;
         }
     }
