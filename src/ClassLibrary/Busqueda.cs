@@ -20,7 +20,7 @@ namespace ChatBot
 
         private Busqueda(){}
 
-        private enum FiltrosPosibles
+        public enum FiltrosPosibles
         {
             Empresa,
             Residuo,
@@ -28,50 +28,58 @@ namespace ChatBot
             PrecioMaximo,
             FrecuenciaRestock
         }
-        public List<Publicacion> BuscarPublicaciones(Dictionary<string, object> PublicacionesASeparar)
+        public List<Publicacion> BuscarPublicaciones(Dictionary<FiltrosPosibles, object> PublicacionesASeparar)
         {
             List<Publicacion> result = new List<Publicacion>();
+            List<Publicacion> publicacionesNoAptas = new List<Publicacion>();
             List<Publicacion> publicacionesActivas = DataAccess.Obtener<Publicacion>();
             
             foreach (var Filtro in PublicacionesASeparar)
             {
                 foreach (Publicacion suspect in publicacionesActivas)
                 {
-                    switch (Filtro.Value.GetType())
+                    switch (Filtro.Key)
                     {
-                        case Empresa:
-                            if (suspect.Vendedor.Nombre == Filtro.Key)
+                        case FiltrosPosibles.Empresa:
+                            if (suspect.Vendedor != Filtro.Key)
                             {
-                                result.Add(suspect);
+                                publicacionesNoAptas.Add(suspect);
                             }
                             break;
-                        case Residuo:
-                            if (suspect.Residuo.Descripcion == Filtro.Key)
+                        case FiltrosPosibles.Residuo:
+                            if (suspect.Residuo != Filtro.Key)
                             {
-                                result.Add(suspect);
+                                publicacionesNoAptas.Add(suspect);
                             }
                             break;
-                        case LugarRetiro:
-                            if (suspect.LugarRetiro == Filtro.Key)
+                        case FiltrosPosibles.LugarRetiro:
+                            if (suspect.LugarRetiro != Filtro.Key)
                             {
-                                result.Add(suspect);
+                                publicacionesNoAptas.Add(suspect);
                             }
                             break;
-                        case PrecioMaximo:
+                        case FiltrosPosibles.PrecioMaximo:
                             if (suspect.Precio <= Filtro.Key)
                             {
-                                result.Add(suspect);
+                                publicacionesNoAptas.Add(suspect);
                             }
                             break;
-                        case FrecuenciaRestock:
-                            if (suspect is PublicacionRecurrente && suspect.FrecuenciaAnualRestock == Filtro.Key)
+                        case FiltrosPosibles.FrecuenciaRestock:
+                            if (suspect is not PublicacionRecurrente && suspect.FrecuenciaAnualRestock != Filtro.Key)
                             {
-                                result.Add(suspect);
+                                publicacionesNoAptas.Add(suspect);
                             }
                             break;
                         default:
                             break;
                     }
+                }
+            }
+            foreach (Publicacion publicacion in publicacionesActivas)
+            {
+                if (!publicacionesNoAptas.Contains(publicacion))
+                {
+                    result.Add(publicacion);
                 }
             }
             return result;
