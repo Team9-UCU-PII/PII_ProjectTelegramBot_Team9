@@ -4,18 +4,18 @@ namespace ChatBot
 {
     public class Busqueda
     {
-        public Busqueda Instancia
+        private static Busqueda instancia{get;set;}
+        //un singleton para que contenga los filtros posibles, ya que conocerlos tambien deberia ser su responsabilidad
+        public static Busqueda Instancia
         {
             get
             {
-                if (this.Instancia == null)
+                if (instancia == null)
                 {
-                    this.Instancia = new Busqueda();
-                    return this.Instancia;
+                    instancia = new Busqueda();
                 }
-                return this.Instancia;
+                return instancia;
             }
-            set{}
         }
 
         private Busqueda(){}
