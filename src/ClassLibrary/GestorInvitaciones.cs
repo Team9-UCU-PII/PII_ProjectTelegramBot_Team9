@@ -6,19 +6,18 @@ namespace ChatBot
     public class GestorInvitaciones
     {
         private GestorInvitaciones(){}
-        private GestorInvitaciones instancia {get;set;}
+        private static GestorInvitaciones instancia {get;set;}
 
         //Lo hago singleton porque solo se precisa una instancia y tiene que guardar un estado (los invites enviados)
-        public GestorInvitaciones GestionadorInvitaciones
+        public static GestorInvitaciones Instancia
         {
             get
             {
-                if (this.instancia == null)
+                if (instancia == null)
                 {
-                    this.instancia = new GestorInvitaciones();
-                    return this.instancia;
+                    instancia = new GestorInvitaciones();
                 }
-                return this.instancia;
+                return instancia;
             }
         }
         private List<string> invitacionesEnviadas = new List<string>();
@@ -40,7 +39,7 @@ namespace ChatBot
         private string ArmarMensajeInvitacion(string Enlace)
         {
             StringBuilder mensaje = new StringBuilder();
-            mensaje.Append("Has sido invitado a unirte al chatbot de Telegram");
+            mensaje.Append("Has sido invitado a unirte al chatbot de Telegram\n");
             mensaje.Append($"Link para unirte y registrarte:");
             mensaje.Append(Enlace);
 
