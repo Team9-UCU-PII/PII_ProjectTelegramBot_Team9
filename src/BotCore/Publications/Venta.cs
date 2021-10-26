@@ -1,6 +1,7 @@
 using System;
+using BotCore.User;
 
-namespace ChatBot
+namespace BotCore.Publication
 {
   public class Venta
   {

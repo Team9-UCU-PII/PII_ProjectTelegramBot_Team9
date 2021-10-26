@@ -1,4 +1,4 @@
-namespace ChatBot {
+namespace Importers {
     public interface IDatabase {
         static IDatabase Instancia {get;}
         void Insertar<T>(T objeto);

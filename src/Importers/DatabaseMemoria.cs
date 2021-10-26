@@ -1,4 +1,4 @@
-namespace ChatBot {
+namespace Importers {
     public class DatabaseMemoria : IDatabase {
         private static DatabaseMemoria instancia;
         public static IDatabase Instancia {

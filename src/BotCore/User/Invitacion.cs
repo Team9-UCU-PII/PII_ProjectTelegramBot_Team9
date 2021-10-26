@@ -1,4 +1,4 @@
-namespace ChatBot
+namespace BotCore.User
 {
     //esta clase funciona de mediadora entre el registro del user y el gestionador
     //similar al Visitor. Ayuda a almacenar tanto el user como el enlace que se uso para invitar
@@ -33,3 +33,4 @@ namespace ChatBot
             return "enlace";
         }
     }
+}

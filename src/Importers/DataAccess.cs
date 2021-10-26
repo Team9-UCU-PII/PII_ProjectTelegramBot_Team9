@@ -1,7 +1,7 @@
 using System;
 using System.Text;
 
-namespace ChatBot {
+namespace Importers {
     public class DataAccess {
         private IDatabase db;
 

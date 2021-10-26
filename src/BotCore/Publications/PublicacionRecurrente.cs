@@ -1,4 +1,6 @@
-namespace ChatBot
+using BotCore.User;
+
+namespace BotCore.Publication
 {
   public class PublicacionRecurrente : Publicacion
   {

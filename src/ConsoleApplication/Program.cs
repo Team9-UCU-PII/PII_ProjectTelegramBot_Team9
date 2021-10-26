@@ -1,5 +1,4 @@
 ﻿using System;
-using ClassLibrary;
 
 namespace ConsoleApplication
 {
@@ -7,9 +6,7 @@ namespace ConsoleApplication
     {
         public static void Main()
         {
-            var train = new Train();
-            train.StartEngines();
-            Console.WriteLine("Hello World!");
+
         }
     }
 }

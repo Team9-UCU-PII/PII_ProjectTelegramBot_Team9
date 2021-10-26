@@ -1,4 +1,4 @@
-namespace ChatBot
+namespace BotCore.Publication
 {
   public class Categoria
   {

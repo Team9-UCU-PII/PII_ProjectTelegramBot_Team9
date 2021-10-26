@@ -1,8 +1,10 @@
-namespace ChatBot
+using Importers;
+
+namespace BotCore.User
 {
-    public class RegistrarUsuario
+    public class RegistroUsuario
     {
-        public static RegistrarUsuario(string nombreUsuario, string contrasenia, IUsuario usuario)
+        public static void RegistrarUsuario(string nombreUsuario, string contrasenia, IUsuario usuario)
         {
             DataAccess da = DataAccess.Instancia;
             DatosLogin dl = new DatosLogin(nombreUsuario, contrasenia, usuario);

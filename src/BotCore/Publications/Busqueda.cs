@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace ChatBot
+namespace BotCore.Publication
 {
     public class Busqueda
     {

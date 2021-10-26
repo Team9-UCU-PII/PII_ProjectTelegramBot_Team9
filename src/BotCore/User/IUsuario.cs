@@ -1,4 +1,4 @@
-namespace ChatBot
+namespace BotCore.User
 {
     public interface IUsuario
     {

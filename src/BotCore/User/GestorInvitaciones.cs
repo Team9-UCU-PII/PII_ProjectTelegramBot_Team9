@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ChatBot
+namespace BotCore.User
 {
     public class GestorInvitaciones
     {

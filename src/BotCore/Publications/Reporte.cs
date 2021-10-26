@@ -1,8 +1,11 @@
 using System;
 using System.Linq;
 using System.Text;
+using System.Collections.Generic;
+using BotCore.User;
+using Importers;
 
-namespace ChatBot {
+namespace BotCore.Publication {
     public class Reporte : IPrintable {
         public DateTime FechaInicio {get;}
         public DateTime FechaFin {get;}
@@ -16,7 +19,7 @@ namespace ChatBot {
 
         public static Reporte Generar(DateTime fechaInicio, DateTime fechaFin, IUsuario usuario) {
             List<Venta> ventas = DataAccess.Obtener<Venta>();
-            ventas = ventas.Where(Venta v => v.Comprador == usuario || v.Publicacion.Vendedor == usuario);
+            ventas = ventas.Where((Venta v) => v.Comprador == usuario || v.Publicacion.Vendedor == usuario);
             Historial transacciones = new Historial(ventas, usuario);
             return new Reporte(fechaInicio, fechaFin, transacciones);
         }
