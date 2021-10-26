@@ -20,10 +20,12 @@ namespace ChatBot
                 return instancia;
             }
         }
-        private List<string> invitacionesEnviadas = new List<string>();
+        public List<Invitacion> invitacionesEnviadas = new List<Invitacion>();
 
         public void EnviarInvitacion(string numeroObjetivo)
         {
+            Invitacion invite = new Invitacion();
+            invite.InvitacionEnviada(numeroObjetivo);
             //se arma el txt y link y manda al bot
         }
 
