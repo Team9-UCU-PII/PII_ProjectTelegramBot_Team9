@@ -21,11 +21,12 @@ namespace ChatBot
             }
         }
         public List<Invitacion> invitacionesEnviadas = new List<Invitacion>();
+        public List<IUsuario> usuariosInvitados = new List<IUsuario>();
 
-        public void EnviarInvitacion(string numeroObjetivo)
+        public void EnviarInvitacion(string numeroObjetivo, string nombreTemp)
         {
-            Invitacion invite = new Invitacion();
-            invite.InvitacionEnviada(numeroObjetivo);
+            IUsuario user = new IUsuario(nombreTemp);
+            invitacionesEnviadas.Add(Invitacion.Enviar(numeroObjetivo, user));
             //se arma el txt y link y manda al bot
         }
 
