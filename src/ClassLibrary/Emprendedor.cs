@@ -12,19 +12,14 @@ namespace ChatBot
 
         public string[] Habilitaciones;
 
-        public Emprendedor(string nombre, string lugar, string rubro, string especializacion, string nombreUsuario, string contraseña)
+        public DatosLogin DatosLogin { get; private set; }
+
+        public Emprendedor(string nombre, string lugar, string rubro, string especializacion)
         {
             this.Nombre = nombre;
             this.Lugar = lugar;
             this.Rubro = rubro;
             this.Especializacion = especializacion;
-            this.NombreUsuario = nombreUsuario;
-            this.Contraseña = contraseña;
-        }
-
-        public void ComprarPublicacion(Publicacion publicacion)
-        {
-
         }
     }
 }
