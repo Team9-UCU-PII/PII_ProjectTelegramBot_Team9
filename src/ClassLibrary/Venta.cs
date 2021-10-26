@@ -4,15 +4,20 @@ namespace ChatBot
 {
   public class Venta
   {
-    public Venta(DateTime fecha, Emprendedor comprador, Publicacion publicacion)
+    public Venta(DateTime fecha)
     {
       this.Fecha = fecha;
-      this.Comprador = comprador;
-      this.Publicacion = publicacion;
     }
 
     public DateTime Fecha {get; set;}
     public Emprendedor Comprador {get; set;}
     public Publicacion Publicacion {get; set;}
+
+    public void Comprar(Emprendedor comprador, Publicacion publicacion)
+    {
+      Publicacion.Comprado = true;
+      this.Comprador = comprador;
+      this.Publicacion = publicacion;
+    }
   }
 }
