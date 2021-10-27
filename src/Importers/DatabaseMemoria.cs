@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace Importers {
     public class DatabaseMemoria : IDatabase {
         private static DatabaseMemoria instancia;
@@ -20,7 +22,7 @@ namespace Importers {
 
         }
 
-        public T[] Obtener<T>() {
+        public List<T> Obtener<T>() {
             return null;
         }
 
