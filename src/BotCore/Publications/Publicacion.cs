@@ -4,7 +4,7 @@ namespace BotCore.Publication
 {
   public class Publicacion
   {
-    public Publicacion(Residuo residuo, double precio, string moneda, int cantidad, string lugarRetiro, Empresa vendedor, string descripcion, bool comprado)
+    public Publicacion(Residuo residuo, double precio, string moneda, int cantidad, string lugarRetiro, Empresa vendedor, string descripcion)
     {
       this.Residuo = residuo;
       this.Precio = precio;
@@ -13,7 +13,7 @@ namespace BotCore.Publication
       this.LugarRetiro = lugarRetiro;
       this.Vendedor = vendedor;
       this.Descripcion = descripcion;
-      this.Comprado = comprado;
+      this.Comprado = false;
     }
 
     public Residuo Residuo {get; set;}

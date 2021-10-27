@@ -1,5 +1,6 @@
 using System;
 using System.Text;
+using System.Collections.Generic;
 
 namespace Importers {
     public class DataAccess {
@@ -27,7 +28,7 @@ namespace Importers {
             this.db.Actualizar(objeto);
         }
 
-        public T[] Obtener<T>() {
+        public List<T> Obtener<T>() {
             return this.db.Obtener<T>();
         }
 
