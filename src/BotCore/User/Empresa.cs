@@ -1,8 +1,11 @@
+using System.Collections.Generic;
+using BotCore.Publication;
+
 namespace BotCore.User
 {
     public class Empresa: IUsuario
     {
-        public string Nombre;
+        public string Nombre{ get; set;}
 
         public string Lugar;
 
@@ -14,6 +17,8 @@ namespace BotCore.User
 
         public string[] PalabrasClave;
 
+        public List<Venta> Historial = new List<Venta>();
+
         public DatosLogin DatosLogin { get; private set; }
 
         public Empresa(string nombre, string lugar, string rubro, string descripcion, string contacto)
@@ -23,6 +28,11 @@ namespace BotCore.User
             this.Rubro = rubro;
             this.Descripcion = descripcion;
             this.Contacto = contacto;
+        }
+
+        public Empresa(string nombre)
+        {
+            this.Nombre = nombre;
         }
     }
 }
