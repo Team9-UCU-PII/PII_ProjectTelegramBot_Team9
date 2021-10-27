@@ -5,7 +5,7 @@ namespace BotCore.User
 {
     public class Emprendedor: IUsuario
     {
-        public string Nombre;
+        public string Nombre{ get; set;}
 
         public string Lugar;
 
@@ -15,7 +15,7 @@ namespace BotCore.User
 
         public string[] Habilitaciones;
 
-        public List<Venta> Historial;
+        public List<Venta> Historial = new List<Venta>();
 
         public DatosLogin DatosLogin { get; private set; }
 
