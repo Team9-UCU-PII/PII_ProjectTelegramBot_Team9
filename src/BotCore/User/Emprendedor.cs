@@ -27,9 +27,9 @@ namespace BotCore.User
             this.Especializacion = especializacion;
         }
 
-        public Emprendedor(string nombre)
+        public Emprendedor()
         {
-            this.Nombre = nombre;
+        
         }
     }
 }
