@@ -1,3 +1,6 @@
+using System;
+using Importers;
+
 namespace BotCore.User
 {
     public class Autenticacion
@@ -21,9 +24,27 @@ namespace BotCore.User
             
         }
 
-        public static bool ValidarUsuario(string nombreUsuario, string contraseña)
-        {
+        public static bool ValidarUsuario(string nombreUsuario, string contrasenia)
+        {             
+            foreach(DatosLogin datos in DataAccess.Instancia.Obtener<DatosLogin>())
+            {
+                if(datos.NombreUsuario == nombreUsuario)
+                {
+                    if(datos.Contrasenia == contrasenia)
+                    {
+                        Console.WriteLine("Acceso correcto");
+                        return true;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Usuario o Constraseña incorrecto");
+                        return false;
+                    }
+                }
+            }
 
+            Console.WriteLine("No se encontró el usuario");
+            return false;
         }
     }
 }
