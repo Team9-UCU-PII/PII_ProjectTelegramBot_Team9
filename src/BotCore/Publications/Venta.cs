@@ -1,9 +1,10 @@
 using System;
+using System.Text;
 using BotCore.User;
 
 namespace BotCore.Publication
 {
-  public class Venta
+  public class Venta : IPrintable
   {
     public Venta(DateTime fecha)
     {
@@ -19,6 +20,15 @@ namespace BotCore.Publication
       Publicacion.Comprado = true;
       this.Comprador = comprador;
       this.Publicacion = publicacion;
+    }
+
+    public string GetTextToPrint() {
+      StringBuilder text = new StringBuilder();
+      text.AppendLine($"Material: {this.Publicacion.Residuo.Descripcion} ({this.Publicacion.Cantidad} {this.Publicacion.Residuo.UnidadMedida})");
+      text.AppendLine($"Vendedor: {this.Publicacion.Vendedor.Nombre}");
+      text.AppendLine($"Comprador: {this.Comprador.Nombre}");
+      text.AppendLine($"Precio total: {this.Publicacion.Moneda} {this.Publicacion.Precio * this.Publicacion.Cantidad}");
+      return text.ToString();
     }
   }
 }
