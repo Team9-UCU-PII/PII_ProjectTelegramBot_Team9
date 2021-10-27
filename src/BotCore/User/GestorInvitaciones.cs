@@ -23,16 +23,17 @@ namespace BotCore.User
         public List<Invitacion> invitacionesEnviadas = new List<Invitacion>();
         public List<IUsuario> usuariosInvitados = new List<IUsuario>();
 
-        public void EnviarInvitacion(string numeroObjetivo, string nombreTemp)
+        public void EnviarInvitacion<T>(string numeroObjetivo, string nombreTemp) where T : IUsuario, new()
         {
-            IUsuario user = new IUsuario(nombreTemp);
+            IUsuario user = new T();
+            user.Nombre = nombreTemp;
             invitacionesEnviadas.Add(Invitacion.Enviar(numeroObjetivo, user));
             //se arma el txt y link y manda al bot
         }
 
-        private bool ValidarInvitacion(string Enlace)
+        private bool ValidarInvitacion(Invitacion invite)
         {
-            if  (invitacionesEnviadas.Contains(Enlace))
+            if  (invitacionesEnviadas.Contains(invite))
             {
                 return true;
             }
