@@ -23,9 +23,17 @@ namespace BotCore.User
         public List<Invitacion> invitacionesEnviadas = new List<Invitacion>();
         public List<IUsuario> usuariosInvitados = new List<IUsuario>();
 
-        public void EnviarInvitacion(string numeroObjetivo, string nombreTemp)
+        public void EnviarInvitacion(string numeroObjetivo, string tipoInvitado, string nombreTemp)
         {
-            IUsuario user = new IUsuario(nombreTemp);
+            if (tipoInvitado.ToLower() == "empresa")
+            {
+                IUsuario user = new Empresa(nombreTemp);
+            }
+            else
+            {
+                IUsuario user = new Emprendedor(nombreTemp);
+            }
+            
             invitacionesEnviadas.Add(Invitacion.Enviar(numeroObjetivo, user));
             //se arma el txt y link y manda al bot
         }
