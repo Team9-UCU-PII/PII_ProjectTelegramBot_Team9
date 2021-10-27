@@ -30,9 +30,9 @@ namespace BotCore.User
             this.Contacto = contacto;
         }
 
-        public Empresa(string nombre)
+        public Empresa()
         {
-            this.Nombre = nombre;
+            
         }
     }
 }
