@@ -2,8 +2,14 @@
 
 namespace ConsoleApplication
 {
+    /// <summary>
+    /// Ejecucion inicial y principal del bot
+    /// </summary>
     public static class Program
     {
+        /// <summary>
+        /// Metodo inicializador de programa
+        /// </summary>
         public static void Main()
         {
 
