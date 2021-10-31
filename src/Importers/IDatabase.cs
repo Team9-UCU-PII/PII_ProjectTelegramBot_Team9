@@ -34,7 +34,7 @@ namespace Importers
         /// Leer.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
+        /// <returns>List T</returns>
         List<T> Obtener<T>();
         /// <summary>
         /// Borrar.

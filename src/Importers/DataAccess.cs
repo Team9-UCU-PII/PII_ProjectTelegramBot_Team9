@@ -58,7 +58,7 @@ namespace Importers
 /// Recupera instancia/s desde la base de datos.
 /// </summary>
 /// <typeparam name="T"></typeparam>
-/// <returns></returns>
+/// <returns>List T</returns>
         public List<T> Obtener<T>() 
         {
             return this.db.Obtener<T>();

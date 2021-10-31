@@ -53,7 +53,7 @@ namespace Importers
         /// Retorna instancia/s de la base de datos.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
+        /// <returns>List T</returns>
         public List<T> Obtener<T>() 
         {
             return null;
