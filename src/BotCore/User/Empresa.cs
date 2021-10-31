@@ -69,8 +69,7 @@ namespace BotCore.User
         /// <see cref = "GestorInvitaciones"/>
         /// </summary>
         public Empresa()
-        {
-            
+        {  
         }
     }
 }

@@ -64,7 +64,6 @@ namespace BotCore.User
         /// </summary>
         public Emprendedor()
         {
-        
         }
     }
 }

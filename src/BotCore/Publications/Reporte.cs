@@ -59,7 +59,7 @@ namespace BotCore.Publication {
 /// <summary>
 /// Implementacion de <see iref ="IPrintable"/>.
 /// </summary>
-/// <returns></returns>
+/// <returns>String</returns>
         public string GetTextToPrint() {
             StringBuilder texto = new StringBuilder();
             texto.AppendLine($"Período de reporte: {this.FechaInicio} al {this.FechaFin}");

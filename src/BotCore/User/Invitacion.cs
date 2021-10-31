@@ -40,7 +40,7 @@ namespace BotCore.User
         /// </summary>
         /// <param name="objetivo"></param>
         /// <param name="user"></param>
-        /// <returns></returns>
+        /// <returns>Invitacion</returns>
         public static Invitacion Enviar(string objetivo, IUsuario user)
         {
             string link = Invitacion.GenerarEnlace();
