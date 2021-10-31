@@ -8,11 +8,13 @@ using System;
 using System.Text;
 using System.Collections.Generic;
 
-namespace Importers {
+namespace Importers 
+{
     /// <summary>
     /// Clase que utilizará el bot para acceder a la base de datos.
     /// </summary>
-    public class DataAccess{
+    public class DataAccess
+    {
         private IDatabase db;
 
         private static DataAccess instancia;
@@ -20,7 +22,8 @@ namespace Importers {
         /// Accesso al singleton.
         /// </summary>
         /// <value><see cref = "DataAccess"/></value>
-        public static DataAccess Instancia {
+        public static DataAccess Instancia 
+        {
             get {
                 if (DataAccess.instancia == null) {
                     DataAccess.instancia = new DataAccess(DatabaseMemoria.Instancia);
@@ -29,7 +32,8 @@ namespace Importers {
             }
         }
 
-        private DataAccess(IDatabase db) {
+        private DataAccess(IDatabase db) 
+        {
             this.db = db;
         }
 /// <summary>
@@ -37,7 +41,8 @@ namespace Importers {
 /// </summary>
 /// <param name="objeto"></param>
 /// <typeparam name="T"></typeparam>
-        public void Insertar<T>(T objeto) {
+        public void Insertar<T>(T objeto) 
+        {
             this.db.Insertar(objeto);
         }
 /// <summary>
@@ -45,15 +50,17 @@ namespace Importers {
 /// </summary>
 /// <param name="objeto"></param>
 /// <typeparam name="T"></typeparam>
-        public void Actualizar<T>(T objeto) {
-            this.db.Actualizar(objeto);
+        public void Actualizar<T>(T objeto)
+        {
+            this.db.Actualizar(objeto); 
         }
 /// <summary>
 /// Recupera instancia/s desde la base de datos.
 /// </summary>
 /// <typeparam name="T"></typeparam>
 /// <returns></returns>
-        public List<T> Obtener<T>() {
+        public List<T> Obtener<T>() 
+        {
             return this.db.Obtener<T>();
         }
 /// <summary>
@@ -61,7 +68,8 @@ namespace Importers {
 /// </summary>
 /// <param name="objeto"></param>
 /// <typeparam name="T"></typeparam>
-        public void Eliminar<T>(T objeto) {
+        public void Eliminar<T>(T objeto) 
+        {
             this.db.Eliminar(objeto);
         }
     }

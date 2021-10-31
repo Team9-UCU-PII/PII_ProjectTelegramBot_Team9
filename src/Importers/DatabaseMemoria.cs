@@ -6,32 +6,38 @@
 
 using System.Collections.Generic;
 
-namespace Importers {
+namespace Importers 
+{
     /// <summary>
     /// Esta clase manejara la logica cercana al acceso a la base de datos.
     /// </summary>
-    public class DatabaseMemoria : IDatabase {
+    public class DatabaseMemoria : IDatabase 
+    {
         private static DatabaseMemoria instancia;
         /// <summary>
         /// Acceso al singleton.
         /// </summary>
         /// <value><see iref = "IDatabase"/></value>
-        public static IDatabase Instancia {
+        public static IDatabase Instancia 
+        {
             get {
-                if (DatabaseMemoria.instancia == null) {
+                if (DatabaseMemoria.instancia == null) 
+                {
                     DatabaseMemoria.instancia = new DatabaseMemoria();
                 }
                 return DatabaseMemoria.instancia;
             }
         }
-
-        private DatabaseMemoria() {}
+        private DatabaseMemoria() 
+        {
+        }
         /// <summary>
         /// Guardar un objeto en memoria.
         /// </summary>
         /// <param name="objeto"></param>
         /// <typeparam name="T"></typeparam>
-        public void Insertar<T>(T objeto) {
+        public void Insertar<T>(T objeto) 
+        {
 
         }
         /// <summary>
@@ -39,7 +45,8 @@ namespace Importers {
         /// </summary>
         /// <param name="objeto"></param>
         /// <typeparam name="T"></typeparam>
-        public void Actualizar<T>(T objeto) {
+        public void Actualizar<T>(T objeto) 
+        {
 
         }
         /// <summary>
@@ -47,7 +54,8 @@ namespace Importers {
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public List<T> Obtener<T>() {
+        public List<T> Obtener<T>() 
+        {
             return null;
         }
         /// <summary>
@@ -55,8 +63,8 @@ namespace Importers {
         /// </summary>
         /// <param name="objeto"></param>
         /// <typeparam name="T"></typeparam>
-        public void Eliminar<T>(T objeto) {
-
+        public void Eliminar<T>(T objeto) 
+        {
         }
     }
 }

@@ -6,11 +6,13 @@
 
 using System.Collections.Generic;
 
-namespace Importers {
+namespace Importers 
+{
     /// <summary>
     /// Interaz de acceso a la base de datos.
     /// </summary>
-    public interface IDatabase {
+    public interface IDatabase 
+    {
         /// <summary>
         /// Retorno del singleton.
         /// </summary>
