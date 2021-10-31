@@ -3,10 +3,17 @@ using Importers;
 
 namespace BotCore.User
 {
+    /// <summary>
+    /// Esta clase se encarga de tomar datos para loggear una persona y verificar
+    /// su informacion a la hora de iniciar sesión.
+    /// </summary>
     public class Autenticacion
     {
         private static Autenticacion instancia;
-
+/// <summary>
+/// Metodo de acceso al singleton.
+/// </summary>
+/// <value></value>
         public static Autenticacion Instancia 
         {
             get
@@ -23,7 +30,14 @@ namespace BotCore.User
         {
             
         }
-
+/// <summary>
+/// Metodo que toma colaboracion de <see cref = "DataAccess"/> para comprobar el inicio de 
+/// sesión.
+/// </summary>
+/// <param name="nombreUsuario"></param>
+/// <param name="contrasenia"></param>
+/// <returns>True si nombreUsuario y contrasenia están viculados en 
+/// <see cref = "DatosLogin"/> en la base de datos.</returns>
         public static bool ValidarUsuario(string nombreUsuario, string contrasenia)
         {             
             foreach(DatosLogin datos in DataAccess.Instancia.Obtener<DatosLogin>())

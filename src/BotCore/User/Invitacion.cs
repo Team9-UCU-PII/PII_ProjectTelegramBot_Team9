@@ -1,8 +1,8 @@
 namespace BotCore.User
 {
-    //esta clase funciona de mediadora entre el registro del user y el gestionador
-    //similar al Visitor. Ayuda a almacenar tanto el user como el enlace que se uso para invitar
-    //en el gestionador
+    /// <summary>
+    /// Clase mediadora que representa la invitación en si, y encapsula el enlace y destino.
+    /// </summary>
     public  class Invitacion
     {
         private Invitacion(string enlace, IUsuario user)
@@ -11,13 +11,30 @@ namespace BotCore.User
             this.Link = enlace;
             this.fueAceptada = false;
         }
+        /// <summary>
+        /// El usuario destinado, debería ser sobreescrito por el destinatario.
+        /// </summary>
         public IUsuario UserInvitado;
-        public string Link;
+        private string Link;
+        /// <summary>
+        /// Propiedad, permite evaluar si el destinatario aceptó la invitación
+        /// y se registró.
+        /// </summary>
         public bool fueAceptada;
+        /// <summary>
+        /// Se almacena la invitación en el gestor.
+        /// </summary>
+        /// <param name="invite"></param>
         public static void Guardar(Invitacion invite)
         {
             GestorInvitaciones.Instancia.invitacionesEnviadas.Add(invite);      
         }
+        /// <summary>
+        /// Método que envia la invitación.
+        /// </summary>
+        /// <param name="objetivo"></param>
+        /// <param name="user"></param>
+        /// <returns></returns>
         public static Invitacion Enviar(string objetivo, IUsuario user)
         {
             string link = Invitacion.GenerarEnlace();
