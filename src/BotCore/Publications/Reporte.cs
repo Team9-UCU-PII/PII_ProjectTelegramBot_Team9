@@ -7,26 +7,26 @@ using Importers;
 
 namespace BotCore.Publication {
     /// <summary>
-    /// Genera un reporte del historial de un <see iref ="IUsuario"/>, implementa la interfaz <see iref ="IPrintable"/>
+    /// Genera un reporte del historial de un <see iref ="IUsuario"/>, implementa la interfaz <see iref ="IPrintable"/>.
     /// </summary>
     public class Reporte : IPrintable {
         /// <summary>
-        /// Propiedad readonly de <see cref ="Reporte"/>
+        /// Propiedad readonly de <see cref ="Reporte"/>.
         /// </summary>
         /// <value>instancia de <see cref ="DateTime"/> </value>
         public DateTime FechaInicio {get;}
         /// <summary>
-        /// Propiedad readonly de <see cref ="Reporte"/>
+        /// Propiedad readonly de <see cref ="Reporte"/>.
         /// </summary>
         /// <value>instancia de <see cref ="DateTime"/> </value>
         public DateTime FechaFin {get;}
         /// <summary>
-        /// Propiedad readonly de <see cref ="Reporte"/>
+        /// Propiedad readonly de <see cref ="Reporte"/>.
         /// </summary>
         /// <value>Lista de instancias de <see cref ="Venta"/> </value>
         public List<Venta> Ventas {get;}
         /// <summary>
-        /// Propiedad readonly de <see cref ="Reporte"/>
+        /// Propiedad readonly de <see cref ="Reporte"/>.
         /// </summary>
         /// <value>instancia del tipo <see iref ="IUsuario"/> </value>
         public IUsuario Usuario {get;}
@@ -39,7 +39,7 @@ namespace BotCore.Publication {
         }
 /// <summary>
 /// Metodo estatico que genera una instancia de <see cref ="Reporte"/> para el <see iref ="IUsuario"/> 
-/// especificado en un periodo de tiempo
+/// especificado en un periodo de tiempo.
 /// </summary>
 /// <param name="fechaInicio"></param>
 /// <param name="fechaFin"></param>
@@ -51,7 +51,7 @@ namespace BotCore.Publication {
             return new Reporte(fechaInicio, fechaFin, ventas, usuario);
         }
 /// <summary>
-/// Implementacion de <see iref ="IPrintable"/>
+/// Implementacion de <see iref ="IPrintable"/>.
 /// </summary>
 /// <returns></returns>
         public string GetTextToPrint() {

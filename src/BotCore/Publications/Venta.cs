@@ -6,12 +6,12 @@ namespace BotCore.Publication
 {
   /// <summary>
   /// Clase que reune las compras de <see cref = "Publicacion"/> y los implicados, y se encarga de hacer la compra en sí.
-  /// Implementa <see iref = "IPrintable"/>
+  /// Implementa <see iref = "IPrintable"/>.
   /// </summary>
   public class Venta : IPrintable
   {
     /// <summary>
-    /// Se crea la instancia de venta con la fecha del momento
+    /// Se crea la instancia de venta con la fecha del momento.
     /// </summary>
     /// <param name="fecha"></param>
     public Venta(DateTime fecha)
@@ -19,22 +19,22 @@ namespace BotCore.Publication
       this.Fecha = fecha;
     }
     /// <summary>
-    /// Property de Venta
+    /// Property de Venta.
     /// </summary>
     /// <value><see cref = "DateTime"/></value>
     public DateTime Fecha {get; set;}
     /// <summary>
-    /// Property de Venta
+    /// Property de Venta.
     /// </summary>
     /// <value><see cref = "Emprendedor"/></value>
     public Emprendedor Comprador {get; set;}
     /// <summary>
-    /// Property de Venta
+    /// Property de Venta.
     /// </summary>
     /// <value><see cref = "Publicacion"/></value>
     public Publicacion Publicacion {get; set;}
     /// <summary>
-    /// Metodo que concreta la compra de la <see cref = "Publicacion"/>
+    /// Metodo que concreta la compra de la <see cref = "Publicacion"/>.
     /// </summary>
     /// <param name="comprador"></param>
     /// <param name="publicacion"></param>
@@ -45,7 +45,7 @@ namespace BotCore.Publication
       this.Publicacion = publicacion;
     }
 /// <summary>
-/// Implementacion del tipo <see iref = "IPrintable"/>
+/// Implementacion del tipo <see iref = "IPrintable"/>.
 /// </summary>
 /// <returns>String</returns>
     public string GetTextToPrint() {

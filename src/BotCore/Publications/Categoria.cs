@@ -1,12 +1,12 @@
 namespace BotCore.Publication
 {
   /// <summary>
-  /// Instancia de las categorias posibles para <see cref="Residuo"/>
+  /// Instancia de las categorias posibles para <see cref="Residuo"/>.
   /// </summary>
   public class Categoria
   {
     /// <summary>
-    /// Constructor de categoria
+    /// Constructor de categoria.
     /// </summary>
     /// <param name="categorias"></param>
     public Categoria(string categorias)
@@ -15,7 +15,7 @@ namespace BotCore.Publication
     }
 
 /// <summary>
-/// Property de la categoria 
+/// Property de la categoria.
 /// </summary>
 /// <value>string</value>
     public string Categorias{get; set;}

@@ -3,12 +3,12 @@ using BotCore.User;
 namespace BotCore.Publication
 {
   /// <summary>
-  /// Subclase de <see cref = "Publicacion"/>, añade propiedad de Recurrencia del residuo
+  /// Subclase de <see cref = "Publicacion"/>, añade propiedad de Recurrencia del residuo.
   /// </summary>
   public class PublicacionRecurrente : Publicacion
   {
     /// <summary>
-    /// Mismo Constructor que <see cref = "Publicacion"/>
+    /// Mismo Constructor que <see cref = "Publicacion"/>.
     /// </summary>
     /// <param name="residuo"></param>
     /// <param name="precio"></param>
@@ -24,7 +24,7 @@ namespace BotCore.Publication
       this.FrecuenciaAnualRestock = frecuenciaAnualRestock;
     }
     /// <summary>
-    /// Property exclusiva de Publicacion Recurrente
+    /// Property exclusiva de Publicacion Recurrente.
     /// </summary>
     /// <value>Tipo int</value>
     public int FrecuenciaAnualRestock {get; set;} 

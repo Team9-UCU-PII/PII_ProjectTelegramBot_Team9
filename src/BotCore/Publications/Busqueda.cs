@@ -10,7 +10,7 @@ namespace BotCore.Publication
     {
         private static Busqueda instancia{get;set;}
         /// <summary>
-        /// Da acceso al singelton de la Busqueda
+        /// Da acceso al singelton de la Busqueda.
         /// </summary>
         /// <value>Instancia de Busqueda</value>
         public static Busqueda Instancia
@@ -28,26 +28,26 @@ namespace BotCore.Publication
         private Busqueda(){}
 /// <summary>
 /// Los filtros competentes para las busquedas, corresponden con propiedades
-/// principales de <see cref ="Publicacion"/> y su subclase <see cref ="PublicacionRecurrente"/>
+/// principales de <see cref ="Publicacion"/> y su subclase <see cref ="PublicacionRecurrente"/>.
 /// </summary>
         public enum FiltrosPosibles
         {
-            ///FIltro de tipo empresa
+            ///FIltro de tipo empresa.
             Empresa,
-            ///FIltro de tipo residuo
+            ///FIltro de tipo residuo.
             Residuo,
-            ///FIltro de donde se debe retirar
+            ///FIltro de donde se debe retirar.
             LugarRetiro,
-            ///FIltro del precio maximo dispuesto a pagar
+            ///FIltro del precio maximo dispuesto a pagar.
             PrecioMaximo,
-            ///FIltro de de restock para publicaciones recurrentes
+            ///FIltro de de restock para publicaciones recurrentes.
             FrecuenciaRestock
         }
         /// <summary>
-        /// Servicio principal de la busqueda
+        /// Servicio principal de la busqueda.
         /// </summary>
         /// <param name="PublicacionesASeparar">Un diccionario de clave un miembro del enum de FiltrosPosibles y valor la especificacion deseada (string o int)</param>
-        /// <returns>Una List de publicaciones que cumplen las condiciones de PublicacionesASeparar</returns>
+        /// <returns>Una List de publicaciones que cumplen las condiciones de PublicacionesASeparar.</returns>
         public List<Publicacion> BuscarPublicaciones(Dictionary<FiltrosPosibles, object> PublicacionesASeparar)
         {
             List<Publicacion> result = new List<Publicacion>();
