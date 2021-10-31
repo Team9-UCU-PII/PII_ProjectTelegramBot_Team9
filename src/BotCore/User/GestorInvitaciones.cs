@@ -1,5 +1,6 @@
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using MessageGateway;
 
 namespace BotCore.User
 {
@@ -21,33 +22,31 @@ namespace BotCore.User
             }
         }
         public List<Invitacion> invitacionesEnviadas = new List<Invitacion>();
-        public List<IUsuario> usuariosInvitados = new List<IUsuario>();
 
-        public void EnviarInvitacion<T>(string numeroObjetivo, string nombreTemp) where T : IUsuario, new()
+        public void EnviarInvitacion<T>(string destinatario, string nombreTemp) where T : IUsuario, new()
         {
             IUsuario user = new T();
             user.Nombre = nombreTemp;
-            invitacionesEnviadas.Add(Invitacion.Enviar(numeroObjetivo, user));
-            //se arma el txt y link y manda al bot
+            Invitacion invite = new Invitacion(user, destinatario);
+
+            TelegramService.Instancia.EnviarMensaje(destinatario, invite.ArmarMensajeInvitacion());
+
+            this.invitacionesEnviadas.Add(invite);
         }
 
-        private bool ValidarInvitacion(Invitacion invite)
+        private bool ValidarInvitacion(string usuarioAceptante, string enlace) 
         {
-            if  (invitacionesEnviadas.Contains(invite))
-            {
+            Invitacion invite = this.invitacionesEnviadas.Where(
+                (Invitacion i) => i.Destinatario == usuarioAceptante && i.Link == enlace && !i.fueAceptada
+            ).SingleOrDefault();
+
+            if (invite != null) {
+                invite.Aceptar();
                 return true;
             }
-            return false;
-        }
-
-        private string ArmarMensajeInvitacion(string Enlace)
-        {
-            StringBuilder mensaje = new StringBuilder();
-            mensaje.Append("Has sido invitado a unirte al chatbot de Telegram\n");
-            mensaje.Append($"Link para unirte y registrarte:");
-            mensaje.Append(Enlace);
-
-            return mensaje.ToString();
+            else {
+                return false;
+            }
         }
     }
 }
