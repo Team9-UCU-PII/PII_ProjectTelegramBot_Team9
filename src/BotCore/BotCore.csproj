@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Importers\Importers.csproj" />
+    <ProjectReference Include="..\MessageGateway\MessageGateway.csproj" />
   </ItemGroup>
 
 
