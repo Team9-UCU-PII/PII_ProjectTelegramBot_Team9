@@ -2,12 +2,12 @@ using System.Collections.Generic;
 
 namespace Importers {
     /// <summary>
-    /// Esta clase manejara la logica cercana al acceso a la base de datos
+    /// Esta clase manejara la logica cercana al acceso a la base de datos.
     /// </summary>
     public class DatabaseMemoria : IDatabase {
         private static DatabaseMemoria instancia;
         /// <summary>
-        /// Acceso al singleton
+        /// Acceso al singleton.
         /// </summary>
         /// <value><see iref = "IDatabase"/></value>
         public static IDatabase Instancia {
@@ -21,7 +21,7 @@ namespace Importers {
 
         private DatabaseMemoria() {}
         /// <summary>
-        /// Guardar un objeto en memoria
+        /// Guardar un objeto en memoria.
         /// </summary>
         /// <param name="objeto"></param>
         /// <typeparam name="T"></typeparam>
@@ -29,7 +29,7 @@ namespace Importers {
 
         }
         /// <summary>
-        /// Actualiza un obejto en memoria
+        /// Actualiza un objeto en memoria.
         /// </summary>
         /// <param name="objeto"></param>
         /// <typeparam name="T"></typeparam>
@@ -37,7 +37,7 @@ namespace Importers {
 
         }
         /// <summary>
-        /// Retorna instancia/s de la base de datos
+        /// Retorna instancia/s de la base de datos.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
@@ -45,7 +45,7 @@ namespace Importers {
             return null;
         }
         /// <summary>
-        /// Borra instancias de la memoria
+        /// Borra instancias de la memoria.
         /// </summary>
         /// <param name="objeto"></param>
         /// <typeparam name="T"></typeparam>

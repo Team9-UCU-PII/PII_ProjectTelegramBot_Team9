@@ -4,14 +4,14 @@ using System.Collections.Generic;
 
 namespace Importers {
     /// <summary>
-    /// Clase que utilizará el bot para acceder a la base de datos
+    /// Clase que utilizará el bot para acceder a la base de datos.
     /// </summary>
     public class DataAccess{
         private IDatabase db;
 
         private static DataAccess instancia;
         /// <summary>
-        /// Accesso al singleton
+        /// Accesso al singleton.
         /// </summary>
         /// <value><see cref = "DataAccess"/></value>
         public static DataAccess Instancia {
@@ -27,7 +27,7 @@ namespace Importers {
             this.db = db;
         }
 /// <summary>
-/// Almacena una nueva instancia en la base de datos
+/// Almacena una nueva instancia en la base de datos.
 /// </summary>
 /// <param name="objeto"></param>
 /// <typeparam name="T"></typeparam>
@@ -35,7 +35,7 @@ namespace Importers {
             this.db.Insertar(objeto);
         }
 /// <summary>
-/// Update a un objeto ya existente en la base de datos
+/// Update a un objeto ya existente en la base de datos.
 /// </summary>
 /// <param name="objeto"></param>
 /// <typeparam name="T"></typeparam>
@@ -43,7 +43,7 @@ namespace Importers {
             this.db.Actualizar(objeto);
         }
 /// <summary>
-/// Recupera instancia/s desde la base de datos
+/// Recupera instancia/s desde la base de datos.
 /// </summary>
 /// <typeparam name="T"></typeparam>
 /// <returns></returns>
@@ -51,7 +51,7 @@ namespace Importers {
             return this.db.Obtener<T>();
         }
 /// <summary>
-/// Borra elementos de la base de datos
+/// Borra elementos de la base de datos.
 /// </summary>
 /// <param name="objeto"></param>
 /// <typeparam name="T"></typeparam>

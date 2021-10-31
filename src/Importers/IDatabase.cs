@@ -2,34 +2,34 @@ using System.Collections.Generic;
 
 namespace Importers {
     /// <summary>
-    /// Interaz de acceso a la base de datos
+    /// Interaz de acceso a la base de datos.
     /// </summary>
     public interface IDatabase {
         /// <summary>
-        /// Retorna del singleton
+        /// Retorno del singleton.
         /// </summary>
         /// <value></value>
         static IDatabase Instancia {get;}
         /// <summary>
-        /// Guardar
+        /// Guardar.
         /// </summary>
         /// <param name="objeto"></param>
         /// <typeparam name="T"></typeparam>
         void Insertar<T>(T objeto);
         /// <summary>
-        /// Sobreescribir
+        /// Sobreescribir.
         /// </summary>
         /// <param name="objeto"></param>
         /// <typeparam name="T"></typeparam>
         void Actualizar<T>(T objeto);
         /// <summary>
-        /// Leer
+        /// Leer.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
         List<T> Obtener<T>();
         /// <summary>
-        /// Borrar
+        /// Borrar.
         /// </summary>
         /// <param name="objeto"></param>
         /// <typeparam name="T"></typeparam>
