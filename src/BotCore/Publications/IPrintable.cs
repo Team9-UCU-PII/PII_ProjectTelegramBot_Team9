@@ -1,3 +1,9 @@
+//--------------------------------------------------------------------------------
+// <copyright file="IPrintable.cs" company="Universidad Católica del Uruguay">
+//     Copyright (c) Programación II. Derechos reservados.
+// </copyright>
+//--------------------------------------------------------------------------------
+
 namespace BotCore.Publication {
     /// <summary>
     /// Interfaz que unifica tipos cuyo objetico es devolver texto al bot para imprimir

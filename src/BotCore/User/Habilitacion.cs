@@ -1,3 +1,9 @@
+//--------------------------------------------------------------------------------
+// <copyright file="Habilitacion.cs" company="Universidad Católica del Uruguay">
+//     Copyright (c) Programación II. Derechos reservados.
+// </copyright>
+//--------------------------------------------------------------------------------
+
 namespace BotCore.User
 {
   /// <summary>

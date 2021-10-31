@@ -1,3 +1,9 @@
+//--------------------------------------------------------------------------------
+// <copyright file="Autenticacion.cs" company="Universidad Católica del Uruguay">
+//     Copyright (c) Programación II. Derechos reservados.
+// </copyright>
+//--------------------------------------------------------------------------------
+
 using System;
 using Importers;
 
@@ -36,7 +42,7 @@ namespace BotCore.User
 /// </summary>
 /// <param name="nombreUsuario"></param>
 /// <param name="contrasenia"></param>
-/// <returns>True si nombreUsuario y contrasenia están viculados en 
+/// <returns><c>true</c> si nombreUsuario y contrasenia están viculados en 
 /// <see cref = "DatosLogin"/> en la base de datos.</returns>
         public static bool ValidarUsuario(string nombreUsuario, string contrasenia)
         {             

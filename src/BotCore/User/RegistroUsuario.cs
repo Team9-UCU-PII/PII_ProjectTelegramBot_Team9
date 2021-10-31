@@ -1,3 +1,9 @@
+//--------------------------------------------------------------------------------
+// <copyright file="RegistroUsuario.cs" company="Universidad Católica del Uruguay">
+//     Copyright (c) Programación II. Derechos reservados.
+// </copyright>
+//--------------------------------------------------------------------------------
+
 using Importers;
 
 namespace BotCore.User
