@@ -29,7 +29,7 @@ namespace BotCore.Publication
       this.Habilitaciones = habilitaciones;
     }
     /// <summary>
-    /// Property de Categorias descriptivas del residuo.
+    /// Conjunto de categorias descriptivas del residuo.
     /// </summary>
     /// <value>Array de <see cref = "Categoria"/></value>
     public Categoria[] Categoria {get; set;}

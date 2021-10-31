@@ -40,7 +40,7 @@ namespace BotCore.Publication
     /// <value><see cref = "Publicacion"/></value>
     public Publicacion Publicacion {get; set;}
     /// <summary>
-    /// Metodo que concreta la compra de la <see cref = "Publicacion"/>.
+    /// Metodo que concreta la compra de la Publicación.
     /// </summary>
     /// <param name="comprador"></param>
     /// <param name="publicacion"></param>
