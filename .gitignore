@@ -608,3 +608,6 @@ lcov.info
 
 # Documents
 docs/html
+src/BotCore/Botcore.xml
+src/Importers/Importers.xml
+src/ClassLibrary/ClassLibrary.xml
