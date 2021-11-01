@@ -41,6 +41,12 @@ namespace BotCore.User
         /// Lista donde se almacenan las invitaciones enviadas para mantener un registro.
         /// </summary>
         public List<Invitacion> invitacionesEnviadas = new List<Invitacion>();
+        /// <summary>
+        /// Metodo que crea la <see cref = "Invitacion"/> y la envia al destinatario especificado.
+        /// </summary>
+        /// <param name="destinatario">El contacto objetivo (username).</param>
+        /// <param name="nombreTemp">Nombre placeholder para el IUsuario, el destinatario lo sobreescribirá luego.</param>
+        /// <typeparam name="T"></typeparam>
         public void EnviarInvitacion<T>(string destinatario, string nombreTemp) where T : IUsuario, new()
         {
             IUsuario user = new T();

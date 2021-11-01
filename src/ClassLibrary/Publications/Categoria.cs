@@ -14,7 +14,7 @@ namespace ClassLibrary.Publication
     /// <summary>
     /// Constructor de categoria.
     /// </summary>
-    /// <param name="categoria"></param>
+    /// <param name="nombre"></param>
     public Categoria(string nombre)
     {
       this.Nombre = nombre;
