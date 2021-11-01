@@ -3,8 +3,7 @@
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
-
-namespace BotCore.User
+namespace ClassLibrary.User
 {
     /// <summary>
     /// Interfaz que engloba tanto empresas como emprendimientos.

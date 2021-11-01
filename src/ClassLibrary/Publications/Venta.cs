@@ -6,9 +6,9 @@
 
 using System;
 using System.Text;
-using BotCore.User;
+using ClassLibrary.User;
 
-namespace BotCore.Publication
+namespace ClassLibrary.Publication
 {
   /// <summary>
   /// Clase que reune las compras de <see cref = "Publicacion"/> y los implicados, y se encarga de hacer la compra en sí.
