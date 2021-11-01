@@ -5,9 +5,9 @@
 //--------------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using BotCore.Publication;
+using ClassLibrary.Publication;
 
-namespace BotCore.User
+namespace ClassLibrary.User
 {
     /// <summary>
     /// Clase representativa de las empresas registradas y su información competente.

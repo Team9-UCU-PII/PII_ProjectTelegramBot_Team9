@@ -50,9 +50,9 @@ namespace Importers
 /// </summary>
 /// <param name="objeto"></param>
 /// <typeparam name="T"></typeparam>
-        public void Actualizar<T>(T objeto)
+        public void Actualizar<T>(T objetoOriginal, T objetoModificado)
         {
-            this.db.Actualizar(objeto); 
+            this.db.Actualizar(objetoOriginal, objetoModificado); 
         }
 /// <summary>
 /// Recupera instancia/s desde la base de datos.

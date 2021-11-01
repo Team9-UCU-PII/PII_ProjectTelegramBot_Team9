@@ -4,9 +4,9 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 
-using BotCore.User;
+using ClassLibrary.User;
 
-namespace BotCore.Publication
+namespace ClassLibrary.Publication
 {
   /// <summary>
   /// Subclase de <see cref = "Publicacion"/>, añade propiedad de Recurrencia del residuo.

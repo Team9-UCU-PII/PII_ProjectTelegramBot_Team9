@@ -4,10 +4,10 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 
-using BotCore.User;
+using ClassLibrary.User;
 using System.Text;
 
-namespace BotCore.Publication
+namespace ClassLibrary.Publication
 {
   /// <summary>
   /// Tipo base de publicación, comprende Descripcion, Residuo, Precio, Moneda, Cantidad, Lugar de Retiro y la Empresa Vendedor.

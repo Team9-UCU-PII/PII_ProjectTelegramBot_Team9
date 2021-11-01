@@ -4,7 +4,7 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 
-namespace BotCore.Publication
+namespace ClassLibrary.Publication
 {
   /// <summary>
   /// Instancia de las categorias posibles para <see cref="Residuo"/>.
@@ -14,16 +14,16 @@ namespace BotCore.Publication
     /// <summary>
     /// Constructor de categoria.
     /// </summary>
-    /// <param name="categorias"></param>
-    public Categoria(string categorias)
+    /// <param name="categoria"></param>
+    public Categoria(string nombre)
     {
-      this.Categorias = categorias;
+      this.Nombre = nombre;
     }
 
 /// <summary>
 /// Property de la categoria.
 /// </summary>
 /// <value>string</value>
-    public string Categorias{get; set;}
+    public string Nombre{get; set;}
   }
 }

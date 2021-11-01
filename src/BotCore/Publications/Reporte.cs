@@ -8,7 +8,8 @@ using System;
 using System.Linq;
 using System.Text;
 using System.Collections.Generic;
-using BotCore.User;
+using ClassLibrary.User;
+using ClassLibrary.Publication;
 using Importers;
 
 namespace BotCore.Publication {
