@@ -6,6 +6,7 @@
 
 using System;
 using System.Text;
+using ClassLibrary.User;
 
 namespace BotCore.User
 {
@@ -25,10 +26,17 @@ namespace BotCore.User
         /// El usuario destinado, debería ser sobreescrito por el destinatario.
         /// </summary>
         public IUsuario OrganizacionInvitada {get;}
+
         /// <summary>
         /// Via de comunicacion para que llegue la invitacion (numero, mail, etc)
         /// </summary>
+        public string Destinatario {get;}
+        
+        /// <summary>
+        /// Código generado para validar la invitación.
+        /// </summary>
         public string Link {get;}
+
         /// <summary>
         /// Propiedad, permite evaluar si el destinatario aceptó la invitación
         /// y se registró.

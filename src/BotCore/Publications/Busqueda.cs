@@ -6,6 +6,7 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using ClassLibrary.Publication;
 using Importers;
 
 namespace BotCore.Publication

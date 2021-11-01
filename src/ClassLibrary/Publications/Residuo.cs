@@ -4,11 +4,12 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 
-using BotCore.User;
+using ClassLibrary.User;
 using System.Text;
 using System.Linq;
+using System.Collections.Generic;
 
-namespace BotCore.Publication
+namespace ClassLibrary.Publication
 {
   /// <summary>
   /// Clase representativa de los disferentes residuos. Contiene <see cref = "Categoria"/>s, 
@@ -23,7 +24,7 @@ namespace BotCore.Publication
     /// <param name="descripcion"></param>
     /// <param name="unidadMedida"></param>
     /// <param name="habilitaciones"></param>
-    public Residuo(Categoria categoria, string descripcion, string unidadMedida, Habilitacion[] habilitaciones)
+    public Residuo(Categoria categoria, string descripcion, string unidadMedida, List<Habilitacion> habilitaciones)
     {
       this.Categoria = categoria;
       this.Descripcion = descripcion;
@@ -50,11 +51,11 @@ namespace BotCore.Publication
     /// Property de Habilitaciones necesarias para la compra del residuo.
     /// </summary>
     /// <value>Array de <see cref = "Habilitacion"/></value>
-    public Habilitacion[] Habilitaciones {get; set;}
+    public List<Habilitacion> Habilitaciones {get; set;}
 
     public string GetTextToPrint() {
       StringBuilder text = new StringBuilder();
-      text.AppendLine($"Material: {this.Descripcion} ({this.Categoria})");
+      text.AppendLine($"Material: {this.Descripcion} ({this.Categoria.Nombre})");
       text.AppendLine($"Los emprendedores requieren las siguientes habilitaciones para manejar este residuo: {string.Join(", ", this.Habilitaciones.Select((Habilitacion h) => h.Nombre))}");
       return text.ToString();
     }

@@ -5,6 +5,7 @@
 //--------------------------------------------------------------------------------
 
 using Importers;
+using ClassLibrary.User;
 
 namespace BotCore.User
 {

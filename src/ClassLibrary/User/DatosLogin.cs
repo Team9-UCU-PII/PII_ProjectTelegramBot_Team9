@@ -4,7 +4,7 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 
-namespace BotCore.User
+namespace ClassLibrary.User
 {
     /// <summary>
     /// Las instancias de esta clase representan los usuarios creados en el bot,

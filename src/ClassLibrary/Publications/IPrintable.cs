@@ -4,7 +4,7 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 
-namespace BotCore.Publication {
+namespace ClassLibrary.Publication {
     /// <summary>
     /// Interfaz que unifica tipos cuyo objetico es devolver texto al bot para imprimir
     /// y retornar al usuario.

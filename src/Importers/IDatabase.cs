@@ -29,7 +29,7 @@ namespace Importers
         /// </summary>
         /// <param name="objeto"></param>
         /// <typeparam name="T"></typeparam>
-        void Actualizar<T>(T objeto);
+        void Actualizar<T>(T objetoOriginal, T objetoModificado);
         /// <summary>
         /// Leer.
         /// </summary>

@@ -4,7 +4,7 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 
-namespace BotCore.User
+namespace ClassLibrary.User
 {
   /// <summary>
   /// Clase representativa de las habilitaciones existentes aplicables a los residuos y emprendedores.
