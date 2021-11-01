@@ -17,15 +17,15 @@ namespace BotCore.Publication
     /// Mismo Constructor que <see cref = "Publicacion"/>.
     /// </summary>
     /// <param name="residuo"></param>
-    /// <param name="precio"></param>
+    /// <param name="precioUnitario"></param>
     /// <param name="moneda"></param>
     /// <param name="cantidad"></param>
     /// <param name="lugarRetiro"></param>
     /// <param name="vendedor"></param>
     /// <param name="frecuenciaAnualRestock"></param>
     /// <param name="descripcion"></param>
-    public PublicacionRecurrente(Residuo residuo, double precio, string moneda, int cantidad, string lugarRetiro, Empresa vendedor, int frecuenciaAnualRestock, string descripcion)
-      :base(residuo, precio, moneda, cantidad, lugarRetiro, vendedor, descripcion)
+    public PublicacionRecurrente(Residuo residuo, double precioUnitario, string moneda, int cantidad, string lugarRetiro, Empresa vendedor, int frecuenciaAnualRestock, string descripcion)
+      :base(residuo, precioUnitario, moneda, cantidad, lugarRetiro, vendedor, descripcion)
     {
       this.FrecuenciaAnualRestock = frecuenciaAnualRestock;
     }

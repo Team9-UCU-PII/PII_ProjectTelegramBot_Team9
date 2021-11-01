@@ -5,28 +5,29 @@
 //--------------------------------------------------------------------------------
 
 using BotCore.User;
+using System.Text;
 
 namespace BotCore.Publication
 {
   /// <summary>
   /// Tipo base de publicación, comprende Descripcion, Residuo, Precio, Moneda, Cantidad, Lugar de Retiro y la Empresa Vendedor.
   /// </summary>
-  public class Publicacion
+  public class Publicacion : IPrintable
   {
     /// <summary>
     /// Constructor de Clase Publicacion.
     /// </summary>
     /// <param name="residuo"> Instancia tipo Residuo</param>
-    /// <param name="precio"></param>
+    /// <param name="precioUnitario"></param>
     /// <param name="moneda"></param>
     /// <param name="cantidad"></param>
     /// <param name="lugarRetiro">Debe implementar API de maps, por ahora string</param>
     /// <param name="vendedor">Instancia de IUsuario EMPRESA que vende lo publicado</param>
     /// <param name="descripcion"></param>
-    public Publicacion(Residuo residuo, double precio, string moneda, int cantidad, string lugarRetiro, Empresa vendedor, string descripcion)
+    public Publicacion(Residuo residuo, double precioUnitario, string moneda, int cantidad, string lugarRetiro, Empresa vendedor, string descripcion)
     {
       this.Residuo = residuo;
-      this.Precio = precio;
+      this.PrecioUnitario = precioUnitario;
       this.Moneda = moneda;
       this.Cantidad = cantidad;
       this.LugarRetiro = lugarRetiro;
@@ -42,8 +43,8 @@ namespace BotCore.Publication
 /// <summary>
 /// Property de Publicacion.
 /// </summary>
-/// <value>Tipo int</value>
-    public double Precio {get; set;}
+/// <value>Tipo double</value>
+    public double PrecioUnitario {get; set;}
 /// <summary>
 /// Property de Publicacion.
 /// </summary>
@@ -74,5 +75,24 @@ namespace BotCore.Publication
 /// </summary>
 /// <value>Tipo bool</value>
     public bool Comprado{get; set;}
+
+    public double PrecioTotal 
+    {
+      get 
+      {
+        return this.PrecioUnitario * this.Cantidad;
+      }
+    }
+
+    public string GetTextToPrint() {
+      StringBuilder text = new StringBuilder();
+      text.AppendLine(this.Residuo.GetTextToPrint());
+      text.AppendLine($"Cantidad: {this.Cantidad} {this.Residuo.UnidadMedida}");
+      text.AppendLine($"Vendedor: {this.Vendedor.Nombre}");
+      text.AppendLine(this.Descripcion);
+      text.AppendLine($"Precio de venta: {this.Moneda} {this.PrecioTotal} ({this.Moneda} {this.PrecioUnitario} /{this.Residuo.UnidadMedida})");
+      text.AppendLine($"Lugar de retiro: {this.LugarRetiro}");
+      return text.ToString();
+    }
   }
 }

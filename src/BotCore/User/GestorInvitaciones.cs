@@ -5,7 +5,8 @@
 //--------------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using MessageGateway;
 
 namespace BotCore.User
 {
@@ -39,41 +40,31 @@ namespace BotCore.User
         /// Lista donde se almacenan las invitaciones enviadas para mantener un registro.
         /// </summary>
         public List<Invitacion> invitacionesEnviadas = new List<Invitacion>();
-        /// <summary>
-        /// Se almacenan los <see cref = "IUsuario"/> que fueron invitados con éxito.
-        /// </summary>
-        public List<IUsuario> usuariosInvitados = new List<IUsuario>();
-        /// <summary>
-        /// Método que envia una invitacion a un numero o contacto.
-        /// </summary>
-        /// <param name="numeroObjetivo"></param>
-        /// <param name="nombreTemp"></param>
-        /// <typeparam name="T"></typeparam>
-        public void EnviarInvitacion<T>(string numeroObjetivo, string nombreTemp) where T : IUsuario, new()
+        public void EnviarInvitacion<T>(string destinatario, string nombreTemp) where T : IUsuario, new()
         {
             IUsuario user = new T();
             user.Nombre = nombreTemp;
-            invitacionesEnviadas.Add(Invitacion.Enviar(numeroObjetivo, user));
-            //se arma el txt y link y manda al bot
+            Invitacion invite = new Invitacion(user, destinatario);
+
+            TelegramService.Instancia.EnviarMensaje(destinatario, invite.ArmarMensajeInvitacion());
+
+            this.invitacionesEnviadas.Add(invite);
         }
 
-        private bool ValidarInvitacion(Invitacion invite)
+        // Este método es usado externamente por el MessageGateway
+        private bool ValidarInvitacion(string usuarioAceptante, string enlace) 
         {
-            if  (invitacionesEnviadas.Contains(invite))
-            {
+            Invitacion invite = this.invitacionesEnviadas.Where(
+                (Invitacion i) => i.Destinatario == usuarioAceptante && i.Link == enlace && !i.fueAceptada
+            ).SingleOrDefault();
+
+            if (invite != null) {
+                invite.Aceptar();
                 return true;
             }
-            return false;
-        }
-
-        private string ArmarMensajeInvitacion(string Enlace)
-        {
-            StringBuilder mensaje = new StringBuilder();
-            mensaje.Append("Has sido invitado a unirte al chatbot de Telegram\n");
-            mensaje.Append($"Link para unirte y registrarte:");
-            mensaje.Append(Enlace);
-
-            return mensaje.ToString();
+            else {
+                return false;
+            }
         }
     }
 }
