@@ -60,7 +60,7 @@ namespace BotCore.Publication
                             }
                             break;
                         case FiltrosPosibles.PrecioMaximo:
-                            if (suspect.Precio.Equals(Filtro.Key))
+                            if (suspect.PrecioUnitario.Equals(Filtro.Key))
                             {
                                 publicacionesNoAptas.Add(suspect);
                             }
