@@ -5,6 +5,8 @@
 //--------------------------------------------------------------------------------
 
 using BotCore.User;
+using System.Text;
+using System.Linq;
 
 namespace BotCore.Publication
 {
@@ -12,7 +14,7 @@ namespace BotCore.Publication
   /// Clase representativa de los disferentes residuos. Contiene <see cref = "Categoria"/>s, 
   /// Descripcion, unidad de medida y <see cref = "Habilitacion"/>es.
   /// </summary>
-  public class Residuo
+  public class Residuo : IPrintable
   {
     /// <summary>
     /// Constructor de Residuo.
@@ -21,7 +23,7 @@ namespace BotCore.Publication
     /// <param name="descripcion"></param>
     /// <param name="unidadMedida"></param>
     /// <param name="habilitaciones"></param>
-    public Residuo(Categoria[] categoria, string descripcion, string unidadMedida, Habilitacion[] habilitaciones)
+    public Residuo(Categoria categoria, string descripcion, string unidadMedida, Habilitacion[] habilitaciones)
     {
       this.Categoria = categoria;
       this.Descripcion = descripcion;
@@ -29,10 +31,10 @@ namespace BotCore.Publication
       this.Habilitaciones = habilitaciones;
     }
     /// <summary>
-    /// Conjunto de categorias descriptivas del residuo.
+    /// Categoria generica a la que pertenece el residuo.
     /// </summary>
     /// <value>Array de <see cref = "Categoria"/></value>
-    public Categoria[] Categoria {get; set;}
+    public Categoria Categoria {get; set;}
     /// <summary>
     /// Property de Residuo.
     /// </summary>
@@ -49,5 +51,12 @@ namespace BotCore.Publication
     /// </summary>
     /// <value>Array de <see cref = "Habilitacion"/></value>
     public Habilitacion[] Habilitaciones {get; set;}
+
+    public string GetTextToPrint() {
+      StringBuilder text = new StringBuilder();
+      text.AppendLine($"Material: {this.Descripcion} ({this.Categoria})");
+      text.AppendLine($"Los emprendedores requieren las siguientes habilitaciones para manejar este residuo: {string.Join(", ", this.Habilitaciones.Select((Habilitacion h) => h.Nombre))}");
+      return text.ToString();
+    }
   }
 }

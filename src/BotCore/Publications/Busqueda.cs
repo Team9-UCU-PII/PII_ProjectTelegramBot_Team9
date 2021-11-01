@@ -5,6 +5,7 @@
 //--------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Linq;
 using Importers;
 
 namespace BotCore.Publication
@@ -58,7 +59,7 @@ namespace BotCore.Publication
         {
             List<Publicacion> result = new List<Publicacion>();
             List<Publicacion> publicacionesNoAptas = new List<Publicacion>();
-            List<Publicacion> publicacionesActivas = new List<Publicacion>(DataAccess.Instancia.Obtener<Publicacion>());
+            List<Publicacion> publicacionesActivas = DataAccess.Instancia.Obtener<Publicacion>().Where((Publicacion p) => !p.Comprado).ToList();
             
             foreach (var Filtro in PublicacionesASeparar)
             {
@@ -67,31 +68,31 @@ namespace BotCore.Publication
                     switch (Filtro.Key)
                     {
                         case FiltrosPosibles.Empresa:
-                            if (suspect.Vendedor.Equals(Filtro.Key))
+                            if (!suspect.Vendedor.Equals(Filtro.Value))
                             {
                                 publicacionesNoAptas.Add(suspect);
                             }
                             break;
                         case FiltrosPosibles.Residuo:
-                            if (suspect.Residuo.Equals(Filtro.Key))
+                            if (!suspect.Residuo.Equals(Filtro.Value))
                             {
                                 publicacionesNoAptas.Add(suspect);
                             }
                             break;
                         case FiltrosPosibles.LugarRetiro:
-                            if (suspect.LugarRetiro.Equals(Filtro.Key))
+                            if (!suspect.LugarRetiro.Equals(Filtro.Value))
                             {
                                 publicacionesNoAptas.Add(suspect);
                             }
                             break;
                         case FiltrosPosibles.PrecioMaximo:
-                            if (suspect.Precio.Equals(Filtro.Key))
+                            if (suspect.PrecioUnitario > (double) Filtro.Value)
                             {
                                 publicacionesNoAptas.Add(suspect);
                             }
                             break;
                         case FiltrosPosibles.FrecuenciaRestock:
-                            if (suspect is not PublicacionRecurrente && (suspect as PublicacionRecurrente).FrecuenciaAnualRestock.Equals(Filtro.Key))
+                            if (suspect is not PublicacionRecurrente || !(suspect as PublicacionRecurrente).FrecuenciaAnualRestock.Equals(Filtro.Value))
                             {
                                 publicacionesNoAptas.Add(suspect);
                             }

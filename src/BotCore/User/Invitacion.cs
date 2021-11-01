@@ -4,6 +4,9 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 
+using System;
+using System.Text;
+
 namespace BotCore.User
 {
     /// <summary>
@@ -11,49 +14,45 @@ namespace BotCore.User
     /// </summary>
     public  class Invitacion
     {
-        private Invitacion(string enlace, IUsuario user)
+        public Invitacion(IUsuario organizacion, string usuarioDestinatario)
         {
-            this.UserInvitado = user;
-            this.Link = enlace;
+            this.OrganizacionInvitada = organizacion;
+            this.Destinatario = usuarioDestinatario;
+            this.Link = Invitacion.GenerarEnlace();
             this.fueAceptada = false;
         }
         /// <summary>
         /// El usuario destinado, debería ser sobreescrito por el destinatario.
         /// </summary>
-        public IUsuario UserInvitado;
-        private string Link;
+        public IUsuario OrganizacionInvitada {get;}
+        /// <summary>
+        /// Via de comunicacion para que llegue la invitacion (numero, mail, etc)
+        /// </summary>
+        public string Link {get;}
         /// <summary>
         /// Propiedad, permite evaluar si el destinatario aceptó la invitación
         /// y se registró.
         /// </summary>
-        public bool fueAceptada;
-        /// <summary>
-        /// Se almacena la invitación en el gestor.
-        /// </summary>
-        /// <param name="invite"></param>
-        public static void Guardar(Invitacion invite)
+        public bool fueAceptada {get; private set;}
+        public string ArmarMensajeInvitacion()
         {
-            GestorInvitaciones.Instancia.invitacionesEnviadas.Add(invite);      
-        }
-        /// <summary>
-        /// Método que envia la invitación.
-        /// </summary>
-        /// <param name="objetivo"></param>
-        /// <param name="user"></param>
-        /// <returns>Invitacion</returns>
-        public static Invitacion Enviar(string objetivo, IUsuario user)
-        {
-            string link = Invitacion.GenerarEnlace();
-            Invitacion invite = new Invitacion(link, user);
-
-            //placeholder "mensaje del bot"
-
-            return invite;
+            StringBuilder mensaje = new StringBuilder();
+            mensaje.AppendLine("Has sido invitado a unirte al chatbot de Telegram.");
+            mensaje.AppendLine($"Link para unirte y registrarte: {this.Link}");
+            return mensaje.ToString();
         }
         private static string GenerarEnlace()
         {
             //se genera el enlace
             return "enlace";
+        }
+
+        public void Aceptar() {
+            if (this.fueAceptada) {
+                throw new InvalidOperationException("Esta invitación ya fue aceptada.");
+            }
+
+            this.fueAceptada = true;
         }
     }
 }
