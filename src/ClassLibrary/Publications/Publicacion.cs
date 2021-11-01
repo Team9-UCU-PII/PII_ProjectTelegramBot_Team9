@@ -73,9 +73,12 @@ namespace ClassLibrary.Publication
 /// <summary>
 /// Property de Publicacion que determina si la publicacion ya se compró.
 /// </summary>
-/// <value>Tipo bool</value>
+/// <value>True: La publicación ya fue comprada.</value>
     public bool Comprado{get; set;}
-
+    /// <summary>
+    /// Calcula el precio final de la publicación.
+    /// </summary>
+    /// <value>Double.</value>
     public double PrecioTotal 
     {
       get 
@@ -83,7 +86,10 @@ namespace ClassLibrary.Publication
         return this.PrecioUnitario * this.Cantidad;
       }
     }
-
+    /// <summary>
+    /// Implementación de <see iref = "IPrintable"/>, genera el texto para que envíe el bot.
+    /// </summary>
+    /// <returns>String.</returns>
     public string GetTextToPrint() {
       StringBuilder text = new StringBuilder();
       text.AppendLine(this.Residuo.GetTextToPrint());

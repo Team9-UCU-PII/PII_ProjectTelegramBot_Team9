@@ -59,8 +59,8 @@ namespace ClassLibrary.User
             this.Especializacion = especializacion;
         }
         /// <summary>
-        /// Un constructor vacio para la creacion temporal de emprendedor.
-        /// <see cref = "GestorInvitaciones"/>
+        /// Un constructor vacio para la creacion temporal de emprendedor
+        /// en el GestorInvitaciones.
         /// </summary>
         public Emprendedor()
         {

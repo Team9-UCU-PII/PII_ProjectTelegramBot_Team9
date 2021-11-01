@@ -65,20 +65,37 @@ namespace ClassLibrary.User
             this.Contacto = contacto;
         }
         /// <summary>
-        /// Contructor vacio para la creación de instancias temporales.
-        /// <see cref = "GestorInvitaciones"/>
+        /// Contructor vacio para la creación de instancias temporales
+        /// en el GestorInvitaciones.
         /// </summary>
         public Empresa()
         {  
         }
-
+        /// <summary>
+        /// Método creador y publicador de una publicación.
+        /// </summary>
+        /// <param name="residuo"></param>
+        /// <param name="precioUnitario"></param>
+        /// <param name="moneda"></param>
+        /// <param name="cantidad"></param>
+        /// <param name="lugarRetiro"></param>
+        /// <param name="descripcion"></param>
         public void PublicarOferta(
             Residuo residuo, double precioUnitario, string moneda, int cantidad, 
             string lugarRetiro, string descripcion
         ) {
             Publicacion p = new Publicacion(residuo, precioUnitario, moneda, cantidad, lugarRetiro, this, descripcion);
         }
-
+        /// <summary>
+        /// Método creador y publicador de una publicación recurrente.
+        /// </summary>
+        /// <param name="residuo"></param>
+        /// <param name="precioUnitario"></param>
+        /// <param name="moneda"></param>
+        /// <param name="cantidad"></param>
+        /// <param name="lugarRetiro"></param>
+        /// <param name="descripcion"></param>
+        /// <param name="frecuenciaAnualRestock"></param>
         public void PublicarOfertaRecurrente(
             Residuo residuo, double precioUnitario, string moneda, int cantidad, string lugarRetiro,
             string descripcion, int frecuenciaAnualRestock
