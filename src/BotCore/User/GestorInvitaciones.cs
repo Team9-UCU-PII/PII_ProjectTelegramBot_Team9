@@ -34,6 +34,7 @@ namespace BotCore.User
             this.invitacionesEnviadas.Add(invite);
         }
 
+        // Este método es usado externamente por el MessageGateway
         private bool ValidarInvitacion(string usuarioAceptante, string enlace) 
         {
             Invitacion invite = this.invitacionesEnviadas.Where(

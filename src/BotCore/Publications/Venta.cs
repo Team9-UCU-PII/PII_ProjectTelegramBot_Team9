@@ -27,7 +27,7 @@ namespace BotCore.Publication
       text.AppendLine($"Material: {this.Publicacion.Residuo.Descripcion} ({this.Publicacion.Cantidad} {this.Publicacion.Residuo.UnidadMedida})");
       text.AppendLine($"Vendedor: {this.Publicacion.Vendedor.Nombre}");
       text.AppendLine($"Comprador: {this.Comprador.Nombre}");
-      text.AppendLine($"Precio total: {this.Publicacion.Moneda} {this.Publicacion.Precio * this.Publicacion.Cantidad}");
+      text.AppendLine($"Precio total: {this.Publicacion.Moneda} {this.Publicacion.PrecioUnitario * this.Publicacion.Cantidad}");
       return text.ToString();
     }
   }
