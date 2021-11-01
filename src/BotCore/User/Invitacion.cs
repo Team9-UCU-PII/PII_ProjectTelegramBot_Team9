@@ -1,11 +1,17 @@
+//--------------------------------------------------------------------------------
+// <copyright file="Invitacion.cs" company="Universidad Católica del Uruguay">
+//     Copyright (c) Programación II. Derechos reservados.
+// </copyright>
+//--------------------------------------------------------------------------------
+
 using System;
 using System.Text;
 
 namespace BotCore.User
 {
-    //esta clase funciona de mediadora entre el registro del user y el gestionador
-    //similar al Visitor. Ayuda a almacenar tanto el user como el enlace que se uso para invitar
-    //en el gestionador
+    /// <summary>
+    /// Clase mediadora que representa la invitación en si, y encapsula el enlace y destino.
+    /// </summary>
     public  class Invitacion
     {
         public Invitacion(IUsuario organizacion, string usuarioDestinatario)
@@ -15,12 +21,19 @@ namespace BotCore.User
             this.Link = Invitacion.GenerarEnlace();
             this.fueAceptada = false;
         }
-        
+        /// <summary>
+        /// El usuario destinado, debería ser sobreescrito por el destinatario.
+        /// </summary>
         public IUsuario OrganizacionInvitada {get;}
-        public string Destinatario {get;}
+        /// <summary>
+        /// Via de comunicacion para que llegue la invitacion (numero, mail, etc)
+        /// </summary>
         public string Link {get;}
+        /// <summary>
+        /// Propiedad, permite evaluar si el destinatario aceptó la invitación
+        /// y se registró.
+        /// </summary>
         public bool fueAceptada {get; private set;}
-        
         public string ArmarMensajeInvitacion()
         {
             StringBuilder mensaje = new StringBuilder();
@@ -28,7 +41,6 @@ namespace BotCore.User
             mensaje.AppendLine($"Link para unirte y registrarte: {this.Link}");
             return mensaje.ToString();
         }
-
         private static string GenerarEnlace()
         {
             //se genera el enlace

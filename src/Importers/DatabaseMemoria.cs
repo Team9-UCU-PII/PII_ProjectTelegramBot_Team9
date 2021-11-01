@@ -1,33 +1,70 @@
+//--------------------------------------------------------------------------------
+// <copyright file="DatabaseMemoria.cs" company="Universidad Católica del Uruguay">
+//     Copyright (c) Programación II. Derechos reservados.
+// </copyright>
+//--------------------------------------------------------------------------------
+
 using System.Collections.Generic;
 
-namespace Importers {
-    public class DatabaseMemoria : IDatabase {
+namespace Importers 
+{
+    /// <summary>
+    /// Esta clase manejara la logica cercana al acceso a la base de datos.
+    /// </summary>
+    public class DatabaseMemoria : IDatabase 
+    {
         private static DatabaseMemoria instancia;
-        public static IDatabase Instancia {
+        /// <summary>
+        /// Acceso al singleton.
+        /// </summary>
+        /// <value><see iref = "IDatabase"/></value>
+        public static IDatabase Instancia 
+        {
             get {
-                if (DatabaseMemoria.instancia == null) {
+                if (DatabaseMemoria.instancia == null) 
+                {
                     DatabaseMemoria.instancia = new DatabaseMemoria();
                 }
                 return DatabaseMemoria.instancia;
             }
         }
-
-        private DatabaseMemoria() {}
-
-        public void Insertar<T>(T objeto) {
+        private DatabaseMemoria() 
+        {
+        }
+        /// <summary>
+        /// Guardar un objeto en memoria.
+        /// </summary>
+        /// <param name="objeto"></param>
+        /// <typeparam name="T"></typeparam>
+        public void Insertar<T>(T objeto) 
+        {
 
         }
-
-        public void Actualizar<T>(T objeto) {
+        /// <summary>
+        /// Actualiza un objeto en memoria.
+        /// </summary>
+        /// <param name="objeto"></param>
+        /// <typeparam name="T"></typeparam>
+        public void Actualizar<T>(T objeto) 
+        {
 
         }
-
-        public List<T> Obtener<T>() {
+        /// <summary>
+        /// Retorna instancia/s de la base de datos.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns>List T</returns>
+        public List<T> Obtener<T>() 
+        {
             return null;
         }
-
-        public void Eliminar<T>(T objeto) {
-
+        /// <summary>
+        /// Borra instancias de la memoria.
+        /// </summary>
+        /// <param name="objeto"></param>
+        /// <typeparam name="T"></typeparam>
+        public void Eliminar<T>(T objeto) 
+        {
         }
     }
 }
