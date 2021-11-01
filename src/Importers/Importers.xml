@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Importers</name>
+    </assembly>
+    <members>
+        <member name="T:Importers.DataAccess">
+            <summary>
+            Clase que utilizará el bot para acceder a la base de datos.
+            </summary>
+        </member>
+        <member name="P:Importers.DataAccess.Instancia">
+            <summary>
+            Accesso al singleton.
+            </summary>
+            <value><see cref = "T:Importers.DataAccess"/></value>
+        </member>
+        <member name="M:Importers.DataAccess.Insertar``1(``0)">
+            <summary>
+            Almacena una nueva instancia en la base de datos.
+            </summary>
+            <param name="objeto"></param>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Importers.DataAccess.Actualizar``1(``0)">
+            <summary>
+            Update a un objeto ya existente en la base de datos.
+            </summary>
+            <param name="objeto"></param>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Importers.DataAccess.Obtener``1">
+            <summary>
+            Recupera instancia/s desde la base de datos.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns>List T</returns>
+        </member>
+        <member name="M:Importers.DataAccess.Eliminar``1(``0)">
+            <summary>
+            Borra elementos de la base de datos.
+            </summary>
+            <param name="objeto"></param>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="T:Importers.DatabaseMemoria">
+            <summary>
+            Esta clase manejara la logica cercana al acceso a la base de datos.
+            </summary>
+        </member>
+        <member name="P:Importers.DatabaseMemoria.Instancia">
+            <summary>
+            Acceso al singleton.
+            </summary>
+            <value><see iref = "IDatabase"/></value>
+        </member>
+        <member name="M:Importers.DatabaseMemoria.Insertar``1(``0)">
+            <summary>
+            Guardar un objeto en memoria.
+            </summary>
+            <param name="objeto"></param>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Importers.DatabaseMemoria.Actualizar``1(``0)">
+            <summary>
+            Actualiza un objeto en memoria.
+            </summary>
+            <param name="objeto"></param>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Importers.DatabaseMemoria.Obtener``1">
+            <summary>
+            Retorna instancia/s de la base de datos.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns>List T</returns>
+        </member>
+        <member name="M:Importers.DatabaseMemoria.Eliminar``1(``0)">
+            <summary>
+            Borra instancias de la memoria.
+            </summary>
+            <param name="objeto"></param>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="T:Importers.IDatabase">
+            <summary>
+            Interaz de acceso a la base de datos.
+            </summary>
+        </member>
+        <member name="P:Importers.IDatabase.Instancia">
+            <summary>
+            Retorno del singleton.
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:Importers.IDatabase.Insertar``1(``0)">
+            <summary>
+            Guardar.
+            </summary>
+            <param name="objeto"></param>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Importers.IDatabase.Actualizar``1(``0)">
+            <summary>
+            Sobreescribir.
+            </summary>
+            <param name="objeto"></param>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Importers.IDatabase.Obtener``1">
+            <summary>
+            Leer.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns>List T</returns>
+        </member>
+        <member name="M:Importers.IDatabase.Eliminar``1(``0)">
+            <summary>
+            Borrar.
+            </summary>
+            <param name="objeto"></param>
+            <typeparam name="T"></typeparam>
+        </member>
+    </members>
+</doc>
