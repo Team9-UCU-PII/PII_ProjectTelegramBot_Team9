@@ -1,3 +1,9 @@
+//--------------------------------------------------------------------------------
+// <copyright file="Reporte.cs" company="Universidad Católica del Uruguay">
+//     Copyright (c) Programación II. Derechos reservados.
+// </copyright>
+//--------------------------------------------------------------------------------
+
 using System;
 using System.Linq;
 using System.Text;
@@ -6,10 +12,29 @@ using BotCore.User;
 using Importers;
 
 namespace BotCore.Publication {
+    /// <summary>
+    /// Genera un reporte del historial de un <see iref ="IUsuario"/>, implementa la interfaz <see iref ="IPrintable"/>.
+    /// </summary>
     public class Reporte : IPrintable {
+        /// <summary>
+        /// Propiedad readonly de <see cref ="Reporte"/>.
+        /// </summary>
+        /// <value>instancia de <see cref ="DateTime"/> </value>
         public DateTime FechaInicio {get;}
+        /// <summary>
+        /// Propiedad readonly de <see cref ="Reporte"/>.
+        /// </summary>
+        /// <value>instancia de <see cref ="DateTime"/> </value>
         public DateTime FechaFin {get;}
+        /// <summary>
+        /// Propiedad readonly de <see cref ="Reporte"/>.
+        /// </summary>
+        /// <value>Lista de instancias de <see cref ="Venta"/> </value>
         public List<Venta> Ventas {get;}
+        /// <summary>
+        /// Propiedad readonly de <see cref ="Reporte"/>.
+        /// </summary>
+        /// <value>instancia del tipo <see iref ="IUsuario"/> </value>
         public IUsuario Usuario {get;}
 
         private Reporte(DateTime fechaInicio, DateTime fechaFin, List<Venta> ventas, IUsuario usuario) {
@@ -18,13 +43,23 @@ namespace BotCore.Publication {
             this.Ventas = ventas;
             this.Usuario = usuario;
         }
-
+/// <summary>
+/// Metodo estatico que genera una instancia de <see cref ="Reporte"/> para el <see iref ="IUsuario"/> 
+/// especificado en un periodo de tiempo.
+/// </summary>
+/// <param name="fechaInicio"></param>
+/// <param name="fechaFin"></param>
+/// <param name="usuario"></param>
+/// <returns> <see cref ="Reporte"/> </returns>
         public static Reporte Generar(DateTime fechaInicio, DateTime fechaFin, IUsuario usuario) {
             List<Venta> ventas = DataAccess.Instancia.Obtener<Venta>();
             ventas = ventas.Where((Venta v) => v.Comprador == usuario || v.Publicacion.Vendedor == usuario).ToList();
             return new Reporte(fechaInicio, fechaFin, ventas, usuario);
         }
-
+/// <summary>
+/// Implementacion de <see iref ="IPrintable"/>.
+/// </summary>
+/// <returns>String</returns>
         public string GetTextToPrint() {
             StringBuilder texto = new StringBuilder();
             texto.AppendLine($"Período de reporte: {this.FechaInicio} al {this.FechaFin}");
