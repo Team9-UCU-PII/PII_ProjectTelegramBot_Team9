@@ -34,5 +34,20 @@ namespace BotCore.User
         {
             
         }
+
+        public void PublicarOferta(
+            Residuo residuo, double precioUnitario, string moneda, int cantidad, 
+            string lugarRetiro, string descripcion
+        ) {
+            Publicacion p = new Publicacion(residuo, precioUnitario, moneda, cantidad, lugarRetiro, this, descripcion);
+        }
+
+        public void PublicarOfertaRecurrente(
+            Residuo residuo, double precioUnitario, string moneda, int cantidad, string lugarRetiro,
+            string descripcion, int frecuenciaAnualRestock
+        ) {
+            Publicacion p = new PublicacionRecurrente(residuo, precioUnitario, moneda, cantidad,
+            lugarRetiro, this, frecuenciaAnualRestock, descripcion);
+        }
     }
 }
