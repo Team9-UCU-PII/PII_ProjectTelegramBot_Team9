@@ -19,35 +19,43 @@ namespace ClassLibrary.User
         /// </summary>
         /// <value></value>
         public string Nombre{ get; set;}
+
         /// <summary>
         /// Local o zona donde se realizaría retiro.
         /// </summary>
         public string Lugar;
+
         /// <summary>
         /// Rubro de la empresa.
         /// </summary>
         public string Rubro;
+
         /// <summary>
         /// Descripción de la empresa.
         /// </summary>
         public string Descripcion;
+
         /// <summary>
         /// Numero de telefono, mail o cualquier via activa de contacto.
         /// </summary>
         public string Contacto;
+
         /// <summary>
         /// Identificadores clave de la empresa.
         /// </summary>
         public string[] PalabrasClave;
+
     /// <summary>
     /// Historial de ventas de la empresa.
     /// </summary>
         public List<Venta> Historial = new List<Venta>();
+
         /// <summary>
         /// Datos para inciar en la empresa.
         /// </summary>
         /// <value></value>
         public DatosLogin DatosLogin { get; private set; }
+
         /// <summary>
         /// Constructor genérico de la clase Empresa.
         /// </summary>
@@ -64,6 +72,7 @@ namespace ClassLibrary.User
             this.Descripcion = descripcion;
             this.Contacto = contacto;
         }
+
         /// <summary>
         /// Contructor vacio para la creación de instancias temporales
         /// en el GestorInvitaciones.
@@ -71,6 +80,7 @@ namespace ClassLibrary.User
         public Empresa()
         {  
         }
+
         /// <summary>
         /// Método creador y publicador de una publicación.
         /// </summary>
@@ -81,11 +91,16 @@ namespace ClassLibrary.User
         /// <param name="lugarRetiro"></param>
         /// <param name="descripcion"></param>
         public void PublicarOferta(
-            Residuo residuo, double precioUnitario, string moneda, int cantidad, 
-            string lugarRetiro, string descripcion
-        ) {
+            Residuo residuo,
+            double precioUnitario,
+            string moneda,
+            int cantidad, 
+            string lugarRetiro,
+            string descripcion)
+        {
             Publicacion p = new Publicacion(residuo, precioUnitario, moneda, cantidad, lugarRetiro, this, descripcion);
         }
+
         /// <summary>
         /// Método creador y publicador de una publicación recurrente.
         /// </summary>
@@ -97,9 +112,14 @@ namespace ClassLibrary.User
         /// <param name="descripcion"></param>
         /// <param name="frecuenciaAnualRestock"></param>
         public void PublicarOfertaRecurrente(
-            Residuo residuo, double precioUnitario, string moneda, int cantidad, string lugarRetiro,
-            string descripcion, int frecuenciaAnualRestock
-        ) {
+            Residuo residuo,
+            double precioUnitario,
+            string moneda,
+            int cantidad,
+            string lugarRetiro,
+            string descripcion,
+            int frecuenciaAnualRestock)
+        {
             Publicacion p = new PublicacionRecurrente(residuo, precioUnitario, moneda, cantidad,
             lugarRetiro, this, frecuenciaAnualRestock, descripcion);
         }

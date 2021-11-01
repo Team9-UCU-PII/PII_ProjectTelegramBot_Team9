@@ -52,6 +52,7 @@ namespace ClassLibrary.Publication
     /// </summary>
     /// <value>Array de <see cref = "Habilitacion"/>.</value>
     public List<Habilitacion> Habilitaciones {get; set;}
+    
     /// <summary>
     /// Implementación de <see iref = "IPrintable"/>, genera el texto para que envíe el bot.
     /// </summary>
