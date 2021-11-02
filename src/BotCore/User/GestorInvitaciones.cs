@@ -40,7 +40,7 @@ namespace BotCore.User
         /// <summary>
         /// Lista donde se almacenan las invitaciones enviadas para mantener un registro.
         /// </summary>
-        public List<Invitacion> invitacionesEnviadas = new List<Invitacion>();
+        public List<Invitacion> InvitacionesEnviadas = new List<Invitacion>();
         public void EnviarInvitacion<T>(string destinatario, string nombreTemp) where T : IUsuario, new()
         {
             IUsuario user = new T();
@@ -49,13 +49,13 @@ namespace BotCore.User
 
             TelegramService.Instancia.EnviarMensaje(destinatario, invite.ArmarMensajeInvitacion());
 
-            this.invitacionesEnviadas.Add(invite);
+            this.InvitacionesEnviadas.Add(invite);
         }
 
         // Este método es usado externamente por el MessageGateway
         private bool ValidarInvitacion(string usuarioAceptante, string enlace) 
         {
-            Invitacion invite = this.invitacionesEnviadas.Where(
+            Invitacion invite = this.InvitacionesEnviadas.Where(
                 (Invitacion i) => i.Destinatario == usuarioAceptante && i.Link == enlace && !i.fueAceptada
             ).SingleOrDefault();
 
