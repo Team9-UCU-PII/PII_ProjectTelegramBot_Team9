@@ -6,17 +6,15 @@
 
 namespace ClassLibrary.Publication
 {
-
   /// <summary>
   /// Instancia de las categorias posibles para <see cref="Residuo"/>.
   /// </summary>
   public class Categoria
   {
-
     /// <summary>
     /// Constructor de categoria.
     /// </summary>
-    /// <param name="nombre"></param>
+    /// <param name="nombre">.</param>
     public Categoria(string nombre)
     {
       this.Nombre = nombre;
@@ -25,7 +23,7 @@ namespace ClassLibrary.Publication
     /// <summary>
     /// Property de la categoria.
     /// </summary>
-    /// <value><see langword="string"/></value>
-    public string Nombre{get; set;}
+    /// <value><see langword="string"/>.</value>
+    public string Nombre{ get; set; }
   }
 }

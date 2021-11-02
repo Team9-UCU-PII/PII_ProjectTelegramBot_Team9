@@ -4,28 +4,26 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 
-using ClassLibrary.User;
 using System.Text;
 using System.Linq;
 using System.Collections.Generic;
+using ClassLibrary.User;
 
 namespace ClassLibrary.Publication
 {
-
   /// <summary>
   /// Clase representativa de los disferentes residuos. Contiene <see cref = "Categoria"/>s, 
   /// Descripcion, unidad de medida y <see cref = "Habilitacion"/>es.
   /// </summary>
   public class Residuo : IPrintable
   {
-
     /// <summary>
     /// Constructor de Residuo.
     /// </summary>
-    /// <param name="categoria"></param>
-    /// <param name="descripcion"></param>
-    /// <param name="unidadMedida"></param>
-    /// <param name="habilitaciones"></param>
+    /// <param name="categoria"><see cref = "Categoria"/>.</param>
+    /// <param name="descripcion"><see langword = "string"/>.</param>
+    /// <param name="unidadMedida"><see langword = "string"/>.</param>
+    /// <param name="habilitaciones"><see tref = "List T"/>.</param>
     public Residuo(Categoria categoria, string descripcion, string unidadMedida, List<Habilitacion> habilitaciones)
     {
       this.Categoria = categoria;
@@ -38,31 +36,31 @@ namespace ClassLibrary.Publication
     /// Categoria generica a la que pertenece el residuo.
     /// </summary>
     /// <value><see langword="Array"/> de <see cref = "Categoria"/>.</value>
-    public Categoria Categoria {get; set;}
+    public Categoria Categoria { get; set; }
 
     /// <summary>
     /// Property de Residuo.
     /// </summary>
-    /// <value><see langword="string"/></value>
-    public string Descripcion {get; set;}
+    /// <value><see langword="string"/>.</value>
+    public string Descripcion { get; set; }
 
     /// <summary>
     /// Property de Residuo.
     /// </summary>
     /// <example> Kgs, Lts, m2, etc. </example>
-    /// <value><see langword="string"/></value>
-    public string UnidadMedida {get; set;}
+    /// <value><see langword="string"/>.</value>
+    public string UnidadMedida { get; set; }
 
     /// <summary>
     /// Property de Habilitaciones necesarias para la compra del residuo.
     /// </summary>
     /// <value><see langword="Array"/> de <see cref = "Habilitacion"/>.</value>
-    public List<Habilitacion> Habilitaciones {get; set;}
+    public List<Habilitacion> Habilitaciones { get; set; }
     
     /// <summary>
     /// Implementación de <see iref = "IPrintable"/>, genera el texto para que envíe el bot.
     /// </summary>
-    /// <returns><see langword="string"/></returns>
+    /// <returns><see langword="string"/>.</returns>
     public string GetTextToPrint() {
       StringBuilder text = new StringBuilder();
       text.AppendLine($"Material: {this.Descripcion} ({this.Categoria.Nombre})");

@@ -9,22 +9,20 @@ using ClassLibrary.Publication;
 
 namespace ClassLibrary.User
 {
-
     /// <summary>
     /// Clase representativa de los emprendedores con su información competente.
     /// </summary>
     public class Emprendedor: IUsuario
     {
-
         /// <summary>
         /// Nombre del emprendimiento o emprendedor.
         /// </summary>
-        /// <value><see langword="string"/></value>
-        public string Nombre{ get; set;}
+        /// <value><see langword="string"/>.</value>
+        public string Nombre{ get; set; }
 
-    /// <summary>
-    /// Localizacion del local o residencia del emprendedor.
-    /// </summary>
+        /// <summary>
+        /// Localizacion del local o residencia del emprendedor.
+        /// </summary>
         public string Lugar;
 
         /// <summary>
@@ -50,16 +48,16 @@ namespace ClassLibrary.User
         /// <summary>
         /// Los datos necesarios para loggearse a dicho emprendedor.
         /// </summary>
-        /// <value><see cref = "DatosLogin"/></value>
-        public DatosLogin DatosLogin {get; private set;}
+        /// <value><see cref = "DatosLogin"/>.</value>
+        public DatosLogin DatosLogin { get; private set; }
 
         /// <summary>
         /// Constructor generico del emprendedor.
         /// </summary>
-        /// <param name="nombre"></param>
-        /// <param name="lugar"></param>
-        /// <param name="rubro"></param>
-        /// <param name="especializacion"></param>
+        /// <param name="nombre"><see langword = "string"/>.</param>
+        /// <param name="lugar"><see langword = "string"/>.</param>
+        /// <param name="rubro"><see langword = "string"/>.</param>
+        /// <param name="especializacion"><see langword = "string"/>.</param>
         public Emprendedor(string nombre, string lugar, string rubro, string especializacion)
         {
             this.Nombre = nombre;

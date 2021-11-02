@@ -9,18 +9,16 @@ using ClassLibrary.Publication;
 
 namespace ClassLibrary.User
 {
-
     /// <summary>
     /// Clase representativa de las empresas registradas y su información competente.
     /// </summary>
     public class Empresa: IUsuario
     {
-
         /// <summary>
         /// Nombre de la empresa
         /// </summary>
-        /// <value><see langword="string"/></value>
-        public string Nombre{ get; set;}
+        /// <value><see langword="string"/>.</value>
+        public string Nombre{ get; set; }
 
         /// <summary>
         /// Local o zona donde se realizaría retiro.
@@ -86,12 +84,12 @@ namespace ClassLibrary.User
         /// <summary>
         /// Método creador y publicador de una publicación.
         /// </summary>
-        /// <param name="residuo"></param>
-        /// <param name="precioUnitario"></param>
-        /// <param name="moneda"></param>
-        /// <param name="cantidad"></param>
-        /// <param name="lugarRetiro"></param>
-        /// <param name="descripcion"></param>
+        /// <param name="residuo"><see cref="Residuo"/>.</param>
+        /// <param name="precioUnitario"><see langword="double"/>.</param>
+        /// <param name="moneda"><see langword="string"/>.</param>
+        /// <param name="cantidad"><see langword="int"/>.</param>
+        /// <param name="lugarRetiro"><see langword="string"/>.</param>
+        /// <param name="descripcion"><see langword="string"/>.</param>
         public void PublicarOferta(
             Residuo residuo,
             double precioUnitario,
@@ -106,13 +104,13 @@ namespace ClassLibrary.User
         /// <summary>
         /// Método creador y publicador de una publicación recurrente.
         /// </summary>
-        /// <param name="residuo"></param>
-        /// <param name="precioUnitario"></param>
-        /// <param name="moneda"></param>
-        /// <param name="cantidad"></param>
-        /// <param name="lugarRetiro"></param>
-        /// <param name="descripcion"></param>
-        /// <param name="frecuenciaAnualRestock"></param>
+        /// <param name="residuo"><see cref="Residuo"/>.</param>
+        /// <param name="precioUnitario"><see langword="double"/>.</param>
+        /// <param name="moneda"><see langword="string"/>.</param>
+        /// <param name="cantidad"><see langword="int"/>.</param>
+        /// <param name="lugarRetiro"><see langword="string"/>.</param>
+        /// <param name="descripcion"><see langword="string"/>.</param>
+        /// <param name="frecuenciaAnualRestock"><see langword="int"/>.</param>
         public void PublicarOfertaRecurrente(
             Residuo residuo,
             double precioUnitario,

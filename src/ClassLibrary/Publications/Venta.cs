@@ -10,18 +10,16 @@ using ClassLibrary.User;
 
 namespace ClassLibrary.Publication
 {
-
   /// <summary>
   /// Clase que reune las compras de <see cref = "Publicacion"/> y los implicados, y se encarga de hacer la compra en sí.
   /// Implementa <see iref = "IPrintable"/>.
   /// </summary>
   public class Venta : IPrintable
   {
-
     /// <summary>
     /// Se crea la instancia de venta con la fecha del momento.
     /// </summary>
-    /// <param name="fecha"></param>
+    /// <param name="fecha"><see cref = "DateTime"/>.</param>
     public Venta(DateTime fecha)
     {
       this.Fecha = fecha;
@@ -30,26 +28,26 @@ namespace ClassLibrary.Publication
     /// <summary>
     /// Property de Venta.
     /// </summary>
-    /// <value><see cref = "DateTime"/></value>
-    public DateTime Fecha {get; set;}
+    /// <value><see cref = "DateTime"/>.</value>
+    public DateTime Fecha { get; set; }
 
     /// <summary>
     /// Property de Venta.
     /// </summary>
-    /// <value><see cref = "Emprendedor"/></value>
-    public Emprendedor Comprador {get; set;}
+    /// <value><see cref = "Emprendedor"/>.</value>
+    public Emprendedor Comprador { get; set; }
 
     /// <summary>
     /// Property de Venta.
     /// </summary>
-    /// <value><see cref = "Publicacion"/></value>
-    public Publicacion Publicacion {get; set;}
+    /// <value><see cref = "Publicacion"/>.</value>
+    public Publicacion Publicacion { get; set; }
 
     /// <summary>
     /// Metodo que concreta la compra de la Publicación.
     /// </summary>
-    /// <param name="comprador"></param>
-    /// <param name="publicacion"></param>
+    /// <param name="comprador"><see cref = "Emprendedor"/>.</param>
+    /// <param name="publicacion"><see cref = "Publicacion"/>.</param>
     public void Comprar(Emprendedor comprador, Publicacion publicacion)
     {
       Publicacion.Comprado = true;
@@ -60,7 +58,7 @@ namespace ClassLibrary.Publication
     /// <summary>
     /// Implementacion del tipo <see iref = "IPrintable"/>.
     /// </summary>
-    /// <returns><see langword="string"/></returns>
+    /// <returns><see langword="string"/>.</returns>
     public string GetTextToPrint() {
       StringBuilder text = new StringBuilder();
       text.AppendLine($"Material: {this.Publicacion.Residuo.Descripcion} ({this.Publicacion.Cantidad} {this.Publicacion.Residuo.UnidadMedida})");

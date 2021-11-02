@@ -6,18 +6,16 @@
 
 namespace ClassLibrary.Publication 
 {
-
     /// <summary>
-    /// Interfaz que unifica tipos cuyo objetico es devolver texto al bot para imprimir
+    /// Interfaz que unifica tipos cuyo objetivo es devolver texto al bot para imprimir
     /// y retornar al usuario.
     /// </summary>
     public interface IPrintable 
     {
-
         /// <summary>
         /// Metodo caracteristico de printable, arma el string con formato deseado.
         /// </summary>
-        /// <returns><see langword="string"/></returns>
+        /// <returns><see langword="string"/>.</returns>
         string GetTextToPrint();
     }
 }

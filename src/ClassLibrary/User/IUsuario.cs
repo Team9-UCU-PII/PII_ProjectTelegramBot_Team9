@@ -3,6 +3,7 @@
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
+
 namespace ClassLibrary.User
 {
     /// <summary>
@@ -13,13 +14,13 @@ namespace ClassLibrary.User
         /// <summary>
         /// Los datos para el inicio de sesión.
         /// </summary>
-        /// <value><see cref ="DatosLogin"/></value>
-        DatosLogin DatosLogin {get;}
+        /// <value><see cref ="DatosLogin"/>.</value>
+        DatosLogin DatosLogin { get; }
 
         /// <summary>
         /// El nombre de la empresa/emprendimiento.
         /// </summary>
-        /// <value><see langword="string"/></value>
-        string Nombre{get;set;}
+        /// <value><see langword="string"/>.</value>
+        string Nombre{ get; set; }
     }
 }
