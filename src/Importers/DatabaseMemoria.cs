@@ -4,47 +4,21 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Reflection;
+using System;
 using ClassLibrary.Publication;
 using ClassLibrary.User;
-using System;
+using System.Collections.Generic;
+using System.Reflection;
 
-namespace Importers 
+namespace Importers
 {
 
     /// <summary>
     /// Esta clase manejara la logica cercana al acceso a la base de datos.
     /// </summary>
-    public class DatabaseMemoria : IDatabase 
+    public class DatabaseMemoria : IDatabase
     {
-        private List<Categoria> categorias {get;}
-        private List<Publicacion> publicaciones {get;}
-        private List<PublicacionRecurrente> publicacionesRecurrentes {get;}
-        private List<Residuo> residuos {get;}
-        private List<Venta> ventas {get;}
-        private List<DatosLogin> datosLogin {get;}
-        private List<Emprendedor> emprendedores {get;}
-        private List<Empresa> empresas {get;}
-        private List<Habilitacion> habilitaciones {get;}
-        private static DatabaseMemoria instancia;
-        
-        /// <summary>
-        /// Acceso al singleton.
-        /// </summary>
-        /// <value><see iref = "IDatabase"/></value>
-        public static IDatabase Instancia 
-        {
-            get {
-                if (DatabaseMemoria.instancia == null) 
-                {
-                    DatabaseMemoria.instancia = new DatabaseMemoria();
-                }
-                return DatabaseMemoria.instancia;
-            }
-        }
-
-        private DatabaseMemoria() 
+        private DatabaseMemoria()
         {
             this.categorias = new List<Categoria>();
             this.publicaciones = new List<Publicacion>();
@@ -57,15 +31,54 @@ namespace Importers
             this.habilitaciones = new List<Habilitacion>();
         }
 
+        private List<Categoria> categorias { get; }
+
+        private List<Publicacion> publicaciones { get; }
+        
+        private List<PublicacionRecurrente> publicacionesRecurrentes { get; }
+        
+        private List<Residuo> residuos { get; }
+        
+        private List<Venta> ventas { get; }
+        
+        private List<DatosLogin> datosLogin { get; }
+        
+        private List<Emprendedor> emprendedores { get; }
+        
+        private List<Empresa> empresas { get; }
+        
+        private List<Habilitacion> habilitaciones { get; }
+        
+        private static DatabaseMemoria instancia { get; set; }
+
+        /// <summary>
+        /// Acceso al singleton.
+        /// </summary>
+        /// <value><see iref = "IDatabase"/>.</value>
+        public static IDatabase Instancia
+        {
+            get 
+            {
+                if (DatabaseMemoria.instancia == null) 
+                {
+                    DatabaseMemoria.instancia = new DatabaseMemoria();
+                }
+
+                return DatabaseMemoria.instancia;
+            }
+        }
+
         /// <summary>
         /// Guardar un objeto en memoria.
         /// </summary>
-        /// <param name="objeto"></param>
-        /// <typeparam name="T"></typeparam>
-        public void Insertar<T>(T objeto) 
+        /// <param name="objeto">Una instancia sin persistir.</param>
+        /// <typeparam name="T">Tipo de la instancia.</typeparam>
+        public void Insertar<T>(T objeto)
         {
-            foreach (PropertyInfo propiedad in this.GetType().GetProperties(BindingFlags.NonPublic | BindingFlags.Instance)) {
-                if (propiedad.PropertyType.Equals(typeof(List<T>))) {
+            foreach (PropertyInfo propiedad in this.GetType().GetProperties(BindingFlags.NonPublic | BindingFlags.Instance))
+            {
+                if (propiedad.PropertyType.Equals(typeof(List<T>)))
+                {
                     List<T> lista = propiedad.GetValue(this) as List<T>;
                     lista.Add(objeto);
                     return;
@@ -78,13 +91,15 @@ namespace Importers
         /// <summary>
         /// Actualiza un objeto en memoria.
         /// </summary>
-        /// <param name="objetoOriginal"></param>
-        /// <param name="objetoModificado"></param>
-        /// <typeparam name="T"></typeparam>
-        public void Actualizar<T>(T objetoOriginal, T objetoModificado) 
+        /// <param name="objetoOriginal">Una instancia ya persistida.</param>
+        /// <param name="objetoModificado">La instancia a reemplazar la original.</param>
+        /// <typeparam name="T">Tipo de la instancia.</typeparam>
+        public void Actualizar<T>(T objetoOriginal, T objetoModificado)
         {
-            foreach (PropertyInfo propiedad in this.GetType().GetProperties(BindingFlags.NonPublic | BindingFlags.Instance)) {
-                if (propiedad.PropertyType.Equals(typeof(List<T>))) {
+            foreach (PropertyInfo propiedad in this.GetType().GetProperties(BindingFlags.NonPublic | BindingFlags.Instance))
+            {
+                if (propiedad.PropertyType.Equals(typeof(List<T>)))
+                {
                     List<T> lista = propiedad.GetValue(this) as List<T>;
                     int indice = lista.IndexOf(objetoOriginal);
                     lista[indice] = objetoModificado;
@@ -98,12 +113,14 @@ namespace Importers
         /// <summary>
         /// Retorna instancia/s de la base de datos.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <returns><see langword="List T"/></returns>
-        public List<T> Obtener<T>() 
+        /// <typeparam name="T">Tipo de la Instancia.</typeparam>
+        /// <returns><see langword="List T"/>.</returns>
+        public List<T> Obtener<T>()
         {
-            foreach (PropertyInfo propiedad in this.GetType().GetProperties(BindingFlags.NonPublic | BindingFlags.Instance)) {
-                if (propiedad.PropertyType.Equals(typeof(List<T>))) {
+            foreach (PropertyInfo propiedad in this.GetType().GetProperties(BindingFlags.NonPublic | BindingFlags.Instance))
+            {
+                if (propiedad.PropertyType.Equals(typeof(List<T>)))
+                {
                     return propiedad.GetValue(this) as List<T>;
                 }
             }
@@ -114,12 +131,14 @@ namespace Importers
         /// <summary>
         /// Borra instancias de la memoria.
         /// </summary>
-        /// <param name="objeto"></param>
-        /// <typeparam name="T"></typeparam>
-        public void Eliminar<T>(T objeto) 
+        /// <param name="objeto">Instancia a persistirse.</param>
+        /// <typeparam name="T">Tipo de la instancia.</typeparam>
+        public void Eliminar<T>(T objeto)
         {
-            foreach (PropertyInfo propiedad in this.GetType().GetProperties(BindingFlags.NonPublic | BindingFlags.Instance)) {
-                if (propiedad.PropertyType.Equals(typeof(List<T>))) {
+            foreach (PropertyInfo propiedad in this.GetType().GetProperties(BindingFlags.NonPublic | BindingFlags.Instance))
+            {
+                if (propiedad.PropertyType.Equals(typeof(List<T>)))
+                {
                     List<T> lista = propiedad.GetValue(this) as List<T>;
                     lista.Remove(objeto);
                     return;

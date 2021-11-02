@@ -4,8 +4,6 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 
-using System;
-using System.Text;
 using System.Collections.Generic;
 
 namespace Importers 
@@ -16,34 +14,35 @@ namespace Importers
     /// </summary>
     public class DataAccess
     {
+        private DataAccess(IDatabase db)
+        {
+            this.db = db;
+        }
         private IDatabase db;
         private static DataAccess instancia;
 
         /// <summary>
-        /// Accesso al singleton.
+        /// Obtiene acceso al singleton.
         /// </summary>
-        /// <value><see cref = "DataAccess"/></value>
-        public static DataAccess Instancia 
+        /// <value><see cref = "DataAccess"/>.</value>
+        public static DataAccess Instancia
         {
-            get {
-                if (DataAccess.instancia == null) {
+            get
+            {
+                if (DataAccess.instancia == null)
+                {
                     DataAccess.instancia = new DataAccess(DatabaseMemoria.Instancia);
                 }
                 return DataAccess.instancia;
             }
         }
 
-        private DataAccess(IDatabase db) 
-        {
-            this.db = db;
-        }
-
         /// <summary>
         /// Almacena una nueva instancia en la base de datos.
         /// </summary>
-        /// <param name="objeto"></param>
-        /// <typeparam name="T"></typeparam>
-        public void Insertar<T>(T objeto) 
+        /// <param name="objeto">Instancia sin persistir.</param>
+        /// <typeparam name="T">Tipo de la instancia.</typeparam>
+        public void Insertar<T>(T objeto)
         {
             this.db.Insertar(objeto);
         }
@@ -53,18 +52,18 @@ namespace Importers
         /// </summary>
         /// <param name="objetoOriginal">El objeto existente.</param>
         /// <param name="objetoModificado">El objeto nuevo.</param>
-        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="T">Tipo de la instancia.</typeparam>
         public void Actualizar<T>(T objetoOriginal, T objetoModificado)
         {
             this.db.Actualizar(objetoOriginal, objetoModificado); 
         }
-                
+
         /// <summary>
         /// Recupera instancia/s desde la base de datos.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <returns><see langword="List T"/></returns>
-        public List<T> Obtener<T>() 
+        /// <typeparam name="T">Tipo de la instancia/s.</typeparam>
+        /// <returns><see langword="List T"/>.</returns>
+        public List<T> Obtener<T>()
         {
             return this.db.Obtener<T>();
         }
@@ -72,9 +71,9 @@ namespace Importers
         /// <summary>
         /// Borra elementos de la base de datos.
         /// </summary>
-        /// <param name="objeto"></param>
-        /// <typeparam name="T"></typeparam>
-        public void Eliminar<T>(T objeto) 
+        /// <param name="objeto">Instancia a borrarse.</param>
+        /// <typeparam name="T">Tipo de la instancia.</typeparam>
+        public void Eliminar<T>(T objeto)
         {
             this.db.Eliminar(objeto);
         }
