@@ -21,7 +21,7 @@ namespace ClassLibrary.Publication
     }
 
     /// <summary>
-    /// Property de la categoria.
+    /// Obtiene o establece el nombre de la categoría.
     /// </summary>
     /// <value><see langword="string"/>.</value>
     public string Nombre{ get; set; }

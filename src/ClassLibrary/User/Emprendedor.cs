@@ -4,8 +4,8 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 
-using System.Collections.Generic;
 using ClassLibrary.Publication;
+using System.Collections.Generic;
 
 namespace ClassLibrary.User
 {
@@ -15,7 +15,7 @@ namespace ClassLibrary.User
     public class Emprendedor: IUsuario
     {
         /// <summary>
-        /// Nombre del emprendimiento o emprendedor.
+        /// Obtiene o establece el nombre del emprendimiento o emprendedor.
         /// </summary>
         /// <value><see langword="string"/>.</value>
         public string Nombre{ get; set; }
@@ -46,7 +46,7 @@ namespace ClassLibrary.User
         public List<Venta> Historial = new List<Venta>();
 
         /// <summary>
-        /// Los datos necesarios para loggearse a dicho emprendedor.
+        /// Obtiene los datos necesarios para loggearse a dicho emprendedor.
         /// </summary>
         /// <value><see cref = "DatosLogin"/>.</value>
         public DatosLogin DatosLogin { get; private set; }

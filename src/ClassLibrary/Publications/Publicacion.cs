@@ -37,37 +37,37 @@ namespace ClassLibrary.Publication
     }
 
     /// <summary>
-    /// Property de Publicacion.
+    /// Obtiene o establece el <see cref ="Residuo"/> publicado.
     /// </summary>
     /// <value><see cref = "Residuo"/>.</value>
     public Residuo Residuo { get; set; }
 
     /// <summary>
-    /// Property de Publicacion.
+    /// Obtiene o establece el precio por unidad.
     /// </summary>
     /// <value><see langword="double"/>.</value>
     public double PrecioUnitario { get; set; }
 
     /// <summary>
-    /// Property de Publicacion.
+    /// Obtiene o establece la moneda de compra.
     /// </summary>
     /// <value><see langword="string"/>.</value>
     public string Moneda { get; set; }
 
     /// <summary>
-    /// Property de Publicacion.
+    /// Obtiene o establece la cantidad de <see cref ="Residuo"/> según la unidad dada.
     /// </summary>
     /// <value><see langword="int"/>.</value>
     public int Cantidad { get; set; }
     
     /// <summary>
-    /// Property de Publicacion.
+    /// Obtiene o establece el lugar de retiro.
     /// </summary>
     /// <value><see langword = "string"/>.</value>
     public string LugarRetiro { get; set; }
 
     /// <summary>
-    /// Property de Publicacion.
+    /// Obtiene o establece la <see cref ="Empresa"/> vendedora.
     /// </summary>
     /// <value>Tipo IUsuario, instancia de Empresa</value>
     public Empresa Vendedor { get; set; }
@@ -79,7 +79,7 @@ namespace ClassLibrary.Publication
     public string Descripcion{ get; set; }
 
     /// <summary>
-    /// Property de Publicacion que determina si la publicacion ya se compró.
+    /// Obtiene o establece si la publicacion ya se compró.
     /// </summary>
     /// <value><see langword="true"/> La publicación ya fue comprada.</value>
     public bool Comprado{ get; set; }
@@ -100,7 +100,8 @@ namespace ClassLibrary.Publication
     /// Implementación de <see iref = "IPrintable"/>, genera el texto para que envíe el bot.
     /// </summary>
     /// <returns><see langword="string"/>.</returns>
-    public string GetTextToPrint() {
+    public string GetTextToPrint() 
+    {
       StringBuilder text = new StringBuilder();
       text.AppendLine(this.Residuo.GetTextToPrint());
       text.AppendLine($"Cantidad: {this.Cantidad} {this.Residuo.UnidadMedida}");

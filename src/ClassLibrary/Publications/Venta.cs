@@ -4,9 +4,9 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 
+using ClassLibrary.User;
 using System;
 using System.Text;
-using ClassLibrary.User;
 
 namespace ClassLibrary.Publication
 {
@@ -26,19 +26,19 @@ namespace ClassLibrary.Publication
     }
 
     /// <summary>
-    /// Property de Venta.
+    /// Obtiene o establece la fecha de venta.
     /// </summary>
     /// <value><see cref = "DateTime"/>.</value>
     public DateTime Fecha { get; set; }
 
     /// <summary>
-    /// Property de Venta.
+    /// Obtiene o establece el comprador.
     /// </summary>
     /// <value><see cref = "Emprendedor"/>.</value>
     public Emprendedor Comprador { get; set; }
 
     /// <summary>
-    /// Property de Venta.
+    /// Obtiene o establece la publicacion que fue comprada.
     /// </summary>
     /// <value><see cref = "Publicacion"/>.</value>
     public Publicacion Publicacion { get; set; }
@@ -59,7 +59,8 @@ namespace ClassLibrary.Publication
     /// Implementacion del tipo <see iref = "IPrintable"/>.
     /// </summary>
     /// <returns><see langword="string"/>.</returns>
-    public string GetTextToPrint() {
+    public string GetTextToPrint() 
+    {
       StringBuilder text = new StringBuilder();
       text.AppendLine($"Material: {this.Publicacion.Residuo.Descripcion} ({this.Publicacion.Cantidad} {this.Publicacion.Residuo.UnidadMedida})");
       text.AppendLine($"Vendedor: {this.Publicacion.Vendedor.Nombre}");

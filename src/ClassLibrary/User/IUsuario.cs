@@ -12,13 +12,13 @@ namespace ClassLibrary.User
     public interface IUsuario
     {
         /// <summary>
-        /// Los datos para el inicio de sesión.
+        /// Obtiene los datos para el inicio de sesión.
         /// </summary>
         /// <value><see cref ="DatosLogin"/>.</value>
         DatosLogin DatosLogin { get; }
 
         /// <summary>
-        /// El nombre de la empresa/emprendimiento.
+        /// Obtiene o establece el nombre de la empresa/emprendimiento.
         /// </summary>
         /// <value><see langword="string"/>.</value>
         string Nombre{ get; set; }

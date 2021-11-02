@@ -4,8 +4,8 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 
-using System.Collections.Generic;
 using ClassLibrary.Publication;
+using System.Collections.Generic;
 
 namespace ClassLibrary.User
 {
@@ -15,7 +15,7 @@ namespace ClassLibrary.User
     public class Empresa: IUsuario
     {
         /// <summary>
-        /// Nombre de la empresa
+        /// Obtiene o establece el nombre de la empresa
         /// </summary>
         /// <value><see langword="string"/>.</value>
         public string Nombre{ get; set; }
@@ -51,7 +51,7 @@ namespace ClassLibrary.User
         public List<Venta> Historial = new List<Venta>();
 
         /// <summary>
-        /// Datos para inciar en la empresa.
+        /// Obtiene los datos para inciar en la empresa.
         /// </summary>
         /// <value><see cref ="DatosLogin"/></value>
         public DatosLogin DatosLogin { get; private set; }
@@ -59,11 +59,11 @@ namespace ClassLibrary.User
         /// <summary>
         /// Constructor genérico de la clase Empresa.
         /// </summary>
-        /// <param name="nombre"></param>
-        /// <param name="lugar"></param>
-        /// <param name="rubro"></param>
-        /// <param name="descripcion"></param>
-        /// <param name="contacto"></param>
+        /// <param name="nombre"><see langword = "string"/>.</param>
+        /// <param name="lugar"><see langword = "string"/>.</param>
+        /// <param name="rubro"><see langword = "string"/>.</param>
+        /// <param name="descripcion"><see langword = "string"/>.</param>
+        /// <param name="contacto"><see langword = "string"/>.</param>
         public Empresa(string nombre, string lugar, string rubro, string descripcion, string contacto)
         {
             this.Nombre = nombre;
@@ -120,8 +120,7 @@ namespace ClassLibrary.User
             string descripcion,
             int frecuenciaAnualRestock)
         {
-            Publicacion p = new PublicacionRecurrente(residuo, precioUnitario, moneda, cantidad,
-            lugarRetiro, this, frecuenciaAnualRestock, descripcion);
+            Publicacion p = new PublicacionRecurrente(residuo, precioUnitario, moneda, cantidad, lugarRetiro, this, frecuenciaAnualRestock, descripcion);
         }
     }
 }

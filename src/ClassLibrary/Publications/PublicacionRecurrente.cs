@@ -25,13 +25,14 @@ namespace ClassLibrary.Publication
     /// <param name="frecuenciaAnualRestock"><see langword = "int"/>.</param>
     /// <param name="descripcion"><see langword = "string"/>.</param>
     public PublicacionRecurrente(Residuo residuo, double precioUnitario, string moneda, int cantidad, string lugarRetiro, Empresa vendedor, int frecuenciaAnualRestock, string descripcion)
-      :base(residuo, precioUnitario, moneda, cantidad, lugarRetiro, vendedor, descripcion)
+      : base(residuo, precioUnitario, moneda, cantidad, lugarRetiro, vendedor, descripcion)
     {
       this.FrecuenciaAnualRestock = frecuenciaAnualRestock;
     }
 
     /// <summary>
-    /// Property exclusiva de Publicacion Recurrente.
+    /// Obtiene o establece la frecuencia que se restockea
+    /// el residuo. Una property exclusiva de Publicacion Recurrente.
     /// </summary>
     /// <value><see langword="int"/>.</value>
     public int FrecuenciaAnualRestock { get; set; }

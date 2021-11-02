@@ -15,19 +15,19 @@ namespace ClassLibrary.User
     {
 
         /// <summary>
-        /// Username de la cuenta.
+        /// Obtiene o establece el username de la cuenta.
         /// </summary>
         /// <value><see langword="string"/>.</value>
         public string NombreUsuario { get; set; }
 
         /// <summary>
-        /// Password de la cuenta.
+        /// Obtiene la password de la cuenta.
         /// </summary>
         /// <value><see langword="string"/>.</value>
         public string Contrasenia { get; }
 
         /// <summary>
-        /// <see cref = "Emprendedor"/> o <see cref = "Empresa"/> a la que se vincula esta cuenta.
+        /// Obtiene  el <see cref = "Emprendedor"/> o <see cref = "Empresa"/> a la que se vincula esta cuenta.
         /// </summary>
         /// <value><see cref = "Emprendedor"/> o <see cref = "Empresa"/>.</value>
         public IUsuario Usuario { get; }

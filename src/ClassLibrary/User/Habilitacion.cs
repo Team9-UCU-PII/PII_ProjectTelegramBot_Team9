@@ -21,7 +21,7 @@ namespace ClassLibrary.User
     }
 
     /// <summary>
-    /// Nombre de la habilitación.
+    /// Obtiene o establece el nombre de la habilitación.
     /// </summary>
     /// <value><see langword="string"/>.</value>
     public string Nombre{ get; set; }
