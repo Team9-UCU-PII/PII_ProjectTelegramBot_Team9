@@ -12,6 +12,7 @@ using System;
 
 namespace Importers 
 {
+
     /// <summary>
     /// Esta clase manejara la logica cercana al acceso a la base de datos.
     /// </summary>
@@ -22,13 +23,12 @@ namespace Importers
         private List<PublicacionRecurrente> publicacionesRecurrentes {get;}
         private List<Residuo> residuos {get;}
         private List<Venta> ventas {get;}
-
         private List<DatosLogin> datosLogin {get;}
         private List<Emprendedor> emprendedores {get;}
         private List<Empresa> empresas {get;}
         private List<Habilitacion> habilitaciones {get;}
-
         private static DatabaseMemoria instancia;
+        
         /// <summary>
         /// Acceso al singleton.
         /// </summary>
@@ -99,7 +99,7 @@ namespace Importers
         /// Retorna instancia/s de la base de datos.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <returns>List T</returns>
+        /// <returns><see langword="List T"/></returns>
         public List<T> Obtener<T>() 
         {
             foreach (PropertyInfo propiedad in this.GetType().GetProperties(BindingFlags.NonPublic | BindingFlags.Instance)) {

@@ -22,15 +22,12 @@
             <param name="objeto"></param>
             <typeparam name="T"></typeparam>
         </member>
-<<<<<<< HEAD
         <member name="M:Importers.DataAccess.Actualizar``1(``0,``0)">
-=======
-        <member name="M:Importers.DataAccess.Actualizar``1(``0)">
->>>>>>> master
             <summary>
             Update a un objeto ya existente en la base de datos.
             </summary>
-            <param name="objeto"></param>
+            <param name="objetoOriginal">El objeto existente.</param>
+            <param name="objetoModificado">El objeto nuevo.</param>
             <typeparam name="T"></typeparam>
         </member>
         <member name="M:Importers.DataAccess.Obtener``1">
@@ -65,20 +62,12 @@
             <param name="objeto"></param>
             <typeparam name="T"></typeparam>
         </member>
-<<<<<<< HEAD
         <member name="M:Importers.DatabaseMemoria.Actualizar``1(``0,``0)">
             <summary>
             Actualiza un objeto en memoria.
             </summary>
             <param name="objetoOriginal"></param>
             <param name="objetoModificado"></param>
-=======
-        <member name="M:Importers.DatabaseMemoria.Actualizar``1(``0)">
-            <summary>
-            Actualiza un objeto en memoria.
-            </summary>
-            <param name="objeto"></param>
->>>>>>> master
             <typeparam name="T"></typeparam>
         </member>
         <member name="M:Importers.DatabaseMemoria.Obtener``1">
@@ -113,15 +102,12 @@
             <param name="objeto"></param>
             <typeparam name="T"></typeparam>
         </member>
-<<<<<<< HEAD
         <member name="M:Importers.IDatabase.Actualizar``1(``0,``0)">
-=======
-        <member name="M:Importers.IDatabase.Actualizar``1(``0)">
->>>>>>> master
             <summary>
             Sobreescribir.
             </summary>
-            <param name="objeto"></param>
+            <param name="objetoOriginal">El objeto existente.</param>
+            <param name="objetoModificado">El objeto nuevo.</param>
             <typeparam name="T"></typeparam>
         </member>
         <member name="M:Importers.IDatabase.Obtener``1">

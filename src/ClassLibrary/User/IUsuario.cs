@@ -13,12 +13,13 @@ namespace ClassLibrary.User
         /// <summary>
         /// Los datos para el inicio de sesión.
         /// </summary>
-        /// <value></value>
-        DatosLogin DatosLogin { get;}
+        /// <value><see cref ="DatosLogin"/></value>
+        DatosLogin DatosLogin {get;}
+
         /// <summary>
         /// El nombre de la empresa/emprendimiento.
         /// </summary>
-        /// <value></value>
+        /// <value><see langword="string"/></value>
         string Nombre{get;set;}
     }
 }

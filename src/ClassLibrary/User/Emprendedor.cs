@@ -9,41 +9,50 @@ using ClassLibrary.Publication;
 
 namespace ClassLibrary.User
 {
+
     /// <summary>
     /// Clase representativa de los emprendedores con su información competente.
     /// </summary>
     public class Emprendedor: IUsuario
     {
+
         /// <summary>
         /// Nombre del emprendimiento o emprendedor.
         /// </summary>
-        /// <value></value>
+        /// <value><see langword="string"/></value>
         public string Nombre{ get; set;}
+
     /// <summary>
     /// Localizacion del local o residencia del emprendedor.
     /// </summary>
         public string Lugar;
+
         /// <summary>
-        /// Rubro general del emrpendedor.
+        /// Rubro general del emprendedor.
         /// </summary>
         public string Rubro;
+
         /// <summary>
         /// La especialización del emprendedor.
         /// </summary>
         public string Especializacion;
+
         /// <summary>
-        /// Habilitaciones vigentes del emprendedor-
+        /// Habilitaciones vigentes del emprendedor.
         /// </summary>
         public string[] Habilitaciones;
+
         /// <summary>
         /// Historial de las ventas del emprendedor.
         /// </summary>
         public List<Venta> Historial = new List<Venta>();
+
         /// <summary>
         /// Los datos necesarios para loggearse a dicho emprendedor.
         /// </summary>
-        /// <value></value>
-        public DatosLogin DatosLogin { get; private set; }
+        /// <value><see cref = "DatosLogin"/></value>
+        public DatosLogin DatosLogin {get; private set;}
+
         /// <summary>
         /// Constructor generico del emprendedor.
         /// </summary>
@@ -58,6 +67,7 @@ namespace ClassLibrary.User
             this.Rubro = rubro;
             this.Especializacion = especializacion;
         }
+
         /// <summary>
         /// Un constructor vacio para la creacion temporal de emprendedor
         /// en el GestorInvitaciones.

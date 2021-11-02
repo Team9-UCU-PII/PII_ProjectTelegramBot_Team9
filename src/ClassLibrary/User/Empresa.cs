@@ -9,15 +9,17 @@ using ClassLibrary.Publication;
 
 namespace ClassLibrary.User
 {
+
     /// <summary>
     /// Clase representativa de las empresas registradas y su información competente.
     /// </summary>
     public class Empresa: IUsuario
     {
+
         /// <summary>
         /// Nombre de la empresa
         /// </summary>
-        /// <value></value>
+        /// <value><see langword="string"/></value>
         public string Nombre{ get; set;}
 
         /// <summary>
@@ -45,15 +47,15 @@ namespace ClassLibrary.User
         /// </summary>
         public string[] PalabrasClave;
 
-    /// <summary>
-    /// Historial de ventas de la empresa.
-    /// </summary>
+        /// <summary>
+        /// Historial de ventas de la empresa.
+        /// </summary>
         public List<Venta> Historial = new List<Venta>();
 
         /// <summary>
         /// Datos para inciar en la empresa.
         /// </summary>
-        /// <value></value>
+        /// <value><see cref ="DatosLogin"/></value>
         public DatosLogin DatosLogin { get; private set; }
 
         /// <summary>

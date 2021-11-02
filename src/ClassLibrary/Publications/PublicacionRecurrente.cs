@@ -8,11 +8,13 @@ using ClassLibrary.User;
 
 namespace ClassLibrary.Publication
 {
+
   /// <summary>
   /// Subclase de <see cref = "Publicacion"/>, añade propiedad de Recurrencia del residuo.
   /// </summary>
   public class PublicacionRecurrente : Publicacion
   {
+
     /// <summary>
     /// Mismo Constructor que <see cref = "Publicacion"/>.
     /// </summary>
@@ -29,11 +31,11 @@ namespace ClassLibrary.Publication
     {
       this.FrecuenciaAnualRestock = frecuenciaAnualRestock;
     }
+
     /// <summary>
     /// Property exclusiva de Publicacion Recurrente.
     /// </summary>
-    /// <value>Tipo int</value>
-    public int FrecuenciaAnualRestock {get; set;} 
-
+    /// <value><see langword="int"/></value>
+    public int FrecuenciaAnualRestock {get; set;}
   }
 }

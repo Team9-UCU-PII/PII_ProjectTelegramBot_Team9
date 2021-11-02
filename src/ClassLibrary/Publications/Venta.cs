@@ -10,12 +10,14 @@ using ClassLibrary.User;
 
 namespace ClassLibrary.Publication
 {
+
   /// <summary>
   /// Clase que reune las compras de <see cref = "Publicacion"/> y los implicados, y se encarga de hacer la compra en sí.
   /// Implementa <see iref = "IPrintable"/>.
   /// </summary>
   public class Venta : IPrintable
   {
+
     /// <summary>
     /// Se crea la instancia de venta con la fecha del momento.
     /// </summary>
@@ -24,21 +26,25 @@ namespace ClassLibrary.Publication
     {
       this.Fecha = fecha;
     }
+
     /// <summary>
     /// Property de Venta.
     /// </summary>
     /// <value><see cref = "DateTime"/></value>
     public DateTime Fecha {get; set;}
+
     /// <summary>
     /// Property de Venta.
     /// </summary>
     /// <value><see cref = "Emprendedor"/></value>
     public Emprendedor Comprador {get; set;}
+
     /// <summary>
     /// Property de Venta.
     /// </summary>
     /// <value><see cref = "Publicacion"/></value>
     public Publicacion Publicacion {get; set;}
+
     /// <summary>
     /// Metodo que concreta la compra de la Publicación.
     /// </summary>
@@ -50,10 +56,11 @@ namespace ClassLibrary.Publication
       this.Comprador = comprador;
       this.Publicacion = publicacion;
     }
-/// <summary>
-/// Implementacion del tipo <see iref = "IPrintable"/>.
-/// </summary>
-/// <returns>String</returns>
+
+    /// <summary>
+    /// Implementacion del tipo <see iref = "IPrintable"/>.
+    /// </summary>
+    /// <returns><see langword="string"/></returns>
     public string GetTextToPrint() {
       StringBuilder text = new StringBuilder();
       text.AppendLine($"Material: {this.Publicacion.Residuo.Descripcion} ({this.Publicacion.Cantidad} {this.Publicacion.Residuo.UnidadMedida})");

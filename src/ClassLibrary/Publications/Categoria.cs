@@ -6,11 +6,13 @@
 
 namespace ClassLibrary.Publication
 {
+
   /// <summary>
   /// Instancia de las categorias posibles para <see cref="Residuo"/>.
   /// </summary>
   public class Categoria
   {
+
     /// <summary>
     /// Constructor de categoria.
     /// </summary>
@@ -20,10 +22,10 @@ namespace ClassLibrary.Publication
       this.Nombre = nombre;
     }
 
-/// <summary>
-/// Property de la categoria.
-/// </summary>
-/// <value>string</value>
+    /// <summary>
+    /// Property de la categoria.
+    /// </summary>
+    /// <value><see langword="string"/></value>
     public string Nombre{get; set;}
   }
 }

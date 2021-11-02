@@ -6,11 +6,13 @@
 
 namespace ClassLibrary.User
 {
+
   /// <summary>
   /// Clase representativa de las habilitaciones existentes aplicables a los residuos y emprendedores.
   /// </summary>
   public class Habilitacion
   {
+
     /// <summary>
     /// Contructor del tipo Habilitación.
     /// </summary>
@@ -19,10 +21,11 @@ namespace ClassLibrary.User
     {
       this.Nombre = nombre;
     }
+
     /// <summary>
     /// Nombre de la habilitación.
     /// </summary>
-    /// <value></value>
+    /// <value><see langword="string"/></value>
     public string Nombre{get; set;}
   }
 }
