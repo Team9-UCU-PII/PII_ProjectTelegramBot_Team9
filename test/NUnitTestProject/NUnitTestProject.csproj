@@ -27,6 +27,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\ClassLibrary\ClassLibrary.csproj" />
     <ProjectReference Include="..\..\src\Importers\Importers.csproj" />
+    <ProjectReference Include="..\..\src\BotCore\BotCore.csproj" />
   </ItemGroup>
 
 </Project>
