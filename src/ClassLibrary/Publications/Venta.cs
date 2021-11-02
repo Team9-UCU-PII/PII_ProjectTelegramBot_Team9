@@ -50,7 +50,7 @@ namespace ClassLibrary.Publication
     /// <param name="publicacion"><see cref = "Publicacion"/>.</param>
     public void Comprar(Emprendedor comprador, Publicacion publicacion)
     {
-      Publicacion.Comprado = true;
+      publicacion.Comprado = true;
       this.Comprador = comprador;
       this.Publicacion = publicacion;
     }

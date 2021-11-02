@@ -18,7 +18,7 @@ namespace ClassLibrary.User
         /// Obtiene o establece el nombre de la empresa
         /// </summary>
         /// <value><see langword="string"/>.</value>
-        public string Nombre{ get; set; }
+        public string Nombre { get; set; }
 
         /// <summary>
         /// Local o zona donde se realizaría retiro.

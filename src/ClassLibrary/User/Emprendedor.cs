@@ -18,7 +18,7 @@ namespace ClassLibrary.User
         /// Obtiene o establece el nombre del emprendimiento o emprendedor.
         /// </summary>
         /// <value><see langword="string"/>.</value>
-        public string Nombre{ get; set; }
+        public string Nombre { get; set; }
 
         /// <summary>
         /// Localizacion del local o residencia del emprendedor.

@@ -21,6 +21,6 @@ namespace ClassLibrary.User
         /// Obtiene o establece el nombre de la empresa/emprendimiento.
         /// </summary>
         /// <value><see langword="string"/>.</value>
-        string Nombre{ get; set; }
+        string Nombre { get; set; }
     }
 }

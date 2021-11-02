@@ -24,6 +24,6 @@ namespace ClassLibrary.Publication
     /// Obtiene o establece el nombre de la categoría.
     /// </summary>
     /// <value><see langword="string"/>.</value>
-    public string Nombre{ get; set; }
+    public string Nombre { get; set; }
   }
 }
