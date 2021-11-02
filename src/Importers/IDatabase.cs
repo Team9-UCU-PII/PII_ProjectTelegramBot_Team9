@@ -14,7 +14,7 @@ namespace Importers
     public interface IDatabase
     {
         /// <summary>
-        /// Retorno del singleton.
+        /// Obtiene instancia del singleton.
         /// </summary>
         /// <value><see iref = "IDatabase.Instancia"/>.</value>
         static IDatabase Instancia { get; }
@@ -22,7 +22,7 @@ namespace Importers
         /// <summary>
         /// Guardar.
         /// </summary>
-        /// <param name="objeto"></param>
+        /// <param name="objeto">Instancia a persistirse.</param>
         /// <typeparam name="T">Tipo de la instancia.</typeparam>
         void Insertar<T>(T objeto);
 

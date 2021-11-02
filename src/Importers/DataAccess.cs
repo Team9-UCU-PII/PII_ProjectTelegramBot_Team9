@@ -6,7 +6,7 @@
 
 using System.Collections.Generic;
 
-namespace Importers 
+namespace Importers
 {
 
     /// <summary>
@@ -14,13 +14,6 @@ namespace Importers
     /// </summary>
     public class DataAccess
     {
-        private DataAccess(IDatabase db)
-        {
-            this.db = db;
-        }
-        private IDatabase db;
-        private static DataAccess instancia;
-
         /// <summary>
         /// Obtiene acceso al singleton.
         /// </summary>
@@ -33,9 +26,19 @@ namespace Importers
                 {
                     DataAccess.instancia = new DataAccess(DatabaseMemoria.Instancia);
                 }
+
                 return DataAccess.instancia;
             }
         }
+
+        private static DataAccess instancia;
+
+        private DataAccess(IDatabase db)
+        {
+            this.db = db;
+        }
+
+        private IDatabase db;
 
         /// <summary>
         /// Almacena una nueva instancia en la base de datos.
@@ -55,7 +58,7 @@ namespace Importers
         /// <typeparam name="T">Tipo de la instancia.</typeparam>
         public void Actualizar<T>(T objetoOriginal, T objetoModificado)
         {
-            this.db.Actualizar(objetoOriginal, objetoModificado); 
+            this.db.Actualizar(objetoOriginal, objetoModificado);
         }
 
         /// <summary>
