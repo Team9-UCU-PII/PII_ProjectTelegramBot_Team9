@@ -2,6 +2,7 @@ using NUnit.Framework;
 using ClassLibrary.User;
 using BotCore.User;
 using System.Linq;
+using Tests.TestClasses;
 
 namespace Tests.UserStories
 {
@@ -14,6 +15,7 @@ namespace Tests.UserStories
         public void SetUp()
         {
             this.gi = GestorInvitaciones.Instancia;
+            this.gi.GatewayMensajes = TestGateway.Instancia;
         }
 
         [Test]
