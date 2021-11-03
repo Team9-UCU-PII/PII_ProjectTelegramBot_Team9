@@ -6,7 +6,7 @@
 
   <PropertyGroup>
     <CodeAnalysisRuleSet>..\..\.analyzers\Analyzers.ruleset</CodeAnalysisRuleSet>
-    <DocumentationFile>..\..\docs\xmlDocs $(AssemblyName).xml</DocumentationFile>
+    <DocumentationFile>..\..\docs\xml\ $(AssemblyName).xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
