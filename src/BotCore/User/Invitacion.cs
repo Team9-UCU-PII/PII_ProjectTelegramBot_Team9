@@ -91,11 +91,5 @@ namespace BotCore.User
 
             this.FueAceptada = true;
         }
-
-        private static string GenerarEnlace()
-        {
-            // se genera el enlace
-            return "enlace";
-        }
     }
 }

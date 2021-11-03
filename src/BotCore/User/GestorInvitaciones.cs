@@ -84,7 +84,7 @@ namespace BotCore.User
         public Invitacion ValidarInvitacion(string usuarioAceptante, string enlace) 
         {
             Invitacion invite = this.InvitacionesEnviadas.Where(
-                (Invitacion i) => i.Destinatario == usuarioAceptante && i.Link == enlace && !i.fueAceptada
+                (Invitacion i) => i.Destinatario == usuarioAceptante && i.Link == enlace && !i.FueAceptada
             ).SingleOrDefault();
 
             if (invite != null)
