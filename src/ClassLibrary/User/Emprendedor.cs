@@ -34,7 +34,7 @@ namespace ClassLibrary.User
         /// <summary>
         /// Habilitaciones vigentes del emprendedor-
         /// </summary>
-        public string[] Habilitaciones;
+        public List<Habilitacion> Habilitaciones;
         /// <summary>
         /// Historial de las ventas del emprendedor.
         /// </summary>
@@ -51,12 +51,14 @@ namespace ClassLibrary.User
         /// <param name="lugar"></param>
         /// <param name="rubro"></param>
         /// <param name="especializacion"></param>
-        public Emprendedor(string nombre, string lugar, string rubro, string especializacion)
+        /// <param name="habilitaciones"></param>
+        public Emprendedor(string nombre, string lugar, string rubro, string especializacion, List<Habilitacion> habilitaciones)
         {
             this.Nombre = nombre;
             this.Lugar = lugar;
             this.Rubro = rubro;
             this.Especializacion = especializacion;
+            this.Habilitaciones = habilitaciones;
         }
         /// <summary>
         /// Un constructor vacio para la creacion temporal de emprendedor.
