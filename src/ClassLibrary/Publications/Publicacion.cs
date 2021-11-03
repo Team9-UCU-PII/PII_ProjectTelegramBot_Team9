@@ -17,13 +17,13 @@ namespace ClassLibrary.Publication
     /// <summary>
     /// Constructor de Clase Publicacion.
     /// </summary>
-    /// <param name="residuo"> Instancia tipo Residuo</param>
-    /// <param name="precioUnitario"></param>
-    /// <param name="moneda"></param>
-    /// <param name="cantidad"></param>
-    /// <param name="lugarRetiro">Debe implementar API de maps, por ahora string</param>
-    /// <param name="vendedor">Instancia de IUsuario EMPRESA que vende lo publicado</param>
-    /// <param name="descripcion"></param>
+    /// <param name="residuo"><see cref = "Residuo"/>.</param>
+    /// <param name="precioUnitario"><see langword = "double"/>.</param>
+    /// <param name="moneda"><see langword = "string"/>.</param>
+    /// <param name="cantidad"><see langword = "int"/>.</param>
+    /// <param name="lugarRetiro"><see langword = "string"/>.</param>
+    /// <param name="vendedor"><see cref = "Empresa"/>.</param>
+    /// <param name="descripcion"><see langword = "string"/>.</param>
     public Publicacion(Residuo residuo, double precioUnitario, string moneda, int cantidad, string lugarRetiro, Empresa vendedor, string descripcion)
     {
       this.Residuo = residuo;
@@ -35,47 +35,59 @@ namespace ClassLibrary.Publication
       this.Descripcion = descripcion;
       this.Comprado = false;
     }
-/// <summary>
-/// Property de Publicacion.
-/// </summary>
-/// <value>Tipo Residuo</value>
-    public Residuo Residuo {get; set;}
-/// <summary>
-/// Property de Publicacion.
-/// </summary>
-/// <value>Tipo double</value>
-    public double PrecioUnitario {get; set;}
-/// <summary>
-/// Property de Publicacion.
-/// </summary>
-/// <value>Tipo string</value>
-    public string Moneda {get; set;}
-/// <summary>
-/// Property de Publicacion.
-/// </summary>
-/// <value>Tipo int</value>
-    public int Cantidad {get; set;}
-/// <summary>
-/// Property de Publicacion.
-/// </summary>
-/// <value>Tipo Ubicacion (Aun no implementada API de maps)</value>
-    public string LugarRetiro {get; set;}
-/// <summary>
-/// Property de Publicacion.
-/// </summary>
-/// <value>Tipo IUsuario, instancia de Empresa</value>
-    public Empresa Vendedor {get; set;}
-/// <summary>
-/// Property de Publicacion.
-/// </summary>
-/// <value>Tipo String</value>
-    public string Descripcion{get; set;}
-/// <summary>
-/// Property de Publicacion que determina si la publicacion ya se compró.
-/// </summary>
-/// <value>Tipo bool</value>
-    public bool Comprado{get; set;}
 
+    /// <summary>
+    /// Obtiene o establece el <see cref ="Residuo"/> publicado.
+    /// </summary>
+    /// <value><see cref = "Residuo"/>.</value>
+    public Residuo Residuo { get; set; }
+
+    /// <summary>
+    /// Obtiene o establece el precio por unidad.
+    /// </summary>
+    /// <value><see langword="double"/>.</value>
+    public double PrecioUnitario { get; set; }
+
+    /// <summary>
+    /// Obtiene o establece la moneda de compra.
+    /// </summary>
+    /// <value><see langword="string"/>.</value>
+    public string Moneda { get; set; }
+
+    /// <summary>
+    /// Obtiene o establece la cantidad de <see cref ="Residuo"/> según la unidad dada.
+    /// </summary>
+    /// <value><see langword="int"/>.</value>
+    public int Cantidad { get; set; }
+    
+    /// <summary>
+    /// Obtiene o establece el lugar de retiro.
+    /// </summary>
+    /// <value><see langword = "string"/>.</value>
+    public string LugarRetiro { get; set; }
+
+    /// <summary>
+    /// Obtiene o establece la <see cref ="Empresa"/> vendedora.
+    /// </summary>
+    /// <value>Tipo IUsuario, instancia de Empresa</value>
+    public Empresa Vendedor { get; set; }
+
+    /// <summary>
+    /// Property de Publicacion.
+    /// </summary>
+    /// <value><see langword="string"/>.</value>
+    public string Descripcion{ get; set; }
+
+    /// <summary>
+    /// Obtiene o establece si la publicacion ya se compró.
+    /// </summary>
+    /// <value><see langword="true"/> La publicación ya fue comprada.</value>
+    public bool Comprado{ get; set; }
+
+    /// <summary>
+    /// Calcula el precio final de la publicación.
+    /// </summary>
+    /// <value><see langword="double"/>.</value>
     public double PrecioTotal 
     {
       get 
@@ -84,7 +96,12 @@ namespace ClassLibrary.Publication
       }
     }
 
-    public string GetTextToPrint() {
+    /// <summary>
+    /// Implementación de <see iref = "IPrintable"/>, genera el texto para que envíe el bot.
+    /// </summary>
+    /// <returns><see langword="string"/>.</returns>
+    public string GetTextToPrint() 
+    {
       StringBuilder text = new StringBuilder();
       text.AppendLine(this.Residuo.GetTextToPrint());
       text.AppendLine($"Cantidad: {this.Cantidad} {this.Residuo.UnidadMedida}");

@@ -4,9 +4,9 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 
+using ClassLibrary.User;
 using System;
 using System.Text;
-using ClassLibrary.User;
 
 namespace ClassLibrary.Publication
 {
@@ -19,42 +19,48 @@ namespace ClassLibrary.Publication
     /// <summary>
     /// Se crea la instancia de venta con la fecha del momento.
     /// </summary>
-    /// <param name="fecha"></param>
+    /// <param name="fecha"><see cref = "DateTime"/>.</param>
     public Venta(DateTime fecha)
     {
       this.Fecha = fecha;
     }
+
     /// <summary>
-    /// Property de Venta.
+    /// Obtiene o establece la fecha de venta.
     /// </summary>
-    /// <value><see cref = "DateTime"/></value>
-    public DateTime Fecha {get; set;}
+    /// <value><see cref = "DateTime"/>.</value>
+    public DateTime Fecha { get; set; }
+
     /// <summary>
-    /// Property de Venta.
+    /// Obtiene o establece el comprador.
     /// </summary>
-    /// <value><see cref = "Emprendedor"/></value>
-    public Emprendedor Comprador {get; set;}
+    /// <value><see cref = "Emprendedor"/>.</value>
+    public Emprendedor Comprador { get; set; }
+
     /// <summary>
-    /// Property de Venta.
+    /// Obtiene o establece la publicacion que fue comprada.
     /// </summary>
-    /// <value><see cref = "Publicacion"/></value>
-    public Publicacion Publicacion {get; set;}
+    /// <value><see cref = "Publicacion"/>.</value>
+    public Publicacion Publicacion { get; set; }
+
     /// <summary>
     /// Metodo que concreta la compra de la Publicación.
     /// </summary>
-    /// <param name="comprador"></param>
-    /// <param name="publicacion"></param>
+    /// <param name="comprador"><see cref = "Emprendedor"/>.</param>
+    /// <param name="publicacion"><see cref = "Publicacion"/>.</param>
     public void Comprar(Emprendedor comprador, Publicacion publicacion)
     {
-      Publicacion.Comprado = true;
+      publicacion.Comprado = true;
       this.Comprador = comprador;
       this.Publicacion = publicacion;
     }
-/// <summary>
-/// Implementacion del tipo <see iref = "IPrintable"/>.
-/// </summary>
-/// <returns>String</returns>
-    public string GetTextToPrint() {
+
+    /// <summary>
+    /// Implementacion del tipo <see iref = "IPrintable"/>.
+    /// </summary>
+    /// <returns><see langword="string"/>.</returns>
+    public string GetTextToPrint() 
+    {
       StringBuilder text = new StringBuilder();
       text.AppendLine($"Material: {this.Publicacion.Residuo.Descripcion} ({this.Publicacion.Cantidad} {this.Publicacion.Residuo.UnidadMedida})");
       text.AppendLine($"Vendedor: {this.Publicacion.Vendedor.Nombre}");
