@@ -18,10 +18,15 @@ namespace BotCore.User
     /// </summary>
     public class GestorInvitaciones
     {
-        private GestorInvitaciones(){}
-        private static GestorInvitaciones instancia {get;set;}
+        private GestorInvitaciones()
+        {
+        }
+        
+        /// <summary>
+        /// Lista donde se almacenan las invitaciones enviadas para mantener un registro.
+        /// </summary>
+        private List<Invitacion> invitacionesEnviadas = new List<Invitacion>();
 
-        //Lo hago singleton porque solo se precisa una instancia y tiene que guardar un estado (los invites enviados)
         /// <summary>
         /// Metodo de acceso al singleton.
         /// </summary>
@@ -34,20 +39,23 @@ namespace BotCore.User
                 {
                     instancia = new GestorInvitaciones();
                 }
+
                 return instancia;
             }
         }
-        /// <summary>
-        /// Lista donde se almacenan las invitaciones enviadas para mantener un registro.
-        /// </summary>
-        public List<Invitacion> invitacionesEnviadas = new List<Invitacion>();
+
+        private static GestorInvitaciones instancia { get; set; }
+
+        // Lo hago singleton porque solo se precisa una instancia y tiene que guardar un estado (los invites enviados)
+
         /// <summary>
         /// Metodo que crea la <see cref = "Invitacion"/> y la envia al destinatario especificado.
         /// </summary>
         /// <param name="destinatario">El contacto objetivo (username).</param>
         /// <param name="nombreTemp">Nombre placeholder para el IUsuario, el destinatario lo sobreescribirá luego.</param>
         /// <typeparam name="T"></typeparam>
-        public void EnviarInvitacion<T>(string destinatario, string nombreTemp) where T : IUsuario, new()
+        public void EnviarInvitacion<T>(string destinatario, string nombreTemp)
+        where T : IUsuario, new()
         {
             IUsuario user = new T();
             user.Nombre = nombreTemp;
@@ -59,17 +67,17 @@ namespace BotCore.User
         }
 
         // Este método es usado externamente por el MessageGateway
-        private bool ValidarInvitacion(string usuarioAceptante, string enlace) 
+        private bool ValidarInvitacion(string usuarioAceptante, string enlace)
         {
-            Invitacion invite = this.invitacionesEnviadas.Where(
-                (Invitacion i) => i.Destinatario == usuarioAceptante && i.Link == enlace && !i.fueAceptada
-            ).SingleOrDefault();
+            Invitacion invite = this.invitacionesEnviadas.Where((Invitacion i) => i.Destinatario == usuarioAceptante && i.Link == enlace && !i.FueAceptada).SingleOrDefault();
 
-            if (invite != null) {
+            if (invite != null)
+            {
                 invite.Aceptar();
                 return true;
             }
-            else {
+            else
+            {
                 return false;
             }
         }

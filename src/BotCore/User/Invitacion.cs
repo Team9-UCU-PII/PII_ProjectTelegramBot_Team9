@@ -13,7 +13,7 @@ namespace BotCore.User
     /// <summary>
     /// Clase mediadora entre <see cref = "GestorInvitaciones"/> y los <see iref = "IUsuario"/>, representa la invitación en si, y encapsula el enlace y destino.
     /// </summary>
-    public  class Invitacion
+    public class Invitacion
     {
         /// <summary>
         /// Método constructor de la invitación.
@@ -25,33 +25,35 @@ namespace BotCore.User
             this.OrganizacionInvitada = organizacion;
             this.Destinatario = usuarioDestinatario;
             this.Link = Invitacion.GenerarEnlace();
-            this.fueAceptada = false;
+            this.FueAceptada = false;
         }
+
         /// <summary>
         /// El usuario destinado, debería ser sobreescrito por el destinatario.
         /// </summary>
-        public IUsuario OrganizacionInvitada {get;}
+        public IUsuario OrganizacionInvitada { get; }
 
         /// <summary>
-        /// Via de comunicacion para que llegue la invitacion (numero, mail, etc)
+        /// Via de comunicacion para que llegue la invitacion (numero, mail, etc).
         /// </summary>
-        public string Destinatario {get;}
-        
+        public string Destinatario { get; }
+
         /// <summary>
         /// Código generado para validar la invitación.
         /// </summary>
-        public string Link {get;}
+        public string Link { get; }
 
         /// <summary>
         /// Propiedad, permite evaluar si el destinatario aceptó la invitación
         /// y se registró.
         /// </summary>
         /// <value>True: la invitación fue completada y aceptada. False: La invitación está en proceso.</value>
-        public bool fueAceptada {get; private set;}
+        public bool FueAceptada { get; private set; }
+
         /// <summary>
         /// Se genera el texto del mensaje a enviarse para invitar.
         /// </summary>
-        /// <returns>string</returns>
+        /// <returns>string.</returns>
         public string ArmarMensajeInvitacion()
         {
             StringBuilder mensaje = new StringBuilder();
@@ -59,20 +61,24 @@ namespace BotCore.User
             mensaje.AppendLine($"Link para unirte y registrarte: {this.Link}");
             return mensaje.ToString();
         }
-        private static string GenerarEnlace()
-        {
-            //se genera el enlace
-            return "enlace";
-        }
+
         /// <summary>
         /// Metodo que modifica el estado de la invitación como aceptada.
         /// </summary>
-        public void Aceptar() {
-            if (this.fueAceptada) {
+        public void Aceptar()
+        {
+            if (this.FueAceptada)
+            {
                 throw new InvalidOperationException("Esta invitación ya fue aceptada.");
             }
 
-            this.fueAceptada = true;
+            this.FueAceptada = true;
+        }
+
+        private static string GenerarEnlace()
+        {
+            // se genera el enlace
+            return "enlace";
         }
     }
 }
