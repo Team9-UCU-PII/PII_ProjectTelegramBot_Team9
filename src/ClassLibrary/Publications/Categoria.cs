@@ -14,16 +14,16 @@ namespace ClassLibrary.Publication
     /// <summary>
     /// Constructor de categoria.
     /// </summary>
-    /// <param name="categoria"></param>
+    /// <param name="nombre">.</param>
     public Categoria(string nombre)
     {
       this.Nombre = nombre;
     }
 
-/// <summary>
-/// Property de la categoria.
-/// </summary>
-/// <value>string</value>
-    public string Nombre{get; set;}
+    /// <summary>
+    /// Obtiene o establece el nombre de la categoría.
+    /// </summary>
+    /// <value><see langword="string"/>.</value>
+    public string Nombre { get; set; }
   }
 }

@@ -14,15 +14,16 @@ namespace ClassLibrary.User
     /// <summary>
     /// Contructor del tipo Habilitación.
     /// </summary>
-    /// <param name="nombre"></param>
+    /// <param name="nombre"><see langword="string"/>.</param>
     public Habilitacion(string nombre)
     {
       this.Nombre = nombre;
     }
+
     /// <summary>
-    /// Nombre de la habilitación.
+    /// Obtiene o establece el nombre de la habilitación.
     /// </summary>
-    /// <value></value>
-    public string Nombre{get; set;}
+    /// <value><see langword="string"/>.</value>
+    public string Nombre { get; set; }
   }
 }

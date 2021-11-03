@@ -13,27 +13,31 @@ namespace ClassLibrary.User
     /// </summary>
     public class DatosLogin
     {
+
         /// <summary>
-        /// Username de la cuenta.
+        /// Obtiene o establece el username de la cuenta.
         /// </summary>
-        /// <value></value>
+        /// <value><see langword="string"/>.</value>
         public string NombreUsuario { get; set; }
-    /// <summary>
-    /// Password de la cuenta.
-    /// </summary>
-    /// <value></value>
-        public string Contrasenia { get; }
+
         /// <summary>
-        /// <see cref = "Emprendedor"/> o <see cref = "Empresa"/> a la que se vincula esta cuenta.
+        /// Obtiene la password de la cuenta.
         /// </summary>
-        /// <value></value>
-        public IUsuario Usuario { get;}
-/// <summary>
-/// Método constructor del usuario.
-/// </summary>
-/// <param name="nombreUsuario"></param>
-/// <param name="contrasenia"></param>
-/// <param name="usuario"></param>
+        /// <value><see langword="string"/>.</value>
+        public string Contrasenia { get; }
+
+        /// <summary>
+        /// Obtiene  el <see cref = "Emprendedor"/> o <see cref = "Empresa"/> a la que se vincula esta cuenta.
+        /// </summary>
+        /// <value><see cref = "Emprendedor"/> o <see cref = "Empresa"/>.</value>
+        public IUsuario Usuario { get; }
+
+        /// <summary>
+        /// Método constructor del usuario.
+        /// </summary>
+        /// <param name="nombreUsuario"><see langword = "string"/>.</param>
+        /// <param name="contrasenia"><see langword = "string"/>.</param>
+        /// <param name="usuario"><see iref = "IUsuario"/>.</param>
         public DatosLogin(string nombreUsuario, string contrasenia, IUsuario usuario)
         {
             this.NombreUsuario = nombreUsuario;

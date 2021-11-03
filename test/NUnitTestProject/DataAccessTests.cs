@@ -15,10 +15,10 @@ using System.Collections.Generic;
 namespace Tests
 {
     [TestFixture]
-    public class Tests
+    public class DataAccessTests
     {
         [Test]
-        public void PruebaInsert()
+        public void GenericsTest()
         {
             List<Habilitacion> habilitaciones = new List<Habilitacion> {new Habilitacion("Hab1"), new Habilitacion("Hab2")};
             Categoria categoria = new Categoria("CAT");
