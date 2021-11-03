@@ -39,5 +39,26 @@ namespace Tests
             Console.WriteLine(da.Obtener<Empresa>()[0].Nombre);
             Console.WriteLine(string.Join(", ", da.Obtener<Habilitacion>().Select(x => x.Nombre)));
         }
+
+        [Test]
+        public void TestEmpresa()
+        {
+            Empresa empresa = new Empresa("ContruYeso", "Montevideo", "Construcción", "Empresa de construcción en yeso", "099123456");
+            DataAccess dataEmpresa = DataAccess.Instancia;
+            dataEmpresa.Insertar(empresa);
+
+            Console.WriteLine(dataEmpresa.Obtener<Empresa>());
+        }
+
+        [Test]
+        public void TestEmprendedor()
+        {
+            List<Habilitacion> habilitaciones = new List<Habilitacion>;
+            Emprendedor emprendedor = new Emprendedor("El reciclador", "Canelones", "Construcción", "Acero galvanizado", habilitaciones);
+            DataAccess dataEmprendedor = DataAccess.Instancia;
+            dataEmprendedor.Insertar(emprendedor);
+
+            Console.WriteLine(dataEmprendedor.Obtener<Emprendedor>());
+        }
     }
 }
