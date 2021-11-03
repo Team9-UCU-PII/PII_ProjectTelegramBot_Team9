@@ -607,6 +607,5 @@ fabric.properties
 lcov.info
 
 # Documents
-docs/html
 .vscode/launch.json
 .vscode/tasks.json

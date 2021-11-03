@@ -1,0 +1,10 @@
+digraph "Importers.DatabaseMemoria"
+{
+ // INTERACTIVE_SVG=YES
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{Importers.DatabaseMemoria\n|+ Instancia\l+ instancia\l+ categorias\l+ publicaciones\l+ publicacionesRecurrentes\l+ residuos\l+ ventas\l+ datosLogin\l+ emprendedores\l+ empresas\l+ habilitaciones\l|+ Insertar\< T \>()\l+ Actualizar\< T \>()\l+ Obtener\< T \>()\l+ Eliminar\< T \>()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Esta clase manejara la logica cercana al acceso a la base de datos."];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node2 [label="{IDatabase\n|+ Instancia\l|+ Insertar\< T \>()\l+ Actualizar\< T \>()\l+ Obtener\< T \>()\l+ Eliminar\< T \>()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interfaceImporters_1_1IDatabase.html",tooltip="Interaz de acceso a la base de datos."];
+}

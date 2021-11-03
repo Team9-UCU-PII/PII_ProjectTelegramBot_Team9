@@ -1,0 +1,233 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Proyecto de PII: Fichero Fuente C:/Users/gatom/OneDrive/Escritorio/programcion/repos/PII_2021_2_Equipo09/src/Importers/DatabaseMemoria.cs</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Proyecto de PII
+   &#160;<span id="projectnumber">1</span>
+   </div>
+   <div id="projectbrief">Projecto para curso de Programacion 2 en la UCU, por el equipo 9 de la tarde</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('DatabaseMemoria_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">DatabaseMemoria.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//--------------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// &lt;copyright file=&quot;DatabaseMemoria.cs&quot; company=&quot;Universidad Católica del Uruguay&quot;&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//     Copyright (c) Programación II. Derechos reservados.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">// &lt;/copyright&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//--------------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">using</span> System;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">using</span> System.Collections.Generic;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">using</span> System.Reflection;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">using</span> <a class="code" href="namespaceClassLibrary.html">ClassLibrary</a>.<a class="code" href="namespaceClassLibrary_1_1Publication.html">Publication</a>;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">using</span> <a class="code" href="namespaceClassLibrary.html">ClassLibrary</a>.<a class="code" href="namespaceClassLibrary_1_1User.html">User</a>;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceImporters.html">Importers</a></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;{</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="classImporters_1_1DatabaseMemoria.html">   18</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classImporters_1_1DatabaseMemoria.html">DatabaseMemoria</a> : <a class="code" href="interfaceImporters_1_1IDatabase.html">IDatabase</a></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    {</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="classImporters_1_1DatabaseMemoria.html#a4ecff66738c28c773d6e518b8561ae90">   24</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="interfaceImporters_1_1IDatabase.html">IDatabase</a> <a class="code" href="classImporters_1_1DatabaseMemoria.html#a4ecff66738c28c773d6e518b8561ae90">Instancia</a></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="classImporters_1_1DatabaseMemoria.html">DatabaseMemoria</a>.instancia == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                    <a class="code" href="classImporters_1_1DatabaseMemoria.html">DatabaseMemoria</a>.instancia = <span class="keyword">new</span> <a class="code" href="classImporters_1_1DatabaseMemoria.html">DatabaseMemoria</a>();</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                }</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="classImporters_1_1DatabaseMemoria.html">DatabaseMemoria</a>.instancia;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            }</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        }</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keyword">private</span> <a class="code" href="classImporters_1_1DatabaseMemoria.html">DatabaseMemoria</a>()</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            this.categorias = <span class="keyword">new</span> List&lt;Categoria&gt;();</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            this.publicaciones = <span class="keyword">new</span> List&lt;Publicacion&gt;();</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            this.publicacionesRecurrentes = <span class="keyword">new</span> List&lt;PublicacionRecurrente&gt;();</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            this.residuos = <span class="keyword">new</span> List&lt;Residuo&gt;();</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            this.ventas = <span class="keyword">new</span> List&lt;Venta&gt;();</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            this.datosLogin = <span class="keyword">new</span> List&lt;DatosLogin&gt;();</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            this.emprendedores = <span class="keyword">new</span> List&lt;Emprendedor&gt;();</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            this.empresas = <span class="keyword">new</span> List&lt;Empresa&gt;();</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            this.habilitaciones = <span class="keyword">new</span> List&lt;Habilitacion&gt;();</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        }</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> DatabaseMemoria instancia { <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keyword">private</span> List&lt;Categoria&gt; categorias { <span class="keyword">get</span>; }</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keyword">private</span> List&lt;Publicacion&gt; publicaciones { <span class="keyword">get</span>; }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keyword">private</span> List&lt;PublicacionRecurrente&gt; publicacionesRecurrentes { <span class="keyword">get</span>; }</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keyword">private</span> List&lt;Residuo&gt; residuos { <span class="keyword">get</span>; }</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keyword">private</span> List&lt;Venta&gt; ventas { <span class="keyword">get</span>; }</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keyword">private</span> List&lt;DatosLogin&gt; datosLogin { <span class="keyword">get</span>; }</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keyword">private</span> List&lt;Emprendedor&gt; emprendedores { <span class="keyword">get</span>; }</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keyword">private</span> List&lt;Empresa&gt; empresas { <span class="keyword">get</span>; }</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keyword">private</span> List&lt;Habilitacion&gt; habilitaciones { <span class="keyword">get</span>; }</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="classImporters_1_1DatabaseMemoria.html#a0ff2082a1771599aeb3ca2feccb1307d">   75</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classImporters_1_1DatabaseMemoria.html#a0ff2082a1771599aeb3ca2feccb1307d">Insertar&lt;T&gt;</a>(T objeto)</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        {</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            <span class="keywordflow">foreach</span> (PropertyInfo propiedad <span class="keywordflow">in</span> this.GetType().GetProperties(BindingFlags.NonPublic | BindingFlags.Instance))</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                <span class="keywordflow">if</span> (propiedad.PropertyType.Equals(typeof(List&lt;T&gt;)))</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                {</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                    List&lt;T&gt; lista = propiedad.GetValue(<span class="keyword">this</span>) as List&lt;T&gt;;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                    lista.Add(objeto);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                }</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            }</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            <span class="keywordflow">throw</span> <span class="keyword">new</span> Exception(<span class="stringliteral">&quot;Este tipo de objeto no puede ser persistido.&quot;</span>);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        }</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="classImporters_1_1DatabaseMemoria.html#aced66837b8eac33ec5788362aed90392">   96</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classImporters_1_1DatabaseMemoria.html#aced66837b8eac33ec5788362aed90392">Actualizar&lt;T&gt;</a>(T objetoOriginal, T objetoModificado)</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        {</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            <span class="keywordflow">foreach</span> (PropertyInfo propiedad <span class="keywordflow">in</span> this.GetType().GetProperties(BindingFlags.NonPublic | BindingFlags.Instance))</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            {</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                <span class="keywordflow">if</span> (propiedad.PropertyType.Equals(typeof(List&lt;T&gt;)))</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                {</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                    List&lt;T&gt; lista = propiedad.GetValue(<span class="keyword">this</span>) as List&lt;T&gt;;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                    <span class="keywordtype">int</span> indice = lista.IndexOf(objetoOriginal);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                    lista[indice] = objetoModificado;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                }</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            }</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            <span class="keywordflow">throw</span> <span class="keyword">new</span> Exception(<span class="stringliteral">&quot;Este tipo de objeto no puede ser persistido.&quot;</span>);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        }</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00117"></a><span class="lineno"><a class="line" href="classImporters_1_1DatabaseMemoria.html#a0ff26edd41b92e3661476650b9068cb8">  117</a></span>&#160;        <span class="keyword">public</span> List&lt;T&gt; <a class="code" href="classImporters_1_1DatabaseMemoria.html#a0ff26edd41b92e3661476650b9068cb8">Obtener&lt;T&gt;</a>()</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        {</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            <span class="keywordflow">foreach</span> (PropertyInfo propiedad <span class="keywordflow">in</span> this.GetType().GetProperties(BindingFlags.NonPublic | BindingFlags.Instance))</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            {</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                <span class="keywordflow">if</span> (propiedad.PropertyType.Equals(typeof(List&lt;T&gt;)))</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                {</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                    <span class="keywordflow">return</span> propiedad.GetValue(<span class="keyword">this</span>) as List&lt;T&gt;;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                }</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            }</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            <span class="keywordflow">throw</span> <span class="keyword">new</span> Exception(<span class="stringliteral">&quot;Este tipo de objeto no puede ser persistido.&quot;</span>);</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        }</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
+<div class="line"><a name="l00135"></a><span class="lineno"><a class="line" href="classImporters_1_1DatabaseMemoria.html#aa32c82f5e7e151754ef9d4ba86e8154d">  135</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classImporters_1_1DatabaseMemoria.html#aa32c82f5e7e151754ef9d4ba86e8154d">Eliminar&lt;T&gt;</a>(T objeto)</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        {</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            <span class="keywordflow">foreach</span> (PropertyInfo propiedad <span class="keywordflow">in</span> this.GetType().GetProperties(BindingFlags.NonPublic | BindingFlags.Instance))</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            {</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;                <span class="keywordflow">if</span> (propiedad.PropertyType.Equals(typeof(List&lt;T&gt;)))</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                {</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                    List&lt;T&gt; lista = propiedad.GetValue(<span class="keyword">this</span>) as List&lt;T&gt;;</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                    lista.Remove(objeto);</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                }</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;            }</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160; </div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;            <span class="keywordflow">throw</span> <span class="keyword">new</span> Exception(<span class="stringliteral">&quot;Este tipo de objeto no puede ser persistido.&quot;</span>);</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        }</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    }</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;}</div>
+<div class="ttc" id="aclassImporters_1_1DatabaseMemoria_html"><div class="ttname"><a href="classImporters_1_1DatabaseMemoria.html">Importers.DatabaseMemoria</a></div><div class="ttdoc">Esta clase manejara la logica cercana al acceso a la base de datos.</div><div class="ttdef"><b>Definition:</b> <a href="DatabaseMemoria_8cs_source.html#l00018">DatabaseMemoria.cs:19</a></div></div>
+<div class="ttc" id="aclassImporters_1_1DatabaseMemoria_html_a0ff2082a1771599aeb3ca2feccb1307d"><div class="ttname"><a href="classImporters_1_1DatabaseMemoria.html#a0ff2082a1771599aeb3ca2feccb1307d">Importers.DatabaseMemoria.Insertar&lt; T &gt;</a></div><div class="ttdeci">void Insertar&lt; T &gt;(T objeto)</div><div class="ttdoc">Guardar un objeto en memoria.</div><div class="ttdef"><b>Definition:</b> <a href="DatabaseMemoria_8cs_source.html#l00075">DatabaseMemoria.cs:75</a></div></div>
+<div class="ttc" id="aclassImporters_1_1DatabaseMemoria_html_a0ff26edd41b92e3661476650b9068cb8"><div class="ttname"><a href="classImporters_1_1DatabaseMemoria.html#a0ff26edd41b92e3661476650b9068cb8">Importers.DatabaseMemoria.Obtener&lt; T &gt;</a></div><div class="ttdeci">List&lt; T &gt; Obtener&lt; T &gt;()</div><div class="ttdoc">Retorna instancia/s de la base de datos.</div><div class="ttdef"><b>Definition:</b> <a href="DatabaseMemoria_8cs_source.html#l00117">DatabaseMemoria.cs:117</a></div></div>
+<div class="ttc" id="aclassImporters_1_1DatabaseMemoria_html_a4ecff66738c28c773d6e518b8561ae90"><div class="ttname"><a href="classImporters_1_1DatabaseMemoria.html#a4ecff66738c28c773d6e518b8561ae90">Importers.DatabaseMemoria.Instancia</a></div><div class="ttdeci">static IDatabase Instancia</div><div class="ttdoc">Obtiene acceso al singleton.</div><div class="ttdef"><b>Definition:</b> <a href="DatabaseMemoria_8cs_source.html#l00024">DatabaseMemoria.cs:25</a></div></div>
+<div class="ttc" id="aclassImporters_1_1DatabaseMemoria_html_aa32c82f5e7e151754ef9d4ba86e8154d"><div class="ttname"><a href="classImporters_1_1DatabaseMemoria.html#aa32c82f5e7e151754ef9d4ba86e8154d">Importers.DatabaseMemoria.Eliminar&lt; T &gt;</a></div><div class="ttdeci">void Eliminar&lt; T &gt;(T objeto)</div><div class="ttdoc">Borra instancias de la memoria.</div><div class="ttdef"><b>Definition:</b> <a href="DatabaseMemoria_8cs_source.html#l00135">DatabaseMemoria.cs:135</a></div></div>
+<div class="ttc" id="aclassImporters_1_1DatabaseMemoria_html_aced66837b8eac33ec5788362aed90392"><div class="ttname"><a href="classImporters_1_1DatabaseMemoria.html#aced66837b8eac33ec5788362aed90392">Importers.DatabaseMemoria.Actualizar&lt; T &gt;</a></div><div class="ttdeci">void Actualizar&lt; T &gt;(T objetoOriginal, T objetoModificado)</div><div class="ttdoc">Actualiza un objeto en memoria.</div><div class="ttdef"><b>Definition:</b> <a href="DatabaseMemoria_8cs_source.html#l00096">DatabaseMemoria.cs:96</a></div></div>
+<div class="ttc" id="ainterfaceImporters_1_1IDatabase_html"><div class="ttname"><a href="interfaceImporters_1_1IDatabase.html">Importers.IDatabase</a></div><div class="ttdoc">Interaz de acceso a la base de datos.</div><div class="ttdef"><b>Definition:</b> <a href="IDatabase_8cs_source.html#l00014">IDatabase.cs:15</a></div></div>
+<div class="ttc" id="anamespaceClassLibrary_1_1Publication_html"><div class="ttname"><a href="namespaceClassLibrary_1_1Publication.html">ClassLibrary.Publication</a></div><div class="ttdef"><b>Definition:</b> <a href="Categoria_8cs_source.html#l00007">Categoria.cs:8</a></div></div>
+<div class="ttc" id="anamespaceClassLibrary_1_1User_html"><div class="ttname"><a href="namespaceClassLibrary_1_1User.html">ClassLibrary.User</a></div><div class="ttdef"><b>Definition:</b> <a href="DatosLogin_8cs_source.html#l00007">DatosLogin.cs:8</a></div></div>
+<div class="ttc" id="anamespaceClassLibrary_html"><div class="ttname"><a href="namespaceClassLibrary.html">ClassLibrary</a></div><div class="ttdef"><b>Definition:</b> <a href="Categoria_8cs_source.html#l00007">Categoria.cs:8</a></div></div>
+<div class="ttc" id="anamespaceImporters_html"><div class="ttname"><a href="namespaceImporters.html">Importers</a></div><div class="ttdef"><b>Definition:</b> <a href="DataAccess_8cs_source.html#l00009">DataAccess.cs:10</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_52881c917525df13f94c2c6db23d06ac.html">Importers</a></li><li class="navelem"><b>DatabaseMemoria.cs</b></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

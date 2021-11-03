@@ -1,0 +1,11 @@
+digraph "MessageGateway.IGateway.EnviarInvitacion"
+{
+ // INTERACTIVE_SVG=YES
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="MessageGateway.IGateway.\lEnviarInvitacion",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Método para enviar la invitacion a traves del medio."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="BotCore.User.GestorInvitaciones.\lEnviarInvitacion\< T \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classBotCore_1_1User_1_1GestorInvitaciones.html#ad2c15d4d36caab1fff1ccdfafdb0017c",tooltip="Metodo que crea la Invitacion y la envia al destinatario especificado."];
+}

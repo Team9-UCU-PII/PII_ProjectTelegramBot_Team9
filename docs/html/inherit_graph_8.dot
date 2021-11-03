@@ -1,0 +1,13 @@
+digraph "Representación gráfica de la clase"
+{
+ // INTERACTIVE_SVG=YES
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node0 [label="ClassLibrary.User.IUsuario",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interfaceClassLibrary_1_1User_1_1IUsuario.html",tooltip="Interfaz que engloba tanto empresas como emprendimientos."];
+  Node0 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 [label="ClassLibrary.User.Emprendedor",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classClassLibrary_1_1User_1_1Emprendedor.html",tooltip="Clase representativa de los emprendedores con su información competente."];
+  Node0 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="ClassLibrary.User.Empresa",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classClassLibrary_1_1User_1_1Empresa.html",tooltip="Clase representativa de las empresas registradas y su información competente."];
+}
