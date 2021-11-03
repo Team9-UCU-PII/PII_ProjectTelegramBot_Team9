@@ -61,8 +61,8 @@ namespace ClassLibrary.User
             this.Habilitaciones = habilitaciones;
         }
         /// <summary>
-        /// Un constructor vacio para la creacion temporal de emprendedor.
-        /// <see cref = "GestorInvitaciones"/>
+        /// Un constructor vacio para la creacion temporal de emprendedor
+        /// en el GestorInvitaciones.
         /// </summary>
         public Emprendedor()
         {

@@ -11,12 +11,17 @@ using ClassLibrary.User;
 namespace BotCore.User
 {
     /// <summary>
-    /// Clase mediadora que representa la invitación en si, y encapsula el enlace y destino.
+    /// Clase mediadora entre <see cref = "GestorInvitaciones"/> y los <see iref = "IUsuario"/>, representa la invitación en si, y encapsula el enlace y destino.
     /// </summary>
     public  class Invitacion
     {
         public const int K_LargoEnlace = 20;
 
+        /// <summary>
+        /// Método constructor de la invitación.
+        /// </summary>
+        /// <param name="organizacion">El <see iref = "IUsuario"/> temporal, generado previamente.</param>
+        /// <param name="usuarioDestinatario">Username o Contacto objetivo.</param>
         public Invitacion(IUsuario organizacion, string usuarioDestinatario)
         {
             this.OrganizacionInvitada = organizacion;
@@ -43,7 +48,12 @@ namespace BotCore.User
         /// Propiedad, permite evaluar si el destinatario aceptó la invitación
         /// y se registró.
         /// </summary>
+        /// <value>True: la invitación fue completada y aceptada. False: La invitación está en proceso.</value>
         public bool fueAceptada {get; private set;}
+        /// <summary>
+        /// Se genera el texto del mensaje a enviarse para invitar.
+        /// </summary>
+        /// <returns>string</returns>
         public string ArmarMensajeInvitacion()
         {
             StringBuilder mensaje = new StringBuilder();
@@ -65,7 +75,9 @@ namespace BotCore.User
             }
             return enlace;
         }
-
+        /// <summary>
+        /// Metodo que modifica el estado de la invitación como aceptada.
+        /// </summary>
         public void Aceptar() {
             if (this.fueAceptada) {
                 throw new InvalidOperationException("Esta invitación ya fue aceptada.");

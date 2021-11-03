@@ -34,25 +34,28 @@ namespace ClassLibrary.Publication
     /// <summary>
     /// Categoria generica a la que pertenece el residuo.
     /// </summary>
-    /// <value>Array de <see cref = "Categoria"/></value>
+    /// <value>Array de <see cref = "Categoria"/>.</value>
     public Categoria Categoria {get; set;}
     /// <summary>
     /// Property de Residuo.
     /// </summary>
-    /// <value>string</value>
+    /// <value>string.</value>
     public string Descripcion {get; set;}
     /// <summary>
     /// Property de Residuo.
     /// </summary>
-    /// <example> Kgs, Lts, m2, etc </example>
-    /// <value>string</value>
+    /// <example> Kgs, Lts, m2, etc. </example>
+    /// <value>String.</value>
     public string UnidadMedida {get; set;}
     /// <summary>
     /// Property de Habilitaciones necesarias para la compra del residuo.
     /// </summary>
-    /// <value>Array de <see cref = "Habilitacion"/></value>
+    /// <value>Array de <see cref = "Habilitacion"/>.</value>
     public List<Habilitacion> Habilitaciones {get; set;}
-
+    /// <summary>
+    /// Implementación de <see iref = "IPrintable"/>, genera el texto para que envíe el bot.
+    /// </summary>
+    /// <returns>String.</returns>
     public string GetTextToPrint() {
       StringBuilder text = new StringBuilder();
       text.AppendLine($"Material: {this.Descripcion} ({this.Categoria.Nombre})");

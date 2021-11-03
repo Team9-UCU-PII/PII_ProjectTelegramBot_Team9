@@ -48,7 +48,8 @@ namespace Importers
 /// <summary>
 /// Update a un objeto ya existente en la base de datos.
 /// </summary>
-/// <param name="objeto"></param>
+/// <param name="objetoOriginal">El objeto existente.</param>
+/// <param name="objetoModificado">El objeto nuevo.</param>
 /// <typeparam name="T"></typeparam>
         public void Actualizar<T>(T objetoOriginal, T objetoModificado)
         {
