@@ -608,9 +608,5 @@ lcov.info
 
 # Documents
 docs/html
-src/BotCore/Botcore.xml
-src/Importers/Importers.xml
-src/ClassLibrary/ClassLibrary.xml
 .vscode/launch.json
 .vscode/tasks.json
-src/Importers/Importers.xml
