@@ -21,11 +21,12 @@ namespace BotCore.User
         /// <param name="nombreUsuario"></param>
         /// <param name="contrasenia"></param>
         /// <param name="usuario"></param>
-        public static void RegistrarUsuario(string nombreUsuario, string contrasenia, IUsuario usuario)
+        public static void RegistrarUsuario<T>(string nombreUsuario, string contrasenia, T usuario) where T : IUsuario
         {
             DataAccess da = DataAccess.Instancia;
             DatosLogin dl = new DatosLogin(nombreUsuario, contrasenia, usuario);
 
+            da.Insertar(usuario);
             da.Insertar(dl);
         }
     }

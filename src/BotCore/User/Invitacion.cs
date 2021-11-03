@@ -15,6 +15,8 @@ namespace BotCore.User
     /// </summary>
     public class Invitacion
     {
+        public const int K_LargoEnlace = 20;
+
         /// <summary>
         /// Método constructor de la invitación.
         /// </summary>
@@ -60,6 +62,21 @@ namespace BotCore.User
             mensaje.AppendLine("Has sido invitado a unirte al chatbot de Telegram.");
             mensaje.AppendLine($"Link para unirte y registrarte: {this.Link}");
             return mensaje.ToString();
+        }
+
+        private static string GenerarEnlace()
+        {
+            string enlace = "enlace";
+            if (enlace.Length < K_LargoEnlace)
+            {
+                int cantCaracteresAAgregar = K_LargoEnlace - enlace.Length;
+                enlace += new string('0', cantCaracteresAAgregar);
+            }
+            else
+            {
+                enlace = enlace.Substring(0, K_LargoEnlace);
+            }
+            return enlace;
         }
 
         /// <summary>
