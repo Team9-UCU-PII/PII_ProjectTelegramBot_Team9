@@ -2,6 +2,8 @@
 // <copyright file="GestorInvitaciones.cs" company="Universidad Católica del Uruguay">
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
+
+// 
 //--------------------------------------------------------------------------------
 
 using System.Collections.Generic;
@@ -22,11 +24,6 @@ namespace BotCore.User
         private GestorInvitaciones()
         {
         }
-        
-        /// <summary>
-        /// Lista donde se almacenan las invitaciones enviadas para mantener un registro.
-        /// </summary>
-        private List<Invitacion> invitacionesEnviadas = new List<Invitacion>();
 
         /// <summary>
         /// Metodo de acceso al singleton.
@@ -93,7 +90,7 @@ namespace BotCore.User
                 return invite;
             }
           
-            else 
+            else
             {
                 return null;
             }
