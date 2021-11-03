@@ -6,7 +6,7 @@ namespace MessageGateway
     /// <summary>
     /// Clase placeholder del Bot a enviar mensajes.
     /// </summary>
-    public class TelegramService
+    public class TelegramService : IGateway
     {
         private static TelegramService instancia;
         /// <summary>
@@ -27,6 +27,10 @@ namespace MessageGateway
 
         private TelegramService() {}
 
+        public void EnviarInvitacion(string destinatario, string texto)
+        {
+        }
+        
         /// <summary>
         /// Placeholder para el envio de un mensaje
         /// </summary>

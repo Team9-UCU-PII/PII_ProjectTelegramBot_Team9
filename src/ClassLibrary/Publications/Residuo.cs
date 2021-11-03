@@ -65,7 +65,7 @@ namespace ClassLibrary.Publication
     {
       StringBuilder text = new StringBuilder();
       text.AppendLine($"Material: {this.Descripcion} ({this.Categoria.Nombre})");
-      text.AppendLine($"Los emprendedores requieren las siguientes habilitaciones para manejar este residuo: {string.Join(", ", this.Habilitaciones.Select((Habilitacion h) => h.Nombre))}");
+      text.AppendLine($"Los emprendedores requieren las siguientes habilitaciones para manejar este residuo: {string.Join(", ", this.Habilitaciones.Select(h => h.Nombre))}");
       return text.ToString();
     }
   }

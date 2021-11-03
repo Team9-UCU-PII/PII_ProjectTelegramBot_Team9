@@ -15,6 +15,8 @@ namespace BotCore.User
     /// </summary>
     public  class Invitacion
     {
+        public const int K_LargoEnlace = 20;
+
         /// <summary>
         /// Método constructor de la invitación.
         /// </summary>
@@ -61,8 +63,17 @@ namespace BotCore.User
         }
         private static string GenerarEnlace()
         {
-            //se genera el enlace
-            return "enlace";
+            string enlace = "enlace";
+            if (enlace.Length < K_LargoEnlace)
+            {
+                int cantCaracteresAAgregar = K_LargoEnlace - enlace.Length;
+                enlace += new string('0', cantCaracteresAAgregar);
+            }
+            else
+            {
+                enlace = enlace.Substring(0, K_LargoEnlace);
+            }
+            return enlace;
         }
         /// <summary>
         /// Metodo que modifica el estado de la invitación como aceptada.
