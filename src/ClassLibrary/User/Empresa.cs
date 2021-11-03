@@ -4,8 +4,8 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 
-using System.Collections.Generic;
 using ClassLibrary.Publication;
+using System.Collections.Generic;
 
 namespace ClassLibrary.User
 {
@@ -15,47 +15,55 @@ namespace ClassLibrary.User
     public class Empresa: IUsuario
     {
         /// <summary>
-        /// Nombre de la empresa
+        /// Obtiene o establece el nombre de la empresa
         /// </summary>
-        /// <value></value>
-        public string Nombre{ get; set;}
+        /// <value><see langword="string"/>.</value>
+        public string Nombre { get; set; }
+
         /// <summary>
         /// Local o zona donde se realizaría retiro.
         /// </summary>
         public string Lugar;
+
         /// <summary>
         /// Rubro de la empresa.
         /// </summary>
         public string Rubro;
+
         /// <summary>
         /// Descripción de la empresa.
         /// </summary>
         public string Descripcion;
+
         /// <summary>
         /// Numero de telefono, mail o cualquier via activa de contacto.
         /// </summary>
         public string Contacto;
+
         /// <summary>
         /// Identificadores clave de la empresa.
         /// </summary>
         public string[] PalabrasClave;
-    /// <summary>
-    /// Historial de ventas de la empresa.
-    /// </summary>
-        public List<Venta> Historial = new List<Venta>();
+
         /// <summary>
-        /// Datos para inciar en la empresa.
+        /// Historial de ventas de la empresa.
         /// </summary>
-        /// <value></value>
+        public List<Venta> Historial = new List<Venta>();
+
+        /// <summary>
+        /// Obtiene los datos para inciar en la empresa.
+        /// </summary>
+        /// <value><see cref ="DatosLogin"/></value>
         public DatosLogin DatosLogin { get; private set; }
+
         /// <summary>
         /// Constructor genérico de la clase Empresa.
         /// </summary>
-        /// <param name="nombre"></param>
-        /// <param name="lugar"></param>
-        /// <param name="rubro"></param>
-        /// <param name="descripcion"></param>
-        /// <param name="contacto"></param>
+        /// <param name="nombre"><see langword = "string"/>.</param>
+        /// <param name="lugar"><see langword = "string"/>.</param>
+        /// <param name="rubro"><see langword = "string"/>.</param>
+        /// <param name="descripcion"><see langword = "string"/>.</param>
+        /// <param name="contacto"><see langword = "string"/>.</param>
         public Empresa(string nombre, string lugar, string rubro, string descripcion, string contacto)
         {
             this.Nombre = nombre;
@@ -64,6 +72,7 @@ namespace ClassLibrary.User
             this.Descripcion = descripcion;
             this.Contacto = contacto;
         }
+
         /// <summary>
         /// Contructor vacio para la creación de instancias temporales
         /// en el GestorInvitaciones.
@@ -71,37 +80,47 @@ namespace ClassLibrary.User
         public Empresa()
         {  
         }
+
         /// <summary>
         /// Método creador y publicador de una publicación.
         /// </summary>
-        /// <param name="residuo"></param>
-        /// <param name="precioUnitario"></param>
-        /// <param name="moneda"></param>
-        /// <param name="cantidad"></param>
-        /// <param name="lugarRetiro"></param>
-        /// <param name="descripcion"></param>
+        /// <param name="residuo"><see cref="Residuo"/>.</param>
+        /// <param name="precioUnitario"><see langword="double"/>.</param>
+        /// <param name="moneda"><see langword="string"/>.</param>
+        /// <param name="cantidad"><see langword="int"/>.</param>
+        /// <param name="lugarRetiro"><see langword="string"/>.</param>
+        /// <param name="descripcion"><see langword="string"/>.</param>
         public void PublicarOferta(
-            Residuo residuo, double precioUnitario, string moneda, int cantidad, 
-            string lugarRetiro, string descripcion
-        ) {
+            Residuo residuo,
+            double precioUnitario,
+            string moneda,
+            int cantidad, 
+            string lugarRetiro,
+            string descripcion)
+        {
             Publicacion p = new Publicacion(residuo, precioUnitario, moneda, cantidad, lugarRetiro, this, descripcion);
         }
+
         /// <summary>
         /// Método creador y publicador de una publicación recurrente.
         /// </summary>
-        /// <param name="residuo"></param>
-        /// <param name="precioUnitario"></param>
-        /// <param name="moneda"></param>
-        /// <param name="cantidad"></param>
-        /// <param name="lugarRetiro"></param>
-        /// <param name="descripcion"></param>
-        /// <param name="frecuenciaAnualRestock"></param>
+        /// <param name="residuo"><see cref="Residuo"/>.</param>
+        /// <param name="precioUnitario"><see langword="double"/>.</param>
+        /// <param name="moneda"><see langword="string"/>.</param>
+        /// <param name="cantidad"><see langword="int"/>.</param>
+        /// <param name="lugarRetiro"><see langword="string"/>.</param>
+        /// <param name="descripcion"><see langword="string"/>.</param>
+        /// <param name="frecuenciaAnualRestock"><see langword="int"/>.</param>
         public void PublicarOfertaRecurrente(
-            Residuo residuo, double precioUnitario, string moneda, int cantidad, string lugarRetiro,
-            string descripcion, int frecuenciaAnualRestock
-        ) {
-            Publicacion p = new PublicacionRecurrente(residuo, precioUnitario, moneda, cantidad,
-            lugarRetiro, this, frecuenciaAnualRestock, descripcion);
+            Residuo residuo,
+            double precioUnitario,
+            string moneda,
+            int cantidad,
+            string lugarRetiro,
+            string descripcion,
+            int frecuenciaAnualRestock)
+        {
+            Publicacion p = new PublicacionRecurrente(residuo, precioUnitario, moneda, cantidad, lugarRetiro, this, frecuenciaAnualRestock, descripcion);
         }
     }
 }
