@@ -46,6 +46,8 @@ namespace Tests
             Empresa empresa = new Empresa("ContruYeso", "Montevideo", "Construcción", "Empresa de construcción en yeso", "099123456");
             DataAccess dataEmpresa = DataAccess.Instancia;
             dataEmpresa.Insertar(empresa);
+            
+            Assert.IsTrue(empresa.Nombre == "ContruYeso" && empresa.Lugar == "Montevideo" && empresa.Rubro == "Construcción" && empresa.Descripcion == "Empresa de construcción en yeso" && empresa.Contacto == "099123456");
 
             Console.WriteLine(dataEmpresa.Obtener<Empresa>());
         }
@@ -53,10 +55,13 @@ namespace Tests
         [Test]
         public void TestEmprendedor()
         {
-            List<Habilitacion> habilitaciones = new List<Habilitacion>;
+            List<Habilitacion> habilitaciones = new List<Habilitacion>();
             Emprendedor emprendedor = new Emprendedor("El reciclador", "Canelones", "Construcción", "Acero galvanizado", habilitaciones);
             DataAccess dataEmprendedor = DataAccess.Instancia;
             dataEmprendedor.Insertar(emprendedor);
+
+            string expected = "Construcción";
+            Assert.AreEqual(expected, emprendedor.Rubro);
 
             Console.WriteLine(dataEmprendedor.Obtener<Emprendedor>());
         }
