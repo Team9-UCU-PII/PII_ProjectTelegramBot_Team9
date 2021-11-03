@@ -55,9 +55,9 @@ namespace BotCore.Publication
         /// Metodo estatico que genera una instancia de <see cref ="Reporte"/> para el <see iref ="IUsuario"/>
         /// especificado en un periodo de tiempo.
         /// </summary>
-        /// <param name="fechaInicio"></param>
-        /// <param name="fechaFin"></param>
-        /// <param name="usuario"></param>
+        /// <param name="fechaInicio"><see cref ="DateTime"/>.</param>
+        /// <param name="fechaFin"><see cref ="DateTime"/>.</param>
+        /// <param name="usuario"><see iref ="IUsuario"/>.</param>
         /// <returns> <see cref ="Reporte"/>. </returns>
         public static Reporte Generar(DateTime fechaInicio, DateTime fechaFin, IUsuario usuario)
         {
@@ -66,10 +66,10 @@ namespace BotCore.Publication
             return new Reporte(fechaInicio, fechaFin, ventas, usuario);
         }
 
-/// <summary>
-/// Implementacion de <see iref ="IPrintable"/>.
-/// </summary>
-/// <returns>String.</returns>
+        /// <summary>
+        /// Implementacion de <see iref ="IPrintable"/>.
+        /// </summary>
+        /// <returns><see langword ="string"/>.</returns>
         public string GetTextToPrint()
         {
             StringBuilder texto = new StringBuilder();

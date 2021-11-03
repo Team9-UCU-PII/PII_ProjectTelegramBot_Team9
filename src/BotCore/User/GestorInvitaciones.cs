@@ -32,7 +32,7 @@ namespace BotCore.User
         /// <summary>
         /// Metodo de acceso al singleton.
         /// </summary>
-        /// <value></value>
+        /// <value><see cref = "GestorInvitaciones"/>.</value>
         public static GestorInvitaciones Instancia
         {
             get
