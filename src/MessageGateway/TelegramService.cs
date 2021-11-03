@@ -27,6 +27,11 @@ namespace MessageGateway
 
         private TelegramService() {}
 
+        /// <summary>
+        /// Vacío de momento, metodo para invitar.
+        /// </summary>
+        /// <param name="destinatario"><see langword = "string"/> del destinatario.</param>
+        /// <param name="texto"><see langword = "string"/> con la invitación armada.</param>
         public void EnviarInvitacion(string destinatario, string texto)
         {
         }
