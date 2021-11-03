@@ -6,6 +6,7 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using System;
 using ClassLibrary.User;
 using MessageGateway;
 
@@ -37,23 +38,31 @@ namespace BotCore.User
                 return instancia;
             }
         }
+
+        public IGateway GatewayMensajes {get; set;}
+
         /// <summary>
         /// Lista donde se almacenan las invitaciones enviadas para mantener un registro.
         /// </summary>
         public List<Invitacion> InvitacionesEnviadas = new List<Invitacion>();
         public void EnviarInvitacion<T>(string destinatario, string nombreTemp) where T : IUsuario, new()
         {
+            if (this.GatewayMensajes == null)
+            {
+                throw new InvalidOperationException("No se ha establecido el gateway para el envío de mensajes.");
+            }
+
             IUsuario user = new T();
             user.Nombre = nombreTemp;
             Invitacion invite = new Invitacion(user, destinatario);
 
-            TelegramService.Instancia.EnviarMensaje(destinatario, invite.ArmarMensajeInvitacion());
+            GatewayMensajes.EnviarInvitacion(destinatario, invite.ArmarMensajeInvitacion());
 
             this.InvitacionesEnviadas.Add(invite);
         }
 
         // Este método es usado externamente por el MessageGateway
-        private bool ValidarInvitacion(string usuarioAceptante, string enlace) 
+        public Invitacion ValidarInvitacion(string usuarioAceptante, string enlace) 
         {
             Invitacion invite = this.InvitacionesEnviadas.Where(
                 (Invitacion i) => i.Destinatario == usuarioAceptante && i.Link == enlace && !i.fueAceptada
@@ -61,10 +70,10 @@ namespace BotCore.User
 
             if (invite != null) {
                 invite.Aceptar();
-                return true;
+                return invite;
             }
             else {
-                return false;
+                return null;
             }
         }
     }

@@ -2,7 +2,7 @@
 
 namespace MessageGateway
 {
-    public class TelegramService
+    public class TelegramService : IGateway
     {
         private static TelegramService instancia;
         public static TelegramService Instancia {
@@ -16,7 +16,12 @@ namespace MessageGateway
 
         private TelegramService() {}
 
-        public void EnviarMensaje(string username, string text) {
+        public void EnviarMensaje(string destinatario, string texto) {
+            
+        }
+
+        public void EnviarInvitacion(string destinatario, string texto)
+        {
             
         }
     }
