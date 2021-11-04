@@ -2,6 +2,8 @@
 // <copyright file="GestorInvitaciones.cs" company="Universidad Católica del Uruguay">
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
+
+// 
 //--------------------------------------------------------------------------------
 
 using System.Collections.Generic;
@@ -23,11 +25,6 @@ namespace BotCore.User
         {
             this.GatewayMensajes = TelegramService.Instancia;
         }
-        
-        /// <summary>
-        /// Lista donde se almacenan las invitaciones enviadas para mantener un registro.
-        /// </summary>
-        private List<Invitacion> invitacionesEnviadas = new List<Invitacion>();
 
         /// <summary>
         /// Metodo de acceso al singleton.
