@@ -60,8 +60,7 @@ namespace Tests
             DataAccess dataEmprendedor = DataAccess.Instancia;
             dataEmprendedor.Insertar(emprendedor);
 
-            string expected = "Construcción";
-            Assert.AreEqual(expected, emprendedor.Rubro);
+            Assert.IsTrue(emprendedor.Nombre == "El reciclador" && emprendedor.Lugar == "Canelones" && emprendedor.Rubro == "Construcción" && emprendedor.Especializacion == "Acero galvanizado" && emprendedor.Habilitaciones == habilitaciones);
 
             Console.WriteLine(dataEmprendedor.Obtener<Emprendedor>());
         }
