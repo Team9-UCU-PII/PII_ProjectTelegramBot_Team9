@@ -20,7 +20,8 @@ namespace ClassLibrary.Publication
     /// <summary>
     /// Se crea la instancia de venta con la fecha del momento.
     /// </summary>
-    /// <param name="fecha"><see cref = "DateTime"/>.</param>
+    /// <param name="comprador"><see cref = "Emprendedor"/>.</param>
+    /// <param name="publicacion"><see cref = "Publicacion"/>.</param>
     public Venta(Emprendedor comprador, Publicacion publicacion)
     {
       this.Comprador = comprador;
