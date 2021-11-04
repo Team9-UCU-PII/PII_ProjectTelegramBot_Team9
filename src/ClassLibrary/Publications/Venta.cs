@@ -10,6 +10,7 @@
 using ClassLibrary.User;
 using System;
 using System.Text;
+using System.Linq;
 
 namespace ClassLibrary.Publication
 {
@@ -23,9 +24,10 @@ namespace ClassLibrary.Publication
     /// Se crea la instancia de venta con la fecha del momento.
     /// </summary>
     /// <param name="fecha"><see cref = "DateTime"/>.</param>
-    public Venta(DateTime fecha)
+    public Venta(Emprendedor comprador, Publicacion publicacion)
     {
-      this.Fecha = fecha;
+      this.Comprador = comprador;
+      this.Publicacion = publicacion;
     }
 
     /// <summary>
@@ -45,18 +47,6 @@ namespace ClassLibrary.Publication
     /// </summary>
     /// <value><see cref = "Publicacion"/>.</value>
     public Publicacion Publicacion { get; set; }
-
-    /// <summary>
-    /// Metodo que concreta la compra de la Publicación.
-    /// </summary>
-    /// <param name="comprador"><see cref = "Emprendedor"/>.</param>
-    /// <param name="publicacion"><see cref = "Publicacion"/>.</param>
-    public void Comprar(Emprendedor comprador, Publicacion publicacion)
-    {
-      publicacion.Comprado = true;
-      this.Comprador = comprador;
-      this.Publicacion = publicacion;
-    }
 
     /// <summary>
     /// Implementacion del tipo <see iref = "IPrintable"/>.

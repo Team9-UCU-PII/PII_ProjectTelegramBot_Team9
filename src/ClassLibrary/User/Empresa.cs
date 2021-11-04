@@ -93,7 +93,7 @@ namespace ClassLibrary.User
         /// <param name="cantidad"><see langword="int"/>.</param>
         /// <param name="lugarRetiro"><see langword="string"/>.</param>
         /// <param name="descripcion"><see langword="string"/>.</param>
-        public void PublicarOferta(
+        public Publicacion CrearOferta(
             Residuo residuo,
             double precioUnitario,
             string moneda,
@@ -101,7 +101,7 @@ namespace ClassLibrary.User
             string lugarRetiro,
             string descripcion)
         {
-            Publicacion p = new Publicacion(residuo, precioUnitario, moneda, cantidad, lugarRetiro, this, descripcion);
+            return new Publicacion(residuo, precioUnitario, moneda, cantidad, lugarRetiro, this, descripcion);
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace ClassLibrary.User
         /// <param name="lugarRetiro"><see langword="string"/>.</param>
         /// <param name="descripcion"><see langword="string"/>.</param>
         /// <param name="frecuenciaAnualRestock"><see langword="int"/>.</param>
-        public void PublicarOfertaRecurrente(
+        public PublicacionRecurrente CrearOfertaRecurrente(
             Residuo residuo,
             double precioUnitario,
             string moneda,
@@ -123,7 +123,7 @@ namespace ClassLibrary.User
             string descripcion,
             int frecuenciaAnualRestock)
         {
-            Publicacion p = new PublicacionRecurrente(residuo, precioUnitario, moneda, cantidad, lugarRetiro, this, frecuenciaAnualRestock, descripcion);
+            return new PublicacionRecurrente(residuo, precioUnitario, moneda, cantidad, lugarRetiro, this, frecuenciaAnualRestock, descripcion);
         }
     }
 }
