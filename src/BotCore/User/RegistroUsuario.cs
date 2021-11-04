@@ -4,16 +4,16 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 
-using Importers;
 using ClassLibrary.User;
+using Importers;
 
 namespace BotCore.User
 {
     /// <summary>
-    /// Clase encargada de crear el usuario para inicio de sesión y su almacen en 
+    /// Clase encargada de crear el usuario para inicio de sesión y su almacen en
     /// <see cref = "DataAccess"/>.
     /// </summary>
-    public class RegistroUsuario
+    public static class RegistroUsuario
     {
         /// <summary>
         /// Método registrador de usuario.

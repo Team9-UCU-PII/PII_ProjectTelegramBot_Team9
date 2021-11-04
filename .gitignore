@@ -614,3 +614,4 @@ src/ClassLibrary/ClassLibrary.xml
 .vscode/launch.json
 .vscode/tasks.json
 src/Importers/Importers.xml
+src/MessageGateway/MessageGateway.xml

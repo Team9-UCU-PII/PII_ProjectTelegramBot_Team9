@@ -53,7 +53,7 @@ namespace Tests.UserStories
 
             RegistroUsuario.RegistrarUsuario(username, password, empresa);
 
-            Assert.IsTrue(da.Obtener<Empresa>().Count() == 1);
+            Assert.IsTrue(da.Obtener<Empresa>().Count() == 1, string.Join(", ", da.Obtener<Empresa>().Select(x => x.Nombre)));
             DatosLogin dl = da.Obtener<DatosLogin>().Single();
             Assert.IsTrue(dl.Usuario == empresa);
         }

@@ -4,6 +4,7 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using ClassLibrary.Publication;
@@ -16,11 +17,36 @@ namespace BotCore.Publication
     /// </summary>
     public class Busqueda
     {
-        private static Busqueda instancia{get;set;}
+        private Busqueda()
+        {
+        }
+        
+        /// <summary>
+        /// Los filtros competentes para las busquedas, corresponden con propiedades
+        /// principales de <see cref ="Publicacion"/> y su subclase <see cref ="PublicacionRecurrente"/>.
+        /// </summary>
+        public enum FiltrosPosibles
+        {
+            /// Filtro de tipo empresa.
+            Empresa,
+
+            /// Filtro de tipo residuo.
+            Residuo,
+
+            /// Filtro de donde se debe retirar.
+            LugarRetiro,
+
+            /// Filtro del precio maximo dispuesto a pagar.
+            PrecioMaximo,
+
+            /// Filtro de de restock para publicaciones recurrentes.
+            FrecuenciaRestock,
+        }
+
         /// <summary>
         /// Da acceso al singelton de la Busqueda.
         /// </summary>
-        /// <value>Instancia de Busqueda</value>
+        /// <value>Instancia de Busqueda.</value>
         public static Busqueda Instancia
         {
             get
@@ -29,80 +55,76 @@ namespace BotCore.Publication
                 {
                     instancia = new Busqueda();
                 }
+
                 return instancia;
             }
         }
 
-        private Busqueda(){}
-/// <summary>
-/// Los filtros competentes para las busquedas, corresponden con propiedades
-/// principales de <see cref ="Publicacion"/> y su subclase <see cref ="PublicacionRecurrente"/>.
-/// </summary>
-        public enum FiltrosPosibles
-        {
-            ///FIltro de tipo empresa.
-            Empresa,
-            ///FIltro de tipo residuo.
-            Residuo,
-            ///FIltro de donde se debe retirar.
-            LugarRetiro,
-            ///FIltro del precio maximo dispuesto a pagar.
-            PrecioMaximo,
-            ///FIltro de de restock para publicaciones recurrentes.
-            FrecuenciaRestock
-        }
+        private static Busqueda instancia { get; set; }
+
         /// <summary>
         /// Servicio principal de la busqueda.
         /// </summary>
-        /// <param name="PublicacionesASeparar">Un diccionario de clave un miembro del enum de FiltrosPosibles y valor la especificacion deseada (string o int)</param>
+        /// <param name="publicacionesASeparar">Un diccionario de clave un miembro del enum de FiltrosPosibles y valor la especificacion deseada (string o int).</param>
         /// <returns>Una List de publicaciones que cumplen las condiciones de PublicacionesASeparar.</returns>
-        public List<Publicacion> BuscarPublicaciones(Dictionary<FiltrosPosibles, object> PublicacionesASeparar)
+        public static List<Publicacion> BuscarPublicaciones(Dictionary<FiltrosPosibles, object> publicacionesASeparar)
         {
+            if (publicacionesASeparar == null)
+            {
+                throw new ArgumentNullException(nameof(publicacionesASeparar), "publicacionesASeparar es null");
+            }
+
             List<Publicacion> result = new List<Publicacion>();
             List<Publicacion> publicacionesNoAptas = new List<Publicacion>();
             List<Publicacion> publicacionesActivas = DataAccess.Instancia.Obtener<Publicacion>().Where((Publicacion p) => !p.Comprado).ToList();
-            
-            foreach (var Filtro in PublicacionesASeparar)
+
+            foreach (var filtro in publicacionesASeparar)
             {
                 foreach (Publicacion suspect in publicacionesActivas)
                 {
-                    switch (Filtro.Key)
+                    switch (filtro.Key)
                     {
                         case FiltrosPosibles.Empresa:
-                            if (!suspect.Vendedor.Equals(Filtro.Value))
+                            if (!suspect.Vendedor.Equals(filtro.Value))
                             {
                                 publicacionesNoAptas.Add(suspect);
                             }
+
                             break;
                         case FiltrosPosibles.Residuo:
-                            if (!suspect.Residuo.Equals(Filtro.Value))
+                            if (!suspect.Residuo.Equals(filtro.Value))
                             {
                                 publicacionesNoAptas.Add(suspect);
                             }
+
                             break;
                         case FiltrosPosibles.LugarRetiro:
-                            if (!suspect.LugarRetiro.Equals(Filtro.Value))
+                            if (!suspect.LugarRetiro.Equals(filtro.Value))
                             {
                                 publicacionesNoAptas.Add(suspect);
                             }
+
                             break;
                         case FiltrosPosibles.PrecioMaximo:
-                            if (suspect.PrecioUnitario > (double) Filtro.Value)
+                            if (suspect.PrecioUnitario > (double)filtro.Value)
                             {
                                 publicacionesNoAptas.Add(suspect);
                             }
+
                             break;
                         case FiltrosPosibles.FrecuenciaRestock:
-                            if (suspect is not PublicacionRecurrente || !(suspect as PublicacionRecurrente).FrecuenciaAnualRestock.Equals(Filtro.Value))
+                            if (suspect is not PublicacionRecurrente || !(suspect as PublicacionRecurrente).FrecuenciaAnualRestock.Equals(filtro.Value))
                             {
                                 publicacionesNoAptas.Add(suspect);
                             }
+
                             break;
                         default:
                             break;
                     }
                 }
             }
+
             foreach (Publicacion publicacion in publicacionesActivas)
             {
                 if (!publicacionesNoAptas.Contains(publicacion))
@@ -110,6 +132,7 @@ namespace BotCore.Publication
                     result.Add(publicacion);
                 }
             }
+
             return result;
         }
     }
