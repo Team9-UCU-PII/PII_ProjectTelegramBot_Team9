@@ -2,6 +2,9 @@
 // <copyright file="Emprendedor.cs" company="Universidad Católica del Uruguay">
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
+//
+// Patrón utilizado: SRP
+// Por SRP esta clase delega la compra de una publicación.
 //--------------------------------------------------------------------------------
 
 using ClassLibrary.Publication;

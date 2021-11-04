@@ -2,6 +2,8 @@
 // <copyright file="IUsuario.cs" company="Universidad Católica del Uruguay">
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
+// Patrón utilizado: Low coupling.
+// Ayuda a mantener el acoplamiento bajo en tareas relacionadas con Empresa y Emprendedores.
 //--------------------------------------------------------------------------------
 
 namespace ClassLibrary.User
