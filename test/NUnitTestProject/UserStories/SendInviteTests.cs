@@ -30,7 +30,7 @@ namespace Tests.UserStories
                             where x.Destinatario == destinatario &&
                             x.OrganizacionInvitada is Empresa &&
                             x.OrganizacionInvitada.Nombre == nombreEmpresa &&
-                            !x.fueAceptada
+                            !x.FueAceptada
                             select x;
 
             Assert.IsTrue(resultado.Count() == 1);
@@ -48,7 +48,7 @@ namespace Tests.UserStories
                             where x.Destinatario == destinatario &&
                             x.OrganizacionInvitada is Emprendedor &&
                             x.OrganizacionInvitada.Nombre == nombreEmprendedor &&
-                            !x.fueAceptada
+                            !x.FueAceptada
                             select x;
 
             Assert.IsTrue(resultado.Count() == 1);
