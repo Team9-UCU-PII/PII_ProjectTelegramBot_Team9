@@ -1,7 +1,16 @@
+//--------------------------------------------------------------------------------
+// <copyright file="Autenticacion.cs" company="Universidad Católica del Uruguay">
+//     Copyright (c) Programación II. Derechos reservados.
+// </copyright>
+//
+// Patron utilizado: Singleton.
+// Esta clase utiliza este patrón porque solo se necesita una instancia y almacena un estado.
+//--------------------------------------------------------------------------------
+
+using System;
+using System.Linq;
 using ClassLibrary.Publication;
 using Importers;
-using System.Linq;
-using System;
 
 namespace BotCore.Publication
 {
