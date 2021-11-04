@@ -47,7 +47,7 @@ namespace BotCore.Publication
 
             /// Filtro de de restock para publicaciones recurrentes.
             FrecuenciaRestock,
-
+            ///Filtro segun categoria
             Categorias
         }
 
