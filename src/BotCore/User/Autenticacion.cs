@@ -5,8 +5,8 @@
 //--------------------------------------------------------------------------------
 
 using System;
-using Importers;
 using ClassLibrary.User;
+using Importers;
 
 namespace BotCore.User
 {
@@ -17,41 +17,43 @@ namespace BotCore.User
     public class Autenticacion
     {
         private static Autenticacion instancia;
+
+        private Autenticacion()
+        {
+        }
+
 /// <summary>
 /// Metodo de acceso al singleton.
 /// </summary>
 /// <value></value>
-        public static Autenticacion Instancia 
+        public static Autenticacion Instancia
         {
             get
             {
-                if(instancia == null)
+                if (instancia == null)
                 {
                     Autenticacion.instancia = new Autenticacion();
                 }
+
                 return Autenticacion.instancia;
             }
         }
 
-        private Autenticacion()
-        {
-            
-        }
 /// <summary>
-/// Metodo que toma colaboracion de <see cref = "DataAccess"/> para comprobar el inicio de 
+/// Metodo que toma colaboracion de <see cref = "DataAccess"/> para comprobar el inicio de
 /// sesión.
 /// </summary>
 /// <param name="nombreUsuario"></param>
 /// <param name="contrasenia"></param>
-/// <returns><c>true</c> si nombreUsuario y contrasenia están viculados en 
+/// <returns><c>true</c> si nombreUsuario y contrasenia están viculados en
 /// <see cref = "DatosLogin"/> en la base de datos.</returns>
         public static bool ValidarUsuario(string nombreUsuario, string contrasenia)
-        {             
-            foreach(DatosLogin datos in DataAccess.Instancia.Obtener<DatosLogin>())
+        {
+            foreach (DatosLogin datos in DataAccess.Instancia.Obtener<DatosLogin>())
             {
-                if(datos.NombreUsuario == nombreUsuario)
+                if (datos.NombreUsuario == nombreUsuario)
                 {
-                    if(datos.Contrasenia == contrasenia)
+                    if (datos.Contrasenia == contrasenia)
                     {
                         Console.WriteLine("Acceso correcto");
                         return true;

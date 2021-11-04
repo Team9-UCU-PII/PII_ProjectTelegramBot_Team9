@@ -17,6 +17,24 @@ namespace Tests
     [TestFixture]
     public class DataAccessTests
     {
+        private DataAccess da;
+
+        [SetUp]
+        public void Setup()
+        {
+            this.da = DataAccess.Instancia;
+        }
+
+        [TearDown]
+        public void Teardown()
+        {
+            da.Obtener<Habilitacion>().ToList().ForEach(x => da.Eliminar(x));
+            da.Obtener<Categoria>().ToList().ForEach(x => da.Eliminar(x));
+            da.Obtener<Residuo>().ToList().ForEach(x => da.Eliminar(x));
+            da.Obtener<Empresa>().ToList().ForEach(x => da.Eliminar(x));
+            da.Obtener<Publicacion>().ToList().ForEach(x => da.Eliminar(x));
+        }
+
         [Test]
         public void GenericsTest()
         {
@@ -26,7 +44,6 @@ namespace Tests
             Empresa empresa = new Empresa("SEMM", "Carrasco", "Medicina", "desc", "099123456");
             Publicacion p = new Publicacion(residuo, 50, "$", 10, "Buceo", empresa, "desc publicación");
 
-            DataAccess da = DataAccess.Instancia;
             habilitaciones.ForEach(x => da.Insertar(x));
             da.Insertar(categoria);
             da.Insertar(residuo);
