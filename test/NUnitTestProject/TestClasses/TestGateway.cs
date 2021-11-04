@@ -48,7 +48,7 @@ namespace Tests.TestClasses
             string textoInvitacion = this.mensajesEnviados.Where(
                 x => x.Item1 == destinatario && x.Item3 == TiposMensajes.Invitacion
             ).Last().Item2;
-            return textoInvitacion.Substring(textoInvitacion.LastIndexOf(' ') + 1, Invitacion.K_LargoEnlace);
+            return textoInvitacion.Substring(textoInvitacion.LastIndexOf(' ') + 1);
         }
     }
 }

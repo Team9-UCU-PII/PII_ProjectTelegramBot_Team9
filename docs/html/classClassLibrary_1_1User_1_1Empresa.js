@@ -2,8 +2,8 @@ var classClassLibrary_1_1User_1_1Empresa =
 [
     [ "Empresa", "classClassLibrary_1_1User_1_1Empresa.html#ac2b90fd70b90d4ac03ba00071ded6eac", null ],
     [ "Empresa", "classClassLibrary_1_1User_1_1Empresa.html#a91933d38887c5faf5ff925617ef2f0e3", null ],
-    [ "PublicarOferta", "classClassLibrary_1_1User_1_1Empresa.html#a6e13b497fafb04a71b1590694fdabbbb", null ],
-    [ "PublicarOfertaRecurrente", "classClassLibrary_1_1User_1_1Empresa.html#a43d18ee7b38d2611c8ff84f8b658d10c", null ],
+    [ "CrearOferta", "classClassLibrary_1_1User_1_1Empresa.html#a97e9df65cb34566bf5a006922ad3779a", null ],
+    [ "CrearOfertaRecurrente", "classClassLibrary_1_1User_1_1Empresa.html#a55af67b43e7e9a0ae8e09a6b650e7475", null ],
     [ "Contacto", "classClassLibrary_1_1User_1_1Empresa.html#a3535969b2272cd065cc56473646f9d72", null ],
     [ "Descripcion", "classClassLibrary_1_1User_1_1Empresa.html#a0dc4af3213379b06aa61a48389edb66f", null ],
     [ "Historial", "classClassLibrary_1_1User_1_1Empresa.html#a1cd9d90b475ceff4ccf75fa814521e97", null ],

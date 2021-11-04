@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MessageGateway</name>
+    </assembly>
+    <members>
+        <member name="T:MessageGateway.IGateway">
+            <summary>
+            Interfaz que engloba las diferentes salidas posibles de mensaje de invitación al bot (mail, chat de telegram, etc).
+            </summary>
+        </member>
+        <member name="P:MessageGateway.IGateway.Instancia">
+            <summary>
+            Obtiene acceso al singleton.
+            </summary>
+            <value>Instancia <see iref ="IGateway"/>.</value>
+        </member>
+        <member name="M:MessageGateway.IGateway.EnviarMensaje(System.String,System.String)">
+            <summary>
+            Método de envío de mensaje.
+            </summary>
+            <param name="destinatario">
+            <see langword = "string"/> identificador necesario para el envío.
+            </param>
+            <param name="texto"><see langword = "string"/>: El mensaje en sí.</param>
+        </member>
+        <member name="M:MessageGateway.IGateway.EnviarInvitacion(System.String,System.String)">
+            <summary>
+            Método para enviar la invitacion a traves del medio.
+            </summary>
+            <param name="destinatario">
+            <see langword = "string"/> identificador necesario para el envío de la invitación.
+            </param>
+            <param name="texto">La invitación como <see langword = "string"/>.</param>
+        </member>
+        <member name="T:MessageGateway.TelegramService">
+            <summary>
+            Clase placeholder del Bot a enviar mensajes.
+            </summary>
+        </member>
+        <member name="P:MessageGateway.TelegramService.Instancia">
+            <summary>
+            Acceso al Singleton del Bot.
+            </summary>
+            <value><see cref = "T:MessageGateway.TelegramService"/></value>
+        </member>
+        <member name="M:MessageGateway.TelegramService.EnviarInvitacion(System.String,System.String)">
+            <summary>
+            Vacío de momento, metodo para invitar.
+            </summary>
+            <param name="destinatario"><see langword = "string"/> del destinatario.</param>
+            <param name="texto"><see langword = "string"/> con la invitación armada.</param>
+        </member>
+        <member name="M:MessageGateway.TelegramService.EnviarMensaje(System.String,System.String)">
+            <summary>
+            Placeholder para el envio de un mensaje
+            </summary>
+            <param name="username"></param>
+            <param name="text"></param>
+        </member>
+    </members>
+</doc>

@@ -3,7 +3,9 @@ var annotated_dup =
     [ "BotCore", "namespaceBotCore.html", [
       [ "Publication", "namespaceBotCore_1_1Publication.html", [
         [ "Busqueda", "classBotCore_1_1Publication_1_1Busqueda.html", "classBotCore_1_1Publication_1_1Busqueda" ],
-        [ "Reporte", "classBotCore_1_1Publication_1_1Reporte.html", "classBotCore_1_1Publication_1_1Reporte" ]
+        [ "Publicador", "classBotCore_1_1Publication_1_1Publicador.html", "classBotCore_1_1Publication_1_1Publicador" ],
+        [ "Reporte", "classBotCore_1_1Publication_1_1Reporte.html", "classBotCore_1_1Publication_1_1Reporte" ],
+        [ "Transacciones", "classBotCore_1_1Publication_1_1Transacciones.html", "classBotCore_1_1Publication_1_1Transacciones" ]
       ] ],
       [ "User", "namespaceBotCore_1_1User.html", [
         [ "Autenticacion", "classBotCore_1_1User_1_1Autenticacion.html", null ],

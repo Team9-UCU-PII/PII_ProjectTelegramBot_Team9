@@ -5,6 +5,4 @@ digraph "BotCore.User.Invitacion"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   Node1 [label="{BotCore.User.Invitacion\n|+ OrganizacionInvitada\l+ Destinatario\l+ Link\l+ FueAceptada\l|+ Invitacion()\l+ ArmarMensajeInvitacion()\l+ Aceptar()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Clase mediadora entre GestorInvitaciones y los , representa la invitación en si, y encapsula el enlac..."];
-  Node2 -> Node1 [color="grey25",fontsize="10",style="solid",label=" +K_LargoEnlace" ,arrowhead="odiamond",fontname="Helvetica"];
-  Node2 [label="{const int\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
 }

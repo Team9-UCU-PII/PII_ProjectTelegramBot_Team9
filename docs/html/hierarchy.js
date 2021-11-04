@@ -25,5 +25,7 @@ var hierarchy =
     [ "ClassLibrary.User.IUsuario", "interfaceClassLibrary_1_1User_1_1IUsuario.html", [
       [ "ClassLibrary.User.Emprendedor", "classClassLibrary_1_1User_1_1Emprendedor.html", null ],
       [ "ClassLibrary.User.Empresa", "classClassLibrary_1_1User_1_1Empresa.html", null ]
-    ] ]
+    ] ],
+    [ "BotCore.Publication.Publicador", "classBotCore_1_1Publication_1_1Publicador.html", null ],
+    [ "BotCore.Publication.Transacciones", "classBotCore_1_1Publication_1_1Transacciones.html", null ]
 ];

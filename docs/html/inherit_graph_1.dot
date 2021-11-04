@@ -5,5 +5,5 @@ digraph "Representación gráfica de la clase"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node0 [label="BotCore.User.Autenticacion",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classBotCore_1_1User_1_1Autenticacion.html",tooltip="Esta clase se encarga de tomar datos para loggear una persona y verificar su informacion a la hora de..."];
+  Node0 [label="BotCore.Publication.Publicador",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classBotCore_1_1Publication_1_1Publicador.html",tooltip="Clase creadora de instancias y persistidora de publicación."];
 }

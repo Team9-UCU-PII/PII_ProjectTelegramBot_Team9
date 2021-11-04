@@ -85,7 +85,7 @@ $(document).ready(function(){initNavTree('classBotCore_1_1Publication_1_1Busqued
 <div class="header">
   <div class="summary">
 <a href="#pub-types">Tipos públicos</a> &#124;
-<a href="#pub-static-methods">Métodos públicos estáticos</a> &#124;
+<a href="#pub-methods">Métodos públicos</a> &#124;
 <a href="#properties">Propiedades</a> &#124;
 <a href="classBotCore_1_1Publication_1_1Busqueda-members.html">Lista de todos los miembros</a>  </div>
   <div class="headertitle">
@@ -111,16 +111,17 @@ Tipos públicos</h2></td></tr>
 , <a class="el" href="classBotCore_1_1Publication_1_1Busqueda.html#a4d40a54e6db00d4f9f37e975733739f5ad1645af1c765dbc519966b4d9dc06bb1">PrecioMaximo</a>
 , <br />
 &#160;&#160;<a class="el" href="classBotCore_1_1Publication_1_1Busqueda.html#a4d40a54e6db00d4f9f37e975733739f5a07bf6f44d034a640aef46107407177e1">FrecuenciaRestock</a>
+, <b>Categorias</b>
 <br />
  }</td></tr>
 <tr class="memdesc:a4d40a54e6db00d4f9f37e975733739f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Los filtros competentes para las busquedas, corresponden con propiedades principales de Publicacion y su subclase PublicacionRecurrente.  <a href="classBotCore_1_1Publication_1_1Busqueda.html#a4d40a54e6db00d4f9f37e975733739f5">Más...</a><br /></td></tr>
 <tr class="separator:a4d40a54e6db00d4f9f37e975733739f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
-Métodos públicos estáticos</h2></td></tr>
-<tr class="memitem:a61004792fea05167e8eb2834d5390047"><td class="memItemLeft" align="right" valign="top">static List&lt; <a class="el" href="classClassLibrary_1_1Publication_1_1Publicacion.html">Publicacion</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBotCore_1_1Publication_1_1Busqueda.html#a61004792fea05167e8eb2834d5390047">BuscarPublicaciones</a> (Dictionary&lt; <a class="el" href="classBotCore_1_1Publication_1_1Busqueda.html#a4d40a54e6db00d4f9f37e975733739f5">FiltrosPosibles</a>, object &gt; publicacionesASeparar)</td></tr>
-<tr class="memdesc:a61004792fea05167e8eb2834d5390047"><td class="mdescLeft">&#160;</td><td class="mdescRight">Servicio principal de la busqueda.  <a href="classBotCore_1_1Publication_1_1Busqueda.html#a61004792fea05167e8eb2834d5390047">Más...</a><br /></td></tr>
-<tr class="separator:a61004792fea05167e8eb2834d5390047"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Métodos públicos</h2></td></tr>
+<tr class="memitem:ac642dccf10fe41063655ea985d5c033e"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="classClassLibrary_1_1Publication_1_1Publicacion.html">Publicacion</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBotCore_1_1Publication_1_1Busqueda.html#ac642dccf10fe41063655ea985d5c033e">BuscarPublicaciones</a> (Dictionary&lt; <a class="el" href="classBotCore_1_1Publication_1_1Busqueda.html#a4d40a54e6db00d4f9f37e975733739f5">FiltrosPosibles</a>, object &gt; publicacionesASeparar)</td></tr>
+<tr class="memdesc:ac642dccf10fe41063655ea985d5c033e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Servicio principal de la busqueda.  <a href="classBotCore_1_1Publication_1_1Busqueda.html#ac642dccf10fe41063655ea985d5c033e">Más...</a><br /></td></tr>
+<tr class="separator:ac642dccf10fe41063655ea985d5c033e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Propiedades</h2></td></tr>
@@ -131,7 +132,7 @@ Propiedades</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
 <div class="textblock"><p>Un service provider, que filtra las publicaciones a partir de ciertas condiciones dadas. </p>
 
-<p class="definition">Definición en la línea <a class="el" href="Busqueda_8cs_source.html#l00018">18</a> del archivo <a class="el" href="Busqueda_8cs_source.html">Busqueda.cs</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="Busqueda_8cs_source.html#l00021">21</a> del archivo <a class="el" href="Busqueda_8cs_source.html">Busqueda.cs</a>.</p>
 </div><h2 class="groupheader">Documentación de las enumeraciones miembro de la clase</h2>
 <a id="a4d40a54e6db00d4f9f37e975733739f5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4d40a54e6db00d4f9f37e975733739f5">&#9670;&nbsp;</a></span>FiltrosPosibles</h2>
@@ -167,33 +168,25 @@ Propiedades</h2></td></tr>
 </td></tr>
 </table>
 
-<p class="definition">Definición en la línea <a class="el" href="Busqueda_8cs_source.html#l00028">28</a> del archivo <a class="el" href="Busqueda_8cs_source.html">Busqueda.cs</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="Busqueda_8cs_source.html#l00034">34</a> del archivo <a class="el" href="Busqueda_8cs_source.html">Busqueda.cs</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Documentación de las funciones miembro</h2>
-<a id="a61004792fea05167e8eb2834d5390047"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a61004792fea05167e8eb2834d5390047">&#9670;&nbsp;</a></span>BuscarPublicaciones()</h2>
+<a id="ac642dccf10fe41063655ea985d5c033e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac642dccf10fe41063655ea985d5c033e">&#9670;&nbsp;</a></span>BuscarPublicaciones()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static List&lt;<a class="el" href="classClassLibrary_1_1Publication_1_1Publicacion.html">Publicacion</a>&gt; BotCore.Publication.Busqueda.BuscarPublicaciones </td>
+          <td class="memname">List&lt;<a class="el" href="classClassLibrary_1_1Publication_1_1Publicacion.html">Publicacion</a>&gt; BotCore.Publication.Busqueda.BuscarPublicaciones </td>
           <td>(</td>
           <td class="paramtype">Dictionary&lt; <a class="el" href="classBotCore_1_1Publication_1_1Busqueda.html#a4d40a54e6db00d4f9f37e975733739f5">FiltrosPosibles</a>, object &gt;&#160;</td>
           <td class="paramname"><em>publicacionesASeparar</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Servicio principal de la busqueda. </p>
@@ -205,7 +198,7 @@ Propiedades</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Devuelve</dt><dd>Una List de publicaciones que cumplen las condiciones de PublicacionesASeparar.</dd></dl>
 
-<p class="definition">Definición en la línea <a class="el" href="Busqueda_8cs_source.html#l00070">70</a> del archivo <a class="el" href="Busqueda_8cs_source.html">Busqueda.cs</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="Busqueda_8cs_source.html#l00078">78</a> del archivo <a class="el" href="Busqueda_8cs_source.html">Busqueda.cs</a>.</p>
 
 </div>
 </div>
@@ -233,7 +226,7 @@ Propiedades</h2></td></tr>
 <p>Da acceso al singelton de la <a class="el" href="classBotCore_1_1Publication_1_1Busqueda.html" title="Un service provider, que filtra las publicaciones a partir de ciertas condiciones dadas.">Busqueda</a>. </p>
 <p>Instancia de <a class="el" href="classBotCore_1_1Publication_1_1Busqueda.html" title="Un service provider, que filtra las publicaciones a partir de ciertas condiciones dadas.">Busqueda</a>.</p>
 
-<p class="definition">Definición en la línea <a class="el" href="Busqueda_8cs_source.html#l00050">50</a> del archivo <a class="el" href="Busqueda_8cs_source.html">Busqueda.cs</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="Busqueda_8cs_source.html#l00058">58</a> del archivo <a class="el" href="Busqueda_8cs_source.html">Busqueda.cs</a>.</p>
 
 </div>
 </div>
