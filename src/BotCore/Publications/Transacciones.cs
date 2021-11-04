@@ -14,11 +14,19 @@ using Importers;
 
 namespace BotCore.Publication
 {
+    /// <summary>
+    /// Clase encargada de persistir y confirmar las compras una vez hechas.
+    /// </summary>
     public class Transacciones
     {
         private DataAccess da;
 
         private static Transacciones instancia;
+
+        /// <summary>
+        /// Obtiene la instancia del Singleton.
+        /// </summary>
+        /// <value><see cref = "Transacciones"/>.</value>
         public static Transacciones Instancia
         {
             get
@@ -35,6 +43,10 @@ namespace BotCore.Publication
             this.da = DataAccess.Instancia;
         }
 
+        /// <summary>
+        /// Confirma la compra y la persiste.
+        /// </summary>
+        /// <param name="venta"><see cref = "Venta"/>.</param>
         public void ConcretarVenta(Venta venta)
         {
             if (! venta.Publicacion.Residuo.Habilitaciones.All(x => venta.Comprador.Habilitaciones.Contains(x)))

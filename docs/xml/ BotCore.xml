@@ -1,0 +1,267 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BotCore</name>
+    </assembly>
+    <members>
+        <member name="T:BotCore.Publication.Busqueda">
+            <summary>
+            Un service provider, que filtra las publicaciones a partir de ciertas condiciones dadas.
+            </summary>
+        </member>
+        <member name="T:BotCore.Publication.Busqueda.FiltrosPosibles">
+            <summary>
+            Los filtros competentes para las busquedas, corresponden con propiedades
+            principales de <see cref ="T:ClassLibrary.Publication.Publicacion"/> y su subclase <see cref ="T:ClassLibrary.Publication.PublicacionRecurrente"/>.
+            </summary>
+        </member>
+        <member name="F:BotCore.Publication.Busqueda.FiltrosPosibles.Empresa">
+            Filtro de tipo empresa.
+        </member>
+        <member name="F:BotCore.Publication.Busqueda.FiltrosPosibles.Residuo">
+            Filtro de tipo residuo.
+        </member>
+        <member name="F:BotCore.Publication.Busqueda.FiltrosPosibles.LugarRetiro">
+            Filtro de donde se debe retirar.
+        </member>
+        <member name="F:BotCore.Publication.Busqueda.FiltrosPosibles.PrecioMaximo">
+            Filtro del precio maximo dispuesto a pagar.
+        </member>
+        <member name="F:BotCore.Publication.Busqueda.FiltrosPosibles.FrecuenciaRestock">
+            Filtro de de restock para publicaciones recurrentes.
+        </member>
+        <member name="P:BotCore.Publication.Busqueda.Instancia">
+            <summary>
+            Da acceso al singelton de la Busqueda.
+            </summary>
+            <value>Instancia de Busqueda.</value>
+        </member>
+        <member name="M:BotCore.Publication.Busqueda.BuscarPublicaciones(System.Collections.Generic.Dictionary{BotCore.Publication.Busqueda.FiltrosPosibles,System.Object})">
+            <summary>
+            Servicio principal de la busqueda.
+            </summary>
+            <param name="publicacionesASeparar">Un diccionario de clave un miembro del enum de FiltrosPosibles y valor la especificacion deseada (string o int).</param>
+            <returns>Una List de publicaciones que cumplen las condiciones de PublicacionesASeparar.</returns>
+        </member>
+        <member name="T:BotCore.Publication.Publicador">
+            <summary>
+            Clase creadora de instancias y persistidora de publicación.
+            </summary>
+        </member>
+        <member name="P:BotCore.Publication.Publicador.Instancia">
+            <summary>
+            Obtiene la instancia del Singleton.
+            </summary>
+            <value><see cref = "T:BotCore.Publication.Publicador"/>.</value>
+        </member>
+        <member name="M:BotCore.Publication.Publicador.PublicarOferta(ClassLibrary.Publication.Residuo,System.Double,System.String,System.Int32,System.String,ClassLibrary.User.Empresa,System.String)">
+            <summary>
+            Crea y persiste en memoria la publicación.
+            </summary>
+            <param name="residuo"><see cref = "T:ClassLibrary.Publication.Residuo"/>.</param>
+            <param name="precioUnitario"><see langword = "double"/>.</param>
+            <param name="moneda"><see langword = "string"/>.</param>
+            <param name="cantidad"><see langword = "int"/>.</param>
+            <param name="lugarRetiro"><see langword = "string"/>.</param>
+            <param name="vendedor"><see cref = "T:ClassLibrary.User.Empresa"/>.</param>
+            <param name="descripcion"><see langword = "string"/>.</param>
+        </member>
+        <member name="M:BotCore.Publication.Publicador.PublicarOfertaRecurrente(ClassLibrary.Publication.Residuo,System.Double,System.String,System.Int32,System.String,ClassLibrary.User.Empresa,System.String,System.Int32)">
+            <summary>
+            Crea y persiste en memoria una nueva publicación recurrente.
+            </summary>
+            <param name="residuo"><see cref = "T:ClassLibrary.Publication.Residuo"/>.</param>
+            <param name="precioUnitario"><see langword = "double"/>.</param>
+            <param name="moneda"><see langword = "string"/>.</param>
+            <param name="cantidad"><see langword = "int"/>.</param>
+            <param name="lugarRetiro"><see langword = "string"/>.</param>
+            <param name="vendedor"><see cref = "T:ClassLibrary.User.Empresa"/>.</param>
+            <param name="descripcion"><see langword = "string"/>.</param>
+            <param name="frecuenciaAnualRestock"><see langword = "int"/>.</param>
+        </member>
+        <member name="T:BotCore.Publication.Reporte">
+            <summary>
+            Genera un reporte del historial de un <see iref ="IUsuario"/>, implementa la interfaz <see iref ="IPrintable"/>.
+            </summary>
+        </member>
+        <member name="P:BotCore.Publication.Reporte.FechaInicio">
+            <summary>
+            Propiedad readonly de <see cref ="T:BotCore.Publication.Reporte"/>.
+            </summary>
+            <value>instancia de <see cref ="T:System.DateTime"/>. </value>
+        </member>
+        <member name="P:BotCore.Publication.Reporte.FechaFin">
+            <summary>
+            Propiedad readonly de <see cref ="T:BotCore.Publication.Reporte"/>.
+            </summary>
+            <value>instancia de <see cref ="T:System.DateTime"/>. </value>.
+        </member>
+        <member name="P:BotCore.Publication.Reporte.Ventas">
+            <summary>
+            Propiedad readonly de <see cref ="T:BotCore.Publication.Reporte"/>.
+            </summary>
+            <value>Lista de instancias de <see cref ="T:ClassLibrary.Publication.Venta"/>. </value>
+        </member>
+        <member name="P:BotCore.Publication.Reporte.Usuario">
+            <summary>
+            Propiedad readonly de <see cref ="T:BotCore.Publication.Reporte"/>.
+            </summary>
+            <value>instancia del tipo <see iref ="IUsuario"/>. </value>
+        </member>
+        <member name="M:BotCore.Publication.Reporte.Generar(System.DateTime,System.DateTime,ClassLibrary.User.IUsuario)">
+            <summary>
+            Metodo estatico que genera una instancia de <see cref ="T:BotCore.Publication.Reporte"/> para el <see iref ="IUsuario"/>
+            especificado en un periodo de tiempo.
+            </summary>
+            <param name="fechaInicio"><see cref ="T:System.DateTime"/>.</param>
+            <param name="fechaFin"><see cref ="T:System.DateTime"/>.</param>
+            <param name="usuario"><see iref ="IUsuario"/>.</param>
+            <returns> <see cref ="T:BotCore.Publication.Reporte"/>. </returns>
+        </member>
+        <member name="M:BotCore.Publication.Reporte.GetTextToPrint">
+            <summary>
+            Implementacion de <see iref ="IPrintable"/>.
+            </summary>
+            <returns><see langword ="string"/>.</returns>
+        </member>
+        <member name="T:BotCore.Publication.Transacciones">
+            <summary>
+            Clase encargada de persistir y confirmar las compras una vez hechas.
+            </summary>
+        </member>
+        <member name="P:BotCore.Publication.Transacciones.Instancia">
+            <summary>
+            Obtiene la instancia del Singleton.
+            </summary>
+            <value><see cref = "T:BotCore.Publication.Transacciones"/>.</value>
+        </member>
+        <member name="M:BotCore.Publication.Transacciones.ConcretarVenta(ClassLibrary.Publication.Venta)">
+            <summary>
+            Confirma la compra y la persiste.
+            </summary>
+            <param name="venta"><see cref = "T:ClassLibrary.Publication.Venta"/>.</param>
+        </member>
+        <member name="T:BotCore.User.Autenticacion">
+            <summary>
+            Esta clase se encarga de tomar datos para loggear una persona y verificar
+            su informacion a la hora de iniciar sesión.
+            </summary>
+        </member>
+        <member name="P:BotCore.User.Autenticacion.Instancia">
+            <summary>
+            Metodo de acceso al singleton.
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:BotCore.User.Autenticacion.ValidarUsuario(System.String,System.String)">
+            <summary>
+            Metodo que toma colaboracion de <see cref = "T:Importers.DataAccess"/> para comprobar el inicio de
+            sesión.
+            </summary>
+            <param name="nombreUsuario"></param>
+            <param name="contrasenia"></param>
+            <returns><c>true</c> si nombreUsuario y contrasenia están viculados en
+            <see cref = "T:ClassLibrary.User.DatosLogin"/> en la base de datos.</returns>
+        </member>
+        <member name="T:BotCore.User.GestorInvitaciones">
+            <summary>
+            Clase que se encarga de generar usuarios temporales y
+            enviarselo a personas para facilitar su registro
+            de manera personal.
+            </summary>
+        </member>
+        <member name="P:BotCore.User.GestorInvitaciones.Instancia">
+            <summary>
+            Metodo de acceso al singleton.
+            </summary>
+            <value><see cref = "T:BotCore.User.GestorInvitaciones"/>.</value>
+        </member>
+        <member name="P:BotCore.User.GestorInvitaciones.GatewayMensajes">
+            <summary>
+            Obtiene o establece el gateway para enviar la invitación.
+            </summary>
+            <value>Por Defecto: TelegramService. Se puede establecer cualquier <see iref = "IGateway"/>.</value>
+        </member>
+        <member name="F:BotCore.User.GestorInvitaciones.InvitacionesEnviadas">
+            <summary>
+            Lista donde se almacenan las invitaciones enviadas para mantener un registro.
+            </summary>
+        </member>
+        <member name="M:BotCore.User.GestorInvitaciones.EnviarInvitacion``1(System.String,System.String)">
+            <summary>
+            Metodo que crea la <see cref = "T:BotCore.User.Invitacion"/> y la envia al destinatario especificado.
+            </summary>
+            <param name="destinatario">El contacto objetivo (username).</param>
+            <param name="nombreTemp">Nombre placeholder para el IUsuario, el destinatario lo sobreescribirá luego.</param>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:BotCore.User.GestorInvitaciones.ValidarInvitacion(System.String,System.String)">
+            <summary>
+            Metodo utilizado para validar que la invitación fue aceptada. Es utilizado
+            externamente por <see cref = "N:MessageGateway"/>.
+            </summary>
+            <param name="usuarioAceptante"><see langword = "string"/>.</param>
+            <param name="enlace"><see langword = "string"/>.</param>
+            <returns><see cref = "T:BotCore.User.Invitacion"/>.</returns>
+        </member>
+        <member name="T:BotCore.User.Invitacion">
+            <summary>
+            Clase mediadora entre <see cref = "T:BotCore.User.GestorInvitaciones"/> y los <see iref = "IUsuario"/>, representa la invitación en si, y encapsula el enlace y destino.
+            </summary>
+        </member>
+        <member name="M:BotCore.User.Invitacion.#ctor(ClassLibrary.User.IUsuario,System.String)">
+            <summary>
+            Método constructor de la invitación.
+            </summary>
+            <param name="organizacion">El <see iref = "IUsuario"/> temporal, generado previamente.</param>
+            <param name="usuarioDestinatario">Username o Contacto objetivo.</param>
+        </member>
+        <member name="P:BotCore.User.Invitacion.OrganizacionInvitada">
+            <summary>
+            El usuario destinado, debería ser sobreescrito por el destinatario.
+            </summary>
+        </member>
+        <member name="P:BotCore.User.Invitacion.Destinatario">
+            <summary>
+            Via de comunicacion para que llegue la invitacion (numero, mail, etc).
+            </summary>
+        </member>
+        <member name="P:BotCore.User.Invitacion.Link">
+            <summary>
+            Código generado para validar la invitación.
+            </summary>
+        </member>
+        <member name="P:BotCore.User.Invitacion.FueAceptada">
+            <summary>
+            Propiedad, permite evaluar si el destinatario aceptó la invitación
+            y se registró.
+            </summary>
+            <value>True: la invitación fue completada y aceptada. False: La invitación está en proceso.</value>
+        </member>
+        <member name="M:BotCore.User.Invitacion.ArmarMensajeInvitacion">
+            <summary>
+            Se genera el texto del mensaje a enviarse para invitar.
+            </summary>
+            <returns>string.</returns>
+        </member>
+        <member name="M:BotCore.User.Invitacion.Aceptar">
+            <summary>
+            Metodo que modifica el estado de la invitación como aceptada.
+            </summary>
+        </member>
+        <member name="T:BotCore.User.RegistroUsuario">
+            <summary>
+            Clase encargada de crear el usuario para inicio de sesión y su almacen en
+            <see cref = "T:Importers.DataAccess"/>.
+            </summary>
+        </member>
+        <member name="M:BotCore.User.RegistroUsuario.RegistrarUsuario``1(System.String,System.String,``0)">
+            <summary>
+            Método registrador de usuario.
+            </summary>
+            <param name="nombreUsuario"></param>
+            <param name="contrasenia"></param>
+            <param name="usuario"></param>
+        </member>
+    </members>
+</doc>

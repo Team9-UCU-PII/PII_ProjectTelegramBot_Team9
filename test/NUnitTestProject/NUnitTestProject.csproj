@@ -8,7 +8,7 @@
 
   <PropertyGroup>
     <CodeAnalysisRuleSet>..\..\.analyzers\Analyzers.ruleset</CodeAnalysisRuleSet>
-    <DocumentationFile>$(OutputPath)$(AssemblyName).xml</DocumentationFile>
+    <DocumentationFile>..\..\docs\xml\ $(AssemblyName).xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup>

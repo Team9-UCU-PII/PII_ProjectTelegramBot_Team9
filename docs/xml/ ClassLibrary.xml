@@ -1,0 +1,433 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ClassLibrary</name>
+    </assembly>
+    <members>
+        <member name="T:ClassLibrary.Publication.Categoria">
+            <summary>
+            Instancia de las categorias posibles para <see cref="T:ClassLibrary.Publication.Residuo"/>.
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.Publication.Categoria.#ctor(System.String)">
+            <summary>
+            Constructor de categoria.
+            </summary>
+            <param name="nombre">.</param>
+        </member>
+        <member name="P:ClassLibrary.Publication.Categoria.Nombre">
+            <summary>
+            Obtiene o establece el nombre de la categoría.
+            </summary>
+            <value><see langword="string"/>.</value>
+        </member>
+        <member name="T:ClassLibrary.Publication.IPrintable">
+            <summary>
+            Interfaz que unifica tipos cuyo objetivo es devolver texto al bot para imprimir
+            y retornar al usuario.
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.Publication.IPrintable.GetTextToPrint">
+            <summary>
+            Metodo caracteristico de printable, arma el string con formato deseado.
+            </summary>
+            <returns><see langword="string"/>.</returns>
+        </member>
+        <member name="T:ClassLibrary.Publication.Publicacion">
+            <summary>
+            Tipo base de publicación, comprende Descripcion, Residuo, Precio, Moneda, Cantidad, Lugar de Retiro y la Empresa Vendedor.
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.Publication.Publicacion.#ctor(ClassLibrary.Publication.Residuo,System.Double,System.String,System.Int32,System.String,ClassLibrary.User.Empresa,System.String)">
+            <summary>
+            Constructor de Clase Publicacion.
+            </summary>
+            <param name="residuo"><see cref = "P:ClassLibrary.Publication.Publicacion.Residuo"/>.</param>
+            <param name="precioUnitario"><see langword = "double"/>.</param>
+            <param name="moneda"><see langword = "string"/>.</param>
+            <param name="cantidad"><see langword = "int"/>.</param>
+            <param name="lugarRetiro"><see langword = "string"/>.</param>
+            <param name="vendedor"><see cref = "T:ClassLibrary.User.Empresa"/>.</param>
+            <param name="descripcion"><see langword = "string"/>.</param>
+        </member>
+        <member name="P:ClassLibrary.Publication.Publicacion.Residuo">
+            <summary>
+            Obtiene o establece el <see cref ="P:ClassLibrary.Publication.Publicacion.Residuo"/> publicado.
+            </summary>
+            <value><see cref = "P:ClassLibrary.Publication.Publicacion.Residuo"/>.</value>
+        </member>
+        <member name="P:ClassLibrary.Publication.Publicacion.PrecioUnitario">
+            <summary>
+            Obtiene o establece el precio por unidad.
+            </summary>
+            <value><see langword="double"/>.</value>
+        </member>
+        <member name="P:ClassLibrary.Publication.Publicacion.Moneda">
+            <summary>
+            Obtiene o establece la moneda de compra.
+            </summary>
+            <value><see langword="string"/>.</value>
+        </member>
+        <member name="P:ClassLibrary.Publication.Publicacion.Cantidad">
+            <summary>
+            Obtiene o establece la cantidad de <see cref ="P:ClassLibrary.Publication.Publicacion.Residuo"/> según la unidad dada.
+            </summary>
+            <value><see langword="int"/>.</value>
+        </member>
+        <member name="P:ClassLibrary.Publication.Publicacion.LugarRetiro">
+            <summary>
+            Obtiene o establece el lugar de retiro.
+            </summary>
+            <value><see langword = "string"/>.</value>
+        </member>
+        <member name="P:ClassLibrary.Publication.Publicacion.Vendedor">
+            <summary>
+            Obtiene o establece la <see cref ="T:ClassLibrary.User.Empresa"/> vendedora.
+            </summary>
+            <value>Tipo IUsuario, instancia de Empresa</value>
+        </member>
+        <member name="P:ClassLibrary.Publication.Publicacion.Descripcion">
+            <summary>
+            Property de Publicacion.
+            </summary>
+            <value><see langword="string"/>.</value>
+        </member>
+        <member name="P:ClassLibrary.Publication.Publicacion.Comprado">
+            <summary>
+            Obtiene o establece si la publicacion ya se compró.
+            </summary>
+            <value><see langword="true"/> La publicación ya fue comprada.</value>
+        </member>
+        <member name="P:ClassLibrary.Publication.Publicacion.PrecioTotal">
+            <summary>
+            Calcula el precio final de la publicación.
+            </summary>
+            <value><see langword="double"/>.</value>
+        </member>
+        <member name="M:ClassLibrary.Publication.Publicacion.GetTextToPrint">
+            <summary>
+            Implementación de <see iref = "IPrintable"/>, genera el texto para que envíe el bot.
+            </summary>
+            <returns><see langword="string"/>.</returns>
+        </member>
+        <member name="T:ClassLibrary.Publication.PublicacionRecurrente">
+            <summary>
+            Subclase de <see cref = "T:ClassLibrary.Publication.Publicacion"/>, añade propiedad de Recurrencia del residuo.
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.Publication.PublicacionRecurrente.#ctor(ClassLibrary.Publication.Residuo,System.Double,System.String,System.Int32,System.String,ClassLibrary.User.Empresa,System.Int32,System.String)">
+            <summary>
+            Mismo Constructor que <see cref = "T:ClassLibrary.Publication.Publicacion"/>.
+            </summary>
+            <param name="residuo"><see cref = "T:ClassLibrary.Publication.Residuo"/>.</param>
+            <param name="precioUnitario"><see langword = "double"/>.</param>
+            <param name="moneda"><see langword = "string"/>.</param>
+            <param name="cantidad"><see langword = "int"/>.</param>
+            <param name="lugarRetiro"><see langword = "string"/>.</param>
+            <param name="vendedor"><see cref = "T:ClassLibrary.User.Empresa"/>.</param>
+            <param name="frecuenciaAnualRestock"><see langword = "int"/>.</param>
+            <param name="descripcion"><see langword = "string"/>.</param>
+        </member>
+        <member name="P:ClassLibrary.Publication.PublicacionRecurrente.FrecuenciaAnualRestock">
+            <summary>
+            Obtiene o establece la frecuencia que se restockea
+            el residuo. Una property exclusiva de Publicacion Recurrente.
+            </summary>
+            <value><see langword="int"/>.</value>
+        </member>
+        <member name="T:ClassLibrary.Publication.Residuo">
+            <summary>
+            Clase representativa de los disferentes residuos. Contiene <see cref = "P:ClassLibrary.Publication.Residuo.Categoria"/>s, 
+            Descripcion, unidad de medida y <see cref = "T:ClassLibrary.User.Habilitacion"/>es.
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.Publication.Residuo.#ctor(ClassLibrary.Publication.Categoria,System.String,System.String,System.Collections.Generic.List{ClassLibrary.User.Habilitacion})">
+            <summary>
+            Constructor de Residuo.
+            </summary>
+            <param name="categoria"><see cref = "P:ClassLibrary.Publication.Residuo.Categoria"/>.</param>
+            <param name="descripcion"><see langword = "string"/>.</param>
+            <param name="unidadMedida"><see langword = "string"/>.</param>
+            <param name="habilitaciones"><see tref = "List T"/>.</param>
+        </member>
+        <member name="P:ClassLibrary.Publication.Residuo.Categoria">
+            <summary>
+            Obtiene o establece la categoria generica a la que pertenece el residuo.
+            </summary>
+            <value>Un <see langword="Array"/> de <see cref = "P:ClassLibrary.Publication.Residuo.Categoria"/>.</value>
+        </member>
+        <member name="P:ClassLibrary.Publication.Residuo.Descripcion">
+            <summary>
+            Obtiene o establece una descripción.
+            </summary>
+            <value><see langword="string"/>.</value>
+        </member>
+        <member name="P:ClassLibrary.Publication.Residuo.UnidadMedida">
+            <summary>
+            Obtiene o establece la unidad de medida.
+            </summary>
+            <example> Kgs, Lts, m2, etc. </example>
+            <value><see langword="string"/>.</value>
+        </member>
+        <member name="P:ClassLibrary.Publication.Residuo.Habilitaciones">
+            <summary>
+            Obtiene o establece las Habilitaciones necesarias para la compra del residuo.
+            </summary>
+            <value><see langword="Array"/> de <see cref = "T:ClassLibrary.User.Habilitacion"/>.</value>
+        </member>
+        <member name="M:ClassLibrary.Publication.Residuo.GetTextToPrint">
+            <summary>
+            Implementación de <see iref = "IPrintable"/>, genera el texto para que envíe el bot.
+            </summary>
+            <returns><see langword="string"/>.</returns>
+        </member>
+        <member name="T:ClassLibrary.Publication.Venta">
+            <summary>
+            Clase que reune las compras de <see cref = "P:ClassLibrary.Publication.Venta.Publicacion"/> y los implicados, y se encarga de hacer la compra en sí.
+            Implementa <see iref = "IPrintable"/>.
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.Publication.Venta.#ctor(ClassLibrary.User.Emprendedor,ClassLibrary.Publication.Publicacion)">
+            <summary>
+            Se crea la instancia de venta con la fecha del momento.
+            </summary>
+            <param name="comprador"><see cref = "T:ClassLibrary.User.Emprendedor"/>.</param>
+            <param name="publicacion"><see cref = "P:ClassLibrary.Publication.Venta.Publicacion"/>.</param>
+        </member>
+        <member name="P:ClassLibrary.Publication.Venta.Fecha">
+            <summary>
+            Obtiene o establece la fecha de venta.
+            </summary>
+            <value><see cref = "T:System.DateTime"/>.</value>
+        </member>
+        <member name="P:ClassLibrary.Publication.Venta.Comprador">
+            <summary>
+            Obtiene o establece el comprador.
+            </summary>
+            <value><see cref = "T:ClassLibrary.User.Emprendedor"/>.</value>
+        </member>
+        <member name="P:ClassLibrary.Publication.Venta.Publicacion">
+            <summary>
+            Obtiene o establece la publicacion que fue comprada.
+            </summary>
+            <value><see cref = "P:ClassLibrary.Publication.Venta.Publicacion"/>.</value>
+        </member>
+        <member name="M:ClassLibrary.Publication.Venta.GetTextToPrint">
+            <summary>
+            Implementacion del tipo <see iref = "IPrintable"/>.
+            </summary>
+            <returns><see langword="string"/>.</returns>
+        </member>
+        <member name="T:ClassLibrary.User.DatosLogin">
+            <summary>
+            Las instancias de esta clase representan los usuarios creados en el bot,
+            almacendando la empresa o emprendedor al que estan vinculados y su información
+            de cuenta.
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.User.DatosLogin.NombreUsuario">
+            <summary>
+            Obtiene o establece el username de la cuenta.
+            </summary>
+            <value><see langword="string"/>.</value>
+        </member>
+        <member name="P:ClassLibrary.User.DatosLogin.Contrasenia">
+            <summary>
+            Obtiene la password de la cuenta.
+            </summary>
+            <value><see langword="string"/>.</value>
+        </member>
+        <member name="P:ClassLibrary.User.DatosLogin.Usuario">
+            <summary>
+            Obtiene  el <see cref = "T:ClassLibrary.User.Emprendedor"/> o <see cref = "T:ClassLibrary.User.Empresa"/> a la que se vincula esta cuenta.
+            </summary>
+            <value><see cref = "T:ClassLibrary.User.Emprendedor"/> o <see cref = "T:ClassLibrary.User.Empresa"/>.</value>
+        </member>
+        <member name="M:ClassLibrary.User.DatosLogin.#ctor(System.String,System.String,ClassLibrary.User.IUsuario)">
+            <summary>
+            Método constructor del usuario.
+            </summary>
+            <param name="nombreUsuario"><see langword = "string"/>.</param>
+            <param name="contrasenia"><see langword = "string"/>.</param>
+            <param name="usuario"><see iref = "IUsuario"/>.</param>
+        </member>
+        <member name="T:ClassLibrary.User.Emprendedor">
+            <summary>
+            Clase representativa de los emprendedores con su información competente.
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.User.Emprendedor.Nombre">
+            <summary>
+            Obtiene o establece el nombre del emprendimiento o emprendedor.
+            </summary>
+            <value><see langword="string"/>.</value>
+        </member>
+        <member name="F:ClassLibrary.User.Emprendedor.Lugar">
+            <summary>
+            Localizacion del local o residencia del emprendedor.
+            </summary>
+        </member>
+        <member name="F:ClassLibrary.User.Emprendedor.Rubro">
+            <summary>
+            Rubro general del emprendedor.
+            </summary>
+        </member>
+        <member name="F:ClassLibrary.User.Emprendedor.Especializacion">
+            <summary>
+            La especialización del emprendedor.
+            </summary>
+        </member>
+        <member name="F:ClassLibrary.User.Emprendedor.Habilitaciones">
+            <summary>
+            Habilitaciones vigentes del emprendedor.
+            </summary>
+        </member>
+        <member name="F:ClassLibrary.User.Emprendedor.Historial">
+            <summary>
+            Historial de las ventas del emprendedor.
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.User.Emprendedor.DatosLogin">
+            <summary>
+            Obtiene los datos necesarios para loggearse a dicho emprendedor.
+            </summary>
+            <value><see cref = "P:ClassLibrary.User.Emprendedor.DatosLogin"/>.</value>
+        </member>
+        <member name="M:ClassLibrary.User.Emprendedor.#ctor(System.String,System.String,System.String,System.String,System.Collections.Generic.List{ClassLibrary.User.Habilitacion})">
+            <summary>
+            Constructor generico del emprendedor.
+            </summary>
+            <param name="nombre"></param>
+            <param name="lugar"></param>
+            <param name="rubro"></param>
+            <param name="especializacion"></param>
+            <param name="habilitaciones"></param>
+        </member>
+        <member name="M:ClassLibrary.User.Emprendedor.#ctor">
+            <summary>
+            Un constructor vacio para la creacion temporal de emprendedor
+            en el GestorInvitaciones.
+            </summary>
+        </member>
+        <member name="T:ClassLibrary.User.Empresa">
+            <summary>
+            Clase representativa de las empresas registradas y su información competente.
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.User.Empresa.Nombre">
+            <summary>
+            Obtiene o establece el nombre de la empresa
+            </summary>
+            <value><see langword="string"/>.</value>
+        </member>
+        <member name="F:ClassLibrary.User.Empresa.Lugar">
+            <summary>
+            Local o zona donde se realizaría retiro.
+            </summary>
+        </member>
+        <member name="F:ClassLibrary.User.Empresa.Rubro">
+            <summary>
+            Rubro de la empresa.
+            </summary>
+        </member>
+        <member name="F:ClassLibrary.User.Empresa.Descripcion">
+            <summary>
+            Descripción de la empresa.
+            </summary>
+        </member>
+        <member name="F:ClassLibrary.User.Empresa.Contacto">
+            <summary>
+            Numero de telefono, mail o cualquier via activa de contacto.
+            </summary>
+        </member>
+        <member name="F:ClassLibrary.User.Empresa.PalabrasClave">
+            <summary>
+            Identificadores clave de la empresa.
+            </summary>
+        </member>
+        <member name="F:ClassLibrary.User.Empresa.Historial">
+            <summary>
+            Historial de ventas de la empresa.
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.User.Empresa.DatosLogin">
+            <summary>
+            Obtiene los datos para inciar en la empresa.
+            </summary>
+            <value><see cref ="P:ClassLibrary.User.Empresa.DatosLogin"/></value>
+        </member>
+        <member name="M:ClassLibrary.User.Empresa.#ctor(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Constructor genérico de la clase Empresa.
+            </summary>
+            <param name="nombre"><see langword = "string"/>.</param>
+            <param name="lugar"><see langword = "string"/>.</param>
+            <param name="rubro"><see langword = "string"/>.</param>
+            <param name="descripcion"><see langword = "string"/>.</param>
+            <param name="contacto"><see langword = "string"/>.</param>
+        </member>
+        <member name="M:ClassLibrary.User.Empresa.#ctor">
+            <summary>
+            Contructor vacio para la creación de instancias temporales
+            en el GestorInvitaciones.
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.User.Empresa.CrearOferta(ClassLibrary.Publication.Residuo,System.Double,System.String,System.Int32,System.String,System.String)">
+            <summary>
+            Método creador y publicador de una publicación.
+            </summary>
+            <param name="residuo"><see cref="T:ClassLibrary.Publication.Residuo"/>.</param>
+            <param name="precioUnitario"><see langword="double"/>.</param>
+            <param name="moneda"><see langword="string"/>.</param>
+            <param name="cantidad"><see langword="int"/>.</param>
+            <param name="lugarRetiro"><see langword="string"/>.</param>
+            <param name="descripcion"><see langword="string"/>.</param>
+        </member>
+        <member name="M:ClassLibrary.User.Empresa.CrearOfertaRecurrente(ClassLibrary.Publication.Residuo,System.Double,System.String,System.Int32,System.String,System.String,System.Int32)">
+            <summary>
+            Método creador y publicador de una publicación recurrente.
+            </summary>
+            <param name="residuo"><see cref="T:ClassLibrary.Publication.Residuo"/>.</param>
+            <param name="precioUnitario"><see langword="double"/>.</param>
+            <param name="moneda"><see langword="string"/>.</param>
+            <param name="cantidad"><see langword="int"/>.</param>
+            <param name="lugarRetiro"><see langword="string"/>.</param>
+            <param name="descripcion"><see langword="string"/>.</param>
+            <param name="frecuenciaAnualRestock"><see langword="int"/>.</param>
+        </member>
+        <member name="T:ClassLibrary.User.Habilitacion">
+            <summary>
+            Clase representativa de las habilitaciones existentes aplicables a los residuos y emprendedores.
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.User.Habilitacion.#ctor(System.String)">
+            <summary>
+            Contructor del tipo Habilitación.
+            </summary>
+            <param name="nombre"><see langword="string"/>.</param>
+        </member>
+        <member name="P:ClassLibrary.User.Habilitacion.Nombre">
+            <summary>
+            Obtiene o establece el nombre de la habilitación.
+            </summary>
+            <value><see langword="string"/>.</value>
+        </member>
+        <member name="T:ClassLibrary.User.IUsuario">
+            <summary>
+            Interfaz que engloba tanto empresas como emprendimientos.
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.User.IUsuario.DatosLogin">
+            <summary>
+            Obtiene los datos para el inicio de sesión.
+            </summary>
+            <value><see cref ="P:ClassLibrary.User.IUsuario.DatosLogin"/>.</value>
+        </member>
+        <member name="P:ClassLibrary.User.IUsuario.Nombre">
+            <summary>
+            Obtiene o establece el nombre de la empresa/emprendimiento.
+            </summary>
+            <value><see langword="string"/>.</value>
+        </member>
+    </members>
+</doc>

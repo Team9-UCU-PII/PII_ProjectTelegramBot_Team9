@@ -24,12 +24,13 @@ namespace BotCore.User
     {
         private GestorInvitaciones()
         {
+            this.GatewayMensajes = TelegramService.Instancia;
         }
 
         /// <summary>
         /// Metodo de acceso al singleton.
         /// </summary>
-        /// <value></value>
+        /// <value><see cref = "GestorInvitaciones"/>.</value>
         public static GestorInvitaciones Instancia
         {
             get
@@ -45,7 +46,11 @@ namespace BotCore.User
 
         private static GestorInvitaciones instancia { get; set; }
 
-        public IGateway GatewayMensajes {get; set;}
+        /// <summary>
+        /// Obtiene o establece el gateway para enviar la invitación.
+        /// </summary>
+        /// <value>Por Defecto: TelegramService. Se puede establecer cualquier <see iref = "IGateway"/>.</value>
+        public IGateway GatewayMensajes { get; set; }
 
         /// <summary>
         /// Lista donde se almacenan las invitaciones enviadas para mantener un registro.
@@ -61,11 +66,6 @@ namespace BotCore.User
         public void EnviarInvitacion<T>(string destinatario, string nombreTemp)
         where T : IUsuario, new()
         {
-            if (this.GatewayMensajes == null)
-            {
-                throw new InvalidOperationException("No se ha establecido el gateway para el envío de mensajes.");
-            }
-
             IUsuario user = new T();
             user.Nombre = nombreTemp;
             Invitacion invite = new Invitacion(user, destinatario);
@@ -75,20 +75,24 @@ namespace BotCore.User
             this.InvitacionesEnviadas.Add(invite);
         }
 
-        // Este método es usado externamente por el MessageGateway
-
+        /// <summary>
+        /// Metodo utilizado para validar que la invitación fue aceptada. Es utilizado
+        /// externamente por <see cref = "MessageGateway"/>.
+        /// </summary>
+        /// <param name="usuarioAceptante"><see langword = "string"/>.</param>
+        /// <param name="enlace"><see langword = "string"/>.</param>
+        /// <returns><see cref = "Invitacion"/>.</returns>
         public Invitacion ValidarInvitacion(string usuarioAceptante, string enlace) 
         {
             Invitacion invite = this.InvitacionesEnviadas.Where(
                 (Invitacion i) => i.Destinatario == usuarioAceptante && i.Link == enlace && !i.FueAceptada
             ).SingleOrDefault();
-
             if (invite != null)
             {
                 invite.Aceptar();
                 return invite;
             }
-          
+
             else
             {
                 return null;

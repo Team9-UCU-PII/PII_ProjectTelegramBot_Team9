@@ -1,0 +1,8 @@
+digraph "BotCore.User.Invitacion"
+{
+ // INTERACTIVE_SVG=YES
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{BotCore.User.Invitacion\n|+ OrganizacionInvitada\l+ Destinatario\l+ Link\l+ FueAceptada\l|+ Invitacion()\l+ ArmarMensajeInvitacion()\l+ Aceptar()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Clase mediadora entre GestorInvitaciones y los , representa la invitación en si, y encapsula el enlac..."];
+}

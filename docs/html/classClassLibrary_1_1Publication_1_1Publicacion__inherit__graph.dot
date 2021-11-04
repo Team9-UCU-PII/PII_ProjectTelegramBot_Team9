@@ -1,0 +1,12 @@
+digraph "ClassLibrary.Publication.Publicacion"
+{
+ // INTERACTIVE_SVG=YES
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{ClassLibrary.Publication.\lPublicacion\n|+ Residuo\l+ PrecioUnitario\l+ Moneda\l+ Cantidad\l+ LugarRetiro\l+ Vendedor\l+ Descripcion\l+ Comprado\l+ PrecioTotal\l|+ Publicacion()\l+ GetTextToPrint()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Tipo base de publicación, comprende Descripcion, Residuo, Precio, Moneda, Cantidad,..."];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node2 [label="{IPrintable\n||+ GetTextToPrint()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interfaceClassLibrary_1_1Publication_1_1IPrintable.html",tooltip="Interfaz que unifica tipos cuyo objetivo es devolver texto al bot para imprimir y retornar al usuario..."];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node3 [label="{ClassLibrary.Publication.\lPublicacionRecurrente\n|+ FrecuenciaAnualRestock\l|+ PublicacionRecurrente()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classClassLibrary_1_1Publication_1_1PublicacionRecurrente.html",tooltip="Subclase de Publicacion, añade propiedad de Recurrencia del residuo."];
+}

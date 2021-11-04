@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Proyecto de PII: Fichero Fuente C:/Users/gatom/OneDrive/Escritorio/programcion/repos/PII_2021_2_Equipo09/src/BotCore/Publications/Publicador.cs</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Proyecto de PII
+   &#160;<span id="projectnumber">1</span>
+   </div>
+   <div id="projectbrief">Projecto para curso de Programacion 2 en la UCU, por el equipo 9 de la tarde</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('Publicador_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">Publicador.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//--------------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// &lt;copyright file=&quot;Publicador.cs&quot; company=&quot;Universidad Católica del Uruguay&quot;&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//     Copyright (c) Programación II. Derechos reservados.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">// &lt;/copyright&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//Patrones utilizados: Creator, SRP y singleton</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">//Se le delega la tarea de Crear publicaciones para mejorar el SRP de EMpresa, ademas de darle</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">//la capacidad de crear instancis de publicación (y recurrente).</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">//Es singleton porque solo se necesita una instancia y almacena un estado.</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">//--------------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">using</span> <a class="code" href="namespaceClassLibrary.html">ClassLibrary</a>.<a class="code" href="namespaceClassLibrary_1_1Publication.html">Publication</a>;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">using</span> <a class="code" href="namespaceClassLibrary.html">ClassLibrary</a>.<a class="code" href="namespaceClassLibrary_1_1User.html">User</a>;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">using</span> <a class="code" href="namespaceImporters.html">Importers</a>;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceBotCore_1_1Publication.html">BotCore.Publication</a></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;{</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="classBotCore_1_1Publication_1_1Publicador.html">   21</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classBotCore_1_1Publication_1_1Publicador.html">Publicador</a></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keyword">private</span> <a class="code" href="classImporters_1_1DataAccess.html">DataAccess</a> da; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <a class="code" href="classBotCore_1_1Publication_1_1Publicador.html">Publicador</a> instancia;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="classBotCore_1_1Publication_1_1Publicador.html#a10d322fab0ba66b84139ef6ee389aadc">   31</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="classBotCore_1_1Publication_1_1Publicador.html">Publicador</a> <a class="code" href="classBotCore_1_1Publication_1_1Publicador.html#a10d322fab0ba66b84139ef6ee389aadc">Instancia</a></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                <span class="keywordflow">if</span> (instancia == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                    instancia = <span class="keyword">new</span> <a class="code" href="classBotCore_1_1Publication_1_1Publicador.html">Publicador</a>();</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                }</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                <span class="keywordflow">return</span> instancia;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            }</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        }</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keyword">private</span> <a class="code" href="classBotCore_1_1Publication_1_1Publicador.html">Publicador</a>()</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        {</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            this.da = <a class="code" href="classImporters_1_1DataAccess.html">DataAccess</a>.<a class="code" href="classImporters_1_1DataAccess.html#a8ea8dbff728176cea094a2a659c537cb">Instancia</a>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        }</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="classBotCore_1_1Publication_1_1Publicador.html#aeef6b3a0d7d040bafc962a47b77ae9d9">   57</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classBotCore_1_1Publication_1_1Publicador.html#aeef6b3a0d7d040bafc962a47b77ae9d9">PublicarOferta</a>(<a class="code" href="classClassLibrary_1_1Publication_1_1Residuo.html">Residuo</a> residuo, <span class="keywordtype">double</span> precioUnitario, <span class="keywordtype">string</span> moneda, <span class="keywordtype">int</span> cantidad, <span class="keywordtype">string</span> lugarRetiro, <a class="code" href="classClassLibrary_1_1User_1_1Empresa.html">Empresa</a> vendedor, <span class="keywordtype">string</span> descripcion)</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        {</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            da.Insertar(vendedor.<a class="code" href="classClassLibrary_1_1User_1_1Empresa.html#a97e9df65cb34566bf5a006922ad3779a">CrearOferta</a>(</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                residuo,</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                precioUnitario,</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                moneda,</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                cantidad,</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                lugarRetiro,</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                descripcion</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            ));</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="classBotCore_1_1Publication_1_1Publicador.html#a3e6ab0e04d0734cdc373983430476095">   80</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classBotCore_1_1Publication_1_1Publicador.html#a3e6ab0e04d0734cdc373983430476095">PublicarOfertaRecurrente</a>(<a class="code" href="classClassLibrary_1_1Publication_1_1Residuo.html">Residuo</a> residuo, <span class="keywordtype">double</span> precioUnitario, <span class="keywordtype">string</span> moneda, <span class="keywordtype">int</span> cantidad, <span class="keywordtype">string</span> lugarRetiro, <a class="code" href="classClassLibrary_1_1User_1_1Empresa.html">Empresa</a> vendedor, <span class="keywordtype">string</span> descripcion, <span class="keywordtype">int</span> frecuenciaAnualRestock)</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            da.Insertar(vendedor.<a class="code" href="classClassLibrary_1_1User_1_1Empresa.html#a55af67b43e7e9a0ae8e09a6b650e7475">CrearOfertaRecurrente</a>(</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                residuo,</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                precioUnitario,</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                moneda,</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                cantidad,</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                lugarRetiro,</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                descripcion,</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                frecuenciaAnualRestock</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            ));</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        }</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    }</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;}</div>
+<div class="ttc" id="aclassBotCore_1_1Publication_1_1Publicador_html"><div class="ttname"><a href="classBotCore_1_1Publication_1_1Publicador.html">BotCore.Publication.Publicador</a></div><div class="ttdoc">Clase creadora de instancias y persistidora de publicación.</div><div class="ttdef"><b>Definition:</b> <a href="Publicador_8cs_source.html#l00021">Publicador.cs:22</a></div></div>
+<div class="ttc" id="aclassBotCore_1_1Publication_1_1Publicador_html_a10d322fab0ba66b84139ef6ee389aadc"><div class="ttname"><a href="classBotCore_1_1Publication_1_1Publicador.html#a10d322fab0ba66b84139ef6ee389aadc">BotCore.Publication.Publicador.Instancia</a></div><div class="ttdeci">static Publicador Instancia</div><div class="ttdoc">Obtiene la instancia del Singleton.</div><div class="ttdef"><b>Definition:</b> <a href="Publicador_8cs_source.html#l00031">Publicador.cs:32</a></div></div>
+<div class="ttc" id="aclassBotCore_1_1Publication_1_1Publicador_html_a3e6ab0e04d0734cdc373983430476095"><div class="ttname"><a href="classBotCore_1_1Publication_1_1Publicador.html#a3e6ab0e04d0734cdc373983430476095">BotCore.Publication.Publicador.PublicarOfertaRecurrente</a></div><div class="ttdeci">void PublicarOfertaRecurrente(Residuo residuo, double precioUnitario, string moneda, int cantidad, string lugarRetiro, Empresa vendedor, string descripcion, int frecuenciaAnualRestock)</div><div class="ttdoc">Crea y persiste en memoria una nueva publicación recurrente.</div><div class="ttdef"><b>Definition:</b> <a href="Publicador_8cs_source.html#l00080">Publicador.cs:80</a></div></div>
+<div class="ttc" id="aclassBotCore_1_1Publication_1_1Publicador_html_aeef6b3a0d7d040bafc962a47b77ae9d9"><div class="ttname"><a href="classBotCore_1_1Publication_1_1Publicador.html#aeef6b3a0d7d040bafc962a47b77ae9d9">BotCore.Publication.Publicador.PublicarOferta</a></div><div class="ttdeci">void PublicarOferta(Residuo residuo, double precioUnitario, string moneda, int cantidad, string lugarRetiro, Empresa vendedor, string descripcion)</div><div class="ttdoc">Crea y persiste en memoria la publicación.</div><div class="ttdef"><b>Definition:</b> <a href="Publicador_8cs_source.html#l00057">Publicador.cs:57</a></div></div>
+<div class="ttc" id="aclassClassLibrary_1_1Publication_1_1Residuo_html"><div class="ttname"><a href="classClassLibrary_1_1Publication_1_1Residuo.html">ClassLibrary.Publication.Residuo</a></div><div class="ttdoc">Clase representativa de los disferentes residuos. Contiene Categorias, Descripcion,...</div><div class="ttdef"><b>Definition:</b> <a href="Residuo_8cs_source.html#l00018">Residuo.cs:19</a></div></div>
+<div class="ttc" id="aclassClassLibrary_1_1User_1_1Empresa_html"><div class="ttname"><a href="classClassLibrary_1_1User_1_1Empresa.html">ClassLibrary.User.Empresa</a></div><div class="ttdoc">Clase representativa de las empresas registradas y su información competente.</div><div class="ttdef"><b>Definition:</b> <a href="Empresa_8cs_source.html#l00018">Empresa.cs:19</a></div></div>
+<div class="ttc" id="aclassClassLibrary_1_1User_1_1Empresa_html_a55af67b43e7e9a0ae8e09a6b650e7475"><div class="ttname"><a href="classClassLibrary_1_1User_1_1Empresa.html#a55af67b43e7e9a0ae8e09a6b650e7475">ClassLibrary.User.Empresa.CrearOfertaRecurrente</a></div><div class="ttdeci">PublicacionRecurrente CrearOfertaRecurrente(Residuo residuo, double precioUnitario, string moneda, int cantidad, string lugarRetiro, string descripcion, int frecuenciaAnualRestock)</div><div class="ttdoc">Método creador y publicador de una publicación recurrente.</div><div class="ttdef"><b>Definition:</b> <a href="Empresa_8cs_source.html#l00117">Empresa.cs:117</a></div></div>
+<div class="ttc" id="aclassClassLibrary_1_1User_1_1Empresa_html_a97e9df65cb34566bf5a006922ad3779a"><div class="ttname"><a href="classClassLibrary_1_1User_1_1Empresa.html#a97e9df65cb34566bf5a006922ad3779a">ClassLibrary.User.Empresa.CrearOferta</a></div><div class="ttdeci">Publicacion CrearOferta(Residuo residuo, double precioUnitario, string moneda, int cantidad, string lugarRetiro, string descripcion)</div><div class="ttdoc">Método creador y publicador de una publicación.</div><div class="ttdef"><b>Definition:</b> <a href="Empresa_8cs_source.html#l00096">Empresa.cs:96</a></div></div>
+<div class="ttc" id="aclassImporters_1_1DataAccess_html"><div class="ttname"><a href="classImporters_1_1DataAccess.html">Importers.DataAccess</a></div><div class="ttdoc">Clase que utilizará el bot para acceder a la base de datos.</div><div class="ttdef"><b>Definition:</b> <a href="DataAccess_8cs_source.html#l00015">DataAccess.cs:16</a></div></div>
+<div class="ttc" id="aclassImporters_1_1DataAccess_html_a8ea8dbff728176cea094a2a659c537cb"><div class="ttname"><a href="classImporters_1_1DataAccess.html#a8ea8dbff728176cea094a2a659c537cb">Importers.DataAccess.Instancia</a></div><div class="ttdeci">static DataAccess Instancia</div><div class="ttdoc">Obtiene acceso al singleton.</div><div class="ttdef"><b>Definition:</b> <a href="DataAccess_8cs_source.html#l00021">DataAccess.cs:22</a></div></div>
+<div class="ttc" id="anamespaceBotCore_1_1Publication_html"><div class="ttname"><a href="namespaceBotCore_1_1Publication.html">BotCore.Publication</a></div><div class="ttdef"><b>Definition:</b> <a href="Busqueda_8cs_source.html#l00016">Busqueda.cs:17</a></div></div>
+<div class="ttc" id="anamespaceClassLibrary_1_1Publication_html"><div class="ttname"><a href="namespaceClassLibrary_1_1Publication.html">ClassLibrary.Publication</a></div><div class="ttdef"><b>Definition:</b> <a href="Categoria_8cs_source.html#l00007">Categoria.cs:8</a></div></div>
+<div class="ttc" id="anamespaceClassLibrary_1_1User_html"><div class="ttname"><a href="namespaceClassLibrary_1_1User.html">ClassLibrary.User</a></div><div class="ttdef"><b>Definition:</b> <a href="DatosLogin_8cs_source.html#l00007">DatosLogin.cs:8</a></div></div>
+<div class="ttc" id="anamespaceClassLibrary_html"><div class="ttname"><a href="namespaceClassLibrary.html">ClassLibrary</a></div><div class="ttdef"><b>Definition:</b> <a href="Categoria_8cs_source.html#l00007">Categoria.cs:8</a></div></div>
+<div class="ttc" id="anamespaceImporters_html"><div class="ttname"><a href="namespaceImporters.html">Importers</a></div><div class="ttdef"><b>Definition:</b> <a href="DataAccess_8cs_source.html#l00009">DataAccess.cs:10</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_14b464adcdf1010f66e0da8096173e5b.html">BotCore</a></li><li class="navelem"><a class="el" href="dir_710affc7826fe18c717d9e23fe3ef223.html">Publications</a></li><li class="navelem"><b>Publicador.cs</b></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>
