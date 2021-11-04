@@ -2,6 +2,9 @@
 // <copyright file="Busqueda.cs" company="Universidad Católica del Uruguay">
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
+//
+// Patrón utilizado: Singleton.
+// Esta clase utiliza este patrón porque solo se necesita una instancia y almacena un estado. Además funciona como un Service Provider.
 //--------------------------------------------------------------------------------
 
 using System;
