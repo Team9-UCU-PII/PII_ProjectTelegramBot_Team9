@@ -20,8 +20,11 @@ namespace BotCore.Publication
     /// </summary>
     public class Busqueda
     {
+        private DataAccess da;
+
         private Busqueda()
         {
+            this.da = DataAccess.Instancia;
         }
         
         /// <summary>
@@ -44,6 +47,8 @@ namespace BotCore.Publication
 
             /// Filtro de de restock para publicaciones recurrentes.
             FrecuenciaRestock,
+
+            Categorias
         }
 
         /// <summary>
@@ -70,7 +75,7 @@ namespace BotCore.Publication
         /// </summary>
         /// <param name="publicacionesASeparar">Un diccionario de clave un miembro del enum de FiltrosPosibles y valor la especificacion deseada (string o int).</param>
         /// <returns>Una List de publicaciones que cumplen las condiciones de PublicacionesASeparar.</returns>
-        public static List<Publicacion> BuscarPublicaciones(Dictionary<FiltrosPosibles, object> publicacionesASeparar)
+        public List<Publicacion> BuscarPublicaciones(Dictionary<FiltrosPosibles, object> publicacionesASeparar)
         {
             if (publicacionesASeparar == null)
             {
@@ -79,12 +84,19 @@ namespace BotCore.Publication
 
             List<Publicacion> result = new List<Publicacion>();
             List<Publicacion> publicacionesNoAptas = new List<Publicacion>();
-            List<Publicacion> publicacionesActivas = DataAccess.Instancia.Obtener<Publicacion>().Where((Publicacion p) => !p.Comprado).ToList();
+            List<Publicacion> publicacionesActivas = da.Obtener<Publicacion>()
+                                                    .Concat(da.Obtener<PublicacionRecurrente>())
+                                                    .Where((Publicacion p) => !p.Comprado).ToList();
 
             foreach (var filtro in publicacionesASeparar)
             {
                 foreach (Publicacion suspect in publicacionesActivas)
                 {
+                    // Con el transcurso del curso, nos hemos dado cuenta de que este enfoque a través
+                    // de un diccionario y un switch es frágil. En retrospectiva, y con miras a implementarlo
+                    // para la entrega final, consideramos que podríamos crear varias clases que implementen
+                    // una interfaz común IFiltroBusqueda, de forma que cada filtro concreto implemente su
+                    // acción de filtro correspondiente.
                     switch (filtro.Key)
                     {
                         case FiltrosPosibles.Empresa:
@@ -116,11 +128,26 @@ namespace BotCore.Publication
 
                             break;
                         case FiltrosPosibles.FrecuenciaRestock:
-                            if (suspect is not PublicacionRecurrente || !(suspect as PublicacionRecurrente).FrecuenciaAnualRestock.Equals(filtro.Value))
+                            if ((int) filtro.Value == 0)
+                            {
+                                if (suspect is PublicacionRecurrente)
+                                {
+                                    publicacionesNoAptas.Add(suspect);
+                                }
+                            }
+                            else
+                            {
+                                if (suspect is not PublicacionRecurrente || (suspect as PublicacionRecurrente).FrecuenciaAnualRestock != (int) filtro.Value)
+                                {
+                                    publicacionesNoAptas.Add(suspect);
+                                }
+                            }
+                            break;
+                        case FiltrosPosibles.Categorias:
+                            if (suspect.Residuo.Categoria != filtro.Value)
                             {
                                 publicacionesNoAptas.Add(suspect);
                             }
-
                             break;
                         default:
                             break;
