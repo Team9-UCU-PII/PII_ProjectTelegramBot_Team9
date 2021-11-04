@@ -2,8 +2,9 @@
 // <copyright file="GestorInvitaciones.cs" company="Universidad Católica del Uruguay">
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
-
-// 
+//
+// Patron utilizado: Singleton.
+// Esta clase utiliza este patrón porque solo se necesita una instancia y almacena un estado.
 //--------------------------------------------------------------------------------
 
 using System.Collections.Generic;
@@ -44,8 +45,6 @@ namespace BotCore.User
         }
 
         private static GestorInvitaciones instancia { get; set; }
-
-        // Lo hago singleton porque solo se precisa una instancia y tiene que guardar un estado (los invites enviados)
 
         /// <summary>
         /// Obtiene o establece el gateway para enviar la invitación.

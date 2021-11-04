@@ -3,9 +3,10 @@
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //
-//Patrones utilizados: Creator y SRP
+//Patrones utilizados: Creator, SRP y singleton
 //Se le delega la tarea de Crear publicaciones para mejorar el SRP de EMpresa, ademas de darle
 //la capacidad de crear instancis de publicación (y recurrente).
+//Es singleton porque solo se necesita una instancia y almacena un estado.
 //--------------------------------------------------------------------------------
 
 using ClassLibrary.Publication;

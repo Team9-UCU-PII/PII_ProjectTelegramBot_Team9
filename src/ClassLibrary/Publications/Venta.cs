@@ -1,7 +1,10 @@
 //--------------------------------------------------------------------------------
 // <copyright file="Venta.cs" company="Universidad Católica del Uruguay">
 //     Copyright (c) Programación II. Derechos reservados.
-// </copyright>
+// </copyright> 
+//
+// Patrón utilizado: Low coupling.
+//Esta clase ayuda a vincular una Empresa y un Emprendedor con una publicación de por medio.
 //--------------------------------------------------------------------------------
 
 using ClassLibrary.User;
