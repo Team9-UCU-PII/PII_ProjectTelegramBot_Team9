@@ -2,6 +2,9 @@
 // <copyright file="RegistroUsuario.cs" company="Universidad Católica del Uruguay">
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
+//
+// Patrón utilizado: Creator.
+// Esta clase utiliza este patrón porque crea nuevos usuarios y los persiste en DataAccess.
 //--------------------------------------------------------------------------------
 
 using ClassLibrary.User;

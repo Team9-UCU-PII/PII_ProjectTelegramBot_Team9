@@ -2,6 +2,9 @@
 // <copyright file="Empresa.cs" company="Universidad Católica del Uruguay">
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
+
+// Patrón utilizado: Expert - SRP
+// Por SRP delega la tarea de crear publicación.
 //--------------------------------------------------------------------------------
 
 using ClassLibrary.Publication;

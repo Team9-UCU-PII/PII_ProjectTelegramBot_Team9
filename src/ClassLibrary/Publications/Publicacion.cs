@@ -2,6 +2,9 @@
 // <copyright file="Publicacion.cs" company="Universidad Católica del Uruguay">
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
+//
+// Patrón utilizado: Expert
+// Como la Publicación conoce Residuo y la cantidad, puede calcular el precio total.
 //--------------------------------------------------------------------------------
 
 using ClassLibrary.User;
