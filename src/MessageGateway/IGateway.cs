@@ -33,6 +33,12 @@ namespace MessageGateway
         /// <see langword = "string"/> identificador necesario para el envío de la invitación.
         /// </param>
         /// <param name="texto">La invitación como <see langword = "string"/>.</param>
-        void EnviarInvitacion(string destinatario, string texto);
+        void EnviarInvitacion(string texto);
+
+        /// <summary>
+        /// Propiedad que permite leer el mensaje recibido.
+        /// </summary>
+        /// <value><see langword ="string"/>.</value>
+        string MensajeRecibido { get; }
     }
 }
