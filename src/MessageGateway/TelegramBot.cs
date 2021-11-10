@@ -11,7 +11,7 @@ using Telegram.Bot.Types;
 
 namespace MessageGateway
 {
-    public class TelegramBot : IGateway
+    public class TelegramBot
     {
 
         private const string TELEBRAM_BOT_TOKEN = "2102638185:AAFldbGxD1_7x5sw93EyKy8hvsy5c2uQBtw";
@@ -65,20 +65,6 @@ namespace MessageGateway
                 }
                 return instancia;
             }
-        }
-        public string MensajeRecibido
-        {
-            get
-            {
-                string temp = ReceptorTelegram.getMensajes;
-                bot.StopReceiving();
-                return temp;
-            }
-        }
-
-        public void EnviarMensaje(string mensaje)
-        {
-            Cliente.SendTextMessageAsync(ReceptorTelegram.Chat.Id, mensaje);
         }
     }
 }

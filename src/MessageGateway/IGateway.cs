@@ -20,16 +20,14 @@ namespace MessageGateway
         /// <summary>
         /// Método de envío de mensaje.
         /// </summary>
-        /// <param name="destinatario">
         /// <see langword = "string"/> identificador necesario para el envío.
         /// </param>
         /// <param name="texto"><see langword = "string"/>: El mensaje en sí.</param>
-        void EnviarMensaje(string destinatario, string texto);
+        void EnviarMensaje(string texto);
 
         /// <summary>
         /// Método para enviar la invitacion a traves del medio.
         /// </summary>
-        /// <param name="destinatario">
         /// <see langword = "string"/> identificador necesario para el envío de la invitación.
         /// </param>
         /// <param name="texto">La invitación como <see langword = "string"/>.</param>
