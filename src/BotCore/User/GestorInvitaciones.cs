@@ -68,9 +68,9 @@ namespace BotCore.User
         {
             IUsuario user = new T();
             user.Nombre = nombreTemp;
-            Invitacion invite = new Invitacion(user, destinatario);
+            Invitacion invite = new Invitacion(user, destinatario, GatewayMensajes);
 
-            GatewayMensajes.EnviarInvitacion(invite.ArmarMensajeInvitacion());
+            GatewayMensajes.EnviarMensaje(invite.ArmarMensajeInvitacion());
 
             this.InvitacionesEnviadas.Add(invite);
         }
@@ -92,7 +92,6 @@ namespace BotCore.User
                 invite.Aceptar();
                 return invite;
             }
-
             else
             {
                 return null;

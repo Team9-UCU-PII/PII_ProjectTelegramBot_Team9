@@ -20,11 +20,12 @@ namespace BotCore.User
         /// </summary>
         /// <param name="organizacion">El <see iref = "IUsuario"/> temporal, generado previamente.</param>
         /// <param name="usuarioDestinatario">Username o Contacto objetivo.</param>
-        public Invitacion(IUsuario organizacion, string usuarioDestinatario)
+        /// <param name="bot">El bot que se esté usando.</param>
+        public Invitacion(IUsuario organizacion, string usuarioDestinatario, MessageGateway.IGateway bot)
         {
             this.OrganizacionInvitada = organizacion;
             this.Destinatario = usuarioDestinatario;
-            this.Link = Invitacion.GenerarEnlace();
+            this.Link = Invitacion.GenerarEnlace(bot);
             this.FueAceptada = false;
         }
 
@@ -37,6 +38,14 @@ namespace BotCore.User
         /// Via de comunicacion para que llegue la invitacion (numero, mail, etc).
         /// </summary>
         public string Destinatario { get; }
+
+        public string Token 
+        {
+            get
+            {
+                return this.token;
+            }
+        }
 
         /// <summary>
         /// Código generado para validar la invitación.
@@ -59,13 +68,13 @@ namespace BotCore.User
             StringBuilder mensaje = new StringBuilder();
             mensaje.AppendLine("Has sido invitado a unirte al chatbot de Telegram.");
             mensaje.AppendLine($"Link para unirte y registrarte: {this.Link}");
+            mensaje.AppendLine($"Tu token de invitación: {this.Token}");
             return mensaje.ToString();
         }
 
-        private static string GenerarEnlace()
+        private static string GenerarEnlace(MessageGateway.IGateway bot)
         {
-            string enlace = "enlace";
-            return enlace;
+            return bot.ObtenerLinkInvitacion;
         }
 
         /// <summary>
@@ -79,6 +88,15 @@ namespace BotCore.User
             }
 
             this.FueAceptada = true;
+        }
+
+        private string token { get; set; }
+        
+        private string GenerarToken()
+        {
+            string token = "token";
+            //aca va la logica para generar un token random.
+            return token;
         }
     }
 }

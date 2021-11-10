@@ -89,10 +89,12 @@ namespace MessageGateway
         /// <summary>
         /// Metodo de <see iref ="IGateway"/> que permite enviar una invitación, falta revisión.
         /// </summary>
-        /// <param name="invite"></param>
-        public void EnviarInvitacion(string invite)
+        public string ObtenerLinkInvitacion
         {
-            this.TelegramBot.Cliente.SendTextMessageAsync(this.Chat.Id, invite);
+            get
+            {
+                return ($"t.me/{TelegramBot.BotId}");
+            }
         }
 
         private async void OnMessage(object sender, MessageEventArgs messageEventArgs)
