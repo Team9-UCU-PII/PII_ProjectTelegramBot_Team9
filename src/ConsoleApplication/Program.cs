@@ -5,6 +5,7 @@
 //--------------------------------------------------------------------------------
 
 using System;
+using MessageGateway;
 
 namespace ConsoleApplication
 {
@@ -18,6 +19,16 @@ namespace ConsoleApplication
         /// </summary>
         public static void Main()
         {
+            Console.WriteLine("is on now");
+            while (true)
+            {
+                IGateway client = AdaptadorTelegram.Instancia;
+
+                if (client.MensajeRecibido == "mesi")
+                {
+                    client.EnviarMensaje("dou");
+                }
+            }
         }
     }
 }
