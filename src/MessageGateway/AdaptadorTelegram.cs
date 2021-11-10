@@ -23,6 +23,12 @@ namespace MessageGateway
         private static AdaptadorTelegram instancia { get; set; }
         private string UltimoMensaje { get; set; }
 
+        private bool msgYaLeido;
+
+        /// <summary>
+        /// Obitene acceso a la instancia del singleton de Adaptador.
+        /// </summary>
+        /// <value><see cref ="AdaptadorTelegram"/>.</value>
         public static AdaptadorTelegram Instancia
         {
             get
@@ -34,7 +40,15 @@ namespace MessageGateway
                 return instancia;
             }
         }
+
+        /// <summary>
+        /// Atributo que contiene la info del chat.
+        /// </summary>
         public Chat Chat;
+
+        /// <summary>
+        /// Atributo que instancia el bot.
+        /// </summary>
         public TelegramBot TelegramBot  = TelegramBot.Instancia;
         private AdaptadorTelegram()
         {
@@ -46,21 +60,39 @@ namespace MessageGateway
             this.TelegramBot.Cliente.StartReceiving();
         }
 
+        /// <summary>
+        /// Metodo de la interfaz <see iref ="IGateway"/>, envia un string como mensaje.
+        /// </summary>
+        /// <param name="mensaje"><see langword ="string"/>.</param>
         public void EnviarMensaje (string mensaje)
         {
             this.TelegramBot.Cliente.SendTextMessageAsync(this.Chat.Id, mensaje);
         }
 
+        /// <summary>
+        /// Obtiene el ultimo mensaje recibido, se puede acceder una sola vez.
+        /// </summary>
+        /// <value><see langword ="string"/>.</value>
         public string MensajeRecibido
         {
             get
             {
-                if (UltimoMensaje != null)
+                if (UltimoMensaje != null && msgYaLeido == false)
                 {
+                    msgYaLeido = true;
                     return UltimoMensaje;
                 }
                 return "";
             }
+        }
+
+        /// <summary>
+        /// Metodo de <see iref ="IGateway"/> que permite enviar una invitación, falta revisión.
+        /// </summary>
+        /// <param name="invite"></param>
+        public void EnviarInvitacion(string invite)
+        {
+            this.TelegramBot.Cliente.SendTextMessageAsync(this.Chat.Id, invite);
         }
 
         private async void OnMessage(object sender, MessageEventArgs messageEventArgs)
@@ -69,6 +101,7 @@ namespace MessageGateway
             Chat chatInfo = message.Chat;
             this.Chat = chatInfo;
             this.UltimoMensaje = message.Text.ToLower();
+            msgYaLeido = false;
         }
     }
 }

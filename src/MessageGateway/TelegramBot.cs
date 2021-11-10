@@ -11,6 +11,10 @@ using Telegram.Bot.Types;
 
 namespace MessageGateway
 {
+    /// <summary>
+    /// Esta clase representa el bot en si y su cliente, accede a los handlers a traves de
+    /// un adaptador que implementa <see iref ="IGateway"/>.
+    /// </summary>
     public class TelegramBot
     {
 
@@ -23,6 +27,10 @@ namespace MessageGateway
             this.bot = new TelegramBotClient(TELEBRAM_BOT_TOKEN);
         }
 
+        /// <summary>
+        /// Obtiene el cliente del bot.
+        /// </summary>
+        /// <value>ITelegramBotClient</value>
         public ITelegramBotClient Cliente
         {
             get
@@ -39,6 +47,10 @@ namespace MessageGateway
             }
         }
 
+        /// <summary>
+        /// Obtiene el id del bot, un numero identificador único.
+        /// </summary>
+        /// <value><see langword ="long"/>.</value>
         public long BotId
         {
             get
@@ -47,6 +59,10 @@ namespace MessageGateway
             }
         }
 
+        /// <summary>
+        /// Obtiene el nombre del bot.
+        /// </summary>
+        /// <value><see langword ="string"/>.</value>
         public string BotName
         {
             get
@@ -55,6 +71,10 @@ namespace MessageGateway
             }
         }
 
+        /// <summary>
+        /// Obtiene acceso al singleton del Bot.
+        /// </summary>
+        /// <value><see cref ="TelegramBot"/>.</value>
         public static TelegramBot Instancia
         {
             get
