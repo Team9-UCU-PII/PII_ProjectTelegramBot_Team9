@@ -24,7 +24,7 @@ namespace BotCore.User
     {
         private GestorInvitaciones()
         {
-            this.GatewayMensajes = TelegramService.Instancia;
+            this.GatewayMensajes = IGateway.Instancia;
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace BotCore.User
             user.Nombre = nombreTemp;
             Invitacion invite = new Invitacion(user, destinatario);
 
-            GatewayMensajes.EnviarInvitacion(destinatario, invite.ArmarMensajeInvitacion());
+            GatewayMensajes.EnviarInvitacion(invite.ArmarMensajeInvitacion());
 
             this.InvitacionesEnviadas.Add(invite);
         }
