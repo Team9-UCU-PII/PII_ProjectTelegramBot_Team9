@@ -26,6 +26,7 @@ namespace BotCore.User
             this.OrganizacionInvitada = organizacion;
             this.Destinatario = usuarioDestinatario;
             this.Link = Invitacion.GenerarEnlace(bot);
+            this.token = GenerarToken();
             this.FueAceptada = false;
         }
 
@@ -35,10 +36,14 @@ namespace BotCore.User
         public IUsuario OrganizacionInvitada { get; }
 
         /// <summary>
-        /// Via de comunicacion para que llegue la invitacion (numero, mail, etc).
+        /// Obtiene string que permite identificar al que se invitó.
         /// </summary>
         public string Destinatario { get; }
 
+        /// <summary>
+        /// Este token unico identifica la invitación de las demas.
+        /// </summary>
+        /// <value><see langword ="string"/>.</value>
         public string Token 
         {
             get
@@ -94,9 +99,14 @@ namespace BotCore.User
         
         private string GenerarToken()
         {
-            string token = "token";
-            //aca va la logica para generar un token random.
-            return token;
+            Random random = new Random();
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i<=9 ; i++)
+            {
+                sb.Append(random.Next(10));
+            }
+
+            return sb.ToString();
         }
     }
 }

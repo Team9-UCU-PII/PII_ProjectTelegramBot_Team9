@@ -80,12 +80,12 @@ namespace BotCore.User
         /// externamente por <see cref = "MessageGateway"/>.
         /// </summary>
         /// <param name="usuarioAceptante"><see langword = "string"/>.</param>
-        /// <param name="enlace"><see langword = "string"/>.</param>
+        /// <param name="token"><see langword = "string"/>.</param>
         /// <returns><see cref = "Invitacion"/>.</returns>
-        public Invitacion ValidarInvitacion(string usuarioAceptante, string enlace) 
+        public Invitacion ValidarInvitacion(string usuarioAceptante, string token) 
         {
             Invitacion invite = this.InvitacionesEnviadas.Where(
-                (Invitacion i) => i.Destinatario == usuarioAceptante && i.Link == enlace && !i.FueAceptada
+                (Invitacion i) => i.Destinatario == usuarioAceptante && i.Token == token && !i.FueAceptada
             ).SingleOrDefault();
             if (invite != null)
             {
