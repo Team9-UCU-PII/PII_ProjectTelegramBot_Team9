@@ -72,8 +72,9 @@ namespace BotCore.User
         {
             StringBuilder mensaje = new StringBuilder();
             mensaje.AppendLine("Has sido invitado a unirte al chatbot de Telegram.");
-            mensaje.AppendLine($"Link para unirte y registrarte: {this.Link}");
             mensaje.AppendLine($"Tu token de invitación: {this.Token}");
+            mensaje.AppendLine($"Link para unirte y registrarte: {this.Link}");
+            mensaje.AppendLine($"¡Entra al link y di Hola!");
             return mensaje.ToString();
         }
 
