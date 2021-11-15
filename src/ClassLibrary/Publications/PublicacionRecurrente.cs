@@ -24,8 +24,8 @@ namespace ClassLibrary.Publication
     /// <param name="vendedor"><see cref = "Empresa"/>.</param>
     /// <param name="frecuenciaAnualRestock"><see langword = "int"/>.</param>
     /// <param name="descripcion"><see langword = "string"/>.</param>
-    public PublicacionRecurrente(Residuo residuo, double precioUnitario, string moneda, int cantidad, string lugarRetiro, Empresa vendedor, int frecuenciaAnualRestock, string descripcion)
-      : base(residuo, precioUnitario, moneda, cantidad, lugarRetiro, vendedor, descripcion)
+    public PublicacionRecurrente(Residuo residuo, double precioUnitario, string moneda, int cantidad, string lugarRetiro, Empresa vendedor, int frecuenciaAnualRestock, string descripcion, Categoria categoria)
+      : base(residuo, precioUnitario, moneda, cantidad, lugarRetiro, vendedor, descripcion, categoria)
     {
       this.FrecuenciaAnualRestock = frecuenciaAnualRestock;
     }
