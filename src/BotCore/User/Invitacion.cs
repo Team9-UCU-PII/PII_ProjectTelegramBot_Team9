@@ -20,11 +20,13 @@ namespace BotCore.User
         /// </summary>
         /// <param name="organizacion">El <see iref = "IUsuario"/> temporal, generado previamente.</param>
         /// <param name="usuarioDestinatario">Username o Contacto objetivo.</param>
-        public Invitacion(IUsuario organizacion, string usuarioDestinatario)
+        /// <param name="bot">El bot que se esté usando.</param>
+        public Invitacion(IUsuario organizacion, string usuarioDestinatario, MessageGateway.IGateway bot)
         {
             this.OrganizacionInvitada = organizacion;
             this.Destinatario = usuarioDestinatario;
-            this.Link = Invitacion.GenerarEnlace();
+            this.Link = Invitacion.GenerarEnlace(bot);
+            this.token = GenerarToken();
             this.FueAceptada = false;
         }
 
@@ -34,9 +36,21 @@ namespace BotCore.User
         public IUsuario OrganizacionInvitada { get; }
 
         /// <summary>
-        /// Via de comunicacion para que llegue la invitacion (numero, mail, etc).
+        /// Obtiene string que permite identificar al que se invitó.
         /// </summary>
         public string Destinatario { get; }
+
+        /// <summary>
+        /// Este token unico identifica la invitación de las demas.
+        /// </summary>
+        /// <value><see langword ="string"/>.</value>
+        public string Token 
+        {
+            get
+            {
+                return this.token;
+            }
+        }
 
         /// <summary>
         /// Código generado para validar la invitación.
@@ -58,14 +72,15 @@ namespace BotCore.User
         {
             StringBuilder mensaje = new StringBuilder();
             mensaje.AppendLine("Has sido invitado a unirte al chatbot de Telegram.");
+            mensaje.AppendLine($"Tu token de invitación: {this.Token}");
             mensaje.AppendLine($"Link para unirte y registrarte: {this.Link}");
+            mensaje.AppendLine($"¡Entra al link y di Hola!");
             return mensaje.ToString();
         }
 
-        private static string GenerarEnlace()
+        private static string GenerarEnlace(MessageGateway.IGateway bot)
         {
-            string enlace = "enlace";
-            return enlace;
+            return bot.ObtenerLinkInvitacion;
         }
 
         /// <summary>
@@ -79,6 +94,20 @@ namespace BotCore.User
             }
 
             this.FueAceptada = true;
+        }
+
+        private string token { get; set; }
+        
+        private string GenerarToken()
+        {
+            Random random = new Random();
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i<=9 ; i++)
+            {
+                sb.Append(random.Next(10));
+            }
+
+            return sb.ToString();
         }
     }
 }
