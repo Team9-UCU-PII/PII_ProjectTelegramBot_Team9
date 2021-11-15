@@ -63,16 +63,15 @@ namespace BotCore.User
         /// <param name="destinatario">El contacto objetivo (username).</param>
         /// <param name="nombreTemp">Nombre placeholder para el IUsuario, el destinatario lo sobreescribirá luego.</param>
         /// <typeparam name="T"></typeparam>
-        public void EnviarInvitacion<T>(string destinatario, string nombreTemp)
+        public void AlmacenarInvitacion<T>(string destinatario, string nombreTemp)
         where T : IUsuario, new()
         {
             IUsuario user = new T();
             user.Nombre = nombreTemp;
             Invitacion invite = new Invitacion(user, destinatario, GatewayMensajes);
-
-            GatewayMensajes.EnviarMensaje(invite.ArmarMensajeInvitacion());
-
             this.InvitacionesEnviadas.Add(invite);
+
+            GatewayMensajes.EnviarMensaje(GatewayMensajes.MensajeRecibido.CrearRespuesta(invite.ArmarMensajeInvitacion())); 
         }
 
         /// <summary>

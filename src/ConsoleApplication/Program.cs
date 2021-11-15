@@ -27,7 +27,7 @@ namespace ConsoleApplication
 
                 if (lastMSG.TxtMensaje == "mesi")
                 {
-                    client.EnviarMensaje(lastMSG.ResponderMensaje("dou"));
+                    client.EnviarMensaje(lastMSG.CrearRespuesta("dou"));
                 }
             }
         }

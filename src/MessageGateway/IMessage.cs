@@ -12,6 +12,6 @@ namespace MessageGateway
 
         string TxtMensaje { get; }
 
-        IMessage ResponderMensaje(string txt);
+        IMessage CrearRespuesta(string txt);
     }
 }

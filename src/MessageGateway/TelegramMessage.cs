@@ -25,7 +25,7 @@ namespace MessageGateway
             this.TxtMensaje = newTxt;
         }
 
-        public IMessage ResponderMensaje(string txt)
+        public IMessage CrearRespuesta(string txt)
         {
             return new TelegramMessage(txt);
         }
