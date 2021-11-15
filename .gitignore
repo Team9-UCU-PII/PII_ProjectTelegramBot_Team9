@@ -609,3 +609,5 @@ lcov.info
 # Documents
 .vscode/launch.json
 .vscode/tasks.json
+src/BotCore/BotCore.xml
+src/ClassLibrary/ClassLibrary.xml
