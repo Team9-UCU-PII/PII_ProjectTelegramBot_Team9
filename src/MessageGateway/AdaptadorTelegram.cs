@@ -21,9 +21,7 @@ namespace MessageGateway
     public class AdaptadorTelegram : IGateway
     {
         private static AdaptadorTelegram instancia { get; set; }
-        private string UltimoMensaje { get; set; }
-
-        private bool msgYaLeido;
+        private IMessage UltimoMensaje { get; set; }
 
         /// <summary>
         /// Obitene acceso a la instancia del singleton de Adaptador.
@@ -40,11 +38,6 @@ namespace MessageGateway
                 return instancia;
             }
         }
-
-        /// <summary>
-        /// Atributo que contiene la info del chat.
-        /// </summary>
-        public Chat Chat;
 
         /// <summary>
         /// Atributo que instancia el bot.
@@ -64,25 +57,24 @@ namespace MessageGateway
         /// Metodo de la interfaz <see iref ="IGateway"/>, envia un string como mensaje.
         /// </summary>
         /// <param name="mensaje"><see langword ="string"/>.</param>
-        public void EnviarMensaje (string mensaje)
+        public void EnviarMensaje (IMessage mensaje)
         {
-            this.TelegramBot.Cliente.SendTextMessageAsync(this.Chat.Id, mensaje);
+            this.TelegramBot.Cliente.SendTextMessageAsync(mensaje.ChatID, mensaje.TxtMensaje);
         }
 
         /// <summary>
         /// Obtiene el ultimo mensaje recibido, se puede acceder una sola vez.
         /// </summary>
         /// <value><see langword ="string"/>.</value>
-        public string MensajeRecibido
+        public IMessage MensajeRecibido
         {
             get
             {
-                if (UltimoMensaje != null && msgYaLeido == false)
+                if (UltimoMensaje != null)
                 {
-                    msgYaLeido = true;
                     return UltimoMensaje;
                 }
-                return "";
+                throw new Exception("Error recibir mensaje.");
             }
         }
 
@@ -100,10 +92,7 @@ namespace MessageGateway
         private async void OnMessage(object sender, MessageEventArgs messageEventArgs)
         {
             Message message = messageEventArgs.Message;
-            Chat chatInfo = message.Chat;
-            this.Chat = chatInfo;
-            this.UltimoMensaje = message.Text.ToLower();
-            msgYaLeido = false;
+            this.UltimoMensaje = new TelegramMessage(message);
         }
     }
 }

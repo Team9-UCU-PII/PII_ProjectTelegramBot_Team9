@@ -18,13 +18,13 @@ namespace MessageGateway
     public class TelegramBot
     {
 
-        private const string TELEBRAM_BOT_TOKEN = "2102638185:AAFldbGxD1_7x5sw93EyKy8hvsy5c2uQBtw";
+        private const string TELEGRAM_BOT_TOKEN = "2102638185:AAFldbGxD1_7x5sw93EyKy8hvsy5c2uQBtw";
         private static TelegramBot instancia;
         private ITelegramBotClient bot;
 
         private TelegramBot()
         {
-            this.bot = new TelegramBotClient(TELEBRAM_BOT_TOKEN);
+            this.bot = new TelegramBotClient(TELEGRAM_BOT_TOKEN);
         }
 
         /// <summary>

@@ -23,10 +23,11 @@ namespace ConsoleApplication
             while (true)
             {
                 IGateway client = AdaptadorTelegram.Instancia;
+                IMessage lastMSG = client.MensajeRecibido;
 
-                if (client.MensajeRecibido == "mesi")
+                if (lastMSG.TxtMensaje == "mesi")
                 {
-                    client.EnviarMensaje("dou");
+                    client.EnviarMensaje(lastMSG.ResponderMensaje("dou"));
                 }
             }
         }

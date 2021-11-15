@@ -21,7 +21,7 @@ namespace MessageGateway
         /// Método de envío de mensaje.
         /// </summary>
         /// <param name="texto"><see langword = "string"/>: El mensaje en sí.</param>
-        void EnviarMensaje(string texto);
+        void EnviarMensaje(IMessage texto);
 
         /// <summary>
         /// Método para generar la invitacion a traves del medio.
@@ -32,6 +32,6 @@ namespace MessageGateway
         /// Propiedad que permite leer el mensaje recibido.
         /// </summary>
         /// <value><see langword ="string"/>.</value>
-        string MensajeRecibido { get; }
+        IMessage MensajeRecibido { get; }
     }
 }
