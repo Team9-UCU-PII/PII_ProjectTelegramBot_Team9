@@ -610,4 +610,4 @@ lcov.info
 .vscode/launch.json
 .vscode/tasks.json
 docs/xml/ BotCore.xml
-.gitignore
+
