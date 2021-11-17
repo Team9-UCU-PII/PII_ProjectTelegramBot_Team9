@@ -26,7 +26,7 @@ namespace MessageGateway
     {
       if (this.PuedeProcesarHandler(mensaje))
       {
-        respuesta = $"¡Hola! {mensaje.From.FirstName}";
+        respuesta = "¡Hola!"; //{mensaje.From.FirstName}
         return true;
       }
 

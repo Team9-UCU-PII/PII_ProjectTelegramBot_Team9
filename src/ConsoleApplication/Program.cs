@@ -17,16 +17,32 @@ namespace ConsoleApplication
     /// <summary>
     /// Metodo inicializador de programa.
     /// </summary>
-    
+
     private static IHandler primerHandler;
+    /// <summary>
+    /// Metodo inicializador de programa.
+    /// </summary>
     public static void Main()
     {
-        primerHandler =
-          new HolaHandler(
-            new MenuHandler(
+      Console.WriteLine("is on now");
+      while (true)
+      {
+        IGateway client = AdaptadorTelegram.Instancia;
+        IMessage lastMSG = client.MensajeRecibido;
 
-            )
-          );
+        if (lastMSG.TxtMensaje == "mesi")
+        {
+          client.EnviarMensaje(lastMSG.CrearRespuesta("dou"));
+        }
+      }
+
+      /*primerHandler =
+        new HolaHandler(
+          new MenuHandler(
+
+          )
+        );*/
     }
   }
+}
 }
