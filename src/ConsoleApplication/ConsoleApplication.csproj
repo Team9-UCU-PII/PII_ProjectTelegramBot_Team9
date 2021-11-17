@@ -24,6 +24,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BotCore\BotCore.csproj" />
+    <ProjectReference Include="..\MessageGateway\MessageGateway.csproj" />
   </ItemGroup>
 
 </Project>
