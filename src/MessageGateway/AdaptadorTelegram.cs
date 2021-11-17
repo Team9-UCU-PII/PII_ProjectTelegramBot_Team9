@@ -92,7 +92,7 @@ namespace MessageGateway
         private async void OnMessage(object sender, MessageEventArgs messageEventArgs)
         {
             Message message = messageEventArgs.Message;
-            this.UltimoMensaje = new TelegramMessage(message);
+            this.UltimoMensaje = new TelegramMessageAdapter(message);
         }
     }
 }
