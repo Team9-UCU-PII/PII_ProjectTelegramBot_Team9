@@ -54,7 +54,8 @@ namespace BotCore.Publication
         /// <param name="lugarRetiro"><see langword = "string"/>.</param>
         /// <param name="vendedor"><see cref = "Empresa"/>.</param>
         /// <param name="descripcion"><see langword = "string"/>.</param>
-        public void PublicarOferta(Residuo residuo, double precioUnitario, string moneda, int cantidad, string lugarRetiro, Empresa vendedor, string descripcion)
+        /// <param name="categoria"><see langword = "string"/>.</param>
+        public void PublicarOferta(Residuo residuo, double precioUnitario, string moneda, int cantidad, string lugarRetiro, Empresa vendedor, string descripcion, Categoria categoria)
         {
             da.Insertar(vendedor.CrearOferta(
                 residuo,
@@ -62,7 +63,8 @@ namespace BotCore.Publication
                 moneda,
                 cantidad,
                 lugarRetiro,
-                descripcion
+                descripcion,
+                categoria
             ));
         }
 
@@ -76,8 +78,9 @@ namespace BotCore.Publication
         /// <param name="lugarRetiro"><see langword = "string"/>.</param>
         /// <param name="vendedor"><see cref = "Empresa"/>.</param>
         /// <param name="descripcion"><see langword = "string"/>.</param>
+        /// <param name="categoria"><see langword = "string"/>.</param>
         /// <param name="frecuenciaAnualRestock"><see langword = "int"/>.</param>
-        public void PublicarOfertaRecurrente(Residuo residuo, double precioUnitario, string moneda, int cantidad, string lugarRetiro, Empresa vendedor, string descripcion, int frecuenciaAnualRestock)
+        public void PublicarOfertaRecurrente(Residuo residuo, double precioUnitario, string moneda, int cantidad, string lugarRetiro, Empresa vendedor, string descripcion, Categoria categoria, int frecuenciaAnualRestock)
         {
             da.Insertar(vendedor.CrearOfertaRecurrente(
                 residuo,
@@ -86,6 +89,7 @@ namespace BotCore.Publication
                 cantidad,
                 lugarRetiro,
                 descripcion,
+                categoria,
                 frecuenciaAnualRestock
             ));
         }
