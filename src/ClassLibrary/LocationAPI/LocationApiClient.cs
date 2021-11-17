@@ -28,6 +28,10 @@ namespace ClassLibrary.LocationAPI
 
         private bool disposedValue;
 
+        private LocationApiClient(){}
+
+        private LocationApiClient instancia;
+
         private static string DistanceUrl
         {
             get
@@ -57,6 +61,22 @@ namespace ClassLibrary.LocationAPI
             get
             {
                 return BaseUrl + "/route";
+            }
+        }
+
+        /// <summary>
+        /// Obitene acceso al singleton de la api.
+        /// </summary>
+        /// <value><see cref = "LocationApiClient"/>.</value>
+        public LocationApiClient Instancia
+        {
+            get
+            {
+                if (this.instancia == null)
+                {
+                    this.instancia = new LocationApiClient();
+                }
+                return this.instancia;
             }
         }
 
