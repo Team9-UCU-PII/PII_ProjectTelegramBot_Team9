@@ -5,19 +5,28 @@
 //--------------------------------------------------------------------------------
 
 using System;
+using MessageGateway;
 
 namespace ConsoleApplication
 {
+  /// <summary>
+  /// Ejecucion inicial y principal del bot.
+  /// </summary>
+  public static class Program
+  {
     /// <summary>
-    /// Ejecucion inicial y principal del bot.
+    /// Metodo inicializador de programa.
     /// </summary>
-    public static class Program
+    
+    private static IHandler primerHandler;
+    public static void Main()
     {
-        /// <summary>
-        /// Metodo inicializador de programa.
-        /// </summary>
-        public static void Main()
-        {
-        }
+        primerHandler =
+          new HolaHandler(
+            new MenuHandler(
+
+            )
+          );
     }
+  }
 }
