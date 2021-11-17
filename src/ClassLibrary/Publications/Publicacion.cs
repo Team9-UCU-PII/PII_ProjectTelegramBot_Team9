@@ -27,7 +27,8 @@ namespace ClassLibrary.Publication
     /// <param name="lugarRetiro"><see langword = "string"/>.</param>
     /// <param name="vendedor"><see cref = "Empresa"/>.</param>
     /// <param name="descripcion"><see langword = "string"/>.</param>
-    public Publicacion(Residuo residuo, double precioUnitario, string moneda, int cantidad, string lugarRetiro, Empresa vendedor, string descripcion)
+    /// <param name="categoria"><see langword = "string"/>.</param>
+    public Publicacion(Residuo residuo, double precioUnitario, string moneda, int cantidad, string lugarRetiro, Empresa vendedor, string descripcion, Categoria categoria)
     {
       this.Residuo = residuo;
       this.PrecioUnitario = precioUnitario;
@@ -36,6 +37,7 @@ namespace ClassLibrary.Publication
       this.LugarRetiro = lugarRetiro;
       this.Vendedor = vendedor;
       this.Descripcion = descripcion;
+      this.Categoria = categoria;
       this.Comprado = false;
     }
 
@@ -80,6 +82,12 @@ namespace ClassLibrary.Publication
     /// </summary>
     /// <value><see langword="string"/>.</value>
     public string Descripcion{ get; set; }
+
+    /// <summary>
+    /// Obtiene o establece la <see cref ="Categoria"/> publicado.
+    /// </summary>
+    /// <value><see cref = "Categoria"/>.</value>
+    public Categoria Categoria { get; set; }
 
     /// <summary>
     /// Obtiene o establece si la publicacion ya se compró.
