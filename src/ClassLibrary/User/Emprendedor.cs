@@ -8,6 +8,7 @@
 //--------------------------------------------------------------------------------
 
 using ClassLibrary.Publication;
+using ClassLibrary.LocationAPI;
 using System.Collections.Generic;
 
 namespace ClassLibrary.User
@@ -26,7 +27,7 @@ namespace ClassLibrary.User
         /// <summary>
         /// Localizacion del local o residencia del emprendedor.
         /// </summary>
-        public string Lugar;
+        public Location Lugar;
 
         /// <summary>
         /// Rubro general del emprendedor.
@@ -64,7 +65,7 @@ namespace ClassLibrary.User
         public Emprendedor(string nombre, string lugar, string rubro, string especializacion, List<Habilitacion> habilitaciones)
         {
             this.Nombre = nombre;
-            this.Lugar = lugar;
+            this.Lugar = LocationApiClient.Instancia.GetLocation(lugar);
             this.Rubro = rubro;
             this.Especializacion = especializacion;
             this.Habilitaciones = habilitaciones;

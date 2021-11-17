@@ -8,6 +8,7 @@
 //--------------------------------------------------------------------------------
 
 using ClassLibrary.Publication;
+using ClassLibrary.LocationAPI;
 using System.Collections.Generic;
 
 namespace ClassLibrary.User
@@ -26,7 +27,7 @@ namespace ClassLibrary.User
         /// <summary>
         /// Local o zona donde se realizaría retiro.
         /// </summary>
-        public string Lugar;
+        public Location Lugar;
 
         /// <summary>
         /// Rubro de la empresa.
@@ -70,7 +71,7 @@ namespace ClassLibrary.User
         public Empresa(string nombre, string lugar, string rubro, string descripcion, string contacto)
         {
             this.Nombre = nombre;
-            this.Lugar = lugar;
+            this.Lugar = LocationApiClient.Instancia.GetLocation(lugar);
             this.Rubro = rubro;
             this.Descripcion = descripcion;
             this.Contacto = contacto;
