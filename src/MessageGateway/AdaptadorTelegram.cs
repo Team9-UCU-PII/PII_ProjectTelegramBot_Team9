@@ -65,7 +65,7 @@ namespace MessageGateway
         /// <summary>
         /// Obtiene el ultimo mensaje recibido, se puede acceder una sola vez.
         /// </summary>
-        /// <value><see langword ="string"/>.</value>
+        /// <value><see iref ="IMessage"/>.</value>
         public IMessage MensajeRecibido
         {
             get
@@ -74,7 +74,7 @@ namespace MessageGateway
                 {
                     return UltimoMensaje;
                 }
-                throw new Exception("Error recibir mensaje.");
+                throw new Exception();
             }
         }
 
@@ -87,6 +87,14 @@ namespace MessageGateway
             {
                 return ($"t.me/{TelegramBot.BotId}");
             }
+        }
+
+        /// <summary>
+        /// Método que envía una foto al usuario.
+        /// </summary>
+        public void EnviarUbicacionEnMapa(IMessage mensaje, float latitud, float longitud)
+        {
+            this.TelegramBot.Cliente.SendLocationAsync(mensaje.ChatID, latitud, longitud);
         }
 
         private async void OnMessage(object sender, MessageEventArgs messageEventArgs)
