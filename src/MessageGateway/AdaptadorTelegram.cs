@@ -63,23 +63,20 @@ namespace MessageGateway
         }
 
         /// <summary>
-        /// Obtiene el ultimo mensaje recibido, se puede acceder una sola vez.
+        /// Obtiene el ultimo mensaje recibido.
         /// </summary>
         /// <value><see iref ="IMessage"/>.</value>
         public IMessage MensajeRecibido
         {
             get
             {
-                if (UltimoMensaje != null)
-                {
-                    return UltimoMensaje;
-                }
-                throw new Exception();
+                while (UltimoMensaje == null){}
+                return UltimoMensaje;
             }
         }
 
         /// <summary>
-        /// Metodo de <see iref ="IGateway"/> que permite enviar una invitación, falta revisión.
+        /// Obtiene el link pertinente para hablar con el bot.
         /// </summary>
         public string ObtenerLinkInvitacion
         {
@@ -90,7 +87,7 @@ namespace MessageGateway
         }
 
         /// <summary>
-        /// Método que envía una foto al usuario.
+        /// Método que envía una ubicacion al usuario.
         /// </summary>
         public void EnviarUbicacionEnMapa(IMessage mensaje, float latitud, float longitud)
         {
