@@ -11,7 +11,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System;
 using ClassLibrary.User;
-using MessageGateway;
 
 namespace BotCore.User
 {
@@ -24,7 +23,6 @@ namespace BotCore.User
     {
         private GestorInvitaciones()
         {
-            this.GatewayMensajes = IGateway.Instancia;
         }
 
         /// <summary>
@@ -47,12 +45,6 @@ namespace BotCore.User
         private static GestorInvitaciones instancia { get; set; }
 
         /// <summary>
-        /// Obtiene o establece el gateway para enviar la invitación.
-        /// </summary>
-        /// <value>Por Defecto: TelegramService. Se puede establecer cualquier <see iref = "IGateway"/>.</value>
-        public IGateway GatewayMensajes { get; set; }
-
-        /// <summary>
         /// Lista donde se almacenan las invitaciones enviadas para mantener un registro.
         /// </summary>
         public List<Invitacion> InvitacionesEnviadas = new List<Invitacion>();
@@ -63,37 +55,34 @@ namespace BotCore.User
         /// <param name="destinatario">El contacto objetivo (username).</param>
         /// <param name="nombreTemp">Nombre placeholder para el IUsuario, el destinatario lo sobreescribirá luego.</param>
         /// <typeparam name="T"></typeparam>
-        public void AlmacenarInvitacion<T>(string destinatario, string nombreTemp)
+        public void AlmacenarInvitacion<T>(string nombreTempUsuario)
         where T : IUsuario, new()
         {
             IUsuario user = new T();
-            user.Nombre = nombreTemp;
-            Invitacion invite = new Invitacion(user, destinatario, GatewayMensajes);
+            user.Nombre = nombreTempUsuario;
+            Invitacion invite = new Invitacion(user);
             this.InvitacionesEnviadas.Add(invite);
-
-            GatewayMensajes.EnviarMensaje(GatewayMensajes.MensajeRecibido.CrearRespuesta(invite.ArmarMensajeInvitacion())); 
         }
 
         /// <summary>
         /// Metodo utilizado para validar que la invitación fue aceptada. Es utilizado
         /// externamente por <see cref = "MessageGateway"/>.
         /// </summary>
-        /// <param name="usuarioAceptante"><see langword = "string"/>.</param>
         /// <param name="token"><see langword = "string"/>.</param>
         /// <returns><see cref = "Invitacion"/>.</returns>
-        public Invitacion ValidarInvitacion(string usuarioAceptante, string token) 
+        public bool ValidarInvitacion(string token, out Invitacion invite) 
         {
-            Invitacion invite = this.InvitacionesEnviadas.Where(
-                (Invitacion i) => i.Destinatario == usuarioAceptante && i.Token == token && !i.FueAceptada
+            invite = this.InvitacionesEnviadas.Where(
+                i => i.Token == token && !i.FueAceptada
             ).SingleOrDefault();
             if (invite != null)
             {
                 invite.Aceptar();
-                return invite;
+                return true;
             }
             else
             {
-                return null;
+                return false;
             }
         }
     }
