@@ -34,12 +34,6 @@ namespace MessageGateway
         /// </summary>
         string ObtenerLinkInvitacion { get; }
 
-        /// <summary>
-        /// Propiedad que permite leer el mensaje recibido.
-        /// </summary>
-        /// <value><see langword ="string"/>.</value>
-        IMessage MensajeRecibido { get; }
-
         void Start();
 
         IFormulario CurrentForm { get; set; }

@@ -68,19 +68,6 @@ namespace MessageGateway
         }
 
         /// <summary>
-        /// Obtiene el ultimo mensaje recibido.
-        /// </summary>
-        /// <value><see iref ="IMessage"/>.</value>
-        public IMessage MensajeRecibido
-        {
-            get
-            {
-                while (UltimoMensaje == null){}
-                return UltimoMensaje;
-            }
-        }
-
-        /// <summary>
         /// Obtiene el link pertinente para hablar con el bot.
         /// </summary>
         public string ObtenerLinkInvitacion
@@ -122,8 +109,6 @@ namespace MessageGateway
             while (frmPrevioMensaje != frmPostMensaje);
 
             await this.TelegramBot.Cliente.SendTextMessageAsync(adaptedMessage.ChatID, respuesta);
-
-            this.UltimoMensaje = null;
         }
     }
 }
