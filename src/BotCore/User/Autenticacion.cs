@@ -50,26 +50,20 @@ namespace BotCore.User
 /// <param name="contrasenia"></param>
 /// <returns><c>true</c> si nombreUsuario y contrasenia están viculados en
 /// <see cref = "DatosLogin"/> en la base de datos.</returns>
-        public static bool ValidarUsuario(string nombreUsuario, string contrasenia)
+        public static bool ValidarUsuario(string nombreUsuario, string contrasenia, out IUsuario organizacion)
         {
+            organizacion = null;
             foreach (DatosLogin datos in DataAccess.Instancia.Obtener<DatosLogin>())
             {
-                if (datos.NombreUsuario == nombreUsuario)
+                if (datos.NombreUsuario == nombreUsuario && datos.Contrasenia == contrasenia)
                 {
-                    if (datos.Contrasenia == contrasenia)
-                    {
-                        Console.WriteLine("Acceso correcto");
-                        return true;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Usuario o Constraseña incorrecto");
-                        return false;
-                    }
+                    organizacion = datos.Usuario;
+                    Console.WriteLine("Acceso correcto");
+                    return true;
                 }
             }
 
-            Console.WriteLine("No se encontró el usuario");
+            Console.WriteLine("Usuario y/o contraseña incorrectos.");
             return false;
         }
     }
