@@ -9,19 +9,20 @@ using System.Collections.Generic;
 using System.Reflection;
 using ClassLibrary.Publication;
 using ClassLibrary.User;
+using System.Linq;
 
 namespace Importers
 {
     /// <summary>
     /// Esta clase manejara la logica cercana al acceso a la base de datos.
     /// </summary>
-    public class DatabaseMemoria : IDatabase
+    internal class DatabaseMemoria : IDatabase
     {
         /// <summary>
         /// Obtiene acceso al singleton.
         /// </summary>
         /// <value><see iref = "IDatabase"/>.</value>
-        public static IDatabase Instancia
+        internal static IDatabase Instancia
         {
             get
             {
@@ -66,6 +67,8 @@ namespace Importers
         private List<Empresa> empresas { get; }
 
         private List<Habilitacion> habilitaciones { get; }
+
+        private List<Invitacion> invitaciones { get; }
 
         /// <summary>
         /// Guardar un objeto en memoria.
@@ -145,6 +148,11 @@ namespace Importers
             }
 
             throw new Exception("Este tipo de objeto no puede ser persistido.");
+        }
+
+        public int CantidadUsuariosPorNombre(string nombre)
+        {
+            return datosLogin.Where(dl => dl.NombreUsuario == nombre).Count();
         }
     }
 }

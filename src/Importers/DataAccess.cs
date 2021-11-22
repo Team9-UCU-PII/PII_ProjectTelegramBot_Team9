@@ -5,6 +5,7 @@
 //--------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using ClassLibrary.User;
 
 namespace Importers
 {
@@ -79,6 +80,11 @@ namespace Importers
         public void Eliminar<T>(T objeto)
         {
             this.db.Eliminar(objeto);
+        }
+
+        public int CantidadUsuariosPorNombre(string nombreUsuario)
+        {
+            return db.CantidadUsuariosPorNombre(nombreUsuario);
         }
     }
 }

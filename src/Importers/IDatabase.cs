@@ -5,13 +5,14 @@
 //--------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using ClassLibrary.User;
 
 namespace Importers
 {
     /// <summary>
     /// Interaz de acceso a la base de datos.
     /// </summary>
-    public interface IDatabase
+    internal interface IDatabase
     {
         /// <summary>
         /// Obtiene instancia del singleton.
@@ -47,5 +48,7 @@ namespace Importers
         /// <param name="objeto">Instancia/s a borrarse.</param>
         /// <typeparam name="T">Tipo de la instancia.</typeparam>
         void Eliminar<T>(T objeto);
+
+        int CantidadUsuariosPorNombre(string nombreUsuario);
     }
 }

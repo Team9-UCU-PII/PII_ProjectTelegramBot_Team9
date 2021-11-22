@@ -27,5 +27,9 @@
     <PackageReference Include="Telegram.Bot.Extensions.Polling" Version="0.2.0" />
 >>>>>>> master
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BotCore\BotCore.csproj" />
+  </ItemGroup>
   
 </Project>

@@ -4,6 +4,186 @@
         <name>ClassLibrary</name>
     </assembly>
     <members>
+        <member name="T:ClassLibrary.LocationAPI.Distance">
+            <summary>
+            Representa la distancia entre las coordenas o las direcciones de origen y destino retornada en los métodos
+            <see cref="M:ClassLibrary.LocationAPI.LocationApiClient.GetDistanceAsync(ClassLibrary.LocationAPI.Location,ClassLibrary.LocationAPI.Location)"/> o
+            <see cref="M:ClassLibrary.LocationAPI.LocationApiClient.GetDistanceAsync(System.String,System.String)"/>.
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.LocationAPI.Distance.Found">
+            <summary>
+            Obtiene o establece un valor que indica si se encontraron o no las coordenas o las direcciones de origen y
+            destino.
+            </summary>
+            <value>true si se encontró la dirección; false en caso contrario.</value>
+        </member>
+        <member name="P:ClassLibrary.LocationAPI.Distance.TravelDistance">
+            <summary>
+            Obtiene o establece la distancia entre las coordenadas o las direcciones de origen y destino.
+            </summary>
+            <value>La distancia en metros.</value>
+        </member>
+        <member name="P:ClassLibrary.LocationAPI.Distance.TravelDuration">
+            <summary>
+            Obtiene o establece el tiempo que se demora en llegar de las coordenadas o de las direcciones de origen a las de destino.
+            </summary>
+            <value>El tiempo que se demora en minutos.</value>
+        </member>
+        <member name="T:ClassLibrary.LocationAPI.Location">
+            <summary>
+            Representa las coordenadas y otros datos de la ubicación de una dirección retornada en el método
+            <see cref="M:ClassLibrary.LocationAPI.LocationApiClient.GetLocationAsync(System.String,System.String,System.String,System.String)"/>.
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.LocationAPI.Location.Found">
+            <summary>
+            Obtiene o establece un valor que indica si se encontró o no la dirección. En ese caso son válidos los demás
+            valores. En caso contrario los demás valores son indeterminados.
+            </summary>
+            <value>true si se encontró la dirección; false en caso contrario.</value>
+        </member>
+        <member name="P:ClassLibrary.LocationAPI.Location.AddresLine">
+            <summary>
+            Obtiene o establece la dirección: calle y número, ruta y kilómetro, etc.
+            </summary>
+            <value>Por ejemplo, Avenida 8 de Octubre 2738.</value>
+        </member>
+        <member name="P:ClassLibrary.LocationAPI.Location.CountryRegion">
+            <summary>
+            Obtiene o establece el país.
+            </summary>
+            <value>Por ejemplo, Uruguay.</value>
+        </member>
+        <member name="P:ClassLibrary.LocationAPI.Location.FormattedAddress">
+            <summary>
+            Obtiene o establece la dirección completa, incluyendo ciudad, código postal, etc.
+            </summary>
+            <value>Por ejemplo, Avenida 8 de Octubre 2738, Montevideo, 11200, Uruguay.</value>
+        </member>
+        <member name="P:ClassLibrary.LocationAPI.Location.Locality">
+            <summary>
+            Obtiene o establece la localidad o ciudad.
+            </summary>
+            <value>Por ejemplo, Montevideo.</value>
+        </member>
+        <member name="P:ClassLibrary.LocationAPI.Location.PostalCode">
+            <summary>
+            Obtiene o establece el código postal.
+            </summary>
+            <value>Por ejemplo, 11200.</value>
+        </member>
+        <member name="P:ClassLibrary.LocationAPI.Location.Latitude">
+            <summary>
+            Obtiene o establece la latitud de la dirección.
+            </summary>
+            <value>El valor de la latitud en formato decimal.</value>
+        </member>
+        <member name="P:ClassLibrary.LocationAPI.Location.Longitude">
+            <summary>
+            Obtiene o establece la longitud de la dirección.
+            </summary>
+            <value>El valor de la longitud en formato decimal.</value>
+        </member>
+        <member name="T:ClassLibrary.LocationAPI.LocationApiClient">
+            <summary>
+            Un cliente de la API de localización.
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.LocationAPI.LocationApiClient.Instancia">
+            <summary>
+            Obitene acceso al singleton de la api.
+            </summary>
+            <value><see cref = "T:ClassLibrary.LocationAPI.LocationApiClient"/>.</value>
+        </member>
+        <member name="M:ClassLibrary.LocationAPI.LocationApiClient.GetLocationAsync(System.String,System.String,System.String,System.String)">
+            <summary>
+            Obtiene las coordenadas de una dirección.
+            </summary>
+            <param name="address">La dirección.</param>
+            <param name="city">La ciudad. Es opcional. El valor predeterminado es Montevideo.</param>
+            <param name="department">El departamento, estado, provincia, etc. Es opcional. El valor predeterminado es `ontevideo.</param>
+            <param name="country">El país. Es opcional. El valor predeterminado es Uruguay.</param>
+            <returns>Las coordenadas de la dirección.</returns>
+        </member>
+        <member name="M:ClassLibrary.LocationAPI.LocationApiClient.GetLocation(System.String,System.String,System.String,System.String)">
+            <inheritdoc cref="M:ClassLibrary.LocationAPI.LocationApiClient.GetLocationAsync(System.String,System.String,System.String,System.String)" />
+            <remarks>
+            Versión sincrónica.
+            </remarks>
+        </member>
+        <member name="M:ClassLibrary.LocationAPI.LocationApiClient.GetDistanceAsync(ClassLibrary.LocationAPI.Location,ClassLibrary.LocationAPI.Location)">
+            <summary>
+            Obtiene la distancia entre dos coordenadas.
+            </summary>
+            <param name="from">La coordenada de origen.</param>
+            <param name="to">La coordenada de destino.</param>
+            <returns>La distancia entre las dos coordenadas.</returns>
+        </member>
+        <member name="M:ClassLibrary.LocationAPI.LocationApiClient.GetDistance(ClassLibrary.LocationAPI.Location,ClassLibrary.LocationAPI.Location)">
+            <inheritdoc cref="M:ClassLibrary.LocationAPI.LocationApiClient.GetDistanceAsync(ClassLibrary.LocationAPI.Location,ClassLibrary.LocationAPI.Location)" />
+            <remarks>
+            Versión sincrónica.
+            </remarks>
+        </member>
+        <member name="M:ClassLibrary.LocationAPI.LocationApiClient.GetDistanceAsync(System.String,System.String)">
+            <summary>
+            Obtiene la distancia entre dos direcciones.
+            </summary>
+            <param name="from">La dirección de origen.</param>
+            <param name="to">La dirección de destino.</param>
+            <returns>La distancia entre las dos direcciones.</returns>
+        </member>
+        <member name="M:ClassLibrary.LocationAPI.LocationApiClient.GetDistance(System.String,System.String)">
+            <inheritdoc cref="M:ClassLibrary.LocationAPI.LocationApiClient.GetDistanceAsync(System.String,System.String)" />.
+            <remarks>
+            Versión sincrónica.
+            </remarks>
+        </member>
+        <member name="M:ClassLibrary.LocationAPI.LocationApiClient.DownloadMapAsync(System.Double,System.Double,System.String,System.Int32)">
+            <summary>
+            Descarga una mapa de una coordenada.
+            </summary>
+            <param name="latitude">La latitud de la coordenada.</param>
+            <param name="longitude">La longitud de la coordenada.</param>
+            <param name="path">La ruta del archivo donde guardar el mapa. El formato es PNG.</param>
+            <param name="zoomLevel">El nivel de zoom del mapa entre 1 y 20. Es opcional. El valor predeterminado es
+            15.</param>
+            <returns>
+            Una tarea que representa la operación asincrónica.
+            </returns>
+        </member>
+        <member name="M:ClassLibrary.LocationAPI.LocationApiClient.DownloadMap(System.Double,System.Double,System.String,System.Int32)">
+            <inheritdoc cref="M:ClassLibrary.LocationAPI.LocationApiClient.DownloadMapAsync(System.Double,System.Double,System.String,System.Int32)" />.
+            <remarks>
+            Versión sincrónica.
+            </remarks>
+        </member>
+        <member name="M:ClassLibrary.LocationAPI.LocationApiClient.DownloadRouteAsync(System.Double,System.Double,System.Double,System.Double,System.String)">
+            <summary>
+            Un mapa con una ruta entre dos coordenadas.
+            </summary>
+            <param name="fromLatitude">La latitud de la coordenada de origen.</param>
+            <param name="fromLongitude">La longitu de la coordenada de origen.</param>
+            <param name="toLatitude">La latitud de la coordenada de destino.</param>
+            <param name="toLongitude">La longitud de la coordenada de destino.</param>
+            <param name="path">La ruta del archivo donde guardar el mapa. Es formato es PNG.</param>
+            <returns>
+            Una tarea que representa la operación asincrónica.
+            </returns>
+        </member>
+        <member name="M:ClassLibrary.LocationAPI.LocationApiClient.DownloadRoute(System.Double,System.Double,System.Double,System.Double,System.String)">
+            <inheritdoc cref="M:ClassLibrary.LocationAPI.LocationApiClient.DownloadRouteAsync(System.Double,System.Double,System.Double,System.Double,System.String)" />
+            <remarks>
+            Versión sincrónica.
+            </remarks>
+        </member>
+        <member name="M:ClassLibrary.LocationAPI.LocationApiClient.Dispose">
+            <inheritdoc cref="T:System.IDisposable" />
+        </member>
+        <member name="M:ClassLibrary.LocationAPI.LocationApiClient.Dispose(System.Boolean)">
+            <inheritdoc cref="T:System.IDisposable" />
+        </member>
         <member name="T:ClassLibrary.Publication.Categoria">
             <summary>
             Instancia de las categorias posibles para <see cref="T:ClassLibrary.Publication.Residuo"/>.
@@ -38,7 +218,7 @@
             Tipo base de publicación, comprende Descripcion, Residuo, Precio, Moneda, Cantidad, Lugar de Retiro y la Empresa Vendedor.
             </summary>
         </member>
-        <member name="M:ClassLibrary.Publication.Publicacion.#ctor(ClassLibrary.Publication.Residuo,System.Double,System.String,System.Int32,System.String,ClassLibrary.User.Empresa,System.String)">
+        <member name="M:ClassLibrary.Publication.Publicacion.#ctor(ClassLibrary.Publication.Residuo,System.Double,System.String,System.Int32,System.String,ClassLibrary.User.Empresa,System.String,ClassLibrary.Publication.Categoria)">
             <summary>
             Constructor de Clase Publicacion.
             </summary>
@@ -46,9 +226,10 @@
             <param name="precioUnitario"><see langword = "double"/>.</param>
             <param name="moneda"><see langword = "string"/>.</param>
             <param name="cantidad"><see langword = "int"/>.</param>
-            <param name="lugarRetiro"><see langword = "string"/>.</param>
+            <param name="lugarRetiro"><see cref = "T:ClassLibrary.LocationAPI.Location"/>.</param>
             <param name="vendedor"><see cref = "T:ClassLibrary.User.Empresa"/>.</param>
             <param name="descripcion"><see langword = "string"/>.</param>
+            <param name="categoria"><see langword = "string"/>.</param>
         </member>
         <member name="P:ClassLibrary.Publication.Publicacion.Residuo">
             <summary>
@@ -92,6 +273,12 @@
             </summary>
             <value><see langword="string"/>.</value>
         </member>
+        <member name="P:ClassLibrary.Publication.Publicacion.Categoria">
+            <summary>
+            Obtiene o establece la <see cref ="P:ClassLibrary.Publication.Publicacion.Categoria"/> publicado.
+            </summary>
+            <value><see cref = "P:ClassLibrary.Publication.Publicacion.Categoria"/>.</value>
+        </member>
         <member name="P:ClassLibrary.Publication.Publicacion.Comprado">
             <summary>
             Obtiene o establece si la publicacion ya se compró.
@@ -115,7 +302,7 @@
             Subclase de <see cref = "T:ClassLibrary.Publication.Publicacion"/>, añade propiedad de Recurrencia del residuo.
             </summary>
         </member>
-        <member name="M:ClassLibrary.Publication.PublicacionRecurrente.#ctor(ClassLibrary.Publication.Residuo,System.Double,System.String,System.Int32,System.String,ClassLibrary.User.Empresa,System.Int32,System.String)">
+        <member name="M:ClassLibrary.Publication.PublicacionRecurrente.#ctor(ClassLibrary.Publication.Residuo,System.Double,System.String,System.Int32,System.String,ClassLibrary.User.Empresa,System.Int32,System.String,ClassLibrary.Publication.Categoria)">
             <summary>
             Mismo Constructor que <see cref = "T:ClassLibrary.Publication.Publicacion"/>.
             </summary>
@@ -127,6 +314,7 @@
             <param name="vendedor"><see cref = "T:ClassLibrary.User.Empresa"/>.</param>
             <param name="frecuenciaAnualRestock"><see langword = "int"/>.</param>
             <param name="descripcion"><see langword = "string"/>.</param>
+            <param name="categoria"><see langword = "string"/>.</param>
         </member>
         <member name="P:ClassLibrary.Publication.PublicacionRecurrente.FrecuenciaAnualRestock">
             <summary>
@@ -372,7 +560,7 @@
             en el GestorInvitaciones.
             </summary>
         </member>
-        <member name="M:ClassLibrary.User.Empresa.CrearOferta(ClassLibrary.Publication.Residuo,System.Double,System.String,System.Int32,System.String,System.String)">
+        <member name="M:ClassLibrary.User.Empresa.CrearOferta(ClassLibrary.Publication.Residuo,System.Double,System.String,System.Int32,System.String,System.String,ClassLibrary.Publication.Categoria)">
             <summary>
             Método creador y publicador de una publicación.
             </summary>
@@ -382,8 +570,9 @@
             <param name="cantidad"><see langword="int"/>.</param>
             <param name="lugarRetiro"><see langword="string"/>.</param>
             <param name="descripcion"><see langword="string"/>.</param>
+            <param name="categoria"><see langword="string"/>.</param>
         </member>
-        <member name="M:ClassLibrary.User.Empresa.CrearOfertaRecurrente(ClassLibrary.Publication.Residuo,System.Double,System.String,System.Int32,System.String,System.String,System.Int32)">
+        <member name="M:ClassLibrary.User.Empresa.CrearOfertaRecurrente(ClassLibrary.Publication.Residuo,System.Double,System.String,System.Int32,System.String,System.String,ClassLibrary.Publication.Categoria,System.Int32)">
             <summary>
             Método creador y publicador de una publicación recurrente.
             </summary>
@@ -393,6 +582,7 @@
             <param name="cantidad"><see langword="int"/>.</param>
             <param name="lugarRetiro"><see langword="string"/>.</param>
             <param name="descripcion"><see langword="string"/>.</param>
+            <param name="categoria"><see langword="string"/>.</param>
             <param name="frecuenciaAnualRestock"><see langword="int"/>.</param>
         </member>
         <member name="T:ClassLibrary.User.Habilitacion">
@@ -411,6 +601,52 @@
             Obtiene o establece el nombre de la habilitación.
             </summary>
             <value><see langword="string"/>.</value>
+        </member>
+        <member name="T:ClassLibrary.User.Invitacion">
+            <summary>
+            Clase mediadora entre <see cref = "!:GestorInvitaciones"/> y los <see iref = "IUsuario"/>, representa la invitación en si, y encapsula el enlace y destino.
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.User.Invitacion.#ctor(ClassLibrary.User.IUsuario)">
+            <summary>
+            Método constructor de la invitación.
+            </summary>
+            <param name="organizacion">El <see iref = "IUsuario"/> temporal, generado previamente.</param>
+            <param name="usuarioDestinatario">Username o Contacto objetivo.</param>
+        </member>
+        <member name="P:ClassLibrary.User.Invitacion.OrganizacionInvitada">
+            <summary>
+            El usuario destinado, debería ser sobreescrito por el destinatario.
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.User.Invitacion.Token">
+            <summary>
+            Este token unico identifica la invitación de las demas.
+            </summary>
+            <value><see langword ="string"/>.</value>
+        </member>
+        <member name="P:ClassLibrary.User.Invitacion.Link">
+            <summary>
+            Código generado para validar la invitación.
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.User.Invitacion.FueAceptada">
+            <summary>
+            Propiedad, permite evaluar si el destinatario aceptó la invitación
+            y se registró.
+            </summary>
+            <value>True: la invitación fue completada y aceptada. False: La invitación está en proceso.</value>
+        </member>
+        <member name="M:ClassLibrary.User.Invitacion.ArmarMensajeInvitacion">
+            <summary>
+            Se genera el texto del mensaje a enviarse para invitar.
+            </summary>
+            <returns>string.</returns>
+        </member>
+        <member name="M:ClassLibrary.User.Invitacion.Aceptar">
+            <summary>
+            Metodo que modifica el estado de la invitación como aceptada.
+            </summary>
         </member>
         <member name="T:ClassLibrary.User.IUsuario">
             <summary>

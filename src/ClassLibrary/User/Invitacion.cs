@@ -8,7 +8,7 @@ using System;
 using System.Text;
 using ClassLibrary.User;
 
-namespace BotCore.User
+namespace ClassLibrary.User
 {
     /// <summary>
     /// Clase mediadora entre <see cref = "GestorInvitaciones"/> y los <see iref = "IUsuario"/>, representa la invitación en si, y encapsula el enlace y destino.
@@ -20,12 +20,9 @@ namespace BotCore.User
         /// </summary>
         /// <param name="organizacion">El <see iref = "IUsuario"/> temporal, generado previamente.</param>
         /// <param name="usuarioDestinatario">Username o Contacto objetivo.</param>
-        /// <param name="bot">El bot que se esté usando.</param>
-        public Invitacion(IUsuario organizacion, string usuarioDestinatario, MessageGateway.IGateway bot)
+        public Invitacion(IUsuario organizacion)
         {
             this.OrganizacionInvitada = organizacion;
-            this.Destinatario = usuarioDestinatario;
-            this.Link = Invitacion.GenerarEnlace(bot);
             this.token = GenerarToken();
             this.FueAceptada = false;
         }
@@ -34,11 +31,6 @@ namespace BotCore.User
         /// El usuario destinado, debería ser sobreescrito por el destinatario.
         /// </summary>
         public IUsuario OrganizacionInvitada { get; }
-
-        /// <summary>
-        /// Obtiene string que permite identificar al que se invitó.
-        /// </summary>
-        public string Destinatario { get; }
 
         /// <summary>
         /// Este token unico identifica la invitación de las demas.
@@ -76,11 +68,6 @@ namespace BotCore.User
             mensaje.AppendLine($"Link para unirte y registrarte: {this.Link}");
             mensaje.AppendLine($"¡Entra al link y di Hola!");
             return mensaje.ToString();
-        }
-
-        private static string GenerarEnlace(MessageGateway.IGateway bot)
-        {
-            return bot.ObtenerLinkInvitacion;
         }
 
         /// <summary>

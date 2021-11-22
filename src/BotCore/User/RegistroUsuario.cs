@@ -18,6 +18,13 @@ namespace BotCore.User
     /// </summary>
     public static class RegistroUsuario
     {
+        private static DataAccess da = DataAccess.Instancia;
+        public static bool UsuarioYaExiste(string nombre)
+        {
+            int cantidadUsuarios = da.CantidadUsuariosPorNombre(nombre);
+            return cantidadUsuarios > 0;
+        }
+
         /// <summary>
         /// Método registrador de usuario.
         /// </summary>
