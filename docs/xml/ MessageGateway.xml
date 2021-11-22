@@ -4,9 +4,48 @@
         <name>MessageGateway</name>
     </assembly>
     <members>
+        <member name="T:MessageGateway.AdaptadorTelegram">
+            <summary>
+            Esta clase instanciaría el chat y bot, y almacenaría mensaje por mensaje que va recibiendo como string.
+            Permite implementar gateway a telegram.
+            </summary>
+        </member>
+        <member name="P:MessageGateway.AdaptadorTelegram.Instancia">
+            <summary>
+            Obitene acceso a la instancia del singleton de Adaptador.
+            </summary>
+            <value><see cref ="T:MessageGateway.AdaptadorTelegram"/>.</value>
+        </member>
+        <member name="F:MessageGateway.AdaptadorTelegram.TelegramBot">
+            <summary>
+            Atributo que instancia el bot.
+            </summary>
+        </member>
+        <member name="M:MessageGateway.AdaptadorTelegram.EnviarMensaje(MessageGateway.IMessage)">
+            <summary>
+            Metodo de la interfaz <see iref ="IGateway"/>, envia un string como mensaje.
+            </summary>
+            <param name="mensaje"><see langword ="string"/>.</param>
+        </member>
+        <member name="P:MessageGateway.AdaptadorTelegram.MensajeRecibido">
+            <summary>
+            Obtiene el ultimo mensaje recibido.
+            </summary>
+            <value><see iref ="IMessage"/>.</value>
+        </member>
+        <member name="P:MessageGateway.AdaptadorTelegram.ObtenerLinkInvitacion">
+            <summary>
+            Obtiene el link pertinente para hablar con el bot.
+            </summary>
+        </member>
+        <member name="M:MessageGateway.AdaptadorTelegram.EnviarUbicacionEnMapa(MessageGateway.IMessage,System.Single,System.Single)">
+            <summary>
+            Método que envía una ubicacion al usuario.
+            </summary>
+        </member>
         <member name="T:MessageGateway.IGateway">
             <summary>
-            Interfaz que engloba las diferentes salidas posibles de mensaje de invitación al bot (mail, chat de telegram, etc).
+            Interfaz que engloba las diferentes salidas y entradas posibles de mensaje de invitación al bot (mail, chat de telegram, etc).
             </summary>
         </member>
         <member name="P:MessageGateway.IGateway.Instancia">
@@ -15,48 +54,85 @@
             </summary>
             <value>Instancia <see iref ="IGateway"/>.</value>
         </member>
-        <member name="M:MessageGateway.IGateway.EnviarMensaje(System.String,System.String)">
+        <member name="M:MessageGateway.IGateway.EnviarMensaje(MessageGateway.IMessage)">
             <summary>
             Método de envío de mensaje.
             </summary>
-            <param name="destinatario">
-            <see langword = "string"/> identificador necesario para el envío.
-            </param>
             <param name="texto"><see langword = "string"/>: El mensaje en sí.</param>
         </member>
-        <member name="M:MessageGateway.IGateway.EnviarInvitacion(System.String,System.String)">
+        <member name="M:MessageGateway.IGateway.EnviarUbicacionEnMapa(MessageGateway.IMessage,System.Single,System.Single)">
             <summary>
-            Método para enviar la invitacion a traves del medio.
-            </summary>
-            <param name="destinatario">
-            <see langword = "string"/> identificador necesario para el envío de la invitación.
-            </param>
-            <param name="texto">La invitación como <see langword = "string"/>.</param>
-        </member>
-        <member name="T:MessageGateway.TelegramService">
-            <summary>
-            Clase placeholder del Bot a enviar mensajes.
+            Método que permite enviar foto (especialmente para api de localización).
             </summary>
         </member>
-        <member name="P:MessageGateway.TelegramService.Instancia">
+        <member name="P:MessageGateway.IGateway.ObtenerLinkInvitacion">
             <summary>
-            Acceso al Singleton del Bot.
+            Método para generar la invitacion a traves del medio.
             </summary>
-            <value><see cref = "T:MessageGateway.TelegramService"/></value>
         </member>
-        <member name="M:MessageGateway.TelegramService.EnviarInvitacion(System.String,System.String)">
+        <member name="P:MessageGateway.IGateway.MensajeRecibido">
             <summary>
-            Vacío de momento, metodo para invitar.
+            Propiedad que permite leer el mensaje recibido.
             </summary>
-            <param name="destinatario"><see langword = "string"/> del destinatario.</param>
-            <param name="texto"><see langword = "string"/> con la invitación armada.</param>
+            <value><see langword ="string"/>.</value>
         </member>
-        <member name="M:MessageGateway.TelegramService.EnviarMensaje(System.String,System.String)">
+        <member name="T:MessageGateway.IMessage">
             <summary>
-            Placeholder para el envio de un mensaje
+            Interfaz que engloba los tipos mensaje de las diferentes plataformas de mensaje.
             </summary>
-            <param name="username"></param>
-            <param name="text"></param>
+        </member>
+        <member name="P:MessageGateway.IMessage.ChatID">
+            <summary>
+            Obtiene un string con un identificador del chat en curso.
+            </summary>
+            <value><see langword ="string"/>.</value>
+        </member>
+        <member name="P:MessageGateway.IMessage.TxtMensaje">
+            <summary>
+            Obtiene un string con el texto del mensaje que se recibió o envía.
+            </summary>
+            <value><see langword ="string"/>.</value>
+        </member>
+        <member name="T:MessageGateway.TelegramBot">
+            <summary>
+            Esta clase representa el bot en si y su cliente, accede a los handlers a traves de
+            un adaptador que implementa <see iref ="IGateway"/>.
+            </summary>
+        </member>
+        <member name="P:MessageGateway.TelegramBot.Cliente">
+            <summary>
+            Obtiene el cliente del bot.
+            </summary>
+            <value>ITelegramBotClient</value>
+        </member>
+        <member name="P:MessageGateway.TelegramBot.BotId">
+            <summary>
+            Obtiene el id del bot, un numero identificador único.
+            </summary>
+            <value><see langword ="long"/>.</value>
+        </member>
+        <member name="P:MessageGateway.TelegramBot.BotName">
+            <summary>
+            Obtiene el nombre del bot.
+            </summary>
+            <value><see langword ="string"/>.</value>
+        </member>
+        <member name="P:MessageGateway.TelegramBot.Instancia">
+            <summary>
+            Obtiene acceso al singleton del Bot.
+            </summary>
+            <value><see cref ="T:MessageGateway.TelegramBot"/>.</value>
+        </member>
+        <member name="T:MessageGateway.TelegramMessageAdapter">
+            <summary>
+            Adaptador del mensaje de telegram a la interfaz <see iref ="IMessage"/>.
+            </summary>
+        </member>
+        <member name="M:MessageGateway.TelegramMessageAdapter.#ctor(Telegram.Bot.Types.Message)">
+            <summary>
+            Constructor de un adaptador a partir de un Message de Telegram.
+            </summary>
+            <param name="msj"><see cref ="T:Telegram.Bot.Types.Message"/>.</param>
         </member>
     </members>
 </doc>

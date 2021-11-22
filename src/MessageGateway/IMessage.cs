@@ -3,6 +3,7 @@
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
+using MessageGateway.Handlers;
 
 namespace MessageGateway
 {
@@ -23,13 +24,17 @@ namespace MessageGateway
         /// Obtiene un string con el texto del mensaje que se recibió o envía.
         /// </summary>
         /// <value><see langword ="string"/>.</value>
-        string TxtMensaje { get; }
+        string TxtMensaje { get; set; }
 
+        PalabrasClaveHandlers Keyword { get; set; }
+
+        /*
         /// <summary>
         /// Crea un tipo mensaje apto para la respuesta de un mensaje recibido.
         /// </summary>
         /// <param name="txt">El texto a enviarse.</param>
         /// <returns><see iref = "IMessage"/>.</returns>
         IMessage CrearRespuesta(string txt);
+        */
     }
 }

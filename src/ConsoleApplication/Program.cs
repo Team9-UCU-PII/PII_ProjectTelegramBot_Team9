@@ -6,6 +6,8 @@
 
 using System;
 using MessageGateway;
+using BotCore.User;
+using ClassLibrary.User;
 using ClassLibrary.LocationAPI;
 
 namespace ConsoleApplication
@@ -24,11 +26,12 @@ namespace ConsoleApplication
         public static void Main()
         {
             Console.WriteLine("is on now");
+            GestorInvitaciones.Instancia.AlmacenarInvitacion<Empresa>("SEMM");
+            IGateway client = AdaptadorTelegram.Instancia;
+            client.Start();
             while (true)
             {
-                IGateway client = AdaptadorTelegram.Instancia;
-                IMessage lastMSG = client.MensajeRecibido;
-
+                /*
                 var location = LocationApiClient.Instancia.GetLocation("Isla de Gorriti 2056");
 
                 
@@ -36,6 +39,7 @@ namespace ConsoleApplication
                     {
                         client.EnviarUbicacionEnMapa(lastMSG, (float)location.Latitude, (float)location.Longitude);
                     }
+                */
             }
         }
     }
