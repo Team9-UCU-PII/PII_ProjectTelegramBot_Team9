@@ -6,6 +6,7 @@
 
 using System;
 using MessageGateway;
+using ClassLibrary.LocationAPI;
 
 namespace ConsoleApplication
 {
@@ -14,11 +15,12 @@ namespace ConsoleApplication
   /// </summary>
   public static class Program
   {
+
     /// <summary>
     /// Metodo inicializador de programa.
     /// </summary>
+    private static IMessage lastMSG;
 
-    private static IHandler primerHandler;
     /// <summary>
     /// Metodo inicializador de programa.
     /// </summary>
@@ -30,19 +32,21 @@ namespace ConsoleApplication
         IGateway client = AdaptadorTelegram.Instancia;
         IMessage lastMSG = client.MensajeRecibido;
 
+        var location = LocationApiClient.Instancia.GetLocation("Isla de Gorriti 2056");
+
+
         if (lastMSG.TxtMensaje == "mesi")
         {
-          client.EnviarMensaje(lastMSG.CrearRespuesta("dou"));
+          client.EnviarUbicacionEnMapa(lastMSG, (float)location.Latitude, (float)location.Longitude);
         }
       }
-
-      /*primerHandler =
-        new HolaHandler(
-          new MenuHandler(
-
-          )
-        );*/
     }
   }
-}
+
+  /*primerHandler =
+    new HolaHandler(
+      new MenuHandler(
+
+      )
+    );*/
 }

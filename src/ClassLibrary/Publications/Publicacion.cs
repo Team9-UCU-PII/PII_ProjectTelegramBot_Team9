@@ -8,6 +8,7 @@
 //--------------------------------------------------------------------------------
 
 using ClassLibrary.User;
+using ClassLibrary.LocationAPI;
 using System.Text;
 
 namespace ClassLibrary.Publication
@@ -24,18 +25,20 @@ namespace ClassLibrary.Publication
     /// <param name="precioUnitario"><see langword = "double"/>.</param>
     /// <param name="moneda"><see langword = "string"/>.</param>
     /// <param name="cantidad"><see langword = "int"/>.</param>
-    /// <param name="lugarRetiro"><see langword = "string"/>.</param>
+    /// <param name="lugarRetiro"><see cref = "Location"/>.</param>
     /// <param name="vendedor"><see cref = "Empresa"/>.</param>
     /// <param name="descripcion"><see langword = "string"/>.</param>
-    public Publicacion(Residuo residuo, double precioUnitario, string moneda, int cantidad, string lugarRetiro, Empresa vendedor, string descripcion)
+    /// <param name="categoria"><see langword = "string"/>.</param>
+    public Publicacion(Residuo residuo, double precioUnitario, string moneda, int cantidad, string lugarRetiro, Empresa vendedor, string descripcion, Categoria categoria)
     {
       this.Residuo = residuo;
       this.PrecioUnitario = precioUnitario;
       this.Moneda = moneda;
       this.Cantidad = cantidad;
-      this.LugarRetiro = lugarRetiro;
+      this.LugarRetiro = LocationApiClient.Instancia.GetLocation(lugarRetiro);
       this.Vendedor = vendedor;
       this.Descripcion = descripcion;
+      this.Categoria = categoria;
       this.Comprado = false;
     }
 
@@ -67,7 +70,7 @@ namespace ClassLibrary.Publication
     /// Obtiene o establece el lugar de retiro.
     /// </summary>
     /// <value><see langword = "string"/>.</value>
-    public string LugarRetiro { get; set; }
+    public Location LugarRetiro { get; set; }
 
     /// <summary>
     /// Obtiene o establece la <see cref ="Empresa"/> vendedora.
@@ -80,6 +83,12 @@ namespace ClassLibrary.Publication
     /// </summary>
     /// <value><see langword="string"/>.</value>
     public string Descripcion{ get; set; }
+
+    /// <summary>
+    /// Obtiene o establece la <see cref ="Categoria"/> publicado.
+    /// </summary>
+    /// <value><see cref = "Categoria"/>.</value>
+    public Categoria Categoria { get; set; }
 
     /// <summary>
     /// Obtiene o establece si la publicacion ya se compró.

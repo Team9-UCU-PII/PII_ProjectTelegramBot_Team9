@@ -8,6 +8,7 @@
 //--------------------------------------------------------------------------------
 
 using ClassLibrary.Publication;
+using ClassLibrary.LocationAPI;
 using System.Collections.Generic;
 
 namespace ClassLibrary.User
@@ -26,7 +27,7 @@ namespace ClassLibrary.User
         /// <summary>
         /// Local o zona donde se realizaría retiro.
         /// </summary>
-        public string Lugar;
+        public Location Lugar;
 
         /// <summary>
         /// Rubro de la empresa.
@@ -70,7 +71,7 @@ namespace ClassLibrary.User
         public Empresa(string nombre, string lugar, string rubro, string descripcion, string contacto)
         {
             this.Nombre = nombre;
-            this.Lugar = lugar;
+            this.Lugar = LocationApiClient.Instancia.GetLocation(lugar);
             this.Rubro = rubro;
             this.Descripcion = descripcion;
             this.Contacto = contacto;
@@ -93,15 +94,17 @@ namespace ClassLibrary.User
         /// <param name="cantidad"><see langword="int"/>.</param>
         /// <param name="lugarRetiro"><see langword="string"/>.</param>
         /// <param name="descripcion"><see langword="string"/>.</param>
+        /// <param name="categoria"><see langword="string"/>.</param>
         public Publicacion CrearOferta(
             Residuo residuo,
             double precioUnitario,
             string moneda,
             int cantidad, 
             string lugarRetiro,
-            string descripcion)
+            string descripcion,
+            Categoria categoria)
         {
-            return new Publicacion(residuo, precioUnitario, moneda, cantidad, lugarRetiro, this, descripcion);
+            return new Publicacion(residuo, precioUnitario, moneda, cantidad, lugarRetiro, this, descripcion, categoria);
         }
 
         /// <summary>
@@ -113,6 +116,7 @@ namespace ClassLibrary.User
         /// <param name="cantidad"><see langword="int"/>.</param>
         /// <param name="lugarRetiro"><see langword="string"/>.</param>
         /// <param name="descripcion"><see langword="string"/>.</param>
+        /// <param name="categoria"><see langword="string"/>.</param>
         /// <param name="frecuenciaAnualRestock"><see langword="int"/>.</param>
         public PublicacionRecurrente CrearOfertaRecurrente(
             Residuo residuo,
@@ -121,9 +125,10 @@ namespace ClassLibrary.User
             int cantidad,
             string lugarRetiro,
             string descripcion,
+            Categoria categoria,
             int frecuenciaAnualRestock)
         {
-            return new PublicacionRecurrente(residuo, precioUnitario, moneda, cantidad, lugarRetiro, this, frecuenciaAnualRestock, descripcion);
+            return new PublicacionRecurrente(residuo, precioUnitario, moneda, cantidad, lugarRetiro, this, frecuenciaAnualRestock, descripcion, categoria);
         }
     }
 }
