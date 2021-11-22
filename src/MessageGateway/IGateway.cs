@@ -24,6 +24,11 @@ namespace MessageGateway
         void EnviarMensaje(IMessage texto);
 
         /// <summary>
+        /// Método que permite enviar foto (especialmente para api de localización).
+        /// </summary>
+        void EnviarUbicacionEnMapa(IMessage mensaje, float latitud, float longitud);
+
+        /// <summary>
         /// Método para generar la invitacion a traves del medio.
         /// </summary>
         string ObtenerLinkInvitacion { get; }
