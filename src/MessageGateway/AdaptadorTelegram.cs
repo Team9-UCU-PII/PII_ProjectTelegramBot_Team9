@@ -11,6 +11,7 @@ using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 using System.IO;
 using System.Text;
+using MessageGateway.Forms;
 
 namespace MessageGateway
 {
@@ -42,14 +43,18 @@ namespace MessageGateway
         /// <summary>
         /// Atributo que instancia el bot.
         /// </summary>
-        public TelegramBot TelegramBot  = TelegramBot.Instancia;
+        public TelegramBot TelegramBot = TelegramBot.Instancia;
         private AdaptadorTelegram()
         {
             //Cuando se consstruye el adaptador ya se instancia el bot e inicia recepción de mensajes.
 
             //Asigno un gestor de mensajes
             this.TelegramBot.Cliente.OnMessage += OnMessage;
-            //Inicio la escucha de mensajes
+        }
+
+        public void Start()
+        {
+            this.CurrentForm = new FrmBienvenida();
             this.TelegramBot.Cliente.StartReceiving();
         }
 
@@ -86,6 +91,8 @@ namespace MessageGateway
             }
         }
 
+        public IFormulario CurrentForm { get; set; }
+
         /// <summary>
         /// Método que envía una ubicacion al usuario.
         /// </summary>
@@ -97,7 +104,26 @@ namespace MessageGateway
         private async void OnMessage(object sender, MessageEventArgs messageEventArgs)
         {
             Message message = messageEventArgs.Message;
-            this.UltimoMensaje = new TelegramMessageAdapter(message);
+            IMessage adaptedMessage = new TelegramMessageAdapter(message);
+            if (adaptedMessage.TxtMensaje == "/start")
+            {
+                adaptedMessage.Keyword = Handlers.PalabrasClaveHandlers.Inicio;
+            }
+            
+            string frmPrevioMensaje;
+            string respuesta;
+            string frmPostMensaje;
+            do
+            {
+                frmPrevioMensaje = this.CurrentForm.GetType().ToString();
+                respuesta = this.CurrentForm.ReceiveMessage(adaptedMessage);
+                frmPostMensaje = this.CurrentForm.GetType().ToString();
+            }
+            while (frmPrevioMensaje != frmPostMensaje);
+
+            await this.TelegramBot.Cliente.SendTextMessageAsync(adaptedMessage.ChatID, respuesta);
+
+            this.UltimoMensaje = null;
         }
     }
 }

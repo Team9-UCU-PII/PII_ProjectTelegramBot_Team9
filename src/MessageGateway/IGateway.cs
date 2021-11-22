@@ -3,6 +3,7 @@
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
+using MessageGateway.Forms;
 
 namespace MessageGateway
 {
@@ -38,5 +39,9 @@ namespace MessageGateway
         /// </summary>
         /// <value><see langword ="string"/>.</value>
         IMessage MensajeRecibido { get; }
+
+        void Start();
+
+        IFormulario CurrentForm { get; set; }
     }
 }

@@ -12,31 +12,20 @@ namespace MessageGateway
     /// <summary>
     /// Adaptador del mensaje de telegram a la interfaz <see iref ="IMessage"/>.
     /// </summary>
-    public class TelegramMessageAdapter : IMessage
+    public class TelegramMessageAdapter : MessageBase
     {
-
-        /// <summary>
-        /// Obtiene la id del chat en curso.
-        /// </summary>
-        /// <value><see langword ="string"/>.</value>
-        public string ChatID { get; }
-
-        /// <summary>
-        /// Obtiene el mensaje que se recibió o envió último.
-        /// </summary>
-        /// <value><see langword ="string"/>.</value>
-        public string TxtMensaje { get; }
-
         /// <summary>
         /// Constructor de un adaptador a partir de un Message de Telegram.
         /// </summary>
         /// <param name="msj"><see cref ="Message"/>.</param>
         public TelegramMessageAdapter (Message msj)
+        : base(
+            msj.Chat.Id.ToString(),
+            ! string.IsNullOrEmpty(msj.Text) ? msj.Text : ""
+        )
         {
-            this.ChatID = msj.Chat.Id.ToString();
-            this.TxtMensaje = msj.Text.ToLower();
         }
-
+        /*
         private TelegramMessageAdapter (string newTxt)
         {
             this.TxtMensaje = newTxt;
@@ -51,5 +40,6 @@ namespace MessageGateway
         {
             return new TelegramMessageAdapter(txt);
         }
+        */
     }
 }
