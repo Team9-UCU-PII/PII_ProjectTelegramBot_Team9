@@ -1,3 +1,4 @@
+/*
 namespace MessageGateway.Handlers
 {
     public enum PalabrasClaveHandlers
@@ -13,6 +14,8 @@ namespace MessageGateway.Handlers
         Lugar,
         Rubro,
         Descripcion,
-        Contacto
+        Contacto,
+        Abortar
     }
 }
+*/
