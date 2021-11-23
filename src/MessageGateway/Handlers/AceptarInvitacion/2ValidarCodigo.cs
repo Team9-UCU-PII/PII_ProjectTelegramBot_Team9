@@ -10,11 +10,11 @@ namespace MessageGateway.Handlers.AceptarInvitacion
         private GestorInvitaciones gi = GestorInvitaciones.Instancia;
 
         public HandlerValidarCodigo(IMessageHandler next = null)
-        : base(new PalabrasClaveHandlers[] {PalabrasClaveHandlers.CodigoInvitacion}, next)
+        : base(new string[] {"CodigoInvitacion"}, next)
         {
         }
 
-        protected override bool InternalHandle(IMessage message, out string response, out PalabrasClaveHandlers nextHandlerKeyword)
+        protected override bool InternalHandle(IMessage message, out string response, out string nextHandlerKeyword)
         {
             if (this.CanHandle(message))
             {
@@ -23,19 +23,19 @@ namespace MessageGateway.Handlers.AceptarInvitacion
                 {
                     this.ContainingForm.Next = new FrmRegistroDatosLogin(invite.OrganizacionInvitada);
                     response = "¡Gracias por aceptar la invitación a unirte a #Nombre del bot#!";
-                    nextHandlerKeyword = PalabrasClaveHandlers.Inicio;
+                    nextHandlerKeyword = "Inicio";
                 }
                 else
                 {
                     response = "No se ha podido verificar el código. Por favor, reingrésalo.";
-                    nextHandlerKeyword = PalabrasClaveHandlers.CodigoInvitacion;
+                    nextHandlerKeyword = "CodigoInvitacion";
                 }
                 return true;
             }
             else
             {
                 response = string.Empty;
-                nextHandlerKeyword = PalabrasClaveHandlers.CodigoInvitacion;
+                nextHandlerKeyword = "CodigoInvitacion";
                 return false;
             }
         }
