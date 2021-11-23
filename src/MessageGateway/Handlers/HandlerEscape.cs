@@ -10,7 +10,7 @@ namespace MessageGateway.Handlers.Login
         {
         }
 
-        protected override bool InternalHandle(IMessage message, out string response, out PalabrasClaveHandlers nextHandlerKeyword)
+        protected override bool InternalHandle(IMessage message, out string response, out string nextHandlerKeyword)
         {
             if (this.CanHandle(message))
             {
@@ -33,13 +33,13 @@ namespace MessageGateway.Handlers.Login
                     this.ContainingForm.Next = new FrmMainMenu();
                 }
 
-                nextHandlerKeyword = PalabrasClaveHandlers.Nombre;
+                nextHandlerKeyword = "Nombre";
                 return true;
             }
             else
             {
                 response = string.Empty;
-                nextHandlerKeyword = PalabrasClaveHandlers.Inicio;
+                nextHandlerKeyword = "Inicio";
                 return false;
             }
         }
