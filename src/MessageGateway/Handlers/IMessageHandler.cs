@@ -6,6 +6,6 @@ namespace MessageGateway.Handlers
     {
         IFormulario ContainingForm { get; set; }
         IMessageHandler Next { get; set; }
-        IMessageHandler Handle(IMessage mensaje, out string response, out PalabrasClaveHandlers nextHandlerKeyword);
+        IMessageHandler Handle(IMessage mensaje, out string response, out string nextHandlerKeyword);
     }
 }

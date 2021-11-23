@@ -39,12 +39,12 @@ namespace MessageGateway.Forms
             }
         }
 
-        public PalabrasClaveHandlers NextMessageKeyword { private get; set; }
+        public string NextMessageKeyword { private get; set; }
 
         protected FormularioBase(Dictionary<string, string> referenciaComandos)
         {
             this.referenciaComandos = referenciaComandos;
-            this.NextMessageKeyword = PalabrasClaveHandlers.Inicio;
+            this.NextMessageKeyword = "Inicio";
         }
 
 
@@ -57,7 +57,7 @@ namespace MessageGateway.Forms
             );
 
             string respuesta;
-            PalabrasClaveHandlers palabraClaveSiguienteManejador;
+            string palabraClaveSiguienteManejador;
             IMessageHandler manejadorUtilizado = this.messageHandler.Handle(
                 mensajeTraducido,
                 out respuesta,

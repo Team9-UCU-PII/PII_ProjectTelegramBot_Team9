@@ -7,19 +7,19 @@ namespace MessageGateway.Handlers
     {
         public IMessageHandler Next { get; set; }
         public IFormulario ContainingForm { get; set; }
-        private PalabrasClaveHandlers[] keywords { get; }
+        private string[] keywords { get; }
 
-        protected MessageHandlerBase(PalabrasClaveHandlers[] keywords, IMessageHandler next)
+        protected MessageHandlerBase(string[] keywords, IMessageHandler next)
         {
             this.keywords = keywords;
             this.Next = next;
         }
         protected bool CanHandle(IMessage message)
         {
-            return this.keywords.Contains(message.Keyword);
+            return this.keywords.Contains<string>(message.Keyword);
         }
 
-        public IMessageHandler Handle(IMessage message, out string response, out PalabrasClaveHandlers nextHandlerKeyword)
+        public IMessageHandler Handle(IMessage message, out string response, out string nextHandlerKeyword)
         {
             if (this.InternalHandle(message, out response, out nextHandlerKeyword))
             {
@@ -35,6 +35,6 @@ namespace MessageGateway.Handlers
             }
         }
 
-        protected abstract bool InternalHandle(IMessage message, out string response, out PalabrasClaveHandlers nextHandlerKeyword);
+        protected abstract bool InternalHandle(IMessage message, out string response, out string nextHandlerKeyword);
     }
 }

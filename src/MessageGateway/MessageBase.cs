@@ -6,7 +6,7 @@ namespace MessageGateway
     {
         public string ChatID { get; set; }
         public string TxtMensaje { get; set; }
-        public PalabrasClaveHandlers Keyword { get; set; }
+        public string Keyword { get; set; }
 
         public MessageBase(string chatID, string txtMensaje)
         {
@@ -14,7 +14,7 @@ namespace MessageGateway
             this.TxtMensaje = txtMensaje;
         }
 
-        public MessageBase(string chatID, string txtMensaje, PalabrasClaveHandlers keyword)
+        public MessageBase(string chatID, string txtMensaje, string keyword)
         {
             this.ChatID = chatID;
             this.TxtMensaje = txtMensaje;

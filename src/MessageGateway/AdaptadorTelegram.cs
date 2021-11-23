@@ -94,7 +94,7 @@ namespace MessageGateway
             IMessage adaptedMessage = new TelegramMessageAdapter(message);
             if (adaptedMessage.TxtMensaje == "/start")
             {
-                adaptedMessage.Keyword = Handlers.PalabrasClaveHandlers.Inicio;
+                adaptedMessage.Keyword = "Inicio";
             }
             
             string frmPrevioMensaje;

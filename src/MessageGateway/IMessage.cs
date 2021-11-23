@@ -26,7 +26,7 @@ namespace MessageGateway
         /// <value><see langword ="string"/>.</value>
         string TxtMensaje { get; set; }
 
-        PalabrasClaveHandlers Keyword { get; set; }
+        string Keyword { get; set; }
 
         /*
         /// <summary>
