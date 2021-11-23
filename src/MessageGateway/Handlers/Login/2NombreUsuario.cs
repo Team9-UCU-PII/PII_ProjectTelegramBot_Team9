@@ -8,11 +8,11 @@ namespace MessageGateway.Handlers.Login
         private DataAccess da = DataAccess.Instancia;
 
         public HandlerNombreUsuario(IMessageHandler next = null)
-        : base(new PalabrasClaveHandlers[] {PalabrasClaveHandlers.Nombre}, next)
+        : base(new string[] {"Nombre"}, next)
         {
         }
 
-        protected override bool InternalHandle(IMessage message, out string response, out PalabrasClaveHandlers nextHandlerKeyword)
+        protected override bool InternalHandle(IMessage message, out string response, out string nextHandlerKeyword)
         {
             if (this.CanHandle(message))
             {
@@ -20,13 +20,13 @@ namespace MessageGateway.Handlers.Login
                 frm.NombreUsuario = message.TxtMensaje;
 
                 response = "Ingresa tu contraseña.";
-                nextHandlerKeyword = PalabrasClaveHandlers.Contrasenia;
+                nextHandlerKeyword = "Contrasenia";
                 return true;
             }
             else
             {
                 response = string.Empty;
-                nextHandlerKeyword = PalabrasClaveHandlers.Nombre;
+                nextHandlerKeyword = "Nombre";
                 return false;
             }
         }

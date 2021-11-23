@@ -10,11 +10,11 @@ namespace MessageGateway.Handlers.Login
         private DataAccess da = DataAccess.Instancia;
 
         public HandlerContrasenia(IMessageHandler next = null)
-        : base(new PalabrasClaveHandlers[] {PalabrasClaveHandlers.Contrasenia}, next)
+        : base(new string[] {"Contrasenia"}, next)
         {
         }
 
-        protected override bool InternalHandle(IMessage message, out string response, out PalabrasClaveHandlers nextHandlerKeyword)
+        protected override bool InternalHandle(IMessage message, out string response, out string nextHandlerKeyword)
         {
             if (this.CanHandle(message))
             {
@@ -41,12 +41,12 @@ namespace MessageGateway.Handlers.Login
                         default:
                             throw new System.Exception();
                     }
-                    nextHandlerKeyword = PalabrasClaveHandlers.Inicio;
+                    nextHandlerKeyword = "Inicio";
                 }
                 else
                 {
                     response = "Credenciales incorrectas, por favor reintente.";
-                    nextHandlerKeyword = PalabrasClaveHandlers.Nombre;
+                    nextHandlerKeyword = "Nombre";
                 }
 
                 return true;
@@ -54,7 +54,7 @@ namespace MessageGateway.Handlers.Login
             else
             {
                 response = string.Empty;
-                nextHandlerKeyword = PalabrasClaveHandlers.Contrasenia;
+                nextHandlerKeyword = "Contrasenia";
                 return false;
             }
         }
