@@ -5,11 +5,11 @@ namespace MessageGateway.Handlers.Bienvenida
     public class HandlerOpciones : MessageHandlerBase
     {
         public HandlerOpciones(IMessageHandler next = null)
-        : base(new PalabrasClaveHandlers[] {PalabrasClaveHandlers.Opciones}, next)
+        : base(new string[] {"Opciones"}, next)
         {
         }
 
-        protected override bool InternalHandle(IMessage message, out string response, out PalabrasClaveHandlers nextHandlerKeyword)
+        protected override bool InternalHandle(IMessage message, out string response, out string nextHandlerKeyword)
         {
             response = string.Empty;
             if (this.CanHandle(message))
@@ -24,15 +24,15 @@ namespace MessageGateway.Handlers.Bienvenida
                         this.ContainingForm.Next = new FrmAceptarInvitacion();
                         break;
                     default:
-                        nextHandlerKeyword = PalabrasClaveHandlers.Opciones;
+                        nextHandlerKeyword = "Opciones";
                         return false;
                 }
-                nextHandlerKeyword = PalabrasClaveHandlers.Inicio;
+                nextHandlerKeyword = "Inicio";
                 return true;
             }
             else
             {
-                nextHandlerKeyword = PalabrasClaveHandlers.Opciones;
+                nextHandlerKeyword = "Opciones";
                 return false;
             }
         }

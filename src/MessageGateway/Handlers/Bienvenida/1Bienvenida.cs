@@ -5,11 +5,11 @@ namespace MessageGateway.Handlers.Bienvenida
     public class HandlerBienvenida : MessageHandlerBase
     {
         public HandlerBienvenida(IMessageHandler next = null)
-        : base(new PalabrasClaveHandlers[] {PalabrasClaveHandlers.Inicio}, next)
+        : base(new string[] {"Inicio"}, next)
         {
         }
 
-        protected override bool InternalHandle(IMessage message, out string response, out PalabrasClaveHandlers nextHandlerKeyword)
+        protected override bool InternalHandle(IMessage message, out string response, out string nextHandlerKeyword)
         {
             if (this.CanHandle(message))
             {
@@ -21,13 +21,13 @@ namespace MessageGateway.Handlers.Bienvenida
                 "1. Iniciar sesión",
                 "2. Tengo un link de invitación");
                 response = sb.ToString();
-                nextHandlerKeyword = PalabrasClaveHandlers.Opciones;
+                nextHandlerKeyword = "Opciones";
                 return true;
             }
             else
             {
                 response = string.Empty;
-                nextHandlerKeyword = PalabrasClaveHandlers.Inicio;
+                nextHandlerKeyword = "Inicio";
                 return false;
             }
         }
