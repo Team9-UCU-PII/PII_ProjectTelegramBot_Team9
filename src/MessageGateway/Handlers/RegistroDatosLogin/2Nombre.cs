@@ -8,11 +8,11 @@ namespace MessageGateway.Handlers.RegistroDatosLogin
         private DataAccess da = DataAccess.Instancia;
 
         public HandlerNombre(IMessageHandler next = null)
-        : base(new PalabrasClaveHandlers[] {PalabrasClaveHandlers.Nombre}, next)
+        : base(new string[] {"Nombre"}, next)
         {
         }
 
-        protected override bool InternalHandle(IMessage message, out string response, out PalabrasClaveHandlers nextHandlerKeyword)
+        protected override bool InternalHandle(IMessage message, out string response, out string nextHandlerKeyword)
         {
             if (this.CanHandle(message))
             {
@@ -22,19 +22,19 @@ namespace MessageGateway.Handlers.RegistroDatosLogin
                 {
                     (this.ContainingForm as FrmRegistroDatosLogin).NombreUsuario = nombre;
                     response = "Ahora ingresa tu nueva contraseña.";
-                    nextHandlerKeyword = PalabrasClaveHandlers.Contrasenia;
+                    nextHandlerKeyword = "Contrasenia";
                 }
                 else
                 {
                     response = "Ya existe un usuario con este nombre. Por favor elige otro.";
-                    nextHandlerKeyword = PalabrasClaveHandlers.Nombre;
+                    nextHandlerKeyword = "Nombre";
                 }
                 return true;
             }
             else
             {
                 response = string.Empty;
-                nextHandlerKeyword = PalabrasClaveHandlers.Contrasenia;
+                nextHandlerKeyword = "Contrasenia";
                 return false;
             }
         }

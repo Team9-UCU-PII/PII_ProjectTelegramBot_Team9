@@ -10,11 +10,11 @@ namespace MessageGateway.Handlers.RegistroDatosLogin
         private string primeraContrasenia;
 
         public HandlerContrasenia(IMessageHandler next = null)
-        : base(new PalabrasClaveHandlers[] {PalabrasClaveHandlers.Contrasenia}, next)
+        : base(new string[] {"Contrasenia"}, next)
         {
         }
 
-        protected override bool InternalHandle(IMessage message, out string response, out PalabrasClaveHandlers nextHandlerKeyword)
+        protected override bool InternalHandle(IMessage message, out string response, out string nextHandlerKeyword)
         {
             if (this.CanHandle(message))
             {
@@ -22,7 +22,7 @@ namespace MessageGateway.Handlers.RegistroDatosLogin
                 {
                     this.primeraContrasenia = message.TxtMensaje;
                     response = "Por último, confirma tu contraseña ingresándola nuevamente.";
-                    nextHandlerKeyword = PalabrasClaveHandlers.Contrasenia;
+                    nextHandlerKeyword = "Contrasenia";
                     return true;
                 }
                 else if (message.TxtMensaje == this.primeraContrasenia)
@@ -58,20 +58,20 @@ namespace MessageGateway.Handlers.RegistroDatosLogin
                     $"Nombre de usuario: pepe",
                     $"Contraseña: {message.TxtMensaje}");
                     response = sb.ToString();
-                    nextHandlerKeyword = PalabrasClaveHandlers.Inicio;
+                    nextHandlerKeyword = "Inicio";
                 }
                 else
                 {
                     response = "Error: las contraseñas no coinciden. Vuelve a ingresar tu nueva contraseña.";
                     this.primeraContrasenia = string.Empty;
-                    nextHandlerKeyword = PalabrasClaveHandlers.Contrasenia;
+                    nextHandlerKeyword = "Contrasenia";
                 }
                 return true;
             }
             else
             {
                 response = string.Empty;
-                nextHandlerKeyword = PalabrasClaveHandlers.Contrasenia;
+                nextHandlerKeyword = "Contrasenia";
                 return false;
             }
         }
