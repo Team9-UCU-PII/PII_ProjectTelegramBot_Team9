@@ -5,11 +5,11 @@ namespace MessageGateway.Handlers.RegistroEmpresa
     public class HandlerInicio : MessageHandlerBase
     {
         public HandlerInicio(IMessageHandler next = null)
-        : base(new PalabrasClaveHandlers[] {PalabrasClaveHandlers.Inicio}, next)
+        : base(new string[] {"Inicio"}, next)
         {
         }
 
-        protected override bool InternalHandle(IMessage message, out string response, out PalabrasClaveHandlers nextHandlerKeyword)
+        protected override bool InternalHandle(IMessage message, out string response, out string nextHandlerKeyword)
         {
             if (this.CanHandle(message))
             {
@@ -19,13 +19,13 @@ namespace MessageGateway.Handlers.RegistroEmpresa
                 "\n",
                 "Primero, ingresa el nombre de tu empresa. Ten en cuenta que este nombre será público para todos los usuarios.");
                 response = sb.ToString();
-                nextHandlerKeyword = PalabrasClaveHandlers.Nombre;
+                nextHandlerKeyword = "Nombre";
                 return true;
             }
             else
             {
                 response = string.Empty;
-                nextHandlerKeyword = PalabrasClaveHandlers.Inicio;
+                nextHandlerKeyword = "Inicio";
                 return false;
             }
         }

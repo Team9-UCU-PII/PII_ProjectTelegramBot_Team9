@@ -8,11 +8,11 @@ namespace MessageGateway.Handlers.RegistroEmpresa
         private DataAccess da = DataAccess.Instancia;
 
         public HandlerRubro(IMessageHandler next = null)
-        : base(new PalabrasClaveHandlers[] {PalabrasClaveHandlers.Rubro}, next)
+        : base(new string[] {"Rubro"}, next)
         {
         }
 
-        protected override bool InternalHandle(IMessage message, out string response, out PalabrasClaveHandlers nextHandlerKeyword)
+        protected override bool InternalHandle(IMessage message, out string response, out string nextHandlerKeyword)
         {
             if (this.CanHandle(message))
             {
@@ -20,13 +20,13 @@ namespace MessageGateway.Handlers.RegistroEmpresa
                 frm.Rubro = message.TxtMensaje;
 
                 response = "Si lo deseas, agrega una breve descripción de tu empresa, o envía \".\" para omitir este paso.";
-                nextHandlerKeyword = PalabrasClaveHandlers.Descripcion;
+                nextHandlerKeyword = "Descripcion";
                 return true;
             }
             else
             {
                 response = string.Empty;
-                nextHandlerKeyword = PalabrasClaveHandlers.Rubro;
+                nextHandlerKeyword = "Rubro";
                 return false;
             }
         }

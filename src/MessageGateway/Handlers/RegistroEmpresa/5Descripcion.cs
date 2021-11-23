@@ -10,11 +10,11 @@ namespace MessageGateway.Handlers.RegistroEmpresa
         private DataAccess da = DataAccess.Instancia;
 
         public HandlerDescripcion(IMessageHandler next = null)
-        : base(new PalabrasClaveHandlers[] {PalabrasClaveHandlers.Descripcion}, next)
+        : base(new string[] {"Descripcion"}, next)
         {
         }
 
-        protected override bool InternalHandle(IMessage message, out string response, out PalabrasClaveHandlers nextHandlerKeyword)
+        protected override bool InternalHandle(IMessage message, out string response, out string nextHandlerKeyword)
         {
             if (this.CanHandle(message))
             {
@@ -22,13 +22,13 @@ namespace MessageGateway.Handlers.RegistroEmpresa
                 frm.Descripcion = message.TxtMensaje;
 
                 response = "Por último, ingresa un número de teléfono para que posibles interesados puedan contactarte.";
-                nextHandlerKeyword = PalabrasClaveHandlers.Contacto;
+                nextHandlerKeyword = "Contacto";
                 return true;
             }
             else
             {
                 response = string.Empty;
-                nextHandlerKeyword = PalabrasClaveHandlers.Descripcion;
+                nextHandlerKeyword = "Descripcion";
                 return false;
             }
         }

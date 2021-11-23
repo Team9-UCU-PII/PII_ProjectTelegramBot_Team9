@@ -11,11 +11,11 @@ namespace MessageGateway.Handlers.RegistroEmpresa
         private DataAccess da = DataAccess.Instancia;
 
         public HandlerContacto(IMessageHandler next = null)
-        : base(new PalabrasClaveHandlers[] {PalabrasClaveHandlers.Contacto}, next)
+        : base(new string[] {"Contacto"}, next)
         {
         }
 
-        protected override bool InternalHandle(IMessage message, out string response, out PalabrasClaveHandlers nextHandlerKeyword)
+        protected override bool InternalHandle(IMessage message, out string response, out string nextHandlerKeyword)
         {
             if (this.CanHandle(message))
             {
@@ -51,13 +51,13 @@ namespace MessageGateway.Handlers.RegistroEmpresa
 
                 // this.ContainingForm = new FrmMenuEmpresa();
                 response = sb.ToString();
-                nextHandlerKeyword = PalabrasClaveHandlers.Inicio;
+                nextHandlerKeyword = "Inicio";
                 return true;
             }
             else
             {
                 response = string.Empty;
-                nextHandlerKeyword = PalabrasClaveHandlers.Contacto;
+                nextHandlerKeyword = "Contacto";
                 return false;
             }
         }
