@@ -18,7 +18,8 @@ namespace MessageGateway.Forms
             }
             set
             {
-                this._messageHandler = value;
+                //asi el escapehandler esta presente en todo formulario como uno de los handlers activos.
+                this._messageHandler = new HandlerEscape(value);
                 IMessageHandler singleHandler = value;
                 do
                 {

@@ -1,11 +1,11 @@
 using System.Text;
 using MessageGateway.Forms;
 
-namespace MessageGateway.Handlers.Login
+namespace MessageGateway.Handlers
 {
     public class HandlerEscape : MessageHandlerBase
     {
-        public HandlerEscape(IMessageHandler next = null)
+        public HandlerEscape(IMessageHandler next)
         : base(new string[] {"abortar", "escapar"}, next)
         {
         }
