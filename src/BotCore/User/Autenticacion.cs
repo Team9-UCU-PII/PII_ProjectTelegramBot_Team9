@@ -46,8 +46,9 @@ namespace BotCore.User
 /// Metodo que toma colaboracion de <see cref = "DataAccess"/> para comprobar el inicio de
 /// sesión.
 /// </summary>
-/// <param name="nombreUsuario"></param>
-/// <param name="contrasenia"></param>
+/// <param name="nombreUsuario">String de username.</param>
+/// <param name="contrasenia">String de password.</param>
+/// <param name="organizacion">IUsuario saliente.</param>
 /// <returns><c>true</c> si nombreUsuario y contrasenia están viculados en
 /// <see cref = "DatosLogin"/> en la base de datos.</returns>
         public static bool ValidarUsuario(string nombreUsuario, string contrasenia, out IUsuario organizacion)

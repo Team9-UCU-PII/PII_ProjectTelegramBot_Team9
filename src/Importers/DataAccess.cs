@@ -82,6 +82,11 @@ namespace Importers
             this.db.Eliminar(objeto);
         }
 
+        /// <summary>
+        /// Metodo que devuelve la cantidad de gente que comparte un username puntual.
+        /// </summary>
+        /// <param name="nombreUsuario">String: Nombre a buscar repeticiones.</param>
+        /// <returns>Int: cuanta gente comparte el nombre.</returns>
         public int CantidadUsuariosPorNombre(string nombreUsuario)
         {
             return db.CantidadUsuariosPorNombre(nombreUsuario);
