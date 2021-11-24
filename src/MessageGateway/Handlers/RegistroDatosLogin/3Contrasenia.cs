@@ -33,11 +33,11 @@ namespace MessageGateway.Handlers.RegistroDatosLogin
                     switch (organizacion)
                     {
                         case Empresa e:
-                            this.ContainingForm.Next = new FrmRegistroEmpresa(
+                            this.ContainingForm.ChangeForm(new FrmRegistroEmpresa(
                                 frm.NombreUsuario,
                                 this.primeraContrasenia,
                                 e
-                            );
+                            ), message.ChatID);
                             break;
                         case Emprendedor e:
                         /*

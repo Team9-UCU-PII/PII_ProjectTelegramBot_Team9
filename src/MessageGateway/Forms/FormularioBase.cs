@@ -29,16 +29,6 @@ namespace MessageGateway.Forms
             }
         }
 
-        private IFormulario next;
-        public IFormulario Next
-        {
-            get { return next; }
-            set {
-                this.next = value;
-                gateway.CurrentForm = value;
-            }
-        }
-
         public PalabrasClaveHandlers NextMessageKeyword { private get; set; }
 
         protected FormularioBase(Dictionary<string, string> referenciaComandos)
@@ -73,6 +63,11 @@ namespace MessageGateway.Forms
             {
                 return "El mensaje no pudo ser procesado.";
             }
+        }
+
+        public void ChangeForm(IFormulario next, string chatID)
+        {
+            this.gateway.CambiarFormulario(next, chatID);
         }
 
         private string TraducirCodigo(string codigo)
