@@ -12,14 +12,16 @@ using Telegram.Bot.Types.Enums;
 using System.IO;
 using System.Text;
 using MessageGateway.Forms;
+using System.Collections.Generic;
 
 namespace MessageGateway
 {
     /// <summary>
-    /// Esta clase instanciaría el chat y bot, y almacenaría mensaje por mensaje que va recibiendo como string.
-    /// Permite implementar gateway a telegram.
+    /// Esta clase instanciaría el chat y bot, y almacenaría mensaje por mensaje que va recibiendo
+    /// como string. Permite portar la aplicación a Telegram siguiendo el patrón Adapter al heredar
+    /// de la clase base que implementa IGateway
     /// </summary>
-    public class AdaptadorTelegram : IGateway
+    public class AdaptadorTelegram : GatewayBase
     {
         private static AdaptadorTelegram instancia { get; set; }
 
@@ -44,24 +46,19 @@ namespace MessageGateway
         /// </summary>
         public TelegramBot TelegramBot = TelegramBot.Instancia;
         private AdaptadorTelegram()
+        : base()
         {
-            //Cuando se consstruye el adaptador ya se instancia el bot e inicia recepción de mensajes.
-
             //Asigno un gestor de mensajes
             this.TelegramBot.Cliente.OnMessage += OnMessage;
-        }
-
-        public void Start()
-        {
-            this.CurrentForm = new FrmBienvenida();
+            //Cuando se consstruye el adaptador ya se instancia el bot e inicia recepción de mensajes.
             this.TelegramBot.Cliente.StartReceiving();
         }
 
         /// <summary>
         /// Metodo de la interfaz <see iref ="IGateway"/>, envia un string como mensaje.
         /// </summary>
-        /// <param name="mensaje"><see langword ="string"/>.</param>
-        public void EnviarMensaje (IMessage mensaje)
+        /// <param name="mensaje">el IMessage a enviar.</param>
+        public override void EnviarMensaje (IMessage mensaje)
         {
             this.TelegramBot.Cliente.SendTextMessageAsync(mensaje.ChatID, mensaje.TxtMensaje);
         }
@@ -69,7 +66,7 @@ namespace MessageGateway
         /// <summary>
         /// Obtiene el link pertinente para hablar con el bot.
         /// </summary>
-        public string ObtenerLinkInvitacion
+        public override string ObtenerLinkInvitacion
         {
             get
             {
@@ -77,12 +74,13 @@ namespace MessageGateway
             }
         }
 
-        public IFormulario CurrentForm { get; set; }
-
         /// <summary>
-        /// Método que envía una ubicacion al usuario.
+        /// Diccionario que almacena el formulario actual de las distintas conversaciones que 
+        /// mantiene el bot con los distintos usuarios.
         /// </summary>
-        public void EnviarUbicacionEnMapa(IMessage mensaje, float latitud, float longitud)
+        private Dictionary<string, IFormulario> Conversaciones { get; }
+
+        public override void EnviarUbicacionEnMapa(IMessage mensaje, float latitud, float longitud)
         {
             this.TelegramBot.Cliente.SendLocationAsync(mensaje.ChatID, latitud, longitud);
         }
@@ -91,19 +89,22 @@ namespace MessageGateway
         {
             Message message = messageEventArgs.Message;
             IMessage adaptedMessage = new TelegramMessageAdapter(message);
+            string chatID = adaptedMessage.ChatID;
+
             if (adaptedMessage.TxtMensaje == "/start")
             {
                 adaptedMessage.Keyword = Handlers.PalabrasClaveHandlers.Inicio;
+                this.CrearConversacion(adaptedMessage.ChatID);
             }
-            
+
             string frmPrevioMensaje;
             string respuesta;
             string frmPostMensaje;
             do
             {
-                frmPrevioMensaje = this.CurrentForm.GetType().ToString();
-                respuesta = this.CurrentForm.ReceiveMessage(adaptedMessage);
-                frmPostMensaje = this.CurrentForm.GetType().ToString();
+                frmPrevioMensaje = this.ObtenerFormularioActual(chatID).GetType().ToString();
+                respuesta = this.ObtenerFormularioActual(chatID).ReceiveMessage(adaptedMessage);
+                frmPostMensaje = this.ObtenerFormularioActual(chatID).GetType().ToString();
             }
             while (frmPrevioMensaje != frmPostMensaje);
 
