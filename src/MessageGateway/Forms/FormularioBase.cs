@@ -18,7 +18,8 @@ namespace MessageGateway.Forms
             }
             set
             {
-                this._messageHandler = value;
+                this._messageHandler = new HandlerEscape(value);
+                this._messageHandler.ContainingForm = this;
                 IMessageHandler singleHandler = value;
                 do
                 {

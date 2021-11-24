@@ -7,7 +7,7 @@ namespace MessageGateway.Handlers
     /// <summary>
     /// Handler que permite en cualquier estado de conversación que se encuentre, cancelar el proceso y volver al ultimo menu.
     /// </summary>
-    public class HandlerEscape : MessageHandlerBase
+    public class HandlerEscape : MessageHandlerBase, IMessageHandler
     {
         public HandlerEscape(IMessageHandler next)
         : base(new PalabrasClaveHandlers[] {PalabrasClaveHandlers.Abortar}, next)
