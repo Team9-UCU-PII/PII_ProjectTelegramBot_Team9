@@ -22,7 +22,6 @@ namespace MessageGateway
     public class AdaptadorTelegram : IGateway
     {
         private static AdaptadorTelegram instancia { get; set; }
-        private IMessage UltimoMensaje { get; set; }
 
         /// <summary>
         /// Obitene acceso a la instancia del singleton de Adaptador.
