@@ -28,7 +28,7 @@ namespace ClassLibrary.Publication
     /// <param name="lugarRetiro"><see cref = "Location"/>.</param>
     /// <param name="vendedor"><see cref = "Empresa"/>.</param>
     /// <param name="descripcion"><see langword = "string"/>.</param>
-    /// <param name="categoria"><see langword = "string"/>.</param>
+    /// <param name="categoria"><see langword = "Categoria"/>.</param>
     public Publicacion(Residuo residuo, double precioUnitario, string moneda, int cantidad, string lugarRetiro, Empresa vendedor, string descripcion, Categoria categoria)
     {
       this.Residuo = residuo;
