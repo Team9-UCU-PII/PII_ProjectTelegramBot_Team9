@@ -102,6 +102,27 @@ namespace MessageGateway
                 adaptedMessage.Keyword = Handlers.PalabrasClaveHandlers.Inicio;
                 this.CrearConversacion(adaptedMessage.ChatID);
             }
+            else if (adaptedMessage.TxtMensaje == "/abortar")
+            {
+                IFormulario formi;
+                if 
+                (
+                    this.ObtenerFormularioActual(adaptedMessage.ChatID) is FrmAceptarInvitacion ||
+                    this.ObtenerFormularioActual(adaptedMessage.ChatID) is FrmBienvenida ||
+                    this.ObtenerFormularioActual(adaptedMessage.ChatID) is FrmRegistroDatosLogin ||
+                    this.ObtenerFormularioActual(adaptedMessage.ChatID) is FrmRegistroEmpresa ||
+                    this.ObtenerFormularioActual(adaptedMessage.ChatID) is FrmLogin 
+                )
+                {
+                    formi = new FrmBienvenida();
+                }
+                else
+                {
+                    formi = new FrmBienvenida();
+                }
+                
+                this.CambiarFormulario(formi,adaptedMessage.ChatID);
+            }
 
             string frmPrevioMensaje;
             string respuesta;
