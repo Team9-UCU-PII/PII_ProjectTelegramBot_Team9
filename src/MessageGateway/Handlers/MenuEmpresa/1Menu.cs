@@ -3,7 +3,7 @@ namespace MessageGateway.Handlers.MenuEmpresa
   public class HandlerMenuEmpresa : MessageHandlerBase
   {
     public HandlerMenuEmpresa(IMessageHandler next = null)
-    : base(new PalabrasClaveHandlers[] { PalabrasClaveHandlers.Inicio }, next)
+    : base(new PalabrasClaveHandlers[] { PalabrasClaveHandlers.MenuEmpresa }, next)
     {
     }
 
@@ -21,13 +21,13 @@ namespace MessageGateway.Handlers.MenuEmpresa
         "4. Configurar cuenta",
         "5. Salir");
         response = sb.ToString();
-        nextHandlerKeyword = PalabrasClaveHandlers.Opciones;
+        nextHandlerKeyword = PalabrasClaveHandlers.OpcionesEmpresa;
         return true;
       }
       else
       {
         response = string.Empty;
-        nextHandlerKeyword = PalabrasClaveHandlers.Inicio;
+        nextHandlerKeyword = PalabrasClaveHandlers.MenuEmpresa;
         return false;
       }
     }

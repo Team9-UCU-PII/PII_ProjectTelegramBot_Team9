@@ -1,11 +1,11 @@
 using MessageGateway.Forms;
 
-namespace MessageGateway.Handlers.MenuEmpresa
+namespace MessageGateway.Handlers.MenuEmprendedor
 {
-  public class HandlerOpcionesMenuEmpresa : MessageHandlerBase
+  public class HandlerOpcionesMenuEmprendedor : MessageHandlerBase
   {
     public HandlerOpcionesMenuEmpresa(IMessageHandler next = null)
-    : base(new PalabrasClaveHandlers[] { PalabrasClaveHandlers.OpcionesEmpresa }, next)
+    : base(new PalabrasClaveHandlers[] { PalabrasClaveHandlers.OpcionesEmprendedor }, next)
     {
     }
 
@@ -17,11 +17,8 @@ namespace MessageGateway.Handlers.MenuEmpresa
         response = "";
         switch (message.TxtMensaje)
         {
-          case "crear publicacion":
-            this.ContainingForm.Next = new FrmAltaOferta();
-            break;
-          case "modificar publicaciones":
-            this.ContainingForm.Next = new FrmModificarOferta();
+          case "buscar publicaciones":
+            this.ContainingForm.Next = new FrmBusqueda();
             break;
           case "generar reportes":
             this.ContainingForm.Next = new FrmGenerarReportes(); 
@@ -33,15 +30,15 @@ namespace MessageGateway.Handlers.MenuEmpresa
             this.ContainingForm.Next = new FrmEscape();
             break;
           default:
-            nextHandlerKeyword = PalabrasClaveHandlers.OpcionesEmpresa;
+            nextHandlerKeyword = PalabrasClaveHandlers.OpcionesEmprendedor;
             return false;
         }
-        nextHandlerKeyword = PalabrasClaveHandlers.MenuEmpresa;
+        nextHandlerKeyword = PalabrasClaveHandlers.MenuEmprendedor;
         return true;
       }
       else
       {
-        nextHandlerKeyword = PalabrasClaveHandlers.OpcionesEmpresa;
+        nextHandlerKeyword = PalabrasClaveHandlers.OpcionesEmprendedor;
         return false;
       }
     }

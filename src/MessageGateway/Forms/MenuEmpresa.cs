@@ -14,8 +14,8 @@ namespace MessageGateway.Forms
       })
     {
       this.messageHandler =
-        new HandlerMenu(
-          new HandlerOpciones()
+        new HandlerMenuEmpresa(
+          new HandlerOpcionesMenuEmpresa()
         );
     }
   }

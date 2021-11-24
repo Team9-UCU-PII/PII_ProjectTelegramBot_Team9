@@ -13,6 +13,10 @@ namespace MessageGateway.Handlers
         Lugar,
         Rubro,
         Descripcion,
-        Contacto
+        Contacto,
+        MenuEmpresa,
+        OpcionesEmpresa,
+        MenuEmprendedor,
+        OpcionesEmprendedor
     }
 }
