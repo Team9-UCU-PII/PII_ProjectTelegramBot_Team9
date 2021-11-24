@@ -54,13 +54,14 @@ namespace BotCore.User
         /// </summary>
         /// <param name="nombreTempUsuario">el nombre provisorio con el que se almacena el usuario.</param>
         /// <typeparam name="T">el tipo de usuario a invitar.</typeparam>
-        public void AlmacenarInvitacion<T>(string nombreTempUsuario)
+        public Invitacion AlmacenarInvitacion<T>(string nombreTempUsuario)
         where T : IUsuario, new()
         {
             IUsuario user = new T();
             user.Nombre = nombreTempUsuario;
             Invitacion invite = new Invitacion(user);
             this.InvitacionesEnviadas.Add(invite);
+            return invite;
         }
 
         /// <summary>
