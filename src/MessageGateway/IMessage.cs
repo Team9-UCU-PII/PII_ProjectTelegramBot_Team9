@@ -26,6 +26,10 @@ namespace MessageGateway
         /// <value><see langword ="string"/>.</value>
         string TxtMensaje { get; set; }
 
+        /// <summary>
+        /// Palabra clave de enum que notifica a los handlers que deben actuar.
+        /// </summary>
+        /// <value>Enum</value>
         PalabrasClaveHandlers Keyword { get; set; }
 
         /*
