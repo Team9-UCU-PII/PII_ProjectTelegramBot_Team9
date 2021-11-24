@@ -19,7 +19,7 @@ namespace Tests.UserStories
         private List<Residuo> CatalogoResiduos;
         private Empresa Empresa;
 
-        [SetUp]
+        [OneTimeSetUp]
         public void Setup()
         {
             this.da = DataAccess.Instancia;
@@ -51,9 +51,37 @@ namespace Tests.UserStories
 
             this.Empresa = new Empresa("CUTCSA", "Punta Carretas", "Transporte", "Empresa de transporte", "099123456");
 
-            this.publicador.PublicarOferta(CatalogoResiduos[2], 60, "U$S", 150, "Malvín Norte", Empresa, "Lote de tubos PVC");
-            this.publicador.PublicarOfertaRecurrente(CatalogoResiduos[1], 35, "U$S", 20, "Aguada", Empresa, "Repuestos hechos chatarra, mayormente aluminio.", 3);
-            this.publicador.PublicarOferta(CatalogoResiduos[0], 65, "$", 590, "Punta de Rieles", Empresa, "Planchas de MDF en buen estado.");
+            this.publicador.PublicarOferta(
+                CatalogoResiduos[2],
+                60,
+                "U$S",
+                150,
+                "Malvín Norte",
+                Empresa,
+                "Lote de tubos PVC",
+                CatalogoCategorias[0]
+            );
+            this.publicador.PublicarOfertaRecurrente(
+                CatalogoResiduos[1],
+                35,
+                "U$S",
+                20,
+                "Aguada",
+                Empresa,
+                "Repuestos hechos chatarra, mayormente aluminio.",
+                CatalogoCategorias[0],
+                3
+            );
+            this.publicador.PublicarOferta(
+                CatalogoResiduos[0],
+                65,
+                "$",
+                590,
+                "Punta de Rieles",
+                Empresa,
+                "Planchas de MDF en buen estado.",
+                CatalogoCategorias[1]
+            );
         }
 
         [Test]
@@ -65,12 +93,17 @@ namespace Tests.UserStories
                 {Busqueda.FiltrosPosibles.LugarRetiro, lugarRetiro}
             };
 
-            List<Publicacion> expected = da.Obtener<Publicacion>().Concat(da.Obtener<PublicacionRecurrente>()).Where(x => x.LugarRetiro == lugarRetiro).ToList();
+            List<Publicacion> expected = da.Obtener<Publicacion>().Concat(da.Obtener<PublicacionRecurrente>()).Where(x => x.LugarRetiro.FormattedAddress == lugarRetiro).ToList();
             List<Publicacion> actual = buscador.BuscarPublicaciones(filtro);
 
             IEnumerable<Publicacion> union = expected.Union(actual);
 
-            Assert.IsTrue(actual.Distinct().Count() == union.Count() && actual.All(x => x.LugarRetiro == lugarRetiro));
+            Assert.IsTrue(
+                actual.Distinct().Count() == union.Count() &&
+                actual.All(x => x.LugarRetiro.FormattedAddress.ToLower().Contains(
+                    lugarRetiro.ToLower(), System.StringComparison.CurrentCultureIgnoreCase
+                ))
+            );
         }
 
         [Test]

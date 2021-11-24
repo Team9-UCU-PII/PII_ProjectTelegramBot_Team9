@@ -3,6 +3,7 @@ using ClassLibrary.User;
 using BotCore.User;
 using System.Linq;
 using Tests.TestClasses;
+using MessageGateway;
 
 namespace Tests.UserStories
 {
@@ -10,25 +11,24 @@ namespace Tests.UserStories
     public class SendInviteTests 
     {
         private GestorInvitaciones gi;
+        private IGateway gateway;
 
         [SetUp]
         public void SetUp()
         {
             this.gi = GestorInvitaciones.Instancia;
-            this.gi.GatewayMensajes = TestGateway.Instancia;
+            this.gateway = TestGateway.Instancia;
         }
 
         [Test]
         public void InviteCompanyTest()
         {
-            string destinatario = "Roberto";
             string nombreEmpresa = "SEMM";
 
-            gi.EnviarInvitacion<Empresa>(destinatario, nombreEmpresa);
+            gi.AlmacenarInvitacion<Empresa>(nombreEmpresa);
 
             var resultado = from Invitacion x in gi.InvitacionesEnviadas
-                            where x.Destinatario == destinatario &&
-                            x.OrganizacionInvitada is Empresa &&
+                            where x.OrganizacionInvitada is Empresa &&
                             x.OrganizacionInvitada.Nombre == nombreEmpresa &&
                             !x.FueAceptada
                             select x;
@@ -39,14 +39,12 @@ namespace Tests.UserStories
         [Test]
         public void InviteEntrepreneurTest()
         {
-            string destinatario = "Gonzalo";
             string nombreEmprendedor = "Tapitas Oportunidades";
 
-            gi.EnviarInvitacion<Emprendedor>(destinatario, nombreEmprendedor);
+            gi.AlmacenarInvitacion<Emprendedor>(nombreEmprendedor);
 
             var resultado = from Invitacion x in gi.InvitacionesEnviadas
-                            where x.Destinatario == destinatario &&
-                            x.OrganizacionInvitada is Emprendedor &&
+                            where x.OrganizacionInvitada is Emprendedor &&
                             x.OrganizacionInvitada.Nombre == nombreEmprendedor &&
                             !x.FueAceptada
                             select x;
