@@ -42,7 +42,7 @@ namespace Tests
             Categoria categoria = new Categoria("CAT");
             Residuo residuo = new Residuo(categoria, "bla", "m/s", habilitaciones);
             Empresa empresa = new Empresa("SEMM", "Carrasco", "Medicina", "desc", "099123456");
-            Publicacion p = new Publicacion(residuo, 50, "$", 10, "Buceo", empresa, "desc publicación");
+            Publicacion p = new Publicacion(residuo, 50, "$", 10, "Buceo", empresa, "desc publicación", categoria);
 
             habilitaciones.ForEach(x => da.Insertar(x));
             da.Insertar(categoria);
@@ -64,7 +64,13 @@ namespace Tests
             DataAccess dataEmpresa = DataAccess.Instancia;
             dataEmpresa.Insertar(empresa);
             
-            Assert.IsTrue(empresa.Nombre == "ContruYeso" && empresa.Lugar == "Montevideo" && empresa.Rubro == "Construcción" && empresa.Descripcion == "Empresa de construcción en yeso" && empresa.Contacto == "099123456");
+            Assert.IsTrue(
+                empresa.Nombre == "ContruYeso" &&
+                empresa.Lugar.FormattedAddress.ToLower().Contains("Montevideo".ToLower()) &&
+                empresa.Rubro == "Construcción" &&
+                empresa.Descripcion == "Empresa de construcción en yeso" &&
+                empresa.Contacto == "099123456"
+            );
 
             Console.WriteLine(dataEmpresa.Obtener<Empresa>());
         }
@@ -77,7 +83,13 @@ namespace Tests
             DataAccess dataEmprendedor = DataAccess.Instancia;
             dataEmprendedor.Insertar(emprendedor);
 
-            Assert.IsTrue(emprendedor.Nombre == "El reciclador" && emprendedor.Lugar == "Canelones" && emprendedor.Rubro == "Construcción" && emprendedor.Especializacion == "Acero galvanizado" && emprendedor.Habilitaciones == habilitaciones);
+            Assert.IsTrue(
+                emprendedor.Nombre == "El reciclador" &&
+                emprendedor.Lugar.FormattedAddress.ToLower().Contains("Canelones".ToLower()) &&
+                emprendedor.Rubro == "Construcción" &&
+                emprendedor.Especializacion == "Acero galvanizado" &&
+                emprendedor.Habilitaciones == habilitaciones
+            );
 
             Console.WriteLine(dataEmprendedor.Obtener<Emprendedor>());
         }

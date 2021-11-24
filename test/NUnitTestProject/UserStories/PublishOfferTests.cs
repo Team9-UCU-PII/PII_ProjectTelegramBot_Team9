@@ -38,7 +38,7 @@ namespace Tests.UserStories
             Categoria categoria = new Categoria("CAT");
             Residuo residuo = new Residuo(categoria, "bla", "m/s", habilitaciones);
 
-            p.PublicarOferta(residuo, 15.99, "$", 50, "Puerto del Buceo", empresa, "Descrip");
+            p.PublicarOferta(residuo, 15.99, "$", 50, "Puerto del Buceo", empresa, "Descrip", categoria);
 
             var resultado = from Publicacion p in da.Obtener<Publicacion>()
                             where p.Residuo == residuo && p.Vendedor == empresa
@@ -54,7 +54,7 @@ namespace Tests.UserStories
             Categoria categoria = new Categoria("CAT");
             Residuo residuo = new Residuo(categoria, "bla", "m/s", habilitaciones);
 
-            p.PublicarOfertaRecurrente(residuo, 9.99, "U$S", 15, "Bella Unión", empresa, "Desc", 4);
+            p.PublicarOfertaRecurrente(residuo, 9.99, "U$S", 15, "Bella Unión", empresa, "Desc", categoria, 4);
 
             var resultado = from PublicacionRecurrente p in da.Obtener<PublicacionRecurrente>()
                             where p.Residuo == residuo && p.Vendedor == empresa

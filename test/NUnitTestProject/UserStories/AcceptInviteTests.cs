@@ -5,6 +5,7 @@ using Importers;
 using Tests.TestClasses;
 using System.Linq;
 using System.Collections.Generic;
+using MessageGateway;
 
 namespace Tests.UserStories
 {
@@ -13,12 +14,13 @@ namespace Tests.UserStories
     {
         private GestorInvitaciones gi;
         private DataAccess da;
+        private IGateway gateway;
 
         [SetUp]
         public void Setup()
         {
             gi = GestorInvitaciones.Instancia;
-            gi.GatewayMensajes = TestGateway.Instancia;
+            gateway = TestGateway.Instancia;
             da = DataAccess.Instancia;
         }
 
@@ -34,12 +36,11 @@ namespace Tests.UserStories
         [Test]
         public void AcceptCompanyInvite()
         {
-            string destinatarioEmpresa = "Julia";
-            string nombreEmpresa = "MercadoLibre";
-            gi.EnviarInvitacion<Empresa>(destinatarioEmpresa, nombreEmpresa);
-            string enlaceEnviado = (gi.GatewayMensajes as TestGateway).ObtenerUltimoEnlaceInvitacion(destinatarioEmpresa);
-            Invitacion invite = gi.ValidarInvitacion(destinatarioEmpresa, enlaceEnviado);
-            Assert.IsNotNull(invite);
+            Invitacion invitacionEnviada = gi.AlmacenarInvitacion<Empresa>("SEMM");
+            string tokenEnviado = (gateway as TestGateway).ObtenerUltimoTokenInvitacion();
+            Invitacion invite;
+            Assert.IsTrue(gi.ValidarInvitacion(tokenEnviado, out invite));
+            Assert.AreSame(invitacionEnviada, invite);
 
             string nombre = "Mercado Libre";
             string rubro = "E-Commerce";
@@ -61,10 +62,10 @@ namespace Tests.UserStories
         [Test]
         public void CompanyInviteWrongLink()
         {
-            string destinatarioEmpresa = "Julia";
             string nombreEmpresa = "MercadoLibre";
-            gi.EnviarInvitacion<Empresa>(destinatarioEmpresa, nombreEmpresa);
-            Invitacion invite = gi.ValidarInvitacion(destinatarioEmpresa, "123456");
+            gi.AlmacenarInvitacion<Empresa>("SEMM");
+            Invitacion invite;
+            Assert.IsFalse(gi.ValidarInvitacion("código_inválido", out invite));
             Assert.IsNull(invite);
 
             var empresasGuardadas = from Empresa e in da.Obtener<Empresa>()
@@ -83,10 +84,11 @@ namespace Tests.UserStories
         [Test]
         public void CompanyInviteWrongPersonAccepting()
         {
-            string destinatarioEmpresa = "Julia";
             string nombreEmpresa = "MercadoLibre";
-            gi.EnviarInvitacion<Empresa>(destinatarioEmpresa, nombreEmpresa);
-            Invitacion invite = gi.ValidarInvitacion("Ezequiel", nombreEmpresa);
+            gi.AlmacenarInvitacion<Empresa>(nombreEmpresa);
+            string tokenEnviado = (gateway as TestGateway).ObtenerUltimoTokenInvitacion();
+            Invitacion invite;
+            Assert.IsFalse(gi.ValidarInvitacion(tokenEnviado, out invite));
             Assert.IsNull(invite);
 
             var empresasGuardadas = from Empresa e in da.Obtener<Empresa>()
@@ -105,12 +107,12 @@ namespace Tests.UserStories
         [Test]
         public void AcceptEntrepreneurInvite()
         {
-            string destinatarioEmprendedor = "Manuel";
             string nombreEmprendedor = "Greenpeace";
-            gi.EnviarInvitacion<Emprendedor>(destinatarioEmprendedor, nombreEmprendedor);
-            string enlaceEnviado = (gi.GatewayMensajes as TestGateway).ObtenerUltimoEnlaceInvitacion(destinatarioEmprendedor);
-            Invitacion invite = gi.ValidarInvitacion(destinatarioEmprendedor, enlaceEnviado);
-            Assert.IsNotNull(invite);
+            Invitacion invitacionEnviada = gi.AlmacenarInvitacion<Emprendedor>(nombreEmprendedor);
+            string tokenEnviado = (gateway as TestGateway).ObtenerUltimoTokenInvitacion();
+            Invitacion invite;
+            Assert.IsTrue(gi.ValidarInvitacion(tokenEnviado, out invite));
+            Assert.AreSame(invitacionEnviada, invite);
 
             string nombre = "Greenpeace.org";
             string lugar = "Eduardo Víctor Haedo 2201";

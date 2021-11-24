@@ -18,10 +18,10 @@ namespace MessageGateway.Handlers.Bienvenida
                 switch (message.TxtMensaje)
                 {
                     case "login":
-                        this.ContainingForm.Next = new FrmLogin();
+                        this.ContainingForm.ChangeForm(new FrmLogin(), message.ChatID);
                         break;
                     case "invitacion":
-                        this.ContainingForm.Next = new FrmAceptarInvitacion();
+                        this.ContainingForm.ChangeForm(new FrmAceptarInvitacion(), message.ChatID);
                         break;
                     default:
                         nextHandlerKeyword = PalabrasClaveHandlers.Opciones;

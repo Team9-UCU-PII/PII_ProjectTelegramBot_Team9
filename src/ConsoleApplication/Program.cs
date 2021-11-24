@@ -42,7 +42,6 @@ namespace ConsoleApplication
             Console.WriteLine("is on now");
             GestorInvitaciones.Instancia.AlmacenarInvitacion<Empresa>("SEMM");
             IGateway client = AdaptadorTelegram.Instancia;
-            client.Start();
             while (true)
             {
                 /*

@@ -1,15 +1,17 @@
 using MessageGateway;
-using BotCore.User;
+using ClassLibrary.LocationAPI;
+using ClassLibrary.User;
 using System.Collections.Generic;
 using System.Linq;
 using System;
 
 namespace Tests.TestClasses
 {
-    public class TestGateway : IGateway
+    public class TestGateway : GatewayBase
     {
         private List<IMessage> mensajesEnviados;
-        private IMessage UltimoMensaje { get; set; }
+        private List<(string Token, Invitacion Invitacion)> invitacionesEnviadas;
+        private LocationApiClient locationApiClient;
 
         private static TestGateway instancia;
         public static TestGateway Instancia
@@ -27,26 +29,21 @@ namespace Tests.TestClasses
         private TestGateway()
         {
             this.mensajesEnviados = new List<IMessage>();
+            this.invitacionesEnviadas = new List<(string token, Invitacion invitacion)>();
+            this.locationApiClient = LocationApiClient.Instancia;
         }
 
-        public void EnviarMensaje(IMessage mensaje)
+        public override void EnviarMensaje(IMessage mensaje)
         {
             this.mensajesEnviados.Add(mensaje);
         }
 
-        public IMessage MensajeRecibido
+        public override void EnviarUbicacionEnMapa(IMessage mensaje, float latitud, float longitud)
         {
-            get
-            {
-                if (UltimoMensaje != null)
-                {
-                    return UltimoMensaje;
-                }
-                throw new Exception("Error recibir mensaje.");
-            }
+            throw new NotImplementedException();
         }
 
-        public string ObtenerLinkInvitacion
+        public override string ObtenerLinkInvitacion
         {
             get
             {
@@ -56,14 +53,7 @@ namespace Tests.TestClasses
 
         public string ObtenerUltimoTokenInvitacion(string destinatario)
         {
-            // TODO: revisar
-            return null;
-            /*
-            string textoInvitacion = this.mensajesEnviados.Where(
-                x => x.Item1 == destinatario && x.Item3 == TiposMensajes.Invitacion
-            ).Last().Item2;
-            return textoInvitacion.Substring(textoInvitacion.LastIndexOf(' ') + 1);
-            */
+            return this.invitacionesEnviadas.Last().Token;
         }
     }
 }

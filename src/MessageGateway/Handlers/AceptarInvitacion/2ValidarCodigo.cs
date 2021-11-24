@@ -21,7 +21,10 @@ namespace MessageGateway.Handlers.AceptarInvitacion
                 Invitacion invite;
                 if (this.gi.ValidarInvitacion(message.TxtMensaje, out invite))
                 {
-                    this.ContainingForm.Next = new FrmRegistroDatosLogin(invite.OrganizacionInvitada);
+                    this.ContainingForm.ChangeForm(
+                        new FrmRegistroDatosLogin(invite.OrganizacionInvitada),
+                        message.ChatID
+                    );
                     response = "¡Gracias por aceptar la invitación a unirte a #Nombre del bot#!";
                     nextHandlerKeyword = PalabrasClaveHandlers.Inicio;
                 }
