@@ -4,6 +4,7 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 using MessageGateway.Forms;
+using System.Collections.Generic;
 
 namespace MessageGateway
 {
@@ -34,8 +35,18 @@ namespace MessageGateway
         /// </summary>
         string ObtenerLinkInvitacion { get; }
 
-        void Start();
+        /// <summary>
+        /// Método que retorna el formulario en el que se ubica actualmente la conversación con un usuario.
+        /// </summary>
+        /// <param name="chatID">el ID del chat del usuario</param>
+        /// <returns>El formulario que procesa actualmente los mensajes del usuario.</returns>
+        IFormulario ObtenerFormularioActual(string chatID);
 
-        IFormulario CurrentForm { get; set; }
+        /// <summary>
+        /// Cambia el formulario que procesa los mensajes de un usuario.
+        /// </summary>
+        /// <param name="next">el nuevo formulario que procesa los mensajes.</param>
+        /// <param name="chatID">el ID del chat al cual se le cambia el formulario.</param>
+        void CambiarFormulario(IFormulario next, string chatID);
     }
 }

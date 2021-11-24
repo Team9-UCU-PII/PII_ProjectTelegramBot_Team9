@@ -37,7 +37,7 @@ namespace Tests.UserStories
             };
             Categoria categoria = new Categoria("CAT");
             Residuo residuo = new Residuo(categoria, "bla", "m/s", habilitaciones);
-            this.publicador.PublicarOferta(residuo, 100, "$", 5, "Obelisco", empresa, "desc oferta");
+            this.publicador.PublicarOferta(residuo, 100, "$", 5, "Obelisco", empresa, "desc oferta", categoria);
 
             this.ofertaPublicada = da.Obtener<Publicacion>().Single();
         }

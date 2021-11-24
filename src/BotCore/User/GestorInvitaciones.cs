@@ -52,24 +52,24 @@ namespace BotCore.User
         /// <summary>
         /// Metodo que crea la <see cref = "Invitacion"/> y la envia al destinatario especificado.
         /// </summary>
-        /// <param name="destinatario">El contacto objetivo (username).</param>
-        /// <param name="nombreTemp">Nombre placeholder para el IUsuario, el destinatario lo sobreescribirá luego.</param>
-        /// <typeparam name="T"></typeparam>
-        public void AlmacenarInvitacion<T>(string nombreTempUsuario)
+        /// <param name="nombreTempUsuario">el nombre provisorio con el que se almacena el usuario.</param>
+        /// <typeparam name="T">el tipo de usuario a invitar.</typeparam>
+        public Invitacion AlmacenarInvitacion<T>(string nombreTempUsuario)
         where T : IUsuario, new()
         {
             IUsuario user = new T();
             user.Nombre = nombreTempUsuario;
             Invitacion invite = new Invitacion(user);
             this.InvitacionesEnviadas.Add(invite);
+            return invite;
         }
 
         /// <summary>
-        /// Metodo utilizado para validar que la invitación fue aceptada. Es utilizado
-        /// externamente por <see cref = "MessageGateway"/>.
+        /// Metodo utilizado para validar que la invitación fue aceptada.
         /// </summary>
-        /// <param name="token"><see langword = "string"/>.</param>
-        /// <returns><see cref = "Invitacion"/>.</returns>
+        /// <param name="token">el código que el usuario debe ingresar para aceptar la invitación.</param>
+        /// <param name="invite">la invitación aceptada, o null si no se encontró una invitación con ese token.</param>
+        /// <returns>true si existía una invitación que aceptar, de lo contrario false.</returns>
         public bool ValidarInvitacion(string token, out Invitacion invite) 
         {
             invite = this.InvitacionesEnviadas.Where(
