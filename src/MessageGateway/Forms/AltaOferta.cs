@@ -1,7 +1,7 @@
 using ClassLibrary.Publication;
 using ClassLibrary.LocationAPI;
 using ClassLibrary.User;
-using System.Collections.Generic;
+using MessageGateway.Handlers;
 
 namespace MessageGateway.Forms
 {
@@ -24,22 +24,23 @@ namespace MessageGateway.Forms
         public Categoria Categoria;
 
         public FrmAltaOferta()
-        : base (new Dictionary<string, string> {})
         {
+            this.CurrentState = possibleStates.Inicio;
             this.messageHandler =
-            new HandlerResiduo(
-                new HandlerPrecio(
-                    new HandlerMoneda(
-                        new HandlerCant(
-                            new HandlerLocation(
-                                new HandlerDescripcion(
-                                    new HandlerCategoria(null)
-                                )
-                            )
-                        )
+            new HandlerAltaOferta(
+                new HandlerNewResiduo(
+                    new HandlerLocation(
+                            new HandlerEscape(null)
                     )
                 )
             );
+        }
+        public possibleStates CurrentState {get; set;}
+        public enum possibleStates
+        {
+            Inicio,
+            EsperandoData,
+            Done
         }
 
     }
