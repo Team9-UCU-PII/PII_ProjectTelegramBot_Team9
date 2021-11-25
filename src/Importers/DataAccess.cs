@@ -5,6 +5,7 @@
 //--------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using Importers.Memoria;
 using ClassLibrary.User;
 
 namespace Importers

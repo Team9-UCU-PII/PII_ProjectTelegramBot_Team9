@@ -11,7 +11,7 @@ using ClassLibrary.Publication;
 using ClassLibrary.User;
 using System.Linq;
 
-namespace Importers
+namespace Importers.Memoria
 {
     /// <summary>
     /// Esta clase manejara la logica cercana al acceso a la base de datos.
