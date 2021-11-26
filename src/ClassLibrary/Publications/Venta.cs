@@ -11,6 +11,7 @@ using ClassLibrary.User;
 using System;
 using System.Text;
 using System.Linq;
+using Importers;
 
 namespace ClassLibrary.Publication
 {
@@ -18,7 +19,7 @@ namespace ClassLibrary.Publication
   /// Clase que reune las compras de <see cref = "Publicacion"/> y los implicados, y se encarga de hacer la compra en sí.
   /// Implementa <see iref = "IPrintable"/>.
   /// </summary>
-  public class Venta : IPrintable
+  public class Venta : IPrintable, IPersistible
   {
     /// <summary>
     /// Se crea la instancia de venta con la fecha del momento.

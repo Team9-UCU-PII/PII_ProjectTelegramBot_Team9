@@ -6,14 +6,14 @@
 
 using System;
 using System.Text;
-using ClassLibrary.User;
+using Importers;
 
 namespace ClassLibrary.User
 {
     /// <summary>
     /// Clase mediadora entre <see cref = "GestorInvitaciones"/> y los <see iref = "IUsuario"/>, representa la invitación en si, y encapsula el enlace y destino.
     /// </summary>
-    public class Invitacion
+    public class Invitacion : IPersistible
     {
         /// <summary>
         /// Método constructor de la invitación.
@@ -23,7 +23,8 @@ namespace ClassLibrary.User
         public Invitacion(IUsuario organizacion)
         {
             this.OrganizacionInvitada = organizacion;
-            this.token = GenerarToken();
+            this.token = "1234";
+            //this.token = GenerarToken();
             this.FueAceptada = false;
         }
 

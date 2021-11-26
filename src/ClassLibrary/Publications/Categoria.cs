@@ -4,12 +4,14 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 
+using Importers;
+
 namespace ClassLibrary.Publication
 {
   /// <summary>
   /// Instancia de las categorias posibles para <see cref="Residuo"/>.
   /// </summary>
-  public class Categoria
+  public class Categoria : IPersistible
   {
     /// <summary>
     /// Constructor de categoria.

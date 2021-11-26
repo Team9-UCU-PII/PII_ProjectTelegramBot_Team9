@@ -4,6 +4,8 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 
+using Importers;
+
 namespace ClassLibrary.User
 {
     /// <summary>
@@ -11,7 +13,7 @@ namespace ClassLibrary.User
     /// almacendando la empresa o emprendedor al que estan vinculados y su información
     /// de cuenta.
     /// </summary>
-    public class DatosLogin
+    public class DatosLogin : IPersistible
     {
 
         /// <summary>

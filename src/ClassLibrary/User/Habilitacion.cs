@@ -4,12 +4,14 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 
+using Importers;
+
 namespace ClassLibrary.User
 {
   /// <summary>
   /// Clase representativa de las habilitaciones existentes aplicables a los residuos y emprendedores.
   /// </summary>
-  public class Habilitacion
+  public class Habilitacion : IPersistible
   {
     /// <summary>
     /// Contructor del tipo Habilitación.

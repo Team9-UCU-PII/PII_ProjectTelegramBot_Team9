@@ -6,6 +6,7 @@
 
 using ClassLibrary.User;
 using System.Collections.Generic;
+using Importers;
 using System.Linq;
 using System.Text;
 
@@ -15,7 +16,7 @@ namespace ClassLibrary.Publication
   /// Clase representativa de los disferentes residuos. Contiene <see cref = "Categoria"/>s, 
   /// Descripcion, unidad de medida y <see cref = "Habilitacion"/>es.
   /// </summary>
-  public class Residuo : IPrintable
+  public class Residuo : IPrintable, IPersistible
   {
     /// <summary>
     /// Constructor de Residuo.

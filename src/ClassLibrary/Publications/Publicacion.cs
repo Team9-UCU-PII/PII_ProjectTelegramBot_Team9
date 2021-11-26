@@ -9,6 +9,7 @@
 
 using ClassLibrary.User;
 using ClassLibrary.LocationAPI;
+using Importers;
 using System.Text;
 
 namespace ClassLibrary.Publication
@@ -16,7 +17,7 @@ namespace ClassLibrary.Publication
   /// <summary>
   /// Tipo base de publicación, comprende Descripcion, Residuo, Precio, Moneda, Cantidad, Lugar de Retiro y la Empresa Vendedor.
   /// </summary>
-  public class Publicacion : IPrintable
+  public class Publicacion : IPrintable, IPersistible
   {
     /// <summary>
     /// Constructor de Clase Publicacion.

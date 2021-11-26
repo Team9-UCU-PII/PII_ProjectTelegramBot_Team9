@@ -6,12 +6,14 @@
 // Ayuda a mantener el acoplamiento bajo en tareas relacionadas con Empresa y Emprendedores.
 //--------------------------------------------------------------------------------
 
+using Importers;
+
 namespace ClassLibrary.User
 {
     /// <summary>
     /// Interfaz que engloba tanto empresas como emprendimientos.
     /// </summary>
-    public interface IUsuario
+    public interface IUsuario : IPersistible
     {
         /// <summary>
         /// Obtiene los datos para el inicio de sesión.
