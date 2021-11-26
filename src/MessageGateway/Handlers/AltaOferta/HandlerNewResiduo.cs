@@ -15,11 +15,13 @@ namespace MessageGateway.Handlers
 
         protected override bool InternalHandle(IMessage message, out string response)
         {
-            if (this.CanHandle(message) && CurrentForm.CurrentState == CurrentForm.possibleStates.EsperandoData)
+            if (this.CanHandle(message) && (CurrentForm as FrmAltaOferta).CurrentState == HandlerAltaOferta.fases.ArmandoResiduo)
+            //capaz podria tener menos dependencia de FrmAltaOferta, pero la vdd es el unico contexto en el que es necesario.
             {
                 StringBuilder sb = new StringBuilder();
                 sb.Append($"Describe de que residuo se trata\n");
                 response = sb.ToString();
+                (CurrentForm as FrmAltaOferta).CurrentState = HandlerAltaOferta.fases.ArmandoResiduo;
                 faseActual = faseResiduo.UnidadMedida;
                 return true;
             }
@@ -51,10 +53,8 @@ namespace MessageGateway.Handlers
 
                 this.ResiduoFinal = new Residuo(this.categoria,this.descripcion,this.unit,this.habilitaciones);
 
-                if (CurrentForm is FrmAltaOferta && (CurrentForm as FrmAltaOferta).CurrentState == (CurrentForm as FrmAltaOferta).possibleStates.EsperandoData)
-                {
-                    (CurrentForm as FrmAltaOferta).residuo = this.ResiduoFinal;
-                }
+                (CurrentForm as FrmAltaOferta).CurrentState = HandlerAltaOferta.fases.Eligiendo;
+                (CurrentForm as FrmAltaOferta).residuo = this.ResiduoFinal;
                 return true;
             }
             else if (message.TxtMensaje != "Ninguna" && message.TxtMensaje != "Listo" && this.faseActual == faseResiduo.Habilitaciones)
