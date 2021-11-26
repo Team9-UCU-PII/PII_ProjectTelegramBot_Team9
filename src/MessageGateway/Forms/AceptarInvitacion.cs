@@ -6,11 +6,12 @@ namespace MessageGateway.Forms
     public class FrmAceptarInvitacion : FormularioBase
     {
         public FrmAceptarInvitacion()
-        : base(new Dictionary<string, string> {})
         {
             this.messageHandler =
-                new HandlerInicio(
+                new HandlerInviteInicio(
                 new HandlerValidarCodigo());
         }
+
+        public HandlerInviteInicio.faseInvite CurrentState = HandlerInviteInicio.faseInvite.Inicio;
     }
 }

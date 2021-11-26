@@ -1,17 +1,18 @@
 using System.Text;
+using MessageGateway.Forms;
 
 namespace MessageGateway.Handlers.AceptarInvitacion
 {
-    public class HandlerInicio : MessageHandlerBase
+    public class HandlerInviteInicio : MessageHandlerBase
     {
-        public HandlerInicio(IMessageHandler next = null)
-        : base(new PalabrasClaveHandlers[] {PalabrasClaveHandlers.Inicio}, next)
+        public HandlerInviteInicio(IMessageHandler next = null)
+        : base(new string[] {/*en blanco a proposito*/}, next)
         {
         }
 
-        protected override bool InternalHandle(IMessage message, out string response, out PalabrasClaveHandlers nextHandlerKeyword)
+        protected override bool InternalHandle(IMessage message, out string response)
         {
-            if (this.CanHandle(message))
+            if ((CurrentForm as FrmAceptarInvitacion).CurrentState == faseInvite.Inicio)
             {
                 StringBuilder sb = new StringBuilder();
                 sb.AppendJoin('\n',
@@ -19,15 +20,21 @@ namespace MessageGateway.Handlers.AceptarInvitacion
                 "\n",
                 "Ingresa el código de invitación que recibiste del administrador:");
                 response = sb.ToString();
-                nextHandlerKeyword = PalabrasClaveHandlers.CodigoInvitacion;
+                (CurrentForm as FrmAceptarInvitacion).CurrentState = faseInvite.LeyendoToken;
                 return true;
             }
             else
             {
                 response = string.Empty;
-                nextHandlerKeyword = PalabrasClaveHandlers.Inicio;
                 return false;
             }
+        }
+
+        public enum faseInvite
+        {
+            Inicio,
+            LeyendoToken,
+            ValidandoToken
         }
     }
 }
