@@ -9,6 +9,7 @@
 
 using ClassLibrary.User;
 using Importers;
+using System.Linq;
 
 namespace BotCore.User
 {
@@ -21,7 +22,7 @@ namespace BotCore.User
         private static DataAccess da = DataAccess.Instancia;
         public static bool UsuarioYaExiste(string nombre)
         {
-            int cantidadUsuarios = da.CantidadUsuariosPorNombre(nombre);
+            int cantidadUsuarios = da.Obtener<DatosLogin>().Where(dl => dl.NombreUsuario == nombre).Count();
             return cantidadUsuarios > 0;
         }
 

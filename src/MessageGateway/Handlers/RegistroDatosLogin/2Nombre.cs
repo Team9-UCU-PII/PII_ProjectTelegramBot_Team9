@@ -1,5 +1,8 @@
 using MessageGateway.Forms;
 using Importers;
+using BotCore.User;
+using ClassLibrary.User;
+using System.Linq;
 
 namespace MessageGateway.Handlers.RegistroDatosLogin
 {
@@ -17,8 +20,7 @@ namespace MessageGateway.Handlers.RegistroDatosLogin
             if (this.CanHandle(message))
             {
                 string nombre = message.TxtMensaje;
-                int cantidadUsuarios = da.CantidadUsuariosPorNombre(nombre);
-                if (cantidadUsuarios == 0)
+                if (! RegistroUsuario.UsuarioYaExiste(nombre))
                 {
                     (this.ContainingForm as FrmRegistroDatosLogin).NombreUsuario = nombre;
                     response = "Ahora ingresa tu nueva contraseña.";
