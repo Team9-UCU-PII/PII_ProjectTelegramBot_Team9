@@ -1,5 +1,7 @@
 using MessageGateway.Forms;
 using Importers;
+using ClassLibrary.User;
+using System.Linq;
 
 namespace MessageGateway.Handlers.RegistroDatosLogin
 {
@@ -17,7 +19,7 @@ namespace MessageGateway.Handlers.RegistroDatosLogin
             if (this.CanHandle(message))
             {
                 string nombre = message.TxtMensaje;
-                int cantidadUsuarios = da.CantidadUsuariosPorNombre(nombre);
+                int cantidadUsuarios = da.Obtener<DatosLogin>().Where(dl => dl.NombreUsuario == nombre).Count();
                 if (cantidadUsuarios == 0)
                 {
                     (this.ContainingForm as FrmRegistroDatosLogin).NombreUsuario = nombre;
