@@ -6,7 +6,6 @@
 
 using System.Collections.Generic;
 using Importers.Memoria;
-using ClassLibrary.User;
 
 namespace Importers
 {
@@ -47,7 +46,7 @@ namespace Importers
         /// </summary>
         /// <param name="objeto">Instancia sin persistir.</param>
         /// <typeparam name="T">Tipo de la instancia.</typeparam>
-        public void Insertar<T>(T objeto)
+        public void Insertar<T>(T objeto) where T : IPersistible
         {
             this.db.Insertar(objeto);
         }
@@ -58,7 +57,7 @@ namespace Importers
         /// <param name="objetoOriginal">El objeto existente.</param>
         /// <param name="objetoModificado">El objeto nuevo.</param>
         /// <typeparam name="T">Tipo de la instancia.</typeparam>
-        public void Actualizar<T>(T objetoOriginal, T objetoModificado)
+        public void Actualizar<T>(T objetoOriginal, T objetoModificado) where T : IPersistible
         {
             this.db.Actualizar(objetoOriginal, objetoModificado);
         }
@@ -68,7 +67,7 @@ namespace Importers
         /// </summary>
         /// <typeparam name="T">Tipo de la instancia/s.</typeparam>
         /// <returns><see langword="List T"/>.</returns>
-        public List<T> Obtener<T>()
+        public List<T> Obtener<T>() where T : class, IPersistible
         {
             return this.db.Obtener<T>();
         }
@@ -78,14 +77,9 @@ namespace Importers
         /// </summary>
         /// <param name="objeto">Instancia a borrarse.</param>
         /// <typeparam name="T">Tipo de la instancia.</typeparam>
-        public void Eliminar<T>(T objeto)
+        public void Eliminar<T>(T objeto) where T : IPersistible
         {
             this.db.Eliminar(objeto);
-        }
-
-        public int CantidadUsuariosPorNombre(string nombreUsuario)
-        {
-            return db.CantidadUsuariosPorNombre(nombreUsuario);
         }
     }
 }

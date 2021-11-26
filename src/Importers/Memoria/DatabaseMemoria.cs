@@ -6,9 +6,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Reflection;
-using ClassLibrary.Publication;
-using ClassLibrary.User;
 using System.Linq;
 
 namespace Importers.Memoria
@@ -37,6 +34,7 @@ namespace Importers.Memoria
 
         private DatabaseMemoria()
         {
+            /*
             this.categorias = new List<Categoria>();
             this.publicaciones = new List<Publicacion>();
             this.publicacionesRecurrentes = new List<PublicacionRecurrente>();
@@ -46,10 +44,13 @@ namespace Importers.Memoria
             this.emprendedores = new List<Emprendedor>();
             this.empresas = new List<Empresa>();
             this.habilitaciones = new List<Habilitacion>();
+            */
         }
 
         private static DatabaseMemoria instancia { get; set; }
 
+        private Dictionary<Type, List<object>> listas { get; }
+        /*
         private List<Categoria> categorias { get; }
 
         private List<Publicacion> publicaciones { get; }
@@ -69,14 +70,21 @@ namespace Importers.Memoria
         private List<Habilitacion> habilitaciones { get; }
 
         private List<Invitacion> invitaciones { get; }
+        */
 
         /// <summary>
         /// Guardar un objeto en memoria.
         /// </summary>
         /// <param name="objeto">Una instancia sin persistir.</param>
         /// <typeparam name="T">Tipo de la instancia.</typeparam>
-        public void Insertar<T>(T objeto)
+        public void Insertar<T>(T objeto) where T : IPersistible
         {
+            if (! this.ListExists<T>())
+            {
+                this.CreateEmptyList<T>();
+            }
+            this.Add(objeto);
+            /*
             foreach (PropertyInfo propiedad in this.GetType().GetProperties(BindingFlags.NonPublic | BindingFlags.Instance))
             {
                 if (propiedad.PropertyType.Equals(typeof(List<T>)))
@@ -86,8 +94,7 @@ namespace Importers.Memoria
                     return;
                 }
             }
-
-            throw new Exception("Este tipo de objeto no puede ser persistido.");
+            */
         }
 
         /// <summary>
@@ -96,8 +103,22 @@ namespace Importers.Memoria
         /// <param name="objetoOriginal">Una instancia ya persistida.</param>
         /// <param name="objetoModificado">La instancia a reemplazar la original.</param>
         /// <typeparam name="T">Tipo de la instancia.</typeparam>
-        public void Actualizar<T>(T objetoOriginal, T objetoModificado)
+        public void Actualizar<T>(T objetoOriginal, T objetoModificado) where T : IPersistible
         {
+            if (! this.ListExists<T>())
+            {
+                throw new ArgumentException("No existe el almacenamiento de este objeto todavía. Persista el objeto original, y luego realice la modificación.");
+            }
+
+            int indice = this.ItemIndexInList(objetoOriginal);
+            if (indice == -1)
+            {
+                throw new ArgumentException("No existe el almacenamiento de este objeto todavía. Persista el objeto original, y luego realice la modificación.");
+            }
+
+            this.SetItem(indice, objetoModificado);
+
+            /*
             foreach (PropertyInfo propiedad in this.GetType().GetProperties(BindingFlags.NonPublic | BindingFlags.Instance))
             {
                 if (propiedad.PropertyType.Equals(typeof(List<T>)))
@@ -110,6 +131,7 @@ namespace Importers.Memoria
             }
 
             throw new Exception("Este tipo de objeto no puede ser persistido.");
+            */
         }
 
         /// <summary>
@@ -117,8 +139,16 @@ namespace Importers.Memoria
         /// </summary>
         /// <typeparam name="T">Tipo de la Instancia.</typeparam>
         /// <returns><see langword="List T"/>.</returns>
-        public List<T> Obtener<T>()
+        public List<T> Obtener<T>() where T : class, IPersistible
         {
+            if (! this.ListExists<T>())
+            {
+                throw new ArgumentException("No existe el almacenamiento de este objeto todavía.");
+            }
+            
+            return this.GetTypedList<T>();
+
+            /*
             foreach (PropertyInfo propiedad in this.GetType().GetProperties(BindingFlags.NonPublic | BindingFlags.Instance))
             {
                 if (propiedad.PropertyType.Equals(typeof(List<T>)))
@@ -128,6 +158,7 @@ namespace Importers.Memoria
             }
 
             throw new Exception("Este tipo de objeto no puede ser persistido.");
+            */
         }
 
         /// <summary>
@@ -135,8 +166,22 @@ namespace Importers.Memoria
         /// </summary>
         /// <param name="objeto">Instancia a persistirse.</param>
         /// <typeparam name="T">Tipo de la instancia.</typeparam>
-        public void Eliminar<T>(T objeto)
+        public void Eliminar<T>(T objeto) where T : IPersistible
         {
+            if (! this.ListExists<T>())
+            {
+                throw new ArgumentException("No existe el almacenamiento de este objeto todavía.");
+            }
+
+            int indice = this.ItemIndexInList(objeto);
+            if (indice == -1)
+            {
+                throw new ArgumentException("Este objeto no se encuentra persistido.");
+            }
+
+            this.DeleteItem(objeto);
+
+            /*
             foreach (PropertyInfo propiedad in this.GetType().GetProperties(BindingFlags.NonPublic | BindingFlags.Instance))
             {
                 if (propiedad.PropertyType.Equals(typeof(List<T>)))
@@ -148,11 +193,42 @@ namespace Importers.Memoria
             }
 
             throw new Exception("Este tipo de objeto no puede ser persistido.");
+            */
         }
 
-        public int CantidadUsuariosPorNombre(string nombre)
+        private bool ListExists<T>() where T : IPersistible
         {
-            return datosLogin.Where(dl => dl.NombreUsuario == nombre).Count();
+            return this.listas.ContainsKey(typeof(T));
+        }
+
+        private void CreateEmptyList<T>() where T : IPersistible
+        {
+            this.listas.Add(typeof(T), new List<object>());
+        }
+
+        private void Add<T>(T objeto) where T : IPersistible
+        {
+            this.listas[typeof(T)].Add(objeto);
+        }
+
+        private int ItemIndexInList<T>(T objeto) where T : IPersistible
+        {
+            return this.listas[typeof(T)].IndexOf(objeto);
+        }
+
+        private void SetItem<T>(int index, T objeto) where T : IPersistible
+        {
+            this.listas[typeof(T)][index] = objeto;
+        }
+
+        private List<T> GetTypedList<T>() where T : class, IPersistible
+        {
+            return this.listas[typeof(T)].Select(x => x as T).ToList();
+        }
+
+        private void DeleteItem<T>(T objeto) where T : IPersistible
+        {
+            this.listas[typeof(T)].Remove(objeto);
         }
     }
 }

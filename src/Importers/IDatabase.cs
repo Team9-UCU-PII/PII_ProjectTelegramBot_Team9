@@ -25,7 +25,7 @@ namespace Importers
         /// </summary>
         /// <param name="objeto">Instancia a persistirse.</param>
         /// <typeparam name="T">Tipo de la instancia.</typeparam>
-        void Insertar<T>(T objeto);
+        void Insertar<T>(T objeto) where T : IPersistible;
 
         /// <summary>
         /// Sobreescribir.
@@ -33,22 +33,20 @@ namespace Importers
         /// <param name="objetoOriginal">El objeto existente.</param>
         /// <param name="objetoModificado">El objeto nuevo.</param>
         /// <typeparam name="T">Tipo de la instancia.</typeparam>
-        void Actualizar<T>(T objetoOriginal, T objetoModificado);
+        void Actualizar<T>(T objetoOriginal, T objetoModificado) where T : IPersistible;
 
         /// <summary>
         /// Leer.
         /// </summary>
         /// <typeparam name="T">Tipo de la instancia.</typeparam>
         /// <returns><see langword="List T"/>.</returns>
-        List<T> Obtener<T>();
+        List<T> Obtener<T>() where T : class, IPersistible;
 
         /// <summary>
         /// Borrar.
         /// </summary>
         /// <param name="objeto">Instancia/s a borrarse.</param>
         /// <typeparam name="T">Tipo de la instancia.</typeparam>
-        void Eliminar<T>(T objeto);
-
-        int CantidadUsuariosPorNombre(string nombreUsuario);
+        void Eliminar<T>(T objeto) where T : IPersistible;
     }
 }
