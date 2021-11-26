@@ -34,43 +34,12 @@ namespace Importers.Memoria
 
         private DatabaseMemoria()
         {
-            /*
-            this.categorias = new List<Categoria>();
-            this.publicaciones = new List<Publicacion>();
-            this.publicacionesRecurrentes = new List<PublicacionRecurrente>();
-            this.residuos = new List<Residuo>();
-            this.ventas = new List<Venta>();
-            this.datosLogin = new List<DatosLogin>();
-            this.emprendedores = new List<Emprendedor>();
-            this.empresas = new List<Empresa>();
-            this.habilitaciones = new List<Habilitacion>();
-            */
+            this.listas = new Dictionary<Type, List<object>>();
         }
 
         private static DatabaseMemoria instancia { get; set; }
 
         private Dictionary<Type, List<object>> listas { get; }
-        /*
-        private List<Categoria> categorias { get; }
-
-        private List<Publicacion> publicaciones { get; }
-
-        private List<PublicacionRecurrente> publicacionesRecurrentes { get; }
-
-        private List<Residuo> residuos { get; }
-
-        private List<Venta> ventas { get; }
-
-        private List<DatosLogin> datosLogin { get; }
-
-        private List<Emprendedor> emprendedores { get; }
-
-        private List<Empresa> empresas { get; }
-
-        private List<Habilitacion> habilitaciones { get; }
-
-        private List<Invitacion> invitaciones { get; }
-        */
 
         /// <summary>
         /// Guardar un objeto en memoria.
@@ -84,17 +53,6 @@ namespace Importers.Memoria
                 this.CreateEmptyList<T>();
             }
             this.Add(objeto);
-            /*
-            foreach (PropertyInfo propiedad in this.GetType().GetProperties(BindingFlags.NonPublic | BindingFlags.Instance))
-            {
-                if (propiedad.PropertyType.Equals(typeof(List<T>)))
-                {
-                    List<T> lista = propiedad.GetValue(this) as List<T>;
-                    lista.Add(objeto);
-                    return;
-                }
-            }
-            */
         }
 
         /// <summary>
@@ -117,21 +75,6 @@ namespace Importers.Memoria
             }
 
             this.SetItem(indice, objetoModificado);
-
-            /*
-            foreach (PropertyInfo propiedad in this.GetType().GetProperties(BindingFlags.NonPublic | BindingFlags.Instance))
-            {
-                if (propiedad.PropertyType.Equals(typeof(List<T>)))
-                {
-                    List<T> lista = propiedad.GetValue(this) as List<T>;
-                    int indice = lista.IndexOf(objetoOriginal);
-                    lista[indice] = objetoModificado;
-                    return;
-                }
-            }
-
-            throw new Exception("Este tipo de objeto no puede ser persistido.");
-            */
         }
 
         /// <summary>
@@ -147,18 +90,6 @@ namespace Importers.Memoria
             }
             
             return this.GetTypedList<T>();
-
-            /*
-            foreach (PropertyInfo propiedad in this.GetType().GetProperties(BindingFlags.NonPublic | BindingFlags.Instance))
-            {
-                if (propiedad.PropertyType.Equals(typeof(List<T>)))
-                {
-                    return propiedad.GetValue(this) as List<T>;
-                }
-            }
-
-            throw new Exception("Este tipo de objeto no puede ser persistido.");
-            */
         }
 
         /// <summary>
@@ -180,20 +111,6 @@ namespace Importers.Memoria
             }
 
             this.DeleteItem(objeto);
-
-            /*
-            foreach (PropertyInfo propiedad in this.GetType().GetProperties(BindingFlags.NonPublic | BindingFlags.Instance))
-            {
-                if (propiedad.PropertyType.Equals(typeof(List<T>)))
-                {
-                    List<T> lista = propiedad.GetValue(this) as List<T>;
-                    lista.Remove(objeto);
-                    return;
-                }
-            }
-
-            throw new Exception("Este tipo de objeto no puede ser persistido.");
-            */
         }
 
         private bool ListExists<T>() where T : IPersistible
