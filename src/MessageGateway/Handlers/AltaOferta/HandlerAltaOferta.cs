@@ -9,11 +9,12 @@ namespace MessageGateway.Handlers
         public HandlerAltaOferta(IMessageHandler next) : base ((new string[] {"CrearOferta"}), next)
         {
             this.Next = next;
+            (CurrentForm as FrmAltaOferta).CurrentState = fases.Inicio;
         }
 
         protected override bool InternalHandle(IMessage message, out string response)
         {
-            if (this.CanHandle(message) && CurrentForm.CurrentState == CurrentForm.possibleStates.Inicio)
+            if (this.CanHandle(message) && (CurrentForm as FrmAltaOferta).CurrentState == fases.Inicio)
             {
                 StringBuilder sb = new StringBuilder();
                 sb.Append($"Vamos a crear una publicación...\n");
@@ -23,16 +24,15 @@ namespace MessageGateway.Handlers
                 sb.Append ($"3.Lugar de Retiro\n");
                 sb.Append ($"4.Descripción\n");
                 response = sb.ToString();
-                CurrentForm.CurrentState = CurrentForm.possibleStates.EsperandoData;
-                faseActual = fases.Eligiendo;
+                (CurrentForm as FrmAltaOferta).CurrentState = fases.Eligiendo;
                 return true;
             }
-            else if (message.TxtMensaje == "2" && CurrentForm.CurrentState == CurrentForm.possibleStates.EsperandoData && faseActual == fases.Eligiendo)
+            else if (message.TxtMensaje == "2" && (CurrentForm as FrmAltaOferta).CurrentState == fases.Eligiendo)
             {
                 StringBuilder sb = new StringBuilder();
                 sb.Append($"¿Que cantidad del residuo dispones? (Segun la unidad dada en la especificacion del residuo)");
                 response = sb.ToString();
-                faseActual = fases.tomandoCantidad;
+                (CurrentForm as FrmAltaOferta).CurrentState = fases.tomandoCantidad;
                 return true;
             }
             else if (faseActual == fases.tomandoCantidad)
@@ -41,7 +41,7 @@ namespace MessageGateway.Handlers
                 if (int.TryParse(message.TxtMensaje, out int result))
                 {
                     (CurrentForm as FrmAltaOferta).Cantidad = result;
-                    faseActual = fases.tomandoMoneda;
+                    (CurrentForm as FrmAltaOferta).CurrentState = fases.tomandoMoneda;
                     sb.Append($"Añadida la cantidad. Ahora ingresa la moneda que aceptas ($ como pesos, USD como dolares, etc...)");
                     response = sb.ToString();
                     return true;
@@ -59,7 +59,7 @@ namespace MessageGateway.Handlers
                 (CurrentForm as FrmAltaOferta).Moneda = message.TxtMensaje;
                 sb.Append($"Añadida la moneda, ahora dime el valor unitario (puede ser decimal, con un punto, como ejemplo: 2.5)");
                 response = sb.ToString();
-                faseActual = fases.tomandoPrecio;
+                (CurrentForm as FrmAltaOferta).CurrentState = fases.tomandoPrecio;
                 return true;
             }
             else if ((faseActual == fases.tomandoPrecio))
@@ -68,7 +68,7 @@ namespace MessageGateway.Handlers
                 if (double.TryParse(message.TxtMensaje, out double result))
                 {
                     (CurrentForm as FrmAltaOferta).PrecioUnitario = result;
-                    faseActual = fases.Eligiendo;
+                    (CurrentForm as FrmAltaOferta).CurrentState = fases.Eligiendo;
                     sb.Append($"Listo");
                     response = sb.ToString();
                     return true;
@@ -80,12 +80,12 @@ namespace MessageGateway.Handlers
                     return true;
                 }
             }
-            else if (message.TxtMensaje == "4" && CurrentForm.CurrentState == CurrentForm.possibleStates.EsperandoData && faseActual == fases.Eligiendo)
+            else if (message.TxtMensaje == "4" && (CurrentForm as FrmAltaOferta).CurrentState == fases.Eligiendo)
             {
                 StringBuilder sb = new StringBuilder();
                 sb.Append($"Como describirías la publicación?");
                 response = sb.ToString();
-                faseActual = fases.tomandoDescripcion;
+                (CurrentForm as FrmAltaOferta).CurrentState = fases.tomandoDescripcion;
                 return true;
             }
             else if (faseActual == fases.tomandoDescripcion)
@@ -94,7 +94,7 @@ namespace MessageGateway.Handlers
                 sb.Append($"Guardada la descripción");
                 response = sb.ToString();
                 (CurrentForm as FrmAltaOferta).Descripcion = message.TxtMensaje;
-                faseActual = fases.Eligiendo;
+                (CurrentForm as FrmAltaOferta).CurrentState = fases.Eligiendo;
                 return true;
             }
             else
@@ -105,9 +105,13 @@ namespace MessageGateway.Handlers
         }
 
         private fases faseActual;
-        private enum fases
+        public enum fases
         {
+            Inicio,
             Eligiendo,
+            ArmandoResiduo,
+            ArmandoLocation,
+            tomandoResiduo,
             tomandoCantidad,
             tomandoMoneda,
             tomandoPrecio,

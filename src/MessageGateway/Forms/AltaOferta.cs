@@ -25,7 +25,6 @@ namespace MessageGateway.Forms
 
         public FrmAltaOferta()
         {
-            this.CurrentState = possibleStates.Inicio;
             this.messageHandler =
             new HandlerAltaOferta(
                 new HandlerNewResiduo(
@@ -35,13 +34,7 @@ namespace MessageGateway.Forms
                 )
             );
         }
-        public possibleStates CurrentState {get; set;}
-        public enum possibleStates
-        {
-            Inicio,
-            EsperandoData,
-            Done
-        }
+        public HandlerAltaOferta.fases CurrentState {get; set;}
 
     }
 }
