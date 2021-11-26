@@ -113,7 +113,7 @@ namespace ClassLibrary.Publication
     /// Implementación de <see iref = "IPrintable"/>, genera el texto para que envíe el bot.
     /// </summary>
     /// <returns><see langword="string"/>.</returns>
-    public string GetTextToPrint() 
+    public virtual string GetTextToPrint() 
     {
       StringBuilder text = new StringBuilder();
       text.AppendLine(this.Residuo.GetTextToPrint());

@@ -37,5 +37,14 @@ namespace ClassLibrary.Publication
     /// </summary>
     /// <value><see langword="int"/>.</value>
     public int FrecuenciaAnualRestock { get; set; }
+
+    /// <summary>
+    /// Obtiene un string que representa esta oferta recurrente.
+    /// </summary>
+    /// <returns>el string que representa la instancia.</returns>
+    public override string GetTextToPrint()
+    {
+      return base.GetTextToPrint() + "\nFrecuencia anual de restock: " + this.FrecuenciaAnualRestock;
+    }
   }
 }
