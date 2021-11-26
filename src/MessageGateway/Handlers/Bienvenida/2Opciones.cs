@@ -23,6 +23,10 @@ namespace MessageGateway.Handlers.Bienvenida
                         break;
                     case "2":
                         (CurrentForm as FrmBienvenida).CurrentState = HandlerBienvenida.faseWelcome.Inicio;
+                        this.CurrentForm.ChangeForm(new FrmRegistroDatosLogin(), message.ChatID);
+                        break;
+                    case "3":
+                        (CurrentForm as FrmBienvenida).CurrentState = HandlerBienvenida.faseWelcome.Inicio;
                         this.CurrentForm.ChangeForm(new FrmAceptarInvitacion(), message.ChatID);
                         break;
                     default:

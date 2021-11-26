@@ -20,7 +20,8 @@ namespace MessageGateway.Handlers.Bienvenida
                 "Por favor, selecciona una de las opciones para ingresar: ",
                 "\n",
                 "1. Iniciar sesión",
-                "2. Tengo un link de invitación");
+                "2. Registrarse",
+                "3. Tengo un link de invitación");
                 response = sb.ToString();
 
                 (CurrentForm as FrmBienvenida).CurrentState = faseWelcome.Eligiendo;

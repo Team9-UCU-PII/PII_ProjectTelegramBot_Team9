@@ -6,16 +6,16 @@ namespace MessageGateway.Forms
 {
     public class FrmLogin : FormularioBase
     {
-        public string NombreUsuario;
-        public string Contrasenia;
+        public IUsuario userLoggeado;
 
         public FrmLogin()
-        : base(new Dictionary<string, string> {})
         {
             this.messageHandler =
-                new HandlerInicio(
+                new HandlerLogin(
                 new HandlerNombreUsuario(
                 new HandlerContrasenia()));
         }
+
+        public HandlerLogin.fasesLogin CurrentState = HandlerLogin.fasesLogin.Inicio;
     }
 }
