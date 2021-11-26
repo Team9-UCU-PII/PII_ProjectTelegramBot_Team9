@@ -18,9 +18,11 @@ namespace MessageGateway.Handlers.Bienvenida
                 switch (message.TxtMensaje)
                 {
                     case "1":
+                        (CurrentForm as FrmBienvenida).CurrentState = HandlerBienvenida.faseWelcome.Inicio;
                         this.CurrentForm.ChangeForm(new FrmLogin(), message.ChatID);
                         break;
                     case "2":
+                        (CurrentForm as FrmBienvenida).CurrentState = HandlerBienvenida.faseWelcome.Inicio;
                         this.CurrentForm.ChangeForm(new FrmAceptarInvitacion(), message.ChatID);
                         break;
                     default:
