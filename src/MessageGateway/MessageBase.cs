@@ -27,12 +27,6 @@ namespace MessageGateway
         public string TxtMensaje { get; set; }
 
         /// <summary>
-        /// Palabra clave asociada al mensaje para notificar a los handlers quien operar.
-        /// </summary>
-        /// <value>Enum: PalabrasClave</value>
-        public PalabrasClaveHandlers Keyword { get; set; }
-
-        /// <summary>
         /// Contructor genérico del mensaje para sus herederos.
         /// </summary>
         /// <param name="chatID">Id del chat a crear el mensaje.</param>
@@ -42,19 +36,7 @@ namespace MessageGateway
             this.ChatID = chatID;
             this.TxtMensaje = txtMensaje;
         }
-
-        /// <summary>
-        /// Constructor alternativo para asignarse el keyword procesable.
-        /// </summary>
-        /// <param name="chatID">ChatId.</param>
-        /// <param name="txtMensaje">String.</param>
-        /// <param name="keyword">enum: PalabrasClave</param>
-        public MessageBase(string chatID, string txtMensaje, PalabrasClaveHandlers keyword)
-        {
-            this.ChatID = chatID;
-            this.TxtMensaje = txtMensaje;
-            this.Keyword = keyword;
-        }
+        
         /*
         public IMessage CrearRespuesta(string texto)
         {

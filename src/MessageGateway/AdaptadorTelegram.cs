@@ -99,7 +99,6 @@ namespace MessageGateway
 
             if (adaptedMessage.TxtMensaje == "/start")
             {
-                adaptedMessage.Keyword = Handlers.PalabrasClaveHandlers.Inicio;
                 this.CrearConversacion(adaptedMessage.ChatID);
             }
 
