@@ -1,32 +1,33 @@
-using ClassLibrary.User;
-using MessageGateway.Handlers.RegistroEmpresa;
 using System.Collections.Generic;
+using ClassLibrary.Publication;
+using ClassLibrary.LocationAPI;
+using ClassLibrary.User;
+using MessageGateway.Handlers;
 
 namespace MessageGateway.Forms
 {
-    public class FrmRegistroEmprendedor : FormularioBase
+    public class FrmRegistroEmprendedor : FormularioBase, IFormulario
     {
-        public string NombreUsuario;
-        public string Contrasenia;
-        public string NombrePublico;
-        public string Lugar;
-        public string Rubro;
-        public string Especializacion;
-        public List<Habilitacion> Habilitaciones;
-        public Emprendedor EmprendedorPreCreado;
+        public string Nombre;
 
-        public FrmRegistroEmprendedor(string nombreUsuario, string contrasenia, Emprendedor emprendedor)
-        : base(new Dictionary<string, string> {})
+        public Location lugar;
+
+        public string Rubro;
+
+        public string Especializacion;
+
+        public List<Habilitacion> Habilitaciones;
+
+        public FrmRegistroEmprendedor()
         {
-            this.NombreUsuario = nombreUsuario;
-            this.Contrasenia = contrasenia;
             this.messageHandler =
-                new HandlerInicio(
-                new HandlerNombre(
-                new HandlerLugar(
-                new HandlerRubro(
-                new HandlerDescripcion(
-                new HandlerContacto())))));
+            new HandlerRegistroEmprendedor(
+                new HandlerLocation(
+                    new HandlerEscape(null)
+                )
+            );
         }
+
+        public HandlerRegistroEmprendedor.fases CurrentState {get; set;}
     }
 }

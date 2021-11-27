@@ -15,6 +15,11 @@ namespace MessageGateway.Handlers
         Descripcion,
         Contacto,
         Especializacion,
-        Habilitaciones
+        Habilitaciones,
+        Categoria,
+        Empresa,
+        Residuo,
+        Precio,
+        Frecuencia,
     }
 }
