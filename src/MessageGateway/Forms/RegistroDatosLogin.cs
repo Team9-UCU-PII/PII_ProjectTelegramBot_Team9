@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using MessageGateway.Handlers.Escape;
 using MessageGateway.Handlers.RegistroDatosLogin;
 using ClassLibrary.User;
 
@@ -8,15 +8,26 @@ namespace MessageGateway.Forms
     {
         public IUsuario OrganizacionEnRegistro { get; private set; }
         public string NombreUsuario;
+        public string Password;
 
         public FrmRegistroDatosLogin(IUsuario organizacion)
-        : base(new Dictionary<string, string> {})
+        //Esta sobrecarga permite registrar desde una invitacion.
         {
             this.OrganizacionEnRegistro = organizacion;
             this.messageHandler =
-                new HandlerInicio(
-                new HandlerNombre(
-                new HandlerContrasenia()));
+                new HandlerRegDatosLogin(
+                    new HandlerEscape(null)
+                );
         }
+
+        public FrmRegistroDatosLogin()
+        {
+            this.messageHandler =
+                new HandlerRegDatosLogin(
+                    new HandlerEscape(null)
+                );
+        }
+
+        public HandlerRegDatosLogin.faseRegDL CurrentState = HandlerRegDatosLogin.faseRegDL.Inicio;
     }
 }
