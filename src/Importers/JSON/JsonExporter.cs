@@ -14,7 +14,13 @@ namespace Importers.Json
             ReferenceHandler = MyReferenceHandler.Instance,
             WriteIndented = true
         };
-        private static string filePath = @"data.json";
+
+        private string filePath;
+
+        public JsonExporter(string filePath)
+        {
+            this.filePath = filePath;
+        }
 
         /// <summary>
         /// Guarda un objeto que implemente IJsonConvertible en formato JSON.
@@ -27,18 +33,7 @@ namespace Importers.Json
             string json = JsonSerializer.Serialize(obj, obj.GetType(), config);
             //string typeName = obj.GetType().ToString();
             //string folderName = typeName.Substring(typeName.LastIndexOf('.') + 1);
-            File.WriteAllText(filePath, json);
-        }
-
-        /// <summary>
-        /// Obtiene un objeto del tipo especificado de un archivo en formato JSON.
-        /// </summary>
-        /// <typeparam name="T">el tipo del objeto obtenido.</typeparam>
-        /// <returns></returns>
-        public T Get<T>() where T : IJsonConvertible
-        {
-            string json = File.ReadAllText(filePath);
-            return JsonSerializer.Deserialize<T>(json);
+            File.WriteAllText(this.filePath, json);
         }
 
         /*
