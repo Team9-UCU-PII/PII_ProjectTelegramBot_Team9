@@ -15,64 +15,114 @@ namespace MessageGateway.Handlers
 
         protected override bool InternalHandle(IMessage message, out string response)
         {
-            if (this.CanHandle(message) && (this.CurrentForm is FrmAltaOferta) && (CurrentForm as FrmAltaOferta).CurrentState == HandlerAltaOferta.fases.Eligiendo)
+            if ((this.CanHandle(message) && (this.CurrentForm is FrmAltaOferta) && (CurrentForm as FrmAltaOferta).CurrentStateLocation == faseLocation.Inicio)
+            || ((this.CurrentForm is FrmRegistroEmpresa) && (CurrentForm as FrmRegistroEmpresa).CurrentState == HandlerRegEmpresa.fasesRegEmpresa.ArmandoLocation && (CurrentForm as FrmRegistroEmpresa).CurrentStateLocation == faseLocation.Inicio))
             //Esta comprobacion es especifica para el alta oferta que es el primer uso que le doy a este handler,
             //se le puede añadir para casos de otros forms como "ORs".
             {
                 StringBuilder sb = new StringBuilder();
-                sb.Append($"Muy bien, ¿El retiro es en Montevideo? (Departamento y ciudad)\n");
+                sb.Append($"¿Se encuentra en Montevideo?\n");
                 response = sb.ToString();
-                (CurrentForm as FrmAltaOferta).CurrentState = HandlerAltaOferta.fases.ArmandoLocation;
-                faseActual = faseLocation.tomandoMvdeo;
+                
+                if (CurrentForm is FrmAltaOferta)
+                {
+                (CurrentForm as FrmAltaOferta).CurrentState = HandlerAltaOferta.fasesAltaOferta.ArmandoLocation;
+                (CurrentForm as FrmAltaOferta).CurrentStateLocation = faseLocation.tomandoMvdeo;
+                }
+                if (CurrentForm is FrmRegistroEmpresa)
+                {
+                (CurrentForm as FrmRegistroEmpresa).CurrentState = HandlerRegEmpresa.fasesRegEmpresa.ArmandoLocation;
+                (CurrentForm as FrmRegistroEmpresa).CurrentStateLocation = faseLocation.tomandoMvdeo;
+                }
+
                 return true;
             }
-            else if (this.faseActual == faseLocation.tomandoMvdeo && message.TxtMensaje == "Si")
+            else if (((CurrentForm as FrmAltaOferta).CurrentStateLocation == faseLocation.tomandoMvdeo && message.TxtMensaje.ToLower() == "si") || ((CurrentForm as FrmRegistroEmpresa).CurrentStateLocation == faseLocation.tomandoMvdeo && message.TxtMensaje.ToLower() == "si"))
             {
                 StringBuilder sb = new StringBuilder();
-                sb.Append($"Ok, dinos la direccion (Con calle y numero de puerta basta).\n");
+                sb.Append($"Ok, dinos la direccion (Con calle y numero de puerta o Km basta).\n");
                 response = sb.ToString();
-                faseActual = faseLocation.tomandoDireccion;
+
+                if (CurrentForm is FrmAltaOferta)
+                {
+                (CurrentForm as FrmAltaOferta).CurrentStateLocation = faseLocation.tomandoDireccion;
+                }
+                if (CurrentForm is FrmRegistroEmpresa)
+                {
+                (CurrentForm as FrmRegistroEmpresa).CurrentStateLocation = faseLocation.tomandoDireccion;
+                }
                 return true;
             }
-            else if (this.faseActual == faseLocation.tomandoMvdeo && message.TxtMensaje == "No")
+            else if (((CurrentForm as FrmAltaOferta).CurrentStateLocation == faseLocation.tomandoMvdeo && message.TxtMensaje.ToLower() == "no") || ((CurrentForm as FrmRegistroEmpresa).CurrentStateLocation == faseLocation.tomandoMvdeo && message.TxtMensaje.ToLower() == "no"))
             {
                 StringBuilder sb = new StringBuilder();
                 sb.Append($"¿En que departamento se halla? \n");
                 response = sb.ToString();
-                faseActual = faseLocation.tomandoDpto;
+
+                if (CurrentForm is FrmAltaOferta)
+                {
+                (CurrentForm as FrmAltaOferta).CurrentStateLocation = faseLocation.tomandoDpto;
+                }
+                if (CurrentForm is FrmRegistroEmpresa)
+                {
+                (CurrentForm as FrmRegistroEmpresa).CurrentStateLocation = faseLocation.tomandoDpto;
+                }        
+
                 return true;
             }
-            else if (this.faseActual == faseLocation.tomandoDpto)
+            else if (((CurrentForm as FrmAltaOferta).CurrentStateLocation == faseLocation.tomandoDpto) || ((CurrentForm as FrmRegistroEmpresa).CurrentStateLocation == faseLocation.tomandoDpto))
             {
                 StringBuilder sb = new StringBuilder();
                 sb.Append($"¿En que ciudad?");
                 response = sb.ToString();
 
-                this.dpto = message.TxtMensaje;
+                if (CurrentForm is FrmAltaOferta)
+                {
+                (CurrentForm as FrmAltaOferta).CurrentStateLocation = faseLocation.tomandoCity;
+                (CurrentForm as FrmAltaOferta).dpto = message.TxtMensaje;
+                }
+                if (CurrentForm is FrmRegistroEmpresa)
+                {
+                (CurrentForm as FrmRegistroEmpresa).CurrentStateLocation = faseLocation.tomandoCity;
+                (CurrentForm as FrmRegistroEmpresa).dpto = message.TxtMensaje;
+                }  
 
-                faseActual = faseLocation.tomandoCity;
                 return true;
             }
-            else if (this.faseActual == faseLocation.tomandoCity)
+            else if (((CurrentForm as FrmAltaOferta).CurrentStateLocation == faseLocation.tomandoCity) || ((CurrentForm as FrmRegistroEmpresa).CurrentStateLocation == faseLocation.tomandoCity))
             {
                 StringBuilder sb = new StringBuilder();
                 sb.Append($"Excelente, Ahora si dinos calle y numero de puerta o km.");
                 response = sb.ToString();
 
-                this.city = message.TxtMensaje;
+                if (CurrentForm is FrmAltaOferta)
+                {
+                (CurrentForm as FrmAltaOferta).CurrentStateLocation = faseLocation.tomandoDireccion;
+                (CurrentForm as FrmAltaOferta).city = message.TxtMensaje;
+                }
+                if (CurrentForm is FrmRegistroEmpresa)
+                {
+                (CurrentForm as FrmRegistroEmpresa).CurrentStateLocation = faseLocation.tomandoDireccion;
+                (CurrentForm as FrmRegistroEmpresa).city = message.TxtMensaje;
+                }
                 return true;
             }
-            else if (this.faseActual == faseLocation.tomandoDireccion)
+            else if (((CurrentForm as FrmAltaOferta).CurrentStateLocation == faseLocation.tomandoDireccion) || ((CurrentForm as FrmRegistroEmpresa).CurrentStateLocation == faseLocation.tomandoDireccion))
             {
                 StringBuilder sb = new StringBuilder();
-                sb.Append($"Creada y guardada el lugar de retiro.");
+                sb.Append($"Creada y guardada la ubicación.");
                 response = sb.ToString();
-                this.locationFinal = LocationApiClient.Instancia.GetLocation(message.TxtMensaje, this.city, this.dpto);
 
-                if (this.CurrentForm is FrmAltaOferta)
+                if (CurrentForm is FrmAltaOferta)
                 {
-                    (this.CurrentForm as FrmAltaOferta).lugarRetiro = this.locationFinal;
-                    (this.CurrentForm as FrmAltaOferta).CurrentState = HandlerAltaOferta.fases.Eligiendo;
+                (CurrentForm as FrmAltaOferta).CurrentStateLocation = faseLocation.Inicio;
+                (CurrentForm as FrmAltaOferta).CurrentState = HandlerAltaOferta.fasesAltaOferta.Eligiendo;
+                (CurrentForm as FrmAltaOferta).direccion = message.TxtMensaje;
+                }
+                if (CurrentForm is FrmRegistroEmpresa)
+                {
+                (CurrentForm as FrmRegistroEmpresa).CurrentStateLocation = faseLocation.Inicio;
+                (CurrentForm as FrmRegistroEmpresa).direccion = message.TxtMensaje;
                 }
                 return true;
             }
@@ -83,18 +133,13 @@ namespace MessageGateway.Handlers
             }
 
         }
-        private enum faseLocation
+        public enum faseLocation
         {
+            Inicio,
             tomandoMvdeo,
             tomandoDpto,
             tomandoCity,
             tomandoDireccion
         }
-        private string dpto = "Montevideo";
-        private string city = "Montevideo";
-        private faseLocation faseActual;
-        private Location locationFinal;
-        
-
     }
 }
