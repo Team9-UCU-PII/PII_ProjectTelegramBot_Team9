@@ -1,32 +1,36 @@
 using ClassLibrary.User;
-using MessageGateway.Handlers.RegistroEmpresa;
-using System.Collections.Generic;
+using ClassLibrary.LocationAPI;
+using MessageGateway.Handlers;
 
 namespace MessageGateway.Forms
 {
     public class FrmRegistroEmpresa : FormularioBase
     {
-        public string NombreUsuario;
-        public string Contrasenia;
         public string NombrePublico;
-        public string Lugar;
+        public Location Lugar
+        {
+            get
+            {
+                return LocationApiClient.Instancia.GetLocation(direccion,city,dpto);
+            }
+        }
         public string Rubro;
         public string Descripcion;
         public string Contacto;
         public Empresa EmpresaPreCreada;
+        public string dpto = "Montevideo";
+        public string city = "Montevideo";
+        public string direccion;
 
-        public FrmRegistroEmpresa(string nombreUsuario, string contrasenia, Empresa empresa)
-        : base(new Dictionary<string, string> {})
+        public FrmRegistroEmpresa()
         {
-            this.NombreUsuario = nombreUsuario;
-            this.Contrasenia = contrasenia;
+            CurrentState = HandlerRegEmpresa.fasesRegEmpresa.Inicio;
             this.messageHandler =
-                new HandlerInicio(
-                new HandlerNombre(
-                new HandlerLugar(
-                new HandlerRubro(
-                new HandlerDescripcion(
-                new HandlerContacto())))));
+                new HandlerRegEmpresa(
+                    new HandlerLocation(null)
+                );
         }
+        public HandlerRegEmpresa.fasesRegEmpresa CurrentState;
+        public HandlerLocation.faseLocation CurrentStateLocation;
     }
 }
