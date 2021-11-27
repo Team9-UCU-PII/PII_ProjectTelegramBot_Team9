@@ -1,7 +1,7 @@
 using System.Text;
 using MessageGateway.Forms;
 
-namespace MessageGateway.Handlers
+namespace MessageGateway.Handlers.Escape
 {
 
     /// <summary>
@@ -10,40 +10,38 @@ namespace MessageGateway.Handlers
     public class HandlerEscape : MessageHandlerBase, IMessageHandler
     {
         public HandlerEscape(IMessageHandler next)
-        : base(new PalabrasClaveHandlers[] {PalabrasClaveHandlers.Abortar}, next)
+        : base(new string[] {"Abortar"}, next)
         {
         }
 
-        protected override bool InternalHandle(IMessage message, out string response, out PalabrasClaveHandlers nextHandlerKeyword)
+        protected override bool InternalHandle(IMessage message, out string response)
         {
             if (this.CanHandle(message))
             {
                 response = "Cancelando y volviendo...";
                 if 
                 (
-                    this.ContainingForm is FrmAceptarInvitacion ||
-                    this.ContainingForm is FrmBienvenida ||
-                    this.ContainingForm is FrmRegistroDatosLogin ||
-                    this.ContainingForm is FrmRegistroEmpresa ||
-                    this.ContainingForm is FrmLogin 
+                    this.CurrentForm is FrmAceptarInvitacion ||
+                    this.CurrentForm is FrmBienvenida ||
+                    this.CurrentForm is FrmRegistroDatosLogin ||
+                    this.CurrentForm is FrmRegistroEmpresa ||
+                    this.CurrentForm is FrmLogin 
                 )
                 {
-                    this.ContainingForm.ChangeForm( new FrmBienvenida(), message.ChatID);
+                    this.CurrentForm.ChangeForm( new FrmBienvenida(), message.ChatID);
                 }
                 else
                 {
                     //dejo placeholder para lo que encompasará el menu principal de acciones
                     //segun si es una empresa o emprendedor
-                    this.ContainingForm.ChangeForm( new FrmBienvenida(), message.ChatID);
+                    this.CurrentForm.ChangeForm( new FrmBienvenida(), message.ChatID);
                 }
 
-                nextHandlerKeyword = PalabrasClaveHandlers.Inicio;
                 return true;
             }
             else
             {
                 response = string.Empty;
-                nextHandlerKeyword = PalabrasClaveHandlers.Inicio;
                 return false;
             }
         }

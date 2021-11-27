@@ -2,6 +2,7 @@ using ClassLibrary.Publication;
 using ClassLibrary.LocationAPI;
 using ClassLibrary.User;
 using MessageGateway.Handlers;
+using MessageGateway.Handlers.Escape;
 
 namespace MessageGateway.Forms
 {
@@ -15,13 +16,22 @@ namespace MessageGateway.Forms
 
         public int Cantidad;
 
-        public Location lugarRetiro;
+        public Location lugarRetiro
+        {
+            get
+            {
+                return LocationApiClient.Instancia.GetLocation(direccion,city,dpto);
+            }
+        }
     
         public Empresa Vendedor;
 
         public string Descripcion;
 
         public Categoria Categoria;
+        public string city = "Montevideo";
+        public string dpto = "Montevideo";
+        public string direccion;
 
         public FrmAltaOferta()
         {
@@ -34,7 +44,9 @@ namespace MessageGateway.Forms
                 )
             );
         }
-        public HandlerAltaOferta.fases CurrentState {get; set;}
+        public HandlerAltaOferta.fasesAltaOferta CurrentState {get; set;}
+        public HandlerNewResiduo.fasesResiduo CurrentStateResiduo;
+        public HandlerLocation.faseLocation CurrentStateLocation;
 
     }
 }
