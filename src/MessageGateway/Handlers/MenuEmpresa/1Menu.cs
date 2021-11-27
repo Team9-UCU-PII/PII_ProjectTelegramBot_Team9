@@ -3,13 +3,13 @@ namespace MessageGateway.Handlers.MenuEmpresa
   public class HandlerMenuEmpresa : MessageHandlerBase
   {
     public HandlerMenuEmpresa(IMessageHandler next = null)
-    : base(new PalabrasClaveHandlers[] { PalabrasClaveHandlers.MenuEmpresa }, next)
+    : base(new string[] {"MenuEmpresa"}, next)
     {
     }
 
-    protected override bool InternalHandle(IMessage message, out string response, out PalabrasClaveHandlers nextHandlerKeyword)
+    protected override bool InternalHandle(IMessage message, out string response)
     {
-      if (this.CanHandler(message))
+      if (this.CanHandler(message) && (CurrentForm as FrmMenuEMpresa).CurrentState == faseMenuEmpresa.Inicio)
       {
         StringBuilder sb = new StringBuilder();
         sb.AppendJoin('\n',
@@ -21,15 +21,21 @@ namespace MessageGateway.Handlers.MenuEmpresa
         "4. Configurar cuenta",
         "5. Salir");
         response = sb.ToString();
-        nextHandlerKeyword = PalabrasClaveHandlers.OpcionesEmpresa;
+        (CurrentForm as FrmMenuEmpresa).CurrentState = faseMenuEmpresa.Eligiendo;
         return true;
       }
       else
       {
         response = string.Empty;
-        nextHandlerKeyword = PalabrasClaveHandlers.MenuEmpresa;
         return false;
       }
+    }
+
+    public enum faseMenuEmpresa
+    {
+      Inicio,
+      Eligiendo
+
     }
   }
 }

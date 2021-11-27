@@ -2,21 +2,15 @@ using MessageGateway.Handlers.MenuEmpresa;
 
 namespace MessageGateway.Forms
 {
-  public class FrmMenuEmpresa : FormularioBase
+  public class FrmMenuEmpresa : FormularioBase, IFormulario
   {
-    public FrmMenuEmpresa() : base(new Dictionary<string, string>
-      {
-        {"1", "crear publicacion"},
-        {"2", "modificar publicaciones"},
-        {"3", "generar reportes"},
-        {"4", "configurar cuenta"},
-        {"5", "salir"}
-      })
+    public FrmMenuEmpresa()
     {
       this.messageHandler =
         new HandlerMenuEmpresa(
           new HandlerOpcionesMenuEmpresa()
         );
     }
+    public HandlerMenuEmpresa.faseMenuEmpresa CurrentState = HandlerMenuEmpresa.faseMenuEmpresa.Inicio;
   }
 }

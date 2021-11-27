@@ -5,43 +5,45 @@ namespace MessageGateway.Handlers.MenuEmpresa
   public class HandlerOpcionesMenuEmpresa : MessageHandlerBase
   {
     public HandlerOpcionesMenuEmpresa(IMessageHandler next = null)
-    : base(new PalabrasClaveHandlers[] { PalabrasClaveHandlers.OpcionesEmpresa }, next)
+    : base(new string[] {"1", "2", "3", "4", "5"}, next)
     {
     }
 
-    protected override bool InternalHandle(IMessage message, out string response, out PalabrasClaveHandlers nextHandlerKeyword)
+    protected override bool InternalHandle(IMessage message, out string response)
     {
       response = string.Empty;
-      if (this.CanHandle(message))
+      if (this.CanHandle(message) && (CurrentForm as FrmMenuEmpresa).CurrentState == HandlerMenuEmpresa.faseMenuEmpresa.Eligiendo)
       {
-        response = "";
+        response = string.Empty;
         switch (message.TxtMensaje)
         {
-          case "crear publicacion":
-            this.ContainingForm.Next = new FrmAltaOferta();
+          case "1":
+            (CurrentForm as FrmMenuEmpresa).CurrentState = HandlerMenuEmpresa.faseMenuEmpresa.Inicio;
+            this.CurrentForm.ChangeForm(new FrmAltaOferta(), message.ChatID);
             break;
-          case "modificar publicaciones":
-            this.ContainingForm.Next = new FrmModificarOferta();
+          case "2":
+            (CurrentForm as FrmMenuEmpresa).CurrentState = HandlerMenuEmpresa.faseMenuEmpresa.Inicio;
+            this.CurrentForm.ChangeForm(new FrmModificarPublicacion(), message.ChatID);
             break;
-          case "generar reportes":
-            this.ContainingForm.Next = new FrmGenerarReportes(); 
+          case "3":
+            (CurrentForm as FrmMenuEmpresa).CurrentState = HandlerMenuEmpresa.faseMenuEmpresa.Inicio;
+            this.CurrentForm.ChangeForm(new FrmReportes(), message.ChatID);
             break;
-          case "configurar cuenta":
-            this.ContainingForm.Next = new FrmConfigurarCuenta();
+          case "4":
+            (CurrentForm as FrmMenuEmpresa).CurrentState = HandlerMenuEmpresa.faseMenuEmpresa.Inicio;
+            this.CurrentForm.ChangeForm(new FrmCuenta(), message.ChatID);
             break;
-          case "salir":
-            this.ContainingForm.Next = new FrmEscape();
+          case "5":
+            (CurrentForm as FrmMenuEmpresa).CurrentState = HandlerMenuEmpresa.faseMenuEmpresa.Inicio;
+            this.CurrentForm.ChangeForm(new Escape(), message.ChatID);
             break;
           default:
-            nextHandlerKeyword = PalabrasClaveHandlers.OpcionesEmpresa;
             return false;
         }
-        nextHandlerKeyword = PalabrasClaveHandlers.MenuEmpresa;
         return true;
       }
       else
       {
-        nextHandlerKeyword = PalabrasClaveHandlers.OpcionesEmpresa;
         return false;
       }
     }
