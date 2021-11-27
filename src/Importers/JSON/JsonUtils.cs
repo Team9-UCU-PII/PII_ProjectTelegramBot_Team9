@@ -19,12 +19,12 @@ namespace Importers.Json
         /// <summary>
         /// Guarda un objeto que implemente IJsonConvertible en formato JSON.
         /// </summary>
-        /// <param name="obj">el objeto a exportar.</param>
-        /// <typeparam name="T">tipo del objeto que implementa IJsonConvertible.</typeparam>
+        /// <param name="obj">El objeto a exportar.</param>
+        /// <typeparam name="T">Tipo del objeto que implementa IJsonConvertible.</typeparam>
         /// <returns>El string JSON que representa este objeto.</returns>
         public void Save<T>(T obj) where T : IJsonConvertible
         {
-            string json = JsonSerializer.Serialize(obj, config);
+            string json = JsonSerializer.Serialize(obj, obj.GetType(), config);
             //string typeName = obj.GetType().ToString();
             //string folderName = typeName.Substring(typeName.LastIndexOf('.') + 1);
             File.WriteAllText(filePath, json);

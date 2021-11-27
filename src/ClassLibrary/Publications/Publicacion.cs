@@ -10,6 +10,7 @@
 using ClassLibrary.User;
 using ClassLibrary.LocationAPI;
 using Importers;
+using Importers.Json;
 using System.Text;
 
 namespace ClassLibrary.Publication
@@ -17,7 +18,7 @@ namespace ClassLibrary.Publication
   /// <summary>
   /// Tipo base de publicación, comprende Descripcion, Residuo, Precio, Moneda, Cantidad, Lugar de Retiro y la Empresa Vendedor.
   /// </summary>
-  public class Publicacion : IPrintable, IPersistible
+  public class Publicacion : IPrintable, IJsonConvertible
   {
     /// <summary>
     /// Constructor de Clase Publicacion.
@@ -123,6 +124,11 @@ namespace ClassLibrary.Publication
       text.AppendLine($"Precio de venta: {this.Moneda} {this.PrecioTotal} ({this.Moneda} {this.PrecioUnitario} /{this.Residuo.UnidadMedida})");
       text.AppendLine($"Lugar de retiro: {this.LugarRetiro}");
       return text.ToString();
+    }
+
+    public virtual void JsonSave(JsonExporter exporter)
+    {
+        exporter.Save(this);
     }
   }
 }

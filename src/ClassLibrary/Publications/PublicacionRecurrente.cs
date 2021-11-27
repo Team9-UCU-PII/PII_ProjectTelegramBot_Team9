@@ -5,6 +5,7 @@
 //--------------------------------------------------------------------------------
 
 using ClassLibrary.User;
+using Importers.Json;
 
 namespace ClassLibrary.Publication
 {
@@ -45,6 +46,11 @@ namespace ClassLibrary.Publication
     public override string GetTextToPrint()
     {
       return base.GetTextToPrint() + "\nFrecuencia anual de restock: " + this.FrecuenciaAnualRestock;
+    }
+
+    public override void JsonSave(JsonExporter exporter)
+    {
+        exporter.Save(this);
     }
   }
 }

@@ -5,13 +5,14 @@
 //--------------------------------------------------------------------------------
 
 using Importers;
+using Importers.Json;
 
 namespace ClassLibrary.Publication
 {
   /// <summary>
   /// Instancia de las categorias posibles para <see cref="Residuo"/>.
   /// </summary>
-  public class Categoria : IPersistible
+  public class Categoria : IJsonConvertible
   {
     /// <summary>
     /// Constructor de categoria.
@@ -27,5 +28,10 @@ namespace ClassLibrary.Publication
     /// </summary>
     /// <value><see langword="string"/>.</value>
     public string Nombre { get; set; }
+    
+    public void JsonSave(JsonExporter exporter)
+    {
+        exporter.Save(this);
+    }
   }
 }

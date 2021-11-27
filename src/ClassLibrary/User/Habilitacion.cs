@@ -5,13 +5,14 @@
 //--------------------------------------------------------------------------------
 
 using Importers;
+using Importers.Json;
 
 namespace ClassLibrary.User
 {
   /// <summary>
   /// Clase representativa de las habilitaciones existentes aplicables a los residuos y emprendedores.
   /// </summary>
-  public class Habilitacion : IPersistible
+  public class Habilitacion : IJsonConvertible
   {
     /// <summary>
     /// Contructor del tipo Habilitación.
@@ -27,5 +28,10 @@ namespace ClassLibrary.User
     /// </summary>
     /// <value><see langword="string"/>.</value>
     public string Nombre { get; set; }
+    
+    public void JsonSave(JsonExporter exporter)
+    {
+        exporter.Save(this);
+    }
   }
 }

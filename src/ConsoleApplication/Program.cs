@@ -9,6 +9,7 @@ using MessageGateway;
 using BotCore.User;
 using ClassLibrary.User;
 using ClassLibrary.LocationAPI;
+using Importers.Json;
 
 namespace ConsoleApplication
 {
@@ -26,6 +27,10 @@ namespace ConsoleApplication
         public static void Main()
         {
             Console.WriteLine("is on now");
+            DatosLogin dl = new DatosLogin("pepe", "1234", new Empresa());
+            JsonExporter je = new JsonExporter();
+            dl.JsonSave(je);
+
             GestorInvitaciones.Instancia.AlmacenarInvitacion<Empresa>("SEMM");
             IGateway client = AdaptadorTelegram.Instancia;
             while (true)

@@ -7,13 +7,14 @@
 using System;
 using System.Text;
 using Importers;
+using Importers.Json;
 
 namespace ClassLibrary.User
 {
     /// <summary>
     /// Clase mediadora entre <see cref = "GestorInvitaciones"/> y los <see iref = "IUsuario"/>, representa la invitación en si, y encapsula el enlace y destino.
     /// </summary>
-    public class Invitacion : IPersistible
+    public class Invitacion : IJsonConvertible
     {
         /// <summary>
         /// Método constructor de la invitación.
@@ -96,6 +97,12 @@ namespace ClassLibrary.User
             }
 
             return sb.ToString();
+        }
+        
+
+        public void JsonSave(JsonExporter exporter)
+        {
+            exporter.Save(this);
         }
     }
 }

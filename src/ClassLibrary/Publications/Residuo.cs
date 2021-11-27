@@ -7,6 +7,7 @@
 using ClassLibrary.User;
 using System.Collections.Generic;
 using Importers;
+using Importers.Json;
 using System.Linq;
 using System.Text;
 
@@ -16,7 +17,7 @@ namespace ClassLibrary.Publication
   /// Clase representativa de los disferentes residuos. Contiene <see cref = "Categoria"/>s, 
   /// Descripcion, unidad de medida y <see cref = "Habilitacion"/>es.
   /// </summary>
-  public class Residuo : IPrintable, IPersistible
+  public class Residuo : IPrintable, IJsonConvertible
   {
     /// <summary>
     /// Constructor de Residuo.
@@ -68,6 +69,11 @@ namespace ClassLibrary.Publication
       text.AppendLine($"Material: {this.Descripcion} ({this.Categoria.Nombre})");
       text.AppendLine($"Los emprendedores requieren las siguientes habilitaciones para manejar este residuo: {string.Join(", ", this.Habilitaciones.Select(h => h.Nombre))}");
       return text.ToString();
+    }
+
+    public void JsonSave(JsonExporter exporter)
+    {
+        exporter.Save(this);
     }
   }
 }

@@ -12,6 +12,7 @@ using System;
 using System.Text;
 using System.Linq;
 using Importers;
+using Importers.Json;
 
 namespace ClassLibrary.Publication
 {
@@ -19,7 +20,7 @@ namespace ClassLibrary.Publication
   /// Clase que reune las compras de <see cref = "Publicacion"/> y los implicados, y se encarga de hacer la compra en sí.
   /// Implementa <see iref = "IPrintable"/>.
   /// </summary>
-  public class Venta : IPrintable, IPersistible
+  public class Venta : IPrintable, IJsonConvertible
   {
     /// <summary>
     /// Se crea la instancia de venta con la fecha del momento.
@@ -62,6 +63,11 @@ namespace ClassLibrary.Publication
       text.AppendLine($"Comprador: {this.Comprador.Nombre}");
       text.AppendLine($"Precio total: {this.Publicacion.Moneda} {this.Publicacion.PrecioUnitario * this.Publicacion.Cantidad}");
       return text.ToString();
+    }
+
+    public void JsonSave(JsonExporter exporter)
+    {
+        exporter.Save(this);
     }
   }
 }

@@ -10,6 +10,7 @@
 using ClassLibrary.Publication;
 using ClassLibrary.LocationAPI;
 using System.Collections.Generic;
+using Importers.Json;
 
 namespace ClassLibrary.User
 {
@@ -77,6 +78,11 @@ namespace ClassLibrary.User
         /// </summary>
         public Emprendedor()
         {
+        }
+
+        public void JsonSave(JsonExporter exporter)
+        {
+            exporter.Save(this);
         }
     }
 }

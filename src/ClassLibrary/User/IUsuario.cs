@@ -7,13 +7,14 @@
 //--------------------------------------------------------------------------------
 
 using Importers;
+using Importers.Json;
 
 namespace ClassLibrary.User
 {
     /// <summary>
     /// Interfaz que engloba tanto empresas como emprendimientos.
     /// </summary>
-    public interface IUsuario : IPersistible
+    public interface IUsuario : IJsonConvertible
     {
         /// <summary>
         /// Obtiene los datos para el inicio de sesión.

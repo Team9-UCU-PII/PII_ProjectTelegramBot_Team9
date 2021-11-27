@@ -10,6 +10,7 @@
 using ClassLibrary.Publication;
 using ClassLibrary.LocationAPI;
 using System.Collections.Generic;
+using Importers.Json;
 
 namespace ClassLibrary.User
 {
@@ -129,6 +130,11 @@ namespace ClassLibrary.User
             int frecuenciaAnualRestock)
         {
             return new PublicacionRecurrente(residuo, precioUnitario, moneda, cantidad, lugarRetiro, this, frecuenciaAnualRestock, descripcion, categoria);
+        }
+
+        public void JsonSave(JsonExporter exporter)
+        {
+            exporter.Save(this);
         }
     }
 }
