@@ -21,6 +21,7 @@ namespace MessageGateway.Handlers.MenuEmpresa
             (CurrentForm as FrmMenuEmpresa).CurrentState = HandlerMenuEmpresa.faseMenuEmpresa.Inicio;
             this.CurrentForm.ChangeForm(new FrmAltaOferta(), message.ChatID);
             break;
+          //No se los nombres de los formularios, aún no estan hechos.
           case "2":
             (CurrentForm as FrmMenuEmpresa).CurrentState = HandlerMenuEmpresa.faseMenuEmpresa.Inicio;
             this.CurrentForm.ChangeForm(new FrmModificarPublicacion(), message.ChatID);
@@ -35,7 +36,7 @@ namespace MessageGateway.Handlers.MenuEmpresa
             break;
           case "5":
             (CurrentForm as FrmMenuEmpresa).CurrentState = HandlerMenuEmpresa.faseMenuEmpresa.Inicio;
-            this.CurrentForm.ChangeForm(new Escape(), message.ChatID);
+            message.TxtMensaje = "abortar";
             break;
           default:
             return false;

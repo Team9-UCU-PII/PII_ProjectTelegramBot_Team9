@@ -2,7 +2,7 @@ using MessageGateway.Handlers.MenuEmpresa;
 
 namespace MessageGateway.Forms
 {
-  public class FrmMenuEmpresa : FormularioBase, IFormulario
+  public class FrmMenuEmpresa : FormularioBase
   {
     public FrmMenuEmpresa()
     {
