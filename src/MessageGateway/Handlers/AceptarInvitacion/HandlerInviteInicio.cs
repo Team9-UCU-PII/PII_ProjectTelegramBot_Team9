@@ -5,7 +5,7 @@ namespace MessageGateway.Handlers.AceptarInvitacion
 {
     public class HandlerInviteInicio : MessageHandlerBase
     {
-        public HandlerInviteInicio(IMessageHandler next = null)
+        public HandlerInviteInicio(IMessageHandler next)
         : base(new string[] {/*en blanco a proposito*/}, next)
         {
         }

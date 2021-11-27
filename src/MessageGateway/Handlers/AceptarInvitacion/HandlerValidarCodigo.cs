@@ -9,7 +9,7 @@ namespace MessageGateway.Handlers.AceptarInvitacion
     {
         private GestorInvitaciones gi = GestorInvitaciones.Instancia;
 
-        public HandlerValidarCodigo(IMessageHandler next = null)
+        public HandlerValidarCodigo(IMessageHandler next)
         : base(new string[] {}, next)
         {
         }

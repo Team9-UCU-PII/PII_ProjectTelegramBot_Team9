@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using MessageGateway.Handlers.Escape;
 using MessageGateway.Handlers.AceptarInvitacion;
 
 namespace MessageGateway.Forms
@@ -9,7 +9,10 @@ namespace MessageGateway.Forms
         {
             this.messageHandler =
                 new HandlerInviteInicio(
-                new HandlerValidarCodigo());
+                    new HandlerValidarCodigo(
+                        new HandlerEscape(null)
+                    )
+                );
         }
 
         public HandlerInviteInicio.faseInvite CurrentState = HandlerInviteInicio.faseInvite.Inicio;
