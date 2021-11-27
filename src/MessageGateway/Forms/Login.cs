@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using MessageGateway.Handlers.Escape;
 using MessageGateway.Handlers.Login;
 using ClassLibrary.User;
 
@@ -12,8 +12,8 @@ namespace MessageGateway.Forms
         {
             this.messageHandler =
                 new HandlerLogin(
-                new HandlerNombreUsuario(
-                new HandlerContrasenia()));
+                    new HandlerEscape(null)
+                );
         }
 
         public HandlerLogin.fasesLogin CurrentState = HandlerLogin.fasesLogin.Inicio;
