@@ -5,7 +5,7 @@ namespace MessageGateway.Handlers.Bienvenida
 {
     public class HandlerBienvenida : MessageHandlerBase
     {
-        public HandlerBienvenida(IMessageHandler next = null)
+        public HandlerBienvenida(IMessageHandler next)
         : base(new string[] {"/start"}, next)
         {
         }
@@ -37,6 +37,7 @@ namespace MessageGateway.Handlers.Bienvenida
         {
             Inicio,
             Eligiendo,
+            choosingRegister
 
         }
     }

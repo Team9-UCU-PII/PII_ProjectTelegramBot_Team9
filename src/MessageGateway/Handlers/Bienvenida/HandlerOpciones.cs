@@ -4,8 +4,8 @@ namespace MessageGateway.Handlers.Bienvenida
 {
     public class HandlerOpciones : MessageHandlerBase
     {
-        public HandlerOpciones(IMessageHandler next = null)
-        : base(new string[] {"1", "2"}, next)
+        public HandlerOpciones(IMessageHandler next)
+        : base(new string[] {"1", "2", "3"}, next)
         {
         }
 
@@ -22,8 +22,8 @@ namespace MessageGateway.Handlers.Bienvenida
                         this.CurrentForm.ChangeForm(new FrmLogin(), message.ChatID);
                         break;
                     case "2":
-                        (CurrentForm as FrmBienvenida).CurrentState = HandlerBienvenida.faseWelcome.Inicio;
-                        this.CurrentForm.ChangeForm(new FrmRegistroDatosLogin(), message.ChatID);
+                        response = "Registrarse como \"Empresa\" o \"Emprendedor\"";
+                        (CurrentForm as FrmBienvenida).CurrentState = HandlerBienvenida.faseWelcome.choosingRegister;
                         break;
                     case "3":
                         (CurrentForm as FrmBienvenida).CurrentState = HandlerBienvenida.faseWelcome.Inicio;
@@ -33,6 +33,21 @@ namespace MessageGateway.Handlers.Bienvenida
                         return false;
                 }
                 return true;
+            }
+            else if ((CurrentForm as FrmBienvenida).CurrentState == HandlerBienvenida.faseWelcome.choosingRegister)
+            {
+                if (message.TxtMensaje.ToLower() == "empresa")
+                {
+                    (CurrentForm as FrmBienvenida).CurrentState = HandlerBienvenida.faseWelcome.Inicio;
+                    this.CurrentForm.ChangeForm((new FrmRegistroEmpresa()), message.ChatID);
+                    return true;
+                }
+                else
+                {
+                    (CurrentForm as FrmBienvenida).CurrentState = HandlerBienvenida.faseWelcome.Inicio;
+                    this.CurrentForm.ChangeForm((new FrmRegistroEmpresa()), message.ChatID);
+                    return true;
+                }
             }
             else
             {
