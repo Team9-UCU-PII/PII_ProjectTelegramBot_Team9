@@ -11,6 +11,8 @@ namespace MessageGateway.Handlers
         {
             this.Next = next;
             (CurrentForm as FrmAltaOferta).CurrentState = fasesAltaOferta.Inicio;
+            (CurrentForm as FrmAltaOferta).CurrentStateLocation = HandlerLocation.faseLocation.Inicio;
+            (CurrentForm as FrmAltaOferta).CurrentStateResiduo = HandlerNewResiduo.fasesResiduo.Inicio;
         }
 
         protected override bool InternalHandle(IMessage message, out string response)
