@@ -6,6 +6,7 @@
 
 using ClassLibrary.User;
 using Importers.Json;
+using System.Text.Json.Serialization;
 
 namespace ClassLibrary.Publication
 {
@@ -30,6 +31,12 @@ namespace ClassLibrary.Publication
       : base(residuo, precioUnitario, moneda, cantidad, lugarRetiro, vendedor, descripcion, categoria)
     {
       this.FrecuenciaAnualRestock = frecuenciaAnualRestock;
+    }
+
+    [JsonConstructor]
+    public PublicacionRecurrente()
+    {
+
     }
 
     /// <summary>

@@ -12,7 +12,7 @@ namespace ClassLibrary.Publication
   /// <summary>
   /// Instancia de las categorias posibles para <see cref="Residuo"/>.
   /// </summary>
-  public class Categoria : IJsonConvertible
+  public class Categoria : JsonConvertibleBase
   {
     /// <summary>
     /// Constructor de categoria.
@@ -29,7 +29,7 @@ namespace ClassLibrary.Publication
     /// <value><see langword="string"/>.</value>
     public string Nombre { get; set; }
     
-    public void JsonSave(JsonExporter exporter)
+    public override void JsonSave(JsonExporter exporter)
     {
         exporter.Save(this);
     }

@@ -15,8 +15,10 @@ namespace ClassLibrary.User
     /// almacendando la empresa o emprendedor al que estan vinculados y su información
     /// de cuenta.
     /// </summary>
-    public class DatosLogin : IJsonConvertible
+    public class DatosLogin : JsonConvertibleBase
     {
+        public int SerializationID { get; set; }
+
 
         /// <summary>
         /// Obtiene o establece el username de la cuenta.
@@ -34,6 +36,7 @@ namespace ClassLibrary.User
         /// Obtiene  el <see cref = "Emprendedor"/> o <see cref = "Empresa"/> a la que se vincula esta cuenta.
         /// </summary>
         /// <value><see cref = "Emprendedor"/> o <see cref = "Empresa"/>.</value>
+        [JsonInclude]
         public IUsuario Usuario { get; }
 
         /// <summary>
@@ -55,7 +58,7 @@ namespace ClassLibrary.User
             
         }
 
-        public void JsonSave(JsonExporter exporter)
+        public override void JsonSave(JsonExporter exporter)
         {
             exporter.Save(this);
         }

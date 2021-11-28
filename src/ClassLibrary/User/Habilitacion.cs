@@ -6,13 +6,14 @@
 
 using Importers;
 using Importers.Json;
+using System.Text.Json.Serialization;
 
 namespace ClassLibrary.User
 {
   /// <summary>
   /// Clase representativa de las habilitaciones existentes aplicables a los residuos y emprendedores.
   /// </summary>
-  public class Habilitacion : IJsonConvertible
+  public class Habilitacion : JsonConvertibleBase
   {
     /// <summary>
     /// Contructor del tipo Habilitación.
@@ -23,13 +24,19 @@ namespace ClassLibrary.User
       this.Nombre = nombre;
     }
 
+    [JsonConstructor]
+    public Habilitacion()
+    {
+
+    }
+
     /// <summary>
     /// Obtiene o establece el nombre de la habilitación.
     /// </summary>
     /// <value><see langword="string"/>.</value>
     public string Nombre { get; set; }
     
-    public void JsonSave(JsonExporter exporter)
+    public override void JsonSave(JsonExporter exporter)
     {
         exporter.Save(this);
     }

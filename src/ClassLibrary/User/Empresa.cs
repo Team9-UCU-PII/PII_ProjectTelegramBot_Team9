@@ -11,54 +11,63 @@ using ClassLibrary.Publication;
 using ClassLibrary.LocationAPI;
 using System.Collections.Generic;
 using Importers.Json;
+using System.Text.Json.Serialization;
 
 namespace ClassLibrary.User
 {
     /// <summary>
     /// Clase representativa de las empresas registradas y su información competente.
     /// </summary>
-    public class Empresa: IUsuario
+    public class Empresa: JsonConvertibleBase, IUsuario
     {
         /// <summary>
         /// Obtiene o establece el nombre de la empresa
         /// </summary>
         /// <value><see langword="string"/>.</value>
+        [JsonInclude]
         public string Nombre { get; set; }
 
         /// <summary>
         /// Local o zona donde se realizaría retiro.
         /// </summary>
+        [JsonInclude]
         public Location Lugar;
 
         /// <summary>
         /// Rubro de la empresa.
         /// </summary>
+        [JsonInclude]
         public string Rubro;
 
         /// <summary>
         /// Descripción de la empresa.
         /// </summary>
+        [JsonInclude]
         public string Descripcion;
 
         /// <summary>
         /// Numero de telefono, mail o cualquier via activa de contacto.
         /// </summary>
+        [JsonInclude]
         public string Contacto;
 
         /// <summary>
         /// Identificadores clave de la empresa.
         /// </summary>
+        [JsonInclude]
         public string[] PalabrasClave;
 
         /// <summary>
         /// Historial de ventas de la empresa.
         /// </summary>
+        [JsonInclude]
         public List<Venta> Historial = new List<Venta>();
 
         /// <summary>
         /// Obtiene los datos para inciar en la empresa.
         /// </summary>
         /// <value><see cref ="DatosLogin"/></value>
+        [JsonInclude]
         public DatosLogin DatosLogin { get; private set; }
 
         /// <summary>
@@ -77,11 +86,12 @@ namespace ClassLibrary.User
             this.Descripcion = descripcion;
             this.Contacto = contacto;
         }
-
+        
         /// <summary>
         /// Contructor vacio para la creación de instancias temporales
         /// en el GestorInvitaciones.
         /// </summary>
+        [JsonConstructor]
         public Empresa()
         {  
         }
@@ -132,7 +142,7 @@ namespace ClassLibrary.User
             return new PublicacionRecurrente(residuo, precioUnitario, moneda, cantidad, lugarRetiro, this, frecuenciaAnualRestock, descripcion, categoria);
         }
 
-        public void JsonSave(JsonExporter exporter)
+        public override void JsonSave(JsonExporter exporter)
         {
             exporter.Save(this);
         }
