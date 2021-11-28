@@ -6,7 +6,7 @@ using MessageGateway.Handlers.Escape;
 
 namespace MessageGateway.Forms
 {
-    public class FrmAltaOferta : FormularioBase, IFormulario
+    public class FrmAltaOferta : FormularioBase, IFormulario, ILocationForm
     {
         public Residuo residuo;
 
@@ -16,7 +16,7 @@ namespace MessageGateway.Forms
 
         public int Cantidad;
 
-        public Location lugarRetiro
+        public Location Ubicacion
         {
             get
             {
@@ -29,9 +29,9 @@ namespace MessageGateway.Forms
         public string Descripcion;
 
         public Categoria Categoria;
-        public string city = "Montevideo";
-        public string dpto = "Montevideo";
-        public string direccion;
+        public string city { get; set; }        
+        public string dpto { get; set; }
+        public string direccion { get; set; }
 
         public FrmAltaOferta()
         {
@@ -46,7 +46,7 @@ namespace MessageGateway.Forms
         }
         public HandlerAltaOferta.fasesAltaOferta CurrentState {get; set;}
         public HandlerNewResiduo.fasesResiduo CurrentStateResiduo;
-        public HandlerLocation.faseLocation CurrentStateLocation;
+        public HandlerLocation.faseLocation CurrentStateLocation {get; set;}
 
     }
 }

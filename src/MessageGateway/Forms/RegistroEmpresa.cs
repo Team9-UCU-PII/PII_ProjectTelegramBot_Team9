@@ -4,10 +4,10 @@ using MessageGateway.Handlers;
 
 namespace MessageGateway.Forms
 {
-    public class FrmRegistroEmpresa : FormularioBase
+    public class FrmRegistroEmpresa : FormularioBase , ILocationForm
     {
         public string NombrePublico;
-        public Location Lugar
+        public Location Ubicacion
         {
             get
             {
@@ -18,9 +18,9 @@ namespace MessageGateway.Forms
         public string Descripcion;
         public string Contacto;
         public Empresa EmpresaPreCreada;
-        public string dpto = "Montevideo";
-        public string city = "Montevideo";
-        public string direccion;
+        public string dpto { get; set; }
+        public string city { get; set; }
+        public string direccion { get; set; }
 
         public FrmRegistroEmpresa()
         {
@@ -31,6 +31,6 @@ namespace MessageGateway.Forms
                 );
         }
         public HandlerRegEmpresa.fasesRegEmpresa CurrentState;
-        public HandlerLocation.faseLocation CurrentStateLocation;
+        public HandlerLocation.faseLocation CurrentStateLocation { get; set; }
     }
 }

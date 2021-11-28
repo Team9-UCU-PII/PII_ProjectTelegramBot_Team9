@@ -74,6 +74,7 @@ namespace MessageGateway.Handlers
             tomandoDescripcion,
             tomandoContacto,
             ArmandoLocation,
+            
 
         }
     }
