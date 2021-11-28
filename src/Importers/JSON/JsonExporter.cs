@@ -7,15 +7,21 @@ namespace Importers.Json
     /// <summary>
     /// Clase que exporta objetos de tipo IJsonConvertible a strings en formato JSON.
     /// </summary>
-    public class JsonExporter
+    public class JsonExporter : IJsonUtil
     {
         private static JsonSerializerOptions config = new JsonSerializerOptions()
         {
-            ReferenceHandler = MyReferenceHandler.Instance,
+            //ReferenceHandler = MyReferenceHandler.Instance,
             WriteIndented = true
         };
 
         private string filePath;
+        public string FilePath { get; set; }
+
+        public JsonExporter()
+        {
+
+        }
 
         public JsonExporter(string filePath)
         {

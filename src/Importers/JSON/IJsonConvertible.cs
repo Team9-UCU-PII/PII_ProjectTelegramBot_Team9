@@ -8,6 +8,8 @@ namespace Importers.Json
     /// </summary>
     public interface IJsonConvertible : IPersistible
     {
+        int SerializationID { get; set; }
+
         /// <summary>
         /// Persiste el objeto en un archivo en formato JSON.
         /// </summary>

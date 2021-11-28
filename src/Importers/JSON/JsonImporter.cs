@@ -3,7 +3,7 @@ using System.IO;
 
 namespace Importers.Json
 {
-    public class JsonImporter
+    public class JsonImporter<T> where T : IPersistible
     {
         private static JsonSerializerOptions config = new JsonSerializerOptions()
         {
@@ -11,23 +11,19 @@ namespace Importers.Json
             WriteIndented = true
         };
 
-        private string filePath;
-
-        public JsonImporter(string filePath)
+        public JsonImporter()
         {
-            this.filePath = filePath;
+            
         }
-
-        
 
         /// <summary>
         /// Obtiene un objeto del tipo especificado de un archivo en formato JSON.
         /// </summary>
         /// <typeparam name="T">el tipo del objeto obtenido.</typeparam>
         /// <returns></returns>
-        public T Get<T>() where T : IPersistible
+        public T Get<T>(string filePath)
         {
-            string json = File.ReadAllText(this.filePath);
+            string json = File.ReadAllText(filePath);
             return JsonSerializer.Deserialize<T>(json);
         }
     }
