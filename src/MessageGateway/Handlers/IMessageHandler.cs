@@ -15,7 +15,6 @@ namespace MessageGateway.Handlers
     /// </summary>
     public interface IMessageHandler
     {
-
         /// <summary>
         /// El formulario que buscan completar.
         /// </summary>

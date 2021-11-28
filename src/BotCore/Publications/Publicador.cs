@@ -79,7 +79,7 @@ namespace BotCore.Publication
         /// <param name="lugarRetiro"><see langword = "string"/>.</param>
         /// <param name="vendedor"><see cref = "Empresa"/>.</param>
         /// <param name="descripcion"><see langword = "string"/>.</param>
-        /// <param name="categoria"><see langword = "string"/>.</param>
+        /// <param name="categoria"><see langword = "Categoria"/>.</param>
         /// <param name="frecuenciaAnualRestock"><see langword = "int"/>.</param>
         public void PublicarOfertaRecurrente(Residuo residuo, double precioUnitario, string moneda, int cantidad, Location lugarRetiro, Empresa vendedor, string descripcion, Categoria categoria, int frecuenciaAnualRestock)
         {

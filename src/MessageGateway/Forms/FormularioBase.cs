@@ -32,7 +32,6 @@ namespace MessageGateway.Forms
             {
                 //se setea el handler de escape para todos los forms como el primero para atajar mensajes de cancelacion.
                 this._messageHandler = new HandlerEscape(value);
-                this._messageHandler.CurrentForm = this;
                 IMessageHandler singleHandler = this._messageHandler;
                 do
                 {
@@ -46,7 +45,7 @@ namespace MessageGateway.Forms
         /// <summary>
         /// Constructor base de Formulario.
         /// </summary>
-        protected FormularioBase( ){}
+        protected FormularioBase(){}
 
         /// <summary>
         /// Metodo que pasa el mensaje recibido por todos los handlers contenidos en el formulario

@@ -4,8 +4,11 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 
-using ClassLibrary.User;
+
+using System.Collections.Generic;
+using ClassLibrary.Publication;
 using ClassLibrary.LocationAPI;
+using ClassLibrary.User;
 using MessageGateway.Handlers;
 
 namespace MessageGateway.Forms
@@ -28,7 +31,7 @@ namespace MessageGateway.Forms
         public string Rubro;
 
         /// <summary>
-        /// Descripción de la Empresa.
+        /// Descripción de la empresa.
         /// </summary>
         public string Descripcion;
 
