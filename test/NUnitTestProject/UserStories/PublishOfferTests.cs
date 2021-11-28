@@ -5,6 +5,7 @@ using NUnit.Framework;
 using BotCore.Publication;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 
 namespace Tests.UserStories
 {
@@ -29,6 +30,15 @@ namespace Tests.UserStories
         {
             da.Obtener<Empresa>().ToList().ForEach(x => da.Eliminar(x));
             da.Obtener<Publicacion>().ToList().ForEach(x => da.Eliminar(x));
+        }
+
+        [OneTimeTearDown]
+        public void OneTimeTearDown()
+        {
+            if (Directory.Exists("Data\\"))
+            {
+                Directory.Delete("Data\\");
+            }
         }
 
         [Test]
