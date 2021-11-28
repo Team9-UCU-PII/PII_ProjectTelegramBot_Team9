@@ -78,10 +78,10 @@ namespace ClassLibrary.User
         /// <param name="rubro"><see langword = "string"/>.</param>
         /// <param name="descripcion"><see langword = "string"/>.</param>
         /// <param name="contacto"><see langword = "string"/>.</param>
-        public Empresa(string nombre, string lugar, string rubro, string descripcion, string contacto)
+        public Empresa(string nombre, Location lugar, string rubro, string descripcion, string contacto)
         {
             this.Nombre = nombre;
-            this.Lugar = LocationApiClient.Instancia.GetLocation(lugar);
+            this.Lugar = lugar;
             this.Rubro = rubro;
             this.Descripcion = descripcion;
             this.Contacto = contacto;
@@ -111,7 +111,7 @@ namespace ClassLibrary.User
             double precioUnitario,
             string moneda,
             int cantidad, 
-            string lugarRetiro,
+            Location lugarRetiro,
             string descripcion,
             Categoria categoria)
         {
@@ -134,7 +134,7 @@ namespace ClassLibrary.User
             double precioUnitario,
             string moneda,
             int cantidad,
-            string lugarRetiro,
+            Location lugarRetiro,
             string descripcion,
             Categoria categoria,
             int frecuenciaAnualRestock)
@@ -142,6 +142,10 @@ namespace ClassLibrary.User
             return new PublicacionRecurrente(residuo, precioUnitario, moneda, cantidad, lugarRetiro, this, frecuenciaAnualRestock, descripcion, categoria);
         }
 
+        /// <summary>
+        /// Metodo para guardar en JSon.
+        /// </summary>
+        /// <param name="exporter">JSonexporter.</param>
         public override void JsonSave(JsonExporter exporter)
         {
             exporter.Save(this);

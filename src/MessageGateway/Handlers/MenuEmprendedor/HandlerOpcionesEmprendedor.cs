@@ -19,7 +19,7 @@ namespace MessageGateway.Handlers.MenuEmprendedor
     /// El constructor, las palabras claves hacen referencia a la opciones del menú del emprendedor.
     /// </summary>
     /// <param name="next"></param>
-    public HandlerOpcionesMenuEmpresa(IMessageHandler next = null)
+    public HandlerOpcionesMenuEmprendedor(IMessageHandler next)
     : base(new string[] {"1", "2", "3"}, next)
     {
     }

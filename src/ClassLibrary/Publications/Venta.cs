@@ -10,8 +10,6 @@
 using ClassLibrary.User;
 using System;
 using System.Text;
-using System.Linq;
-using Importers;
 using Importers.Json;
 using System.Text.Json.Serialization;
 
@@ -34,6 +32,9 @@ namespace ClassLibrary.Publication
       this.Publicacion = publicacion;
     }
 
+    /// <summary>
+    /// Cosntructor de Json.
+    /// </summary>
     [JsonConstructor]
     public Venta()
     {
@@ -74,6 +75,10 @@ namespace ClassLibrary.Publication
       return text.ToString();
     }
 
+    /// <summary>
+    /// Metodo para guardar en json.
+    /// </summary>
+    /// <param name="exporter"></param>
     public override void JsonSave(JsonExporter exporter)
     {
         exporter.Save(this);

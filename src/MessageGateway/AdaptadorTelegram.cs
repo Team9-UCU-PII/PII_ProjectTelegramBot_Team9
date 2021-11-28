@@ -80,6 +80,12 @@ namespace MessageGateway
         /// </summary>
         private Dictionary<string, IFormulario> Conversaciones { get; }
 
+        /// <summary>
+        /// Metodo que envia un mensaje de tipo ubicacion vinculado a un valor de latitud y longitud.
+        /// </summary>
+        /// <param name="mensaje">IMessage: info del chat.</param>
+        /// <param name="latitud">Float: valor de latitud</param>
+        /// <param name="longitud">Float: valor de longitud.</param>
         public override void EnviarUbicacionEnMapa(IMessage mensaje, float latitud, float longitud)
         {
             this.TelegramBot.Cliente.SendLocationAsync(mensaje.ChatID, latitud, longitud);
@@ -93,7 +99,6 @@ namespace MessageGateway
 
             if (adaptedMessage.TxtMensaje == "/start")
             {
-                adaptedMessage.Keyword = Handlers.PalabrasClaveHandlers.Inicio;
                 this.CrearConversacion(adaptedMessage.ChatID);
             }
 

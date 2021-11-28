@@ -24,6 +24,9 @@ namespace ClassLibrary.User
       this.Nombre = nombre;
     }
 
+    /// <summary>
+    /// Cosntructor de Json.
+    /// </summary>
     [JsonConstructor]
     public Habilitacion()
     {
@@ -36,6 +39,10 @@ namespace ClassLibrary.User
     /// <value><see langword="string"/>.</value>
     public string Nombre { get; set; }
     
+    /// <summary>
+    /// Metodo para guardar en Json.
+    /// </summary>
+    /// <param name="exporter"></param>
     public override void JsonSave(JsonExporter exporter)
     {
         exporter.Save(this);

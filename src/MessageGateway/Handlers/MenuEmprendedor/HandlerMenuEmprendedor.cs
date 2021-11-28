@@ -4,6 +4,9 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 
+using System.Text;
+using MessageGateway.Forms;
+
 namespace MessageGateway.Handlers.MenuEmprendedor
 {
 
@@ -14,11 +17,11 @@ namespace MessageGateway.Handlers.MenuEmprendedor
   {
 
     /// <summary>
-    /// Constructor del handler que reacciona a la palabra clave MenuEmprendedor.
+    /// Constructor del handler que reacciona a la palabra clave Menu.
     /// </summary>
     /// <param name="next">IHandler siguiente.</param>
-    public HandlerMenuEmprendedor(IMessageHandler next = null)
-    : base(new string[] {"MenuEmprendedor"}, next)
+    public HandlerMenuEmprendedor(IMessageHandler next)
+    : base(new string[] {"Menu"}, next)
     {
     }
 
@@ -39,7 +42,7 @@ namespace MessageGateway.Handlers.MenuEmprendedor
         "1. Buscar publicaciones",
         "2. Generar reportes",
         "3. Configurar cuenta",
-        "Si quiere salir escriba: /abortar");
+        "Si quiere cancelar un proceso escriba: /abortar");
         response = sb.ToString();
         (CurrentForm as FrmMenuEmprendedor).CurrentState = faseMenuEmprendedor.Eligiendo;
         return true;

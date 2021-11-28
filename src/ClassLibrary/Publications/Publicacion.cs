@@ -32,19 +32,22 @@ namespace ClassLibrary.Publication
     /// <param name="vendedor"><see cref = "Empresa"/>.</param>
     /// <param name="descripcion"><see langword = "string"/>.</param>
     /// <param name="categoria"><see langword = "string"/>.</param>
-    public Publicacion(Residuo residuo, double precioUnitario, string moneda, int cantidad, string lugarRetiro, Empresa vendedor, string descripcion, Categoria categoria)
+    public Publicacion(Residuo residuo, double precioUnitario, string moneda, int cantidad, Location lugarRetiro, Empresa vendedor, string descripcion, Categoria categoria)
     {
       this.Residuo = residuo;
       this.PrecioUnitario = precioUnitario;
       this.Moneda = moneda;
       this.Cantidad = cantidad;
-      this.LugarRetiro = LocationApiClient.Instancia.GetLocation(lugarRetiro);
+      this.LugarRetiro = lugarRetiro;
       this.Vendedor = vendedor;
       this.Descripcion = descripcion;
       this.Categoria = categoria;
       this.Comprado = false;
     }
 
+    /// <summary>
+    /// Constructor de Json.
+    /// </summary>
     [JsonConstructor]
     public Publicacion()
     {
@@ -137,6 +140,10 @@ namespace ClassLibrary.Publication
       return text.ToString();
     }
 
+    /// <summary>
+    /// Metodo de guardar en Json.
+    /// </summary>
+    /// <param name="exporter">JsonExporter.</param>
     public override void JsonSave(JsonExporter exporter)
     {
         exporter.Save(this);

@@ -5,7 +5,6 @@
 //--------------------------------------------------------------------------------
 
 using System.Text.Json.Serialization;
-using Importers;
 using Importers.Json;
 
 namespace ClassLibrary.User
@@ -17,6 +16,11 @@ namespace ClassLibrary.User
     /// </summary>
     public class DatosLogin : JsonConvertibleBase
     {
+
+        /// <summary>
+        /// Id de la Serialización.
+        /// </summary>
+        /// <value>Int.</value>
         public int SerializationID { get; set; }
 
 
@@ -52,12 +56,19 @@ namespace ClassLibrary.User
             this.Usuario = usuario;
         }
 
+        /// <summary>
+        /// Cosntructor de Json.
+        /// </summary>
         [JsonConstructor]
         public DatosLogin()
         {
             
         }
 
+        /// <summary>
+        /// Metodo para guardar en Json.
+        /// </summary>
+        /// <param name="exporter"></param>
         public override void JsonSave(JsonExporter exporter)
         {
             exporter.Save(this);
