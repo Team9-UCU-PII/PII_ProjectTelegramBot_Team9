@@ -22,7 +22,7 @@ namespace MessageGateway.Handlers
         public HandlerBusqueda(IMessageHandler next) : base ((new string[] {"Busqueda"}), next)
         {
             this.Next = next;
-            (CurrentForm as FrmBusqueda).CurrentState = fases.Inicio;
+            (CurrentForm as FrmBusqueda).CurrentState = FasesBusqueda.Inicio;
         }
 
         /// <summary>
@@ -33,53 +33,53 @@ namespace MessageGateway.Handlers
         /// <returns>True: si se pudo manejar el mensaje.</returns>
         protected override bool InternalHandle(IMessage message, out string response)
         {
-            if (this.CanHandle(message) && (CurrentForm as FrmBusqueda).CurrentState == fases.Eligiendo)
+            if (this.CanHandle(message) && (CurrentForm as FrmBusqueda).CurrentState == FasesBusqueda.Eligiendo)
             {
                 StringBuilder sb = new StringBuilder();
                 sb.Append($"A continuación, te daremos una serie de filtros por los que puedes buscar publicaciones...\n");
                 sb.Append($"¿Quieres filtrar las publicaciones por empresa?\n");
                 response = sb.ToString();
-                (CurrentForm as FrmBusqueda).CurrentState = fases.filtroEmpresa;
+                (CurrentForm as FrmBusqueda).CurrentState = FasesBusqueda.FiltroEmpresa;
                 return true;
             }
-            else if (faseActual == fases.filtroEmpresa)
+            else if ((CurrentForm as FrmBusqueda).CurrentState == FasesBusqueda.FiltroEmpresa)
             {
                 StringBuilder sb = new StringBuilder();
                 sb.Append($"¿Quieres filtrar las publicaciones por categoría?\n");
                 response = sb.ToString();
-                (CurrentForm as FrmBusqueda).CurrentState = fases.filtroCategoria;
+                (CurrentForm as FrmBusqueda).CurrentState = FasesBusqueda.FiltroCategoria;
                 return true;
             }
-            else if (faseActual == fases.filtroCategoria)
+            else if ((CurrentForm as FrmBusqueda).CurrentState == FasesBusqueda.FiltroCategoria)
             {
                 StringBuilder sb = new StringBuilder();
                 sb.Append($"¿Quieres filtrar las publicaciones por lugar de retiro?\n");
                 response = sb.ToString();
-                (CurrentForm as FrmBusqueda).CurrentState = fases.filtroLugarRetiro;
+                (CurrentForm as FrmBusqueda).CurrentState = FasesBusqueda.FiltroLugarRetiro;
                 return true;
             }
-            else if (faseActual == fases.filtroLugarRetiro)
+            else if ((CurrentForm as FrmBusqueda).CurrentState == FasesBusqueda.FiltroLugarRetiro)
             {
                 StringBuilder sb = new StringBuilder();
                 sb.Append($"¿Quieres filtrar las publicaciones por tipo de residuo?\n");
                 response = sb.ToString();
-                (CurrentForm as FrmBusqueda).CurrentState = fases.filtroResiduo;
+                (CurrentForm as FrmBusqueda).CurrentState = FasesBusqueda.FiltroResiduo;
                 return true;
             }
-            else if (faseActual == fases.filtroResiduo)
+            else if ((CurrentForm as FrmBusqueda).CurrentState == FasesBusqueda.FiltroResiduo)
             {
                 StringBuilder sb = new StringBuilder();
                 sb.Append($"¿Quieres filtrar las publicaciones por precio máximo a pagar?\n");
                 response = sb.ToString();
-                (CurrentForm as FrmBusqueda).CurrentState = fases.filtroPrecioMaximo;
+                (CurrentForm as FrmBusqueda).CurrentState = FasesBusqueda.FiltroPrecioMaximo;
                 return true;
             }
-            else if (faseActual == fases.filtroPrecioMaximo)
+            else if ((CurrentForm as FrmBusqueda).CurrentState == FasesBusqueda.FiltroPrecioMaximo)
             {
                 StringBuilder sb = new StringBuilder();
                 sb.Append($"¿Quieres filtrar las publicaciones por frecuencia de restock?\n");
                 response = sb.ToString();
-                (CurrentForm as FrmBusqueda).CurrentState = fases.filtroFrecuenciaRestock;
+                (CurrentForm as FrmBusqueda).CurrentState = FasesBusqueda.FiltroFrecuenciaRestock;
                 return true;
             }
             else
@@ -89,12 +89,10 @@ namespace MessageGateway.Handlers
             }
         }
 
-        private fases faseActual;
-
         /// <summary>
         /// Las diferentes fases que este handler necesita para completar toda su información.
         /// </summary>
-        public enum fases
+        public enum FasesBusqueda
         {
             /// <summary>
             /// Iniciador del handler.
@@ -109,32 +107,32 @@ namespace MessageGateway.Handlers
             /// <summary>
             /// Se espera respuesta si quiere filtrar por empresa.
             /// </summary>
-            filtroEmpresa,
+            FiltroEmpresa,
 
             /// <summary>
             /// Se espera respuesta si quiere filtrar por ecategoría.
             /// </summary>
-            filtroCategoria,
+            FiltroCategoria,
 
             /// <summary>
             /// Se espera respuesta si quiere filtrar por lugar de retiro.
             /// </summary>
-            filtroLugarRetiro,
+            FiltroLugarRetiro,
 
             /// <summary>
             /// Se espera respuesta si quiere filtrar por residuo.
             /// </summary>
-            filtroResiduo,
+            FiltroResiduo,
 
             /// <summary>
             /// Se espera respuesta si quiere filtrar por precio máximo.
             /// </summary>
-            filtroPrecioMaximo,
+            FiltroPrecioMaximo,
 
             /// <summary>
             /// Se espera respuesta si quiere filtrar por frecuencia de restock.
             /// </summary>
-            filtroFrecuenciaRestock
+            FiltroFrecuenciaRestock
         }
     }
 }

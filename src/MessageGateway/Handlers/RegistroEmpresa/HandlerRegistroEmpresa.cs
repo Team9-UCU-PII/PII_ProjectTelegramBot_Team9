@@ -22,7 +22,7 @@ namespace MessageGateway.Handlers
         public HandlerRegistroEmpresa(IMessageHandler next) : base ((new string[] {"RegistroEmpresa"}), next)
         {
             this.Next = next;
-            (CurrentForm as FrmRegistroEmpresa).CurrentState = fases.Inicio;
+            (CurrentForm as FrmRegistroEmpresa).CurrentState = Fases.Inicio;
             (CurrentForm as FrmRegistroEmpresa).CurrentStateLocation = HandlerLocation.faseLocation.Inicio;
         }
 
@@ -35,7 +35,7 @@ namespace MessageGateway.Handlers
         /// <returns>True: si se pudo manejar el mensaje.</returns>
         protected override bool InternalHandle(IMessage message, out string response)
         {
-            if (this.CanHandle(message) && (CurrentForm as FrmRegistroEmpresa).CurrentState == fases.Inicio)
+            if (this.CanHandle(message) && (CurrentForm as FrmRegistroEmpresa).CurrentState == Fases.Inicio)
             {
                 StringBuilder sb = new StringBuilder();
                 sb.Append($"A continuación, te pediremos que ingreses los datos necesarios para que como empresa seas visible en la plataforma...\n");
@@ -46,75 +46,75 @@ namespace MessageGateway.Handlers
                 sb.Append ($"4.Descripción\n");
                 sb.Append ($"5.Contacto\n");
                 response = sb.ToString();
-                (CurrentForm as FrmRegistroEmpresa).CurrentState = fases.Eligiendo;
+                (CurrentForm as FrmRegistroEmpresa).CurrentState = Fases.Eligiendo;
                 return true;
             }
-            else if (message.TxtMensaje == "1" && (CurrentForm as FrmRegistroEmpresa).CurrentState == fases.Eligiendo)
+            else if (message.TxtMensaje == "1" && (CurrentForm as FrmRegistroEmpresa).CurrentState == Fases.Eligiendo)
             {
                 StringBuilder sb = new StringBuilder();
                 sb.Append($"Ingresa tu nombre. Ten en cuenta que este nombre será público para todos los usuarios.");
                 response = sb.ToString();
-                (CurrentForm as FrmRegistroEmpresa).CurrentState = fases.tomandoNombre;
+                (CurrentForm as FrmRegistroEmpresa).CurrentState = Fases.TomandoNombre;
                 return true;
             }
-            else if (faseActual == fases.tomandoNombre)
+            else if (faseActual == Fases.TomandoNombre)
             {
                 StringBuilder sb = new StringBuilder();
                 sb.Append($"Nombre guardado con éxito!");
                 response = sb.ToString();
                 (CurrentForm as FrmRegistroEmpresa).Nombre = message.TxtMensaje;
-                (CurrentForm as FrmRegistroEmpresa).CurrentState = fases.Eligiendo;
+                (CurrentForm as FrmRegistroEmpresa).CurrentState = Fases.Eligiendo;
                 return true;
             }
-            else if (message.TxtMensaje == "3" && (CurrentForm as FrmRegistroEmpresa).CurrentState == fases.Eligiendo)
+            else if (message.TxtMensaje == "3" && (CurrentForm as FrmRegistroEmpresa).CurrentState == Fases.Eligiendo)
             {
                 StringBuilder sb = new StringBuilder();
                 sb.Append($"¿A qué rubro se dedica la empresa?");
                 response = sb.ToString();
-                (CurrentForm as FrmRegistroEmpresa).CurrentState = fases.tomandoRubro;
+                (CurrentForm as FrmRegistroEmpresa).CurrentState = Fases.TomandoRubro;
                 return true;
             }
-            else if (faseActual == fases.tomandoRubro)
+            else if (faseActual == Fases.TomandoRubro)
             {
                 StringBuilder sb = new StringBuilder();
                 sb.Append($"Rubro guardado con éxito!");
                 response = sb.ToString();
                 (CurrentForm as FrmRegistroEmpresa).Rubro = message.TxtMensaje;
-                (CurrentForm as FrmRegistroEmpresa).CurrentState = fases.Eligiendo;
+                (CurrentForm as FrmRegistroEmpresa).CurrentState = Fases.Eligiendo;
                 return true;
             }
-            else if (message.TxtMensaje == "4" && (CurrentForm as FrmRegistroEmpresa).CurrentState == fases.Eligiendo)
+            else if (message.TxtMensaje == "4" && (CurrentForm as FrmRegistroEmpresa).CurrentState == Fases.Eligiendo)
             {
                 StringBuilder sb = new StringBuilder();
                 sb.Append($"Agrega una breve descripción de la empresa.");
                 response = sb.ToString();
-                (CurrentForm as FrmRegistroEmpresa).CurrentState = fases.tomandoDescripcion;
+                (CurrentForm as FrmRegistroEmpresa).CurrentState = Fases.TomandoDescripcion;
                 return true;
             }
-            else if (faseActual == fases.tomandoDescripcion)
+            else if (faseActual == Fases.TomandoDescripcion)
             {
                 StringBuilder sb = new StringBuilder();
                 sb.Append($"Descripción guardada con éxito!");
                 response = sb.ToString();
                 (CurrentForm as FrmRegistroEmpresa).Descripcion = message.TxtMensaje;
-                (CurrentForm as FrmRegistroEmpresa).CurrentState = fases.Eligiendo;
+                (CurrentForm as FrmRegistroEmpresa).CurrentState = Fases.Eligiendo;
                 return true;
             }
-            else if (message.TxtMensaje == "5" && (CurrentForm as FrmRegistroEmpresa).CurrentState == fases.Eligiendo)
+            else if (message.TxtMensaje == "5" && (CurrentForm as FrmRegistroEmpresa).CurrentState == Fases.Eligiendo)
             {
                 StringBuilder sb = new StringBuilder();
                 sb.Append($"Ingresa un contacto para que se puedan comunicar contigo.");
                 response = sb.ToString();
-                (CurrentForm as FrmRegistroEmpresa).CurrentState = fases.tomandoContacto;
+                (CurrentForm as FrmRegistroEmpresa).CurrentState = Fases.TomandoContacto;
                 return true;
             }
-            else if (faseActual == fases.tomandoContacto)
+            else if (faseActual == Fases.TomandoContacto)
             {
                 StringBuilder sb = new StringBuilder();
                 sb.Append($"Contacto guardado con éxito!");
                 response = sb.ToString();
                 (CurrentForm as FrmRegistroEmpresa).Contacto = message.TxtMensaje;
-                (CurrentForm as FrmRegistroEmpresa).CurrentState = fases.Eligiendo;
+                (CurrentForm as FrmRegistroEmpresa).CurrentState = Fases.Eligiendo;
                 return true;
             }
             else
@@ -124,12 +124,12 @@ namespace MessageGateway.Handlers
             }
         }
 
-        private fases faseActual;
+        private Fases faseActual;
 
         /// <summary>
         /// Las diferentes fases que este handler necesita para completar toda su información.
         /// </summary>
-        public enum fases
+        public enum Fases
         {
             /// <summary>
             /// Iniciador del handler.
@@ -144,22 +144,22 @@ namespace MessageGateway.Handlers
             /// <summary>
             /// Se espera el nombre de la empresa.
             /// </summary>
-            tomandoNombre,
+            TomandoNombre,
 
             /// <summary>
             /// Se espera el rubro de la empresa.
             /// </summary>
-            tomandoRubro,
+            TomandoRubro,
 
             /// <summary>
             /// Se espera una descripción de la empresa.
             /// </summary>
-            tomandoDescripcion,
+            TomandoDescripcion,
 
             /// <summary>
             /// Se espera un contacto de la empresa.
             /// </summary>
-            tomandoContacto
+            TomandoContacto
         }
     }
 }

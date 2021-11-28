@@ -15,7 +15,7 @@ namespace MessageGateway.Forms
     /// <summary>
     /// Formulario que recopilara la información necesaria para registrar un emprendedor.
     /// </summary>
-    public class FrmRegistroEmprendedor : FormularioBase, IFormulario, ILocationForm
+    public class FrmRegistroEmprendedor : FormularioBase, ILocationForm
     {
         /// <summary>
         /// Nombre del emprendedor.
@@ -48,7 +48,7 @@ namespace MessageGateway.Forms
         /// Habilitaciones del emprendedor.
         /// </summary>
         /// <value>List de Habilitacion</value>
-        public List<Habilitacion> Habilitaciones;
+        public List<Habilitacion> habilitaciones {get; set;}
 
         /// <summary>
         /// Constructor del formulario de registro de emprendedores con sus handlers.
@@ -57,17 +57,15 @@ namespace MessageGateway.Forms
         {
             this.messageHandler =
             new HandlerRegistroEmprendedor(
-                new HandlerLocation(
-                    new HandlerEscape(null)
-                )
+                new HandlerLocation((null))
             );
         }
 
         /// <summary>
         /// El estado del formulario, dado por su handler principal.
         /// </summary>
-        /// <value><see langword = "enum"/> de HandlerRegistroEmprendedor.fases.</value>
-        public HandlerRegistroEmprendedor.fases CurrentState {get; set;}
+        /// <value><see langword = "enum"/> de HandlerRegistroEmprendedor.FasesRegEmprendedor.</value>
+        public HandlerRegistroEmprendedor.FasesRegEmprendedor CurrentState {get; set;}
 
         /// <summary>
         /// El estado del formulario respecto la construccion de Location.

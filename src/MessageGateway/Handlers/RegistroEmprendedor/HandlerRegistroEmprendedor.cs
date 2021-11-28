@@ -26,7 +26,7 @@ namespace MessageGateway.Handlers
         public HandlerRegistroEmprendedor(IMessageHandler next) : base ((new string[] {"RegistroEmprendedor"}), next)
         {
             this.Next = next;
-            (CurrentForm as FrmRegistroEmprendedor).CurrentState = fases.Inicio;
+            (CurrentForm as FrmRegistroEmprendedor).CurrentState = FasesRegEmprendedor.Inicio;
             (CurrentForm as FrmRegistroEmprendedor).CurrentStateLocation = HandlerLocation.faseLocation.Inicio;
         }
 
@@ -39,7 +39,7 @@ namespace MessageGateway.Handlers
         /// <returns>True: si se pudo manejar el mensaje.</returns>
         protected override bool InternalHandle(IMessage message, out string response)
         {
-            if (this.CanHandle(message) && (CurrentForm as FrmRegistroEmprendedor).CurrentState == fases.Inicio)
+            if (this.CanHandle(message) && (CurrentForm as FrmRegistroEmprendedor).CurrentState == FasesRegEmprendedor.Inicio)
             {
                 StringBuilder sb = new StringBuilder();
                 sb.Append($"A continuación, te pediremos que ingreses los datos necesarios para que como emprendedor seas visible en la plataforma...\n");
@@ -50,83 +50,82 @@ namespace MessageGateway.Handlers
                 sb.Append ($"4.Especialización\n");
                 sb.Append ($"5.Habilitaciones\n");
                 response = sb.ToString();
-                (CurrentForm as FrmRegistroEmprendedor).CurrentState = fases.Eligiendo;
+                (CurrentForm as FrmRegistroEmprendedor).CurrentState = FasesRegEmprendedor.Eligiendo;
                 return true;
             }
-            else if (message.TxtMensaje == "1" && (CurrentForm as FrmRegistroEmprendedor).CurrentState == fases.Eligiendo)
+            else if (message.TxtMensaje == "1" && (CurrentForm as FrmRegistroEmprendedor).CurrentState == FasesRegEmprendedor.Eligiendo)
             {
                 StringBuilder sb = new StringBuilder();
                 sb.Append($"Ingresa tu nombre. Ten en cuenta que este nombre será público para todos los usuarios.");
                 response = sb.ToString();
-                (CurrentForm as FrmRegistroEmprendedor).CurrentState = fases.tomandoNombre;
+                (CurrentForm as FrmRegistroEmprendedor).CurrentState = FasesRegEmprendedor.TomandoNombre;
                 return true;
             }
-            else if (faseActual == fases.tomandoNombre)
+            else if ((CurrentForm as FrmRegistroEmprendedor).CurrentState == FasesRegEmprendedor.TomandoNombre)
             {
                 StringBuilder sb = new StringBuilder();
                 sb.Append($"Nombre guardado con éxito!");
                 response = sb.ToString();
                 (CurrentForm as FrmRegistroEmprendedor).Nombre = message.TxtMensaje;
-                (CurrentForm as FrmRegistroEmprendedor).CurrentState = fases.Eligiendo;
+                (CurrentForm as FrmRegistroEmprendedor).CurrentState = FasesRegEmprendedor.Eligiendo;
                 return true;
             }
-            else if (message.TxtMensaje == "3" && (CurrentForm as FrmRegistroEmprendedor).CurrentState == fases.Eligiendo)
+            else if (message.TxtMensaje == "3" && (CurrentForm as FrmRegistroEmprendedor).CurrentState == FasesRegEmprendedor.Eligiendo)
             {
                 StringBuilder sb = new StringBuilder();
                 sb.Append($"¿A qué rubro te dedicas como emprendedor?");
                 response = sb.ToString();
-                (CurrentForm as FrmRegistroEmprendedor).CurrentState = fases.tomandoRubro;
+                (CurrentForm as FrmRegistroEmprendedor).CurrentState = FasesRegEmprendedor.TomandoRubro;
                 return true;
             }
-            else if (faseActual == fases.tomandoRubro)
+            else if ((CurrentForm as FrmRegistroEmprendedor).CurrentState == FasesRegEmprendedor.TomandoRubro)
             {
                 StringBuilder sb = new StringBuilder();
                 sb.Append($"Rubro guardado con éxito!");
                 response = sb.ToString();
                 (CurrentForm as FrmRegistroEmprendedor).Rubro = message.TxtMensaje;
-                (CurrentForm as FrmRegistroEmprendedor).CurrentState = fases.Eligiendo;
+                (CurrentForm as FrmRegistroEmprendedor).CurrentState = FasesRegEmprendedor.Eligiendo;
                 return true;
             }
-            else if (message.TxtMensaje == "4" && (CurrentForm as FrmRegistroEmprendedor).CurrentState == fases.Eligiendo)
+            else if (message.TxtMensaje == "4" && (CurrentForm as FrmRegistroEmprendedor).CurrentState == FasesRegEmprendedor.Eligiendo)
             {
                 StringBuilder sb = new StringBuilder();
                 sb.Append($"¿Cuál es tu especialidad como emprendedor?");
                 response = sb.ToString();
-                (CurrentForm as FrmRegistroEmprendedor).CurrentState = fases.tomandoEspecializacion;
+                (CurrentForm as FrmRegistroEmprendedor).CurrentState = FasesRegEmprendedor.TomandoEspecializacion;
                 return true;
             }
-            else if (faseActual == fases.tomandoEspecializacion)
+            else if ((CurrentForm as FrmRegistroEmprendedor).CurrentState == FasesRegEmprendedor.TomandoEspecializacion)
             {
                 StringBuilder sb = new StringBuilder();
                 sb.Append($"Especialización guardada con éxito!");
                 response = sb.ToString();
                 (CurrentForm as FrmRegistroEmprendedor).Especializacion = message.TxtMensaje;
-                (CurrentForm as FrmRegistroEmprendedor).CurrentState = fases.Eligiendo;
+                (CurrentForm as FrmRegistroEmprendedor).CurrentState = FasesRegEmprendedor.Eligiendo;
                 return true;
             }
-            else if (message.TxtMensaje == "5" && (CurrentForm as FrmRegistroEmprendedor).CurrentState == fases.Eligiendo)
+            else if (message.TxtMensaje == "5" && (CurrentForm as FrmRegistroEmprendedor).CurrentState == FasesRegEmprendedor.Eligiendo)
             {
                 StringBuilder sb = new StringBuilder();
                 sb.Append($"¿Cuáles son tus habilitaciones? (\"Ninguna\" es una opción, \"Listo\" cuando hayas finalizado \n");
                 response = sb.ToString();
-                (CurrentForm as FrmRegistroEmprendedor).CurrentState = fases.tomandoHabilitacion;
+                (CurrentForm as FrmRegistroEmprendedor).CurrentState = FasesRegEmprendedor.TomandoHabilitacion;
                 return true;
             }
-            else if (message.TxtMensaje != "Ninguna" && message.TxtMensaje != "Listo" && faseActual == fases.tomandoHabilitacion)
+            else if (message.TxtMensaje != "Ninguna" && message.TxtMensaje != "Listo" && (CurrentForm as FrmRegistroEmprendedor).CurrentState == FasesRegEmprendedor.TomandoHabilitacion)
             {
                 StringBuilder sb = new StringBuilder();
                 sb.Append($"Habilitación guardada con éxito!");
                 response = sb.ToString();
-                this.habilitaciones.Add(new Habilitacion(message.TxtMensaje));
+                (CurrentForm as FrmRegistroEmprendedor).habilitaciones.Add(new Habilitacion(message.TxtMensaje));
                 return true;
             }
-            else if ((message.TxtMensaje == "Ninguna" || message.TxtMensaje == "Listo") && faseActual == fases.tomandoHabilitacion)
+            else if ((message.TxtMensaje == "Ninguna" || message.TxtMensaje == "Listo") && (CurrentForm as FrmRegistroEmprendedor).CurrentState == FasesRegEmprendedor.TomandoHabilitacion)
             {
                 StringBuilder sb = new StringBuilder();
                 sb.Append($"Habilitaciones guardadas con éxito!");
                 response = sb.ToString();
-                (CurrentForm as FrmRegistroEmprendedor).CurrentState = fases.Eligiendo;
-                (CurrentForm as FrmRegistroEmprendedor).Habilitaciones = this.habilitaciones;
+                (CurrentForm as FrmRegistroEmprendedor).CurrentState = FasesRegEmprendedor.Eligiendo;
                 return true;
             }
             else
@@ -136,14 +135,12 @@ namespace MessageGateway.Handlers
             }
         }
 
-        private List<Habilitacion> habilitaciones = new List<Habilitacion>();
-
-        private fases faseActual;
+       
 
         /// <summary>
         /// Las diferentes fases que este handler necesita para completar toda su información.
         /// </summary>
-        public enum fases
+        public enum FasesRegEmprendedor
         {
             /// <summary>
             /// Iniciador del handler.
@@ -158,22 +155,22 @@ namespace MessageGateway.Handlers
             /// <summary>
             /// Se espera el nombre del emprendedor.
             /// </summary>
-            tomandoNombre,
+            TomandoNombre,
 
             /// <summary>
             /// Se espera el rubro del emprendedor.
             /// </summary>
-            tomandoRubro,
+            TomandoRubro,
 
             /// <summary>
             /// Se espera la especialización del emprendedor.
             /// </summary>
-            tomandoEspecializacion,
+            TomandoEspecializacion,
 
             /// <summary>
             /// Se espera las habilitaciones del emprendedor.
             /// </summary>
-            tomandoHabilitacion
+            TomandoHabilitacion
         }
     }
 }

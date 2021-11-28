@@ -36,12 +36,5 @@ namespace MessageGateway.Handlers
         }
 
         protected abstract bool InternalHandle(IMessage message, out string response);
-
-        protected enum PalabrasClaveHandlers
-    
-        {
-
-        }
-
     }
 }
