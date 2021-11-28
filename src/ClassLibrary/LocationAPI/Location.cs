@@ -53,13 +53,13 @@ namespace ClassLibrary.LocationAPI
         /// Obtiene o establece la latitud de la dirección.
         /// </summary>
         /// <value>El valor de la latitud en formato decimal.</value>
-        public double Latitude { get; set; }
+        public float Latitude { get; set; }
 
         /// <summary>
         /// Obtiene o establece la longitud de la dirección.
         /// </summary>
         /// <value>El valor de la longitud en formato decimal.</value>
-        public double Longitude { get; set; }
+        public float Longitude { get; set; }
 
         public static bool operator ==(Location a, Location b)
         {
