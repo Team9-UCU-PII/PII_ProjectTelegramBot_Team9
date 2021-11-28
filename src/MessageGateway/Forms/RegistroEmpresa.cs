@@ -42,6 +42,14 @@ namespace MessageGateway.Forms
         /// </summary>
         public Empresa EmpresaPreCreada;
 
+        public Empresa EmpresaFinal
+        {
+            get
+            {
+                return new Empresa(NombrePublico,Ubicacion,Rubro,Descripcion,Contacto);
+            }
+        }
+
         /// <summary>
         /// Formulario encargado de almacenar la informacion para registrar una empresa.
         /// </summary>

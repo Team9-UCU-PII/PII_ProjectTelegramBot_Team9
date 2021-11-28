@@ -43,7 +43,7 @@ namespace MessageGateway.Handlers.Bienvenida
                         this.CurrentForm.ChangeForm(new FrmLogin(), message.ChatID);
                         break;
                     case "2":
-                        (CurrentForm as FrmBienvenida).ChangeForm((new FrmRegistroEmprendedor()), message.ChatID);
+                        (CurrentForm as FrmBienvenida).ChangeForm((new FrmRegistroDatosLogin()), message.ChatID);
                         break;
                     case "3":
                         (CurrentForm as FrmBienvenida).CurrentState = HandlerBienvenida.faseWelcome.Inicio;

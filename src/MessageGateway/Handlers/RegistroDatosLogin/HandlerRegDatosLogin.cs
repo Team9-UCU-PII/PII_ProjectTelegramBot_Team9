@@ -90,7 +90,7 @@ namespace MessageGateway.Handlers.RegistroDatosLogin
                     response = sb.ToString();
                     return true; 
                 }
-                sb.Append("¡Contraseña Confirmada!");
+                sb.Append("¡Contraseña Confirmada! Ahora vamos a registrarnos...");
                 response = sb.ToString();
                 (CurrentForm as FrmRegistroDatosLogin).Password = (CurrentForm as FrmRegistroDatosLogin).passChkr;
 

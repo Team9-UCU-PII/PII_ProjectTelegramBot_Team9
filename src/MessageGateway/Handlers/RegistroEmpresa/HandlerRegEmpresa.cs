@@ -91,6 +91,13 @@ namespace MessageGateway.Handlers
                 (CurrentForm as FrmRegistroEmpresa).CurrentStateLocation = HandlerLocation.faseLocation.tomandoMvdeo;
                 return true;
             }
+            else if (((CurrentForm as FrmRegistroEmpresa).EmpresaFinal != null))
+            {
+                response = "Registrado con éxito";
+                (CurrentForm as FrmRegistroEmpresa).CurrentState = fasesRegEmpresa.Done;
+                (CurrentForm as FrmRegistroEmpresa).ChangeForm(new FrmRegistroDatosLogin((CurrentForm as FrmRegistroEmpresa).EmpresaFinal), message.ChatID);
+                return true;
+            }
             else
             {
                 response = string.Empty;
@@ -121,7 +128,8 @@ namespace MessageGateway.Handlers
             ///Finalizado y construido el Location.
             ArmandoLocation,
             
-
+            ///Listo el registro.
+            Done
         }
     }
 }

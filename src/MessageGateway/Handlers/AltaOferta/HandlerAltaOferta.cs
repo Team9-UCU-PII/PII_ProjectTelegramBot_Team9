@@ -47,6 +47,7 @@ namespace MessageGateway.Handlers
                 sb.Append ($"2.Costo y Cantidad\n");
                 sb.Append ($"3.Lugar de Retiro\n");
                 sb.Append ($"4.Descripción\n");
+                sb.Append ($"5.Listo y Publicar");
                 response = sb.ToString();
                 (CurrentForm as FrmAltaOferta).CurrentState = fasesAltaOferta.Eligiendo;
                 return true;
@@ -59,7 +60,7 @@ namespace MessageGateway.Handlers
                 (CurrentForm as FrmAltaOferta).CurrentState = fasesAltaOferta.tomandoCantidad;
                 return true;
             }
-            else if (faseActual == fasesAltaOferta.tomandoCantidad)
+            else if ((CurrentForm as FrmAltaOferta).CurrentState == fasesAltaOferta.tomandoCantidad)
             {
                 StringBuilder sb = new StringBuilder();
                 if (int.TryParse(message.TxtMensaje, out int result))
@@ -77,7 +78,7 @@ namespace MessageGateway.Handlers
                     return true;
                 }
             }
-            else if (faseActual == fasesAltaOferta.tomandoMoneda)
+            else if ((CurrentForm as FrmAltaOferta).CurrentState == fasesAltaOferta.tomandoMoneda)
             {
                 StringBuilder sb = new StringBuilder();
                 (CurrentForm as FrmAltaOferta).Moneda = message.TxtMensaje;
@@ -86,7 +87,7 @@ namespace MessageGateway.Handlers
                 (CurrentForm as FrmAltaOferta).CurrentState = fasesAltaOferta.tomandoPrecio;
                 return true;
             }
-            else if ((faseActual == fasesAltaOferta.tomandoPrecio))
+            else if (((CurrentForm as FrmAltaOferta).CurrentState == fasesAltaOferta.tomandoPrecio))
             {
                 StringBuilder sb = new StringBuilder();
                 if (double.TryParse(message.TxtMensaje, out double result))
@@ -112,7 +113,7 @@ namespace MessageGateway.Handlers
                 (CurrentForm as FrmAltaOferta).CurrentState = fasesAltaOferta.tomandoDescripcion;
                 return true;
             }
-            else if (faseActual == fasesAltaOferta.tomandoDescripcion)
+            else if ((CurrentForm as FrmAltaOferta).CurrentState == fasesAltaOferta.tomandoDescripcion)
             {
                 StringBuilder sb = new StringBuilder();
                 sb.Append($"Guardada la descripción");
@@ -121,14 +122,26 @@ namespace MessageGateway.Handlers
                 (CurrentForm as FrmAltaOferta).CurrentState = fasesAltaOferta.Eligiendo;
                 return true;
             }
+            else if ((CurrentForm as FrmAltaOferta).CurrentState == fasesAltaOferta.Eligiendo)
+            {
+                if ((CurrentForm as FrmAltaOferta).Oferta != null)
+                {
+                    response = "Creada y Publicada la Oferta, volviendo al menu principal...";
+                    CurrentForm.ChangeForm(new FrmMenuEmpresa(), message.ChatID);
+                    return true;
+                }
+                else
+                {
+                    response ="Algo aun no esta completado, si quieres cancelar escribe /Abortar";
+                    return true;
+                }
+            }
             else
             {
                 response = string.Empty;
                 return false;
             }
         }
-
-        private fasesAltaOferta faseActual;
 
         /// <summary>
         /// Las diferentes fases que este handler necesita para completar toda su información
@@ -164,7 +177,10 @@ namespace MessageGateway.Handlers
             /// <summary>
             /// Se espera una descripción.
             /// </summary>
-            tomandoDescripcion
+            tomandoDescripcion,
+
+            ///Lista la publicación.
+            Done
         }
 
         /// <summary>
