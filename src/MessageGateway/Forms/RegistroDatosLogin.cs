@@ -58,9 +58,7 @@ namespace MessageGateway.Forms
         {
             this.OrganizacionEnRegistro = organizacion;
             this.messageHandler =
-                new HandlerRegDatosLogin(
-                    new HandlerEscape(null)
-                );
+                new HandlerRegDatosLogin(null);
         }
 
         /// <summary>

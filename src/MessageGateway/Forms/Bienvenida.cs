@@ -23,9 +23,7 @@ namespace MessageGateway.Forms
         {
             this.messageHandler =
                 new HandlerBienvenida(
-                new HandlerOpciones(
-                    new HandlerEscape(null)
-                ));
+                    new HandlerOpciones(null));
         }
 
         /// <summary>

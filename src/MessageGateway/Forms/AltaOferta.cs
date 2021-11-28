@@ -64,9 +64,7 @@ namespace MessageGateway.Forms
             this.messageHandler =
             new HandlerAltaOferta(
                 new HandlerNewResiduo(
-                    new HandlerLocation(
-                            new HandlerEscape(null)
-                    )
+                    new HandlerLocation(null)
                 )
             );
         }

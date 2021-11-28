@@ -22,9 +22,7 @@ namespace MessageGateway.Forms
         {
             this.messageHandler =
                 new HandlerInviteInicio(
-                    new HandlerValidarCodigo(
-                        new HandlerEscape(null)
-                    )
+                    new HandlerValidarCodigo(null)
                 );
         }
 

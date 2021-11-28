@@ -33,9 +33,7 @@ namespace MessageGateway.Forms
         public FrmLogin()
         {
             this.messageHandler =
-                new HandlerLogin(
-                    new HandlerEscape(null)
-                );
+                new HandlerLogin(null);
         }
 
         /// <summary>

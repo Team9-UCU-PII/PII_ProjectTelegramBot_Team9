@@ -5,6 +5,7 @@
 //--------------------------------------------------------------------------------
 
 using MessageGateway.Handlers;
+using MessageGateway.Handlers.Escape;
 
 namespace MessageGateway.Forms
 {
@@ -29,9 +30,10 @@ namespace MessageGateway.Forms
             }
             set
             {
-                this._messageHandler = value;
+                //se setea el handler de escape para todos los forms como el primero para atajar mensajes de cancelacion.
+                this._messageHandler = new HandlerEscape(value);
                 this._messageHandler.CurrentForm = this;
-                IMessageHandler singleHandler = value;
+                IMessageHandler singleHandler = this._messageHandler;
                 do
                 {
                     singleHandler.CurrentForm = this;
