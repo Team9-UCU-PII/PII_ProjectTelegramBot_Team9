@@ -29,7 +29,7 @@ namespace MessageGateway.Handlers.MenuEmprendedor
     /// </summary>
     /// <param name="message">IMessage traido del form.</param>
     /// <param name="response">String de la respuesta al usuario.</param>
-    /// <returns></returns>
+    /// <returns>True: si se pudo manejar el mensaje.</returns>
     protected override bool InternalHandle(IMessage message, out string response)
     {
       response = string.Empty;

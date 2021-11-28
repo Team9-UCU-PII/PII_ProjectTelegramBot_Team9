@@ -27,7 +27,7 @@ namespace MessageGateway.Handlers.MenuEmprendedor
     /// </summary>
     /// <param name="message">IMessage traido del Form.</param>
     /// <param name="response">La respuesta al usuario.</param>
-    /// <returns></returns>
+    /// <returns>True: si se pudo manejar.</returns>
     protected override bool InternalHandle(IMessage message, out string response)
     {
       if (this.CanHandle(message) && (CurrentForm as FrmMenuEmprendedor).CurrentState == faseMenuEmprendedor.Inicio)
