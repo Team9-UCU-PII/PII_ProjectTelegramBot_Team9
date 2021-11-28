@@ -167,9 +167,19 @@ namespace MessageGateway.Handlers
             tomandoDescripcion
         }
 
-        
+        /// <summary>
+        /// String para armar el location, por defecto es Mvdeo el departamento.
+        /// </summary>
         public string dpto = "Montevideo";
+    
+        /// <summary>
+        /// String para armar el Location, por defecto es Mvdeo la ciudad.
+        /// </summary>
         public string city = "Montevideo";
+
+        /// <summary>
+        /// Instancia Location en si formada.
+        /// </summary>
         public Location locationFinal;
 
     }

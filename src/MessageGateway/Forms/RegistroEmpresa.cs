@@ -42,6 +42,9 @@ namespace MessageGateway.Forms
         /// </summary>
         public Empresa EmpresaPreCreada;
 
+        /// <summary>
+        /// Formulario encargado de almacenar la informacion para registrar una empresa.
+        /// </summary>
         public FrmRegistroEmpresa()
         {
             CurrentState = HandlerRegEmpresa.fasesRegEmpresa.Inicio;
@@ -59,7 +62,7 @@ namespace MessageGateway.Forms
         /// <summary>
         /// Estado de la construccion del Location especificamente.
         /// </summary>
-        /// <value><see langword "enum"/> de HandlerLocation.faseLocation.</value>
+        /// <value><see langword = "enum"/> de HandlerLocation.faseLocation.</value>
         public HandlerLocation.faseLocation CurrentStateLocation { get; set; }
         
         /// <summary>

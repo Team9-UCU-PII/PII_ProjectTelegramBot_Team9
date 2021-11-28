@@ -88,13 +88,28 @@ namespace MessageGateway.Handlers
                 return false;
             }
         }
+
+        /// <summary>
+        /// Fases para controlar en que parte se halla del formulario el usuario.
+        /// </summary>
         public enum fasesRegEmpresa
         {
+            ///Se inició el registro.
             Inicio,
+
+            ///Esperando el nombre publico.
             tomandoNombre,
+
+            ///Esperando el rubro.
             tomandoRubro,
+
+            ///Tomando una descripcion.
             tomandoDescripcion,
+
+            ///Tomando el contacto.
             tomandoContacto,
+
+            ///Finalizado y construido el Location.
             ArmandoLocation,
             
 
