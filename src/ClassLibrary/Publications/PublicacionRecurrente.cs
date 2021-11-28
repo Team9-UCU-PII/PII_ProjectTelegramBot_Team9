@@ -5,6 +5,8 @@
 //--------------------------------------------------------------------------------
 
 using ClassLibrary.User;
+using Importers.Json;
+using System.Text.Json.Serialization;
 
 namespace ClassLibrary.Publication
 {
@@ -31,11 +33,31 @@ namespace ClassLibrary.Publication
       this.FrecuenciaAnualRestock = frecuenciaAnualRestock;
     }
 
+    [JsonConstructor]
+    public PublicacionRecurrente()
+    {
+
+    }
+
     /// <summary>
     /// Obtiene o establece la frecuencia que se restockea
     /// el residuo. Una property exclusiva de Publicacion Recurrente.
     /// </summary>
     /// <value><see langword="int"/>.</value>
     public int FrecuenciaAnualRestock { get; set; }
+
+    /// <summary>
+    /// Obtiene un string que representa esta oferta recurrente.
+    /// </summary>
+    /// <returns>el string que representa la instancia.</returns>
+    public override string GetTextToPrint()
+    {
+      return base.GetTextToPrint() + "\nFrecuencia anual de restock: " + this.FrecuenciaAnualRestock;
+    }
+
+    public override void JsonSave(JsonExporter exporter)
+    {
+        exporter.Save(this);
+    }
   }
 }

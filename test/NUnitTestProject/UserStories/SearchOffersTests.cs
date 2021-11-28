@@ -2,9 +2,11 @@ using NUnit.Framework;
 using Importers;
 using ClassLibrary.Publication;
 using ClassLibrary.User;
+using ClassLibrary.LocationAPI;
 using BotCore.Publication;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 
 namespace Tests.UserStories
 {
@@ -20,7 +22,7 @@ namespace Tests.UserStories
         private Empresa Empresa;
 
         [OneTimeSetUp]
-        public void Setup()
+        public void OneTimeSetup()
         {
             this.da = DataAccess.Instancia;
             this.publicador = Publicador.Instancia;
@@ -84,25 +86,30 @@ namespace Tests.UserStories
             );
         }
 
+        [OneTimeTearDown]
+        public void OneTimeTeardown()
+        {
+            if (Directory.Exists("Data\\"))
+            {
+                Directory.Delete("Data\\", true);
+            }
+        }
+
         [Test]
         public void SearchByZone()
         {
-            string lugarRetiro = "Punta de Rieles";
+            Location lugarRetiro = LocationApiClient.Instancia.GetLocation("Punta de Rieles");
 
             Dictionary<Busqueda.FiltrosPosibles, object> filtro = new Dictionary<Busqueda.FiltrosPosibles, object> {
                 {Busqueda.FiltrosPosibles.LugarRetiro, lugarRetiro}
             };
 
-            List<Publicacion> expected = da.Obtener<Publicacion>().Concat(da.Obtener<PublicacionRecurrente>()).Where(x => x.LugarRetiro.FormattedAddress == lugarRetiro).ToList();
+            List<Publicacion> expected = da.Obtener<Publicacion>().Concat(da.Obtener<PublicacionRecurrente>()).Where(x => x.LugarRetiro == lugarRetiro).ToList();
             List<Publicacion> actual = buscador.BuscarPublicaciones(filtro);
 
-            IEnumerable<Publicacion> union = expected.Union(actual);
-
             Assert.IsTrue(
-                actual.Distinct().Count() == union.Count() &&
-                actual.All(x => x.LugarRetiro.FormattedAddress.ToLower().Contains(
-                    lugarRetiro.ToLower(), System.StringComparison.CurrentCultureIgnoreCase
-                ))
+                expected.Count() == actual.Count() &&
+                actual.All(x => x.LugarRetiro == lugarRetiro)
             );
         }
 
@@ -115,12 +122,10 @@ namespace Tests.UserStories
                 {Busqueda.FiltrosPosibles.Categorias, categoria}
             };
 
-            List<Publicacion> expected = da.Obtener<Publicacion>().Concat(da.Obtener<PublicacionRecurrente>()).Where(x => x.Residuo.Categoria == categoria).ToList();
+            List<Publicacion> expected = da.Obtener<Publicacion>().Concat(da.Obtener<PublicacionRecurrente>()).Where(x => x.Categoria == categoria).ToList();
             List<Publicacion> actual = buscador.BuscarPublicaciones(filtro);
 
-            IEnumerable<Publicacion> union = expected.Union(actual);
-
-            Assert.IsTrue(actual.Distinct().Count() == union.Count() && actual.All(x => x.Residuo.Categoria == categoria));
+            Assert.IsTrue(expected.Count() == actual.Count() && actual.All(x => x.Categoria == categoria));
         }
 
         [Test]
@@ -136,9 +141,7 @@ namespace Tests.UserStories
                                         .Where(x => x is not PublicacionRecurrente).ToList();
             List<Publicacion> actual = buscador.BuscarPublicaciones(filtro);
 
-            IEnumerable<Publicacion> union = expected.Union(actual);
-
-            Assert.IsTrue(actual.Distinct().Count() == union.Count() &&
+            Assert.IsTrue(actual.Count() == expected.Count() &&
                             actual.All(x => x is not PublicacionRecurrente));
         }
 
@@ -156,9 +159,7 @@ namespace Tests.UserStories
                                         (x as PublicacionRecurrente).FrecuenciaAnualRestock == frecuenciaAnualRestock).ToList();
             List<Publicacion> actual = buscador.BuscarPublicaciones(filtro);
 
-            IEnumerable<Publicacion> union = expected.Union(actual);
-
-            Assert.IsTrue(actual.Distinct().Count() == union.Count() &&
+            Assert.IsTrue(expected.Count() == actual.Count() &&
                             actual.All(x => x is PublicacionRecurrente && (x as PublicacionRecurrente).FrecuenciaAnualRestock == frecuenciaAnualRestock));
         }
     }

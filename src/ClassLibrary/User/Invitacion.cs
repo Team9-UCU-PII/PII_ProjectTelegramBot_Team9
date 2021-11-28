@@ -6,14 +6,16 @@
 
 using System;
 using System.Text;
-using ClassLibrary.User;
+using Importers;
+using Importers.Json;
+using System.Text.Json.Serialization;
 
 namespace ClassLibrary.User
 {
     /// <summary>
     /// Clase mediadora entre <see cref = "GestorInvitaciones"/> y los <see iref = "IUsuario"/>, representa la invitación en si, y encapsula el enlace y destino.
     /// </summary>
-    public class Invitacion
+    public class Invitacion : JsonConvertibleBase
     {
         /// <summary>
         /// Método constructor de la invitación.
@@ -23,13 +25,21 @@ namespace ClassLibrary.User
         public Invitacion(IUsuario organizacion)
         {
             this.OrganizacionInvitada = organizacion;
-            this.token = GenerarToken();
+            this.token = "1234";
+            //this.token = GenerarToken();
             this.FueAceptada = false;
+        }
+
+        [JsonConstructor]
+        public Invitacion()
+        {
+
         }
 
         /// <summary>
         /// El usuario destinado, debería ser sobreescrito por el destinatario.
         /// </summary>
+        [JsonInclude]
         public IUsuario OrganizacionInvitada { get; }
 
         /// <summary>
@@ -95,6 +105,12 @@ namespace ClassLibrary.User
             }
 
             return sb.ToString();
+        }
+        
+
+        public override void JsonSave(JsonExporter exporter)
+        {
+            exporter.Save(this);
         }
     }
 }
