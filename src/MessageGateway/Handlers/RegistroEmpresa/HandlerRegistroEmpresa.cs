@@ -1,17 +1,38 @@
+//--------------------------------------------------------------------------------
+// <copyright file="HandlerRegistroEmpresa.cs" company="Universidad Católica del Uruguay">
+//     Copyright (c) Programación II. Derechos reservados.
+// </copyright>
+//--------------------------------------------------------------------------------
+
 using System;
 using System.Text;
 using MessageGateway.Forms;
 
 namespace MessageGateway.Handlers
 {
+    /// <summary>
+    /// Handler principal del registro de empresas.
+    /// </summary>
     public class HandlerRegistroEmpresa : MessageHandlerBase, IMessageHandler
     {
+        /// <summary>
+        /// Constructor, al instanciarse en un form ya le asigna a este sus estados iniciales necesarios.
+        /// </summary>
+        /// <param name="next">Siguiente IHandler.</param>
         public HandlerRegistroEmpresa(IMessageHandler next) : base ((new string[] {"RegistroEmpresa"}), next)
         {
             this.Next = next;
             (CurrentForm as FrmRegistroEmpresa).CurrentState = fases.Inicio;
+            (CurrentForm as FrmRegistroEmpresa).CurrentStateLocation = HandlerLocation.faseLocation.Inicio;
         }
 
+        /// <summary>
+        /// Internal handle que presenta un menu para ir completando el registro.
+        /// Delega la tarea de registro de location a sus handler particular.
+        /// </summary>
+        /// <param name="message">IMessage traido del form.</param>
+        /// <param name="response">String respuesta al user.</param>
+        /// <returns>True: si se pudo manejar el mensaje.</returns>
         protected override bool InternalHandle(IMessage message, out string response)
         {
             if (this.CanHandle(message) && (CurrentForm as FrmRegistroEmpresa).CurrentState == fases.Inicio)
@@ -104,14 +125,40 @@ namespace MessageGateway.Handlers
         }
 
         private fases faseActual;
+
+        /// <summary>
+        /// Las diferentes fases que este handler necesita para completar toda su información.
+        /// </summary>
         public enum fases
         {
+            /// <summary>
+            /// Iniciador del handler.
+            /// </summary>
             Inicio,
+            
+            /// <summary>
+            /// El user está parado en el menú.
+            /// </summary>
             Eligiendo,
+
+            /// <summary>
+            /// Se espera el nombre de la empresa.
+            /// </summary>
             tomandoNombre,
-            tomandoLugar,
+
+            /// <summary>
+            /// Se espera el rubro de la empresa.
+            /// </summary>
             tomandoRubro,
+
+            /// <summary>
+            /// Se espera una descripción de la empresa.
+            /// </summary>
             tomandoDescripcion,
+
+            /// <summary>
+            /// Se espera un contacto de la empresa.
+            /// </summary>
             tomandoContacto
         }
     }

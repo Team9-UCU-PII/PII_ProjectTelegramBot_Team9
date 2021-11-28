@@ -1,20 +1,42 @@
+//--------------------------------------------------------------------------------
+// <copyright file="HandlerRegistroEmprendedor.cs" company="Universidad Católica del Uruguay">
+//     Copyright (c) Programación II. Derechos reservados.
+// </copyright>
+//--------------------------------------------------------------------------------
+
 using System;
 using System.Text;
 using System.Collections.Generic;
 using ClassLibrary.Publication;
 using ClassLibrary.User;
 using MessageGateway.Forms;
+using ClassLibrary.LocationAPI;
 
 namespace MessageGateway.Handlers
 {
+    /// <summary>
+    /// Handler principal del registro de emprendedores.
+    /// </summary>
     public class HandlerRegistroEmprendedor : MessageHandlerBase, IMessageHandler
     {
+        /// <summary>
+        /// Constructor, al instanciarse en un form ya le asigna a este sus estados iniciales necesarios.
+        /// </summary>
+        /// <param name="next">Siguiente IHandler.</param>
         public HandlerRegistroEmprendedor(IMessageHandler next) : base ((new string[] {"RegistroEmprendedor"}), next)
         {
             this.Next = next;
             (CurrentForm as FrmRegistroEmprendedor).CurrentState = fases.Inicio;
+            (CurrentForm as FrmRegistroEmprendedor).CurrentStateLocation = HandlerLocation.faseLocation.Inicio;
         }
 
+        /// <summary>
+        /// Internal handle que presenta un menu para ir completando el registro.
+        /// Delega la tarea de registro de location a sus handler particular.
+        /// </summary>
+        /// <param name="message">IMessage traido del form.</param>
+        /// <param name="response">String respuesta al user.</param>
+        /// <returns>True: si se pudo manejar el mensaje.</returns>
         protected override bool InternalHandle(IMessage message, out string response)
         {
             if (this.CanHandle(message) && (CurrentForm as FrmRegistroEmprendedor).CurrentState == fases.Inicio)
@@ -85,7 +107,7 @@ namespace MessageGateway.Handlers
             else if (message.TxtMensaje == "5" && (CurrentForm as FrmRegistroEmprendedor).CurrentState == fases.Eligiendo)
             {
                 StringBuilder sb = new StringBuilder();
-                sb.Append($"¿Cuáles son tus habilitaciones? (\"Ninguna\" es una opción, \"Listo\" cuando hayas finalizado \n")");
+                sb.Append($"¿Cuáles son tus habilitaciones? (\"Ninguna\" es una opción, \"Listo\" cuando hayas finalizado \n");
                 response = sb.ToString();
                 (CurrentForm as FrmRegistroEmprendedor).CurrentState = fases.tomandoHabilitacion;
                 return true;
@@ -115,14 +137,42 @@ namespace MessageGateway.Handlers
         }
 
         private List<Habilitacion> habilitaciones = new List<Habilitacion>();
+
         private fases faseActual;
+
+        /// <summary>
+        /// Las diferentes fases que este handler necesita para completar toda su información.
+        /// </summary>
         public enum fases
         {
+            /// <summary>
+            /// Iniciador del handler.
+            /// </summary>
             Inicio,
+
+            /// <summary>
+            /// El user está parado en el menú.
+            /// </summary>
             Eligiendo,
+
+            /// <summary>
+            /// Se espera el nombre del emprendedor.
+            /// </summary>
             tomandoNombre,
+
+            /// <summary>
+            /// Se espera el rubro del emprendedor.
+            /// </summary>
             tomandoRubro,
+
+            /// <summary>
+            /// Se espera la especialización del emprendedor.
+            /// </summary>
             tomandoEspecializacion,
+
+            /// <summary>
+            /// Se espera las habilitaciones del emprendedor.
+            /// </summary>
             tomandoHabilitacion
         }
     }
