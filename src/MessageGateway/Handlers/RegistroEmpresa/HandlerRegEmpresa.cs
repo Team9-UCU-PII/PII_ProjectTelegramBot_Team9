@@ -40,7 +40,7 @@ namespace MessageGateway.Handlers
                 sb.AppendJoin('\n',
                 "A continuación, te pediremos que ingreses los datos necesarios para que tu empresa sea visible en la plataforma.",
                 "\n",
-                "Primero, ingresa el nombre de tu empresa. Ten en cuenta que este nombre será público para todos los usuarios.");
+                $"Primero, ¿Es {(CurrentForm as FrmRegistroEmpresa).EmpresaPreCreada.Nombre} el nombre correcto? (Escribe \"Si\" si está Correcto o Escribe el nuevo nombre que quieras darle.)\n");
                 response = sb.ToString();
                 (CurrentForm as FrmRegistroEmpresa).CurrentState = fasesRegEmpresa.tomandoNombre;
                 return true;
@@ -48,8 +48,17 @@ namespace MessageGateway.Handlers
             else if ((CurrentForm as FrmRegistroEmpresa).CurrentState == fasesRegEmpresa.tomandoNombre)
             {
                 StringBuilder sb = new StringBuilder();
-                (CurrentForm as FrmRegistroEmpresa).NombrePublico = message.TxtMensaje;
-                sb.Append("¿A que rubro se dedica la empresa?");
+
+                if (message.TxtMensaje.ToLower() != "si")
+                {
+                    (CurrentForm as FrmRegistroEmpresa).NombrePublico = message.TxtMensaje;
+                }
+                else
+                {
+                    (CurrentForm as FrmRegistroEmpresa).NombrePublico = (CurrentForm as FrmRegistroEmpresa).EmpresaPreCreada.Nombre;
+                }
+
+                sb.Append($"¿A que rubro se dedica {(CurrentForm as FrmRegistroEmpresa).EmpresaPreCreada.Nombre}?");
                 response = sb.ToString();
                 (CurrentForm as FrmRegistroEmpresa).CurrentState = fasesRegEmpresa.tomandoRubro;
                 return true;
@@ -67,7 +76,7 @@ namespace MessageGateway.Handlers
             {
                 StringBuilder sb = new StringBuilder();
                 (CurrentForm as FrmRegistroEmpresa).Descripcion = message.TxtMensaje;
-                sb.Append("¿Por que medios se puede contactar?");
+                sb.Append("¿Por que medios se puede contactar?  \n(Dejanos un numero de teléfono o E-Mail por ejemplo)");
                 response = sb.ToString();
                 (CurrentForm as FrmRegistroEmpresa).CurrentState = fasesRegEmpresa.tomandoContacto;
                 return true;

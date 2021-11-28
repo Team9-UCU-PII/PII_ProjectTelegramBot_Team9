@@ -43,8 +43,7 @@ namespace MessageGateway.Handlers.Bienvenida
                         this.CurrentForm.ChangeForm(new FrmLogin(), message.ChatID);
                         break;
                     case "2":
-                        response = "Registrarse como \"Empresa\" o \"Emprendedor\"";
-                        (CurrentForm as FrmBienvenida).CurrentState = HandlerBienvenida.faseWelcome.choosingRegister;
+                        (CurrentForm as FrmBienvenida).ChangeForm((new FrmRegistroDatosLogin()), message.ChatID);
                         break;
                     case "3":
                         (CurrentForm as FrmBienvenida).CurrentState = HandlerBienvenida.faseWelcome.Inicio;
@@ -54,21 +53,6 @@ namespace MessageGateway.Handlers.Bienvenida
                         return false;
                 }
                 return true;
-            }
-            else if ((CurrentForm as FrmBienvenida).CurrentState == HandlerBienvenida.faseWelcome.choosingRegister)
-            {
-                if (message.TxtMensaje.ToLower() == "empresa")
-                {
-                    (CurrentForm as FrmBienvenida).CurrentState = HandlerBienvenida.faseWelcome.Inicio;
-                    this.CurrentForm.ChangeForm((new FrmRegistroEmpresa()), message.ChatID);
-                    return true;
-                }
-                else
-                {
-                    (CurrentForm as FrmBienvenida).CurrentState = HandlerBienvenida.faseWelcome.Inicio;
-                    this.CurrentForm.ChangeForm((new FrmRegistroEmpresa()), message.ChatID);
-                    return true;
-                }
             }
             else
             {

@@ -93,7 +93,15 @@ namespace MessageGateway.Handlers.RegistroDatosLogin
                 sb.Append("¡Contraseña Confirmada!");
                 response = sb.ToString();
                 (CurrentForm as FrmRegistroDatosLogin).Password = (CurrentForm as FrmRegistroDatosLogin).passChkr;
-                (CurrentForm as FrmRegistroDatosLogin).CurrentState = faseRegDL.Done;
+
+                if((CurrentForm as FrmRegistroDatosLogin).OrganizacionEnRegistro != null)
+                {
+                    CurrentForm.ChangeForm(new FrmRegistroEmpresa((CurrentForm as FrmRegistroDatosLogin).OrganizacionEnRegistro), message.ChatID);
+                }
+                else
+                {
+                    CurrentForm.ChangeForm(new FrmRegistroEmprendedor(), message.ChatID);
+                }
                 return true;
             }
             else

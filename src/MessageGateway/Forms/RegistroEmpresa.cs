@@ -45,13 +45,14 @@ namespace MessageGateway.Forms
         /// <summary>
         /// Formulario encargado de almacenar la informacion para registrar una empresa.
         /// </summary>
-        public FrmRegistroEmpresa()
+        public FrmRegistroEmpresa(IUsuario empresa)
         {
             CurrentState = HandlerRegEmpresa.fasesRegEmpresa.Inicio;
             this.messageHandler =
                 new HandlerRegEmpresa(
                     new HandlerLocation(null)
                 );
+            this.EmpresaPreCreada = empresa as Empresa;
         }
 
         /// <summary>

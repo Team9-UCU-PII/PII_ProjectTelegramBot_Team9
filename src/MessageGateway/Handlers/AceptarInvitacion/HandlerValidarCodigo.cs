@@ -44,7 +44,7 @@ namespace MessageGateway.Handlers.AceptarInvitacion
                         new FrmRegistroDatosLogin(invite.OrganizacionInvitada),
                         message.ChatID
                     );
-                    response = $"¡Gracias por aceptar la invitación a unirte a {(AdaptadorTelegram.Instancia.TelegramBot.BotName)}";
+                    response = $"¡Gracias {invite.OrganizacionInvitada.Nombre} por aceptar la invitación a unirte a {(AdaptadorTelegram.Instancia.TelegramBot.BotName)}";
                 }
                 else
                 {
