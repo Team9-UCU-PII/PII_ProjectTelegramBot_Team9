@@ -40,7 +40,7 @@ namespace MessageGateway.Handlers.MenuEmprendedor
         {
           case "1":
             (CurrentForm as FrmMenuEmprendedor).CurrentState = HandlerMenuEmprendedor.faseMenuEmprendedor.Inicio;
-            this.CurrentForm.ChangeForm(new FrmBuscarPublicacion(), message.ChatID);
+            this.CurrentForm.ChangeForm(new FrmBusqueda(), message.ChatID);
             break;
           case "2":
             (CurrentForm as FrmMenuEmprendedor).CurrentState = HandlerMenuEmprendedor.faseMenuEmprendedor.Inicio;
