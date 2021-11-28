@@ -60,7 +60,10 @@ namespace MessageGateway.Handlers.MenuEmpresa
     /// </summary>
     public enum faseMenuEmpresa
     {
+      ///Iniciado el menu.
       Inicio,
+
+      //Se esta eligiendo una opción.
       Eligiendo
 
     }
