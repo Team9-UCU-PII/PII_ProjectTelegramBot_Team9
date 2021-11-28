@@ -19,6 +19,18 @@ namespace MessageGateway.Forms
     {
 
         /// <summary>
+        /// Oferta resultante.
+        /// </summary>
+        /// <value>Publicacion.</value>
+        public Publicacion Oferta
+        {
+            get
+            {
+                return (Vendedor.CrearOferta(residuo,PrecioUnitario,Moneda,Cantidad,Ubicacion,Descripcion, residuo.Categoria));
+            }
+        }
+
+        /// <summary>
         /// Precio por unidad del residuo.
         /// </summary>
         public double PrecioUnitario;

@@ -100,7 +100,7 @@ namespace ClassLibrary.User
             double precioUnitario,
             string moneda,
             int cantidad, 
-            string lugarRetiro,
+            Location lugarRetiro,
             string descripcion,
             Categoria categoria)
         {
@@ -123,7 +123,7 @@ namespace ClassLibrary.User
             double precioUnitario,
             string moneda,
             int cantidad,
-            string lugarRetiro,
+            Location lugarRetiro,
             string descripcion,
             Categoria categoria,
             int frecuenciaAnualRestock)
