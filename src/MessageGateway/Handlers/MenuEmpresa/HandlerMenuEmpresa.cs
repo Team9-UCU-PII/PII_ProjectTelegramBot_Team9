@@ -4,6 +4,8 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 
+using System.Text;
+
 namespace MessageGateway.Handlers.MenuEmpresa
 {
 
@@ -30,7 +32,7 @@ namespace MessageGateway.Handlers.MenuEmpresa
     /// <returns>True: si se pudo manejar.</returns>
     protected override bool InternalHandle(IMessage message, out string response)
     {
-      if (this.CanHandler(message) && (CurrentForm as FrmMenuEMpresa).CurrentState == faseMenuEmpresa.Inicio)
+      if (this.CanHandle(message) && (CurrentForm as FrmMenuEmpresa).CurrentState == faseMenuEmpresa.Inicio)
       {
         StringBuilder sb = new StringBuilder();
         sb.AppendJoin('\n',
