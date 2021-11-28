@@ -4,7 +4,6 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 
-using MessageGateway.Handlers.Escape;
 using MessageGateway.Handlers.Login;
 using ClassLibrary.User;
 

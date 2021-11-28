@@ -8,7 +8,6 @@ using ClassLibrary.Publication;
 using ClassLibrary.LocationAPI;
 using ClassLibrary.User;
 using MessageGateway.Handlers;
-using MessageGateway.Handlers.Escape;
 using System.Collections.Generic;
 
 namespace MessageGateway.Forms

@@ -4,7 +4,6 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 
-using MessageGateway.Handlers.Escape;
 using MessageGateway.Handlers.RegistroDatosLogin;
 using ClassLibrary.User;
 
@@ -67,9 +66,7 @@ namespace MessageGateway.Forms
         public FrmRegistroDatosLogin()
         {
             this.messageHandler =
-                new HandlerRegDatosLogin(
-                    new HandlerEscape(null)
-                );
+                new HandlerRegDatosLogin(null);
         }
 
         /// <summary>

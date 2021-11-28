@@ -4,7 +4,6 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 
-using MessageGateway.Handlers.Escape;
 using MessageGateway.Handlers.Bienvenida;
 
 namespace MessageGateway.Forms
