@@ -68,10 +68,10 @@ namespace ClassLibrary.User
         /// <param name="rubro"><see langword = "string"/>.</param>
         /// <param name="descripcion"><see langword = "string"/>.</param>
         /// <param name="contacto"><see langword = "string"/>.</param>
-        public Empresa(string nombre, string lugar, string rubro, string descripcion, string contacto)
+        public Empresa(string nombre, Location lugar, string rubro, string descripcion, string contacto)
         {
             this.Nombre = nombre;
-            this.Lugar = LocationApiClient.Instancia.GetLocation(lugar);
+            this.Lugar = lugar;
             this.Rubro = rubro;
             this.Descripcion = descripcion;
             this.Contacto = contacto;
