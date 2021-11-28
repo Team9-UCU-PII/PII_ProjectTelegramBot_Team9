@@ -5,6 +5,7 @@
 //--------------------------------------------------------------------------------
 
 using System.Text;
+using MessageGateway.Forms;
 
 namespace MessageGateway.Handlers.MenuEmpresa
 {
