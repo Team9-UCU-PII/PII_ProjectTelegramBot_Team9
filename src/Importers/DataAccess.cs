@@ -6,6 +6,7 @@
 
 using System.Collections.Generic;
 using Importers.Memoria;
+using Importers.Json;
 
 namespace Importers
 {
@@ -25,7 +26,7 @@ namespace Importers
             {
                 if (DataAccess.instancia == null)
                 {
-                    DataAccess.instancia = new DataAccess(DatabaseMemoria.Instancia);
+                    DataAccess.instancia = new DataAccess(DatabaseJson.Instancia);
                 }
 
                 return DataAccess.instancia;
