@@ -8,6 +8,11 @@ namespace Importers.Json
     /// </summary>
     public interface IJsonConvertible : IPersistible
     {
+        /// <summary>
+        /// Un ID implementado por todas las clases con la interfaz IJsonConvertible que permite verificar
+        /// si dos objetos de uns misma clase son iguales en base a su ID
+        /// </summary>
+        /// <value></value>
         int SerializationID { get; set; }
 
         /// <summary>

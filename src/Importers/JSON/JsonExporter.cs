@@ -7,22 +7,19 @@ namespace Importers.Json
     /// <summary>
     /// Clase que exporta objetos de tipo IJsonConvertible a strings en formato JSON.
     /// </summary>
-    public class JsonExporter : IJsonUtil
+    public class JsonExporter
     {
         private static JsonSerializerOptions config = new JsonSerializerOptions()
         {
-            //ReferenceHandler = MyReferenceHandler.Instance,
             WriteIndented = true
         };
 
         private string filePath;
-        public string FilePath { get; set; }
 
-        public JsonExporter()
-        {
-
-        }
-
+        /// <summary>
+        /// Inicializa una nueva clase de JsonExporter que guardará los objetos en la ruta proporcionada.
+        /// </summary>
+        /// <param name="filePath">La ruta al archivo donde se persisten los objetos.</param>
         public JsonExporter(string filePath)
         {
             this.filePath = filePath;
@@ -37,8 +34,6 @@ namespace Importers.Json
         public void Save<T>(T obj) where T : IJsonConvertible
         {
             string json = JsonSerializer.Serialize(obj, obj.GetType(), config);
-            //string typeName = obj.GetType().ToString();
-            //string folderName = typeName.Substring(typeName.LastIndexOf('.') + 1);
             File.WriteAllText(this.filePath, json);
         }
     }

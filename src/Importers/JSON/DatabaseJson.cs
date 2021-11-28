@@ -128,7 +128,7 @@ namespace Importers.Json
                 IEnumerable<string> thisTypeReferences = thisTypeSerializationIDs.Select(id => this.objectReferences[typeof(T)][id]);
                 foreach (string filePath in thisTypeReferences)
                 {
-                    result.Add(new JsonImporter<T>().Get<T>(filePath));
+                    result.Add(new JsonImporter<T>().Get(filePath));
                 }
             }
             return result;
