@@ -34,6 +34,22 @@ namespace MessageGateway.Forms
         public string Password;
 
         /// <summary>
+        /// Sostiene la contraseña para confirmarla.
+        /// </summary>
+        public string passChkr;
+
+        /// <summary>
+        /// Obtiene el DatosLogin resultante de los datos tomados.
+        /// </summary>
+        public DatosLogin result
+        {
+            get
+            {
+                return new DatosLogin(NombreUsuario, Password, OrganizacionEnRegistro);
+            }
+        }
+
+        /// <summary>
         /// Constructor del formulario y sus handlers para un invitado.
         /// </summary>
         /// <param name="organizacion">Empresa Invitada</param>

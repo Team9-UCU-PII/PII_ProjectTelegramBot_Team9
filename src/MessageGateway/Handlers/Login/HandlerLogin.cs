@@ -1,3 +1,9 @@
+//--------------------------------------------------------------------------------
+// <copyright file="HandlerLogin.cs" company="Universidad Católica del Uruguay">
+//     Copyright (c) Programación II. Derechos reservados.
+// </copyright>
+//--------------------------------------------------------------------------------
+
 using ClassLibrary.User;
 using System.Collections.Generic;
 using System.Text;
@@ -6,13 +12,29 @@ using Importers;
 
 namespace MessageGateway.Handlers.Login
 {
+
+    /// <summary>
+    /// Handler encargado de tomar inicio de sesion y corroborar datos en base de datos.
+    /// </summary>
     public class HandlerLogin : MessageHandlerBase
     {
+
+        /// <summary>
+        /// Constructor con palabras clave en blanco por ser traido directo.
+        /// </summary>
+        /// <param name="next"></param>
         public HandlerLogin(IMessageHandler next)
         : base(new string[] {/*Intencionalmente en blanco.*/}, next)
         {
         }
 
+        /// <summary>
+        /// Internal Handle que Toma username, lo busca en base de datos, y despues comprueba si la
+        /// contraseña coincide.
+        /// </summary>
+        /// <param name="message">IMessage traido del form.</param>
+        /// <param name="response">String respuesta al user.</param>
+        /// <returns>True: si se pudo manejar.</returns>
         protected override bool InternalHandle(IMessage message, out string response)
         {
             if ((CurrentForm as FrmLogin).CurrentState == fasesLogin.Inicio)
@@ -35,10 +57,10 @@ namespace MessageGateway.Handlers.Login
                 {
                     if (user.DatosLogin.NombreUsuario == message.TxtMensaje)
                     {
-                        this.supuestoUser = user;
+                        (CurrentForm as FrmLogin).supuestoUser = user;
                     }
                 }
-                if (this.supuestoUser == null)
+                if ((CurrentForm as FrmLogin).supuestoUser == null)
                 {
                     sb.Append("No se encontro a nadie con ese nombre de usuario.");
                     response = sb.ToString();
@@ -55,11 +77,11 @@ namespace MessageGateway.Handlers.Login
             else if ((CurrentForm as FrmLogin).CurrentState == fasesLogin.tomandoPass)
             {
                 StringBuilder sb = new StringBuilder();
-                if (supuestoUser.DatosLogin.Contrasenia == message.TxtMensaje)
+                if ((CurrentForm as FrmLogin).supuestoUser.DatosLogin.Contrasenia == message.TxtMensaje)
                 {
                     sb.Append($"Iniciada Sesión Correctamente!");
                     response = sb.ToString();
-                    (CurrentForm as FrmLogin).userLoggeado = supuestoUser;
+                    (CurrentForm as FrmLogin).userLoggeado = (CurrentForm as FrmLogin).supuestoUser;
                     CurrentForm.ChangeForm(new FrmAltaOferta(), message.ChatID);
                     return true;
                 }
@@ -67,7 +89,6 @@ namespace MessageGateway.Handlers.Login
                 {
                     sb.Append($"Nombre de usuario o contraseña errónea.");
                     response = sb.ToString();
-                    supuestoUser = null;
                     (CurrentForm as FrmLogin).CurrentState = fasesLogin.tomandoPass;
                     return true;
                 }
@@ -79,13 +100,26 @@ namespace MessageGateway.Handlers.Login
             }
         }
 
+        /// <summary>
+        /// Fases necesarias para iniciar sesión.
+        /// </summary>
         public enum fasesLogin
         {
+            /// <summary>
+            /// Se inicio el handler.
+            /// </summary>
             Inicio,
+
+            /// <summary>
+            /// Se esta esperando el nombre de usuario.
+            /// </summary>
             tomandoUser,
+
+            /// <summary>
+            /// Se esta tomando la contraseña.
+            /// </summary>
             tomandoPass
         }
         private DataAccess dataBase = DataAccess.Instancia;
-        private IUsuario supuestoUser;
     }
 }

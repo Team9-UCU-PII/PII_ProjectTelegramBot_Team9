@@ -1,3 +1,9 @@
+//--------------------------------------------------------------------------------
+// <copyright file="HandlerNewResiduo.cs" company="Universidad Católica del Uruguay">
+//     Copyright (c) Programación II. Derechos reservados.
+// </copyright>
+//--------------------------------------------------------------------------------
+
 using System.Text;
 using System.Collections.Generic;
 using ClassLibrary.Publication;
@@ -6,13 +12,28 @@ using MessageGateway.Forms;
 
 namespace MessageGateway.Handlers
 {
+
+    /// <summary>
+    /// Handler con el destino de crear un residuo.
+    /// </summary>
     public class HandlerNewResiduo: MessageHandlerBase, IMessageHandler
     {
+
+        /// <summary>
+        /// Constructor, se agregan palabras clave para menus que lo invoquen.
+        /// </summary>
+        /// <param name="next">IHandler siguiente.</param>
         public HandlerNewResiduo(IMessageHandler next) : base ((new string[] {"1"}), next)
         {
             this.Next = next;
         }
 
+        /// <summary>
+        /// InternalHandle que va tomando las cualidades necesarias para crear un residuo.
+        /// </summary>
+        /// <param name="message">IMessage traido del form.</param>
+        /// <param name="response">Respuesta al User.</param>
+        /// <returns>True: si se pudo manejar el mensaje.</returns>
         protected override bool InternalHandle(IMessage message, out string response)
         {
             if (this.CanHandle(message) && (CurrentForm is IResiduoForm) && (CurrentForm as IResiduoForm).CurrentStateResiduo == fasesResiduo.Inicio)
@@ -83,13 +104,29 @@ namespace MessageGateway.Handlers
             }
 
         }
+
+        /// <summary>
+        /// Las fases requeridas para crear un residuo.
+        /// </summary>
         public enum fasesResiduo
         {
+
+            ///Esperando ser llamado.
             Inicio,
+
+            ///esperando la descripcion.
             Descripcion,
+
+            ///Esperando la unidad de medida.
             UnidadMedida,
+
+            ///Esperando la Categoria del residuo.
             Categoria,
+
+            ///Tomando las habilitaciones necesarias.
             Habilitaciones,
+ 
+            ///Terminado el residuo (si no se quiere poder sobreescribir).
             Done
         }
     }

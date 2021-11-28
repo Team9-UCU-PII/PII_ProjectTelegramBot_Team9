@@ -1,15 +1,37 @@
+//--------------------------------------------------------------------------------
+// <copyright file="HandlerLogin.cs" company="Universidad Católica del Uruguay">
+//     Copyright (c) Programación II. Derechos reservados.
+// </copyright>
+//--------------------------------------------------------------------------------
+
+
 using System.Text;
 using MessageGateway.Forms;
 
 namespace MessageGateway.Handlers
 {
+
+    /// <summary>
+    /// Handler encargado de crear una nueva empresa.
+    /// </summary>
     public class HandlerRegEmpresa : MessageHandlerBase
     {
+
+        /// <summary>
+        /// Constructor en blanco porque es invocado directamente.
+        /// </summary>
+        /// <param name="next">IHandler siguiente.</param>
         public HandlerRegEmpresa(IMessageHandler next)
         : base(new string[] {}, next)
         {
         }
 
+        /// <summary>
+        /// Internal Handle que va tomando los datos necesarios. Location es delegado al HandlerLocation.
+        /// </summary>
+        /// <param name="message">IMessage traido del form.</param>
+        /// <param name="response">String. Repsuesta al user.</param>
+        /// <returns>True: si se pudo procesar el mensaje.</returns>
         protected override bool InternalHandle(IMessage message, out string response)
         {
             if ((CurrentForm is FrmRegistroEmpresa) && (CurrentForm as FrmRegistroEmpresa).CurrentState == fasesRegEmpresa.Inicio)

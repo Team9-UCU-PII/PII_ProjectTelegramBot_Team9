@@ -10,11 +10,17 @@ using ClassLibrary.User;
 
 namespace MessageGateway.Forms
 {
+
     /// <summary>
     /// Formulario que engloba el inicio de sesión.
     /// </summary>
     public class FrmLogin : FormularioBase
     {
+
+        /// <summary>
+        /// IUsuario temporal tomado por su nombre de usuario.
+        /// </summary>
+        public IUsuario supuestoUser;
 
         /// <summary>
         /// Instancia IUsuario del usuario al loggearse.

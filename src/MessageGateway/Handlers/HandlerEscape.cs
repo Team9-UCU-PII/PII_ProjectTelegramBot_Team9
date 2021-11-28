@@ -1,4 +1,10 @@
-using System.Text;
+//--------------------------------------------------------------------------------
+// <copyright file="HandlerEscape.cs" company="Universidad Católica del Uruguay">
+//     Copyright (c) Programación II. Derechos reservados.
+// </copyright>
+//--------------------------------------------------------------------------------
+
+
 using MessageGateway.Forms;
 
 namespace MessageGateway.Handlers.Escape
@@ -9,11 +15,23 @@ namespace MessageGateway.Handlers.Escape
     /// </summary>
     public class HandlerEscape : MessageHandlerBase, IMessageHandler
     {
+
+        /// <summary>
+        /// Constructor de palabra clave "Abortar" que puede ser invocada en cualquier momento.
+        /// </summary>
+        /// <param name="next">IHandler siguiente.</param>
         public HandlerEscape(IMessageHandler next)
         : base(new string[] {"Abortar"}, next)
         {
         }
 
+        /// <summary>
+        /// Internal Handle que revisa donde esta parado el user y 
+        /// devuelve al ultimo form generico/menu pricipal acorde.
+        /// </summary>
+        /// <param name="message">IMessage traido del Form.</param>
+        /// <param name="response">String Respuesta al user.</param>
+        /// <returns>True: si se pudo manejar el mensaje.</returns>
         protected override bool InternalHandle(IMessage message, out string response)
         {
             if (this.CanHandle(message))

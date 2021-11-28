@@ -1,12 +1,26 @@
-using System;
+//--------------------------------------------------------------------------------
+// <copyright file="HandlerAltaOferta.cs" company="Universidad Católica del Uruguay">
+//     Copyright (c) Programación II. Derechos reservados.
+// </copyright>
+//--------------------------------------------------------------------------------
+
 using System.Text;
 using MessageGateway.Forms;
 using ClassLibrary.LocationAPI;
 
 namespace MessageGateway.Handlers
 {
+
+    /// <summary>
+    /// Handler principal de la creacion de publicaciones.
+    /// </summary>
     public class HandlerAltaOferta: MessageHandlerBase, IMessageHandler
     {
+
+        /// <summary>
+        /// Constructor, al instanciarse en un form ya le asigna a este sus estados iniciales necesarios.
+        /// </summary>
+        /// <param name="next">Siguiente IHandler</param>
         public HandlerAltaOferta(IMessageHandler next) : base ((new string[] {"CrearOferta"}), next)
         {
             this.Next = next;
@@ -15,6 +29,13 @@ namespace MessageGateway.Handlers
             (CurrentForm as FrmAltaOferta).CurrentStateResiduo = HandlerNewResiduo.fasesResiduo.Inicio;
         }
 
+        /// <summary>
+        /// Internal handle que presenta un menu para ir completando la creacion de oferta.
+        /// Delega tareas de creacion de residuo y location a sus handlers particulares.
+        /// </summary>
+        /// <param name="message">IMessage traido del form.</param>
+        /// <param name="response">String respuesta al user.</param>
+        /// <returns>True: si se pudo manejar el mensaje.</returns>
         protected override bool InternalHandle(IMessage message, out string response)
         {
             if (this.CanHandle(message) && (CurrentForm as FrmAltaOferta).CurrentState == fasesAltaOferta.Inicio)
@@ -108,16 +129,41 @@ namespace MessageGateway.Handlers
         }
 
         private fasesAltaOferta faseActual;
+
+        /// <summary>
+        /// Las diferentes fases que este handler necesita para completar toda su información
+        /// </summary>
         public enum fasesAltaOferta
         {
+
+            /// <summary>
+            /// Iniciador del handler.
+            /// </summary>
             Inicio,
+
+            /// <summary>
+            /// El user esta parado en el menu.
+            /// </summary>
             Eligiendo,
-            ArmandoResiduo,
-            ArmandoLocation,
-            tomandoResiduo,
+
+            /// <summary>
+            /// Se espera la cantidad en el proximo msj.
+            /// </summary>
             tomandoCantidad,
+
+            /// <summary>
+            /// Se espera la moneda.
+            /// </summary>
             tomandoMoneda,
+
+            /// <summary>
+            /// Se espera el precio por unidad.
+            /// </summary>
             tomandoPrecio,
+
+            /// <summary>
+            /// Se espera una descripción.
+            /// </summary>
             tomandoDescripcion
         }
 
