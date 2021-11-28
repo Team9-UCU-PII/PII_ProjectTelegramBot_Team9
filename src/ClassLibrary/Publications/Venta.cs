@@ -11,6 +11,9 @@ using ClassLibrary.User;
 using System;
 using System.Text;
 using System.Linq;
+using Importers;
+using Importers.Json;
+using System.Text.Json.Serialization;
 
 namespace ClassLibrary.Publication
 {
@@ -18,7 +21,7 @@ namespace ClassLibrary.Publication
   /// Clase que reune las compras de <see cref = "Publicacion"/> y los implicados, y se encarga de hacer la compra en sí.
   /// Implementa <see iref = "IPrintable"/>.
   /// </summary>
-  public class Venta : IPrintable
+  public class Venta : JsonConvertibleBase, IPrintable
   {
     /// <summary>
     /// Se crea la instancia de venta con la fecha del momento.
@@ -31,6 +34,12 @@ namespace ClassLibrary.Publication
       this.Publicacion = publicacion;
     }
 
+    [JsonConstructor]
+    public Venta()
+    {
+
+    }
+
     /// <summary>
     /// Obtiene o establece la fecha de venta.
     /// </summary>
@@ -41,12 +50,14 @@ namespace ClassLibrary.Publication
     /// Obtiene o establece el comprador.
     /// </summary>
     /// <value><see cref = "Emprendedor"/>.</value>
+    [JsonInclude]
     public Emprendedor Comprador { get; set; }
 
     /// <summary>
     /// Obtiene o establece la publicacion que fue comprada.
     /// </summary>
     /// <value><see cref = "Publicacion"/>.</value>
+    [JsonInclude]
     public Publicacion Publicacion { get; set; }
 
     /// <summary>
@@ -61,6 +72,11 @@ namespace ClassLibrary.Publication
       text.AppendLine($"Comprador: {this.Comprador.Nombre}");
       text.AppendLine($"Precio total: {this.Publicacion.Moneda} {this.Publicacion.PrecioUnitario * this.Publicacion.Cantidad}");
       return text.ToString();
+    }
+
+    public override void JsonSave(JsonExporter exporter)
+    {
+        exporter.Save(this);
     }
   }
 }

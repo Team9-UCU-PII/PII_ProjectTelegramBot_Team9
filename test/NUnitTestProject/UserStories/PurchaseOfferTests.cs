@@ -6,6 +6,7 @@ using BotCore.Publication;
 using System.Collections.Generic;
 using System.Linq;
 using System;
+using System.IO;
 
 namespace Tests.UserStories
 {
@@ -23,20 +24,31 @@ namespace Tests.UserStories
             new Habilitacion("Hab4")
         };
         private Publicacion ofertaPublicada;
+        private Categoria categoria;
+        private Residuo residuo;
 
-        [SetUp]
-        public void Setup()
+        [OneTimeSetUp]
+        public void OneTimeSetup()
         {
             this.da = DataAccess.Instancia;
             this.transacciones = Transacciones.Instancia;
             this.publicador = Publicador.Instancia;
+            CatalogoHabilitaciones.ForEach(x => da.Insertar(x));
             this.empresa = new Empresa("SEMM", "Buceo", "Atención médica", "desc", "098123456");
             List<Habilitacion> habilitaciones = new List<Habilitacion> {
                 this.CatalogoHabilitaciones[0],
                 this.CatalogoHabilitaciones[1]
             };
-            Categoria categoria = new Categoria("CAT");
-            Residuo residuo = new Residuo(categoria, "bla", "m/s", habilitaciones);
+            
+            categoria = new Categoria("CAT");
+            da.Insertar(categoria);
+            residuo = new Residuo(categoria, "bla", "m/s", habilitaciones);
+            da.Insertar(residuo);
+        }
+
+        [SetUp]
+        public void Setup()
+        {
             this.publicador.PublicarOferta(residuo, 100, "$", 5, "Obelisco", empresa, "desc oferta", categoria);
 
             this.ofertaPublicada = da.Obtener<Publicacion>().Single();
@@ -47,6 +59,15 @@ namespace Tests.UserStories
         {
             da.Obtener<Emprendedor>().ToList().ForEach(x => da.Eliminar(x));
             da.Obtener<Publicacion>().ToList().ForEach(x => da.Eliminar(x));
+        }
+
+        [OneTimeTearDown]
+        public void OneTImeTeardown()
+        {
+            if (Directory.Exists("Data\\"))
+            {
+                Directory.Delete("Data\\", true);
+            }
         }
 
         [Test]
@@ -60,6 +81,7 @@ namespace Tests.UserStories
                     CatalogoHabilitaciones[2]
                 }
             );
+            da.Insertar(emprendedor);
 
             Venta ventaAConcretar = new Venta(emprendedor, ofertaPublicada);
             this.transacciones.ConcretarVenta(ventaAConcretar);
@@ -85,6 +107,7 @@ namespace Tests.UserStories
                     CatalogoHabilitaciones[2]
                 }
             );
+            da.Insertar(emprendedor);
 
             Venta ventaAConcretar = new Venta(emprendedor, ofertaPublicada);
             this.transacciones.ConcretarVenta(ventaAConcretar);
@@ -103,6 +126,7 @@ namespace Tests.UserStories
                     CatalogoHabilitaciones[0]
                 }
             );
+            da.Insertar(emprendedor);
 
             Venta ventaAConcretar = new Venta(emprendedor, ofertaPublicada);
             Assert.Throws(

@@ -11,6 +11,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using ClassLibrary.Publication;
+using ClassLibrary.LocationAPI;
+using ClassLibrary.User;
 using Importers;
 
 namespace BotCore.Publication
@@ -100,21 +102,21 @@ namespace BotCore.Publication
                     switch (filtro.Key)
                     {
                         case FiltrosPosibles.Empresa:
-                            if (!suspect.Vendedor.Equals(filtro.Value))
+                            if (suspect.Vendedor != (Empresa) filtro.Value)
                             {
                                 publicacionesNoAptas.Add(suspect);
                             }
 
                             break;
                         case FiltrosPosibles.Residuo:
-                            if (!suspect.Residuo.Equals(filtro.Value))
+                            if (suspect.Residuo != (Residuo) filtro.Value)
                             {
                                 publicacionesNoAptas.Add(suspect);
                             }
 
                             break;
                         case FiltrosPosibles.LugarRetiro:
-                            if (!suspect.LugarRetiro.Equals(filtro.Value))
+                            if (suspect.LugarRetiro != (Location) filtro.Value)
                             {
                                 publicacionesNoAptas.Add(suspect);
                             }
@@ -144,7 +146,7 @@ namespace BotCore.Publication
                             }
                             break;
                         case FiltrosPosibles.Categorias:
-                            if (suspect.Residuo.Categoria != filtro.Value)
+                            if (suspect.Categoria != (Categoria) filtro.Value)
                             {
                                 publicacionesNoAptas.Add(suspect);
                             }

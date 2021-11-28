@@ -5,7 +5,8 @@
 //--------------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using ClassLibrary.User;
+using Importers.Memoria;
+using Importers.Json;
 
 namespace Importers
 {
@@ -25,7 +26,7 @@ namespace Importers
             {
                 if (DataAccess.instancia == null)
                 {
-                    DataAccess.instancia = new DataAccess(DatabaseMemoria.Instancia);
+                    DataAccess.instancia = new DataAccess(DatabaseJson.Instancia);
                 }
 
                 return DataAccess.instancia;
@@ -46,7 +47,7 @@ namespace Importers
         /// </summary>
         /// <param name="objeto">Instancia sin persistir.</param>
         /// <typeparam name="T">Tipo de la instancia.</typeparam>
-        public void Insertar<T>(T objeto)
+        public void Insertar<T>(T objeto) where T : IPersistible
         {
             this.db.Insertar(objeto);
         }
@@ -57,7 +58,7 @@ namespace Importers
         /// <param name="objetoOriginal">El objeto existente.</param>
         /// <param name="objetoModificado">El objeto nuevo.</param>
         /// <typeparam name="T">Tipo de la instancia.</typeparam>
-        public void Actualizar<T>(T objetoOriginal, T objetoModificado)
+        public void Actualizar<T>(T objetoOriginal, T objetoModificado) where T : IPersistible
         {
             this.db.Actualizar(objetoOriginal, objetoModificado);
         }
@@ -67,7 +68,7 @@ namespace Importers
         /// </summary>
         /// <typeparam name="T">Tipo de la instancia/s.</typeparam>
         /// <returns><see langword="List T"/>.</returns>
-        public List<T> Obtener<T>()
+        public List<T> Obtener<T>() where T : class, IPersistible
         {
             return this.db.Obtener<T>();
         }
@@ -77,19 +78,9 @@ namespace Importers
         /// </summary>
         /// <param name="objeto">Instancia a borrarse.</param>
         /// <typeparam name="T">Tipo de la instancia.</typeparam>
-        public void Eliminar<T>(T objeto)
+        public void Eliminar<T>(T objeto) where T : IPersistible
         {
             this.db.Eliminar(objeto);
-        }
-
-        /// <summary>
-        /// Metodo que devuelve la cantidad de gente que comparte un username puntual.
-        /// </summary>
-        /// <param name="nombreUsuario">String: Nombre a buscar repeticiones.</param>
-        /// <returns>Int: cuanta gente comparte el nombre.</returns>
-        public int CantidadUsuariosPorNombre(string nombreUsuario)
-        {
-            return db.CantidadUsuariosPorNombre(nombreUsuario);
         }
     }
 }

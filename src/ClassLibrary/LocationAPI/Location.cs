@@ -60,5 +60,15 @@ namespace ClassLibrary.LocationAPI
         /// </summary>
         /// <value>El valor de la longitud en formato decimal.</value>
         public double Longitude { get; set; }
+
+        public static bool operator ==(Location a, Location b)
+        {
+            return a.Latitude == b.Latitude && a.Longitude == b.Longitude;
+        }
+
+        public static bool operator !=(Location a, Location b)
+        {
+            return a.Latitude != b.Latitude || a.Longitude != b.Longitude;
+        }
     }
 }

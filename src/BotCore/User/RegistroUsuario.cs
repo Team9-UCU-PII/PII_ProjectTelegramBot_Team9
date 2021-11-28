@@ -9,6 +9,7 @@
 
 using ClassLibrary.User;
 using Importers;
+using System.Linq;
 
 namespace BotCore.User
 {
@@ -27,7 +28,7 @@ namespace BotCore.User
         /// <returns>True: si el username ya está tomado.</returns>
         public static bool UsuarioYaExiste(string nombre)
         {
-            int cantidadUsuarios = da.CantidadUsuariosPorNombre(nombre);
+            int cantidadUsuarios = da.Obtener<DatosLogin>().Where(dl => dl.NombreUsuario == nombre).Count();
             return cantidadUsuarios > 0;
         }
 
