@@ -7,7 +7,7 @@ namespace MessageGateway.Forms
 {
     public interface IResiduoForm
     {
-        Residuo residuo { get; set; }
+        Residuo residuo { get; }
         string descripcion { get; set; }
         string unit { get; set; }
         Categoria categoria { get; set; }

@@ -7,6 +7,9 @@ using System.Collections.Generic;
 
 namespace MessageGateway.Forms
 {
+    /// <summary>
+    /// Formulario que recopilara la información necesaria para crear una publicacion.
+    /// </summary>
     public class FrmAltaOferta : FormularioBase, IFormulario, ILocationForm, IResiduoForm
     {
 
@@ -44,7 +47,12 @@ namespace MessageGateway.Forms
         }
         public HandlerAltaOferta.fasesAltaOferta CurrentState { get; set; }
         public HandlerNewResiduo.fasesResiduo CurrentStateResiduo {get; set; }
-        public Residuo residuo { get; set; }
+        public Residuo residuo {
+            get
+            {
+                return new Residuo(categoria, descripcion,unit,habilitaciones);
+            }
+        }
         public string descripcion { get; set; }
         public string unit { get; set; }
         public Categoria categoria { get; set; }
