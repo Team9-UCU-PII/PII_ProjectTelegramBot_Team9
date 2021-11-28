@@ -22,7 +22,9 @@ namespace MessageGateway.Forms
     {
       this.messageHandler =
         new HandlerMenuEmprendedor(
-          new HandlerOpcionesMenuEmprendedor()
+          new HandlerOpcionesMenuEmprendedor(
+            new HandlerEscape(null)
+          )
         );
     }
 

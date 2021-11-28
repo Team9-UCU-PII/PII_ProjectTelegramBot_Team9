@@ -39,7 +39,7 @@ namespace MessageGateway.Handlers.MenuEmprendedor
         "1. Buscar publicaciones",
         "2. Generar reportes",
         "3. Configurar cuenta",
-        "4. Salir");
+        "Si quiere salir escriba: /abortar");
         response = sb.ToString();
         (CurrentForm as FrmMenuEmprendedor).CurrentState = faseMenuEmprendedor.Eligiendo;
         return true;

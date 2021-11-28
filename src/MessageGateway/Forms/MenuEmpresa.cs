@@ -8,7 +8,7 @@ using MessageGateway.Handlers.MenuEmpresa;
 
 namespace MessageGateway.Forms
 {
-  
+
   /// <summary>
   /// Primer formulario del chat luego del login o el registro de una empresa.
   /// </summary>
@@ -22,7 +22,9 @@ namespace MessageGateway.Forms
     {
       this.messageHandler =
         new HandlerMenuEmpresa(
-          new HandlerOpcionesMenuEmpresa()
+          new HandlerOpcionesMenuEmpresa(
+            new HandlerEscape(null)
+          )
         );
     }
 

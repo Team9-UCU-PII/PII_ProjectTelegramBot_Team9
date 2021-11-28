@@ -40,7 +40,7 @@ namespace MessageGateway.Handlers.MenuEmpresa
         "2. Modificar publicaciones",
         "3. Generar reportes",
         "4. Configurar cuenta",
-        "5. Salir");
+        "Si quiere salir escriba: /abortar");
         response = sb.ToString();
         (CurrentForm as FrmMenuEmpresa).CurrentState = faseMenuEmpresa.Eligiendo;
         return true;

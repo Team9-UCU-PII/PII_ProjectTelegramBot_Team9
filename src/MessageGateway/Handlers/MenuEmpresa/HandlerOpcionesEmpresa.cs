@@ -20,7 +20,7 @@ namespace MessageGateway.Handlers.MenuEmpresa
     /// </summary>
     /// <param name="next"></param>
     public HandlerOpcionesMenuEmpresa(IMessageHandler next = null)
-    : base(new string[] {"1", "2", "3", "4", "5"}, next)
+    : base(new string[] {"1", "2", "3", "4"}, next)
     {
     }
 
@@ -54,10 +54,6 @@ namespace MessageGateway.Handlers.MenuEmpresa
           case "4":
             (CurrentForm as FrmMenuEmpresa).CurrentState = HandlerMenuEmpresa.faseMenuEmpresa.Inicio;
             this.CurrentForm.ChangeForm(new FrmCuenta(), message.ChatID);
-            break;
-          case "5":
-            (CurrentForm as FrmMenuEmpresa).CurrentState = HandlerMenuEmpresa.faseMenuEmpresa.Inicio;
-            message.TxtMensaje = "abortar";
             break;
           default:
             return false;

@@ -29,9 +29,9 @@ namespace ConsoleApplication
     public static void Main()
     {
       Console.WriteLine("is on now");
+      IGateway client = AdaptadorTelegram.Instancia;
       while (true)
       {
-        IGateway client = AdaptadorTelegram.Instancia;
         IMessage lastMSG = client.MensajeRecibido;
 
         var location = LocationApiClient.Instancia.GetLocation("Isla de Gorriti 2056");
@@ -58,11 +58,4 @@ namespace ConsoleApplication
       }
     }
   }
-
-  /*primerHandler =
-    new HolaHandler(
-      new MenuHandler(
-
-      )
-    );*/
 }
