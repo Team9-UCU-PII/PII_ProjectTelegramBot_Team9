@@ -7,7 +7,7 @@
 namespace ClassLibrary.LocationAPI
 {
     /// <summary>
-    /// Representa las coordenadas y otros datos de la ubicación de una dirección retornada en el método
+    /// Representa las coordenadas y otros datos de la ubicación de una dirección retornada en el método.
     /// <see cref="LocationApiClient.GetLocationAsync(string, string, string, string)"/>.
     /// </summary>
     public class Location
@@ -61,12 +61,12 @@ namespace ClassLibrary.LocationAPI
         /// <value>El valor de la longitud en formato decimal.</value>
         public float Longitude { get; set; }
 
-        public static bool operator ==(Location a, Location b)
+        public static bool operator == (Location a, Location b)
         {
             return a.Latitude == b.Latitude && a.Longitude == b.Longitude;
         }
 
-        public static bool operator !=(Location a, Location b)
+        public static bool operator != (Location a, Location b)
         {
             return a.Latitude != b.Latitude || a.Longitude != b.Longitude;
         }

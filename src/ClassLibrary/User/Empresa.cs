@@ -142,6 +142,10 @@ namespace ClassLibrary.User
             return new PublicacionRecurrente(residuo, precioUnitario, moneda, cantidad, lugarRetiro, this, frecuenciaAnualRestock, descripcion, categoria);
         }
 
+        /// <summary>
+        /// Metodo para guardar en JSon.
+        /// </summary>
+        /// <param name="exporter">JSonexporter.</param>
         public override void JsonSave(JsonExporter exporter)
         {
             exporter.Save(this);

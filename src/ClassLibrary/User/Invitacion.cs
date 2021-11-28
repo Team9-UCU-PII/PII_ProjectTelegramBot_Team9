@@ -29,6 +29,9 @@ namespace ClassLibrary.User
             this.FueAceptada = false;
         }
 
+        /// <summary>
+        /// Cosntructor de Json.
+        /// </summary>
         [JsonConstructor]
         public Invitacion()
         {
@@ -106,7 +109,10 @@ namespace ClassLibrary.User
             return sb.ToString();
         }
         
-
+        /// <summary>
+        /// Metodo para guardar en Json.
+        /// </summary>
+        /// <param name="exporter"></param>
         public override void JsonSave(JsonExporter exporter)
         {
             exporter.Save(this);

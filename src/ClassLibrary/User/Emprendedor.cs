@@ -88,6 +88,10 @@ namespace ClassLibrary.User
         {
         }
 
+        /// <summary>
+        /// Metodo para guardar en Json.
+        /// </summary>
+        /// <param name="exporter"></param>
         public override void JsonSave(JsonExporter exporter)
         {
             exporter.Save(this);

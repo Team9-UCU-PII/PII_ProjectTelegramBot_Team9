@@ -45,6 +45,9 @@ namespace ClassLibrary.Publication
       this.Comprado = false;
     }
 
+    /// <summary>
+    /// Constructor de Json.
+    /// </summary>
     [JsonConstructor]
     public Publicacion()
     {
@@ -137,6 +140,10 @@ namespace ClassLibrary.Publication
       return text.ToString();
     }
 
+    /// <summary>
+    /// Metodo de guardar en Json.
+    /// </summary>
+    /// <param name="exporter">JsonExporter.</param>
     public override void JsonSave(JsonExporter exporter)
     {
         exporter.Save(this);

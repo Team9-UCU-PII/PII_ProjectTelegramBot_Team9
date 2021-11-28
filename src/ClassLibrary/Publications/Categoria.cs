@@ -29,6 +29,10 @@ namespace ClassLibrary.Publication
     /// <value><see langword="string"/>.</value>
     public string Nombre { get; set; }
     
+    /// <summary>
+    /// Metodo para guardar en Json.
+    /// </summary>
+    /// <param name="exporter"></param>
     public override void JsonSave(JsonExporter exporter)
     {
         exporter.Save(this);

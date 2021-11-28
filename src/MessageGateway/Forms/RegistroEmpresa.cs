@@ -42,6 +42,10 @@ namespace MessageGateway.Forms
         /// </summary>
         public Empresa EmpresaPreCreada;
 
+        /// <summary>
+        /// LA empresa que se crea desde este form.
+        /// </summary>
+        /// <value>Empresa.</value>
         public Empresa EmpresaFinal
         {
             get
