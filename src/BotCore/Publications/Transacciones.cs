@@ -49,7 +49,9 @@ namespace BotCore.Publication
         /// <param name="venta"><see cref = "Venta"/>.</param>
         public void ConcretarVenta(Venta venta)
         {
-            if (! venta.Publicacion.Residuo.Habilitaciones.All(x => venta.Comprador.Habilitaciones.Contains(x)))
+            if (! venta.Publicacion.Residuo.Habilitaciones.All(x => {
+                return venta.Comprador.Habilitaciones.Any(y => x == y);
+            }))
             {
                 throw new ArgumentException("El emprendedor no posee las habilitaciones necesarias para manejar el residuo de esta publicación.");
             }
@@ -60,6 +62,7 @@ namespace BotCore.Publication
             }
 
             venta.Publicacion.Comprado = true;
+            da.Actualizar(venta.Publicacion, venta.Publicacion);
             venta.Fecha = DateTime.Now;
             da.Insertar(venta);
         }

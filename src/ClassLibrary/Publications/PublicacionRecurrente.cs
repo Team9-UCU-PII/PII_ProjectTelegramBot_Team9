@@ -5,6 +5,9 @@
 //--------------------------------------------------------------------------------
 
 using ClassLibrary.User;
+using ClassLibrary.LocationAPI;
+using Importers.Json;
+using System.Text.Json.Serialization;
 
 namespace ClassLibrary.Publication
 {
@@ -25,10 +28,19 @@ namespace ClassLibrary.Publication
     /// <param name="frecuenciaAnualRestock"><see langword = "int"/>.</param>
     /// <param name="descripcion"><see langword = "string"/>.</param>
     /// <param name="categoria"><see langword = "Categoria"/>.</param>
-    public PublicacionRecurrente(Residuo residuo, double precioUnitario, string moneda, int cantidad, string lugarRetiro, Empresa vendedor, int frecuenciaAnualRestock, string descripcion, Categoria categoria)
+    public PublicacionRecurrente(Residuo residuo, double precioUnitario, string moneda, int cantidad, Location lugarRetiro, Empresa vendedor, int frecuenciaAnualRestock, string descripcion, Categoria categoria)
       : base(residuo, precioUnitario, moneda, cantidad, lugarRetiro, vendedor, descripcion, categoria)
     {
       this.FrecuenciaAnualRestock = frecuenciaAnualRestock;
+    }
+
+    /// <summary>
+    /// Constructor de Json.
+    /// </summary>
+    [JsonConstructor]
+    public PublicacionRecurrente()
+    {
+
     }
 
     /// <summary>
@@ -37,5 +49,23 @@ namespace ClassLibrary.Publication
     /// </summary>
     /// <value><see langword="int"/>.</value>
     public int FrecuenciaAnualRestock { get; set; }
+
+    /// <summary>
+    /// Obtiene un string que representa esta oferta recurrente.
+    /// </summary>
+    /// <returns>el string que representa la instancia.</returns>
+    public override string GetTextToPrint()
+    {
+      return base.GetTextToPrint() + "\nFrecuencia anual de restock: " + this.FrecuenciaAnualRestock;
+    }
+
+    /// <summary>
+    /// Metodo que guarda en json.
+    /// </summary>
+    /// <param name="exporter"></param>
+    public override void JsonSave(JsonExporter exporter)
+    {
+        exporter.Save(this);
+    }
   }
 }

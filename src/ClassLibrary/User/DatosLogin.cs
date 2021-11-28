@@ -4,6 +4,9 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 
+using System.Text.Json.Serialization;
+using Importers.Json;
+
 namespace ClassLibrary.User
 {
     /// <summary>
@@ -11,8 +14,15 @@ namespace ClassLibrary.User
     /// almacendando la empresa o emprendedor al que estan vinculados y su información
     /// de cuenta.
     /// </summary>
-    public class DatosLogin
+    public class DatosLogin : JsonConvertibleBase
     {
+
+        /// <summary>
+        /// Id de la Serialización.
+        /// </summary>
+        /// <value>Int.</value>
+        public int SerializationID { get; set; }
+
 
         /// <summary>
         /// Obtiene o establece el username de la cuenta.
@@ -30,6 +40,7 @@ namespace ClassLibrary.User
         /// Obtiene  el <see cref = "Emprendedor"/> o <see cref = "Empresa"/> a la que se vincula esta cuenta.
         /// </summary>
         /// <value><see cref = "Emprendedor"/> o <see cref = "Empresa"/>.</value>
+        [JsonInclude]
         public IUsuario Usuario { get; }
 
         /// <summary>
@@ -43,6 +54,24 @@ namespace ClassLibrary.User
             this.NombreUsuario = nombreUsuario;
             this.Contrasenia = contrasenia;
             this.Usuario = usuario;
+        }
+
+        /// <summary>
+        /// Cosntructor de Json.
+        /// </summary>
+        [JsonConstructor]
+        public DatosLogin()
+        {
+            
+        }
+
+        /// <summary>
+        /// Metodo para guardar en Json.
+        /// </summary>
+        /// <param name="exporter"></param>
+        public override void JsonSave(JsonExporter exporter)
+        {
+            exporter.Save(this);
         }
     }
 }

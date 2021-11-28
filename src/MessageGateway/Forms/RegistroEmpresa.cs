@@ -4,6 +4,7 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 
+
 using System.Collections.Generic;
 using ClassLibrary.Publication;
 using ClassLibrary.LocationAPI;
@@ -14,26 +15,15 @@ namespace MessageGateway.Forms
 {
 
     /// <summary>
-    /// Formulario que recopilara la información necesaria para registrar una empresa.
+    /// Formulario que engloba la creacion de una empresa.
     /// </summary>
-    public class FrmRegistroEmpresa : FormularioBase, ILocationForm
+    public class FrmRegistroEmpresa : FormularioBase , ILocationForm
     {
-        /// <summary>
-        /// Nombre de la empresa.
-        /// </summary>
-        public string Nombre;
 
         /// <summary>
-        /// Ubicación de la empresa.
+        /// El nombre publico de la empresa.
         /// </summary>
-        /// <value><see cref = "Location" />.</value>
-        public Location Ubicacion
-        {
-            get
-            {
-                return LocationApiClient.Instancia.GetLocation(direccion,city,dpto);
-            }
-        }
+        public string NombrePublico;
 
         /// <summary>
         /// Rubro de la empresa.
@@ -46,50 +36,79 @@ namespace MessageGateway.Forms
         public string Descripcion;
 
         /// <summary>
-        /// Contacto de la empresa.
+        /// Un medio de contacto con la empresa.
         /// </summary>
         public string Contacto;
 
         /// <summary>
-        /// Constructor del formulario de registro de las empresas con sus handlers.
+        /// Instancia de Empresa precargada (desde una invitación).
         /// </summary>
-        public FrmRegistroEmpresa()
+        public Empresa EmpresaPreCreada;
+
+        /// <summary>
+        /// LA empresa que se crea desde este form.
+        /// </summary>
+        /// <value>Empresa.</value>
+        public Empresa EmpresaFinal
         {
-            this.messageHandler =
-            new HandlerRegistroEmprendedor(
-                new HandlerLocation((null)
-                )
-            );
+            get
+            {
+                return new Empresa(NombrePublico,Ubicacion,Rubro,Descripcion,Contacto);
+            }
         }
 
         /// <summary>
-        /// El estado del formulario, dado por su handler principal.
+        /// Formulario encargado de almacenar la informacion para registrar una empresa.
         /// </summary>
-        /// <value><see langword = "enum"/> de HandlerRegistroEmpresa.Fases.</value>
-        public HandlerRegistroEmpresa.Fases CurrentState {get; set;}
+        public FrmRegistroEmpresa(IUsuario empresa)
+        {
+            CurrentState = HandlerRegEmpresa.fasesRegEmpresa.Inicio;
+            this.messageHandler =
+                new HandlerRegEmpresa(
+                    new HandlerLocation(null)
+                );
+            this.EmpresaPreCreada = empresa as Empresa;
+        }
 
         /// <summary>
-        /// El estado del formulario respecto la construccion de Location.
+        /// Estado del formulario respecto la creacion gral de la Empresa.
+        /// </summary>
+        public HandlerRegEmpresa.fasesRegEmpresa CurrentState;
+
+        /// <summary>
+        /// Estado de la construccion del Location especificamente.
         /// </summary>
         /// <value><see langword = "enum"/> de HandlerLocation.faseLocation.</value>
         public HandlerLocation.faseLocation CurrentStateLocation { get; set; }
-
+        
         /// <summary>
-        /// Ciudad donde se encuentra el emprendedor.
+        /// Ubicación del local o sede de la Empresa.
         /// </summary>
-        /// <value>String.</value>
-        public string city { get; set; }
+        /// <value>Location.</value>
+        public Location Ubicacion
+        {
+            get
+            {
+                return LocationApiClient.Instancia.GetLocation(direccion,city,dpto);
+            }
+        }
 
         /// <summary>
-        /// Departamento donde se encuentra el emprendedor.
+        /// Departamento de la sede.
         /// </summary>
         /// <value>String.</value>
         public string dpto { get; set; }
 
         /// <summary>
-        /// Dirección donde se encuentra el emprendedor.
+        /// Ciudad de la sede.
         /// </summary>
         /// <value>String.</value>
+        public string city { get; set; }
+
+        /// <summary>
+        /// Direccion de la sede (calle y puerta o Km).
+        /// </summary>
+        /// <value></value>
         public string direccion { get; set; }
     }
 }
