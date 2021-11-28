@@ -41,57 +41,5 @@ namespace Importers.Json
             //string folderName = typeName.Substring(typeName.LastIndexOf('.') + 1);
             File.WriteAllText(this.filePath, json);
         }
-
-        /*
-        public void Visit(Categoria c)
-        {
-            this.ExportResult = JsonSerializer.Serialize(c);
-        }
-
-        public void Visit(Publicacion p)
-        {
-            this.ExportResult = JsonSerializer.Serialize(p);
-        }
-
-        public void Visit(PublicacionRecurrente pr)
-        {
-            this.ExportResult = JsonSerializer.Serialize(pr);
-        }
-
-        public void Visit(Residuo r)
-        {
-            this.ExportResult = JsonSerializer.Serialize(r);
-        }
-
-        public void Visit(Venta v)
-        {
-            this.ExportResult = JsonSerializer.Serialize(v);
-        }
-
-        public void Visit(DatosLogin dl)
-        {
-            this.ExportResult = JsonSerializer.Serialize(dl);
-        }
-
-        public void Visit(Empresa e)
-        {
-            this.ExportResult = JsonSerializer.Serialize(e);
-        }
-
-        public void Visit(Emprendedor e)
-        {
-            this.ExportResult = JsonSerializer.Serialize(e);
-        }
-
-        public void Visit(Habilitacion h)
-        {
-            this.ExportResult = JsonSerializer.Serialize(h);
-        }
-
-        public void Visit(Invitacion i)
-        {
-            this.ExportResult = JsonSerializer.Serialize(i);
-        }
-        */
     }
 }

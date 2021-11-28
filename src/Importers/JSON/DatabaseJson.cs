@@ -108,11 +108,7 @@ namespace Importers.Json
             {
                 throw new JsonException("El objeto nunca fue persistido. Insértelo antes de intentar guardar una modificación.");
             }
-            /*
-            string filePath = this.objectReferences[objetoOriginal];
-            this.objectReferences.Remove(objetoOriginal);
-            this.objectReferences.Add(objetoModificado, filePath);
-            */
+
             string filePath = this.objectReferences[typeof(T)][(objetoOriginal as IJsonConvertible).SerializationID];
             (objetoModificado as IJsonConvertible).JsonSave(new JsonExporter(filePath));
         }
@@ -128,14 +124,6 @@ namespace Importers.Json
 
             if (this.generatedFolderPaths.ContainsKey(typeof(T)))
             {
-                /*
-                // Tomo los objetos cuyo tipo sea T
-                IEnumerable<object> thisTypeObjects = this.objectReferences.Keys.Where(obj => obj.GetType() == typeof(T));
-                
-                // Para cada objeto encontrado, tomo el string que apunta al archivo que lo contiene
-                IEnumerable<string> thisTypeReferences = thisTypeObjects.Select(r => this.objectReferences[r]);
-                */
-
                 IEnumerable<int> thisTypeSerializationIDs = this.objectReferences[typeof(T)].Keys;
                 IEnumerable<string> thisTypeReferences = thisTypeSerializationIDs.Select(id => this.objectReferences[typeof(T)][id]);
                 foreach (string filePath in thisTypeReferences)
