@@ -26,12 +26,12 @@ namespace Importers.Json
         /// <returns>true si ambos objetos tienen el mismo ID de serialización, false en caso contrario.</returns>
         public static bool operator ==(JsonConvertibleBase a, JsonConvertibleBase b)
         {
-            if (a == null && b == null)
+            if ((object) a == null && (object) b == null)
             {
                 return true;
             }
 
-            if (a == null ^ b == null)
+            if ((object) a == null ^ (object) b == null)
             {
                 return false;
             }
