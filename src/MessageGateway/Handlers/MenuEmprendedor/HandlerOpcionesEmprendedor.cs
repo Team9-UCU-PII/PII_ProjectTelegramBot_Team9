@@ -33,7 +33,7 @@ namespace MessageGateway.Handlers.MenuEmprendedor
     protected override bool InternalHandle(IMessage message, out string response)
     {
       response = string.Empty;
-      if (this.CanHandle(message) && (CurrentForm as FrmMenuEmprendedor).CurrentState == HandlerMenuEmprendedor.faseMenuEmprendedor.Eligiendo)
+      if (this.CanHandle(message) && (CurrentForm as FrmMenuEmprendedor).CurrentState == HandlerMenuEmprendedor.faseMenuEmprendedor.Inicio)
       {
         response = string.Empty;
         switch (message.TxtMensaje)

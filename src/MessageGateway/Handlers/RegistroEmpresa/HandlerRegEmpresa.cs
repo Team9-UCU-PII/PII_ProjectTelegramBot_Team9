@@ -6,6 +6,8 @@
 
 
 using System.Text;
+using ClassLibrary.User;
+using Importers;
 using MessageGateway.Forms;
 
 namespace MessageGateway.Handlers
@@ -94,6 +96,11 @@ namespace MessageGateway.Handlers
             else if (((CurrentForm as FrmRegistroEmpresa).EmpresaFinal != null))
             {
                 response = "Registrado con éxito";
+
+                Empresa empresa = (CurrentForm as FrmRegistroEmpresa).EmpresaFinal;
+                da.Insertar(empresa);
+                da.Insertar(empresa.DatosLogin);
+
                 (CurrentForm as FrmRegistroEmpresa).CurrentState = fasesRegEmpresa.Done;
                 (CurrentForm as FrmRegistroEmpresa).ChangeForm(new FrmRegistroDatosLogin((CurrentForm as FrmRegistroEmpresa).EmpresaFinal), message.ChatID);
                 return true;
@@ -131,5 +138,6 @@ namespace MessageGateway.Handlers
             ///Listo el registro.
             Done
         }
+    private DataAccess da = DataAccess.Instancia;
     }
 }

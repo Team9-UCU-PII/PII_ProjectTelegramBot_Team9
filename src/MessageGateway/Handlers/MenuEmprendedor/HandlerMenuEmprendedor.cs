@@ -44,7 +44,6 @@ namespace MessageGateway.Handlers.MenuEmprendedor
         "3. Configurar cuenta",
         "Si quiere cancelar un proceso escriba: /abortar");
         response = sb.ToString();
-        (CurrentForm as FrmMenuEmprendedor).CurrentState = faseMenuEmprendedor.Eligiendo;
         return true;
       }
       else

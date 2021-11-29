@@ -97,7 +97,6 @@ namespace MessageGateway.Handlers.RegistroDatosLogin
                 if((CurrentForm as FrmRegistroDatosLogin).OrganizacionEnRegistro != null)
                 {
                     CurrentForm.ChangeForm(new FrmRegistroEmpresa((CurrentForm as FrmRegistroDatosLogin).OrganizacionEnRegistro, (CurrentForm as FrmRegistroDatosLogin).result), message.ChatID);
-                    (CurrentForm as FrmRegistroEmpresa).CurrentState = HandlerRegEmpresa.fasesRegEmpresa.Inicio;
                 }
                 else
                 {

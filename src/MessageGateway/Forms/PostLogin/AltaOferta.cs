@@ -26,7 +26,15 @@ namespace MessageGateway.Forms
         {
             get
             {
-                return (Vendedor.CrearOferta(residuo,PrecioUnitario,Moneda,Cantidad,Ubicacion,Descripcion, residuo.Categoria));
+                if (residuo != null && PrecioUnitario != 0 && Moneda != "" && Cantidad != 0 && Ubicacion != null && Descripcion != "")
+                {
+                    if (FrecuenciaRestock == 0)
+                    {
+                        return (Vendedor.CrearOferta(residuo,PrecioUnitario,Moneda,Cantidad,Ubicacion,Descripcion, residuo.Categoria));
+                    }
+                        return (Vendedor.CrearOfertaRecurrente(residuo,PrecioUnitario,Moneda,Cantidad,Ubicacion,Descripcion, residuo.Categoria, FrecuenciaRestock));
+                }
+                return null;
             }
         }
 
@@ -46,6 +54,12 @@ namespace MessageGateway.Forms
         public int Cantidad;
 
         /// <summary>
+        /// Frecuencia en meses de reposición de residuo recurrente.
+        /// </summary>
+        /// <value>Int.</value>
+        public int FrecuenciaRestock {get; set;}
+
+        /// <summary>
         /// Ubicación del residuo.
         /// </summary>
         /// <value><see cref = "Location" />.</value>
@@ -53,7 +67,11 @@ namespace MessageGateway.Forms
         {
             get
             {
-                return LocationApiClient.Instancia.GetLocation(direccion,city,dpto);
+                if (direccion != "")
+                {
+                    return LocationApiClient.Instancia.GetLocation(direccion,city,dpto);
+                }
+                return null;
             }
         }
     
@@ -70,8 +88,14 @@ namespace MessageGateway.Forms
         /// <summary>
         /// Constructor del formulario creador de publicaciones con sus handlers.
         /// </summary>
-        public FrmAltaOferta()
+        public FrmAltaOferta(Empresa vendedor)
         {
+            CurrentState = HandlerAltaOferta.fasesAltaOferta.Inicio;
+            CurrentStateLocation = HandlerLocation.faseLocation.Inicio;
+            CurrentStateResiduo = HandlerNewResiduo.fasesResiduo.Inicio;
+
+            this.Vendedor = vendedor;
+
             this.messageHandler =
             new HandlerAltaOferta(
                 new HandlerNewResiduo(
@@ -99,7 +123,11 @@ namespace MessageGateway.Forms
         public Residuo residuo {
             get
             {
-                return new Residuo(categoria, descripcion,unit,habilitaciones);
+                if (categoria != null && descripcion != "" && unit != "" && habilitaciones != null)
+                {
+                    return new Residuo(categoria, descripcion,unit,habilitaciones);
+                }
+                return null;
             }
         }
 

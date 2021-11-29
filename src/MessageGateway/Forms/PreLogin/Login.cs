@@ -17,14 +17,9 @@ namespace MessageGateway.Forms
     {
 
         /// <summary>
-        /// IUsuario temporal tomado por su nombre de usuario.
+        /// Username que se tratara de loggear.
         /// </summary>
-        public IUsuario supuestoUser;
-
-        /// <summary>
-        /// Instancia IUsuario del usuario al loggearse.
-        /// </summary>
-        public IUsuario userLoggeado;
+        public string NombreUsuario;
 
         /// <summary>
         /// Constructor de formulario y sus handlers necesarios.

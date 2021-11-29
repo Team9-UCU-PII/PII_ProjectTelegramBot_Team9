@@ -11,6 +11,7 @@ using ClassLibrary.Publication;
 using ClassLibrary.User;
 using MessageGateway.Forms;
 using ClassLibrary.LocationAPI;
+using Importers;
 
 namespace MessageGateway.Handlers
 {
@@ -130,12 +131,17 @@ namespace MessageGateway.Handlers
             else if ((message.TxtMensaje == "6") && (CurrentForm as FrmRegistroEmprendedor).CurrentState == FasesRegEmprendedor.Eligiendo)
             {
                 StringBuilder sb = new StringBuilder();
-                if ((CurrentForm as FrmRegistroEmprendedor).emprendedorFinal != null)
+                Emprendedor emprendedor = (CurrentForm as FrmRegistroEmprendedor).emprendedorFinal;
+                if (emprendedor != null)
                 {
                     (CurrentForm as FrmRegistroEmprendedor).CurrentState = FasesRegEmprendedor.Done;
                     sb.Append("Emprendedor Creado, ¡Bienvenido!");
                     response = sb.ToString();
-                    CurrentForm.ChangeForm( new FrmMenuEmprendedor(), message.ChatID);
+
+                    da.Insertar(emprendedor);
+                    da.Insertar(emprendedor.DatosLogin);
+
+                    CurrentForm.ChangeForm( new FrmMenuEmprendedor(emprendedor), message.ChatID);
                     return true;
                 }
 
@@ -190,5 +196,6 @@ namespace MessageGateway.Handlers
             ///Finalizado el registro.
             Done
         }
+        private DataAccess da = DataAccess.Instancia;
     }
 }

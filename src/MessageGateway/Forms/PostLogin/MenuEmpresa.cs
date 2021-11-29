@@ -4,6 +4,7 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 
+using ClassLibrary.User;
 using MessageGateway.Handlers.MenuEmpresa;
 
 namespace MessageGateway.Forms
@@ -18,17 +19,23 @@ namespace MessageGateway.Forms
     /// <summary>
     /// Constructor del formulario con sus handlers.
     /// </summary>
-    public FrmMenuEmpresa()
+    public FrmMenuEmpresa(Empresa empresa)
     {
       this.messageHandler =
         new HandlerMenuEmpresa(
           new HandlerOpcionesMenuEmpresa(null)
         );
+            this.empresa = empresa;
     }
 
     /// <summary>
     /// Estado del formulario dado por el HandlerMenuEmpresa.
     /// </summary>
     public HandlerMenuEmpresa.faseMenuEmpresa CurrentState = HandlerMenuEmpresa.faseMenuEmpresa.Inicio;
-  }
+    
+    /// <summary>
+    /// Instancia de la empresa parada en el menu.
+    /// </summary>
+    public Empresa empresa;
+    }
 }

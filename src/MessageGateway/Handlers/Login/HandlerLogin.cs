@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Text;
 using MessageGateway.Forms;
 using Importers;
+using System.Linq;
 
 namespace MessageGateway.Handlers.Login
 {
@@ -52,37 +53,33 @@ namespace MessageGateway.Handlers.Login
             else if ((CurrentForm as FrmLogin).CurrentState == fasesLogin.tomandoUser)
             {
                 StringBuilder sb = new StringBuilder();
-                List <IUsuario> currentUsers = dataBase.Obtener<IUsuario>();
-                foreach (IUsuario user in currentUsers)
-                {
-                    if (user.DatosLogin.NombreUsuario == message.TxtMensaje)
-                    {
-                        (CurrentForm as FrmLogin).supuestoUser = user;
-                    }
-                }
-                if ((CurrentForm as FrmLogin).supuestoUser == null)
-                {
-                    sb.Append("No se encontro a nadie con ese nombre de usuario.");
-                    response = sb.ToString();
-                    return true;
-                }
-                else
-                {
+                (CurrentForm as FrmLogin).NombreUsuario = message.TxtMensaje;
                 sb.Append($"Ahora ingresa tu contraseña");
                 response = sb.ToString();
                 (CurrentForm as FrmLogin).CurrentState = fasesLogin.tomandoPass;
                 return true;
-                }
             }
             else if ((CurrentForm as FrmLogin).CurrentState == fasesLogin.tomandoPass)
             {
                 StringBuilder sb = new StringBuilder();
-                if ((CurrentForm as FrmLogin).supuestoUser.DatosLogin.Contrasenia == message.TxtMensaje)
+                string userBuscado = (CurrentForm as FrmLogin).NombreUsuario;
+                string pass = message.TxtMensaje;
+                List<DatosLogin> allUsers = dataBase.Obtener<DatosLogin>();
+                DatosLogin usuario = allUsers.Where(dl => dl.NombreUsuario==userBuscado && dl.Contrasenia==pass).SingleOrDefault();
+
+                if (usuario != null)
                 {
                     sb.Append($"Iniciada Sesión Correctamente!");
                     response = sb.ToString();
-                    (CurrentForm as FrmLogin).userLoggeado = (CurrentForm as FrmLogin).supuestoUser;
-                    CurrentForm.ChangeForm(new FrmAltaOferta(), message.ChatID);
+                    switch (usuario.Usuario)
+                    {
+                        case Emprendedor e:
+                            CurrentForm.ChangeForm(new FrmMenuEmprendedor(e), message.ChatID);
+                            break;
+                        case Empresa e:
+                            CurrentForm.ChangeForm(new FrmMenuEmpresa(e), message.ChatID);
+                            break;
+                    }
                     return true;
                 }
                 else

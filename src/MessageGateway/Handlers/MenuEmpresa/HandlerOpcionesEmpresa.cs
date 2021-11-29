@@ -40,7 +40,7 @@ namespace MessageGateway.Handlers.MenuEmpresa
         {
           case "1":
             (CurrentForm as FrmMenuEmpresa).CurrentState = HandlerMenuEmpresa.faseMenuEmpresa.Inicio;
-            this.CurrentForm.ChangeForm(new FrmAltaOferta(), message.ChatID);
+            this.CurrentForm.ChangeForm(new FrmAltaOferta((CurrentForm as FrmMenuEmpresa).empresa), message.ChatID);
             break;
           //No se los nombres de los formularios, aún no estan hechos.
           case "2":

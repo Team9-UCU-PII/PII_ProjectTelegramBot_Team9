@@ -7,6 +7,8 @@
 using System.Text;
 using MessageGateway.Forms;
 using ClassLibrary.LocationAPI;
+using Importers;
+using ClassLibrary.Publication;
 
 namespace MessageGateway.Handlers
 {
@@ -24,9 +26,6 @@ namespace MessageGateway.Handlers
         public HandlerAltaOferta(IMessageHandler next) : base ((new string[] {"CrearOferta"}), next)
         {
             this.Next = next;
-            (CurrentForm as FrmAltaOferta).CurrentState = fasesAltaOferta.Inicio;
-            (CurrentForm as FrmAltaOferta).CurrentStateLocation = HandlerLocation.faseLocation.Inicio;
-            (CurrentForm as FrmAltaOferta).CurrentStateResiduo = HandlerNewResiduo.fasesResiduo.Inicio;
         }
 
         /// <summary>
@@ -47,7 +46,8 @@ namespace MessageGateway.Handlers
                 sb.Append ($"2.Costo y Cantidad\n");
                 sb.Append ($"3.Lugar de Retiro\n");
                 sb.Append ($"4.Descripción\n");
-                sb.Append ($"5.Listo y Publicar");
+                sb.Append ($"5.Recurrencia del residuo (si es aplicable).");
+                sb.Append ($"6.Listo y Publicar");
                 response = sb.ToString();
                 (CurrentForm as FrmAltaOferta).CurrentState = fasesAltaOferta.Eligiendo;
                 return true;
@@ -122,12 +122,48 @@ namespace MessageGateway.Handlers
                 (CurrentForm as FrmAltaOferta).CurrentState = fasesAltaOferta.Eligiendo;
                 return true;
             }
-            else if ((CurrentForm as FrmAltaOferta).CurrentState == fasesAltaOferta.Eligiendo)
+            else if (message.TxtMensaje == "5" && (CurrentForm as FrmAltaOferta).CurrentState == fasesAltaOferta.Eligiendo)
             {
-                if ((CurrentForm as FrmAltaOferta).Oferta != null)
+                StringBuilder sb = new StringBuilder();
+                sb.Append($"¿Cada cuantos meses se restockea el residuo?");
+                response = sb.ToString();
+                (CurrentForm as FrmAltaOferta).CurrentState = fasesAltaOferta.tomandoRecurrencia;
+                return true;
+            }
+            else if ((CurrentForm as FrmAltaOferta).CurrentState == fasesAltaOferta.tomandoRecurrencia)
+            {
+                StringBuilder sb = new StringBuilder();
+                if (int.TryParse(message.TxtMensaje, out int result))
                 {
+                    (CurrentForm as FrmAltaOferta).FrecuenciaRestock = result;
+                    (CurrentForm as FrmAltaOferta).CurrentState = fasesAltaOferta.Eligiendo;
+                    sb.Append($"Listo");
+                    response = sb.ToString();
+                    return true;
+                }
+                else
+                {
+                    sb.Append($"Intenta de nuevo, asegurate ingresar solo un numero.");
+                    response = sb.ToString();
+                    return true;
+                }
+            }
+            else if (message.TxtMensaje == "6" && (CurrentForm as FrmAltaOferta).CurrentState == fasesAltaOferta.Eligiendo)
+            {
+                Publicacion oferta = (CurrentForm as FrmAltaOferta).Oferta;
+                if (oferta != null)
+                {
+                    if (oferta is PublicacionRecurrente)
+                    {
+                        da.Insertar(oferta as PublicacionRecurrente);
+                    }
+                    else
+                    {
+                        da.Insertar(oferta as Publicacion);
+                    }
+
                     response = "Creada y Publicada la Oferta, volviendo al menu principal...";
-                    CurrentForm.ChangeForm(new FrmMenuEmpresa(), message.ChatID);
+                    CurrentForm.ChangeForm(new FrmMenuEmpresa(oferta.Vendedor), message.ChatID);
                     return true;
                 }
                 else
@@ -179,24 +215,12 @@ namespace MessageGateway.Handlers
             /// </summary>
             tomandoDescripcion,
 
+            ///Esperando recurrencia.
+            tomandoRecurrencia,
+
             ///Lista la publicación.
             Done
         }
-
-        /// <summary>
-        /// String para armar el location, por defecto es Mvdeo el departamento.
-        /// </summary>
-        public string dpto = "Montevideo";
-    
-        /// <summary>
-        /// String para armar el Location, por defecto es Mvdeo la ciudad.
-        /// </summary>
-        public string city = "Montevideo";
-
-        /// <summary>
-        /// Instancia Location en si formada.
-        /// </summary>
-        public Location locationFinal;
-
+        private DataAccess da = DataAccess.Instancia;
     }
 }

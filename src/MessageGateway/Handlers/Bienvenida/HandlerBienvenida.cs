@@ -48,7 +48,7 @@ namespace MessageGateway.Handlers.Bienvenida
                 (CurrentForm as FrmBienvenida).CurrentState = faseWelcome.Eligiendo;
                 return true;
             }
-            else if (this.CanHandle(message) && (CurrentForm as FrmBienvenida).CurrentState == HandlerBienvenida.faseWelcome.Inicio)
+            else if (this.CanHandle(message) && (CurrentForm as FrmBienvenida).CurrentState == HandlerBienvenida.faseWelcome.Eligiendo)
             {
                 response = string.Empty;
                 switch (message.TxtMensaje)

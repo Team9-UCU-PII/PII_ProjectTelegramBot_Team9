@@ -4,6 +4,7 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 
+using ClassLibrary.User;
 using MessageGateway.Handlers.MenuEmprendedor;
 
 namespace MessageGateway.Forms
@@ -18,17 +19,23 @@ namespace MessageGateway.Forms
     /// <summary>
     /// Constructor del formulario con sus handlers.
     /// </summary>
-    public FrmMenuEmprendedor()
+    public FrmMenuEmprendedor(Emprendedor emprendedor)
     {
       this.messageHandler =
         new HandlerMenuEmprendedor(
           new HandlerOpcionesMenuEmprendedor(null)
         );
+      this.Emprendedor = emprendedor;
     }
 
     /// <summary>
     /// Estado del formulario dado por el handler MenuEmprendedor.
     /// </summary>
     public HandlerMenuEmprendedor.faseMenuEmprendedor CurrentState = HandlerMenuEmprendedor.faseMenuEmprendedor.Inicio;
+
+    /// <summary>
+    /// Instancia que refiere el emprendedor en este form.
+    /// </summary>
+    public Emprendedor Emprendedor;
   }
 }
