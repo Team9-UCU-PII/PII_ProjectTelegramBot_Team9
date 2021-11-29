@@ -18,13 +18,21 @@ namespace MessageGateway
     public class TelegramBot
     {
 
-        private const string TELEGRAM_BOT_TOKEN = "2102638185:AAFldbGxD1_7x5sw93EyKy8hvsy5c2uQBtw";
+        private readonly string TELEGRAM_BOT_TOKEN;
         private static TelegramBot instancia;
         private ITelegramBotClient bot;
 
         private TelegramBot()
         {
-            this.bot = new TelegramBotClient(TELEGRAM_BOT_TOKEN);
+            if (System.IO.File.Exists("token"))
+            {
+                this.TELEGRAM_BOT_TOKEN = System.IO.File.ReadAllText("token");
+                this.bot = new TelegramBotClient(TELEGRAM_BOT_TOKEN);
+            }
+            else
+            {
+                throw new Exception("No se encontró el API token del bot.");
+            }
         }
 
         /// <summary>
