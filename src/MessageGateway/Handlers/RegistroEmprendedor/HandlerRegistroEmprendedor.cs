@@ -149,6 +149,13 @@ namespace MessageGateway.Handlers
                 response = sb.ToString();
                 return true;
             }
+            else if (message.TxtMensaje.ToLower() == "menu" && (CurrentForm as FrmRegistroEmprendedor).CurrentState == FasesRegEmprendedor.Eligiendo)
+            {
+                response = "Recordemos el menu...";
+                (CurrentForm as FrmRegistroEmprendedor).CurrentState = FasesRegEmprendedor.Inicio;
+                return true;
+
+            }
             else
             {
                 response = string.Empty;

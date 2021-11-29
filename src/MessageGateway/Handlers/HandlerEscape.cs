@@ -21,7 +21,7 @@ namespace MessageGateway.Handlers.Escape
         /// </summary>
         /// <param name="next">IHandler siguiente.</param>
         public HandlerEscape(IMessageHandler next)
-        : base(new string[] {"/Abortar"}, next)
+        : base(new string[] {"/abortar"}, next)
         {
         }
 

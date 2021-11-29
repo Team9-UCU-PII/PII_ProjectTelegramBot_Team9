@@ -84,7 +84,7 @@ namespace MessageGateway.Handlers.Login
                 }
                 else
                 {
-                    sb.Append($"Nombre de usuario o contraseña errónea.");
+                    sb.Append($"Nombre de usuario o contraseña errónea. \n Reingresalos por favor.");
                     response = sb.ToString();
                     (CurrentForm as FrmLogin).CurrentState = fasesLogin.tomandoUser;
                     return true;

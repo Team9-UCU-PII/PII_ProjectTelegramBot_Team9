@@ -33,7 +33,8 @@ namespace MessageGateway.Handlers.Bienvenida
         /// <returns>True: si se pudo manejar.</returns>
         protected override bool InternalHandle(IMessage message, out string response)
         {
-            if (this.CanHandle(message) && (CurrentForm as FrmBienvenida).CurrentState == faseWelcome.Inicio)
+            if (this.CanHandle(message) && (CurrentForm as FrmBienvenida).CurrentState == faseWelcome.Inicio 
+            || message.TxtMensaje.ToLower() == "menu" && (CurrentForm as FrmBienvenida).CurrentState == faseWelcome.Eligiendo)
             {
                 StringBuilder sb = new StringBuilder();
                 sb.AppendJoin('\n',

@@ -21,7 +21,7 @@ namespace MessageGateway.Handlers.MenuEmprendedor
     /// </summary>
     /// <param name="next">IHandler siguiente.</param>
     public HandlerMenuEmprendedor(IMessageHandler next)
-    : base(new string[] {"Menu"}, next)
+    : base(new string[] {"menu"}, next)
     {
     }
 
@@ -61,9 +61,6 @@ namespace MessageGateway.Handlers.MenuEmprendedor
 
       ///Fase inicializadora del handler, imprime el menu.
       Inicio,
-
-      ///fase esperando elección.
-      Eligiendo
 
     }
   }

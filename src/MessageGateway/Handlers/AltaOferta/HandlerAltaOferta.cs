@@ -23,7 +23,7 @@ namespace MessageGateway.Handlers
         /// Constructor, al instanciarse en un form ya le asigna a este sus estados iniciales necesarios.
         /// </summary>
         /// <param name="next">Siguiente IHandler</param>
-        public HandlerAltaOferta(IMessageHandler next) : base ((new string[] {"CrearOferta"}), next)
+        public HandlerAltaOferta(IMessageHandler next) : base ((new string[] {"crearoferta", "menu"}), next)
         {
             this.Next = next;
         }
@@ -37,7 +37,8 @@ namespace MessageGateway.Handlers
         /// <returns>True: si se pudo manejar el mensaje.</returns>
         protected override bool InternalHandle(IMessage message, out string response)
         {
-            if (this.CanHandle(message) && (CurrentForm as FrmAltaOferta).CurrentState == fasesAltaOferta.Inicio)
+            if (this.CanHandle(message) && (CurrentForm as FrmAltaOferta).CurrentState == fasesAltaOferta.Inicio 
+            || (this.CanHandle(message) && (CurrentForm as FrmAltaOferta).CurrentState == fasesAltaOferta.Eligiendo))
             {
                 StringBuilder sb = new StringBuilder();
                 sb.Append($"Vamos a crear una publicación...\n");
