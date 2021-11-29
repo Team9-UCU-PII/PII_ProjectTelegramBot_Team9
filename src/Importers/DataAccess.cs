@@ -26,7 +26,7 @@ namespace Importers
             {
                 if (DataAccess.instancia == null)
                 {
-                    DataAccess.instancia = new DataAccess(DatabaseJson.Instancia);
+                    DataAccess.instancia = new DataAccess(DatabaseMemoria.Instancia);
                 }
 
                 return DataAccess.instancia;
