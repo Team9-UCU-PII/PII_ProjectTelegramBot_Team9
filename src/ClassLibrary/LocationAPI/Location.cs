@@ -63,12 +63,22 @@ namespace ClassLibrary.LocationAPI
 
         public static bool operator == (Location a, Location b)
         {
+            if ((object) a == null && (object) b == null)
+            {
+                return true;
+            }
+
+            if ((object) a == null ^ (object) b == null)
+            {
+                return false;
+            }
+
             return a.Latitude == b.Latitude && a.Longitude == b.Longitude;
         }
 
         public static bool operator != (Location a, Location b)
         {
-            return a.Latitude != b.Latitude || a.Longitude != b.Longitude;
+            return !(a == b);
         }
     }
 }
