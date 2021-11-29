@@ -26,6 +26,16 @@ namespace Importers.Json
         /// <returns>true si ambos objetos tienen el mismo ID de serialización, false en caso contrario.</returns>
         public static bool operator ==(JsonConvertibleBase a, JsonConvertibleBase b)
         {
+            if (a == null && b == null)
+            {
+                return true;
+            }
+
+            if (a == null ^ b == null)
+            {
+                return false;
+            }
+
             return a.SerializationID == b.SerializationID;
         }
 
@@ -37,7 +47,7 @@ namespace Importers.Json
         /// <returns>true si los objetos tienen distinto ID de serialización, false en caso contrario.</returns>
         public static bool operator !=(JsonConvertibleBase a, JsonConvertibleBase b)
         {
-            return a.SerializationID != b.SerializationID;
+            return !(a == b);
         }
     }
 }
