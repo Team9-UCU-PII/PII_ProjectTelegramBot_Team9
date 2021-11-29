@@ -20,7 +20,7 @@ namespace MessageGateway.Forms
         /// Atributo en caso de venirse de una invitación.
         /// </summary>
         /// <value>IUsuario.</value>
-        public IUsuario OrganizacionEnRegistro { get; private set; }
+        public Empresa OrganizacionEnRegistro { get; private set; }
 
         /// <summary>
         /// El Username con el que se identifica.
@@ -44,7 +44,11 @@ namespace MessageGateway.Forms
         {
             get
             {
+                if (NombreUsuario != null && Password != null && OrganizacionEnRegistro != null)
+                {
                 return new DatosLogin(NombreUsuario, Password, OrganizacionEnRegistro);
+                }
+                return null;
             }
         }
 
@@ -52,7 +56,7 @@ namespace MessageGateway.Forms
         /// Constructor del formulario y sus handlers para un invitado.
         /// </summary>
         /// <param name="organizacion">Empresa Invitada</param>
-        public FrmRegistroDatosLogin(IUsuario organizacion)
+        public FrmRegistroDatosLogin(Empresa organizacion)
         //Esta sobrecarga permite registrar desde una invitacion.
         {
             this.OrganizacionEnRegistro = organizacion;
@@ -65,6 +69,7 @@ namespace MessageGateway.Forms
         /// </summary>
         public FrmRegistroDatosLogin()
         {
+            this.OrganizacionEnRegistro = null;
             this.messageHandler =
                 new HandlerRegDatosLogin(null);
         }
