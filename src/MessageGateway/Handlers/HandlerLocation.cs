@@ -21,7 +21,7 @@ namespace MessageGateway.Handlers
         /// </summary>
         /// <param name="next"></param>
         /// <returns></returns>
-        public HandlerLocation(IMessageHandler next) : base ((new string[] {"3"}), next)
+        public HandlerLocation(IMessageHandler next) : base ((new string[] {"3", "2"}), next)
         {
             this.Next = next;
         }
@@ -95,7 +95,7 @@ namespace MessageGateway.Handlers
                 sb.Append($"Creada y guardada la ubicación.");
                 response = sb.ToString();
 
-                (CurrentForm as ILocationForm).CurrentStateLocation = faseLocation.Inicio;
+                (CurrentForm as ILocationForm).CurrentStateLocation = faseLocation.Done;
                 (CurrentForm as ILocationForm).direccion = message.TxtMensaje;
 
                 return true;
@@ -127,7 +127,10 @@ namespace MessageGateway.Handlers
             tomandoCity,
 
             ///Esperando la calle y puerta (o Km).
-            tomandoDireccion
+            tomandoDireccion,
+            
+            ///Se termino de formar la ubicacion.
+            Done
         }
     }
 }

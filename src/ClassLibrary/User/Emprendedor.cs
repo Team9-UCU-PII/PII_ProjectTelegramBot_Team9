@@ -65,18 +65,20 @@ namespace ClassLibrary.User
         /// <summary>
         /// Constructor generico del emprendedor.
         /// </summary>
-        /// <param name="nombre"></param>
-        /// <param name="lugar"></param>
-        /// <param name="rubro"></param>
-        /// <param name="especializacion"></param>
-        /// <param name="habilitaciones"></param>
-        public Emprendedor(string nombre, string lugar, string rubro, string especializacion, List<Habilitacion> habilitaciones)
+        /// <param name="nombre"><see langword = "string"/>.</param>
+        /// <param name="lugar"><see cref = "Location"/>.</param>
+        /// <param name="rubro"><see langword = "string"/>.</param>
+        /// <param name="especializacion"><see langword = "string"/>.</param>
+        /// <param name="habilitaciones"><see langword = "string"/>.</param>
+        /// <param name="datosLogin"><see cref = "DatosLogin"/>.</param>
+        public Emprendedor(string nombre, Location lugar, string rubro, string especializacion, List<Habilitacion> habilitaciones, DatosLogin datosLogin)
         {
             this.Nombre = nombre;
-            this.Lugar = LocationApiClient.Instancia.GetLocation(lugar);
+            this.Lugar = lugar;
             this.Rubro = rubro;
             this.Especializacion = especializacion;
             this.Habilitaciones = habilitaciones;
+            this.DatosLogin = datosLogin;
         }
 
         /// <summary>

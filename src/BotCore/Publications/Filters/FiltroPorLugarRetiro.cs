@@ -18,18 +18,21 @@ namespace BotCore.Publication.Filters
         /// Obtiene el siguiente filtro de búsqueda.
         /// </summary>
         /// <value>IFiltroBusqueda.</value>
-        public IFiltroBusqueda Next {get;}
+        public IFiltroBusqueda Next {get; set;}
 
-        private Publicacion lugarRetiro;
+        private string Ciudad;
+
+        private string Dpto;
 
         /// <summary>
         /// Método que recibe el tipo de filtro y el siguiente filtro de búsqueda.
         /// </summary>
         /// <param name="lugarRetiro"><see cref = "Publicacion"/>.</param>
         /// <param name="next"><see cref = "IFiltroBusqueda"/>.</param>
-        public FiltroPorLugarRetiro(Publicacion lugarRetiro, IFiltroBusqueda next = null)
+        public FiltroPorLugarRetiro(string ciudad, string dpto, IFiltroBusqueda next = null)
         {
-            this.lugarRetiro = lugarRetiro;
+            this.Ciudad = ciudad;
+            this.Dpto = dpto;
             this.Next = next;
         }
 
@@ -44,7 +47,7 @@ namespace BotCore.Publication.Filters
 
             foreach(Publicacion p in publicaciones)
             {
-                if(p == this.lugarRetiro)
+                if(p.LugarRetiro.CountryRegion == this.Dpto && p.LugarRetiro.Locality == this.Ciudad)
                 {
                     publicacionesFiltradas.Add(p);
                 }

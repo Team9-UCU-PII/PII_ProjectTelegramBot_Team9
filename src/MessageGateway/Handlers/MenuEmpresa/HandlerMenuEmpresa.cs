@@ -21,7 +21,7 @@ namespace MessageGateway.Handlers.MenuEmpresa
     /// </summary>
     /// <param name="next">IHandler siguiente</param>
     public HandlerMenuEmpresa(IMessageHandler next = null)
-    : base(new string[] {"MenuEmpresa"}, next)
+    : base(new string[] {"menuempresa", "menu"}, next)
     {
     }
 
@@ -45,7 +45,6 @@ namespace MessageGateway.Handlers.MenuEmpresa
         "4. Configurar cuenta",
         "Si quiere salir escriba: /abortar");
         response = sb.ToString();
-        (CurrentForm as FrmMenuEmpresa).CurrentState = faseMenuEmpresa.Eligiendo;
         return true;
       }
       else
@@ -63,7 +62,7 @@ namespace MessageGateway.Handlers.MenuEmpresa
       ///Iniciado el menu.
       Inicio,
 
-      //Se esta eligiendo una opción.
+      ///Se esta eligiendo una opción.
       Eligiendo
 
     }

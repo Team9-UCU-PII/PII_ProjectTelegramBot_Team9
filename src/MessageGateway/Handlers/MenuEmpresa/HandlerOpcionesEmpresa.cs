@@ -33,27 +33,23 @@ namespace MessageGateway.Handlers.MenuEmpresa
     protected override bool InternalHandle(IMessage message, out string response)
     {
       response = string.Empty;
-      if (this.CanHandle(message) && (CurrentForm as FrmMenuEmpresa).CurrentState == HandlerMenuEmpresa.faseMenuEmpresa.Eligiendo)
+      if (this.CanHandle(message) && (CurrentForm as FrmMenuEmpresa).CurrentState == HandlerMenuEmpresa.faseMenuEmpresa.Inicio)
       {
         response = string.Empty;
         switch (message.TxtMensaje)
         {
           case "1":
-            (CurrentForm as FrmMenuEmpresa).CurrentState = HandlerMenuEmpresa.faseMenuEmpresa.Inicio;
-            this.CurrentForm.ChangeForm(new FrmAltaOferta(), message.ChatID);
+            this.CurrentForm.ChangeForm(new FrmAltaOferta((CurrentForm as FrmMenuEmpresa).InstanciaLoggeada), message.ChatID);
             break;
           //No se los nombres de los formularios, aún no estan hechos.
           case "2":
-            (CurrentForm as FrmMenuEmpresa).CurrentState = HandlerMenuEmpresa.faseMenuEmpresa.Inicio;
-            this.CurrentForm.ChangeForm(new FrmModificarPublicacion(), message.ChatID);
+            //this.CurrentForm.ChangeForm(new FrmModificarPublicacion(), message.ChatID);
             break;
           case "3":
-            (CurrentForm as FrmMenuEmpresa).CurrentState = HandlerMenuEmpresa.faseMenuEmpresa.Inicio;
-            this.CurrentForm.ChangeForm(new FrmReportes(), message.ChatID);
+            //this.CurrentForm.ChangeForm(new FrmReportes(), message.ChatID);
             break;
           case "4":
-            (CurrentForm as FrmMenuEmpresa).CurrentState = HandlerMenuEmpresa.faseMenuEmpresa.Inicio;
-            this.CurrentForm.ChangeForm(new FrmCuenta(), message.ChatID);
+            //this.CurrentForm.ChangeForm(new FrmCuenta(), message.ChatID);
             break;
           default:
             return false;

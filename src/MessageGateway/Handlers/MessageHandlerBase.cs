@@ -40,13 +40,13 @@ namespace MessageGateway.Handlers
         }
 
         /// <summary>
-        /// Determina si se puede manejar la palabra desde las palabras clave.
+        /// Determina si se puede manejar la palabra (EN MINUSCULA) desde las palabras clave.
         /// </summary>
         /// <param name="message">Meensaje a Corroborar.</param>
         /// <returns>True: si lo puede manejar/ es su responsabilidad.</returns>
         protected bool CanHandle(IMessage message)
         {
-            return this.keywords.Contains(message.TxtMensaje);
+            return this.keywords.Contains(message.TxtMensaje.ToLower());
         }
 
         /// <summary>

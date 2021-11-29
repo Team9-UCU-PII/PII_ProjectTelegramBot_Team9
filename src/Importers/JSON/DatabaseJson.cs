@@ -41,10 +41,8 @@ namespace Importers.Json
             {
                 foreach (string folderName in Directory.GetDirectories(K_StorageFolderRoot))
                 {
-                    string storageFolder = K_StorageFolderRoot + folderName;
-
                     // Obtengo el tipo correspondiente a la carpeta
-                    Type tipoEntidad = TypeInfo.GetType(folderName.Substring(folderName.LastIndexOf('\\') + 1));
+                    Type tipoEntidad = Type.GetType(folderName.Substring(folderName.LastIndexOf('\\') + 1)+", ClassLibrary");
 
                     // Creo el tipo genérico de JsonImporter, pasando como parámetro de tipo el tipo de la entidad
                     Type tipoImportadorDeT = typeof(JsonImporter<>).MakeGenericType(tipoEntidad);
@@ -52,21 +50,20 @@ namespace Importers.Json
 
                     // Construyo el método genérico, tomando el método Get y agregándole el tipo de la entidad
                     // como parámetro de tipo
-                    MethodInfo getter = importer.GetType().GetMethod("Get").MakeGenericMethod(tipoEntidad);
+                    MethodInfo getter = importer.GetType().GetMethod("Get");
 
-                    this.generatedFolderPaths.Add(tipoEntidad, storageFolder);
-
-                    string[] files = Directory.GetFiles(".\\" + storageFolder);
+                    this.generatedFolderPaths.Add(tipoEntidad, folderName);
+                    this.objectReferences.Add(tipoEntidad, new Dictionary<int, string>());
+                    string[] files = Directory.GetFiles(folderName);
 
                     // Para cada archivo en la carpeta, construyo la ruta completa e invoco el método construido
                     foreach (string fileName in files)
                     {
-                        string fullPath = folderName + '\\' + fileName;
-                        object objetoDeserializado = getter.Invoke(importer, new object[] {fullPath});
-                        this.objectReferences[tipoEntidad].Add((objetoDeserializado as IJsonConvertible).SerializationID, fullPath);
+                        object objetoDeserializado = getter.Invoke(importer, new object[] {fileName});
+                        this.objectReferences[tipoEntidad].Add((objetoDeserializado as IJsonConvertible).SerializationID, fileName);
                     }
 
-                    int lastId = (files.Select(x => Convert.ToInt32(x))).Max();
+                    int lastId = (files.Select(x => Convert.ToInt32(x.Substring(x.LastIndexOf('\\')+1)))).Max();
                     this.nextTypeId.Add(tipoEntidad, lastId + 1);
                 }
             }
@@ -82,9 +79,8 @@ namespace Importers.Json
             if (! this.generatedFolderPaths.ContainsKey(typeof(T)))
             {
                 string fullyQualifiedTypeName = objeto.GetType().ToString();
-                string simpleTypeName = fullyQualifiedTypeName.Substring(fullyQualifiedTypeName.LastIndexOf('.') + 1);
-                Directory.CreateDirectory(K_StorageFolderRoot + simpleTypeName);
-                this.generatedFolderPaths.Add(typeof(T), simpleTypeName);
+                Directory.CreateDirectory(K_StorageFolderRoot + fullyQualifiedTypeName);
+                this.generatedFolderPaths.Add(typeof(T), fullyQualifiedTypeName);
                 this.nextTypeId.Add(typeof(T), 1);
                 this.objectReferences.Add(typeof(T), new Dictionary<int, string>());
             }

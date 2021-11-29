@@ -21,8 +21,7 @@ namespace MessageGateway.Forms
         public FrmBienvenida()
         {
             this.messageHandler =
-                new HandlerBienvenida(
-                    new HandlerOpciones(null));
+                new HandlerBienvenida(null);
         }
 
         /// <summary>

@@ -18,7 +18,7 @@ namespace BotCore.Publication.Filters
         /// Obtiene el siguiente filtro de búsqueda.
         /// </summary>
         /// <value>IFiltroBusqueda.</value>
-        public IFiltroBusqueda Next {get;}
+        public IFiltroBusqueda Next {get; set;}
 
         private Categoria categoria;
 

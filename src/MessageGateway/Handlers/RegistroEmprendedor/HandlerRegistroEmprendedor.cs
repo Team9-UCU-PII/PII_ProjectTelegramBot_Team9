@@ -11,6 +11,7 @@ using ClassLibrary.Publication;
 using ClassLibrary.User;
 using MessageGateway.Forms;
 using ClassLibrary.LocationAPI;
+using Importers;
 
 namespace MessageGateway.Handlers
 {
@@ -26,8 +27,6 @@ namespace MessageGateway.Handlers
         public HandlerRegistroEmprendedor(IMessageHandler next) : base ((new string[] {"RegistroEmprendedor"}), next)
         {
             this.Next = next;
-            (CurrentForm as FrmRegistroEmprendedor).CurrentState = FasesRegEmprendedor.Inicio;
-            (CurrentForm as FrmRegistroEmprendedor).CurrentStateLocation = HandlerLocation.faseLocation.Inicio;
         }
 
         /// <summary>
@@ -39,7 +38,7 @@ namespace MessageGateway.Handlers
         /// <returns>True: si se pudo manejar el mensaje.</returns>
         protected override bool InternalHandle(IMessage message, out string response)
         {
-            if (this.CanHandle(message) && (CurrentForm as FrmRegistroEmprendedor).CurrentState == FasesRegEmprendedor.Inicio)
+            if ((CurrentForm is FrmRegistroEmprendedor) && (CurrentForm as FrmRegistroEmprendedor).CurrentState == FasesRegEmprendedor.Inicio)
             {
                 StringBuilder sb = new StringBuilder();
                 sb.Append($"A continuación, te pediremos que ingreses los datos necesarios para que como emprendedor seas visible en la plataforma...\n");
@@ -49,6 +48,7 @@ namespace MessageGateway.Handlers
                 sb.Append ($"3.Rubro\n");
                 sb.Append ($"4.Especialización\n");
                 sb.Append ($"5.Habilitaciones\n");
+                sb.Append ($"6. Listo");
                 response = sb.ToString();
                 (CurrentForm as FrmRegistroEmprendedor).CurrentState = FasesRegEmprendedor.Eligiendo;
                 return true;
@@ -128,6 +128,41 @@ namespace MessageGateway.Handlers
                 (CurrentForm as FrmRegistroEmprendedor).CurrentState = FasesRegEmprendedor.Eligiendo;
                 return true;
             }
+            else if ((message.TxtMensaje == "6") && (CurrentForm as FrmRegistroEmprendedor).CurrentState == FasesRegEmprendedor.Eligiendo)
+            {
+                StringBuilder sb = new StringBuilder();
+                Emprendedor emprendedor = (CurrentForm as FrmRegistroEmprendedor).emprendedorFinal;
+                if (emprendedor != null)
+                {
+                    (CurrentForm as FrmRegistroEmprendedor).CurrentState = FasesRegEmprendedor.Done;
+                    sb.Append("Emprendedor Creado, ¡Bienvenido!");
+                    response = sb.ToString();
+
+                    da.Insertar(emprendedor);
+                    da.Insertar(emprendedor.DatosLogin);
+
+                    CurrentForm.ChangeForm( new FrmMenuEmprendedor(emprendedor), message.ChatID);
+                    return true;
+                }
+
+                sb.Append("Algo aún falta completar...");
+                response = sb.ToString();
+                return true;
+            }
+            else if (message.TxtMensaje.ToLower() == "menu" && (CurrentForm as FrmRegistroEmprendedor).CurrentState == FasesRegEmprendedor.Eligiendo)
+            {
+                StringBuilder sb = new StringBuilder();
+                sb.Append ($"1.Nombre\n");
+                sb.Append ($"2.Lugar\n");
+                sb.Append ($"3.Rubro\n");
+                sb.Append ($"4.Especialización\n");
+                sb.Append ($"5.Habilitaciones\n");
+                sb.Append ($"6. Listo");
+
+                response = sb.ToString();
+                return true;
+
+            }
             else
             {
                 response = string.Empty;
@@ -170,7 +205,11 @@ namespace MessageGateway.Handlers
             /// <summary>
             /// Se espera las habilitaciones del emprendedor.
             /// </summary>
-            TomandoHabilitacion
+            TomandoHabilitacion,
+
+            ///Finalizado el registro.
+            Done
         }
+        private DataAccess da = DataAccess.Instancia;
     }
 }
