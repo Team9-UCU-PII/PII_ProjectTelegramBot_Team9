@@ -63,7 +63,7 @@ namespace MessageGateway.Handlers.MenuEmpresa
       ///Iniciado el menu.
       Inicio,
 
-      //Se esta eligiendo una opción.
+      ///Se esta eligiendo una opción.
       Eligiendo
 
     }

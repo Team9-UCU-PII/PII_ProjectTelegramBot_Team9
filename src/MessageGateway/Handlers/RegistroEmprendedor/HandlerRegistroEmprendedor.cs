@@ -39,7 +39,7 @@ namespace MessageGateway.Handlers
         /// <returns>True: si se pudo manejar el mensaje.</returns>
         protected override bool InternalHandle(IMessage message, out string response)
         {
-            if (this.CanHandle(message) && (CurrentForm as FrmRegistroEmprendedor).CurrentState == FasesRegEmprendedor.Inicio)
+            if ((CurrentForm is FrmRegistroEmprendedor) && (CurrentForm as FrmRegistroEmprendedor).CurrentState == FasesRegEmprendedor.Inicio)
             {
                 StringBuilder sb = new StringBuilder();
                 sb.Append($"A continuación, te pediremos que ingreses los datos necesarios para que como emprendedor seas visible en la plataforma...\n");
@@ -49,6 +49,7 @@ namespace MessageGateway.Handlers
                 sb.Append ($"3.Rubro\n");
                 sb.Append ($"4.Especialización\n");
                 sb.Append ($"5.Habilitaciones\n");
+                sb.Append ($"6. Listo");
                 response = sb.ToString();
                 (CurrentForm as FrmRegistroEmprendedor).CurrentState = FasesRegEmprendedor.Eligiendo;
                 return true;
@@ -128,6 +129,14 @@ namespace MessageGateway.Handlers
                 (CurrentForm as FrmRegistroEmprendedor).CurrentState = FasesRegEmprendedor.Eligiendo;
                 return true;
             }
+            else if ((message.TxtMensaje == "6") && (CurrentForm as FrmRegistroEmprendedor).CurrentState == FasesRegEmprendedor.Eligiendo)
+            {
+                StringBuilder sb = new StringBuilder();
+                
+                response = sb.ToString();
+                (CurrentForm as FrmRegistroEmprendedor).CurrentState = FasesRegEmprendedor.Done;
+                return true;
+            }
             else
             {
                 response = string.Empty;
@@ -170,7 +179,10 @@ namespace MessageGateway.Handlers
             /// <summary>
             /// Se espera las habilitaciones del emprendedor.
             /// </summary>
-            TomandoHabilitacion
+            TomandoHabilitacion,
+
+            ///Finalizado el registro.
+            Done
         }
     }
 }

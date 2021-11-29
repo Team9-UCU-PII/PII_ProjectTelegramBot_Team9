@@ -90,17 +90,19 @@ namespace MessageGateway.Handlers.RegistroDatosLogin
                     response = sb.ToString();
                     return true; 
                 }
-                sb.Append("¡Contraseña Confirmada! Ahora vamos a registrarnos...");
+                sb.Append("¡Contraseña Confirmada!");
                 response = sb.ToString();
                 (CurrentForm as FrmRegistroDatosLogin).Password = (CurrentForm as FrmRegistroDatosLogin).passChkr;
 
                 if((CurrentForm as FrmRegistroDatosLogin).OrganizacionEnRegistro != null)
                 {
-                    CurrentForm.ChangeForm(new FrmRegistroEmpresa((CurrentForm as FrmRegistroDatosLogin).OrganizacionEnRegistro), message.ChatID);
+                    CurrentForm.ChangeForm(new FrmRegistroEmpresa((CurrentForm as FrmRegistroDatosLogin).OrganizacionEnRegistro, (CurrentForm as FrmRegistroDatosLogin).result), message.ChatID);
+                    (CurrentForm as FrmRegistroEmpresa).CurrentState = HandlerRegEmpresa.fasesRegEmpresa.Inicio;
                 }
                 else
                 {
-                    CurrentForm.ChangeForm(new FrmRegistroEmprendedor(), message.ChatID);
+                    CurrentForm.ChangeForm(new FrmRegistroEmprendedor((CurrentForm as FrmRegistroDatosLogin).result), message.ChatID);
+                    (CurrentForm as FrmRegistroEmprendedor).CurrentState = HandlerRegistroEmprendedor.FasesRegEmprendedor.Inicio;
                 }
                 return true;
             }

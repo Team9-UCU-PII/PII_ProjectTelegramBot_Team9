@@ -47,6 +47,7 @@ namespace MessageGateway.Handlers.Escape
                 )
                 {
                     this.CurrentForm.ChangeForm( new FrmBienvenida(), message.ChatID);
+                    (CurrentForm as FrmBienvenida).CurrentState = Bienvenida.HandlerBienvenida.faseWelcome.Inicio;
                 }
                 else
                 {

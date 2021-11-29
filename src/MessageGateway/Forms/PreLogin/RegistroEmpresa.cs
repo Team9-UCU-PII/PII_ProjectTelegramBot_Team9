@@ -4,9 +4,6 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 
-
-using System.Collections.Generic;
-using ClassLibrary.Publication;
 using ClassLibrary.LocationAPI;
 using ClassLibrary.User;
 using MessageGateway.Handlers;
@@ -46,6 +43,11 @@ namespace MessageGateway.Forms
         public Empresa EmpresaPreCreada;
 
         /// <summary>
+        /// Credenciales de loggeo de la empresa.
+        /// </summary>
+        public DatosLogin UserCreds;
+
+        /// <summary>
         /// LA empresa que se crea desde este form.
         /// </summary>
         /// <value>Empresa.</value>
@@ -53,16 +55,21 @@ namespace MessageGateway.Forms
         {
             get
             {
-                return new Empresa(NombrePublico,Ubicacion,Rubro,Descripcion,Contacto);
+                if (NombrePublico != null && Ubicacion != null && Rubro != null && Descripcion != null && Contacto != null && UserCreds != null)
+                {
+                    return new Empresa(NombrePublico,Ubicacion,Rubro,Descripcion,Contacto, UserCreds);
+                }
+                return null;
             }
         }
 
         /// <summary>
         /// Formulario encargado de almacenar la informacion para registrar una empresa.
         /// </summary>
-        public FrmRegistroEmpresa(IUsuario empresa)
+        public FrmRegistroEmpresa(IUsuario empresa, DatosLogin Credentials)
         {
             CurrentState = HandlerRegEmpresa.fasesRegEmpresa.Inicio;
+            this.UserCreds = Credentials;
             this.messageHandler =
                 new HandlerRegEmpresa(
                     new HandlerLocation(null)

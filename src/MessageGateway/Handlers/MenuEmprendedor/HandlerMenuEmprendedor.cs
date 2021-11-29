@@ -59,7 +59,11 @@ namespace MessageGateway.Handlers.MenuEmprendedor
     /// </summary>
     public enum faseMenuEmprendedor
     {
+
+      ///Fase inicializadora del handler, imprime el menu.
       Inicio,
+
+      ///fase esperando elección.
       Eligiendo
 
     }
