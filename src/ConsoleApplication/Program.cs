@@ -30,6 +30,8 @@ namespace ConsoleApplication
     {
       Console.WriteLine("is on now");
       IGateway client = AdaptadorTelegram.Instancia;
+      Console.WriteLine(GestorInvitaciones.Instancia.AlmacenarInvitacion("UCM").Token);
+
       while (true)
       {
 

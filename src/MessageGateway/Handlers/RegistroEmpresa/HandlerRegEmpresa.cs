@@ -60,7 +60,7 @@ namespace MessageGateway.Handlers
                     (CurrentForm as FrmRegistroEmpresa).NombrePublico = (CurrentForm as FrmRegistroEmpresa).EmpresaPreCreada.Nombre;
                 }
 
-                sb.Append($"¿A que rubro se dedica {(CurrentForm as FrmRegistroEmpresa).EmpresaPreCreada.Nombre}?");
+                sb.Append($"¿A que rubro se dedica {(CurrentForm as FrmRegistroEmpresa).NombrePublico}?");
                 response = sb.ToString();
                 (CurrentForm as FrmRegistroEmpresa).CurrentState = fasesRegEmpresa.tomandoRubro;
                 return true;
@@ -93,7 +93,7 @@ namespace MessageGateway.Handlers
                 (CurrentForm as FrmRegistroEmpresa).CurrentStateLocation = HandlerLocation.faseLocation.tomandoMvdeo;
                 return true;
             }
-            else if (((CurrentForm as FrmRegistroEmpresa).EmpresaFinal != null))
+            else if (((CurrentForm as FrmRegistroEmpresa).CurrentStateLocation == HandlerLocation.faseLocation.Done) && (CurrentForm as FrmRegistroEmpresa).EmpresaFinal != null) 
             {
                 response = "Registrado con éxito";
 

@@ -50,11 +50,13 @@ namespace MessageGateway.Forms
             else
             {
                 IFiltroBusqueda filter = this.cadenaFilters;
+                IFiltroBusqueda nextFilter = filter.Next;
                 do
                 {
                     filter = filter.Next;
+                    nextFilter = nextFilter.Next;
                 }
-                while (filter!=null);
+                while (nextFilter!=null);
                 filter.Next = filtro;
             }
         }

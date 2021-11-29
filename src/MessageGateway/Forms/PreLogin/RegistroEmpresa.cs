@@ -75,6 +75,8 @@ namespace MessageGateway.Forms
                     new HandlerLocation(null)
                 );
             this.EmpresaPreCreada = empresa as Empresa;
+            this.city = "Montevideo";
+            this.dpto = "Montevideo";
         }
 
         /// <summary>
