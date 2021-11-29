@@ -64,7 +64,8 @@ namespace MessageGateway.Handlers.MenuEmprendedor
 
       ///Fase inicializadora del handler, imprime el menu.
       Inicio,
-
+      
+      ///Fase esperando a elegir una opcion del menu.
       Eligiendo
 
     }

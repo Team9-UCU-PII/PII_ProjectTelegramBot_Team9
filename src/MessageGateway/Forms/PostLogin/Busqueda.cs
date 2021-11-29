@@ -26,6 +26,9 @@ namespace MessageGateway.Forms
             new HandlerBusqueda((null));
         }
 
+        /// <summary>
+        /// Departamento a buscarse.
+        /// </summary>
         public string dpto;
 
         /// <summary>
@@ -40,7 +43,16 @@ namespace MessageGateway.Forms
         /// <value>Emprendedor.</value>
         public IUsuario InstanciaLoggeada {get; set;}
 
+        /// <summary>
+        /// Obtiene o establece los filtros que se desean utilizar.
+        /// </summary>
+        /// <value>IFiltroBUsqueda.</value>
         public IFiltroBusqueda cadenaFilters {get; set;}
+
+        /// <summary>
+        /// Metodo que crea una cadena de filtros nueva, o añade las solicitadas.
+        /// </summary>
+        /// <param name="filtro">IFiltroBusqueda.</param>
         public void AddFilter(IFiltroBusqueda filtro)
         {
             if (this.cadenaFilters == null)

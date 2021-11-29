@@ -213,38 +213,54 @@ namespace MessageGateway.Handlers
             /// Se espera respuesta si quiere filtrar por empresa.
             /// </summary>
             FiltroEmpresa,
+
+            ///Se espera si se toma el filtro Empresa.
             tomandoFiltroEmpresa,
 
             /// <summary>
             /// Se espera respuesta si quiere filtrar por ecategoría.
             /// </summary>
             FiltroCategoria,
+
+            ///Esperando el Filtro de Categoria
             tomandoFiltroCategoria,
 
             /// <summary>
             /// Se espera respuesta si quiere filtrar por lugar de retiro.
             /// </summary>
             FiltroLugarRetiro,
+
+            ///Primera parte para tomar el lugar de retiro.
             tomandoFiltroLugarRetiro1,
+
+            ///segunda parte, ya tomado el lugar.
             tomandoFiltroLugarRetiro2,
 
             /// <summary>
             /// Se espera respuesta si quiere filtrar por residuo.
             /// </summary>
             FiltroResiduo,
+
+            ///esperando el residuo a buscarse.
             tomandoFiltroResiduo,
 
             /// <summary>
             /// Se espera respuesta si quiere filtrar por precio máximo.
             /// </summary>
             FiltroPrecioMaximo,
+
+            ///tomando el valor maximo dispuesto a pagar.
             tomandoFiltroPrecioMaximo,
 
             /// <summary>
             /// Se espera respuesta si quiere filtrar por frecuencia de restock.
             /// </summary>
             FiltroFrecuenciaRestock,
+
+            ///Esperando cuantas veces al año se desea que se restockee.
             tomandoFiltroFrecuenciaRestock,
+
+            ///Finalizado el filtrado y handler.
             Done
         }
     }

@@ -52,7 +52,7 @@ namespace BotCore.Publication
         /// <summary>
         /// Servicio principal de la busqueda.
         /// </summary>
-        /// <param name="publicacionesASeparar">Un diccionario de clave un miembro del enum de FiltrosPosibles y valor la especificacion deseada (string o int).</param>
+        /// <param name="cadenaFilters">Una cadena de filtros armada.</param>
         /// <returns>Una List de publicaciones que cumplen las condiciones de PublicacionesASeparar.</returns>
         public List<Publicacion> BuscarPublicaciones(IFiltroBusqueda cadenaFilters)
         {
