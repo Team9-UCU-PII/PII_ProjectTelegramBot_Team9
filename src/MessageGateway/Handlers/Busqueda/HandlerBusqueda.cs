@@ -184,6 +184,7 @@ namespace MessageGateway.Handlers
                 sb.Append($"¿Listo para buscar?\n");
                 response = sb.ToString();
                 (CurrentForm as FrmBusqueda).CurrentState = FasesBusqueda.Done;
+                CurrentForm.ChangeForm(new FrmMenuEmprendedor((CurrentForm as FrmBusqueda).InstanciaLoggeada), message.ChatID);
                 return true;
             }
             else
