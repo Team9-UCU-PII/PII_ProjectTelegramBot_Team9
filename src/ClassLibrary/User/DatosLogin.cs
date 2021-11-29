@@ -16,14 +16,6 @@ namespace ClassLibrary.User
     /// </summary>
     public class DatosLogin : JsonConvertibleBase
     {
-
-        /// <summary>
-        /// Id de la Serialización.
-        /// </summary>
-        /// <value>Int.</value>
-        public int SerializationID { get; set; }
-
-
         /// <summary>
         /// Obtiene o establece el username de la cuenta.
         /// </summary>
