@@ -8,7 +8,6 @@ using System;
 using MessageGateway;
 using BotCore.User;
 using ClassLibrary.User;
-using ClassLibrary.LocationAPI;
 using Importers.Json;
 
 namespace ConsoleApplication
@@ -31,30 +30,14 @@ namespace ConsoleApplication
     {
       Console.WriteLine("is on now");
       IGateway client = AdaptadorTelegram.Instancia;
+      Console.WriteLine(GestorInvitaciones.Instancia.AlmacenarInvitacion("UCM").Token);
+
       while (true)
       {
 
-        if (lastMSG.TxtMensaje == "mesi")
+        if ("mesi" == "mesi")
         {
-            Console.WriteLine("is on now");
-            DatosLogin dl = new DatosLogin("pepe", "1234", new Empresa());
-            JsonExporter je = new JsonExporter("..\\");
-            dl.JsonSave(je);
-
-            GestorInvitaciones.Instancia.AlmacenarInvitacion<Empresa>("SEMM");
-            IGateway cliente = AdaptadorTelegram.Instancia;
-            while (true)
-            {
-                /*
-                var location = LocationApiClient.Instancia.GetLocation("Isla de Gorriti 2056");
-
-                
-                    if (lastMSG.TxtMensaje == "mesi")
-                    {
-                        client.EnviarUbicacionEnMapa(lastMSG, (float)location.Latitude, (float)location.Longitude);
-                    }
-                */
-            }
+            
         }
       }
     }

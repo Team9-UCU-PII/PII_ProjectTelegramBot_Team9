@@ -21,7 +21,7 @@ namespace MessageGateway.Handlers.MenuEmprendedor
     /// </summary>
     /// <param name="next">IHandler siguiente.</param>
     public HandlerMenuEmprendedor(IMessageHandler next)
-    : base(new string[] {"Menu"}, next)
+    : base(new string[] {"menu"}, next)
     {
     }
 
@@ -33,18 +33,20 @@ namespace MessageGateway.Handlers.MenuEmprendedor
     /// <returns>True: si se pudo manejar.</returns>
     protected override bool InternalHandle(IMessage message, out string response)
     {
-      if (this.CanHandle(message) && (CurrentForm as FrmMenuEmprendedor).CurrentState == faseMenuEmprendedor.Inicio)
+      if (this.CanHandle(message) || (CurrentForm as FrmMenuEmprendedor).CurrentState == faseMenuEmprendedor.Inicio)
       {
         StringBuilder sb = new StringBuilder();
         sb.AppendJoin('\n',
         "Estas son las diferentes acciones que puedes realizar:",
+        "Escribe \"Menu\" si desea ver este mensaje de nuevo luego",
         "\n",
         "1. Buscar publicaciones",
         "2. Generar reportes",
         "3. Configurar cuenta",
         "Si quiere cancelar un proceso escriba: /abortar");
-        response = sb.ToString();
+
         (CurrentForm as FrmMenuEmprendedor).CurrentState = faseMenuEmprendedor.Eligiendo;
+        response = sb.ToString();
         return true;
       }
       else
@@ -59,7 +61,10 @@ namespace MessageGateway.Handlers.MenuEmprendedor
     /// </summary>
     public enum faseMenuEmprendedor
     {
+
+      ///Fase inicializadora del handler, imprime el menu.
       Inicio,
+
       Eligiendo
 
     }

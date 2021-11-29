@@ -78,13 +78,24 @@ namespace ClassLibrary.User
         /// <param name="rubro"><see langword = "string"/>.</param>
         /// <param name="descripcion"><see langword = "string"/>.</param>
         /// <param name="contacto"><see langword = "string"/>.</param>
-        public Empresa(string nombre, Location lugar, string rubro, string descripcion, string contacto)
+        /// <param name="userCreds"><see cref = "DatosLogin"/>.</param>
+        public Empresa(string nombre, Location lugar, string rubro, string descripcion, string contacto, DatosLogin userCreds)
         {
             this.Nombre = nombre;
             this.Lugar = lugar;
             this.Rubro = rubro;
             this.Descripcion = descripcion;
             this.Contacto = contacto;
+            this.DatosLogin = userCreds;
+        }
+
+        /// <summary>
+        /// Constructor de la clase Empresa para invitaciones (Debe sobreescribirse).
+        /// </summary>
+        /// <param name="nombre"><see langword = "string"/>.</param>
+        public Empresa(string nombre)
+        {
+            this.Nombre = nombre;
         }
         
         /// <summary>

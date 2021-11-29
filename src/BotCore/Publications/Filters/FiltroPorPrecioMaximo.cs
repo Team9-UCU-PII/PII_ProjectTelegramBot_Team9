@@ -19,7 +19,7 @@ namespace BotCore.Publication.Filters
         /// Obtiene el siguiente filtro de búsqueda.
         /// </summary>
         /// <value>IFiltroBusqueda.</value>
-        public IFiltroBusqueda Next {get;}
+        public IFiltroBusqueda Next {get; set;}
 
         private double precioMaximo;
 
@@ -28,9 +28,9 @@ namespace BotCore.Publication.Filters
         /// </summary>
         /// <param name="referencia"><see cref = "Publicacion"/>.</param>
         /// <param name="next"><see cref = "IFiltroBusqueda"/>.</param>
-        public FiltroPorPrecioMaximo(Publicacion referencia, IFiltroBusqueda next = null)
+        public FiltroPorPrecioMaximo(double referencia, IFiltroBusqueda next = null)
         {
-            this.precioMaximo = referencia.PrecioTotal;
+            this.precioMaximo = referencia;
             this.Next = next;
         }
 

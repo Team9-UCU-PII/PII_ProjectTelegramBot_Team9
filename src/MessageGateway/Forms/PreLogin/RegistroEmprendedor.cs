@@ -5,7 +5,6 @@
 //--------------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using ClassLibrary.Publication;
 using ClassLibrary.LocationAPI;
 using ClassLibrary.User;
 using MessageGateway.Handlers;
@@ -17,6 +16,23 @@ namespace MessageGateway.Forms
     /// </summary>
     public class FrmRegistroEmprendedor : FormularioBase, ILocationForm
     {
+
+        /// <summary>
+        /// Retorna el emprendedor resultante si cumple todos los requisitos.
+        /// </summary>
+        /// <value>Emprendedor.</value>
+        public Emprendedor emprendedorFinal
+        {
+            get
+            {
+                if (Nombre != null && Ubicacion != null && Rubro != null && Especializacion != null && LoginCred != null)
+                {
+                    return new Emprendedor(Nombre, Ubicacion, Rubro, Especializacion, habilitaciones, LoginCred);
+                }
+                return null;
+            }
+        }
+
         /// <summary>
         /// Nombre del emprendedor.
         /// </summary>
@@ -30,7 +46,11 @@ namespace MessageGateway.Forms
         {
             get
             {
-                return LocationApiClient.Instancia.GetLocation(direccion,city,dpto);
+                if (direccion != null && direccion != "")
+                {
+                  return LocationApiClient.Instancia.GetLocation(direccion,city,dpto);  
+                }
+                return null;
             }
         }
 
@@ -51,14 +71,24 @@ namespace MessageGateway.Forms
         public List<Habilitacion> habilitaciones {get; set;}
 
         /// <summary>
+        /// User Loggeado anteriormente.
+        /// </summary>
+        public DatosLogin LoginCred;
+
+        /// <summary>
         /// Constructor del formulario de registro de emprendedores con sus handlers.
         /// </summary>
-        public FrmRegistroEmprendedor()
+        public FrmRegistroEmprendedor(DatosLogin login)
         {
+            this.habilitaciones = new List<Habilitacion>();
+            this.LoginCred = login;
             this.messageHandler =
             new HandlerRegistroEmprendedor(
                 new HandlerLocation((null))
             );
+
+            this.CurrentState = HandlerRegistroEmprendedor.FasesRegEmprendedor.Inicio;
+            this.CurrentStateLocation = HandlerLocation.faseLocation.Inicio;
         }
 
         /// <summary>

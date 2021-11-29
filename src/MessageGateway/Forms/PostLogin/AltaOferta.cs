@@ -15,7 +15,7 @@ namespace MessageGateway.Forms
     /// <summary>
     /// Formulario que recopilara la información necesaria para crear una publicacion.
     /// </summary>
-    public class FrmAltaOferta : FormularioBase, IFormulario, ILocationForm, IResiduoForm
+    public class FrmAltaOferta : FormularioBase, IFormulario, ILocationForm, IResiduoForm, IPostLogin
     {
 
         /// <summary>
@@ -26,7 +26,15 @@ namespace MessageGateway.Forms
         {
             get
             {
-                return (Vendedor.CrearOferta(residuo,PrecioUnitario,Moneda,Cantidad,Ubicacion,Descripcion, residuo.Categoria));
+                if (residuo != null && PrecioUnitario != 0 && Moneda != "" && Cantidad != 0 && Ubicacion != null && Descripcion != "")
+                {
+                    if (FrecuenciaRestock == 0)
+                    {
+                        return (Vendedor.CrearOferta(residuo,PrecioUnitario,Moneda,Cantidad,Ubicacion,Descripcion, residuo.Categoria));
+                    }
+                        return (Vendedor.CrearOfertaRecurrente(residuo,PrecioUnitario,Moneda,Cantidad,Ubicacion,Descripcion, residuo.Categoria, FrecuenciaRestock));
+                }
+                return null;
             }
         }
 
@@ -46,6 +54,12 @@ namespace MessageGateway.Forms
         public int Cantidad;
 
         /// <summary>
+        /// Frecuencia en meses de reposición de residuo recurrente.
+        /// </summary>
+        /// <value>Int.</value>
+        public int FrecuenciaRestock {get; set;}
+
+        /// <summary>
         /// Ubicación del residuo.
         /// </summary>
         /// <value><see cref = "Location" />.</value>
@@ -53,14 +67,30 @@ namespace MessageGateway.Forms
         {
             get
             {
-                return LocationApiClient.Instancia.GetLocation(direccion,city,dpto);
+                if (direccion != "")
+                {
+                    return LocationApiClient.Instancia.GetLocation(direccion,city,dpto);
+                }
+                return null;
             }
         }
     
         /// <summary>
         /// La empresa vendedora.
         /// </summary>
-        public Empresa Vendedor;
+        public Empresa Vendedor
+        {
+            get 
+            {
+                return this.InstanciaLoggeada as Empresa;
+            }
+        }
+
+        /// <summary>
+        /// Propiedad que permite acceder a la empresa loggeada.
+        /// </summary>
+        /// <value>Empresa.</value>
+        public IUsuario InstanciaLoggeada {get;set;}
 
         /// <summary>
         /// Descripcion de la publicación.
@@ -70,8 +100,14 @@ namespace MessageGateway.Forms
         /// <summary>
         /// Constructor del formulario creador de publicaciones con sus handlers.
         /// </summary>
-        public FrmAltaOferta()
+        public FrmAltaOferta(IUsuario vendedor)
         {
+            CurrentState = HandlerAltaOferta.fasesAltaOferta.Inicio;
+            CurrentStateLocation = HandlerLocation.faseLocation.Inicio;
+            CurrentStateResiduo = HandlerNewResiduo.fasesResiduo.Inicio;
+
+            this.InstanciaLoggeada = vendedor;
+
             this.messageHandler =
             new HandlerAltaOferta(
                 new HandlerNewResiduo(
@@ -99,7 +135,11 @@ namespace MessageGateway.Forms
         public Residuo residuo {
             get
             {
-                return new Residuo(categoria, descripcion,unit,habilitaciones);
+                if (categoria != null && descripcion != "" && unit != "" && habilitaciones != null)
+                {
+                    return new Residuo(categoria, descripcion,unit,habilitaciones);
+                }
+                return null;
             }
         }
 

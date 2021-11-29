@@ -4,7 +4,7 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 
-
+using ClassLibrary.User;
 using MessageGateway.Forms;
 
 namespace MessageGateway.Handlers.Escape
@@ -21,7 +21,7 @@ namespace MessageGateway.Handlers.Escape
         /// </summary>
         /// <param name="next">IHandler siguiente.</param>
         public HandlerEscape(IMessageHandler next)
-        : base(new string[] {"/Abortar"}, next)
+        : base(new string[] {"/abortar"}, next)
         {
         }
 
@@ -43,6 +43,7 @@ namespace MessageGateway.Handlers.Escape
                     this.CurrentForm is FrmBienvenida ||
                     this.CurrentForm is FrmRegistroDatosLogin ||
                     this.CurrentForm is FrmRegistroEmpresa ||
+                    this.CurrentForm is FrmRegistroEmprendedor ||
                     this.CurrentForm is FrmLogin 
                 )
                 {
@@ -50,9 +51,14 @@ namespace MessageGateway.Handlers.Escape
                 }
                 else
                 {
-                    //dejo placeholder para lo que encompasará el menu principal de acciones
-                    //segun si es una empresa o emprendedor
-                    this.CurrentForm.ChangeForm( new FrmBienvenida(), message.ChatID);
+                    if (CurrentForm is IPostLogin && (CurrentForm as IPostLogin).InstanciaLoggeada is Empresa)
+                    {
+                     this.CurrentForm.ChangeForm( new FrmMenuEmpresa((CurrentForm as IPostLogin).InstanciaLoggeada), message.ChatID);   
+                    }
+                    else
+                    {
+                        this.CurrentForm.ChangeForm ( new FrmMenuEmprendedor((CurrentForm as IPostLogin).InstanciaLoggeada), message.ChatID);
+                    }
                 }
 
                 return true;

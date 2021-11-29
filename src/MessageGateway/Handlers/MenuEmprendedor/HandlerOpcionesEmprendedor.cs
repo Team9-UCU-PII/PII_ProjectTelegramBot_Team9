@@ -40,15 +40,15 @@ namespace MessageGateway.Handlers.MenuEmprendedor
         {
           case "1":
             (CurrentForm as FrmMenuEmprendedor).CurrentState = HandlerMenuEmprendedor.faseMenuEmprendedor.Inicio;
-            this.CurrentForm.ChangeForm(new FrmBusqueda(), message.ChatID);
+            this.CurrentForm.ChangeForm(new FrmBusqueda((CurrentForm as FrmMenuEmprendedor).InstanciaLoggeada), message.ChatID);
             break;
           case "2":
             (CurrentForm as FrmMenuEmprendedor).CurrentState = HandlerMenuEmprendedor.faseMenuEmprendedor.Inicio;
-            this.CurrentForm.ChangeForm(new FrmReportes(), message.ChatID);
+            //this.CurrentForm.ChangeForm(new FrmReportes(), message.ChatID);
             break;
           case "3":
             (CurrentForm as FrmMenuEmprendedor).CurrentState = HandlerMenuEmprendedor.faseMenuEmprendedor.Inicio;
-            this.CurrentForm.ChangeForm(new FrmCuenta(), message.ChatID);
+            //this.CurrentForm.ChangeForm(new FrmCuenta(), message.ChatID);
             break;
           default:
             return false;

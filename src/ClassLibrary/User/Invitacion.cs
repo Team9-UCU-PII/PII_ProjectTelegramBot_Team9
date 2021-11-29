@@ -21,7 +21,7 @@ namespace ClassLibrary.User
         /// Método constructor de la invitación.
         /// </summary>
         /// <param name="organizacion">El <see iref = "IUsuario"/> temporal, generado previamente.</param>
-        public Invitacion(IUsuario organizacion)
+        public Invitacion(Empresa organizacion)
         {
             this.OrganizacionInvitada = organizacion;
             this.token = "1234";
@@ -42,7 +42,7 @@ namespace ClassLibrary.User
         /// El usuario destinado, debería ser sobreescrito por el destinatario.
         /// </summary>
         [JsonInclude]
-        public IUsuario OrganizacionInvitada { get; }
+        public Empresa OrganizacionInvitada { get; }
 
         /// <summary>
         /// Este token unico identifica la invitación de las demas.
