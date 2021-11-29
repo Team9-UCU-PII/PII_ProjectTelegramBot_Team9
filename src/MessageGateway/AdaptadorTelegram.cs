@@ -96,13 +96,13 @@ namespace MessageGateway
             Message message = messageEventArgs.Message;
             IMessage adaptedMessage = new TelegramMessageAdapter(message);
             string chatID = adaptedMessage.ChatID;
-            
-            // Para destapar el bot, descomentar las siguientes dos líneas, depurar con un breakpoint en
-            // la primera y dar Continue hasta que la ejecución no se detenga aquí (el evento ya no se dispara)
-            /*
-            await this.TelegramBot.Cliente.SendTextMessageAsync(adaptedMessage.ChatID, "respuesta");
-            return;
-            */
+
+            // Responde los mensajes que se recibieron mientras estaba caído el bot de forma amigable.
+            if (message.Date < this.startupTime)
+            {
+                await this.TelegramBot.Cliente.SendTextMessageAsync(adaptedMessage.ChatID, "Perdona, no estaba disponible.");
+                return;
+            }
 
             if (adaptedMessage.TxtMensaje == "/start")
             {
