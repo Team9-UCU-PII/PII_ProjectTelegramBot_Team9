@@ -20,7 +20,7 @@ namespace MessageGateway.Forms
         /// Atributo en caso de venirse de una invitación.
         /// </summary>
         /// <value>IUsuario.</value>
-        public Empresa OrganizacionEnRegistro { get; private set; }
+        public IUsuario OrganizacionEnRegistro { get; private set; }
 
         /// <summary>
         /// El Username con el que se identifica.
@@ -44,9 +44,9 @@ namespace MessageGateway.Forms
         {
             get
             {
-                if (NombreUsuario != null && Password != null && OrganizacionEnRegistro != null)
+                if (NombreUsuario != null && Password != null)
                 {
-                return new DatosLogin(NombreUsuario, Password, OrganizacionEnRegistro);
+                return new DatosLogin(NombreUsuario, Password, OrganizacionEnRegistro != null ? OrganizacionEnRegistro : new Emprendedor());
                 }
                 return null;
             }
