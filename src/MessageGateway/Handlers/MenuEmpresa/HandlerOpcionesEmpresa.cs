@@ -45,15 +45,15 @@ namespace MessageGateway.Handlers.MenuEmpresa
           //No se los nombres de los formularios, aún no estan hechos.
           case "2":
             (CurrentForm as FrmMenuEmpresa).CurrentState = HandlerMenuEmpresa.faseMenuEmpresa.Inicio;
-            this.CurrentForm.ChangeForm(new FrmModificarPublicacion(), message.ChatID);
+            //this.CurrentForm.ChangeForm(new FrmModificarPublicacion(), message.ChatID);
             break;
           case "3":
             (CurrentForm as FrmMenuEmpresa).CurrentState = HandlerMenuEmpresa.faseMenuEmpresa.Inicio;
-            this.CurrentForm.ChangeForm(new FrmReportes(), message.ChatID);
+            //this.CurrentForm.ChangeForm(new FrmReportes(), message.ChatID);
             break;
           case "4":
             (CurrentForm as FrmMenuEmpresa).CurrentState = HandlerMenuEmpresa.faseMenuEmpresa.Inicio;
-            this.CurrentForm.ChangeForm(new FrmCuenta(), message.ChatID);
+            //this.CurrentForm.ChangeForm(new FrmCuenta(), message.ChatID);
             break;
           default:
             return false;

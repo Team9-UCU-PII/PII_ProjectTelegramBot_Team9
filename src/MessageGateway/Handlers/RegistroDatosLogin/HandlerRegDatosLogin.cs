@@ -102,7 +102,6 @@ namespace MessageGateway.Handlers.RegistroDatosLogin
                 else
                 {
                     CurrentForm.ChangeForm(new FrmRegistroEmprendedor((CurrentForm as FrmRegistroDatosLogin).result), message.ChatID);
-                    (CurrentForm as FrmRegistroEmprendedor).CurrentState = HandlerRegistroEmprendedor.FasesRegEmprendedor.Inicio;
                 }
                 return true;
             }

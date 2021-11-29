@@ -21,7 +21,7 @@ namespace MessageGateway.Handlers.Bienvenida
         /// </summary>
         /// <param name="next">IHandler siguiente</param>
         public HandlerBienvenida(IMessageHandler next)
-        : base(new string[] {"/start"}, next)
+        : base(new string[] {"/start", "1", "2", "3"}, next)
         {
         }
 
@@ -46,6 +46,27 @@ namespace MessageGateway.Handlers.Bienvenida
                 response = sb.ToString();
 
                 (CurrentForm as FrmBienvenida).CurrentState = faseWelcome.Eligiendo;
+                return true;
+            }
+            else if (this.CanHandle(message) && (CurrentForm as FrmBienvenida).CurrentState == HandlerBienvenida.faseWelcome.Inicio)
+            {
+                response = string.Empty;
+                switch (message.TxtMensaje)
+                {
+                    case "1":
+                        (CurrentForm as FrmBienvenida).CurrentState = HandlerBienvenida.faseWelcome.Inicio;
+                        this.CurrentForm.ChangeForm(new FrmLogin(), message.ChatID);
+                        break;
+                    case "2":
+                        (CurrentForm as FrmBienvenida).ChangeForm((new FrmRegistroDatosLogin()), message.ChatID);
+                        break;
+                    case "3":
+                        (CurrentForm as FrmBienvenida).CurrentState = HandlerBienvenida.faseWelcome.Inicio;
+                        this.CurrentForm.ChangeForm(new FrmAceptarInvitacion(), message.ChatID);
+                        break;
+                    default:
+                        return false;
+                }
                 return true;
             }
             else

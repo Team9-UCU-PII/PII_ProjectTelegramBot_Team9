@@ -21,7 +21,7 @@ namespace MessageGateway.Handlers
         /// </summary>
         /// <param name="next"></param>
         /// <returns></returns>
-        public HandlerLocation(IMessageHandler next) : base ((new string[] {"3"}), next)
+        public HandlerLocation(IMessageHandler next) : base ((new string[] {"3", "2"}), next)
         {
             this.Next = next;
         }

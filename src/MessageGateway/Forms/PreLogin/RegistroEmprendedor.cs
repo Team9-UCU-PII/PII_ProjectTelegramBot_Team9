@@ -25,7 +25,7 @@ namespace MessageGateway.Forms
         {
             get
             {
-                if (Nombre != null && Ubicacion != null && Rubro != null && Especializacion != null && habilitaciones != null && LoginCred != null)
+                if (Nombre != null && Ubicacion != null && Rubro != null && Especializacion != null && LoginCred != null)
                 {
                     return new Emprendedor(Nombre, Ubicacion, Rubro, Especializacion, habilitaciones, LoginCred);
                 }
@@ -46,7 +46,11 @@ namespace MessageGateway.Forms
         {
             get
             {
-                return LocationApiClient.Instancia.GetLocation(direccion,city,dpto);
+                if (direccion != null && direccion != "")
+                {
+                  return LocationApiClient.Instancia.GetLocation(direccion,city,dpto);  
+                }
+                return null;
             }
         }
 
@@ -76,11 +80,15 @@ namespace MessageGateway.Forms
         /// </summary>
         public FrmRegistroEmprendedor(DatosLogin login)
         {
+            this.habilitaciones = new List<Habilitacion>();
             this.LoginCred = login;
             this.messageHandler =
             new HandlerRegistroEmprendedor(
                 new HandlerLocation((null))
             );
+
+            this.CurrentState = HandlerRegistroEmprendedor.FasesRegEmprendedor.Inicio;
+            this.CurrentStateLocation = HandlerLocation.faseLocation.Inicio;
         }
 
         /// <summary>

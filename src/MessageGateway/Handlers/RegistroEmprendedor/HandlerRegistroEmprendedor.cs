@@ -26,8 +26,6 @@ namespace MessageGateway.Handlers
         public HandlerRegistroEmprendedor(IMessageHandler next) : base ((new string[] {"RegistroEmprendedor"}), next)
         {
             this.Next = next;
-            (CurrentForm as FrmRegistroEmprendedor).CurrentState = FasesRegEmprendedor.Inicio;
-            (CurrentForm as FrmRegistroEmprendedor).CurrentStateLocation = HandlerLocation.faseLocation.Inicio;
         }
 
         /// <summary>
@@ -132,9 +130,17 @@ namespace MessageGateway.Handlers
             else if ((message.TxtMensaje == "6") && (CurrentForm as FrmRegistroEmprendedor).CurrentState == FasesRegEmprendedor.Eligiendo)
             {
                 StringBuilder sb = new StringBuilder();
-                
+                if ((CurrentForm as FrmRegistroEmprendedor).emprendedorFinal != null)
+                {
+                    (CurrentForm as FrmRegistroEmprendedor).CurrentState = FasesRegEmprendedor.Done;
+                    sb.Append("Emprendedor Creado, ¡Bienvenido!");
+                    response = sb.ToString();
+                    CurrentForm.ChangeForm( new FrmMenuEmprendedor(), message.ChatID);
+                    return true;
+                }
+
+                sb.Append("Algo aún falta completar...");
                 response = sb.ToString();
-                (CurrentForm as FrmRegistroEmprendedor).CurrentState = FasesRegEmprendedor.Done;
                 return true;
             }
             else
