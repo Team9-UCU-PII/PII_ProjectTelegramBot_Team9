@@ -26,8 +26,6 @@ namespace MessageGateway
         /// <value><see langword ="string"/>.</value>
         string TxtMensaje { get; set; }
 
-        PalabrasClaveHandlers Keyword { get; set; }
-
         /*
         /// <summary>
         /// Crea un tipo mensaje apto para la respuesta de un mensaje recibido.

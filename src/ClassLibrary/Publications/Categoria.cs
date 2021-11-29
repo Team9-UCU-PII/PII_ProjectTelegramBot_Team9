@@ -4,12 +4,15 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 
+using Importers;
+using Importers.Json;
+
 namespace ClassLibrary.Publication
 {
   /// <summary>
   /// Instancia de las categorias posibles para <see cref="Residuo"/>.
   /// </summary>
-  public class Categoria
+  public class Categoria : JsonConvertibleBase
   {
     /// <summary>
     /// Constructor de categoria.
@@ -25,5 +28,14 @@ namespace ClassLibrary.Publication
     /// </summary>
     /// <value><see langword="string"/>.</value>
     public string Nombre { get; set; }
+    
+    /// <summary>
+    /// Metodo para guardar en Json.
+    /// </summary>
+    /// <param name="exporter"></param>
+    public override void JsonSave(JsonExporter exporter)
+    {
+        exporter.Save(this);
+    }
   }
 }

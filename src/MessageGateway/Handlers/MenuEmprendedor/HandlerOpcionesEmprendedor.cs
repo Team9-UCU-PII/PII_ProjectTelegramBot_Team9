@@ -19,7 +19,7 @@ namespace MessageGateway.Handlers.MenuEmprendedor
     /// El constructor, las palabras claves hacen referencia a la opciones del menú del emprendedor.
     /// </summary>
     /// <param name="next"></param>
-    public HandlerOpcionesMenuEmpresa(IMessageHandler next = null)
+    public HandlerOpcionesMenuEmprendedor(IMessageHandler next)
     : base(new string[] {"1", "2", "3"}, next)
     {
     }
@@ -40,7 +40,7 @@ namespace MessageGateway.Handlers.MenuEmprendedor
         {
           case "1":
             (CurrentForm as FrmMenuEmprendedor).CurrentState = HandlerMenuEmprendedor.faseMenuEmprendedor.Inicio;
-            this.CurrentForm.ChangeForm(new FrmBuscarPublicacion(), message.ChatID);
+            this.CurrentForm.ChangeForm(new FrmBusqueda(), message.ChatID);
             break;
           case "2":
             (CurrentForm as FrmMenuEmprendedor).CurrentState = HandlerMenuEmprendedor.faseMenuEmprendedor.Inicio;

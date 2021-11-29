@@ -1,3 +1,9 @@
+//--------------------------------------------------------------------------------
+// <copyright file="GatewayBase.cs" company="Universidad Católica del Uruguay">
+//     Copyright (c) Programación II. Derechos reservados.
+// </copyright>
+//--------------------------------------------------------------------------------
+
 using MessageGateway.Forms;
 using System;
 using System.Collections.Generic;
@@ -10,6 +16,8 @@ namespace MessageGateway
     /// </summary>
     public abstract class GatewayBase : IGateway
     {
+        protected readonly DateTime startupTime;
+
         /// <summary>
         /// Para reducir el acoplamiento, usamos composición para delegar las peticiones de cambio
         /// de estado de las conversaciones en la instancia de la clase ChatManager.
@@ -22,6 +30,7 @@ namespace MessageGateway
         protected GatewayBase()
         {
             this.chatManager = ChatManager.Instancia;
+            this.startupTime = DateTime.Now.ToUniversalTime();
         }
 
         /// <summary>

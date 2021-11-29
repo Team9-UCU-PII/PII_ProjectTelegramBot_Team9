@@ -9,6 +9,7 @@
 
 using ClassLibrary.User;
 using Importers;
+using System.Linq;
 
 namespace BotCore.User
 {
@@ -19,9 +20,15 @@ namespace BotCore.User
     public static class RegistroUsuario
     {
         private static DataAccess da = DataAccess.Instancia;
+
+        /// <summary>
+        /// Metodo que controla no repetir username.
+        /// </summary>
+        /// <param name="nombre">Username a revisarse.</param>
+        /// <returns>True: si el username ya está tomado.</returns>
         public static bool UsuarioYaExiste(string nombre)
         {
-            int cantidadUsuarios = da.CantidadUsuariosPorNombre(nombre);
+            int cantidadUsuarios = da.Obtener<DatosLogin>().Where(dl => dl.NombreUsuario == nombre).Count();
             return cantidadUsuarios > 0;
         }
 

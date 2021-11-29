@@ -6,30 +6,42 @@
 
 using System;
 using System.Text;
-using ClassLibrary.User;
+using Importers;
+using Importers.Json;
+using System.Text.Json.Serialization;
 
 namespace ClassLibrary.User
 {
     /// <summary>
-    /// Clase mediadora entre <see cref = "GestorInvitaciones"/> y los <see iref = "IUsuario"/>, representa la invitación en si, y encapsula el enlace y destino.
+    /// Clase mediadora entre GestorInvitacionesy los <see iref = "IUsuario"/>, representa la invitación en si, y encapsula el enlace y destino.
     /// </summary>
-    public class Invitacion
+    public class Invitacion : JsonConvertibleBase
     {
         /// <summary>
         /// Método constructor de la invitación.
         /// </summary>
         /// <param name="organizacion">El <see iref = "IUsuario"/> temporal, generado previamente.</param>
-        /// <param name="usuarioDestinatario">Username o Contacto objetivo.</param>
         public Invitacion(IUsuario organizacion)
         {
             this.OrganizacionInvitada = organizacion;
-            this.token = GenerarToken();
+            this.token = "1234";
+            //this.token = GenerarToken();
             this.FueAceptada = false;
+        }
+
+        /// <summary>
+        /// Cosntructor de Json.
+        /// </summary>
+        [JsonConstructor]
+        public Invitacion()
+        {
+
         }
 
         /// <summary>
         /// El usuario destinado, debería ser sobreescrito por el destinatario.
         /// </summary>
+        [JsonInclude]
         public IUsuario OrganizacionInvitada { get; }
 
         /// <summary>
@@ -95,6 +107,15 @@ namespace ClassLibrary.User
             }
 
             return sb.ToString();
+        }
+        
+        /// <summary>
+        /// Metodo para guardar en Json.
+        /// </summary>
+        /// <param name="exporter"></param>
+        public override void JsonSave(JsonExporter exporter)
+        {
+            exporter.Save(this);
         }
     }
 }

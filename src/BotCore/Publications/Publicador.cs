@@ -9,6 +9,7 @@
 //Es singleton porque solo se necesita una instancia y almacena un estado.
 //--------------------------------------------------------------------------------
 
+using ClassLibrary.LocationAPI;
 using ClassLibrary.Publication;
 using ClassLibrary.User;
 using Importers;
@@ -55,7 +56,7 @@ namespace BotCore.Publication
         /// <param name="vendedor"><see cref = "Empresa"/>.</param>
         /// <param name="descripcion"><see langword = "string"/>.</param>
         /// <param name="categoria"><see langword = "string"/>.</param>
-        public void PublicarOferta(Residuo residuo, double precioUnitario, string moneda, int cantidad, string lugarRetiro, Empresa vendedor, string descripcion, Categoria categoria)
+        public void PublicarOferta(Residuo residuo, double precioUnitario, string moneda, int cantidad, Location lugarRetiro, Empresa vendedor, string descripcion, Categoria categoria)
         {
             da.Insertar(vendedor.CrearOferta(
                 residuo,
@@ -78,9 +79,9 @@ namespace BotCore.Publication
         /// <param name="lugarRetiro"><see langword = "string"/>.</param>
         /// <param name="vendedor"><see cref = "Empresa"/>.</param>
         /// <param name="descripcion"><see langword = "string"/>.</param>
-        /// <param name="categoria"><see langword = "string"/>.</param>
+        /// <param name="categoria"><see langword = "Categoria"/>.</param>
         /// <param name="frecuenciaAnualRestock"><see langword = "int"/>.</param>
-        public void PublicarOfertaRecurrente(Residuo residuo, double precioUnitario, string moneda, int cantidad, string lugarRetiro, Empresa vendedor, string descripcion, Categoria categoria, int frecuenciaAnualRestock)
+        public void PublicarOfertaRecurrente(Residuo residuo, double precioUnitario, string moneda, int cantidad, Location lugarRetiro, Empresa vendedor, string descripcion, Categoria categoria, int frecuenciaAnualRestock)
         {
             da.Insertar(vendedor.CrearOfertaRecurrente(
                 residuo,

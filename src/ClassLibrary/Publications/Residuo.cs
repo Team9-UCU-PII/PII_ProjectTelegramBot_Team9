@@ -6,8 +6,11 @@
 
 using ClassLibrary.User;
 using System.Collections.Generic;
+using Importers;
+using Importers.Json;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace ClassLibrary.Publication
 {
@@ -15,7 +18,7 @@ namespace ClassLibrary.Publication
   /// Clase representativa de los disferentes residuos. Contiene <see cref = "Categoria"/>s, 
   /// Descripcion, unidad de medida y <see cref = "Habilitacion"/>es.
   /// </summary>
-  public class Residuo : IPrintable
+  public class Residuo : JsonConvertibleBase, IPrintable
   {
     /// <summary>
     /// Constructor de Residuo.
@@ -33,9 +36,19 @@ namespace ClassLibrary.Publication
     }
 
     /// <summary>
+    /// Metodo constructor de Json.
+    /// </summary>
+    [JsonConstructor]
+    public Residuo()
+    {
+
+    }
+
+    /// <summary>
     /// Obtiene o establece la categoria generica a la que pertenece el residuo.
     /// </summary>
     /// <value>Un <see langword="Array"/> de <see cref = "Categoria"/>.</value>
+    [JsonInclude]
     public Categoria Categoria { get; set; }
 
     /// <summary>
@@ -55,6 +68,7 @@ namespace ClassLibrary.Publication
     /// Obtiene o establece las Habilitaciones necesarias para la compra del residuo.
     /// </summary>
     /// <value><see langword="Array"/> de <see cref = "Habilitacion"/>.</value>
+    [JsonInclude]
     public List<Habilitacion> Habilitaciones { get; set; }
     
     /// <summary>
@@ -67,6 +81,15 @@ namespace ClassLibrary.Publication
       text.AppendLine($"Material: {this.Descripcion} ({this.Categoria.Nombre})");
       text.AppendLine($"Los emprendedores requieren las siguientes habilitaciones para manejar este residuo: {string.Join(", ", this.Habilitaciones.Select(h => h.Nombre))}");
       return text.ToString();
+    }
+
+    /// <summary>
+    /// Metodo que guarda en Json.
+    /// </summary>
+    /// <param name="exporter"></param>
+    public override void JsonSave(JsonExporter exporter)
+    {
+        exporter.Save(this);
     }
   }
 }

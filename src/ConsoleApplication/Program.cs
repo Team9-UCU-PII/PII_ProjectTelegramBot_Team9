@@ -9,6 +9,7 @@ using MessageGateway;
 using BotCore.User;
 using ClassLibrary.User;
 using ClassLibrary.LocationAPI;
+using Importers.Json;
 
 namespace ConsoleApplication
 {
@@ -32,16 +33,16 @@ namespace ConsoleApplication
       IGateway client = AdaptadorTelegram.Instancia;
       while (true)
       {
-        IMessage lastMSG = client.MensajeRecibido;
-
-        var location = LocationApiClient.Instancia.GetLocation("Isla de Gorriti 2056");
-
 
         if (lastMSG.TxtMensaje == "mesi")
         {
             Console.WriteLine("is on now");
+            DatosLogin dl = new DatosLogin("pepe", "1234", new Empresa());
+            JsonExporter je = new JsonExporter("..\\");
+            dl.JsonSave(je);
+
             GestorInvitaciones.Instancia.AlmacenarInvitacion<Empresa>("SEMM");
-            IGateway client = AdaptadorTelegram.Instancia;
+            IGateway cliente = AdaptadorTelegram.Instancia;
             while (true)
             {
                 /*

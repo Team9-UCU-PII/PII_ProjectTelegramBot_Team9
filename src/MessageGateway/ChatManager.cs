@@ -1,3 +1,14 @@
+//--------------------------------------------------------------------------------
+// <copyright file="Chatmanager.cs" company="Universidad Católica del Uruguay">
+//     Copyright (c) Programación II. Derechos reservados.
+// </copyright>
+//
+// Patrón utilizado: SRP y Delegación
+// Creamos esta clase basándonos en el principio de responsabilidad única, ya que el Gateway
+// debería ser responsable únicamente del envío y recepción de mensajes, y no del almacenamiento
+// del estado de las conversaciones, responsabilidad que es delegada en esta clase.
+//--------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using MessageGateway.Forms;
@@ -5,13 +16,17 @@ using MessageGateway.Forms;
 namespace MessageGateway
 {
     /// <summary>
-    /// Creamos esta clase basándonos en el principio de responsabilidad única, ya que el Gateway
-    /// debería ser responsable únicamente del envío y recepción de mensajes, y no del almacenamiento
-    /// del estado de las conversaciones, responsabilidad que es delegada en esta clase.
+    /// Clase delegable de tareas de almacenamiento de ingormación de chats
+    /// para permitir simultaneidad de conversaciones.
     /// </summary>
     public sealed class ChatManager
     {
         private static ChatManager instancia;
+
+        /// <summary>
+        /// Atributo estatico de accesso al singleton.
+        /// </summary>
+        /// <value>ChatManager.</value>
         public static ChatManager Instancia
         {
             get

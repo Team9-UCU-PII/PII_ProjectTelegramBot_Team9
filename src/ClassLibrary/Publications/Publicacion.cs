@@ -9,14 +9,17 @@
 
 using ClassLibrary.User;
 using ClassLibrary.LocationAPI;
+using Importers;
+using Importers.Json;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace ClassLibrary.Publication
 {
   /// <summary>
   /// Tipo base de publicación, comprende Descripcion, Residuo, Precio, Moneda, Cantidad, Lugar de Retiro y la Empresa Vendedor.
   /// </summary>
-  public class Publicacion : IPrintable
+  public class Publicacion : JsonConvertibleBase, IPrintable
   {
     /// <summary>
     /// Constructor de Clase Publicacion.
@@ -28,14 +31,14 @@ namespace ClassLibrary.Publication
     /// <param name="lugarRetiro"><see cref = "Location"/>.</param>
     /// <param name="vendedor"><see cref = "Empresa"/>.</param>
     /// <param name="descripcion"><see langword = "string"/>.</param>
-    /// <param name="categoria"><see langword = "string"/>.</param>
-    public Publicacion(Residuo residuo, double precioUnitario, string moneda, int cantidad, string lugarRetiro, Empresa vendedor, string descripcion, Categoria categoria)
+    /// <param name="categoria"><see langword = "Categoria"/>.</param>
+    public Publicacion(Residuo residuo, double precioUnitario, string moneda, int cantidad, Location lugarRetiro, Empresa vendedor, string descripcion, Categoria categoria)
     {
       this.Residuo = residuo;
       this.PrecioUnitario = precioUnitario;
       this.Moneda = moneda;
       this.Cantidad = cantidad;
-      this.LugarRetiro = LocationApiClient.Instancia.GetLocation(lugarRetiro);
+      this.LugarRetiro = lugarRetiro;
       this.Vendedor = vendedor;
       this.Descripcion = descripcion;
       this.Categoria = categoria;
@@ -43,9 +46,19 @@ namespace ClassLibrary.Publication
     }
 
     /// <summary>
+    /// Constructor de Json.
+    /// </summary>
+    [JsonConstructor]
+    public Publicacion()
+    {
+
+    }
+
+    /// <summary>
     /// Obtiene o establece el <see cref ="Residuo"/> publicado.
     /// </summary>
     /// <value><see cref = "Residuo"/>.</value>
+    [JsonInclude]
     public Residuo Residuo { get; set; }
 
     /// <summary>
@@ -70,12 +83,14 @@ namespace ClassLibrary.Publication
     /// Obtiene o establece el lugar de retiro.
     /// </summary>
     /// <value><see langword = "string"/>.</value>
+    [JsonInclude]
     public Location LugarRetiro { get; set; }
 
     /// <summary>
     /// Obtiene o establece la <see cref ="Empresa"/> vendedora.
     /// </summary>
     /// <value>Tipo IUsuario, instancia de Empresa</value>
+    [JsonInclude]
     public Empresa Vendedor { get; set; }
 
     /// <summary>
@@ -88,6 +103,7 @@ namespace ClassLibrary.Publication
     /// Obtiene o establece la <see cref ="Categoria"/> publicado.
     /// </summary>
     /// <value><see cref = "Categoria"/>.</value>
+    [JsonInclude]
     public Categoria Categoria { get; set; }
 
     /// <summary>
@@ -112,7 +128,7 @@ namespace ClassLibrary.Publication
     /// Implementación de <see iref = "IPrintable"/>, genera el texto para que envíe el bot.
     /// </summary>
     /// <returns><see langword="string"/>.</returns>
-    public string GetTextToPrint() 
+    public virtual string GetTextToPrint() 
     {
       StringBuilder text = new StringBuilder();
       text.AppendLine(this.Residuo.GetTextToPrint());
@@ -122,6 +138,15 @@ namespace ClassLibrary.Publication
       text.AppendLine($"Precio de venta: {this.Moneda} {this.PrecioTotal} ({this.Moneda} {this.PrecioUnitario} /{this.Residuo.UnidadMedida})");
       text.AppendLine($"Lugar de retiro: {this.LugarRetiro}");
       return text.ToString();
+    }
+
+    /// <summary>
+    /// Metodo de guardar en Json.
+    /// </summary>
+    /// <param name="exporter">JsonExporter.</param>
+    public override void JsonSave(JsonExporter exporter)
+    {
+        exporter.Save(this);
     }
   }
 }
