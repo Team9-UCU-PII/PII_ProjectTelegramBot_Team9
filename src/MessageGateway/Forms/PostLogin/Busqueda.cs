@@ -17,6 +17,7 @@ namespace MessageGateway.Forms
     /// </summary>
     public class FrmBusqueda : FormularioBase
     {
+
         /// <summary>
         /// Constructor del formulario de búsqueda de ofertas con sus handlers.
         /// </summary>
