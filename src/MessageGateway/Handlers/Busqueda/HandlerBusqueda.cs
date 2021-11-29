@@ -22,7 +22,6 @@ namespace MessageGateway.Handlers
         public HandlerBusqueda(IMessageHandler next) : base ((new string[] {"Busqueda"}), next)
         {
             this.Next = next;
-            (CurrentForm as FrmBusqueda).CurrentState = FasesBusqueda.Inicio;
         }
 
         /// <summary>
@@ -33,7 +32,7 @@ namespace MessageGateway.Handlers
         /// <returns>True: si se pudo manejar el mensaje.</returns>
         protected override bool InternalHandle(IMessage message, out string response)
         {
-            if (this.CanHandle(message) && (CurrentForm as FrmBusqueda).CurrentState == FasesBusqueda.Eligiendo)
+            if ((CurrentForm as FrmBusqueda).CurrentState == FasesBusqueda.Inicio)
             {
                 StringBuilder sb = new StringBuilder();
                 sb.Append($"A continuación, te daremos una serie de filtros por los que puedes buscar publicaciones...\n");

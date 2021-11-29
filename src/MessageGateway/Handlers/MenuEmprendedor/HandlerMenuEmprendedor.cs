@@ -33,16 +33,19 @@ namespace MessageGateway.Handlers.MenuEmprendedor
     /// <returns>True: si se pudo manejar.</returns>
     protected override bool InternalHandle(IMessage message, out string response)
     {
-      if (this.CanHandle(message) && (CurrentForm as FrmMenuEmprendedor).CurrentState == faseMenuEmprendedor.Inicio)
+      if (this.CanHandle(message) || (CurrentForm as FrmMenuEmprendedor).CurrentState == faseMenuEmprendedor.Inicio)
       {
         StringBuilder sb = new StringBuilder();
         sb.AppendJoin('\n',
         "Estas son las diferentes acciones que puedes realizar:",
+        "Escribe \"Menu\" si desea ver este mensaje de nuevo luego",
         "\n",
         "1. Buscar publicaciones",
         "2. Generar reportes",
         "3. Configurar cuenta",
         "Si quiere cancelar un proceso escriba: /abortar");
+
+        (CurrentForm as FrmMenuEmprendedor).CurrentState = faseMenuEmprendedor.Eligiendo;
         response = sb.ToString();
         return true;
       }
@@ -61,6 +64,8 @@ namespace MessageGateway.Handlers.MenuEmprendedor
 
       ///Fase inicializadora del handler, imprime el menu.
       Inicio,
+
+      Eligiendo
 
     }
   }

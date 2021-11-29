@@ -39,7 +39,7 @@ namespace MessageGateway.Handlers.MenuEmpresa
         switch (message.TxtMensaje)
         {
           case "1":
-            this.CurrentForm.ChangeForm(new FrmAltaOferta((CurrentForm as FrmMenuEmpresa).empresa), message.ChatID);
+            this.CurrentForm.ChangeForm(new FrmAltaOferta((CurrentForm as FrmMenuEmpresa).InstanciaLoggeada), message.ChatID);
             break;
           //No se los nombres de los formularios, aún no estan hechos.
           case "2":

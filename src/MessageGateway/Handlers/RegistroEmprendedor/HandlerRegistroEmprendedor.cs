@@ -151,8 +151,15 @@ namespace MessageGateway.Handlers
             }
             else if (message.TxtMensaje.ToLower() == "menu" && (CurrentForm as FrmRegistroEmprendedor).CurrentState == FasesRegEmprendedor.Eligiendo)
             {
-                response = "Recordemos el menu...";
-                (CurrentForm as FrmRegistroEmprendedor).CurrentState = FasesRegEmprendedor.Inicio;
+                StringBuilder sb = new StringBuilder();
+                sb.Append ($"1.Nombre\n");
+                sb.Append ($"2.Lugar\n");
+                sb.Append ($"3.Rubro\n");
+                sb.Append ($"4.Especialización\n");
+                sb.Append ($"5.Habilitaciones\n");
+                sb.Append ($"6. Listo");
+
+                response = sb.ToString();
                 return true;
 
             }

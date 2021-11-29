@@ -13,19 +13,20 @@ namespace MessageGateway.Forms
   /// <summary>
   /// Primer formulario del chat luego del login o el registro de un emprendedor.
   /// </summary>
-  public class FrmMenuEmprendedor : FormularioBase
+  public class FrmMenuEmprendedor : FormularioBase, IPostLogin
   {
 
     /// <summary>
     /// Constructor del formulario con sus handlers.
     /// </summary>
-    public FrmMenuEmprendedor(Emprendedor emprendedor)
+    public FrmMenuEmprendedor(IUsuario emprendedor)
     {
       this.messageHandler =
         new HandlerMenuEmprendedor(
           new HandlerOpcionesMenuEmprendedor(null)
         );
-      this.Emprendedor = emprendedor;
+      this.InstanciaLoggeada = emprendedor;
+      this.CurrentState = HandlerMenuEmprendedor.faseMenuEmprendedor.Inicio;
     }
 
     /// <summary>
@@ -34,8 +35,9 @@ namespace MessageGateway.Forms
     public HandlerMenuEmprendedor.faseMenuEmprendedor CurrentState = HandlerMenuEmprendedor.faseMenuEmprendedor.Inicio;
 
     /// <summary>
-    /// Instancia que refiere el emprendedor en este form.
+    /// Obtiene o establece la instancia que refiere el emprendedor en este form.
     /// </summary>
-    public Emprendedor Emprendedor;
+    /// <value>Emprendedor.</value>
+    public IUsuario InstanciaLoggeada { get; set;}
   }
 }

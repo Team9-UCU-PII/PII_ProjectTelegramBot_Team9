@@ -33,14 +33,14 @@ namespace MessageGateway.Handlers.MenuEmprendedor
     protected override bool InternalHandle(IMessage message, out string response)
     {
       response = string.Empty;
-      if (this.CanHandle(message) && (CurrentForm as FrmMenuEmprendedor).CurrentState == HandlerMenuEmprendedor.faseMenuEmprendedor.Inicio)
+      if (this.CanHandle(message) && (CurrentForm as FrmMenuEmprendedor).CurrentState == HandlerMenuEmprendedor.faseMenuEmprendedor.Eligiendo)
       {
         response = string.Empty;
         switch (message.TxtMensaje)
         {
           case "1":
             (CurrentForm as FrmMenuEmprendedor).CurrentState = HandlerMenuEmprendedor.faseMenuEmprendedor.Inicio;
-            this.CurrentForm.ChangeForm(new FrmBusqueda(), message.ChatID);
+            this.CurrentForm.ChangeForm(new FrmBusqueda((CurrentForm as FrmMenuEmprendedor).InstanciaLoggeada), message.ChatID);
             break;
           case "2":
             (CurrentForm as FrmMenuEmprendedor).CurrentState = HandlerMenuEmprendedor.faseMenuEmprendedor.Inicio;

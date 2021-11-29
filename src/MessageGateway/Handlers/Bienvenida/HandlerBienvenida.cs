@@ -34,7 +34,7 @@ namespace MessageGateway.Handlers.Bienvenida
         protected override bool InternalHandle(IMessage message, out string response)
         {
             if (this.CanHandle(message) && (CurrentForm as FrmBienvenida).CurrentState == faseWelcome.Inicio 
-            || message.TxtMensaje.ToLower() == "menu" && (CurrentForm as FrmBienvenida).CurrentState == faseWelcome.Eligiendo)
+            || message.TxtMensaje.ToLower() == "menu")
             {
                 StringBuilder sb = new StringBuilder();
                 sb.AppendJoin('\n',

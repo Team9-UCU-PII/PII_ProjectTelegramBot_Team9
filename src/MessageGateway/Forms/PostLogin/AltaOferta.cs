@@ -15,7 +15,7 @@ namespace MessageGateway.Forms
     /// <summary>
     /// Formulario que recopilara la información necesaria para crear una publicacion.
     /// </summary>
-    public class FrmAltaOferta : FormularioBase, IFormulario, ILocationForm, IResiduoForm
+    public class FrmAltaOferta : FormularioBase, IFormulario, ILocationForm, IResiduoForm, IPostLogin
     {
 
         /// <summary>
@@ -78,7 +78,19 @@ namespace MessageGateway.Forms
         /// <summary>
         /// La empresa vendedora.
         /// </summary>
-        public Empresa Vendedor;
+        public Empresa Vendedor
+        {
+            get 
+            {
+                return this.InstanciaLoggeada as Empresa;
+            }
+        }
+
+        /// <summary>
+        /// Propiedad que permite acceder a la empresa loggeada.
+        /// </summary>
+        /// <value>Empresa.</value>
+        public IUsuario InstanciaLoggeada {get;set;}
 
         /// <summary>
         /// Descripcion de la publicación.
@@ -88,13 +100,13 @@ namespace MessageGateway.Forms
         /// <summary>
         /// Constructor del formulario creador de publicaciones con sus handlers.
         /// </summary>
-        public FrmAltaOferta(Empresa vendedor)
+        public FrmAltaOferta(IUsuario vendedor)
         {
             CurrentState = HandlerAltaOferta.fasesAltaOferta.Inicio;
             CurrentStateLocation = HandlerLocation.faseLocation.Inicio;
             CurrentStateResiduo = HandlerNewResiduo.fasesResiduo.Inicio;
 
-            this.Vendedor = vendedor;
+            this.InstanciaLoggeada = vendedor;
 
             this.messageHandler =
             new HandlerAltaOferta(

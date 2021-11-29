@@ -5,7 +5,6 @@
 //--------------------------------------------------------------------------------
 
 using MessageGateway.Handlers.Login;
-using ClassLibrary.User;
 
 namespace MessageGateway.Forms
 {

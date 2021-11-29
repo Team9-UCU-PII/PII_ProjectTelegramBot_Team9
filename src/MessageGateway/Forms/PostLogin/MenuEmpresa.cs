@@ -13,19 +13,20 @@ namespace MessageGateway.Forms
   /// <summary>
   /// Primer formulario del chat luego del login o el registro de una empresa.
   /// </summary>
-  public class FrmMenuEmpresa : FormularioBase
+  public class FrmMenuEmpresa : FormularioBase, IPostLogin
   {
 
     /// <summary>
     /// Constructor del formulario con sus handlers.
     /// </summary>
-    public FrmMenuEmpresa(Empresa empresa)
+    public FrmMenuEmpresa(IUsuario empresa)
     {
       this.messageHandler =
         new HandlerMenuEmpresa(
           new HandlerOpcionesMenuEmpresa(null)
         );
-            this.empresa = empresa;
+            this.InstanciaLoggeada = empresa;
+      this.CurrentState = HandlerMenuEmpresa.faseMenuEmpresa.Inicio;
     }
 
     /// <summary>
@@ -34,8 +35,9 @@ namespace MessageGateway.Forms
     public HandlerMenuEmpresa.faseMenuEmpresa CurrentState = HandlerMenuEmpresa.faseMenuEmpresa.Inicio;
     
     /// <summary>
-    /// Instancia de la empresa parada en el menu.
+    /// Obtiene o establece la instancia de la empresa parada en el menu.
     /// </summary>
-    public Empresa empresa;
+    /// <value>Empresa.</value>
+    public IUsuario InstanciaLoggeada {get; set;}
     }
 }
