@@ -153,6 +153,39 @@ namespace MessageGateway.Handlers
                 (CurrentForm as FrmBusqueda).CurrentState = FasesBusqueda.FiltroFrecuenciaRestock;
                 return true;
             }
+            else if (message.TxtMensaje.ToLower() == "si" && (CurrentForm as FrmBusqueda).CurrentState == FasesBusqueda.FiltroFrecuenciaRestock)
+            {
+                StringBuilder sb = new StringBuilder();
+                sb.Append($"¿Con que frecuencia anual?\n");
+                response = sb.ToString();
+                (CurrentForm as FrmBusqueda).CurrentState = FasesBusqueda.tomandoFiltroFrecuenciaRestock;
+                return true;
+            }
+            else if ((message.TxtMensaje.ToLower() == "no" && (CurrentForm as FrmBusqueda).CurrentState == FasesBusqueda.FiltroFrecuenciaRestock)
+            || (CurrentForm as FrmBusqueda).CurrentState == FasesBusqueda.tomandoFiltroFrecuenciaRestock)
+            {
+                StringBuilder sb = new StringBuilder();
+
+                if((CurrentForm as FrmBusqueda).CurrentState == FasesBusqueda.tomandoFiltroFrecuenciaRestock)
+                {
+                    if (int.TryParse(message.TxtMensaje, out int valor))
+                    {
+                        sb.Append("Añadido el filtro.");
+                        (CurrentForm as FrmBusqueda).AddFilter(new FiltroPorFrecuenciaRestock(valor));
+                    }
+                    else
+                    {
+                        sb.Append("Ingresa un valor numerico maximo.");
+                        response = sb.ToString();
+                        return true;
+                    }
+                }
+
+                sb.Append($"¿Listo para buscar?\n");
+                response = sb.ToString();
+                (CurrentForm as FrmBusqueda).CurrentState = FasesBusqueda.Done;
+                return true;
+            }
             else
             {
                 response = string.Empty;
@@ -209,7 +242,9 @@ namespace MessageGateway.Handlers
             /// <summary>
             /// Se espera respuesta si quiere filtrar por frecuencia de restock.
             /// </summary>
-            FiltroFrecuenciaRestock
+            FiltroFrecuenciaRestock,
+            tomandoFiltroFrecuenciaRestock,
+            Done
         }
     }
 }

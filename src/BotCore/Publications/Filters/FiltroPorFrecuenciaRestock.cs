@@ -21,14 +21,14 @@ namespace BotCore.Publication.Filters
         /// <value>IFiltroBusqueda.</value>
         public IFiltroBusqueda Next {get; set;}
 
-        private PublicacionRecurrente frecuencia;
+        private int frecuencia;
 
         /// <summary>
         /// Método que recibe el tipo de filtro y el siguiente filtro de búsqueda.
         /// </summary>
         /// <param name="frecuencia"><see cref = "PublicacionRecurrente"/>.</param>
         /// <param name="next"><see cref = "IFiltroBusqueda"/>.</param>
-        public FiltroPorFrecuenciaRestock(PublicacionRecurrente frecuencia, IFiltroBusqueda next = null)
+        public FiltroPorFrecuenciaRestock(int frecuencia, IFiltroBusqueda next = null)
         {
             this.frecuencia = frecuencia;
             this.Next = next;
@@ -45,7 +45,7 @@ namespace BotCore.Publication.Filters
 
             foreach(Publicacion p in publicaciones)
             {
-                if(p == this.frecuencia)
+                if((p is PublicacionRecurrente) && (p as PublicacionRecurrente).FrecuenciaAnualRestock == this.frecuencia)
                 {
                     publicacionesFiltradas.Add(p);
                 }
