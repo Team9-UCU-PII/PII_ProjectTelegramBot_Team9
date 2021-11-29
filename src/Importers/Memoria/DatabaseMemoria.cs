@@ -86,7 +86,7 @@ namespace Importers.Memoria
         {
             if (! this.ListExists<T>())
             {
-                throw new ArgumentException("No existe el almacenamiento de este objeto todavía.");
+                this.CreateEmptyList<T>();
             }
             
             return this.GetTypedList<T>();
