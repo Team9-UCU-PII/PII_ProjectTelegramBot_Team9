@@ -4,9 +4,7 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using ClassLibrary.Publication;
-using ClassLibrary.LocationAPI;
+using BotCore.Publication.Filters;
 using ClassLibrary.User;
 using MessageGateway.Handlers;
 
@@ -28,6 +26,8 @@ namespace MessageGateway.Forms
             new HandlerBusqueda((null));
         }
 
+        public string dpto;
+
         /// <summary>
         /// El estado del formulario, dado por su handler principal.
         /// </summary>
@@ -39,5 +39,24 @@ namespace MessageGateway.Forms
         /// </summary>
         /// <value>Emprendedor.</value>
         public IUsuario InstanciaLoggeada {get; set;}
+
+        public IFiltroBusqueda cadenaFilters {get; set;}
+        public void AddFilter(IFiltroBusqueda filtro)
+        {
+            if (this.cadenaFilters == null)
+            {
+                this.cadenaFilters = filtro;
+            }
+            else
+            {
+                IFiltroBusqueda filter = this.cadenaFilters;
+                do
+                {
+                    filter = filter.Next;
+                }
+                while (filter!=null);
+                filter.Next = filtro;
+            }
+        }
     }
 }

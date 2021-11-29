@@ -19,18 +19,18 @@ namespace BotCore.Publication.Filters
         /// Obtiene el siguiente filtro de búsqueda.
         /// </summary>
         /// <value>IFiltroBusqueda.</value>
-        public IFiltroBusqueda Next {get;}
+        public IFiltroBusqueda Next {get; set;}
 
-        private Residuo residuo;
+        private string residuo;
 
         /// <summary>
         /// Método que recibe el tipo de filtro y el siguiente filtro de búsqueda.
         /// </summary>
         /// <param name="residuo"><see cref = "Residuo"/>.</param>
         /// <param name="next"><see cref = "IFiltroBusqueda"/>.</param>
-        public FiltroPorResiduo(Residuo residuo, IFiltroBusqueda next = null)
+        public FiltroPorResiduo(string tipoResiduo, IFiltroBusqueda next = null)
         {
-            this.residuo = residuo;
+            this.residuo = tipoResiduo;
             this.Next = next;
         }
 
@@ -45,7 +45,7 @@ namespace BotCore.Publication.Filters
 
             foreach(Publicacion p in publicaciones)
             {
-                if(p.Residuo == this.residuo)
+                if(p.Residuo.Descripcion == this.residuo)
                 {
                     publicacionesFiltradas.Add(p);
                 }

@@ -14,6 +14,7 @@ using ClassLibrary.Publication;
 using ClassLibrary.LocationAPI;
 using ClassLibrary.User;
 using Importers;
+using BotCore.Publication.Filters;
 
 namespace BotCore.Publication
 {
@@ -27,31 +28,6 @@ namespace BotCore.Publication
         private Busqueda()
         {
             this.da = DataAccess.Instancia;
-        }
-        
-        /// <summary>
-        /// Los filtros competentes para las busquedas, corresponden con propiedades
-        /// principales de <see cref ="Publicacion"/> y su subclase <see cref ="PublicacionRecurrente"/>.
-        /// </summary>
-        public enum FiltrosPosibles
-        {
-            /// Filtro de tipo empresa.
-            Empresa,
-
-            /// Filtro de tipo residuo.
-            Residuo,
-
-            /// Filtro de donde se debe retirar.
-            LugarRetiro,
-
-            /// Filtro del precio maximo dispuesto a pagar.
-            PrecioMaximo,
-
-            /// Filtro de de restock para publicaciones recurrentes.
-            FrecuenciaRestock,
-            
-            ///Filtro segun categoria
-            Categorias
         }
 
         /// <summary>
@@ -78,95 +54,18 @@ namespace BotCore.Publication
         /// </summary>
         /// <param name="publicacionesASeparar">Un diccionario de clave un miembro del enum de FiltrosPosibles y valor la especificacion deseada (string o int).</param>
         /// <returns>Una List de publicaciones que cumplen las condiciones de PublicacionesASeparar.</returns>
-        public List<Publicacion> BuscarPublicaciones(Dictionary<FiltrosPosibles, object> publicacionesASeparar)
+        public List<Publicacion> BuscarPublicaciones(IFiltroBusqueda cadenaFilters)
         {
-            if (publicacionesASeparar == null)
+            if (cadenaFilters == null)
             {
-                throw new ArgumentNullException(nameof(publicacionesASeparar), "publicacionesASeparar es null");
+                throw new ArgumentNullException(nameof(cadenaFilters), "cadenaFilters es null");
             }
 
-            List<Publicacion> result = new List<Publicacion>();
-            List<Publicacion> publicacionesNoAptas = new List<Publicacion>();
             List<Publicacion> publicacionesActivas = da.Obtener<Publicacion>()
                                                     .Concat(da.Obtener<PublicacionRecurrente>())
                                                     .Where((Publicacion p) => !p.Comprado).ToList();
 
-            foreach (var filtro in publicacionesASeparar)
-            {
-                foreach (Publicacion suspect in publicacionesActivas)
-                {
-                    // Con el transcurso del curso, nos hemos dado cuenta de que este enfoque a través
-                    // de un diccionario y un switch es frágil. En retrospectiva, y con miras a implementarlo
-                    // para la entrega final, consideramos que podríamos crear varias clases que implementen
-                    // una interfaz común IFiltroBusqueda, de forma que cada filtro concreto implemente su
-                    // acción de filtro correspondiente.
-                    switch (filtro.Key)
-                    {
-                        case FiltrosPosibles.Empresa:
-                            if (suspect.Vendedor != (Empresa) filtro.Value)
-                            {
-                                publicacionesNoAptas.Add(suspect);
-                            }
-
-                            break;
-                        case FiltrosPosibles.Residuo:
-                            if (suspect.Residuo != (Residuo) filtro.Value)
-                            {
-                                publicacionesNoAptas.Add(suspect);
-                            }
-
-                            break;
-                        case FiltrosPosibles.LugarRetiro:
-                            if (suspect.LugarRetiro != (Location) filtro.Value)
-                            {
-                                publicacionesNoAptas.Add(suspect);
-                            }
-
-                            break;
-                        case FiltrosPosibles.PrecioMaximo:
-                            if (suspect.PrecioUnitario > (double)filtro.Value)
-                            {
-                                publicacionesNoAptas.Add(suspect);
-                            }
-
-                            break;
-                        case FiltrosPosibles.FrecuenciaRestock:
-                            if ((int) filtro.Value == 0)
-                            {
-                                if (suspect is PublicacionRecurrente)
-                                {
-                                    publicacionesNoAptas.Add(suspect);
-                                }
-                            }
-                            else
-                            {
-                                if (suspect is not PublicacionRecurrente || (suspect as PublicacionRecurrente).FrecuenciaAnualRestock != (int) filtro.Value)
-                                {
-                                    publicacionesNoAptas.Add(suspect);
-                                }
-                            }
-                            break;
-                        case FiltrosPosibles.Categorias:
-                            if (suspect.Categoria != (Categoria) filtro.Value)
-                            {
-                                publicacionesNoAptas.Add(suspect);
-                            }
-                            break;
-                        default:
-                            break;
-                    }
-                }
-            }
-
-            foreach (Publicacion publicacion in publicacionesActivas)
-            {
-                if (!publicacionesNoAptas.Contains(publicacion))
-                {
-                    result.Add(publicacion);
-                }
-            }
-
-            return result;
+            return cadenaFilters.Filtrar(publicacionesActivas);
         }
     }
 }
