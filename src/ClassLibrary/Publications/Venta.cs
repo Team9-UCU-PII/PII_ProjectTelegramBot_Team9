@@ -30,6 +30,7 @@ namespace ClassLibrary.Publication
     {
       this.Comprador = comprador;
       this.Publicacion = publicacion;
+      this.Fecha = DateTime.Now;
     }
 
     /// <summary>
@@ -45,6 +46,8 @@ namespace ClassLibrary.Publication
     /// Obtiene o establece la fecha de venta.
     /// </summary>
     /// <value><see cref = "DateTime"/>.</value>
+    
+    [JsonInclude]
     public DateTime Fecha { get; set; }
 
     /// <summary>
