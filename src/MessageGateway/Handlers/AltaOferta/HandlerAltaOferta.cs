@@ -196,8 +196,8 @@ namespace MessageGateway.Handlers
                         }
                     }
 
-                    response = "Creada y Publicada la Oferta, volviendo al menu principal...";
-                    CurrentForm.ChangeForm(new FrmMenuEmpresa(oferta.Vendedor), message.ChatID);
+                    response = "Creada y Publicada la Oferta, di \"/abortar\" para volver al menu principal...";
+                    ((CurrentForm as FrmAltaOferta)).CurrentState = fasesAltaOferta.Done;
                     return true;
                 }
                 else
