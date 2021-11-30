@@ -14,7 +14,7 @@ namespace MessageGateway.Forms
     /// </summary>
     public abstract class FormularioBase : IFormulario
     {
-        private IGateway gateway = AdaptadorTelegram.Instancia;
+        public IGateway gateway = AdaptadorTelegram.Instancia;
 
         private IMessageHandler _messageHandler;
 
