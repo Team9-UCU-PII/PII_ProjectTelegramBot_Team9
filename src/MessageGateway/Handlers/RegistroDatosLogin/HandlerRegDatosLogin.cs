@@ -4,12 +4,12 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 
-
 using System.Text;
 using System.Collections.Generic;
 using ClassLibrary.User;
 using MessageGateway.Forms;
 using Importers;
+using BotCore.User;
 
 namespace MessageGateway.Handlers.RegistroDatosLogin
 {
@@ -54,14 +54,11 @@ namespace MessageGateway.Handlers.RegistroDatosLogin
             {
                 List<IUsuario> usersExistentes = database.Obtener<IUsuario>();
                 StringBuilder sb = new StringBuilder();
-                foreach (IUsuario user in usersExistentes)
+                if (RegistroUsuario.UsuarioYaExiste(message.TxtMensaje))
                 {
-                    if (user.DatosLogin.NombreUsuario == message.TxtMensaje)
-                    {
-                        sb.Append("Este nombre de usuario ya esta tomado");
-                        response = sb.ToString();
-                        return true;
-                    }
+                    sb.Append("Este nombre de usuario ya esta tomado");
+                    response = sb.ToString();
+                    return true;
                 }
                 
                 sb.Append("Muy bien, ahora escribe una contraseña.");

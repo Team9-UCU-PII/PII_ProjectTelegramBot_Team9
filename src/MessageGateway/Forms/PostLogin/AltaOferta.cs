@@ -104,7 +104,6 @@ namespace MessageGateway.Forms
         {
             CurrentState = HandlerAltaOferta.fasesAltaOferta.Inicio;
             CurrentStateLocation = HandlerLocation.faseLocation.Inicio;
-            CurrentStateResiduo = HandlerNewResiduo.fasesResiduo.Inicio;
 
             this.InstanciaLoggeada = vendedor;
 

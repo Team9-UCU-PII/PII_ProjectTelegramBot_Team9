@@ -6,9 +6,8 @@
 
 using System.Text;
 using MessageGateway.Forms;
-using ClassLibrary.LocationAPI;
-using Importers;
 using ClassLibrary.Publication;
+using BotCore.Publication;
 
 namespace MessageGateway.Handlers
 {
@@ -37,17 +36,17 @@ namespace MessageGateway.Handlers
         /// <returns>True: si se pudo manejar el mensaje.</returns>
         protected override bool InternalHandle(IMessage message, out string response)
         {
-            if (this.CanHandle(message) && (CurrentForm as FrmAltaOferta).CurrentState == fasesAltaOferta.Inicio 
+            if ((CurrentForm as FrmAltaOferta).CurrentState == fasesAltaOferta.Inicio 
             || (this.CanHandle(message) && (CurrentForm as FrmAltaOferta).CurrentState == fasesAltaOferta.Eligiendo))
             {
                 StringBuilder sb = new StringBuilder();
-                sb.Append($"Vamos a crear una publicación...\n");
+                sb.Append($"Vamos a crear/modificar una publicación...\n");
                 sb.Append ($"¿Qué quieres especificar?\n ");
                 sb.Append ($"1.Residuo\n");
                 sb.Append ($"2.Costo y Cantidad\n");
                 sb.Append ($"3.Lugar de Retiro\n");
                 sb.Append ($"4.Descripción\n");
-                sb.Append ($"5.Recurrencia del residuo (si es aplicable).");
+                sb.Append ($"5.Recurrencia del residuo (si es aplicable).\n");
                 sb.Append ($"6.Listo y Publicar");
                 response = sb.ToString();
                 (CurrentForm as FrmAltaOferta).CurrentState = fasesAltaOferta.Eligiendo;
@@ -152,15 +151,49 @@ namespace MessageGateway.Handlers
             else if (message.TxtMensaje == "6" && (CurrentForm as FrmAltaOferta).CurrentState == fasesAltaOferta.Eligiendo)
             {
                 Publicacion oferta = (CurrentForm as FrmAltaOferta).Oferta;
+                Publicador publish = Publicador.Instancia;
                 if (oferta != null)
                 {
                     if (oferta is PublicacionRecurrente)
                     {
-                        da.Insertar(oferta as PublicacionRecurrente);
+                        try
+                        {
+                            publish.PublicarOfertaRecurrente
+                            (oferta.Residuo, 
+                            oferta.PrecioUnitario, 
+                            oferta.Moneda, 
+                            oferta.Cantidad, 
+                            oferta.LugarRetiro, 
+                            oferta.Vendedor, 
+                            oferta.Descripcion, 
+                            oferta.Categoria, 
+                            (oferta as PublicacionRecurrente).FrecuenciaAnualRestock);
+                        }
+                        catch (System.Exception)
+                        {
+                            response =  "Esa publicación ya existe";
+                            return true;
+                        }
                     }
                     else
                     {
-                        da.Insertar(oferta as Publicacion);
+                        try
+                        {
+                        publish.PublicarOferta
+                        (oferta.Residuo, 
+                        oferta.PrecioUnitario, 
+                        oferta.Moneda, 
+                        oferta.Cantidad, 
+                        oferta.LugarRetiro, 
+                        oferta.Vendedor, 
+                        oferta.Descripcion, 
+                        oferta.Categoria);
+                        }
+                        catch (System.Exception)
+                        {
+                            response =  "Esa publicación ya existe";
+                            return true;
+                        }
                     }
 
                     response = "Creada y Publicada la Oferta, volviendo al menu principal...";
@@ -222,6 +255,5 @@ namespace MessageGateway.Handlers
             ///Lista la publicación.
             Done
         }
-        private DataAccess da = DataAccess.Instancia;
     }
 }

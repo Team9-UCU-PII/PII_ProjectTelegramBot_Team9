@@ -62,6 +62,8 @@ namespace BotCore.Publication
             }
 
             venta.Publicacion.Comprado = true;
+            venta.Comprador.Historial.Add(venta);
+            venta.Publicacion.Vendedor.Historial.Add(venta);
             da.Actualizar(venta.Publicacion, venta.Publicacion);
             venta.Fecha = DateTime.Now;
             da.Insertar(venta);

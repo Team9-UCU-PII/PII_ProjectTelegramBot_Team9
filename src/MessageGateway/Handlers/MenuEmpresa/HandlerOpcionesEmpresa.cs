@@ -33,7 +33,7 @@ namespace MessageGateway.Handlers.MenuEmpresa
     protected override bool InternalHandle(IMessage message, out string response)
     {
       response = string.Empty;
-      if (this.CanHandle(message) && (CurrentForm as FrmMenuEmpresa).CurrentState == HandlerMenuEmpresa.faseMenuEmpresa.Inicio)
+      if (this.CanHandle(message) && (CurrentForm as FrmMenuEmpresa).CurrentState == HandlerMenuEmpresa.faseMenuEmpresa.Eligiendo)
       {
         response = string.Empty;
         switch (message.TxtMensaje)
@@ -47,9 +47,6 @@ namespace MessageGateway.Handlers.MenuEmpresa
             break;
           case "3":
             //this.CurrentForm.ChangeForm(new FrmReportes(), message.ChatID);
-            break;
-          case "4":
-            //this.CurrentForm.ChangeForm(new FrmCuenta(), message.ChatID);
             break;
           default:
             return false;
