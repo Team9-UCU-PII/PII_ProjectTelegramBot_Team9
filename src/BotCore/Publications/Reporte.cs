@@ -4,7 +4,7 @@
 // </copyright>
 //
 // Patrón utilizado: Expert
-//La clase Reporte es la que tiene toda la información necesaria para generar el reporte de publicaciones vendidas.
+// La clase Reporte es la que tiene toda la información necesaria para generar el reporte de publicaciones vendidas.
 //--------------------------------------------------------------------------------
 
 using System;

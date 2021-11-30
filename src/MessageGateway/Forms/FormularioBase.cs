@@ -5,7 +5,8 @@
 //
 // Pricnipio utilizado: DIP
 // La clase FormularioBase implementa la interfaz IFormulario siguiendo 
-// el principio de inversión de dependencias.
+// el principio de inversión de dependencias, para que dicha clase no
+// dependa o se vea afectado ante cambios en cada formulario (subclases).
 //--------------------------------------------------------------------------------
 
 using MessageGateway.Handlers;
