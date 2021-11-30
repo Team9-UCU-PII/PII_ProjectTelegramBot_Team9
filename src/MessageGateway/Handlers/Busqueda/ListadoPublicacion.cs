@@ -11,7 +11,6 @@ using ClassLibrary.Publication;
 using MessageGateway.Forms;
 using ClassLibrary.User;
 using System;
-using System.Runtime.Serialization;
 
 namespace MessageGateway.Handlers.ListadoPublicaciones
 {
@@ -67,12 +66,8 @@ namespace MessageGateway.Handlers.ListadoPublicaciones
           {
             sb.AppendJoin('\n',
             $"Detalles de la publicación: {publicacion.Residuo.Descripcion}\n",
-            $"Vendedor: {publicacion.Vendedor.Nombre}\n",
-            $"Precio: {publicacion.PrecioTotal}\n",
-            $"Categoría: {publicacion.Categoria.Nombre}\n",
-            $"Cantidad: {publicacion.Cantidad}\n",
-            $"Lugar de retiro: {publicacion.LugarRetiro.FormattedAddress}\n",
-            "---------------------------------------------------------------\n",
+            $"{publicacion.GetTextToPrint()}\n",
+            "-----------------------------------",
             "Marque la opción que desee: \n",
             "1 - Ver ubicación\n",
             "2 - Comparar"
@@ -145,26 +140,6 @@ namespace MessageGateway.Handlers.ListadoPublicaciones
 
       ///Final.
       Done
-    }
-
-    [Serializable]
-    private class ArgumentExeption : Exception
-    {
-      public ArgumentExeption()
-      {
-      }
-
-      public ArgumentExeption(string message) : base(message)
-      {
-      }
-
-      public ArgumentExeption(string message, Exception innerException) : base(message, innerException)
-      {
-      }
-
-      protected ArgumentExeption(SerializationInfo info, StreamingContext context) : base(info, context)
-      {
-      }
     }
   }
 }
