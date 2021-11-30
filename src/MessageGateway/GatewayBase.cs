@@ -16,6 +16,9 @@ namespace MessageGateway
     /// </summary>
     public abstract class GatewayBase : IGateway
     {
+        /// <summary>
+        /// Hora de inicio.
+        /// </summary>
         protected readonly DateTime startupTime;
 
         /// <summary>

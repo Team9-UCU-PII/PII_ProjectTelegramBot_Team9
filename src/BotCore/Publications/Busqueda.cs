@@ -46,13 +46,13 @@ namespace BotCore.Publication
                 return instancia;
             }
         }
-
+        
         private static Busqueda instancia { get; set; }
 
         /// <summary>
-        /// Servicio principal de la busqueda.
+        /// Servicio principal de la busqueda
         /// </summary>
-        /// <param name="publicacionesASeparar">Un diccionario de clave un miembro del enum de FiltrosPosibles y valor la especificacion deseada (string o int).</param>
+        /// <param name="cadenaFilters"><see cref = "IFiltroBusqueda"/>.</param>
         /// <returns>Una List de publicaciones que cumplen las condiciones de PublicacionesASeparar.</returns>
         public List<Publicacion> BuscarPublicaciones(IFiltroBusqueda cadenaFilters)
         {

@@ -53,7 +53,7 @@ namespace BotCore.User
         /// Metodo que crea la <see cref = "Invitacion"/> y la envia al destinatario especificado.
         /// </summary>
         /// <param name="nombreTempUsuario">el nombre provisorio con el que se almacena el usuario.</param>
-        /// <typeparam name="T">el tipo de usuario a invitar.</typeparam>
+        /// <returns></returns>
         public Invitacion AlmacenarInvitacion(string nombreTempUsuario)
         {
             Empresa user = new Empresa(nombreTempUsuario);

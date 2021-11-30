@@ -212,38 +212,70 @@ namespace MessageGateway.Handlers
             /// Se espera respuesta si quiere filtrar por empresa.
             /// </summary>
             FiltroEmpresa,
+
+            /// <summary>
+            /// Se espera respuesta de que empresa.
+            /// </summary>
             tomandoFiltroEmpresa,
 
             /// <summary>
             /// Se espera respuesta si quiere filtrar por ecategoría.
             /// </summary>
             FiltroCategoria,
+
+            /// <summary>
+            /// Se espera respuesta por cuál categoría.
+            /// </summary>
             tomandoFiltroCategoria,
 
             /// <summary>
             /// Se espera respuesta si quiere filtrar por lugar de retiro.
             /// </summary>
             FiltroLugarRetiro,
+
+            /// <summary>
+            /// Se espera respuesta por el lugar de retiro (dpto).
+            /// </summary>
             tomandoFiltroLugarRetiro1,
+
+            /// <summary>
+            /// Se espera respuesta por el lugar de retiro (ciudad).
+            /// </summary>
             tomandoFiltroLugarRetiro2,
 
             /// <summary>
             /// Se espera respuesta si quiere filtrar por residuo.
             /// </summary>
             FiltroResiduo,
+
+            /// <summary>
+            /// Se espera respuesta por el tipo de residuo.
+            /// </summary>
             tomandoFiltroResiduo,
 
             /// <summary>
             /// Se espera respuesta si quiere filtrar por precio máximo.
             /// </summary>
             FiltroPrecioMaximo,
+
+            /// <summary>
+            /// Se espera respuesta por el precio máximo a pagar.
+            /// </summary>
             tomandoFiltroPrecioMaximo,
 
             /// <summary>
             /// Se espera respuesta si quiere filtrar por frecuencia de restock.
             /// </summary>
             FiltroFrecuenciaRestock,
+
+            /// <summary>
+            /// Se espera respuesta por frecuencia de restock.
+            /// </summary>
             tomandoFiltroFrecuenciaRestock,
+
+            /// <summary>
+            /// Finalizada la búsqueda.
+            /// </summary>
             Done
         }
     }
