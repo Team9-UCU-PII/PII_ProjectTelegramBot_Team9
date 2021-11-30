@@ -38,6 +38,8 @@ namespace MessageGateway.Forms
             }
         }
 
+        public Publicacion ofertaModificable;
+
         /// <summary>
         /// Precio por unidad del residuo.
         /// </summary>

@@ -154,11 +154,37 @@ namespace MessageGateway.Handlers
                 Publicador publish = Publicador.Instancia;
                 if (oferta != null)
                 {
-                    if (oferta is PublicacionRecurrente)
+                    if ((CurrentForm as FrmAltaOferta).ofertaModificable == null)
                     {
-                        try
+                        if (oferta is PublicacionRecurrente)
                         {
-                            publish.PublicarOfertaRecurrente
+                            try
+                            {
+                                publish.PublicarOfertaRecurrente
+                                (oferta.Residuo, 
+                                oferta.PrecioUnitario, 
+                                oferta.Moneda, 
+                                oferta.Cantidad, 
+                                oferta.LugarRetiro, 
+                                oferta.Vendedor, 
+                                oferta.Descripcion, 
+                                oferta.Categoria, 
+                                (oferta as PublicacionRecurrente).FrecuenciaAnualRestock);
+                            }
+                            catch (System.Exception)
+                            {
+                                response =  "Esa publicación ya existe";
+                                return true;
+                            }
+                            response = "Creada y Publicada la Oferta, di \"/abortar\" para volver al menu principal...";
+                            ((CurrentForm as FrmAltaOferta)).CurrentState = fasesAltaOferta.Done;
+                            return true;
+                        }
+                        else
+                        {
+                            try
+                            {
+                            publish.PublicarOferta
                             (oferta.Residuo, 
                             oferta.PrecioUnitario, 
                             oferta.Moneda, 
@@ -166,39 +192,32 @@ namespace MessageGateway.Handlers
                             oferta.LugarRetiro, 
                             oferta.Vendedor, 
                             oferta.Descripcion, 
-                            oferta.Categoria, 
-                            (oferta as PublicacionRecurrente).FrecuenciaAnualRestock);
-                        }
-                        catch (System.Exception)
-                        {
-                            response =  "Esa publicación ya existe";
+                            oferta.Categoria);
+                            }
+                            catch (System.Exception)
+                            {
+                                response =  "Esa publicación ya existe";
+                                return true;
+                            }
+                            response = "Creada y Publicada la Oferta, di \"/abortar\" para volver al menu principal...";
+                            ((CurrentForm as FrmAltaOferta)).CurrentState = fasesAltaOferta.Done;
                             return true;
                         }
                     }
                     else
                     {
-                        try
+                        if (oferta is PublicacionRecurrente)
                         {
-                        publish.PublicarOferta
-                        (oferta.Residuo, 
-                        oferta.PrecioUnitario, 
-                        oferta.Moneda, 
-                        oferta.Cantidad, 
-                        oferta.LugarRetiro, 
-                        oferta.Vendedor, 
-                        oferta.Descripcion, 
-                        oferta.Categoria);
+                            publish.ActualizarOfertaRecurrente((CurrentForm as FrmAltaOferta).ofertaModificable as PublicacionRecurrente, oferta as PublicacionRecurrente);
                         }
-                        catch (System.Exception)
+                        else
                         {
-                            response =  "Esa publicación ya existe";
-                            return true;
+                            publish.ActualizarOfertaRecurrente((CurrentForm as FrmAltaOferta).ofertaModificable as PublicacionRecurrente, oferta as PublicacionRecurrente);
                         }
-                    }
-
-                    response = "Creada y Publicada la Oferta, di \"/abortar\" para volver al menu principal...";
+                    response = "Modificada y RePublicada la Oferta, di \"/abortar\" para volver al menu principal...";
                     ((CurrentForm as FrmAltaOferta)).CurrentState = fasesAltaOferta.Done;
                     return true;
+                    }
                 }
                 else
                 {

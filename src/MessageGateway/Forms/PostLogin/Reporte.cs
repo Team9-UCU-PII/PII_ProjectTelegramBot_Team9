@@ -1,6 +1,5 @@
 using System;
 using BotCore.Publication;
-using ClassLibrary.Publication;
 using ClassLibrary.User;
 using MessageGateway.Handlers;
 
@@ -16,10 +15,12 @@ namespace MessageGateway.Forms
     /// <summary>
     /// Constructor del formulario con su handler.
     /// </summary>
-    public FrmReporte()
+    public FrmReporte(IUsuario user)
     {
+      this.InstanciaLoggeada = user;
       this.messageHandler =
-      new HandlerReporte(null);
+        new HandlerReporte(null);
+      this.CurrentState = HandlerReporte.faseReporte.Inicio;
     }
 
     /// <summary>

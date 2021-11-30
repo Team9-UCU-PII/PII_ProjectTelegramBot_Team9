@@ -44,7 +44,10 @@ namespace MessageGateway.Handlers.MenuEmprendedor
             break;
           case "2":
             (CurrentForm as FrmMenuEmprendedor).CurrentState = HandlerMenuEmprendedor.faseMenuEmprendedor.Inicio;
-            //this.CurrentForm.ChangeForm(new FrmReportes(), message.ChatID);
+            this.CurrentForm.ChangeForm(new FrmReporte((CurrentForm as FrmMenuEmprendedor).InstanciaLoggeada), message.ChatID);
+            break;
+          case "3":
+            this.CurrentForm.ChangeForm(new FrmBienvenida(), message.ChatID);
             break;
           default:
             return false;

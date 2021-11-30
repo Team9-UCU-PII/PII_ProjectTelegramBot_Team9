@@ -11,8 +11,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using ClassLibrary.Publication;
-using ClassLibrary.LocationAPI;
-using ClassLibrary.User;
 using Importers;
 using BotCore.Publication.Filters;
 
@@ -58,11 +56,10 @@ namespace BotCore.Publication
         {
             if (cadenaFilters == null)
             {
-                throw new ArgumentNullException(nameof(cadenaFilters), "cadenaFilters es null");
+                List<Publicacion> todasLasPublicaciones = da.Obtener<Publicacion>();
+                return todasLasPublicaciones;
             }
-
-            List<Publicacion> publicacionesActivas = da.Obtener<Publicacion>()
-                                                    .Concat(da.Obtener<PublicacionRecurrente>())
+            List<Publicacion> publicacionesActivas = da.Obtener<Publicacion>().Concat(da.Obtener<PublicacionRecurrente>())
                                                     .Where((Publicacion p) => !p.Comprado).ToList();
 
             return cadenaFilters.Filtrar(publicacionesActivas);

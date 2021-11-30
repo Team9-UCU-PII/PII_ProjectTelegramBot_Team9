@@ -80,6 +80,26 @@ namespace BotCore.Publication
         }
 
         /// <summary>
+        /// Metodo que toma dos publicaciones y sustituye una por otra en la base de datos.
+        /// </summary>
+        /// <param name="ofertaOld">La oferta vieja</param>
+        /// <param name="ofertaNew">la oferta nueva.</param>
+        public void ActualizarOferta(Publicacion ofertaOld, Publicacion ofertaNew)
+        {
+            da.Actualizar(ofertaOld,ofertaNew);
+        }
+
+        /// <summary>
+        /// Metodo que toma dos publicaciones recurrentes y sustituye una por otra en la base de datos.
+        /// </summary>
+        /// <param name="ofertaOld">La oferta recurrente vieja</param>
+        /// <param name="ofertaNew">la oferta recurrente nueva.</param>
+        public void ActualizarOfertaRecurrente(PublicacionRecurrente ofertaOld, PublicacionRecurrente ofertaNew)
+        {
+            da.Actualizar(ofertaOld,ofertaNew);
+        }
+
+        /// <summary>
         /// Crea y persiste en memoria una nueva publicación recurrente.
         /// </summary>
         /// <param name="residuo"><see cref = "Residuo"/>.</param>

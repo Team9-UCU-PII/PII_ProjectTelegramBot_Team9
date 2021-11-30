@@ -38,11 +38,13 @@ namespace MessageGateway.Handlers.MenuEmpresa
         StringBuilder sb = new StringBuilder();
         sb.AppendJoin('\n',
         "Estas son las diferentes acciones que puedes realizar:",
+        "Escribe \"Menu\" si desea ver este mensaje de nuevo luego",
         "\n",
         "1. Crear publicación",
         "2. Modificar publicaciones",
         "3. Generar reportes",
-        "Si quiere salir escriba: /abortar");
+        "4. Cerrar Sesión",
+        "Si quiere cancelar un proceso escriba: /abortar");
 
         (CurrentForm as FrmMenuEmpresa).CurrentState = faseMenuEmpresa.Eligiendo;
         response = sb.ToString();
