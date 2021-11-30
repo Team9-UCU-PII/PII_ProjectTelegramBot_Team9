@@ -136,7 +136,7 @@ namespace ClassLibrary.Publication
       text.AppendLine($"Vendedor: {this.Vendedor.Nombre}");
       text.AppendLine(this.Descripcion);
       text.AppendLine($"Precio de venta: {this.Moneda} {this.PrecioTotal} ({this.Moneda} {this.PrecioUnitario} /{this.Residuo.UnidadMedida})");
-      text.AppendLine($"Lugar de retiro: {this.LugarRetiro}");
+      text.AppendLine($"Lugar de retiro: {this.LugarRetiro.FormattedAddress}");
       return text.ToString();
     }
 
