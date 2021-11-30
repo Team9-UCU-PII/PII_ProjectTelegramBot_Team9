@@ -84,13 +84,10 @@ namespace MessageGateway.Forms
             else
             {
                 IFiltroBusqueda filter = this.cadenaFilters;
-                IFiltroBusqueda nextFilter = filter.Next;
-                do
+                while (filter.Next != null)
                 {
                     filter = filter.Next;
-                    nextFilter = nextFilter.Next;
                 }
-                while (nextFilter!=null);
                 filter.Next = filtro;
             }
         }
