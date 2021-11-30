@@ -26,7 +26,7 @@ namespace MessageGateway.Handlers.ListadoPublicaciones
     /// </summary>
     /// <param name="next"></param>
     public HandlerListadoPublicaciones(IMessageHandler next)
-    : base((new string[] {}), next)
+    : base((new string[] {"menu"}), next)
     {
       this.Next = next;
     }
@@ -40,7 +40,8 @@ namespace MessageGateway.Handlers.ListadoPublicaciones
     /// <returns></returns>
     protected override bool InternalHandle(IMessage message, out string response)
     {
-      if ((CurrentForm as IListableForm).CurrentStateListado == fasesListado.Inicio)
+      if (((CurrentForm as IListableForm).CurrentStateListado == fasesListado.Inicio)
+      || (this.CanHandle(message) && ((CurrentForm as IListableForm).CurrentStateListado == fasesListado.EligiendoDetalles)))
       {
         StringBuilder sb = new StringBuilder();
         foreach (Publicacion publicacion in (CurrentForm as IListableForm).publicacionesFiltradas)
@@ -70,7 +71,7 @@ namespace MessageGateway.Handlers.ListadoPublicaciones
             "-----------------------------------",
             "Marque la opción que desee: \n",
             "1 - Ver ubicación\n",
-            "2 - Comparar"
+            "2 - Comprar"
           );
           (CurrentForm as IListableForm).publicacionSeparada = publicacion;
           response = sb.ToString();

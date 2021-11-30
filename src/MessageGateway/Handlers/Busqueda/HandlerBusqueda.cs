@@ -184,7 +184,7 @@ namespace MessageGateway.Handlers
                 sb.Append($"¿Listo para buscar?\n");
                 response = sb.ToString();
                 (CurrentForm as FrmBusqueda).CurrentState = FasesBusqueda.Done;
-                CurrentForm.ChangeForm(new FrmMenuEmprendedor((CurrentForm as FrmBusqueda).InstanciaLoggeada), message.ChatID);
+                (CurrentForm as IListableForm).CurrentStateListado = ListadoPublicaciones.HandlerListadoPublicaciones.fasesListado.VerUbicacion;
                 return true;
             }
             else

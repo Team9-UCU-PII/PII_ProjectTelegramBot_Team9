@@ -108,7 +108,7 @@ namespace MessageGateway.Handlers
                 (CurrentForm as FrmRegistroEmprendedor).CurrentState = FasesRegEmprendedor.TomandoHabilitacion;
                 return true;
             }
-            else if (message.TxtMensaje != "Ninguna" && message.TxtMensaje != "Listo" && (CurrentForm as FrmRegistroEmprendedor).CurrentState == FasesRegEmprendedor.TomandoHabilitacion)
+            else if ((message.TxtMensaje.ToLower() != "ninguna" && message.TxtMensaje.ToLower() != "listo") && (CurrentForm as FrmRegistroEmprendedor).CurrentState == FasesRegEmprendedor.TomandoHabilitacion)
             {
                 StringBuilder sb = new StringBuilder();
                 sb.Append($"Habilitación guardada con éxito!");
@@ -116,7 +116,7 @@ namespace MessageGateway.Handlers
                 (CurrentForm as FrmRegistroEmprendedor).habilitaciones.Add(new Habilitacion(message.TxtMensaje));
                 return true;
             }
-            else if ((message.TxtMensaje == "Ninguna" || message.TxtMensaje == "Listo") && (CurrentForm as FrmRegistroEmprendedor).CurrentState == FasesRegEmprendedor.TomandoHabilitacion)
+            else if ((message.TxtMensaje.ToLower() == "ninguna" || message.TxtMensaje.ToLower() == "listo") && (CurrentForm as FrmRegistroEmprendedor).CurrentState == FasesRegEmprendedor.TomandoHabilitacion)
             {
                 StringBuilder sb = new StringBuilder();
                 sb.Append($"Habilitaciones guardadas con éxito!");
