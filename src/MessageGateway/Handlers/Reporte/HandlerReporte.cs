@@ -4,14 +4,29 @@ using MessageGateway.Forms;
 
 namespace MessageGateway.Handlers
 {
+
+  /// <summary>
+  /// Handler de creación de los reportes.
+  /// </summary>
   public class HandlerReporte : MessageHandlerBase, IMessageHandler
   {
+
+    /// <summary>
+    /// Constructor, palabra clave "reporte".
+    /// </summary>
+    /// <param name="next">Siguiente IHandler</param>
     public HandlerReporte(IMessageHandler next)
     : base((new string[] { "reporte" }), next)
     {
       this.Next = next;
     }
 
+    /// <summary>
+    /// InternalHandle que va obteniendo los dieferentes datos de fechas para crear el reporte y luego lo muestra.
+    /// </summary>
+    /// <param name="message">IMessage traido del form.</param>
+    /// <param name="response">String de respuesta al usuario.</param>
+    /// <returns>True: si se pudo manejar.</returns>
     protected override bool InternalHandle(IMessage message, out string response)
     {
       if ((CurrentForm as FrmReporte).CurrentState == faseReporte.Inicio)
@@ -153,15 +168,34 @@ namespace MessageGateway.Handlers
       }
     }
 
+    /// <summary>
+    /// Fases del reporte.
+    /// </summary>
     public enum faseReporte
     {
+
+      ///Inicia el handler.
       Inicio,
+
+      ///Se espera el año de inicio en el próximo mensaje.
       AnioInicio,
+
+      ///Se espera el mes de inicio en el próximo mensaje.
       MesInicio,
+
+      ///Se espera el día de inicio en el próximo mensaje.
       DiaInicio,
+
+      ///Se espera el año de fin en el próximo mensaje.
       AnioFin,
+
+      ///Se espera el mes de fin en el próximo mensaje.
       MesFin,
+
+      ///Se espera el día de fin en el próximo mensaje.
       DiaFin,
+
+      ///Muestra el reporte terminado.
       Done
     }
   }
