@@ -6,7 +6,6 @@
 
 using System.Text;
 using BotCore.Publication;
-using System.Collections.Generic;
 using ClassLibrary.Publication;
 using MessageGateway.Forms;
 using ClassLibrary.User;
@@ -26,7 +25,7 @@ namespace MessageGateway.Handlers.ListadoPublicaciones
     /// </summary>
     /// <param name="next"></param>
     public HandlerListadoPublicaciones(IMessageHandler next)
-    : base((new string[] {}), next)
+    : base((new string[] {"menu"}), next)
     {
       this.Next = next;
     }
@@ -40,7 +39,8 @@ namespace MessageGateway.Handlers.ListadoPublicaciones
     /// <returns></returns>
     protected override bool InternalHandle(IMessage message, out string response)
     {
-      if ((CurrentForm as IListableForm).CurrentStateListado == fasesListado.Inicio)
+      if (((CurrentForm as IListableForm).CurrentStateListado == fasesListado.Inicio)
+      || (this.CanHandle(message) && ((CurrentForm as IListableForm).CurrentStateListado == fasesListado.EligiendoDetalles)))
       {
         StringBuilder sb = new StringBuilder();
         foreach (Publicacion publicacion in (CurrentForm as IListableForm).publicacionesFiltradas)
@@ -49,10 +49,10 @@ namespace MessageGateway.Handlers.ListadoPublicaciones
           $"Residuo: {publicacion.Residuo.Descripcion}\n",
           $"Vendedor: {publicacion.Vendedor.Nombre}\n",
           $"Precio: {publicacion.PrecioTotal}\n",
-          "----------------------------------------------"
+          "----------------------------------------------\n"
           );
         }
-        sb.Append("Para ver detalles escribí el nombre del residuo que quieras ver");
+        sb.AppendLine("Para ver detalles escribí el nombre del residuo que quieras ver");
         response = sb.ToString();
         (CurrentForm as IListableForm).CurrentStateListado = fasesListado.EligiendoDetalles;
         return true;
@@ -69,9 +69,17 @@ namespace MessageGateway.Handlers.ListadoPublicaciones
             $"{publicacion.GetTextToPrint()}\n",
             "-----------------------------------",
             "Marque la opción que desee: \n",
-            "1 - Ver ubicación\n",
-            "2 - Comparar"
-          );
+            "1 - Ver ubicación\n");
+
+            if((CurrentForm as IPostLogin).InstanciaLoggeada is Emprendedor)
+            {
+              sb.AppendLine("2 - Comprar");
+            }
+            else
+            {
+              sb.AppendLine("2 - Modificar");
+            }
+
           (CurrentForm as IListableForm).publicacionSeparada = publicacion;
           response = sb.ToString();
           (CurrentForm as IListableForm).CurrentStateListado = fasesListado.VerUbicacion;
@@ -85,35 +93,58 @@ namespace MessageGateway.Handlers.ListadoPublicaciones
       else if ((CurrentForm as IListableForm).CurrentStateListado == fasesListado.VerUbicacion)
       {
         Publicacion publi = (CurrentForm as IListableForm).publicacionSeparada;
-        Transacciones comprador = Transacciones.Instancia;
-        if (message.TxtMensaje == "1")
+        if((CurrentForm as IPostLogin).InstanciaLoggeada is Emprendedor)
         {
-          (CurrentForm as FormularioBase).gateway.EnviarUbicacionEnMapa(message, publi.LugarRetiro.Latitude, publi.LugarRetiro.Longitude);
-          response = "";
-          return true;
-        }
-        if (message.TxtMensaje == "2")
-        {
-          Venta venta = new Venta(((CurrentForm as IPostLogin).InstanciaLoggeada as Emprendedor), publi);
-          try
+          Transacciones comprador = Transacciones.Instancia;
+          if (message.TxtMensaje == "1")
           {
-            comprador.ConcretarVenta(venta);
-          }
-          catch(ArgumentException)
-          {
-            response = "No tenes las habilitaciones necesarias";
+            (CurrentForm as FormularioBase).gateway.EnviarUbicacionEnMapa(message, publi.LugarRetiro.Latitude, publi.LugarRetiro.Longitude);
+            response = "";
             return true;
           }
-          catch(InvalidOperationException)
+          else if (message.TxtMensaje == "2")
           {
-            response = "Esta publicación ya fue comprada";
+            Venta venta = new Venta(((CurrentForm as IPostLogin).InstanciaLoggeada as Emprendedor), publi);
+            try
+            {
+              comprador.ConcretarVenta(venta);
+            }
+            catch(ArgumentException)
+            {
+              response = "No tenes las habilitaciones necesarias";
+              return true;
+            }
+            catch(InvalidOperationException)
+            {
+              response = "Esta publicación ya fue comprada";
+              return true;
+            }
+            response = "Comprado";
             return true;
           }
-          response = "Comprado";
+          response = "Si deseas salir escribe /abortar";
           return true;
         }
-        response = "Si deseas salir escribe /abortar";
-        return true;
+        else
+        {
+          if (message.TxtMensaje == "1")
+          {
+            (CurrentForm as FormularioBase).gateway.EnviarUbicacionEnMapa(message, publi.LugarRetiro.Latitude, publi.LugarRetiro.Longitude);
+            response = "Aqui se encuentra";
+            return true;
+          }
+          else if (message.TxtMensaje == "2")
+          {
+            CurrentForm.ChangeForm(new FrmAltaOferta((CurrentForm as IPostLogin).InstanciaLoggeada), message.ChatID);
+            response = "";
+            return true;
+          }
+          else
+          {
+            response = "Si deseas salir escribe /abortar";
+            return true;
+          }
+        }
       }
       else
       {

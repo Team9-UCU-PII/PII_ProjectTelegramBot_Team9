@@ -61,6 +61,13 @@ namespace ClassLibrary.LocationAPI
         /// <value>El valor de la longitud en formato decimal.</value>
         public float Longitude { get; set; }
 
+        /// <summary>
+        /// Definicion de operador entre Locations, permite compararlos de manera significativa
+        /// (es decir, a partir de sus coordenadas).
+        /// </summary>
+        /// <param name="a">Location.</param>
+        /// <param name="b">Location.</param>
+        /// <returns>True: si son iguales las coordenadas.</returns>
         public static bool operator == (Location a, Location b)
         {
             if ((object) a == null && (object) b == null)
@@ -76,6 +83,12 @@ namespace ClassLibrary.LocationAPI
             return a.Latitude == b.Latitude && a.Longitude == b.Longitude;
         }
 
+        /// <summary>
+        /// Operador de diferencia entre Locations (a partir de sus coordenadas).
+        /// </summary>
+        /// <param name="a">Location.</param>
+        /// <param name="b">Location.</param>
+        /// <returns>True: si son distintas las coordenadas.</returns>
         public static bool operator != (Location a, Location b)
         {
             return !(a == b);

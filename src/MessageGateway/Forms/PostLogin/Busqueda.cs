@@ -32,6 +32,9 @@ namespace MessageGateway.Forms
             );
         }
 
+        /// <summary>
+        /// Departamento a buscarse.
+        /// </summary>
         public string dpto;
 
         /// <summary>
@@ -46,9 +49,12 @@ namespace MessageGateway.Forms
         /// <value>Emprendedor.</value>
         public IUsuario InstanciaLoggeada {get; set;}
 
+        /// <summary>
+        /// Obtiene o establece los filtros que se desean utilizar.
+        /// </summary>
+        /// <value>IFiltroBUsqueda.</value>
         public IFiltroBusqueda cadenaFilters {get; set;}
 
-        /// <summary>
         /// Guarda las publicaciones filtradas.
         /// </summary>
         /// <value></value>
@@ -64,6 +70,11 @@ namespace MessageGateway.Forms
         public Publicacion publicacionSeparada {get; set;}
 
         public HandlerListadoPublicaciones.fasesListado CurrentStateListado {get; set;}
+
+        /// <summary>
+        /// Metodo que crea una cadena de filtros nueva, o añade las solicitadas.
+        /// </summary>
+        /// <param name="filtro">IFiltroBusqueda.</param>
         public void AddFilter(IFiltroBusqueda filtro)
         {
             if (this.cadenaFilters == null)
@@ -73,13 +84,10 @@ namespace MessageGateway.Forms
             else
             {
                 IFiltroBusqueda filter = this.cadenaFilters;
-                IFiltroBusqueda nextFilter = filter.Next;
-                do
+                while (filter.Next != null)
                 {
                     filter = filter.Next;
-                    nextFilter = nextFilter.Next;
                 }
-                while (nextFilter!=null);
                 filter.Next = filtro;
             }
         }

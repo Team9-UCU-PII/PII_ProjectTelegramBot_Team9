@@ -33,7 +33,7 @@ namespace MessageGateway.Handlers.MenuEmpresa
     protected override bool InternalHandle(IMessage message, out string response)
     {
       response = string.Empty;
-      if (this.CanHandle(message) && (CurrentForm as FrmMenuEmpresa).CurrentState == HandlerMenuEmpresa.faseMenuEmpresa.Inicio)
+      if (this.CanHandle(message) && (CurrentForm as FrmMenuEmpresa).CurrentState == HandlerMenuEmpresa.faseMenuEmpresa.Eligiendo)
       {
         response = string.Empty;
         switch (message.TxtMensaje)
@@ -43,13 +43,13 @@ namespace MessageGateway.Handlers.MenuEmpresa
             break;
           //No se los nombres de los formularios, aún no estan hechos.
           case "2":
-            //this.CurrentForm.ChangeForm(new FrmModificarPublicacion(), message.ChatID);
+            this.CurrentForm.ChangeForm(new FrmModOferta((CurrentForm as FrmMenuEmpresa).InstanciaLoggeada), message.ChatID);
             break;
           case "3":
-            //this.CurrentForm.ChangeForm(new FrmReportes(), message.ChatID);
+            this.CurrentForm.ChangeForm(new FrmReporte((CurrentForm as FrmMenuEmpresa).InstanciaLoggeada), message.ChatID);
             break;
           case "4":
-            //this.CurrentForm.ChangeForm(new FrmCuenta(), message.ChatID);
+            this.CurrentForm.ChangeForm(new FrmBienvenida(), message.ChatID);
             break;
           default:
             return false;
