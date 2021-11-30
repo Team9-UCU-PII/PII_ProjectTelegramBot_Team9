@@ -2,6 +2,10 @@
 // <copyright file="FormularioBase.cs" company="Universidad Católica del Uruguay">
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
+//
+// Pricnipio utilizado: DIP
+// La clase FormularioBase implementa la interfaz IFormulario siguiendo 
+// el principio de inversión de dependencias.
 //--------------------------------------------------------------------------------
 
 using MessageGateway.Handlers;
