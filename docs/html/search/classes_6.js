@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['habilitacion_96',['Habilitacion',['../classClassLibrary_1_1User_1_1Habilitacion.html',1,'ClassLibrary::User']]]
+  ['gatewaybase_326',['GatewayBase',['../classMessageGateway_1_1GatewayBase.html',1,'MessageGateway']]],
+  ['gestorinvitaciones_327',['GestorInvitaciones',['../classBotCore_1_1User_1_1GestorInvitaciones.html',1,'BotCore::User']]]
 ];

@@ -1,0 +1,702 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Proyecto de PII: Referencia de la Clase ClassLibrary.LocationAPI.LocationApiClient</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Proyecto de PII
+   &#160;<span id="projectnumber">3</span>
+   </div>
+   <div id="projectbrief">Projecto para curso de Programacion 2 en la UCU, por el equipo 9 de la tarde</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Métodos públicos</a> &#124;
+<a href="#pro-methods">Métodos protegidos</a> &#124;
+<a href="#properties">Propiedades</a> &#124;
+<a href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient-members.html">Lista de todos los miembros</a>  </div>
+  <div class="headertitle">
+<div class="title">Referencia de la Clase ClassLibrary.LocationAPI.LocationApiClient</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Un cliente de la API de localización. Aplica el patrón Creator ya que se encarga exclusivamente de crear objetos de tipo <a class="el" href="classClassLibrary_1_1LocationAPI_1_1Location.html" title="Representa las coordenadas y otros datos de la ubicación de una dirección retornada en el método....">Location</a> y <a class="el" href="classClassLibrary_1_1LocationAPI_1_1Distance.html" title="Representa la distancia entre las coordenas o las direcciones de origen y destino retornada en los mé...">Distance</a> para su uso en el resto del sistema. Esto es aquí especialmente importante ya que estos objetos dependen para su creación de una API externa. Si no se aplicara este patrón, haciendo que varias clases dependieran directamente de este servicio y hubiese un cambio en la API consumida, implicaría realizar cambios en una cantidad mucho más significativa del código, al hallarse muchas más clases acopladas a este servicio.  
+ <a href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#details">Más...</a></p>
+<div class="dynheader">
+Diagrama de herencias de ClassLibrary.LocationAPI.LocationApiClient</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 0 -->
+</div>
+</div>
+<div class="dynheader">
+Diagrama de colaboración para ClassLibrary.LocationAPI.LocationApiClient:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 1 -->
+</div>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Métodos públicos</h2></td></tr>
+<tr class="memitem:a6c6765ea44b56b7d5dbc74c5ba69e4bb"><td class="memItemLeft" align="right" valign="top">async Task&lt; <a class="el" href="classClassLibrary_1_1LocationAPI_1_1Location.html">Location</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#a6c6765ea44b56b7d5dbc74c5ba69e4bb">GetLocationAsync</a> (string address, string city=&quot;Montevideo&quot;, string department=&quot;Montevideo&quot;, string country=&quot;Uruguay&quot;)</td></tr>
+<tr class="memdesc:a6c6765ea44b56b7d5dbc74c5ba69e4bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene las coordenadas de una dirección.  <a href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#a6c6765ea44b56b7d5dbc74c5ba69e4bb">Más...</a><br /></td></tr>
+<tr class="separator:a6c6765ea44b56b7d5dbc74c5ba69e4bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a991a52c2921663cd08cc1b7bdd9003cb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classClassLibrary_1_1LocationAPI_1_1Location.html">Location</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#a991a52c2921663cd08cc1b7bdd9003cb">GetLocation</a> (string address, string city=&quot;Montevideo&quot;, string department=&quot;Montevideo&quot;, string country=&quot;Uruguay&quot;)</td></tr>
+<tr class="separator:a991a52c2921663cd08cc1b7bdd9003cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa01eb1ec5f380347b6a4bc7f02c72754"><td class="memItemLeft" align="right" valign="top">async Task&lt; <a class="el" href="classClassLibrary_1_1LocationAPI_1_1Distance.html">Distance</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#aa01eb1ec5f380347b6a4bc7f02c72754">GetDistanceAsync</a> (<a class="el" href="classClassLibrary_1_1LocationAPI_1_1Location.html">Location</a> from, <a class="el" href="classClassLibrary_1_1LocationAPI_1_1Location.html">Location</a> to)</td></tr>
+<tr class="memdesc:aa01eb1ec5f380347b6a4bc7f02c72754"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene la distancia entre dos coordenadas.  <a href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#aa01eb1ec5f380347b6a4bc7f02c72754">Más...</a><br /></td></tr>
+<tr class="separator:aa01eb1ec5f380347b6a4bc7f02c72754"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb416bcdfd0240b7e0db337e56a3ef99"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classClassLibrary_1_1LocationAPI_1_1Distance.html">Distance</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#afb416bcdfd0240b7e0db337e56a3ef99">GetDistance</a> (<a class="el" href="classClassLibrary_1_1LocationAPI_1_1Location.html">Location</a> from, <a class="el" href="classClassLibrary_1_1LocationAPI_1_1Location.html">Location</a> to)</td></tr>
+<tr class="separator:afb416bcdfd0240b7e0db337e56a3ef99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc0058206ab515d7884f9ff4ec6db3d7"><td class="memItemLeft" align="right" valign="top">async Task&lt; <a class="el" href="classClassLibrary_1_1LocationAPI_1_1Distance.html">Distance</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#afc0058206ab515d7884f9ff4ec6db3d7">GetDistanceAsync</a> (string from, string to)</td></tr>
+<tr class="memdesc:afc0058206ab515d7884f9ff4ec6db3d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene la distancia entre dos direcciones.  <a href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#afc0058206ab515d7884f9ff4ec6db3d7">Más...</a><br /></td></tr>
+<tr class="separator:afc0058206ab515d7884f9ff4ec6db3d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93d26a1cc4f9ba67257ee8fa5f14dd7d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classClassLibrary_1_1LocationAPI_1_1Distance.html">Distance</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#a93d26a1cc4f9ba67257ee8fa5f14dd7d">GetDistance</a> (string from, string to)</td></tr>
+<tr class="separator:a93d26a1cc4f9ba67257ee8fa5f14dd7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad395eaf2009b2fd83365962f18357ea4"><td class="memItemLeft" align="right" valign="top">async Task&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#ad395eaf2009b2fd83365962f18357ea4">DownloadMapAsync</a> (double latitude, double longitude, string path, int zoomLevel=15)</td></tr>
+<tr class="memdesc:ad395eaf2009b2fd83365962f18357ea4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Descarga una mapa de una coordenada.  <a href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#ad395eaf2009b2fd83365962f18357ea4">Más...</a><br /></td></tr>
+<tr class="separator:ad395eaf2009b2fd83365962f18357ea4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af92c9388436fef838aa35292a5c869a0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#af92c9388436fef838aa35292a5c869a0">DownloadMap</a> (double latitude, double longitude, string path, int zoomLevel=15)</td></tr>
+<tr class="separator:af92c9388436fef838aa35292a5c869a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36ec3faf1eada4ed50b4f3bcae9a30a7"><td class="memItemLeft" align="right" valign="top">async Task&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#a36ec3faf1eada4ed50b4f3bcae9a30a7">DownloadRouteAsync</a> (double fromLatitude, double fromLongitude, double toLatitude, double toLongitude, string path)</td></tr>
+<tr class="memdesc:a36ec3faf1eada4ed50b4f3bcae9a30a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Un mapa con una ruta entre dos coordenadas.  <a href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#a36ec3faf1eada4ed50b4f3bcae9a30a7">Más...</a><br /></td></tr>
+<tr class="separator:a36ec3faf1eada4ed50b4f3bcae9a30a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d8d895cb5d6e86f5a030ad134e7857e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#a7d8d895cb5d6e86f5a030ad134e7857e">DownloadRoute</a> (double fromLatitude, double fromLongitude, double toLatitude, double toLongitude, string path)</td></tr>
+<tr class="separator:a7d8d895cb5d6e86f5a030ad134e7857e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a511200f60007b7a11fbe49f3b9b2407c"><td class="memItemLeft" align="right" valign="top"><a id="a511200f60007b7a11fbe49f3b9b2407c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#a511200f60007b7a11fbe49f3b9b2407c">Dispose</a> ()</td></tr>
+<tr class="separator:a511200f60007b7a11fbe49f3b9b2407c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Métodos protegidos</h2></td></tr>
+<tr class="memitem:a6673fd016d81ab2889eb641a331060c8"><td class="memItemLeft" align="right" valign="top"><a id="a6673fd016d81ab2889eb641a331060c8"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#a6673fd016d81ab2889eb641a331060c8">Dispose</a> (bool disposing)</td></tr>
+<tr class="separator:a6673fd016d81ab2889eb641a331060c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
+Propiedades</h2></td></tr>
+<tr class="memitem:a7cb10551ef085b9a2f281a458681cf11"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html">LocationApiClient</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#a7cb10551ef085b9a2f281a458681cf11">Instancia</a><code> [get]</code></td></tr>
+<tr class="memdesc:a7cb10551ef085b9a2f281a458681cf11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obitene acceso al singleton de la api.  <a href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#a7cb10551ef085b9a2f281a458681cf11">Más...</a><br /></td></tr>
+<tr class="separator:a7cb10551ef085b9a2f281a458681cf11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
+<div class="textblock"><p>Un cliente de la API de localización. Aplica el patrón Creator ya que se encarga exclusivamente de crear objetos de tipo <a class="el" href="classClassLibrary_1_1LocationAPI_1_1Location.html" title="Representa las coordenadas y otros datos de la ubicación de una dirección retornada en el método....">Location</a> y <a class="el" href="classClassLibrary_1_1LocationAPI_1_1Distance.html" title="Representa la distancia entre las coordenas o las direcciones de origen y destino retornada en los mé...">Distance</a> para su uso en el resto del sistema. Esto es aquí especialmente importante ya que estos objetos dependen para su creación de una API externa. Si no se aplicara este patrón, haciendo que varias clases dependieran directamente de este servicio y hubiese un cambio en la API consumida, implicaría realizar cambios en una cantidad mucho más significativa del código, al hallarse muchas más clases acopladas a este servicio. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="LocationApiClient_8cs_source.html#l00028">28</a> del archivo <a class="el" href="LocationApiClient_8cs_source.html">LocationApiClient.cs</a>.</p>
+</div><h2 class="groupheader">Documentación de las funciones miembro</h2>
+<a id="af92c9388436fef838aa35292a5c869a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af92c9388436fef838aa35292a5c869a0">&#9670;&nbsp;</a></span>DownloadMap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ClassLibrary.LocationAPI.LocationApiClient.DownloadMap </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>latitude</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>longitude</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>zoomLevel</em> = <code>15</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>. </p>
+<p>Versión sincrónica. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="LocationApiClient_8cs_source.html#l00246">246</a> del archivo <a class="el" href="LocationApiClient_8cs_source.html">LocationApiClient.cs</a>.</p>
+<div class="dynheader">
+Gráfico de llamadas para esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 2 -->
+</div>
+</div>
+
+</div>
+</div>
+<a id="ad395eaf2009b2fd83365962f18357ea4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad395eaf2009b2fd83365962f18357ea4">&#9670;&nbsp;</a></span>DownloadMapAsync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">async Task ClassLibrary.LocationAPI.LocationApiClient.DownloadMapAsync </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>latitude</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>longitude</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>zoomLevel</em> = <code>15</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Descarga una mapa de una coordenada. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">latitude</td><td>La latitud de la coordenada.</td></tr>
+    <tr><td class="paramname">longitude</td><td>La longitud de la coordenada.</td></tr>
+    <tr><td class="paramname">path</td><td>La ruta del archivo donde guardar el mapa. El formato es PNG.</td></tr>
+    <tr><td class="paramname">zoomLevel</td><td>El nivel de zoom del mapa entre 1 y 20. Es opcional. El valor predeterminado es 15.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>Una tarea que representa la operación asincrónica. </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="LocationApiClient_8cs_source.html#l00224">224</a> del archivo <a class="el" href="LocationApiClient_8cs_source.html">LocationApiClient.cs</a>.</p>
+<div class="dynheader">
+Gráfico de llamadas a esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 3 -->
+</div>
+</div>
+
+</div>
+</div>
+<a id="a7d8d895cb5d6e86f5a030ad134e7857e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d8d895cb5d6e86f5a030ad134e7857e">&#9670;&nbsp;</a></span>DownloadRoute()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ClassLibrary.LocationAPI.LocationApiClient.DownloadRoute </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>fromLatitude</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>fromLongitude</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>toLatitude</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>toLongitude</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>path</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Versión sincrónica. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="LocationApiClient_8cs_source.html#l00290">290</a> del archivo <a class="el" href="LocationApiClient_8cs_source.html">LocationApiClient.cs</a>.</p>
+<div class="dynheader">
+Gráfico de llamadas para esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 4 -->
+</div>
+</div>
+
+</div>
+</div>
+<a id="a36ec3faf1eada4ed50b4f3bcae9a30a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36ec3faf1eada4ed50b4f3bcae9a30a7">&#9670;&nbsp;</a></span>DownloadRouteAsync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">async Task ClassLibrary.LocationAPI.LocationApiClient.DownloadRouteAsync </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>fromLatitude</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>fromLongitude</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>toLatitude</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>toLongitude</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>path</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Un mapa con una ruta entre dos coordenadas. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fromLatitude</td><td>La latitud de la coordenada de origen.</td></tr>
+    <tr><td class="paramname">fromLongitude</td><td>La longitu de la coordenada de origen.</td></tr>
+    <tr><td class="paramname">toLatitude</td><td>La latitud de la coordenada de destino.</td></tr>
+    <tr><td class="paramname">toLongitude</td><td>La longitud de la coordenada de destino.</td></tr>
+    <tr><td class="paramname">path</td><td>La ruta del archivo donde guardar el mapa. Es formato es PNG.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>Una tarea que representa la operación asincrónica. </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="LocationApiClient_8cs_source.html#l00262">262</a> del archivo <a class="el" href="LocationApiClient_8cs_source.html">LocationApiClient.cs</a>.</p>
+<div class="dynheader">
+Gráfico de llamadas a esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 5 -->
+</div>
+</div>
+
+</div>
+</div>
+<a id="afb416bcdfd0240b7e0db337e56a3ef99"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb416bcdfd0240b7e0db337e56a3ef99">&#9670;&nbsp;</a></span>GetDistance() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classClassLibrary_1_1LocationAPI_1_1Distance.html">Distance</a> ClassLibrary.LocationAPI.LocationApiClient.GetDistance </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classClassLibrary_1_1LocationAPI_1_1Location.html">Location</a>&#160;</td>
+          <td class="paramname"><em>from</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classClassLibrary_1_1LocationAPI_1_1Location.html">Location</a>&#160;</td>
+          <td class="paramname"><em>to</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Versión sincrónica. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="LocationApiClient_8cs_source.html#l00173">173</a> del archivo <a class="el" href="LocationApiClient_8cs_source.html">LocationApiClient.cs</a>.</p>
+<div class="dynheader">
+Gráfico de llamadas para esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 6 -->
+</div>
+</div>
+
+</div>
+</div>
+<a id="a93d26a1cc4f9ba67257ee8fa5f14dd7d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93d26a1cc4f9ba67257ee8fa5f14dd7d">&#9670;&nbsp;</a></span>GetDistance() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classClassLibrary_1_1LocationAPI_1_1Distance.html">Distance</a> ClassLibrary.LocationAPI.LocationApiClient.GetDistance </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>from</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>to</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>. </p>
+<p>Versión sincrónica. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="LocationApiClient_8cs_source.html#l00208">208</a> del archivo <a class="el" href="LocationApiClient_8cs_source.html">LocationApiClient.cs</a>.</p>
+<div class="dynheader">
+Gráfico de llamadas para esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 7 -->
+</div>
+</div>
+
+</div>
+</div>
+<a id="aa01eb1ec5f380347b6a4bc7f02c72754"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa01eb1ec5f380347b6a4bc7f02c72754">&#9670;&nbsp;</a></span>GetDistanceAsync() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">async Task&lt;<a class="el" href="classClassLibrary_1_1LocationAPI_1_1Distance.html">Distance</a>&gt; ClassLibrary.LocationAPI.LocationApiClient.GetDistanceAsync </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classClassLibrary_1_1LocationAPI_1_1Location.html">Location</a>&#160;</td>
+          <td class="paramname"><em>from</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classClassLibrary_1_1LocationAPI_1_1Location.html">Location</a>&#160;</td>
+          <td class="paramname"><em>to</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obtiene la distancia entre dos coordenadas. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">from</td><td>La coordenada de origen.</td></tr>
+    <tr><td class="paramname">to</td><td>La coordenada de destino.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>La distancia entre las dos coordenadas.</dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="LocationApiClient_8cs_source.html#l00145">145</a> del archivo <a class="el" href="LocationApiClient_8cs_source.html">LocationApiClient.cs</a>.</p>
+<div class="dynheader">
+Gráfico de llamadas a esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 8 -->
+</div>
+</div>
+
+</div>
+</div>
+<a id="afc0058206ab515d7884f9ff4ec6db3d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc0058206ab515d7884f9ff4ec6db3d7">&#9670;&nbsp;</a></span>GetDistanceAsync() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">async Task&lt;<a class="el" href="classClassLibrary_1_1LocationAPI_1_1Distance.html">Distance</a>&gt; ClassLibrary.LocationAPI.LocationApiClient.GetDistanceAsync </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>from</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>to</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obtiene la distancia entre dos direcciones. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">from</td><td>La dirección de origen.</td></tr>
+    <tr><td class="paramname">to</td><td>La dirección de destino.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>La distancia entre las dos direcciones.</dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="LocationApiClient_8cs_source.html#l00184">184</a> del archivo <a class="el" href="LocationApiClient_8cs_source.html">LocationApiClient.cs</a>.</p>
+
+</div>
+</div>
+<a id="a991a52c2921663cd08cc1b7bdd9003cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a991a52c2921663cd08cc1b7bdd9003cb">&#9670;&nbsp;</a></span>GetLocation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classClassLibrary_1_1LocationAPI_1_1Location.html">Location</a> ClassLibrary.LocationAPI.LocationApiClient.GetLocation </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>address</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>city</em> = <code>&quot;Montevideo&quot;</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>department</em> = <code>&quot;Montevideo&quot;</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>country</em> = <code>&quot;Uruguay&quot;</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Versión sincrónica. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="LocationApiClient_8cs_source.html#l00130">130</a> del archivo <a class="el" href="LocationApiClient_8cs_source.html">LocationApiClient.cs</a>.</p>
+<div class="dynheader">
+Gráfico de llamadas para esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 9 -->
+</div>
+</div>
+
+</div>
+</div>
+<a id="a6c6765ea44b56b7d5dbc74c5ba69e4bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c6765ea44b56b7d5dbc74c5ba69e4bb">&#9670;&nbsp;</a></span>GetLocationAsync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">async Task&lt;<a class="el" href="classClassLibrary_1_1LocationAPI_1_1Location.html">Location</a>&gt; ClassLibrary.LocationAPI.LocationApiClient.GetLocationAsync </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>address</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>city</em> = <code>&quot;Montevideo&quot;</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>department</em> = <code>&quot;Montevideo&quot;</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>country</em> = <code>&quot;Uruguay&quot;</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obtiene las coordenadas de una dirección. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">address</td><td>La dirección.</td></tr>
+    <tr><td class="paramname">city</td><td>La ciudad. Es opcional. El valor predeterminado es Montevideo.</td></tr>
+    <tr><td class="paramname">department</td><td>El departamento, estado, provincia, etc. Es opcional. El valor predeterminado es `ontevideo.</td></tr>
+    <tr><td class="paramname">country</td><td>El país. Es opcional. El valor predeterminado es Uruguay.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>Las coordenadas de la dirección.</dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="LocationApiClient_8cs_source.html#l00096">96</a> del archivo <a class="el" href="LocationApiClient_8cs_source.html">LocationApiClient.cs</a>.</p>
+<div class="dynheader">
+Gráfico de llamadas a esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 10 -->
+</div>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">Documentación de propiedades</h2>
+<a id="a7cb10551ef085b9a2f281a458681cf11"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7cb10551ef085b9a2f281a458681cf11">&#9670;&nbsp;</a></span>Instancia</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html">LocationApiClient</a> ClassLibrary.LocationAPI.LocationApiClient.Instancia</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Obitene acceso al singleton de la api. </p>
+<p><a class="el" href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html" title="Un cliente de la API de localización. Aplica el patrón Creator ya que se encarga exclusivamente de cr...">LocationApiClient</a>.</p>
+
+<p class="definition">Definición en la línea <a class="el" href="LocationApiClient_8cs_source.html#l00076">76</a> del archivo <a class="el" href="LocationApiClient_8cs_source.html">LocationApiClient.cs</a>.</p>
+
+</div>
+</div>
+<hr/>La documentación para esta clase fue generada a partir del siguiente fichero:<ul>
+<li>C:/Users/gatom/OneDrive/Escritorio/programcion/repos/PII_2021_2_Equipo09/src/ClassLibrary/LocationAPI/<a class="el" href="LocationApiClient_8cs_source.html">LocationApiClient.cs</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespaceClassLibrary.html">ClassLibrary</a></li><li class="navelem"><a class="el" href="namespaceClassLibrary_1_1LocationAPI.html">LocationAPI</a></li><li class="navelem"><a class="el" href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html">LocationApiClient</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

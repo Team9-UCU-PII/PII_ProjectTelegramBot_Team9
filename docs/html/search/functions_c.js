@@ -1,0 +1,7 @@
+var searchData=
+[
+  ['publicacion_491',['Publicacion',['../classClassLibrary_1_1Publication_1_1Publicacion.html#af56eaba90d6d66c6f8ca33e34b41c48d',1,'ClassLibrary.Publication.Publicacion.Publicacion(Residuo residuo, double precioUnitario, string moneda, int cantidad, Location lugarRetiro, Empresa vendedor, string descripcion, Categoria categoria)'],['../classClassLibrary_1_1Publication_1_1Publicacion.html#a35e457c4d4951f769d979702ce3290e3',1,'ClassLibrary.Publication.Publicacion.Publicacion()']]],
+  ['publicacionrecurrente_492',['PublicacionRecurrente',['../classClassLibrary_1_1Publication_1_1PublicacionRecurrente.html#a88de3cf3c2e9195d3f1ed270e3629861',1,'ClassLibrary.Publication.PublicacionRecurrente.PublicacionRecurrente(Residuo residuo, double precioUnitario, string moneda, int cantidad, Location lugarRetiro, Empresa vendedor, int frecuenciaAnualRestock, string descripcion, Categoria categoria)'],['../classClassLibrary_1_1Publication_1_1PublicacionRecurrente.html#a905fb065d3b8139f48c8a181e5dd6a9f',1,'ClassLibrary.Publication.PublicacionRecurrente.PublicacionRecurrente()']]],
+  ['publicaroferta_493',['PublicarOferta',['../classBotCore_1_1Publication_1_1Publicador.html#a0b6971753d044f2920a08191bbde087c',1,'BotCore::Publication::Publicador']]],
+  ['publicarofertarecurrente_494',['PublicarOfertaRecurrente',['../classBotCore_1_1Publication_1_1Publicador.html#a9fa20f087837ed7d67011ef3dda2bec6',1,'BotCore::Publication::Publicador']]]
+];

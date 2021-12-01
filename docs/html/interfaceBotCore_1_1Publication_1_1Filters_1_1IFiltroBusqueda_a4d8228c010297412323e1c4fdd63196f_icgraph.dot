@@ -1,0 +1,23 @@
+digraph "BotCore.Publication.Filters.IFiltroBusqueda.Filtrar"
+{
+ // INTERACTIVE_SVG=YES
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="BotCore.Publication.Filters.\lIFiltroBusqueda.Filtrar",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="BotCore.Publication.Busqueda.\lBuscarPublicaciones",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classBotCore_1_1Publication_1_1Busqueda.html#a520f9d386ef6b4003fe58d734225c243",tooltip="Servicio principal de la busqueda"];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="BotCore.Publication.Filters.\lFiltroPorCategoria.Filtrar",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classBotCore_1_1Publication_1_1Filters_1_1FiltroPorCategoria.html#a687e649b20db60eb900fcc30ac20c403",tooltip="Método que retorna las publicaciones que coinciden con el filtro aplicado."];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="BotCore.Publication.Filters.\lFiltroPorEmpresa.Filtrar",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classBotCore_1_1Publication_1_1Filters_1_1FiltroPorEmpresa.html#ab9723d227b8de0f2fcbcd5e5d2eb5370",tooltip="Método que retorna las publicaciones que coinciden con el filtro aplicado."];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="BotCore.Publication.Filters.\lFiltroPorFrecuenciaRestock.Filtrar",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classBotCore_1_1Publication_1_1Filters_1_1FiltroPorFrecuenciaRestock.html#a568d652aaa71f9354b50015cb86610bb",tooltip="Método que retorna las publicaciones que coinciden con el filtro aplicado."];
+  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="BotCore.Publication.Filters.\lFiltroPorLugarRetiro.Filtrar",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classBotCore_1_1Publication_1_1Filters_1_1FiltroPorLugarRetiro.html#a6e42291d84b8ab72422b68ed36d39ef9",tooltip="Método que retorna las publicaciones que coinciden con el filtro aplicado."];
+  Node1 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="BotCore.Publication.Filters.\lFiltroPorPrecioMaximo.Filtrar",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classBotCore_1_1Publication_1_1Filters_1_1FiltroPorPrecioMaximo.html#a88e1f905c76aefaaa302a22362d12b44",tooltip="Método que retorna las publicaciones que coinciden con el filtro aplicado."];
+  Node1 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="BotCore.Publication.Filters.\lFiltroPorResiduo.Filtrar",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classBotCore_1_1Publication_1_1Filters_1_1FiltroPorResiduo.html#aa865598fb58136e1b6d217b3e0ac9a04",tooltip="Método que retorna las publicaciones que coinciden con el filtro aplicado."];
+}

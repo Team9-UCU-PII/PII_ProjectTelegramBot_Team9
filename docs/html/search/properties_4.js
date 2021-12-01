@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['habilitaciones_177',['Habilitaciones',['../classClassLibrary_1_1Publication_1_1Residuo.html#acaa5b9d1a6adb3df0a62056f377f1e4d',1,'ClassLibrary::Publication::Residuo']]]
+  ['emprendedorfinal_618',['emprendedorFinal',['../classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html#a9bd18aa8cfff55aaa3459c3475e0c160',1,'MessageGateway::Forms::FrmRegistroEmprendedor']]],
+  ['empresafinal_619',['EmpresaFinal',['../classMessageGateway_1_1Forms_1_1FrmRegistroEmpresa.html#a99c8c0103de0f98f223b523d692fd1a4',1,'MessageGateway::Forms::FrmRegistroEmpresa']]]
 ];

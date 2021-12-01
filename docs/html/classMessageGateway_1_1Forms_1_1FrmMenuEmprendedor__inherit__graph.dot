@@ -1,0 +1,14 @@
+digraph "MessageGateway.Forms.FrmMenuEmprendedor"
+{
+ // INTERACTIVE_SVG=YES
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{MessageGateway.Forms.Frm\lMenuEmprendedor\n|+ CurrentState\l+ InstanciaLoggeada\l|+ FrmMenuEmprendedor()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Primer formulario del chat luego del login o el registro de un emprendedor."];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node2 [label="{FormularioBase\n|+ gateway\l+ messageHandler\l|+ ReceiveMessage()\l+ ChangeForm()\l# FormularioBase()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classMessageGateway_1_1Forms_1_1FormularioBase.html",tooltip="Superclase para todos los formularios."];
+  Node3 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node3 [label="{IFormulario\n||+ ReceiveMessage()\l+ ChangeForm()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interfaceMessageGateway_1_1Forms_1_1IFormulario.html",tooltip="Interfaz que engloba todos los forularios y sus metodos principales."];
+  Node4 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node4 [label="{IPostLogin\n|+ InstanciaLoggeada\l|}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interfaceMessageGateway_1_1Forms_1_1IPostLogin.html",tooltip="Interfaz para condicionar y controlar que despues del login no se pierda referencia al IUsuario vincu..."];
+}

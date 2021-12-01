@@ -1,0 +1,387 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Proyecto de PII: Fichero Fuente C:/Users/gatom/OneDrive/Escritorio/programcion/repos/PII_2021_2_Equipo09/src/ClassLibrary/LocationAPI/LocationApiClient.cs</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Proyecto de PII
+   &#160;<span id="projectnumber">3</span>
+   </div>
+   <div id="projectbrief">Projecto para curso de Programacion 2 en la UCU, por el equipo 9 de la tarde</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('LocationApiClient_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">LocationApiClient.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//-----------------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// &lt;copyright file=&quot;LocationApiClient.cs&quot; company=&quot;Universidad Católica del Uruguay&quot;&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//     Copyright (c) Programación II. Derechos reservados.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">// &lt;/copyright&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//-----------------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">using</span> System;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">using</span> System.Collections.Generic;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">using</span> System.Globalization;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">using</span> System.IO;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">using</span> System.Linq;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">using</span> System.Net.Http;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">using</span> System.Text.Json;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">using</span> System.Threading.Tasks;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">using</span> System.Web;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">using</span> Nito.AsyncEx;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceClassLibrary_1_1LocationAPI.html">ClassLibrary.LocationAPI</a></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;{</div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html">   28</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html">LocationApiClient</a> : <a class="code" href="classIDisposable.html">IDisposable</a></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keyword">private</span> <span class="keyword">const</span> <span class="keywordtype">string</span> BaseUrl = <span class="stringliteral">&quot;https://pii-locationapi.azurewebsites.net&quot;</span>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keyword">private</span> HttpClient client = <span class="keyword">new</span> HttpClient();</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">bool</span> disposedValue;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keyword">private</span> <a class="code" href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html">LocationApiClient</a>(){}</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <a class="code" href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html">LocationApiClient</a> instancia;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">string</span> DistanceUrl</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            {</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                <span class="keywordflow">return</span> BaseUrl + <span class="stringliteral">&quot;/distance&quot;</span>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            }</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        }</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">string</span> LocationUrl</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                <span class="keywordflow">return</span> BaseUrl + <span class="stringliteral">&quot;/location&quot;</span>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            }</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">string</span> MapUrl</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                <span class="keywordflow">return</span> BaseUrl + <span class="stringliteral">&quot;/map&quot;</span>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            }</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        }</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">string</span> RouteUrl</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                <span class="keywordflow">return</span> BaseUrl + <span class="stringliteral">&quot;/route&quot;</span>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        }</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#a7cb10551ef085b9a2f281a458681cf11">   76</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html">LocationApiClient</a> <a class="code" href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#a7cb10551ef085b9a2f281a458681cf11">Instancia</a></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        {</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            {</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                <span class="keywordflow">if</span> (instancia == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                    instancia = <span class="keyword">new</span> <a class="code" href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html">LocationApiClient</a>();</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                }</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                <span class="keywordflow">return</span> instancia;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            }</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        }</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#a6c6765ea44b56b7d5dbc74c5ba69e4bb">   96</a></span>&#160;        <span class="keyword">public</span> async Task&lt;Location&gt; <a class="code" href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#a6c6765ea44b56b7d5dbc74c5ba69e4bb">GetLocationAsync</a>(</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            <span class="keywordtype">string</span> address,</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            <span class="keywordtype">string</span> city = <span class="stringliteral">&quot;Montevideo&quot;</span>,</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            <span class="keywordtype">string</span> department = <span class="stringliteral">&quot;Montevideo&quot;</span>,</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            <span class="keywordtype">string</span> country = <span class="stringliteral">&quot;Uruguay&quot;</span>)</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        {</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            var parameters = <span class="keyword">new</span> Dictionary&lt;string, string&gt;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            {</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                { <span class="stringliteral">&quot;address&quot;</span>, address },</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                { <span class="stringliteral">&quot;city&quot;</span>, city },</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                { <span class="stringliteral">&quot;department&quot;</span>, department },</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                { <span class="stringliteral">&quot;country&quot;</span>, country },</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            };</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            var requestUri = GetUri(LocationUrl, parameters);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            <a class="code" href="classClassLibrary_1_1LocationAPI_1_1Location.html">Location</a> result;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            <span class="keyword">using</span> (var response = await this.client.GetAsync(requestUri).ConfigureAwait(<span class="keyword">false</span>))</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            {</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                response.EnsureSuccessStatusCode();</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                <span class="keywordtype">string</span> content = await response.Content.ReadAsStringAsync().ConfigureAwait(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                result = JsonSerializer.Deserialize&lt;<a class="code" href="classClassLibrary_1_1LocationAPI_1_1Location.html">Location</a>&gt;(</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                    content,</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                    <span class="keyword">new</span> JsonSerializerOptions() { PropertyNameCaseInsensitive = <span class="keyword">true</span> });</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            }</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            <span class="keywordflow">return</span> result;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        }</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
+<div class="line"><a name="l00130"></a><span class="lineno"><a class="line" href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#a991a52c2921663cd08cc1b7bdd9003cb">  130</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="classClassLibrary_1_1LocationAPI_1_1Location.html">Location</a> <a class="code" href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#a991a52c2921663cd08cc1b7bdd9003cb">GetLocation</a>(</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;            <span class="keywordtype">string</span> address,</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            <span class="keywordtype">string</span> city = <span class="stringliteral">&quot;Montevideo&quot;</span>,</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;            <span class="keywordtype">string</span> department = <span class="stringliteral">&quot;Montevideo&quot;</span>,</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            <span class="keywordtype">string</span> country = <span class="stringliteral">&quot;Uruguay&quot;</span>)</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        {</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            <span class="keywordflow">return</span> AsyncContext.Run(() =&gt; this.<a class="code" href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#a6c6765ea44b56b7d5dbc74c5ba69e4bb">GetLocationAsync</a>(address, city, department, country));</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        }</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160; </div>
+<div class="line"><a name="l00145"></a><span class="lineno"><a class="line" href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#aa01eb1ec5f380347b6a4bc7f02c72754">  145</a></span>&#160;        <span class="keyword">public</span> async Task&lt;Distance&gt; <a class="code" href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#aa01eb1ec5f380347b6a4bc7f02c72754">GetDistanceAsync</a>(<a class="code" href="classClassLibrary_1_1LocationAPI_1_1Location.html">Location</a> from, <a class="code" href="classClassLibrary_1_1LocationAPI_1_1Location.html">Location</a> to)</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        {</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;            var parameters = <span class="keyword">new</span> Dictionary&lt;string, string&gt;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;            {</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                { <span class="stringliteral">&quot;fromLatitude&quot;</span>, from.<a class="code" href="classClassLibrary_1_1LocationAPI_1_1Location.html#af2bb57c4dad80617efad025983bb2fd7">Latitude</a>.ToString(CultureInfo.InvariantCulture) },</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                { <span class="stringliteral">&quot;fromLongitude&quot;</span>, from.<a class="code" href="classClassLibrary_1_1LocationAPI_1_1Location.html#aee4be876b1391340eea6326a31183218">Longitude</a>.ToString(CultureInfo.InvariantCulture) },</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                { <span class="stringliteral">&quot;toLatitude&quot;</span>, to.<a class="code" href="classClassLibrary_1_1LocationAPI_1_1Location.html#af2bb57c4dad80617efad025983bb2fd7">Latitude</a>.ToString(CultureInfo.InvariantCulture) },</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                { <span class="stringliteral">&quot;toLongitude&quot;</span>, to.<a class="code" href="classClassLibrary_1_1LocationAPI_1_1Location.html#aee4be876b1391340eea6326a31183218">Longitude</a>.ToString(CultureInfo.InvariantCulture) },</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;            };</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;            var requestUri = GetUri(DistanceUrl, parameters);</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;            <span class="keyword">using</span> (var response = await this.client.GetAsync(requestUri).ConfigureAwait(<span class="keyword">false</span>))</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;            {</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                response.EnsureSuccessStatusCode();</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                <span class="keywordtype">string</span> content = await response.Content.ReadAsStringAsync().ConfigureAwait(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                <a class="code" href="classClassLibrary_1_1LocationAPI_1_1Distance.html">Distance</a> result = JsonSerializer.Deserialize&lt;<a class="code" href="classClassLibrary_1_1LocationAPI_1_1Distance.html">Distance</a>&gt;(</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                    content,</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                    <span class="keyword">new</span> JsonSerializerOptions() { PropertyNameCaseInsensitive = <span class="keyword">true</span> });</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160; </div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                <span class="keywordflow">return</span> result;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;            }</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        }</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160; </div>
+<div class="line"><a name="l00173"></a><span class="lineno"><a class="line" href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#afb416bcdfd0240b7e0db337e56a3ef99">  173</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="classClassLibrary_1_1LocationAPI_1_1Distance.html">Distance</a> <a class="code" href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#afb416bcdfd0240b7e0db337e56a3ef99">GetDistance</a>(<a class="code" href="classClassLibrary_1_1LocationAPI_1_1Location.html">Location</a> from, <a class="code" href="classClassLibrary_1_1LocationAPI_1_1Location.html">Location</a> to)</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        {</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;            <span class="keywordflow">return</span> AsyncContext.Run(() =&gt; this.<a class="code" href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#aa01eb1ec5f380347b6a4bc7f02c72754">GetDistanceAsync</a>(from, to));</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        }</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160; </div>
+<div class="line"><a name="l00184"></a><span class="lineno"><a class="line" href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#afc0058206ab515d7884f9ff4ec6db3d7">  184</a></span>&#160;        <span class="keyword">public</span> async Task&lt;Distance&gt; <a class="code" href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#afc0058206ab515d7884f9ff4ec6db3d7">GetDistanceAsync</a>(<span class="keywordtype">string</span> from, <span class="keywordtype">string</span> to)</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        {</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            var parameters = <span class="keyword">new</span> Dictionary&lt;string, string&gt;</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;            {</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                { <span class="stringliteral">&quot;fromAddress&quot;</span>, from },</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                { <span class="stringliteral">&quot;toAddress&quot;</span>, to },</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;            };</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; </div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;            var requestUri = GetUri(DistanceUrl, parameters);</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;            <span class="keyword">using</span> var response = await this.client.GetAsync(requestUri).ConfigureAwait(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;            response.EnsureSuccessStatusCode();</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160; </div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;            <span class="keywordtype">string</span> content = await response.Content.ReadAsStringAsync().ConfigureAwait(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;            <a class="code" href="classClassLibrary_1_1LocationAPI_1_1Distance.html">Distance</a> result = JsonSerializer.Deserialize&lt;<a class="code" href="classClassLibrary_1_1LocationAPI_1_1Distance.html">Distance</a>&gt;(</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                content,</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                <span class="keyword">new</span> JsonSerializerOptions() { PropertyNameCaseInsensitive = <span class="keyword">true</span> });</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160; </div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;            <span class="keywordflow">return</span> result;</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        }</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160; </div>
+<div class="line"><a name="l00208"></a><span class="lineno"><a class="line" href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#a93d26a1cc4f9ba67257ee8fa5f14dd7d">  208</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="classClassLibrary_1_1LocationAPI_1_1Distance.html">Distance</a> <a class="code" href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#a93d26a1cc4f9ba67257ee8fa5f14dd7d">GetDistance</a>(<span class="keywordtype">string</span> from, <span class="keywordtype">string</span> to)</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        {</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;            <span class="keywordflow">return</span> AsyncContext.Run(() =&gt; this.<a class="code" href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#aa01eb1ec5f380347b6a4bc7f02c72754">GetDistanceAsync</a>(from, to));</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        }</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160; </div>
+<div class="line"><a name="l00224"></a><span class="lineno"><a class="line" href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#ad395eaf2009b2fd83365962f18357ea4">  224</a></span>&#160;        <span class="keyword">public</span> async Task <a class="code" href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#ad395eaf2009b2fd83365962f18357ea4">DownloadMapAsync</a>(<span class="keywordtype">double</span> latitude, <span class="keywordtype">double</span> longitude, <span class="keywordtype">string</span> path, <span class="keywordtype">int</span> zoomLevel = 15)</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;        {</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;            var parameters = <span class="keyword">new</span> Dictionary&lt;string, string&gt;</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;            {</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;                { <span class="stringliteral">&quot;latitude&quot;</span>, latitude.ToString(CultureInfo.InvariantCulture) },</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;                { <span class="stringliteral">&quot;longitude&quot;</span>, longitude.ToString(CultureInfo.InvariantCulture) },</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;                { <span class="stringliteral">&quot;zoomLevel&quot;</span>, zoomLevel.ToString(CultureInfo.InvariantCulture) },</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;            };</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160; </div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;            var requestUri = GetUri(MapUrl, parameters);</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;            <span class="keyword">using</span> var response = await this.client.GetAsync(requestUri).ConfigureAwait(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;            response.EnsureSuccessStatusCode();</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160; </div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;            <span class="keyword">using</span> var fs = <span class="keyword">new</span> FileStream(path, FileMode.OpenOrCreate);</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;            await response.Content.CopyToAsync(fs).ConfigureAwait(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;            <span class="keyword">using</span> var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;        }</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160; </div>
+<div class="line"><a name="l00246"></a><span class="lineno"><a class="line" href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#af92c9388436fef838aa35292a5c869a0">  246</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#af92c9388436fef838aa35292a5c869a0">DownloadMap</a>(<span class="keywordtype">double</span> latitude, <span class="keywordtype">double</span> longitude, <span class="keywordtype">string</span> path, <span class="keywordtype">int</span> zoomLevel = 15)</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;        {</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;            AsyncContext.Run(() =&gt; this.<a class="code" href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#ad395eaf2009b2fd83365962f18357ea4">DownloadMapAsync</a>(latitude, longitude, path, zoomLevel));</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;        }</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160; </div>
+<div class="line"><a name="l00262"></a><span class="lineno"><a class="line" href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#a36ec3faf1eada4ed50b4f3bcae9a30a7">  262</a></span>&#160;        <span class="keyword">public</span> async Task <a class="code" href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#a36ec3faf1eada4ed50b4f3bcae9a30a7">DownloadRouteAsync</a>(</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;            <span class="keywordtype">double</span> fromLatitude,</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;            <span class="keywordtype">double</span> fromLongitude,</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;            <span class="keywordtype">double</span> toLatitude,</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;            <span class="keywordtype">double</span> toLongitude,</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;            <span class="keywordtype">string</span> path)</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;        {</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;            var parameters = <span class="keyword">new</span> Dictionary&lt;string, string&gt;</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;            {</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;                { <span class="stringliteral">&quot;fromLatitude&quot;</span>, fromLatitude.ToString(CultureInfo.InvariantCulture) },</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;                { <span class="stringliteral">&quot;fromLongitude&quot;</span>, fromLongitude.ToString(CultureInfo.InvariantCulture) },</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;                { <span class="stringliteral">&quot;toLatitude&quot;</span>, toLatitude.ToString(CultureInfo.InvariantCulture) },</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;                { <span class="stringliteral">&quot;toLongitude&quot;</span>, toLongitude.ToString(CultureInfo.InvariantCulture) },</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;            };</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160; </div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;            var requestUri = GetUri(RouteUrl, parameters);</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;            <span class="keyword">using</span> var response = await this.client.GetAsync(requestUri).ConfigureAwait(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;            response.EnsureSuccessStatusCode();</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160; </div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;            <span class="keyword">using</span> var fs = <span class="keyword">new</span> FileStream(path, FileMode.OpenOrCreate);</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;            await response.Content.CopyToAsync(fs).ConfigureAwait(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;            <span class="keyword">using</span> var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;        }</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160; </div>
+<div class="line"><a name="l00290"></a><span class="lineno"><a class="line" href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#a7d8d895cb5d6e86f5a030ad134e7857e">  290</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#a7d8d895cb5d6e86f5a030ad134e7857e">DownloadRoute</a>(</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;            <span class="keywordtype">double</span> fromLatitude,</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;            <span class="keywordtype">double</span> fromLongitude,</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;            <span class="keywordtype">double</span> toLatitude,</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;            <span class="keywordtype">double</span> toLongitude,</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;            <span class="keywordtype">string</span> path)</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;        {</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;            <span class="keywordflow">if</span> (<span class="keywordtype">string</span>.IsNullOrEmpty(path))</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;            {</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> ArgumentException(<span class="stringliteral">&quot;Is null or empty&quot;</span>, nameof(path));</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;            }</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160; </div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;            AsyncContext.Run(() =&gt; this.<a class="code" href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#a36ec3faf1eada4ed50b4f3bcae9a30a7">DownloadRouteAsync</a>(fromLatitude, fromLongitude, toLatitude, toLongitude, path));</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;        }</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160; </div>
+<div class="line"><a name="l00306"></a><span class="lineno"><a class="line" href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#a511200f60007b7a11fbe49f3b9b2407c">  306</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#a511200f60007b7a11fbe49f3b9b2407c">Dispose</a>()</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;        {</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;            this.<a class="code" href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#a511200f60007b7a11fbe49f3b9b2407c">Dispose</a>(disposing: <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;            GC.SuppressFinalize(<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;        }</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160; </div>
+<div class="line"><a name="l00313"></a><span class="lineno"><a class="line" href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#a6673fd016d81ab2889eb641a331060c8">  313</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#a6673fd016d81ab2889eb641a331060c8">Dispose</a>(<span class="keywordtype">bool</span> disposing)</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;        {</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;            <span class="keywordflow">if</span> (!this.disposedValue)</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;            {</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;                <span class="keywordflow">if</span> (disposing)</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;                {</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;                    this.client.Dispose();</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;                }</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160; </div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;                this.disposedValue = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;            }</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;        }</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160; </div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> Uri GetUri(<span class="keywordtype">string</span> baseUrl, IDictionary&lt;string, string&gt; parameters)</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;        {</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> Uri(</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;                <span class="keywordtype">string</span>.Format(</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;                    CultureInfo.InvariantCulture,</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;                    <span class="stringliteral">&quot;{0}?{1}&quot;</span>,</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;                    baseUrl,</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;                    <span class="keywordtype">string</span>.Join(</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;                        <span class="stringliteral">&quot;&amp;&quot;</span>,</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;                        parameters.Select(kvp =&gt;</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;                        <span class="keywordtype">string</span>.Format(</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;                            CultureInfo.InvariantCulture,</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;                            <span class="stringliteral">&quot;{0}={1}&quot;</span>,</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;                            kvp.Key,</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;                            HttpUtility.UrlEncode(kvp.Value))))));</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;        }</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;    }</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;}</div>
+<div class="ttc" id="aclassClassLibrary_1_1LocationAPI_1_1Distance_html"><div class="ttname"><a href="classClassLibrary_1_1LocationAPI_1_1Distance.html">ClassLibrary.LocationAPI.Distance</a></div><div class="ttdoc">Representa la distancia entre las coordenas o las direcciones de origen y destino retornada en los mé...</div><div class="ttdef"><b>Definition:</b> <a href="Distance_8cs_source.html#l00014">Distance.cs:15</a></div></div>
+<div class="ttc" id="aclassClassLibrary_1_1LocationAPI_1_1LocationApiClient_html"><div class="ttname"><a href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html">ClassLibrary.LocationAPI.LocationApiClient</a></div><div class="ttdoc">Un cliente de la API de localización. Aplica el patrón Creator ya que se encarga exclusivamente de cr...</div><div class="ttdef"><b>Definition:</b> <a href="LocationApiClient_8cs_source.html#l00028">LocationApiClient.cs:29</a></div></div>
+<div class="ttc" id="aclassClassLibrary_1_1LocationAPI_1_1LocationApiClient_html_a36ec3faf1eada4ed50b4f3bcae9a30a7"><div class="ttname"><a href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#a36ec3faf1eada4ed50b4f3bcae9a30a7">ClassLibrary.LocationAPI.LocationApiClient.DownloadRouteAsync</a></div><div class="ttdeci">async Task DownloadRouteAsync(double fromLatitude, double fromLongitude, double toLatitude, double toLongitude, string path)</div><div class="ttdoc">Un mapa con una ruta entre dos coordenadas.</div><div class="ttdef"><b>Definition:</b> <a href="LocationApiClient_8cs_source.html#l00262">LocationApiClient.cs:262</a></div></div>
+<div class="ttc" id="aclassClassLibrary_1_1LocationAPI_1_1LocationApiClient_html_a511200f60007b7a11fbe49f3b9b2407c"><div class="ttname"><a href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#a511200f60007b7a11fbe49f3b9b2407c">ClassLibrary.LocationAPI.LocationApiClient.Dispose</a></div><div class="ttdeci">void Dispose()</div><div class="ttdef"><b>Definition:</b> <a href="LocationApiClient_8cs_source.html#l00306">LocationApiClient.cs:306</a></div></div>
+<div class="ttc" id="aclassClassLibrary_1_1LocationAPI_1_1LocationApiClient_html_a6673fd016d81ab2889eb641a331060c8"><div class="ttname"><a href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#a6673fd016d81ab2889eb641a331060c8">ClassLibrary.LocationAPI.LocationApiClient.Dispose</a></div><div class="ttdeci">virtual void Dispose(bool disposing)</div><div class="ttdef"><b>Definition:</b> <a href="LocationApiClient_8cs_source.html#l00313">LocationApiClient.cs:313</a></div></div>
+<div class="ttc" id="aclassClassLibrary_1_1LocationAPI_1_1LocationApiClient_html_a6c6765ea44b56b7d5dbc74c5ba69e4bb"><div class="ttname"><a href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#a6c6765ea44b56b7d5dbc74c5ba69e4bb">ClassLibrary.LocationAPI.LocationApiClient.GetLocationAsync</a></div><div class="ttdeci">async Task&lt; Location &gt; GetLocationAsync(string address, string city=&quot;Montevideo&quot;, string department=&quot;Montevideo&quot;, string country=&quot;Uruguay&quot;)</div><div class="ttdoc">Obtiene las coordenadas de una dirección.</div><div class="ttdef"><b>Definition:</b> <a href="LocationApiClient_8cs_source.html#l00096">LocationApiClient.cs:96</a></div></div>
+<div class="ttc" id="aclassClassLibrary_1_1LocationAPI_1_1LocationApiClient_html_a7cb10551ef085b9a2f281a458681cf11"><div class="ttname"><a href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#a7cb10551ef085b9a2f281a458681cf11">ClassLibrary.LocationAPI.LocationApiClient.Instancia</a></div><div class="ttdeci">static LocationApiClient Instancia</div><div class="ttdoc">Obitene acceso al singleton de la api.</div><div class="ttdef"><b>Definition:</b> <a href="LocationApiClient_8cs_source.html#l00076">LocationApiClient.cs:77</a></div></div>
+<div class="ttc" id="aclassClassLibrary_1_1LocationAPI_1_1LocationApiClient_html_a7d8d895cb5d6e86f5a030ad134e7857e"><div class="ttname"><a href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#a7d8d895cb5d6e86f5a030ad134e7857e">ClassLibrary.LocationAPI.LocationApiClient.DownloadRoute</a></div><div class="ttdeci">void DownloadRoute(double fromLatitude, double fromLongitude, double toLatitude, double toLongitude, string path)</div><div class="ttdef"><b>Definition:</b> <a href="LocationApiClient_8cs_source.html#l00290">LocationApiClient.cs:290</a></div></div>
+<div class="ttc" id="aclassClassLibrary_1_1LocationAPI_1_1LocationApiClient_html_a93d26a1cc4f9ba67257ee8fa5f14dd7d"><div class="ttname"><a href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#a93d26a1cc4f9ba67257ee8fa5f14dd7d">ClassLibrary.LocationAPI.LocationApiClient.GetDistance</a></div><div class="ttdeci">Distance GetDistance(string from, string to)</div><div class="ttdef"><b>Definition:</b> <a href="LocationApiClient_8cs_source.html#l00208">LocationApiClient.cs:208</a></div></div>
+<div class="ttc" id="aclassClassLibrary_1_1LocationAPI_1_1LocationApiClient_html_a991a52c2921663cd08cc1b7bdd9003cb"><div class="ttname"><a href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#a991a52c2921663cd08cc1b7bdd9003cb">ClassLibrary.LocationAPI.LocationApiClient.GetLocation</a></div><div class="ttdeci">Location GetLocation(string address, string city=&quot;Montevideo&quot;, string department=&quot;Montevideo&quot;, string country=&quot;Uruguay&quot;)</div><div class="ttdef"><b>Definition:</b> <a href="LocationApiClient_8cs_source.html#l00130">LocationApiClient.cs:130</a></div></div>
+<div class="ttc" id="aclassClassLibrary_1_1LocationAPI_1_1LocationApiClient_html_aa01eb1ec5f380347b6a4bc7f02c72754"><div class="ttname"><a href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#aa01eb1ec5f380347b6a4bc7f02c72754">ClassLibrary.LocationAPI.LocationApiClient.GetDistanceAsync</a></div><div class="ttdeci">async Task&lt; Distance &gt; GetDistanceAsync(Location from, Location to)</div><div class="ttdoc">Obtiene la distancia entre dos coordenadas.</div><div class="ttdef"><b>Definition:</b> <a href="LocationApiClient_8cs_source.html#l00145">LocationApiClient.cs:145</a></div></div>
+<div class="ttc" id="aclassClassLibrary_1_1LocationAPI_1_1LocationApiClient_html_ad395eaf2009b2fd83365962f18357ea4"><div class="ttname"><a href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#ad395eaf2009b2fd83365962f18357ea4">ClassLibrary.LocationAPI.LocationApiClient.DownloadMapAsync</a></div><div class="ttdeci">async Task DownloadMapAsync(double latitude, double longitude, string path, int zoomLevel=15)</div><div class="ttdoc">Descarga una mapa de una coordenada.</div><div class="ttdef"><b>Definition:</b> <a href="LocationApiClient_8cs_source.html#l00224">LocationApiClient.cs:224</a></div></div>
+<div class="ttc" id="aclassClassLibrary_1_1LocationAPI_1_1LocationApiClient_html_af92c9388436fef838aa35292a5c869a0"><div class="ttname"><a href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#af92c9388436fef838aa35292a5c869a0">ClassLibrary.LocationAPI.LocationApiClient.DownloadMap</a></div><div class="ttdeci">void DownloadMap(double latitude, double longitude, string path, int zoomLevel=15)</div><div class="ttdef"><b>Definition:</b> <a href="LocationApiClient_8cs_source.html#l00246">LocationApiClient.cs:246</a></div></div>
+<div class="ttc" id="aclassClassLibrary_1_1LocationAPI_1_1LocationApiClient_html_afb416bcdfd0240b7e0db337e56a3ef99"><div class="ttname"><a href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#afb416bcdfd0240b7e0db337e56a3ef99">ClassLibrary.LocationAPI.LocationApiClient.GetDistance</a></div><div class="ttdeci">Distance GetDistance(Location from, Location to)</div><div class="ttdef"><b>Definition:</b> <a href="LocationApiClient_8cs_source.html#l00173">LocationApiClient.cs:173</a></div></div>
+<div class="ttc" id="aclassClassLibrary_1_1LocationAPI_1_1LocationApiClient_html_afc0058206ab515d7884f9ff4ec6db3d7"><div class="ttname"><a href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#afc0058206ab515d7884f9ff4ec6db3d7">ClassLibrary.LocationAPI.LocationApiClient.GetDistanceAsync</a></div><div class="ttdeci">async Task&lt; Distance &gt; GetDistanceAsync(string from, string to)</div><div class="ttdoc">Obtiene la distancia entre dos direcciones.</div><div class="ttdef"><b>Definition:</b> <a href="LocationApiClient_8cs_source.html#l00184">LocationApiClient.cs:184</a></div></div>
+<div class="ttc" id="aclassClassLibrary_1_1LocationAPI_1_1Location_html"><div class="ttname"><a href="classClassLibrary_1_1LocationAPI_1_1Location.html">ClassLibrary.LocationAPI.Location</a></div><div class="ttdoc">Representa las coordenadas y otros datos de la ubicación de una dirección retornada en el método....</div><div class="ttdef"><b>Definition:</b> <a href="Location_8cs_source.html#l00013">Location.cs:14</a></div></div>
+<div class="ttc" id="aclassClassLibrary_1_1LocationAPI_1_1Location_html_aee4be876b1391340eea6326a31183218"><div class="ttname"><a href="classClassLibrary_1_1LocationAPI_1_1Location.html#aee4be876b1391340eea6326a31183218">ClassLibrary.LocationAPI.Location.Longitude</a></div><div class="ttdeci">float Longitude</div><div class="ttdoc">Obtiene o establece la longitud de la dirección.</div><div class="ttdef"><b>Definition:</b> <a href="Location_8cs_source.html#l00062">Location.cs:62</a></div></div>
+<div class="ttc" id="aclassClassLibrary_1_1LocationAPI_1_1Location_html_af2bb57c4dad80617efad025983bb2fd7"><div class="ttname"><a href="classClassLibrary_1_1LocationAPI_1_1Location.html#af2bb57c4dad80617efad025983bb2fd7">ClassLibrary.LocationAPI.Location.Latitude</a></div><div class="ttdeci">float Latitude</div><div class="ttdoc">Obtiene o establece la latitud de la dirección.</div><div class="ttdef"><b>Definition:</b> <a href="Location_8cs_source.html#l00056">Location.cs:56</a></div></div>
+<div class="ttc" id="aclassIDisposable_html"><div class="ttname"><a href="classIDisposable.html">IDisposable</a></div></div>
+<div class="ttc" id="anamespaceClassLibrary_1_1LocationAPI_html"><div class="ttname"><a href="namespaceClassLibrary_1_1LocationAPI.html">ClassLibrary.LocationAPI</a></div><div class="ttdef"><b>Definition:</b> <a href="Distance_8cs_source.html#l00007">Distance.cs:8</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_b09aa5050b20026c07fbecd05ffee465.html">ClassLibrary</a></li><li class="navelem"><a class="el" href="dir_3668698d8017aae19a658e081f9e4081.html">LocationAPI</a></li><li class="navelem"><b>LocationApiClient.cs</b></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

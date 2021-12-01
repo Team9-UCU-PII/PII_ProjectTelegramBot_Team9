@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Proyecto de PII
-   &#160;<span id="projectnumber">1</span>
+   &#160;<span id="projectnumber">3</span>
    </div>
    <div id="projectbrief">Projecto para curso de Programacion 2 en la UCU, por el equipo 9 de la tarde</div>
   </td>
@@ -119,13 +119,13 @@ Métodos públicos</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Propiedades</h2></td></tr>
 <tr class="memitem:a8ea8dbff728176cea094a2a659c537cb"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classImporters_1_1DataAccess.html">DataAccess</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classImporters_1_1DataAccess.html#a8ea8dbff728176cea094a2a659c537cb">Instancia</a><code> [get]</code></td></tr>
-<tr class="memdesc:a8ea8dbff728176cea094a2a659c537cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene acceso al singleton.  <a href="classImporters_1_1DataAccess.html#a8ea8dbff728176cea094a2a659c537cb">Más...</a><br /></td></tr>
+<tr class="memdesc:a8ea8dbff728176cea094a2a659c537cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene acceso al singleton. Gracias a la correcta implementación del patrón Adapter en la base de datos, se puede configurar la capa de Data Access para funcionar con cualquier clase que implemente IDatabase, cambiando simplemente el objeto que se pasa como argumento a su constructor.  <a href="classImporters_1_1DataAccess.html#a8ea8dbff728176cea094a2a659c537cb">Más...</a><br /></td></tr>
 <tr class="separator:a8ea8dbff728176cea094a2a659c537cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
 <div class="textblock"><p>Clase que utilizará el bot para acceder a la base de datos. </p>
 
-<p class="definition">Definición en la línea <a class="el" href="DataAccess_8cs_source.html#l00015">15</a> del archivo <a class="el" href="DataAccess_8cs_source.html">DataAccess.cs</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="DataAccess_8cs_source.html#l00017">17</a> del archivo <a class="el" href="DataAccess_8cs_source.html">DataAccess.cs</a>.</p>
 </div><h2 class="groupheader">Documentación de las funciones miembro</h2>
 <a id="a42d97cf14f1d0516e74cd97e5355dd48"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a42d97cf14f1d0516e74cd97e5355dd48">&#9670;&nbsp;</a></span>Actualizar&lt; T &gt;()</h2>
@@ -167,8 +167,16 @@ Propiedades</h2></td></tr>
   </table>
   </dd>
 </dl>
+<div class="typeconstraint">
+<dl><dt><b>Restriciones de tipo</b></dt><dd>
+<table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>IPersistible</em></td><td>&#160;</td></tr>
+</table>
+</dd>
+</dl>
+</div>
 
-<p class="definition">Definición en la línea <a class="el" href="DataAccess_8cs_source.html#l00059">59</a> del archivo <a class="el" href="DataAccess_8cs_source.html">DataAccess.cs</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="DataAccess_8cs_source.html#l00064">64</a> del archivo <a class="el" href="DataAccess_8cs_source.html">DataAccess.cs</a>.</p>
 
 </div>
 </div>
@@ -201,8 +209,16 @@ Propiedades</h2></td></tr>
   </table>
   </dd>
 </dl>
+<div class="typeconstraint">
+<dl><dt><b>Restriciones de tipo</b></dt><dd>
+<table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>IPersistible</em></td><td>&#160;</td></tr>
+</table>
+</dd>
+</dl>
+</div>
 
-<p class="definition">Definición en la línea <a class="el" href="DataAccess_8cs_source.html#l00079">79</a> del archivo <a class="el" href="DataAccess_8cs_source.html">DataAccess.cs</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="DataAccess_8cs_source.html#l00084">84</a> del archivo <a class="el" href="DataAccess_8cs_source.html">DataAccess.cs</a>.</p>
 
 </div>
 </div>
@@ -235,8 +251,16 @@ Propiedades</h2></td></tr>
   </table>
   </dd>
 </dl>
+<div class="typeconstraint">
+<dl><dt><b>Restriciones de tipo</b></dt><dd>
+<table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>IPersistible</em></td><td>&#160;</td></tr>
+</table>
+</dd>
+</dl>
+</div>
 
-<p class="definition">Definición en la línea <a class="el" href="DataAccess_8cs_source.html#l00048">48</a> del archivo <a class="el" href="DataAccess_8cs_source.html">DataAccess.cs</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="DataAccess_8cs_source.html#l00053">53</a> del archivo <a class="el" href="DataAccess_8cs_source.html">DataAccess.cs</a>.</p>
 
 </div>
 </div>
@@ -263,8 +287,17 @@ Propiedades</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Devuelve</dt><dd><code>List T</code>.</dd></dl>
+<div class="typeconstraint">
+<dl><dt><b>Restriciones de tipo</b></dt><dd>
+<table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>class</em></td><td>&#160;</td></tr>
+<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>IPersistible</em></td><td>&#160;</td></tr>
+</table>
+</dd>
+</dl>
+</div>
 
-<p class="definition">Definición en la línea <a class="el" href="DataAccess_8cs_source.html#l00069">69</a> del archivo <a class="el" href="DataAccess_8cs_source.html">DataAccess.cs</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="DataAccess_8cs_source.html#l00074">74</a> del archivo <a class="el" href="DataAccess_8cs_source.html">DataAccess.cs</a>.</p>
 
 </div>
 </div>
@@ -289,10 +322,10 @@ Propiedades</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Obtiene acceso al singleton. </p>
+<p>Obtiene acceso al singleton. Gracias a la correcta implementación del patrón Adapter en la base de datos, se puede configurar la capa de Data Access para funcionar con cualquier clase que implemente IDatabase, cambiando simplemente el objeto que se pasa como argumento a su constructor. </p>
 <p><a class="el" href="classImporters_1_1DataAccess.html" title="Clase que utilizará el bot para acceder a la base de datos.">DataAccess</a>.</p>
 
-<p class="definition">Definición en la línea <a class="el" href="DataAccess_8cs_source.html#l00021">21</a> del archivo <a class="el" href="DataAccess_8cs_source.html">DataAccess.cs</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="DataAccess_8cs_source.html#l00026">26</a> del archivo <a class="el" href="DataAccess_8cs_source.html">DataAccess.cs</a>.</p>
 
 </div>
 </div>

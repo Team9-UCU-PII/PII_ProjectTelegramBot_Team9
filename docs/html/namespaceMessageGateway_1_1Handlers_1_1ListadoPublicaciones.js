@@ -1,0 +1,4 @@
+var namespaceMessageGateway_1_1Handlers_1_1ListadoPublicaciones =
+[
+    [ "HandlerListadoPublicaciones", "classMessageGateway_1_1Handlers_1_1ListadoPublicaciones_1_1HandlerListadoPublicaciones.html", "classMessageGateway_1_1Handlers_1_1ListadoPublicaciones_1_1HandlerListadoPublicaciones" ]
+];

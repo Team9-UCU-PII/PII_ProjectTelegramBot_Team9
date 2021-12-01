@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['cantidad_163',['Cantidad',['../classClassLibrary_1_1Publication_1_1Publicacion.html#a140e838b5c685b0d5a26b94b99db9e29',1,'ClassLibrary::Publication::Publicacion']]],
-  ['categoria_164',['Categoria',['../classClassLibrary_1_1Publication_1_1Residuo.html#a0716d4acee048edd84879a368513635e',1,'ClassLibrary::Publication::Residuo']]],
-  ['comprado_165',['Comprado',['../classClassLibrary_1_1Publication_1_1Publicacion.html#a0ed1c3c302d377d830b6c8215fdbb84d',1,'ClassLibrary::Publication::Publicacion']]],
-  ['comprador_166',['Comprador',['../classClassLibrary_1_1Publication_1_1Venta.html#a6e89e667141c1717a5357260e732df2e',1,'ClassLibrary::Publication::Venta']]],
-  ['contrasenia_167',['Contrasenia',['../classClassLibrary_1_1User_1_1DatosLogin.html#a7950d598c21406d63aa99baf6ace24e7',1,'ClassLibrary::User::DatosLogin']]]
+  ['addresline_590',['AddresLine',['../classClassLibrary_1_1LocationAPI_1_1Location.html#a22dd73f5b5f83d5f0c7c9d7062919574',1,'ClassLibrary::LocationAPI::Location']]],
+  ['aniofin_591',['AnioFin',['../classMessageGateway_1_1Forms_1_1FrmReporte.html#a6eea32ae1b812be700e30d816a0545db',1,'MessageGateway::Forms::FrmReporte']]],
+  ['anioinicio_592',['AnioInicio',['../classMessageGateway_1_1Forms_1_1FrmReporte.html#a32d6b847a18eb4e1e963d8e61d9a2702',1,'MessageGateway::Forms::FrmReporte']]]
 ];

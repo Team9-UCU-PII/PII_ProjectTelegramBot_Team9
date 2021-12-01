@@ -1,0 +1,20 @@
+digraph "MessageGateway.Forms.FrmBusqueda"
+{
+ // INTERACTIVE_SVG=YES
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{MessageGateway.Forms.Frm\lBusqueda\n|+ CurrentState\l+ InstanciaLoggeada\l+ cadenaFilters\l+ publicacionesFiltradas\l+ publicacionSeparada\l+ CurrentStateListado\l|+ FrmBusqueda()\l+ AddFilter()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Formulario que recopilara la información necesaria para buscar las ofertas según los filtros."];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node2 [label="{FormularioBase\n|+ messageHandler\l|+ ReceiveMessage()\l+ ChangeForm()\l# FormularioBase()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classMessageGateway_1_1Forms_1_1FormularioBase.html",tooltip="Superclase para todos los formularios."];
+  Node3 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node3 [label="{IFormulario\n||+ ReceiveMessage()\l+ ChangeForm()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interfaceMessageGateway_1_1Forms_1_1IFormulario.html",tooltip="Interfaz que engloba todos los forularios y sus metodos principales."];
+  Node4 -> Node2 [color="grey25",fontsize="10",style="solid",label=" +gateway" ,arrowhead="odiamond",fontname="Helvetica"];
+  Node4 [label="{MessageGateway.IGateway\n|+ Instancia\l+ ObtenerLinkInvitacion\l|+ EnviarMensaje()\l+ EnviarUbicacionEnMapa()\l+ ObtenerFormularioActual()\l+ CambiarFormulario()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interfaceMessageGateway_1_1IGateway.html",tooltip="Interfaz que engloba las diferentes salidas y entradas posibles de mensaje de invitación al bot (mail..."];
+  Node5 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node5 [label="{IPostLogin\n|+ InstanciaLoggeada\l|}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interfaceMessageGateway_1_1Forms_1_1IPostLogin.html",tooltip="Interfaz para condicionar y controlar que despues del login no se pierda referencia al IUsuario vincu..."];
+  Node6 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node6 [label="{IListableForm\n|+ publicacionesFiltradas\l+ CurrentStateListado\l+ publicacionSeparada\l|}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interfaceMessageGateway_1_1Forms_1_1IListableForm.html",tooltip="Interfaz para las publicaciones filtradas."];
+  Node7 -> Node1 [color="grey25",fontsize="10",style="solid",label=" +dpto" ,arrowhead="odiamond",fontname="Helvetica"];
+  Node7 [label="{string\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+}

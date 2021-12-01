@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Proyecto de PII
-   &#160;<span id="projectnumber">1</span>
+   &#160;<span id="projectnumber">3</span>
    </div>
    <div id="projectbrief">Projecto para curso de Programacion 2 en la UCU, por el equipo 9 de la tarde</div>
   </td>
@@ -93,22 +93,43 @@ $(document).ready(function(){initNavTree('Habilitacion_8cs_source.html',''); ini
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">// &lt;/copyright&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//--------------------------------------------------------------------------------</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceClassLibrary_1_1User.html">ClassLibrary.User</a></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;{</div>
-<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="classClassLibrary_1_1User_1_1Habilitacion.html">   12</a></span>&#160;  <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classClassLibrary_1_1User_1_1Habilitacion.html">Habilitacion</a></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;  {</div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="classClassLibrary_1_1User_1_1Habilitacion.html#a7a6907b2a5ad61603c6abaa3ac908f6d">   18</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classClassLibrary_1_1User_1_1Habilitacion.html#a7a6907b2a5ad61603c6abaa3ac908f6d">Habilitacion</a>(<span class="keywordtype">string</span> nombre)</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    {</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;      this.<a class="code" href="classClassLibrary_1_1User_1_1Habilitacion.html#aa3e88986e860a3dfd7adc0ff25513a5a">Nombre</a> = nombre;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    }</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="classClassLibrary_1_1User_1_1Habilitacion.html#aa3e88986e860a3dfd7adc0ff25513a5a">   27</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">string</span> <a class="code" href="classClassLibrary_1_1User_1_1Habilitacion.html#aa3e88986e860a3dfd7adc0ff25513a5a">Nombre</a> { <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  }</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;}</div>
-<div class="ttc" id="aclassClassLibrary_1_1User_1_1Habilitacion_html"><div class="ttname"><a href="classClassLibrary_1_1User_1_1Habilitacion.html">ClassLibrary.User.Habilitacion</a></div><div class="ttdoc">Clase representativa de las habilitaciones existentes aplicables a los residuos y emprendedores.</div><div class="ttdef"><b>Definition:</b> <a href="Habilitacion_8cs_source.html#l00012">Habilitacion.cs:13</a></div></div>
-<div class="ttc" id="aclassClassLibrary_1_1User_1_1Habilitacion_html_a7a6907b2a5ad61603c6abaa3ac908f6d"><div class="ttname"><a href="classClassLibrary_1_1User_1_1Habilitacion.html#a7a6907b2a5ad61603c6abaa3ac908f6d">ClassLibrary.User.Habilitacion.Habilitacion</a></div><div class="ttdeci">Habilitacion(string nombre)</div><div class="ttdoc">Contructor del tipo Habilitación.</div><div class="ttdef"><b>Definition:</b> <a href="Habilitacion_8cs_source.html#l00018">Habilitacion.cs:18</a></div></div>
-<div class="ttc" id="aclassClassLibrary_1_1User_1_1Habilitacion_html_aa3e88986e860a3dfd7adc0ff25513a5a"><div class="ttname"><a href="classClassLibrary_1_1User_1_1Habilitacion.html#aa3e88986e860a3dfd7adc0ff25513a5a">ClassLibrary.User.Habilitacion.Nombre</a></div><div class="ttdeci">string Nombre</div><div class="ttdoc">Obtiene o establece el nombre de la habilitación.</div><div class="ttdef"><b>Definition:</b> <a href="Habilitacion_8cs_source.html#l00027">Habilitacion.cs:27</a></div></div>
-<div class="ttc" id="anamespaceClassLibrary_1_1User_html"><div class="ttname"><a href="namespaceClassLibrary_1_1User.html">ClassLibrary.User</a></div><div class="ttdef"><b>Definition:</b> <a href="DatosLogin_8cs_source.html#l00007">DatosLogin.cs:8</a></div></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">using</span> <a class="code" href="namespaceImporters.html">Importers</a>;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">using</span> <a class="code" href="namespaceImporters.html">Importers</a>.<a class="code" href="namespaceImporters_1_1Json.html">Json</a>;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">using</span> System.Text.Json.Serialization;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceClassLibrary_1_1User.html">ClassLibrary.User</a></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="classClassLibrary_1_1User_1_1Habilitacion.html">   16</a></span>&#160;  <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classClassLibrary_1_1User_1_1Habilitacion.html">Habilitacion</a> : <a class="code" href="classImporters_1_1Json_1_1JsonConvertibleBase.html">JsonConvertibleBase</a></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  {</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="classClassLibrary_1_1User_1_1Habilitacion.html#a7a6907b2a5ad61603c6abaa3ac908f6d">   22</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classClassLibrary_1_1User_1_1Habilitacion.html#a7a6907b2a5ad61603c6abaa3ac908f6d">Habilitacion</a>(<span class="keywordtype">string</span> nombre)</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    {</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;      this.<a class="code" href="classClassLibrary_1_1User_1_1Habilitacion.html#aa3e88986e860a3dfd7adc0ff25513a5a">Nombre</a> = nombre;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    }</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    [JsonConstructor]</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="classClassLibrary_1_1User_1_1Habilitacion.html#a67e8eae787fb3df35894efa82700352a">   31</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classClassLibrary_1_1User_1_1Habilitacion.html#a67e8eae787fb3df35894efa82700352a">Habilitacion</a>()</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    }</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="classClassLibrary_1_1User_1_1Habilitacion.html#aa3e88986e860a3dfd7adc0ff25513a5a">   40</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">string</span> <a class="code" href="classClassLibrary_1_1User_1_1Habilitacion.html#aa3e88986e860a3dfd7adc0ff25513a5a">Nombre</a> { <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    </div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="classClassLibrary_1_1User_1_1Habilitacion.html#a3d5bc7f5309f8dd9d881bb458cd6a6d4">   46</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="classClassLibrary_1_1User_1_1Habilitacion.html#a3d5bc7f5309f8dd9d881bb458cd6a6d4">JsonSave</a>(<a class="code" href="classImporters_1_1Json_1_1JsonExporter.html">JsonExporter</a> exporter)</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        exporter.Save(<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    }</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  }</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div>
+<div class="ttc" id="aclassClassLibrary_1_1User_1_1Habilitacion_html"><div class="ttname"><a href="classClassLibrary_1_1User_1_1Habilitacion.html">ClassLibrary.User.Habilitacion</a></div><div class="ttdoc">Clase representativa de las habilitaciones existentes aplicables a los residuos y emprendedores.</div><div class="ttdef"><b>Definition:</b> <a href="Habilitacion_8cs_source.html#l00016">Habilitacion.cs:17</a></div></div>
+<div class="ttc" id="aclassClassLibrary_1_1User_1_1Habilitacion_html_a3d5bc7f5309f8dd9d881bb458cd6a6d4"><div class="ttname"><a href="classClassLibrary_1_1User_1_1Habilitacion.html#a3d5bc7f5309f8dd9d881bb458cd6a6d4">ClassLibrary.User.Habilitacion.JsonSave</a></div><div class="ttdeci">override void JsonSave(JsonExporter exporter)</div><div class="ttdoc">Metodo para guardar en Json.</div><div class="ttdef"><b>Definition:</b> <a href="Habilitacion_8cs_source.html#l00046">Habilitacion.cs:46</a></div></div>
+<div class="ttc" id="aclassClassLibrary_1_1User_1_1Habilitacion_html_a67e8eae787fb3df35894efa82700352a"><div class="ttname"><a href="classClassLibrary_1_1User_1_1Habilitacion.html#a67e8eae787fb3df35894efa82700352a">ClassLibrary.User.Habilitacion.Habilitacion</a></div><div class="ttdeci">Habilitacion()</div><div class="ttdoc">Cosntructor de Json.</div><div class="ttdef"><b>Definition:</b> <a href="Habilitacion_8cs_source.html#l00031">Habilitacion.cs:31</a></div></div>
+<div class="ttc" id="aclassClassLibrary_1_1User_1_1Habilitacion_html_a7a6907b2a5ad61603c6abaa3ac908f6d"><div class="ttname"><a href="classClassLibrary_1_1User_1_1Habilitacion.html#a7a6907b2a5ad61603c6abaa3ac908f6d">ClassLibrary.User.Habilitacion.Habilitacion</a></div><div class="ttdeci">Habilitacion(string nombre)</div><div class="ttdoc">Contructor del tipo Habilitación.</div><div class="ttdef"><b>Definition:</b> <a href="Habilitacion_8cs_source.html#l00022">Habilitacion.cs:22</a></div></div>
+<div class="ttc" id="aclassClassLibrary_1_1User_1_1Habilitacion_html_aa3e88986e860a3dfd7adc0ff25513a5a"><div class="ttname"><a href="classClassLibrary_1_1User_1_1Habilitacion.html#aa3e88986e860a3dfd7adc0ff25513a5a">ClassLibrary.User.Habilitacion.Nombre</a></div><div class="ttdeci">string Nombre</div><div class="ttdoc">Obtiene o establece el nombre de la habilitación.</div><div class="ttdef"><b>Definition:</b> <a href="Habilitacion_8cs_source.html#l00040">Habilitacion.cs:40</a></div></div>
+<div class="ttc" id="aclassImporters_1_1Json_1_1JsonConvertibleBase_html"><div class="ttname"><a href="classImporters_1_1Json_1_1JsonConvertibleBase.html">Importers.Json.JsonConvertibleBase</a></div><div class="ttdoc">Clase base abstracta que redefine los operadores == y != para determinar si dos objetos son iguales e...</div><div class="ttdef"><b>Definition:</b> <a href="JsonConvertibleBase_8cs_source.html#l00007">JsonConvertibleBase.cs:8</a></div></div>
+<div class="ttc" id="aclassImporters_1_1Json_1_1JsonExporter_html"><div class="ttname"><a href="classImporters_1_1Json_1_1JsonExporter.html">Importers.Json.JsonExporter</a></div><div class="ttdoc">Clase que exporta objetos de tipo IJsonConvertible a strings en formato JSON. Implementación del visi...</div><div class="ttdef"><b>Definition:</b> <a href="JsonExporter_8cs_source.html#l00015">JsonExporter.cs:16</a></div></div>
+<div class="ttc" id="anamespaceClassLibrary_1_1User_html"><div class="ttname"><a href="namespaceClassLibrary_1_1User.html">ClassLibrary.User</a></div><div class="ttdef"><b>Definition:</b> <a href="DatosLogin_8cs_source.html#l00010">DatosLogin.cs:11</a></div></div>
+<div class="ttc" id="anamespaceImporters_1_1Json_html"><div class="ttname"><a href="namespaceImporters_1_1Json.html">Importers.Json</a></div><div class="ttdef"><b>Definition:</b> <a href="DatabaseJson_8cs_source.html#l00008">DatabaseJson.cs:9</a></div></div>
+<div class="ttc" id="anamespaceImporters_html"><div class="ttname"><a href="namespaceImporters.html">Importers</a></div><div class="ttdef"><b>Definition:</b> <a href="DataAccess_8cs_source.html#l00011">DataAccess.cs:12</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

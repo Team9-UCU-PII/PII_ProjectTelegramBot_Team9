@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['reporte_105',['Reporte',['../classBotCore_1_1Publication_1_1Reporte.html',1,'BotCore::Publication']]],
-  ['residuo_106',['Residuo',['../classClassLibrary_1_1Publication_1_1Residuo.html',1,'ClassLibrary::Publication']]]
+  ['jsonconvertiblebase_362',['JsonConvertibleBase',['../classImporters_1_1Json_1_1JsonConvertibleBase.html',1,'Importers::Json']]],
+  ['jsonexporter_363',['JsonExporter',['../classImporters_1_1Json_1_1JsonExporter.html',1,'Importers::Json']]],
+  ['jsonimporter_364',['JsonImporter',['../classImporters_1_1Json_1_1JsonImporter.html',1,'Importers::Json']]]
 ];

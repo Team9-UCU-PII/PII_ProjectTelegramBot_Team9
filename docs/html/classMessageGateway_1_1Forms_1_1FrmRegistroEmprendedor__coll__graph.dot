@@ -1,0 +1,26 @@
+digraph "MessageGateway.Forms.FrmRegistroEmprendedor"
+{
+ // INTERACTIVE_SVG=YES
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{MessageGateway.Forms.Frm\lRegistroEmprendedor\n|+ emprendedorFinal\l+ Ubicacion\l+ habilitaciones\l+ CurrentState\l+ CurrentStateLocation\l+ city\l+ dpto\l+ direccion\l|+ FrmRegistroEmprendedor()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Formulario que recopilara la información necesaria para registrar un emprendedor."];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node2 [label="{FormularioBase\n|+ messageHandler\l|+ ReceiveMessage()\l+ ChangeForm()\l# FormularioBase()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classMessageGateway_1_1Forms_1_1FormularioBase.html",tooltip="Superclase para todos los formularios."];
+  Node3 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node3 [label="{IFormulario\n||+ ReceiveMessage()\l+ ChangeForm()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interfaceMessageGateway_1_1Forms_1_1IFormulario.html",tooltip="Interfaz que engloba todos los forularios y sus metodos principales."];
+  Node4 -> Node2 [color="grey25",fontsize="10",style="solid",label=" +gateway" ,arrowhead="odiamond",fontname="Helvetica"];
+  Node4 [label="{MessageGateway.IGateway\n|+ Instancia\l+ ObtenerLinkInvitacion\l|+ EnviarMensaje()\l+ EnviarUbicacionEnMapa()\l+ ObtenerFormularioActual()\l+ CambiarFormulario()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interfaceMessageGateway_1_1IGateway.html",tooltip="Interfaz que engloba las diferentes salidas y entradas posibles de mensaje de invitación al bot (mail..."];
+  Node5 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node5 [label="{ILocationForm\n|+ direccion\l+ city\l+ dpto\l+ CurrentStateLocation\l+ Ubicacion\l|}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interfaceMessageGateway_1_1Forms_1_1ILocationForm.html",tooltip="Interfaz que engloba todos los formularios que necesitan una instancia de Location."];
+  Node6 -> Node1 [color="grey25",fontsize="10",style="solid",label=" +Especializacion\n+Nombre\n+Rubro" ,arrowhead="odiamond",fontname="Helvetica"];
+  Node6 [label="{string\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node7 -> Node1 [color="grey25",fontsize="10",style="solid",label=" +LoginCred" ,arrowhead="odiamond",fontname="Helvetica"];
+  Node7 [label="{ClassLibrary.User.DatosLogin\n|+ NombreUsuario\l+ Contrasenia\l+ Usuario\l|+ DatosLogin()\l+ DatosLogin()\l+ JsonSave()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classClassLibrary_1_1User_1_1DatosLogin.html",tooltip="Las instancias de esta clase representan los usuarios creados en el bot, almacendando la empresa o em..."];
+  Node8 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node8 [label="{JsonConvertibleBase\n|+ SerializationID\l|+ JsonSave()\l+ operator==()\l+ operator!=()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classImporters_1_1Json_1_1JsonConvertibleBase.html",tooltip="Clase base abstracta que redefine los operadores == y != para determinar si dos objetos son iguales e..."];
+  Node9 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node9 [label="{IJsonConvertible\n|+ SerializationID\l|+ JsonSave()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interfaceImporters_1_1Json_1_1IJsonConvertible.html",tooltip="Interfaz que permite a la librería de clases marcar las clases que se persisten en formato JSON...."];
+  Node10 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node10 [label="{IPersistible\n||}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interfaceImporters_1_1IPersistible.html",tooltip="Identifica las clases que se espera que la base de datos persista."];
+}

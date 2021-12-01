@@ -1,0 +1,13 @@
+digraph "MessageGateway.Handlers.ListadoPublicaciones.HandlerListadoPublicaciones.InternalHandle"
+{
+ // INTERACTIVE_SVG=YES
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="MessageGateway.Handlers.\lListadoPublicaciones.Handler\lListadoPublicaciones.InternalHandle",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="InternalHandle, muestra las publicaciones filtradas y los detalles de una publicación según el nombre..."];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="MessageGateway.Forms.IFormulario.\lChangeForm",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interfaceMessageGateway_1_1Forms_1_1IFormulario.html#af719fd1f858d7ee2d94b86b16ec7399d",tooltip="Metodo que cambia el formulario donde esta parado el usuario."];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="BotCore.Publication.Transacciones.\lConcretarVenta",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classBotCore_1_1Publication_1_1Transacciones.html#ac55c6768597325c5ea7c2c552fb732d5",tooltip="Confirma la compra y la persiste."];
+}

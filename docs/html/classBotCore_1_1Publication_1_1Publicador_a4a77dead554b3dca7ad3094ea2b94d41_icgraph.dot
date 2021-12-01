@@ -1,0 +1,11 @@
+digraph "BotCore.Publication.Publicador.ActualizarOfertaRecurrente"
+{
+ // INTERACTIVE_SVG=YES
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="BotCore.Publication.Publicador.\lActualizarOfertaRecurrente",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Metodo que toma dos publicaciones recurrentes y sustituye una por otra en la base de datos."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="MessageGateway.Handlers.\lHandlerAltaOferta.InternalHandle",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classMessageGateway_1_1Handlers_1_1HandlerAltaOferta.html#ad48024d7a2fcfbcf9bff000e77630e17",tooltip="Internal handle que presenta un menu para ir completando la creacion de oferta. Delega tareas de crea..."];
+}

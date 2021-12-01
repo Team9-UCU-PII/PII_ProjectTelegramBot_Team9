@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Proyecto de PII: Fichero Fuente C:/Users/gatom/OneDrive/Escritorio/programcion/repos/PII_2021_2_Equipo09/src/Importers/JSON/JsonImporter.cs</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Proyecto de PII
+   &#160;<span id="projectnumber">3</span>
+   </div>
+   <div id="projectbrief">Projecto para curso de Programacion 2 en la UCU, por el equipo 9 de la tarde</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('JsonImporter_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">JsonImporter.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">using</span> System.Text.Json;</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="keyword">using</span> System.IO;</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceImporters_1_1Json.html">Importers.Json</a></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;{</div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="classImporters_1_1Json_1_1JsonImporter.html">   10</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classImporters_1_1Json_1_1JsonImporter.html">JsonImporter</a>&lt;T&gt; where T : <a class="code" href="interfaceImporters_1_1IPersistible.html">IPersistible</a></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    {</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> JsonSerializerOptions config = <span class="keyword">new</span> JsonSerializerOptions()</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        {</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;            <a class="code" href="classReferenceHandler.html">ReferenceHandler</a> = <a class="code" href="classImporters_1_1Json_1_1MyReferenceHandler.html">MyReferenceHandler</a>.Instance,</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;            WriteIndented = <span class="keyword">true</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        };</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="classImporters_1_1Json_1_1JsonImporter.html#ade7cb93ac9fe4eec8e932cefa8382aa1">   21</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="classImporters_1_1Json_1_1JsonImporter.html#ade7cb93ac9fe4eec8e932cefa8382aa1">JsonImporter</a>()</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        }</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="classImporters_1_1Json_1_1JsonImporter.html#a3f0551cb3334baf93ae30291b5877020">   31</a></span>&#160;        <span class="keyword">public</span> T <a class="code" href="classImporters_1_1Json_1_1JsonImporter.html#a3f0551cb3334baf93ae30291b5877020">Get</a>(<span class="keywordtype">string</span> filePath)</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            <span class="keywordtype">string</span> json = File.ReadAllText(filePath);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            <span class="keywordflow">return</span> JsonSerializer.Deserialize&lt;T&gt;(json);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        }</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    }</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;}</div>
+<div class="ttc" id="aclassImporters_1_1Json_1_1JsonImporter_html"><div class="ttname"><a href="classImporters_1_1Json_1_1JsonImporter.html">Importers.Json.JsonImporter</a></div><div class="ttdoc">Clase que realiza la deserialización de objetos en formato JSON.</div><div class="ttdef"><b>Definition:</b> <a href="JsonImporter_8cs_source.html#l00010">JsonImporter.cs:11</a></div></div>
+<div class="ttc" id="aclassImporters_1_1Json_1_1JsonImporter_html_a3f0551cb3334baf93ae30291b5877020"><div class="ttname"><a href="classImporters_1_1Json_1_1JsonImporter.html#a3f0551cb3334baf93ae30291b5877020">Importers.Json.JsonImporter.Get</a></div><div class="ttdeci">T Get(string filePath)</div><div class="ttdoc">Genera un objeto desde el archivo proporcionado.</div><div class="ttdef"><b>Definition:</b> <a href="JsonImporter_8cs_source.html#l00031">JsonImporter.cs:31</a></div></div>
+<div class="ttc" id="aclassImporters_1_1Json_1_1JsonImporter_html_ade7cb93ac9fe4eec8e932cefa8382aa1"><div class="ttname"><a href="classImporters_1_1Json_1_1JsonImporter.html#ade7cb93ac9fe4eec8e932cefa8382aa1">Importers.Json.JsonImporter.JsonImporter</a></div><div class="ttdeci">JsonImporter()</div><div class="ttdoc">Inicializa una nueva instancia de JsonImporter.</div><div class="ttdef"><b>Definition:</b> <a href="JsonImporter_8cs_source.html#l00021">JsonImporter.cs:21</a></div></div>
+<div class="ttc" id="aclassImporters_1_1Json_1_1MyReferenceHandler_html"><div class="ttname"><a href="classImporters_1_1Json_1_1MyReferenceHandler.html">Importers.Json.MyReferenceHandler</a></div><div class="ttdef"><b>Definition:</b> <a href="References_8cs_source.html#l00015">References.cs:16</a></div></div>
+<div class="ttc" id="aclassReferenceHandler_html"><div class="ttname"><a href="classReferenceHandler.html">ReferenceHandler</a></div></div>
+<div class="ttc" id="ainterfaceImporters_1_1IPersistible_html"><div class="ttname"><a href="interfaceImporters_1_1IPersistible.html">Importers.IPersistible</a></div><div class="ttdoc">Identifica las clases que se espera que la base de datos persista.</div><div class="ttdef"><b>Definition:</b> <a href="IPersistible_8cs_source.html#l00006">IPersistible.cs:7</a></div></div>
+<div class="ttc" id="anamespaceImporters_1_1Json_html"><div class="ttname"><a href="namespaceImporters_1_1Json.html">Importers.Json</a></div><div class="ttdef"><b>Definition:</b> <a href="DatabaseJson_8cs_source.html#l00008">DatabaseJson.cs:9</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_52881c917525df13f94c2c6db23d06ac.html">Importers</a></li><li class="navelem"><a class="el" href="dir_bab6c43ca2d0a11e923c21fc3881b86e.html">JSON</a></li><li class="navelem"><b>JsonImporter.cs</b></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

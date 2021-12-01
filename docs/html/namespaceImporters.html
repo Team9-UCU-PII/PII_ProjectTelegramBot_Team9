@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Proyecto de PII
-   &#160;<span id="projectnumber">1</span>
+   &#160;<span id="projectnumber">3</span>
    </div>
    <div id="projectbrief">Projecto para curso de Programacion 2 en la UCU, por el equipo 9 de la tarde</div>
   </td>
@@ -84,6 +84,7 @@ $(document).ready(function(){initNavTree('namespaceImporters.html',''); initResi
 
 <div class="header">
   <div class="summary">
+<a href="#namespaces">Namespaces</a> &#124;
 <a href="#nested-classes">Clases</a>  </div>
   <div class="headertitle">
 <div class="title">Referencia del Namespace Importers</div>  </div>
@@ -95,11 +96,11 @@ Clases</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classImporters_1_1DataAccess.html">DataAccess</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clase que utilizará el bot para acceder a la base de datos.  <a href="classImporters_1_1DataAccess.html#details">Más...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classImporters_1_1DatabaseMemoria.html">DatabaseMemoria</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Esta clase manejara la logica cercana al acceso a la base de datos.  <a href="classImporters_1_1DatabaseMemoria.html#details">Más...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><b>IDatabase</b></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interfaz de acceso a la base de datos. Definimos esta interfaz guiándonos por el patrón Adapter y el principio de inversión de dependencias, de forma que la capa de Data Access (para la base de datos el código cliente) no depende de las implementaciones concretas de una base de datos, sino de una abstracción. De esta forma, los cambios en la implementación interna de cada mecanismo de persistencia son imperceptibles para el código que envía los mensajes, ya que este se comunica a través de la interfaz. Además, es un buen ejemplo del principio OCP, ya que es posible extender el programa agregando nuevas opciones de persistencia (una base de datos propiamente dicha, por ejemplo), pero no es posible modificar las ya existentes. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceImporters_1_1IDatabase.html">IDatabase</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interaz de acceso a la base de datos.  <a href="interfaceImporters_1_1IDatabase.html#details">Más...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceImporters_1_1IPersistible.html">IPersistible</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifica las clases que se espera que la base de datos persista.  <a href="interfaceImporters_1_1IPersistible.html#details">Más...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->

@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Proyecto de PII: Fichero Fuente C:/Users/gatom/OneDrive/Escritorio/programcion/repos/PII_2021_2_Equipo09/src/MessageGateway/Forms/PreLogin/RegistroDatosLogin.cs</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Proyecto de PII
+   &#160;<span id="projectnumber">3</span>
+   </div>
+   <div id="projectbrief">Projecto para curso de Programacion 2 en la UCU, por el equipo 9 de la tarde</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('RegistroDatosLogin_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">RegistroDatosLogin.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//--------------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// &lt;copyright file=&quot;RegistroDatosLogin.cs&quot; company=&quot;Universidad Católica del Uruguay&quot;&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//     Copyright (c) Programación II. Derechos reservados.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">// &lt;/copyright&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//--------------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">using</span> <a class="code" href="namespaceMessageGateway.html">MessageGateway</a>.<a class="code" href="namespaceMessageGateway_1_1Handlers.html">Handlers</a>.<a class="code" href="namespaceMessageGateway_1_1Handlers_1_1RegistroDatosLogin.html">RegistroDatosLogin</a>;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">using</span> <a class="code" href="namespaceClassLibrary.html">ClassLibrary</a>.<a class="code" href="namespaceClassLibrary_1_1User.html">User</a>;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceMessageGateway_1_1Forms.html">MessageGateway.Forms</a></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;{</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="classMessageGateway_1_1Forms_1_1FrmRegistroDatosLogin.html">   16</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classMessageGateway_1_1Forms_1_1FrmRegistroDatosLogin.html">FrmRegistroDatosLogin</a> : <a class="code" href="classMessageGateway_1_1Forms_1_1FormularioBase.html">FormularioBase</a></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="classMessageGateway_1_1Forms_1_1FrmRegistroDatosLogin.html#a41f97a933e655c7005052f4f3aa4dbc2">   23</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="interfaceClassLibrary_1_1User_1_1IUsuario.html">IUsuario</a> <a class="code" href="classMessageGateway_1_1Forms_1_1FrmRegistroDatosLogin.html#a41f97a933e655c7005052f4f3aa4dbc2">OrganizacionEnRegistro</a> { <span class="keyword">get</span>; <span class="keyword">private</span> <span class="keyword">set</span>; }</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="classMessageGateway_1_1Forms_1_1FrmRegistroDatosLogin.html#a6d7ac809188877137f0e385e4d1d47b2">   28</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">string</span> <a class="code" href="classMessageGateway_1_1Forms_1_1FrmRegistroDatosLogin.html#a6d7ac809188877137f0e385e4d1d47b2">NombreUsuario</a>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classMessageGateway_1_1Forms_1_1FrmRegistroDatosLogin.html#acfe1f047087eb4a892adcb867fb8c846">   33</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">string</span> <a class="code" href="classMessageGateway_1_1Forms_1_1FrmRegistroDatosLogin.html#acfe1f047087eb4a892adcb867fb8c846">Password</a>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="classMessageGateway_1_1Forms_1_1FrmRegistroDatosLogin.html#ae5daa3a78a634c4f7dac83081b11c32a">   38</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">string</span> <a class="code" href="classMessageGateway_1_1Forms_1_1FrmRegistroDatosLogin.html#ae5daa3a78a634c4f7dac83081b11c32a">passChkr</a>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="classMessageGateway_1_1Forms_1_1FrmRegistroDatosLogin.html#a6d6413f361fe00e284a5871b31d5b249">   43</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="classClassLibrary_1_1User_1_1DatosLogin.html">DatosLogin</a> <a class="code" href="classMessageGateway_1_1Forms_1_1FrmRegistroDatosLogin.html#a6d6413f361fe00e284a5871b31d5b249">result</a></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="classMessageGateway_1_1Forms_1_1FrmRegistroDatosLogin.html#a6d7ac809188877137f0e385e4d1d47b2">NombreUsuario</a> != <span class="keyword">null</span> &amp;&amp; <a class="code" href="classMessageGateway_1_1Forms_1_1FrmRegistroDatosLogin.html#acfe1f047087eb4a892adcb867fb8c846">Password</a> != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                {</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="classClassLibrary_1_1User_1_1DatosLogin.html">DatosLogin</a>(<a class="code" href="classMessageGateway_1_1Forms_1_1FrmRegistroDatosLogin.html#a6d7ac809188877137f0e385e4d1d47b2">NombreUsuario</a>, <a class="code" href="classMessageGateway_1_1Forms_1_1FrmRegistroDatosLogin.html#acfe1f047087eb4a892adcb867fb8c846">Password</a>, <a class="code" href="classMessageGateway_1_1Forms_1_1FrmRegistroDatosLogin.html#a41f97a933e655c7005052f4f3aa4dbc2">OrganizacionEnRegistro</a> != <span class="keyword">null</span> ? <a class="code" href="classMessageGateway_1_1Forms_1_1FrmRegistroDatosLogin.html#a41f97a933e655c7005052f4f3aa4dbc2">OrganizacionEnRegistro</a> : <span class="keyword">new</span> <a class="code" href="classClassLibrary_1_1User_1_1Emprendedor.html">Emprendedor</a>());</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                }</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            }</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        }</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="classMessageGateway_1_1Forms_1_1FrmRegistroDatosLogin.html#a0ea45ae6074dcbcf18f6d8293961823f">   59</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="classMessageGateway_1_1Forms_1_1FrmRegistroDatosLogin.html#a0ea45ae6074dcbcf18f6d8293961823f">FrmRegistroDatosLogin</a>(<a class="code" href="classClassLibrary_1_1User_1_1Empresa.html">Empresa</a> organizacion)</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="comment">//Esta sobrecarga permite registrar desde una invitacion.</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        {</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            this.<a class="code" href="classMessageGateway_1_1Forms_1_1FrmRegistroDatosLogin.html#a41f97a933e655c7005052f4f3aa4dbc2">OrganizacionEnRegistro</a> = organizacion;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            this.<a class="code" href="classMessageGateway_1_1Forms_1_1FormularioBase.html#abb88e68a650a244f10532e18581b863a">messageHandler</a> =</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                <span class="keyword">new</span> <a class="code" href="classMessageGateway_1_1Handlers_1_1RegistroDatosLogin_1_1HandlerRegDatosLogin.html">HandlerRegDatosLogin</a>(<span class="keyword">null</span>);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        }</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="classMessageGateway_1_1Forms_1_1FrmRegistroDatosLogin.html#a25443b371be92cda998f065522cd2f6b">   70</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="classMessageGateway_1_1Forms_1_1FrmRegistroDatosLogin.html#a25443b371be92cda998f065522cd2f6b">FrmRegistroDatosLogin</a>()</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            this.<a class="code" href="classMessageGateway_1_1Forms_1_1FrmRegistroDatosLogin.html#a41f97a933e655c7005052f4f3aa4dbc2">OrganizacionEnRegistro</a> = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            this.<a class="code" href="classMessageGateway_1_1Forms_1_1FormularioBase.html#abb88e68a650a244f10532e18581b863a">messageHandler</a> =</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                <span class="keyword">new</span> <a class="code" href="classMessageGateway_1_1Handlers_1_1RegistroDatosLogin_1_1HandlerRegDatosLogin.html">HandlerRegDatosLogin</a>(<span class="keyword">null</span>);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        }</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="classMessageGateway_1_1Forms_1_1FrmRegistroDatosLogin.html#a13a1c528f543e6597ca538f1b1ca1473">   80</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="classMessageGateway_1_1Handlers_1_1RegistroDatosLogin_1_1HandlerRegDatosLogin.html">HandlerRegDatosLogin</a>.<a class="code" href="classMessageGateway_1_1Handlers_1_1RegistroDatosLogin_1_1HandlerRegDatosLogin.html#a6c0ee9c279d734ac70120b7dcb8110dd">faseRegDL</a> <a class="code" href="classMessageGateway_1_1Forms_1_1FrmRegistroDatosLogin.html#a13a1c528f543e6597ca538f1b1ca1473">CurrentState</a> = <a class="code" href="classMessageGateway_1_1Handlers_1_1RegistroDatosLogin_1_1HandlerRegDatosLogin.html">HandlerRegDatosLogin</a>.<a class="code" href="classMessageGateway_1_1Handlers_1_1RegistroDatosLogin_1_1HandlerRegDatosLogin.html#a6c0ee9c279d734ac70120b7dcb8110dd">faseRegDL</a>.Inicio;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;}</div>
+<div class="ttc" id="aclassClassLibrary_1_1User_1_1DatosLogin_html"><div class="ttname"><a href="classClassLibrary_1_1User_1_1DatosLogin.html">ClassLibrary.User.DatosLogin</a></div><div class="ttdoc">Las instancias de esta clase representan los usuarios creados en el bot, almacendando la empresa o em...</div><div class="ttdef"><b>Definition:</b> <a href="DatosLogin_8cs_source.html#l00017">DatosLogin.cs:18</a></div></div>
+<div class="ttc" id="aclassClassLibrary_1_1User_1_1Emprendedor_html"><div class="ttname"><a href="classClassLibrary_1_1User_1_1Emprendedor.html">ClassLibrary.User.Emprendedor</a></div><div class="ttdoc">Clase representativa de los emprendedores con su información competente.</div><div class="ttdef"><b>Definition:</b> <a href="Emprendedor_8cs_source.html#l00021">Emprendedor.cs:22</a></div></div>
+<div class="ttc" id="aclassClassLibrary_1_1User_1_1Empresa_html"><div class="ttname"><a href="classClassLibrary_1_1User_1_1Empresa.html">ClassLibrary.User.Empresa</a></div><div class="ttdoc">Clase representativa de las empresas registradas y su información competente.</div><div class="ttdef"><b>Definition:</b> <a href="Empresa_8cs_source.html#l00021">Empresa.cs:22</a></div></div>
+<div class="ttc" id="aclassMessageGateway_1_1Forms_1_1FormularioBase_html"><div class="ttname"><a href="classMessageGateway_1_1Forms_1_1FormularioBase.html">MessageGateway.Forms.FormularioBase</a></div><div class="ttdoc">Superclase para todos los formularios.</div><div class="ttdef"><b>Definition:</b> <a href="FormularioBase_8cs_source.html#l00020">FormularioBase.cs:21</a></div></div>
+<div class="ttc" id="aclassMessageGateway_1_1Forms_1_1FormularioBase_html_abb88e68a650a244f10532e18581b863a"><div class="ttname"><a href="classMessageGateway_1_1Forms_1_1FormularioBase.html#abb88e68a650a244f10532e18581b863a">MessageGateway.Forms.FormularioBase.messageHandler</a></div><div class="ttdeci">IMessageHandler messageHandler</div><div class="ttdoc">Propiedad protegida que asigna al formulario como CurrentForm de todos los handlers que determine den...</div><div class="ttdef"><b>Definition:</b> <a href="FormularioBase_8cs_source.html#l00031">FormularioBase.cs:31</a></div></div>
+<div class="ttc" id="aclassMessageGateway_1_1Forms_1_1FrmRegistroDatosLogin_html"><div class="ttname"><a href="classMessageGateway_1_1Forms_1_1FrmRegistroDatosLogin.html">MessageGateway.Forms.FrmRegistroDatosLogin</a></div><div class="ttdoc">Formulario que engloba la creacion de un datosLogin nuevo.</div><div class="ttdef"><b>Definition:</b> <a href="RegistroDatosLogin_8cs_source.html#l00016">RegistroDatosLogin.cs:17</a></div></div>
+<div class="ttc" id="aclassMessageGateway_1_1Forms_1_1FrmRegistroDatosLogin_html_a0ea45ae6074dcbcf18f6d8293961823f"><div class="ttname"><a href="classMessageGateway_1_1Forms_1_1FrmRegistroDatosLogin.html#a0ea45ae6074dcbcf18f6d8293961823f">MessageGateway.Forms.FrmRegistroDatosLogin.FrmRegistroDatosLogin</a></div><div class="ttdeci">FrmRegistroDatosLogin(Empresa organizacion)</div><div class="ttdoc">Constructor del formulario y sus handlers para un invitado.</div><div class="ttdef"><b>Definition:</b> <a href="RegistroDatosLogin_8cs_source.html#l00059">RegistroDatosLogin.cs:59</a></div></div>
+<div class="ttc" id="aclassMessageGateway_1_1Forms_1_1FrmRegistroDatosLogin_html_a13a1c528f543e6597ca538f1b1ca1473"><div class="ttname"><a href="classMessageGateway_1_1Forms_1_1FrmRegistroDatosLogin.html#a13a1c528f543e6597ca538f1b1ca1473">MessageGateway.Forms.FrmRegistroDatosLogin.CurrentState</a></div><div class="ttdeci">HandlerRegDatosLogin.faseRegDL CurrentState</div><div class="ttdoc">El estado de la creacion de los DatosLogin.</div><div class="ttdef"><b>Definition:</b> <a href="RegistroDatosLogin_8cs_source.html#l00080">RegistroDatosLogin.cs:80</a></div></div>
+<div class="ttc" id="aclassMessageGateway_1_1Forms_1_1FrmRegistroDatosLogin_html_a25443b371be92cda998f065522cd2f6b"><div class="ttname"><a href="classMessageGateway_1_1Forms_1_1FrmRegistroDatosLogin.html#a25443b371be92cda998f065522cd2f6b">MessageGateway.Forms.FrmRegistroDatosLogin.FrmRegistroDatosLogin</a></div><div class="ttdeci">FrmRegistroDatosLogin()</div><div class="ttdoc">Constructor generico del formulario y sus handlers.</div><div class="ttdef"><b>Definition:</b> <a href="RegistroDatosLogin_8cs_source.html#l00070">RegistroDatosLogin.cs:70</a></div></div>
+<div class="ttc" id="aclassMessageGateway_1_1Forms_1_1FrmRegistroDatosLogin_html_a41f97a933e655c7005052f4f3aa4dbc2"><div class="ttname"><a href="classMessageGateway_1_1Forms_1_1FrmRegistroDatosLogin.html#a41f97a933e655c7005052f4f3aa4dbc2">MessageGateway.Forms.FrmRegistroDatosLogin.OrganizacionEnRegistro</a></div><div class="ttdeci">IUsuario OrganizacionEnRegistro</div><div class="ttdoc">Atributo en caso de venirse de una invitación.</div><div class="ttdef"><b>Definition:</b> <a href="RegistroDatosLogin_8cs_source.html#l00023">RegistroDatosLogin.cs:23</a></div></div>
+<div class="ttc" id="aclassMessageGateway_1_1Forms_1_1FrmRegistroDatosLogin_html_a6d6413f361fe00e284a5871b31d5b249"><div class="ttname"><a href="classMessageGateway_1_1Forms_1_1FrmRegistroDatosLogin.html#a6d6413f361fe00e284a5871b31d5b249">MessageGateway.Forms.FrmRegistroDatosLogin.result</a></div><div class="ttdeci">DatosLogin? result</div><div class="ttdoc">Obtiene el DatosLogin resultante de los datos tomados.</div><div class="ttdef"><b>Definition:</b> <a href="RegistroDatosLogin_8cs_source.html#l00043">RegistroDatosLogin.cs:44</a></div></div>
+<div class="ttc" id="aclassMessageGateway_1_1Forms_1_1FrmRegistroDatosLogin_html_a6d7ac809188877137f0e385e4d1d47b2"><div class="ttname"><a href="classMessageGateway_1_1Forms_1_1FrmRegistroDatosLogin.html#a6d7ac809188877137f0e385e4d1d47b2">MessageGateway.Forms.FrmRegistroDatosLogin.NombreUsuario</a></div><div class="ttdeci">string NombreUsuario</div><div class="ttdoc">El Username con el que se identifica.</div><div class="ttdef"><b>Definition:</b> <a href="RegistroDatosLogin_8cs_source.html#l00028">RegistroDatosLogin.cs:28</a></div></div>
+<div class="ttc" id="aclassMessageGateway_1_1Forms_1_1FrmRegistroDatosLogin_html_acfe1f047087eb4a892adcb867fb8c846"><div class="ttname"><a href="classMessageGateway_1_1Forms_1_1FrmRegistroDatosLogin.html#acfe1f047087eb4a892adcb867fb8c846">MessageGateway.Forms.FrmRegistroDatosLogin.Password</a></div><div class="ttdeci">string Password</div><div class="ttdoc">La contraseña a asignarsele.</div><div class="ttdef"><b>Definition:</b> <a href="RegistroDatosLogin_8cs_source.html#l00033">RegistroDatosLogin.cs:33</a></div></div>
+<div class="ttc" id="aclassMessageGateway_1_1Forms_1_1FrmRegistroDatosLogin_html_ae5daa3a78a634c4f7dac83081b11c32a"><div class="ttname"><a href="classMessageGateway_1_1Forms_1_1FrmRegistroDatosLogin.html#ae5daa3a78a634c4f7dac83081b11c32a">MessageGateway.Forms.FrmRegistroDatosLogin.passChkr</a></div><div class="ttdeci">string passChkr</div><div class="ttdoc">Sostiene la contraseña para confirmarla.</div><div class="ttdef"><b>Definition:</b> <a href="RegistroDatosLogin_8cs_source.html#l00038">RegistroDatosLogin.cs:38</a></div></div>
+<div class="ttc" id="aclassMessageGateway_1_1Handlers_1_1RegistroDatosLogin_1_1HandlerRegDatosLogin_html"><div class="ttname"><a href="classMessageGateway_1_1Handlers_1_1RegistroDatosLogin_1_1HandlerRegDatosLogin.html">MessageGateway.Handlers.RegistroDatosLogin.HandlerRegDatosLogin</a></div><div class="ttdoc">Handler que permite crear un nuevo datosLogin.</div><div class="ttdef"><b>Definition:</b> <a href="HandlerRegDatosLogin_8cs_source.html#l00020">HandlerRegDatosLogin.cs:21</a></div></div>
+<div class="ttc" id="aclassMessageGateway_1_1Handlers_1_1RegistroDatosLogin_1_1HandlerRegDatosLogin_html_a6c0ee9c279d734ac70120b7dcb8110dd"><div class="ttname"><a href="classMessageGateway_1_1Handlers_1_1RegistroDatosLogin_1_1HandlerRegDatosLogin.html#a6c0ee9c279d734ac70120b7dcb8110dd">MessageGateway.Handlers.RegistroDatosLogin.HandlerRegDatosLogin.faseRegDL</a></div><div class="ttdeci">faseRegDL</div><div class="ttdoc">Fases necesarias para registrarse.</div><div class="ttdef"><b>Definition:</b> <a href="HandlerRegDatosLogin_8cs_source.html#l00114">HandlerRegDatosLogin.cs:115</a></div></div>
+<div class="ttc" id="ainterfaceClassLibrary_1_1User_1_1IUsuario_html"><div class="ttname"><a href="interfaceClassLibrary_1_1User_1_1IUsuario.html">ClassLibrary.User.IUsuario</a></div><div class="ttdoc">Interfaz que engloba tanto empresas como emprendimientos.</div><div class="ttdef"><b>Definition:</b> <a href="IUsuario_8cs_source.html#l00018">IUsuario.cs:19</a></div></div>
+<div class="ttc" id="anamespaceClassLibrary_1_1User_html"><div class="ttname"><a href="namespaceClassLibrary_1_1User.html">ClassLibrary.User</a></div><div class="ttdef"><b>Definition:</b> <a href="DatosLogin_8cs_source.html#l00010">DatosLogin.cs:11</a></div></div>
+<div class="ttc" id="anamespaceClassLibrary_html"><div class="ttname"><a href="namespaceClassLibrary.html">ClassLibrary</a></div><div class="ttdef"><b>Definition:</b> <a href="Distance_8cs_source.html#l00007">Distance.cs:8</a></div></div>
+<div class="ttc" id="anamespaceMessageGateway_1_1Forms_html"><div class="ttname"><a href="namespaceMessageGateway_1_1Forms.html">MessageGateway.Forms</a></div><div class="ttdef"><b>Definition:</b> <a href="FormularioBase_8cs_source.html#l00015">FormularioBase.cs:16</a></div></div>
+<div class="ttc" id="anamespaceMessageGateway_1_1Handlers_1_1RegistroDatosLogin_html"><div class="ttname"><a href="namespaceMessageGateway_1_1Handlers_1_1RegistroDatosLogin.html">MessageGateway.Handlers.RegistroDatosLogin</a></div><div class="ttdef"><b>Definition:</b> <a href="HandlerRegDatosLogin_8cs_source.html#l00014">HandlerRegDatosLogin.cs:15</a></div></div>
+<div class="ttc" id="anamespaceMessageGateway_1_1Handlers_html"><div class="ttname"><a href="namespaceMessageGateway_1_1Handlers.html">MessageGateway.Handlers</a></div><div class="ttdef"><b>Definition:</b> <a href="HandlerInviteInicio_8cs_source.html#l00010">HandlerInviteInicio.cs:11</a></div></div>
+<div class="ttc" id="anamespaceMessageGateway_html"><div class="ttname"><a href="namespaceMessageGateway.html">MessageGateway</a></div><div class="ttdef"><b>Definition:</b> <a href="AdaptadorTelegram_8cs_source.html#l00017">AdaptadorTelegram.cs:18</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_401a26ac121ff7f62e3c7da9e1b7d817.html">MessageGateway</a></li><li class="navelem"><a class="el" href="dir_1be6f437e75cc1d7e0084a82d66f8966.html">Forms</a></li><li class="navelem"><a class="el" href="dir_99e9c6c4fd866440c3fea8accf0f2f65.html">PreLogin</a></li><li class="navelem"><b>RegistroDatosLogin.cs</b></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

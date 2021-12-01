@@ -1,5 +1,8 @@
 var searchData=
 [
-  ['nombre_182',['Nombre',['../classClassLibrary_1_1Publication_1_1Categoria.html#a3db90a1823fd914b7d30b28e293cde8f',1,'ClassLibrary.Publication.Categoria.Nombre()'],['../classClassLibrary_1_1User_1_1Emprendedor.html#a76d0953b03d64e267a0d2958cbc8b323',1,'ClassLibrary.User.Emprendedor.Nombre()'],['../classClassLibrary_1_1User_1_1Empresa.html#a9e4cdd91ab69868223c00e8ca1a54476',1,'ClassLibrary.User.Empresa.Nombre()'],['../classClassLibrary_1_1User_1_1Habilitacion.html#aa3e88986e860a3dfd7adc0ff25513a5a',1,'ClassLibrary.User.Habilitacion.Nombre()'],['../interfaceClassLibrary_1_1User_1_1IUsuario.html#a01b987208d5c4beee8ee3ceb81e47fc4',1,'ClassLibrary.User.IUsuario.Nombre()']]],
-  ['nombreusuario_183',['NombreUsuario',['../classClassLibrary_1_1User_1_1DatosLogin.html#a5d16e1f8e2b5fb427645d81ca4931fd2',1,'ClassLibrary::User::DatosLogin']]]
+  ['latitude_632',['Latitude',['../classClassLibrary_1_1LocationAPI_1_1Location.html#af2bb57c4dad80617efad025983bb2fd7',1,'ClassLibrary::LocationAPI::Location']]],
+  ['link_633',['Link',['../classClassLibrary_1_1User_1_1Invitacion.html#a3bfe371d46e22321e003238becf2e43f',1,'ClassLibrary::User::Invitacion']]],
+  ['locality_634',['Locality',['../classClassLibrary_1_1LocationAPI_1_1Location.html#a434f8e91bff17c37a48c15168ed922ef',1,'ClassLibrary::LocationAPI::Location']]],
+  ['longitude_635',['Longitude',['../classClassLibrary_1_1LocationAPI_1_1Location.html#aee4be876b1391340eea6326a31183218',1,'ClassLibrary::LocationAPI::Location']]],
+  ['lugarretiro_636',['LugarRetiro',['../classClassLibrary_1_1Publication_1_1Publicacion.html#a3b8ecb3744551edf885c3da9cc989eb7',1,'ClassLibrary::Publication::Publicacion']]]
 ];
