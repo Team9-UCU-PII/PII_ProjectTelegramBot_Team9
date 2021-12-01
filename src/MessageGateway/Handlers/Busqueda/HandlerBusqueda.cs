@@ -230,10 +230,14 @@ namespace MessageGateway.Handlers
             /// </summary>
             FiltroLugarRetiro,
 
-            ///Primera parte para tomar el lugar de retiro.
+            /// <summary>
+            /// Se espera respuesta por el lugar de retiro (dpto).
+            /// </summary>
             tomandoFiltroLugarRetiro1,
 
-            ///segunda parte, ya tomado el lugar.
+            /// <summary>
+            /// Se espera respuesta por el lugar de retiro (ciudad).
+            /// </summary>
             tomandoFiltroLugarRetiro2,
 
             /// <summary>
@@ -241,7 +245,9 @@ namespace MessageGateway.Handlers
             /// </summary>
             FiltroResiduo,
 
-            ///esperando el residuo a buscarse.
+            /// <summary>
+            /// Se espera respuesta por el tipo de residuo.
+            /// </summary>
             tomandoFiltroResiduo,
 
             /// <summary>
@@ -249,7 +255,9 @@ namespace MessageGateway.Handlers
             /// </summary>
             FiltroPrecioMaximo,
 
-            ///tomando el valor maximo dispuesto a pagar.
+            /// <summary>
+            /// Se espera respuesta por el precio máximo a pagar.
+            /// </summary>
             tomandoFiltroPrecioMaximo,
 
             /// <summary>
@@ -257,10 +265,14 @@ namespace MessageGateway.Handlers
             /// </summary>
             FiltroFrecuenciaRestock,
 
-            ///Esperando cuantas veces al año se desea que se restockee.
+            /// <summary>
+            /// Se espera respuesta por frecuencia de restock.
+            /// </summary>
             tomandoFiltroFrecuenciaRestock,
 
-            ///Finalizado el filtrado y handler.
+            /// <summary>
+            /// Finalizada la búsqueda.
+            /// </summary>
             Done
         }
     }

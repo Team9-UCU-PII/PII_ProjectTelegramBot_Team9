@@ -21,7 +21,7 @@ namespace BotCore.Publication.Filters
         public IFiltroBusqueda Next {get; set;}
 
         private string Ciudad;
-
+       
         private string Dpto;
 
         /// <summary>

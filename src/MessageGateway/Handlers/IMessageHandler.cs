@@ -2,6 +2,10 @@
 // <copyright file="IMessageHandler.cs" company="Universidad Católica del Uruguay">
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
+//
+// Pricnipio utilizado: DIP
+// La interfaz IMessageHandler se genera como abstracción para ser
+// implementada por la clase MessageHandlerBase.
 //--------------------------------------------------------------------------------
 
 

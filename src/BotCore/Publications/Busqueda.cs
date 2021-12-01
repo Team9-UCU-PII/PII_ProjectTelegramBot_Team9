@@ -44,11 +44,11 @@ namespace BotCore.Publication
                 return instancia;
             }
         }
-
+        
         private static Busqueda instancia { get; set; }
 
         /// <summary>
-        /// Servicio principal de la busqueda.
+        /// Servicio principal de la busqueda
         /// </summary>
         /// <param name="cadenaFilters">Una cadena de filtros armada.</param>
         /// <returns>Una List de publicaciones que cumplen las condiciones de PublicacionesASeparar.</returns>

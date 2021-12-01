@@ -33,7 +33,7 @@ namespace MessageGateway.Forms
         }
 
         /// <summary>
-        /// Departamento a buscarse.
+        /// Departamento a buscar.
         /// </summary>
         public string dpto;
 

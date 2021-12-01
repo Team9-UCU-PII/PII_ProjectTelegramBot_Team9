@@ -2,6 +2,10 @@
 // <copyright file="AceptarInvitacion.cs" company="Universidad Católica del Uruguay">
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
+//
+// Patrón utilizado: Cadena de responsabilidad.
+// En clase FrmAceptarInvitacion se va pasando el mensaje por una cadena de handlers,
+// donde cada uno decide si el mensaje recibido lo procesa o lo manda al siguiente.
 //--------------------------------------------------------------------------------
 
 using MessageGateway.Handlers.AceptarInvitacion;
