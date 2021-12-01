@@ -42,7 +42,7 @@ namespace MessageGateway.Handlers.MenuEmprendedor
         "\n",
         "1. Buscar publicaciones",
         "2. Generar reportes",
-        "3. Configurar cuenta",
+        "3. Cerrar Sesión",
         "Si quiere cancelar un proceso escriba: /abortar");
 
         (CurrentForm as FrmMenuEmprendedor).CurrentState = faseMenuEmprendedor.Eligiendo;
@@ -64,8 +64,8 @@ namespace MessageGateway.Handlers.MenuEmprendedor
 
       ///Fase inicializadora del handler, imprime el menu.
       Inicio,
-
-      ///Fase de espera de respuesta.
+      
+      ///Fase esperando a elegir una opcion del menu.
       Eligiendo
 
     }

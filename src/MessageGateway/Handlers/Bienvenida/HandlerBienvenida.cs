@@ -21,7 +21,7 @@ namespace MessageGateway.Handlers.Bienvenida
         /// </summary>
         /// <param name="next">IHandler siguiente</param>
         public HandlerBienvenida(IMessageHandler next)
-        : base(new string[] {"/start", "1", "2", "3"}, next)
+        : base(new string[] {"/start", "1", "2", "3", "menu"}, next)
         {
         }
 

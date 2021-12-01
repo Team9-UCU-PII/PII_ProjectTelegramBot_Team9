@@ -17,7 +17,7 @@ namespace MessageGateway
     public abstract class GatewayBase : IGateway
     {
         /// <summary>
-        /// Hora de inicio.
+        /// Momento en que se inicio el bot desde consola.
         /// </summary>
         protected readonly DateTime startupTime;
 

@@ -7,7 +7,6 @@
 // Esta clase utiliza este patrón porque solo se necesita una instancia y almacena un estado.
 //--------------------------------------------------------------------------------
 
-using System;
 using ClassLibrary.User;
 using Importers;
 
@@ -51,7 +50,7 @@ namespace BotCore.User
 /// <param name="organizacion">IUsuario saliente.</param>
 /// <returns><c>true</c> si nombreUsuario y contrasenia están viculados en
 /// <see cref = "DatosLogin"/> en la base de datos.</returns>
-        public static bool ValidarUsuario(string nombreUsuario, string contrasenia, out IUsuario organizacion)
+        public  bool ValidarUsuario(string nombreUsuario, string contrasenia, out IUsuario organizacion)
         {
             organizacion = null;
             foreach (DatosLogin datos in DataAccess.Instancia.Obtener<DatosLogin>())
@@ -59,12 +58,10 @@ namespace BotCore.User
                 if (datos.NombreUsuario == nombreUsuario && datos.Contrasenia == contrasenia)
                 {
                     organizacion = datos.Usuario;
-                    Console.WriteLine("Acceso correcto");
                     return true;
                 }
             }
 
-            Console.WriteLine("Usuario y/o contraseña incorrectos.");
             return false;
         }
     }

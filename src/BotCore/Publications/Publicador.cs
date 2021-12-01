@@ -9,6 +9,7 @@
 //Es singleton porque solo se necesita una instancia y almacena un estado.
 //--------------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using ClassLibrary.LocationAPI;
 using ClassLibrary.Publication;
 using ClassLibrary.User;
@@ -58,15 +59,44 @@ namespace BotCore.Publication
         /// <param name="categoria"><see langword = "string"/>.</param>
         public void PublicarOferta(Residuo residuo, double precioUnitario, string moneda, int cantidad, Location lugarRetiro, Empresa vendedor, string descripcion, Categoria categoria)
         {
-            da.Insertar(vendedor.CrearOferta(
-                residuo,
-                precioUnitario,
-                moneda,
-                cantidad,
-                lugarRetiro,
-                descripcion,
-                categoria
-            ));
+            List<Publicacion> activeOffers = da.Obtener<Publicacion>();
+            Publicacion offer = new Publicacion(residuo,precioUnitario,moneda,cantidad,lugarRetiro,vendedor,descripcion,categoria);
+            if (!(activeOffers.Contains(offer)))
+            {    
+                da.Insertar(vendedor.CrearOferta(
+                    residuo,
+                    precioUnitario,
+                    moneda,
+                    cantidad,
+                    lugarRetiro,
+                    descripcion,
+                    categoria
+                ));
+            }
+            else
+            {
+                throw new System.Exception("Esta publicacion ya existe!");
+            }
+        }
+
+        /// <summary>
+        /// Metodo que toma dos publicaciones y sustituye una por otra en la base de datos.
+        /// </summary>
+        /// <param name="ofertaOld">La oferta vieja</param>
+        /// <param name="ofertaNew">la oferta nueva.</param>
+        public void ActualizarOferta(Publicacion ofertaOld, Publicacion ofertaNew)
+        {
+            da.Actualizar(ofertaOld,ofertaNew);
+        }
+
+        /// <summary>
+        /// Metodo que toma dos publicaciones recurrentes y sustituye una por otra en la base de datos.
+        /// </summary>
+        /// <param name="ofertaOld">La oferta recurrente vieja</param>
+        /// <param name="ofertaNew">la oferta recurrente nueva.</param>
+        public void ActualizarOfertaRecurrente(PublicacionRecurrente ofertaOld, PublicacionRecurrente ofertaNew)
+        {
+            da.Actualizar(ofertaOld,ofertaNew);
         }
 
         /// <summary>

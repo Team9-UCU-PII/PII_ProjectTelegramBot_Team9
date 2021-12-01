@@ -93,6 +93,10 @@ namespace MessageGateway.Handlers
             {
                 StringBuilder sb = new StringBuilder();
                 sb.Append($"Creada y guardada la ubicación.");
+                if (CurrentForm is FrmRegistroEmpresa)
+                {
+                    sb.AppendLine(" Di \"Ok\" para continuar.");
+                }
                 response = sb.ToString();
 
                 (CurrentForm as ILocationForm).CurrentStateLocation = faseLocation.Done;

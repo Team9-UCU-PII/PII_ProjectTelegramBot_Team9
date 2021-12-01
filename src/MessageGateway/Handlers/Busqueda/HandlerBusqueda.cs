@@ -57,7 +57,7 @@ namespace MessageGateway.Handlers
 
                 if((CurrentForm as FrmBusqueda).CurrentState == FasesBusqueda.tomandoFiltroEmpresa)
                 {
-                sb.Append("Añadido filtro. \n");
+                sb.AppendLine("Añadido filtro. \n");
                 (CurrentForm as FrmBusqueda).AddFilter(new FiltroPorEmpresa(new Empresa(message.TxtMensaje)));
                 }
 
@@ -80,7 +80,7 @@ namespace MessageGateway.Handlers
 
                 if ((CurrentForm as FrmBusqueda).CurrentState == FasesBusqueda.tomandoFiltroCategoria)
                 {
-                    sb.Append("Añadido el filtro");
+                    sb.AppendLine("Añadido el filtro");
                     (CurrentForm as FrmBusqueda).AddFilter(new FiltroPorCategoria(new Categoria(message.TxtMensaje)));
                 }
 
@@ -112,7 +112,7 @@ namespace MessageGateway.Handlers
 
                 if ((CurrentForm as FrmBusqueda).CurrentState == FasesBusqueda.tomandoFiltroLugarRetiro2)
                 {
-                    sb.Append("Añadido el filtro");
+                    sb.AppendLine("Añadido el filtro");
                     (CurrentForm as FrmBusqueda).AddFilter(new FiltroPorLugarRetiro((message.TxtMensaje), (CurrentForm as FrmBusqueda).dpto));
                 }
 
@@ -137,7 +137,7 @@ namespace MessageGateway.Handlers
                 {
                     if (double.TryParse(message.TxtMensaje, out double valor))
                     {
-                        sb.Append("Añadido el filtro.");
+                        sb.AppendLine("Añadido el filtro.");
                         (CurrentForm as FrmBusqueda).AddFilter(new FiltroPorPrecioMaximo(valor));
                     }
                     else
@@ -184,6 +184,7 @@ namespace MessageGateway.Handlers
                 sb.Append($"¿Listo para buscar?\n");
                 response = sb.ToString();
                 (CurrentForm as FrmBusqueda).CurrentState = FasesBusqueda.Done;
+                (CurrentForm as IListableForm).CurrentStateListado = ListadoPublicaciones.HandlerListadoPublicaciones.fasesListado.Inicio;
                 return true;
             }
             else
@@ -213,9 +214,7 @@ namespace MessageGateway.Handlers
             /// </summary>
             FiltroEmpresa,
 
-            /// <summary>
-            /// Se espera respuesta de que empresa.
-            /// </summary>
+            ///Se espera si se toma el filtro Empresa.
             tomandoFiltroEmpresa,
 
             /// <summary>
@@ -223,9 +222,7 @@ namespace MessageGateway.Handlers
             /// </summary>
             FiltroCategoria,
 
-            /// <summary>
-            /// Se espera respuesta por cuál categoría.
-            /// </summary>
+            ///Esperando el Filtro de Categoria
             tomandoFiltroCategoria,
 
             /// <summary>

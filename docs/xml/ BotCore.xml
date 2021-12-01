@@ -9,41 +9,17 @@
             Un service provider, que filtra las publicaciones a partir de ciertas condiciones dadas.
             </summary>
         </member>
-        <member name="T:BotCore.Publication.Busqueda.FiltrosPosibles">
-            <summary>
-            Los filtros competentes para las busquedas, corresponden con propiedades
-            principales de <see cref ="T:ClassLibrary.Publication.Publicacion"/> y su subclase <see cref ="T:ClassLibrary.Publication.PublicacionRecurrente"/>.
-            </summary>
-        </member>
-        <member name="F:BotCore.Publication.Busqueda.FiltrosPosibles.Empresa">
-            Filtro de tipo empresa.
-        </member>
-        <member name="F:BotCore.Publication.Busqueda.FiltrosPosibles.Residuo">
-            Filtro de tipo residuo.
-        </member>
-        <member name="F:BotCore.Publication.Busqueda.FiltrosPosibles.LugarRetiro">
-            Filtro de donde se debe retirar.
-        </member>
-        <member name="F:BotCore.Publication.Busqueda.FiltrosPosibles.PrecioMaximo">
-            Filtro del precio maximo dispuesto a pagar.
-        </member>
-        <member name="F:BotCore.Publication.Busqueda.FiltrosPosibles.FrecuenciaRestock">
-            Filtro de de restock para publicaciones recurrentes.
-        </member>
-        <member name="F:BotCore.Publication.Busqueda.FiltrosPosibles.Categorias">
-            Filtro segun categoria
-        </member>
         <member name="P:BotCore.Publication.Busqueda.Instancia">
             <summary>
             Da acceso al singelton de la Busqueda.
             </summary>
             <value>Instancia de Busqueda.</value>
         </member>
-        <member name="M:BotCore.Publication.Busqueda.BuscarPublicaciones(System.Collections.Generic.Dictionary{BotCore.Publication.Busqueda.FiltrosPosibles,System.Object})">
+        <member name="M:BotCore.Publication.Busqueda.BuscarPublicaciones(BotCore.Publication.Filters.IFiltroBusqueda)">
             <summary>
             Servicio principal de la busqueda.
             </summary>
-            <param name="publicacionesASeparar">Un diccionario de clave un miembro del enum de FiltrosPosibles y valor la especificacion deseada (string o int).</param>
+            <param name="cadenaFilters">Una cadena de filtros armada.</param>
             <returns>Una List de publicaciones que cumplen las condiciones de PublicacionesASeparar.</returns>
         </member>
         <member name="T:BotCore.Publication.Filters.FiltroPorCategoria">
@@ -107,7 +83,7 @@
             </summary>
             <value>IFiltroBusqueda.</value>
         </member>
-        <member name="M:BotCore.Publication.Filters.FiltroPorFrecuenciaRestock.#ctor(ClassLibrary.Publication.PublicacionRecurrente,BotCore.Publication.Filters.IFiltroBusqueda)">
+        <member name="M:BotCore.Publication.Filters.FiltroPorFrecuenciaRestock.#ctor(System.Int32,BotCore.Publication.Filters.IFiltroBusqueda)">
             <summary>
             Método que recibe el tipo de filtro y el siguiente filtro de búsqueda.
             </summary>
@@ -132,11 +108,12 @@
             </summary>
             <value>IFiltroBusqueda.</value>
         </member>
-        <member name="M:BotCore.Publication.Filters.FiltroPorLugarRetiro.#ctor(ClassLibrary.Publication.Publicacion,BotCore.Publication.Filters.IFiltroBusqueda)">
+        <member name="M:BotCore.Publication.Filters.FiltroPorLugarRetiro.#ctor(System.String,System.String,BotCore.Publication.Filters.IFiltroBusqueda)">
             <summary>
             Método que recibe el tipo de filtro y el siguiente filtro de búsqueda.
             </summary>
-            <param name="lugarRetiro"><see cref = "T:ClassLibrary.Publication.Publicacion"/>.</param>
+            <param name="ciudad">String con la ciudad buscada.</param>
+            <param name="dpto">String con el departamento a buscar.</param>
             <param name="next"><see cref = "T:BotCore.Publication.Filters.IFiltroBusqueda"/>.</param>
         </member>
         <member name="M:BotCore.Publication.Filters.FiltroPorLugarRetiro.Filtrar(System.Collections.Generic.List{ClassLibrary.Publication.Publicacion})">
@@ -157,7 +134,7 @@
             </summary>
             <value>IFiltroBusqueda.</value>
         </member>
-        <member name="M:BotCore.Publication.Filters.FiltroPorPrecioMaximo.#ctor(ClassLibrary.Publication.Publicacion,BotCore.Publication.Filters.IFiltroBusqueda)">
+        <member name="M:BotCore.Publication.Filters.FiltroPorPrecioMaximo.#ctor(System.Double,BotCore.Publication.Filters.IFiltroBusqueda)">
             <summary>
             Método que recibe el tipo de filtro y el siguiente filtro de búsqueda.
             </summary>
@@ -182,11 +159,11 @@
             </summary>
             <value>IFiltroBusqueda.</value>
         </member>
-        <member name="M:BotCore.Publication.Filters.FiltroPorResiduo.#ctor(ClassLibrary.Publication.Residuo,BotCore.Publication.Filters.IFiltroBusqueda)">
+        <member name="M:BotCore.Publication.Filters.FiltroPorResiduo.#ctor(System.String,BotCore.Publication.Filters.IFiltroBusqueda)">
             <summary>
             Método que recibe el tipo de filtro y el siguiente filtro de búsqueda.
             </summary>
-            <param name="residuo"><see cref = "T:ClassLibrary.Publication.Residuo"/>.</param>
+            <param name="tipoResiduo">String con el tipo de residuo a buscarse.</param>
             <param name="next"><see cref = "T:BotCore.Publication.Filters.IFiltroBusqueda"/>.</param>
         </member>
         <member name="M:BotCore.Publication.Filters.FiltroPorResiduo.Filtrar(System.Collections.Generic.List{ClassLibrary.Publication.Publicacion})">
@@ -226,7 +203,7 @@
             </summary>
             <value><see cref = "T:BotCore.Publication.Publicador"/>.</value>
         </member>
-        <member name="M:BotCore.Publication.Publicador.PublicarOferta(ClassLibrary.Publication.Residuo,System.Double,System.String,System.Int32,System.String,ClassLibrary.User.Empresa,System.String,ClassLibrary.Publication.Categoria)">
+        <member name="M:BotCore.Publication.Publicador.PublicarOferta(ClassLibrary.Publication.Residuo,System.Double,System.String,System.Int32,ClassLibrary.LocationAPI.Location,ClassLibrary.User.Empresa,System.String,ClassLibrary.Publication.Categoria)">
             <summary>
             Crea y persiste en memoria la publicación.
             </summary>
@@ -239,7 +216,21 @@
             <param name="descripcion"><see langword = "string"/>.</param>
             <param name="categoria"><see langword = "string"/>.</param>
         </member>
-        <member name="M:BotCore.Publication.Publicador.PublicarOfertaRecurrente(ClassLibrary.Publication.Residuo,System.Double,System.String,System.Int32,System.String,ClassLibrary.User.Empresa,System.String,ClassLibrary.Publication.Categoria,System.Int32)">
+        <member name="M:BotCore.Publication.Publicador.ActualizarOferta(ClassLibrary.Publication.Publicacion,ClassLibrary.Publication.Publicacion)">
+            <summary>
+            Metodo que toma dos publicaciones y sustituye una por otra en la base de datos.
+            </summary>
+            <param name="ofertaOld">La oferta vieja</param>
+            <param name="ofertaNew">la oferta nueva.</param>
+        </member>
+        <member name="M:BotCore.Publication.Publicador.ActualizarOfertaRecurrente(ClassLibrary.Publication.PublicacionRecurrente,ClassLibrary.Publication.PublicacionRecurrente)">
+            <summary>
+            Metodo que toma dos publicaciones recurrentes y sustituye una por otra en la base de datos.
+            </summary>
+            <param name="ofertaOld">La oferta recurrente vieja</param>
+            <param name="ofertaNew">la oferta recurrente nueva.</param>
+        </member>
+        <member name="M:BotCore.Publication.Publicador.PublicarOfertaRecurrente(ClassLibrary.Publication.Residuo,System.Double,System.String,System.Int32,ClassLibrary.LocationAPI.Location,ClassLibrary.User.Empresa,System.String,ClassLibrary.Publication.Categoria,System.Int32)">
             <summary>
             Crea y persiste en memoria una nueva publicación recurrente.
             </summary>
@@ -250,7 +241,7 @@
             <param name="lugarRetiro"><see langword = "string"/>.</param>
             <param name="vendedor"><see cref = "T:ClassLibrary.User.Empresa"/>.</param>
             <param name="descripcion"><see langword = "string"/>.</param>
-            <param name="categoria"><see langword = "string"/>.</param>
+            <param name="categoria"><see langword = "Categoria"/>.</param>
             <param name="frecuenciaAnualRestock"><see langword = "int"/>.</param>
         </member>
         <member name="T:BotCore.Publication.Reporte">
@@ -332,8 +323,9 @@
             Metodo que toma colaboracion de <see cref = "T:Importers.DataAccess"/> para comprobar el inicio de
             sesión.
             </summary>
-            <param name="nombreUsuario"></param>
-            <param name="contrasenia"></param>
+            <param name="nombreUsuario">String de username.</param>
+            <param name="contrasenia">String de password.</param>
+            <param name="organizacion">IUsuario saliente.</param>
             <returns><c>true</c> si nombreUsuario y contrasenia están viculados en
             <see cref = "T:ClassLibrary.User.DatosLogin"/> en la base de datos.</returns>
         </member>
@@ -355,27 +347,32 @@
             Lista donde se almacenan las invitaciones enviadas para mantener un registro.
             </summary>
         </member>
-        <member name="M:BotCore.User.GestorInvitaciones.AlmacenarInvitacion``1(System.String)">
+        <member name="M:BotCore.User.GestorInvitaciones.AlmacenarInvitacion(System.String)">
             <summary>
             Metodo que crea la <see cref = "T:ClassLibrary.User.Invitacion"/> y la envia al destinatario especificado.
             </summary>
-            <param name="destinatario">El contacto objetivo (username).</param>
-            <param name="nombreTemp">Nombre placeholder para el IUsuario, el destinatario lo sobreescribirá luego.</param>
-            <typeparam name="T"></typeparam>
+            <param name="nombreTempUsuario">el nombre provisorio con el que se almacena el usuario.</param>
         </member>
         <member name="M:BotCore.User.GestorInvitaciones.ValidarInvitacion(System.String,ClassLibrary.User.Invitacion@)">
             <summary>
-            Metodo utilizado para validar que la invitación fue aceptada. Es utilizado
-            externamente por <see cref = "!:MessageGateway"/>.
+            Metodo utilizado para validar que la invitación fue aceptada.
             </summary>
-            <param name="token"><see langword = "string"/>.</param>
-            <returns><see cref = "T:ClassLibrary.User.Invitacion"/>.</returns>
+            <param name="token">el código que el usuario debe ingresar para aceptar la invitación.</param>
+            <param name="invite">la invitación aceptada, o null si no se encontró una invitación con ese token.</param>
+            <returns>true si existía una invitación que aceptar, de lo contrario false.</returns>
         </member>
         <member name="T:BotCore.User.RegistroUsuario">
             <summary>
             Clase encargada de crear el usuario para inicio de sesión y su almacen en
             <see cref = "T:Importers.DataAccess"/>.
             </summary>
+        </member>
+        <member name="M:BotCore.User.RegistroUsuario.UsuarioYaExiste(System.String)">
+            <summary>
+            Metodo que controla no repetir username.
+            </summary>
+            <param name="nombre">Username a revisarse.</param>
+            <returns>True: si el username ya está tomado.</returns>
         </member>
         <member name="M:BotCore.User.RegistroUsuario.RegistrarUsuario``1(System.String,System.String,``0)">
             <summary>

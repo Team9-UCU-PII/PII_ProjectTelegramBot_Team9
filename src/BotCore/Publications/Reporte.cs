@@ -65,7 +65,7 @@ namespace BotCore.Publication
         public static Reporte Generar(DateTime fechaInicio, DateTime fechaFin, IUsuario usuario)
         {
             List<Venta> ventas = DataAccess.Instancia.Obtener<Venta>();
-            ventas = ventas.Where((Venta v) => v.Comprador == usuario || v.Publicacion.Vendedor == usuario).ToList();
+            ventas = ventas.Where((Venta v) => (v.Comprador == usuario || v.Publicacion.Vendedor == usuario) && (v.Fecha >= fechaInicio && v.Fecha <= fechaFin)).ToList();
             return new Reporte(fechaInicio, fechaFin, ventas, usuario);
         }
 

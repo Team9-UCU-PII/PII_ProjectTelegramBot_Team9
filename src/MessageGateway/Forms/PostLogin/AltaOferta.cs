@@ -38,6 +38,8 @@ namespace MessageGateway.Forms
             }
         }
 
+        public Publicacion ofertaModificable;
+
         /// <summary>
         /// Precio por unidad del residuo.
         /// </summary>
@@ -104,7 +106,6 @@ namespace MessageGateway.Forms
         {
             CurrentState = HandlerAltaOferta.fasesAltaOferta.Inicio;
             CurrentStateLocation = HandlerLocation.faseLocation.Inicio;
-            CurrentStateResiduo = HandlerNewResiduo.fasesResiduo.Inicio;
 
             this.InstanciaLoggeada = vendedor;
 
