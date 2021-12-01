@@ -1,0 +1,207 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Proyecto de PII: Fichero Fuente C:/Users/gatom/OneDrive/Escritorio/programcion/repos/PII_2021_2_Equipo09/src/MessageGateway/Forms/PreLogin/RegistroEmprendedor.cs</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Proyecto de PII
+   &#160;<span id="projectnumber">3</span>
+   </div>
+   <div id="projectbrief">Projecto para curso de Programacion 2 en la UCU, por el equipo 9 de la tarde</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('RegistroEmprendedor_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">RegistroEmprendedor.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//--------------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// &lt;copyright file=&quot;RegistroEmprendedor.cs&quot; company=&quot;Universidad Católica del Uruguay&quot;&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//     Copyright (c) Programación II. Derechos reservados.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">// &lt;/copyright&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//--------------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">using</span> System.Collections.Generic;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">using</span> <a class="code" href="namespaceClassLibrary.html">ClassLibrary</a>.<a class="code" href="namespaceClassLibrary_1_1LocationAPI.html">LocationAPI</a>;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">using</span> <a class="code" href="namespaceClassLibrary.html">ClassLibrary</a>.<a class="code" href="namespaceClassLibrary_1_1User.html">User</a>;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">using</span> <a class="code" href="namespaceMessageGateway.html">MessageGateway</a>.<a class="code" href="namespaceMessageGateway_1_1Handlers.html">Handlers</a>;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceMessageGateway_1_1Forms.html">MessageGateway.Forms</a></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;{</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html">   17</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html">FrmRegistroEmprendedor</a> : <a class="code" href="classMessageGateway_1_1Forms_1_1FormularioBase.html">FormularioBase</a>, <a class="code" href="interfaceMessageGateway_1_1Forms_1_1ILocationForm.html">ILocationForm</a></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html#a9bd18aa8cfff55aaa3459c3475e0c160">   24</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="classClassLibrary_1_1User_1_1Emprendedor.html">Emprendedor</a> <a class="code" href="classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html#a9bd18aa8cfff55aaa3459c3475e0c160">emprendedorFinal</a></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html#a0e61ba66a1b47ea3df4011f7d1ce0241">Nombre</a> != <span class="keyword">null</span> &amp;&amp; <a class="code" href="classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html#a50bb944d54d44241a5ec3218698a3b30">Ubicacion</a> != <span class="keyword">null</span> &amp;&amp; <a class="code" href="classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html#af62d8279c684d70713472eb7b1cfe622">Rubro</a> != <span class="keyword">null</span> &amp;&amp; <a class="code" href="classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html#a543e35f860f084497e71d2dd378fb176">Especializacion</a> != <span class="keyword">null</span> &amp;&amp; <a class="code" href="classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html#a4f872438475652474e42caac336827cc">LoginCred</a> != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="classClassLibrary_1_1User_1_1Emprendedor.html">Emprendedor</a>(<a class="code" href="classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html#a0e61ba66a1b47ea3df4011f7d1ce0241">Nombre</a>, <a class="code" href="classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html#a50bb944d54d44241a5ec3218698a3b30">Ubicacion</a>, <a class="code" href="classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html#af62d8279c684d70713472eb7b1cfe622">Rubro</a>, <a class="code" href="classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html#a543e35f860f084497e71d2dd378fb176">Especializacion</a>, <a class="code" href="classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html#a0c79eddf37b1fc9bc5b55554156c41d9">habilitaciones</a>, <a class="code" href="classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html#a4f872438475652474e42caac336827cc">LoginCred</a>);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                }</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            }</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        }</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html#a0e61ba66a1b47ea3df4011f7d1ce0241">   39</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">string</span> <a class="code" href="classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html#a0e61ba66a1b47ea3df4011f7d1ce0241">Nombre</a>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html#a50bb944d54d44241a5ec3218698a3b30">   45</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="classClassLibrary_1_1LocationAPI_1_1Location.html">Location</a> <a class="code" href="classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html#a50bb944d54d44241a5ec3218698a3b30">Ubicacion</a></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            {</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html#ab4c8729834ed88c3946c8e168ce25319">direccion</a> != <span class="keyword">null</span> &amp;&amp; <a class="code" href="classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html#ab4c8729834ed88c3946c8e168ce25319">direccion</a> != <span class="stringliteral">&quot;&quot;</span>)</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                  <span class="keywordflow">return</span> <a class="code" href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html">LocationApiClient</a>.<a class="code" href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#a7cb10551ef085b9a2f281a458681cf11">Instancia</a>.<a class="code" href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#a991a52c2921663cd08cc1b7bdd9003cb">GetLocation</a>(<a class="code" href="classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html#ab4c8729834ed88c3946c8e168ce25319">direccion</a>,<a class="code" href="classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html#a8b207e0fc9c2d293b59bda3fdf8f8065">city</a>,<a class="code" href="classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html#a3ca71ed85a6c67946c9e455168a54c64">dpto</a>);  </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                }</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        }</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html#af62d8279c684d70713472eb7b1cfe622">   60</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">string</span> <a class="code" href="classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html#af62d8279c684d70713472eb7b1cfe622">Rubro</a>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html#a543e35f860f084497e71d2dd378fb176">   65</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">string</span> <a class="code" href="classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html#a543e35f860f084497e71d2dd378fb176">Especializacion</a>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html#a0c79eddf37b1fc9bc5b55554156c41d9">   71</a></span>&#160;        <span class="keyword">public</span> List&lt;Habilitacion&gt; <a class="code" href="classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html#a0c79eddf37b1fc9bc5b55554156c41d9">habilitaciones</a> {<span class="keyword">get</span>; <span class="keyword">set</span>;}</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html#a4f872438475652474e42caac336827cc">   76</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="classClassLibrary_1_1User_1_1DatosLogin.html">DatosLogin</a> <a class="code" href="classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html#a4f872438475652474e42caac336827cc">LoginCred</a>;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html#a80081a1d0dc628cf4910bc25d7c8b226">   81</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html#a80081a1d0dc628cf4910bc25d7c8b226">FrmRegistroEmprendedor</a>(<a class="code" href="classClassLibrary_1_1User_1_1DatosLogin.html">DatosLogin</a> login)</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        {</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            this.<a class="code" href="classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html#a0c79eddf37b1fc9bc5b55554156c41d9">habilitaciones</a> = <span class="keyword">new</span> List&lt;Habilitacion&gt;();</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            this.LoginCred = login;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            this.<a class="code" href="classMessageGateway_1_1Forms_1_1FormularioBase.html#abb88e68a650a244f10532e18581b863a">messageHandler</a> =</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            <span class="keyword">new</span> <a class="code" href="classMessageGateway_1_1Handlers_1_1HandlerRegistroEmprendedor.html">HandlerRegistroEmprendedor</a>(</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                <span class="keyword">new</span> <a class="code" href="classMessageGateway_1_1Handlers_1_1HandlerLocation.html">HandlerLocation</a>((<span class="keyword">null</span>))</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            );</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            this.<a class="code" href="classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html#aa0e41dcfb1581893a2ba6618dd2e38e8">CurrentState</a> = <a class="code" href="classMessageGateway_1_1Handlers_1_1HandlerRegistroEmprendedor.html">HandlerRegistroEmprendedor</a>.<a class="code" href="classMessageGateway_1_1Handlers_1_1HandlerRegistroEmprendedor.html#a48fac36ec398ab5347492aa0f1589778">FasesRegEmprendedor</a>.Inicio;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            this.<a class="code" href="classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html#ab90c19f8219263afec61f5753464fa9a">CurrentStateLocation</a> = <a class="code" href="classMessageGateway_1_1Handlers_1_1HandlerLocation.html">HandlerLocation</a>.<a class="code" href="classMessageGateway_1_1Handlers_1_1HandlerLocation.html#a38feec2fd91a16e93c4b25eb6d65658a">faseLocation</a>.Inicio;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        }</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno"><a class="line" href="classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html#aa0e41dcfb1581893a2ba6618dd2e38e8">   98</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="classMessageGateway_1_1Handlers_1_1HandlerRegistroEmprendedor.html">HandlerRegistroEmprendedor</a>.<a class="code" href="classMessageGateway_1_1Handlers_1_1HandlerRegistroEmprendedor.html#a48fac36ec398ab5347492aa0f1589778">FasesRegEmprendedor</a> <a class="code" href="classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html#aa0e41dcfb1581893a2ba6618dd2e38e8">CurrentState</a> {<span class="keyword">get</span>; <span class="keyword">set</span>;}</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html#ab90c19f8219263afec61f5753464fa9a">  104</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="classMessageGateway_1_1Handlers_1_1HandlerLocation.html">HandlerLocation</a>.<a class="code" href="classMessageGateway_1_1Handlers_1_1HandlerLocation.html#a38feec2fd91a16e93c4b25eb6d65658a">faseLocation</a> <a class="code" href="classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html#ab90c19f8219263afec61f5753464fa9a">CurrentStateLocation</a> { <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html#a8b207e0fc9c2d293b59bda3fdf8f8065">  110</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">string</span> <a class="code" href="classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html#a8b207e0fc9c2d293b59bda3fdf8f8065">city</a> { <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno"><a class="line" href="classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html#a3ca71ed85a6c67946c9e455168a54c64">  116</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">string</span> <a class="code" href="classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html#a3ca71ed85a6c67946c9e455168a54c64">dpto</a> { <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
+<div class="line"><a name="l00122"></a><span class="lineno"><a class="line" href="classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html#ab4c8729834ed88c3946c8e168ce25319">  122</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">string</span> <a class="code" href="classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html#ab4c8729834ed88c3946c8e168ce25319">direccion</a> { <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    }</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;}</div>
+<div class="ttc" id="aclassClassLibrary_1_1LocationAPI_1_1LocationApiClient_html"><div class="ttname"><a href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html">ClassLibrary.LocationAPI.LocationApiClient</a></div><div class="ttdoc">Un cliente de la API de localización. Aplica el patrón Creator ya que se encarga exclusivamente de cr...</div><div class="ttdef"><b>Definition:</b> <a href="LocationApiClient_8cs_source.html#l00028">LocationApiClient.cs:29</a></div></div>
+<div class="ttc" id="aclassClassLibrary_1_1LocationAPI_1_1LocationApiClient_html_a7cb10551ef085b9a2f281a458681cf11"><div class="ttname"><a href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#a7cb10551ef085b9a2f281a458681cf11">ClassLibrary.LocationAPI.LocationApiClient.Instancia</a></div><div class="ttdeci">static LocationApiClient Instancia</div><div class="ttdoc">Obitene acceso al singleton de la api.</div><div class="ttdef"><b>Definition:</b> <a href="LocationApiClient_8cs_source.html#l00076">LocationApiClient.cs:77</a></div></div>
+<div class="ttc" id="aclassClassLibrary_1_1LocationAPI_1_1LocationApiClient_html_a991a52c2921663cd08cc1b7bdd9003cb"><div class="ttname"><a href="classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html#a991a52c2921663cd08cc1b7bdd9003cb">ClassLibrary.LocationAPI.LocationApiClient.GetLocation</a></div><div class="ttdeci">Location GetLocation(string address, string city=&quot;Montevideo&quot;, string department=&quot;Montevideo&quot;, string country=&quot;Uruguay&quot;)</div><div class="ttdef"><b>Definition:</b> <a href="LocationApiClient_8cs_source.html#l00130">LocationApiClient.cs:130</a></div></div>
+<div class="ttc" id="aclassClassLibrary_1_1LocationAPI_1_1Location_html"><div class="ttname"><a href="classClassLibrary_1_1LocationAPI_1_1Location.html">ClassLibrary.LocationAPI.Location</a></div><div class="ttdoc">Representa las coordenadas y otros datos de la ubicación de una dirección retornada en el método....</div><div class="ttdef"><b>Definition:</b> <a href="Location_8cs_source.html#l00013">Location.cs:14</a></div></div>
+<div class="ttc" id="aclassClassLibrary_1_1User_1_1DatosLogin_html"><div class="ttname"><a href="classClassLibrary_1_1User_1_1DatosLogin.html">ClassLibrary.User.DatosLogin</a></div><div class="ttdoc">Las instancias de esta clase representan los usuarios creados en el bot, almacendando la empresa o em...</div><div class="ttdef"><b>Definition:</b> <a href="DatosLogin_8cs_source.html#l00017">DatosLogin.cs:18</a></div></div>
+<div class="ttc" id="aclassClassLibrary_1_1User_1_1Emprendedor_html"><div class="ttname"><a href="classClassLibrary_1_1User_1_1Emprendedor.html">ClassLibrary.User.Emprendedor</a></div><div class="ttdoc">Clase representativa de los emprendedores con su información competente.</div><div class="ttdef"><b>Definition:</b> <a href="Emprendedor_8cs_source.html#l00021">Emprendedor.cs:22</a></div></div>
+<div class="ttc" id="aclassMessageGateway_1_1Forms_1_1FormularioBase_html"><div class="ttname"><a href="classMessageGateway_1_1Forms_1_1FormularioBase.html">MessageGateway.Forms.FormularioBase</a></div><div class="ttdoc">Superclase para todos los formularios.</div><div class="ttdef"><b>Definition:</b> <a href="FormularioBase_8cs_source.html#l00020">FormularioBase.cs:21</a></div></div>
+<div class="ttc" id="aclassMessageGateway_1_1Forms_1_1FormularioBase_html_abb88e68a650a244f10532e18581b863a"><div class="ttname"><a href="classMessageGateway_1_1Forms_1_1FormularioBase.html#abb88e68a650a244f10532e18581b863a">MessageGateway.Forms.FormularioBase.messageHandler</a></div><div class="ttdeci">IMessageHandler messageHandler</div><div class="ttdoc">Propiedad protegida que asigna al formulario como CurrentForm de todos los handlers que determine den...</div><div class="ttdef"><b>Definition:</b> <a href="FormularioBase_8cs_source.html#l00031">FormularioBase.cs:31</a></div></div>
+<div class="ttc" id="aclassMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor_html"><div class="ttname"><a href="classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html">MessageGateway.Forms.FrmRegistroEmprendedor</a></div><div class="ttdoc">Formulario que recopilara la información necesaria para registrar un emprendedor.</div><div class="ttdef"><b>Definition:</b> <a href="RegistroEmprendedor_8cs_source.html#l00017">RegistroEmprendedor.cs:18</a></div></div>
+<div class="ttc" id="aclassMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor_html_a0c79eddf37b1fc9bc5b55554156c41d9"><div class="ttname"><a href="classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html#a0c79eddf37b1fc9bc5b55554156c41d9">MessageGateway.Forms.FrmRegistroEmprendedor.habilitaciones</a></div><div class="ttdeci">List&lt; Habilitacion &gt; habilitaciones</div><div class="ttdoc">Habilitaciones del emprendedor.</div><div class="ttdef"><b>Definition:</b> <a href="RegistroEmprendedor_8cs_source.html#l00071">RegistroEmprendedor.cs:71</a></div></div>
+<div class="ttc" id="aclassMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor_html_a0e61ba66a1b47ea3df4011f7d1ce0241"><div class="ttname"><a href="classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html#a0e61ba66a1b47ea3df4011f7d1ce0241">MessageGateway.Forms.FrmRegistroEmprendedor.Nombre</a></div><div class="ttdeci">string Nombre</div><div class="ttdoc">Nombre del emprendedor.</div><div class="ttdef"><b>Definition:</b> <a href="RegistroEmprendedor_8cs_source.html#l00039">RegistroEmprendedor.cs:39</a></div></div>
+<div class="ttc" id="aclassMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor_html_a3ca71ed85a6c67946c9e455168a54c64"><div class="ttname"><a href="classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html#a3ca71ed85a6c67946c9e455168a54c64">MessageGateway.Forms.FrmRegistroEmprendedor.dpto</a></div><div class="ttdeci">string dpto</div><div class="ttdoc">Departamento donde se encuentra el emprendedor.</div><div class="ttdef"><b>Definition:</b> <a href="RegistroEmprendedor_8cs_source.html#l00116">RegistroEmprendedor.cs:116</a></div></div>
+<div class="ttc" id="aclassMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor_html_a4f872438475652474e42caac336827cc"><div class="ttname"><a href="classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html#a4f872438475652474e42caac336827cc">MessageGateway.Forms.FrmRegistroEmprendedor.LoginCred</a></div><div class="ttdeci">DatosLogin LoginCred</div><div class="ttdoc">User Loggeado anteriormente.</div><div class="ttdef"><b>Definition:</b> <a href="RegistroEmprendedor_8cs_source.html#l00076">RegistroEmprendedor.cs:76</a></div></div>
+<div class="ttc" id="aclassMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor_html_a50bb944d54d44241a5ec3218698a3b30"><div class="ttname"><a href="classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html#a50bb944d54d44241a5ec3218698a3b30">MessageGateway.Forms.FrmRegistroEmprendedor.Ubicacion</a></div><div class="ttdeci">Location Ubicacion</div><div class="ttdoc">Ubicación del emprendedor.</div><div class="ttdef"><b>Definition:</b> <a href="RegistroEmprendedor_8cs_source.html#l00045">RegistroEmprendedor.cs:46</a></div></div>
+<div class="ttc" id="aclassMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor_html_a543e35f860f084497e71d2dd378fb176"><div class="ttname"><a href="classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html#a543e35f860f084497e71d2dd378fb176">MessageGateway.Forms.FrmRegistroEmprendedor.Especializacion</a></div><div class="ttdeci">string Especializacion</div><div class="ttdoc">Especialización del emprendedor.</div><div class="ttdef"><b>Definition:</b> <a href="RegistroEmprendedor_8cs_source.html#l00065">RegistroEmprendedor.cs:65</a></div></div>
+<div class="ttc" id="aclassMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor_html_a80081a1d0dc628cf4910bc25d7c8b226"><div class="ttname"><a href="classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html#a80081a1d0dc628cf4910bc25d7c8b226">MessageGateway.Forms.FrmRegistroEmprendedor.FrmRegistroEmprendedor</a></div><div class="ttdeci">FrmRegistroEmprendedor(DatosLogin login)</div><div class="ttdoc">Constructor del formulario de registro de emprendedores con sus handlers.</div><div class="ttdef"><b>Definition:</b> <a href="RegistroEmprendedor_8cs_source.html#l00081">RegistroEmprendedor.cs:81</a></div></div>
+<div class="ttc" id="aclassMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor_html_a8b207e0fc9c2d293b59bda3fdf8f8065"><div class="ttname"><a href="classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html#a8b207e0fc9c2d293b59bda3fdf8f8065">MessageGateway.Forms.FrmRegistroEmprendedor.city</a></div><div class="ttdeci">string city</div><div class="ttdoc">Ciudad donde se encuentra el emprendedor.</div><div class="ttdef"><b>Definition:</b> <a href="RegistroEmprendedor_8cs_source.html#l00110">RegistroEmprendedor.cs:110</a></div></div>
+<div class="ttc" id="aclassMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor_html_a9bd18aa8cfff55aaa3459c3475e0c160"><div class="ttname"><a href="classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html#a9bd18aa8cfff55aaa3459c3475e0c160">MessageGateway.Forms.FrmRegistroEmprendedor.emprendedorFinal</a></div><div class="ttdeci">Emprendedor emprendedorFinal</div><div class="ttdoc">Retorna el emprendedor resultante si cumple todos los requisitos.</div><div class="ttdef"><b>Definition:</b> <a href="RegistroEmprendedor_8cs_source.html#l00024">RegistroEmprendedor.cs:25</a></div></div>
+<div class="ttc" id="aclassMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor_html_aa0e41dcfb1581893a2ba6618dd2e38e8"><div class="ttname"><a href="classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html#aa0e41dcfb1581893a2ba6618dd2e38e8">MessageGateway.Forms.FrmRegistroEmprendedor.CurrentState</a></div><div class="ttdeci">HandlerRegistroEmprendedor.FasesRegEmprendedor CurrentState</div><div class="ttdoc">El estado del formulario, dado por su handler principal.</div><div class="ttdef"><b>Definition:</b> <a href="RegistroEmprendedor_8cs_source.html#l00098">RegistroEmprendedor.cs:98</a></div></div>
+<div class="ttc" id="aclassMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor_html_ab4c8729834ed88c3946c8e168ce25319"><div class="ttname"><a href="classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html#ab4c8729834ed88c3946c8e168ce25319">MessageGateway.Forms.FrmRegistroEmprendedor.direccion</a></div><div class="ttdeci">string direccion</div><div class="ttdoc">Dirección donde se encuentra el emprendedor.</div><div class="ttdef"><b>Definition:</b> <a href="RegistroEmprendedor_8cs_source.html#l00122">RegistroEmprendedor.cs:122</a></div></div>
+<div class="ttc" id="aclassMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor_html_ab90c19f8219263afec61f5753464fa9a"><div class="ttname"><a href="classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html#ab90c19f8219263afec61f5753464fa9a">MessageGateway.Forms.FrmRegistroEmprendedor.CurrentStateLocation</a></div><div class="ttdeci">HandlerLocation.faseLocation CurrentStateLocation</div><div class="ttdoc">El estado del formulario respecto la construccion de Location.</div><div class="ttdef"><b>Definition:</b> <a href="RegistroEmprendedor_8cs_source.html#l00104">RegistroEmprendedor.cs:104</a></div></div>
+<div class="ttc" id="aclassMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor_html_af62d8279c684d70713472eb7b1cfe622"><div class="ttname"><a href="classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html#af62d8279c684d70713472eb7b1cfe622">MessageGateway.Forms.FrmRegistroEmprendedor.Rubro</a></div><div class="ttdeci">string Rubro</div><div class="ttdoc">Rubro del emprendedor.</div><div class="ttdef"><b>Definition:</b> <a href="RegistroEmprendedor_8cs_source.html#l00060">RegistroEmprendedor.cs:60</a></div></div>
+<div class="ttc" id="aclassMessageGateway_1_1Handlers_1_1HandlerLocation_html"><div class="ttname"><a href="classMessageGateway_1_1Handlers_1_1HandlerLocation.html">MessageGateway.Handlers.HandlerLocation</a></div><div class="ttdoc">Handler encargado de tomar datos para generar un Location.</div><div class="ttdef"><b>Definition:</b> <a href="HandlerLocation_8cs_source.html#l00016">HandlerLocation.cs:17</a></div></div>
+<div class="ttc" id="aclassMessageGateway_1_1Handlers_1_1HandlerLocation_html_a38feec2fd91a16e93c4b25eb6d65658a"><div class="ttname"><a href="classMessageGateway_1_1Handlers_1_1HandlerLocation.html#a38feec2fd91a16e93c4b25eb6d65658a">MessageGateway.Handlers.HandlerLocation.faseLocation</a></div><div class="ttdeci">faseLocation</div><div class="ttdoc">Fases necesarias para crear un Location.</div><div class="ttdef"><b>Definition:</b> <a href="HandlerLocation_8cs_source.html#l00118">HandlerLocation.cs:119</a></div></div>
+<div class="ttc" id="aclassMessageGateway_1_1Handlers_1_1HandlerRegistroEmprendedor_html"><div class="ttname"><a href="classMessageGateway_1_1Handlers_1_1HandlerRegistroEmprendedor.html">MessageGateway.Handlers.HandlerRegistroEmprendedor</a></div><div class="ttdoc">Handler principal del registro de emprendedores.</div><div class="ttdef"><b>Definition:</b> <a href="HandlerRegistroEmprendedor_8cs_source.html#l00017">HandlerRegistroEmprendedor.cs:18</a></div></div>
+<div class="ttc" id="aclassMessageGateway_1_1Handlers_1_1HandlerRegistroEmprendedor_html_a48fac36ec398ab5347492aa0f1589778"><div class="ttname"><a href="classMessageGateway_1_1Handlers_1_1HandlerRegistroEmprendedor.html#a48fac36ec398ab5347492aa0f1589778">MessageGateway.Handlers.HandlerRegistroEmprendedor.FasesRegEmprendedor</a></div><div class="ttdeci">FasesRegEmprendedor</div><div class="ttdoc">Las diferentes fases que este handler necesita para completar toda su información.</div><div class="ttdef"><b>Definition:</b> <a href="HandlerRegistroEmprendedor_8cs_source.html#l00173">HandlerRegistroEmprendedor.cs:174</a></div></div>
+<div class="ttc" id="ainterfaceMessageGateway_1_1Forms_1_1ILocationForm_html"><div class="ttname"><a href="interfaceMessageGateway_1_1Forms_1_1ILocationForm.html">MessageGateway.Forms.ILocationForm</a></div><div class="ttdoc">Interfaz que engloba todos los formularios que necesitan una instancia de Location.</div><div class="ttdef"><b>Definition:</b> <a href="ILocationForm_8cs_source.html#l00015">ILocationForm.cs:16</a></div></div>
+<div class="ttc" id="anamespaceClassLibrary_1_1LocationAPI_html"><div class="ttname"><a href="namespaceClassLibrary_1_1LocationAPI.html">ClassLibrary.LocationAPI</a></div><div class="ttdef"><b>Definition:</b> <a href="Distance_8cs_source.html#l00007">Distance.cs:8</a></div></div>
+<div class="ttc" id="anamespaceClassLibrary_1_1User_html"><div class="ttname"><a href="namespaceClassLibrary_1_1User.html">ClassLibrary.User</a></div><div class="ttdef"><b>Definition:</b> <a href="DatosLogin_8cs_source.html#l00010">DatosLogin.cs:11</a></div></div>
+<div class="ttc" id="anamespaceClassLibrary_html"><div class="ttname"><a href="namespaceClassLibrary.html">ClassLibrary</a></div><div class="ttdef"><b>Definition:</b> <a href="Distance_8cs_source.html#l00007">Distance.cs:8</a></div></div>
+<div class="ttc" id="anamespaceMessageGateway_1_1Forms_html"><div class="ttname"><a href="namespaceMessageGateway_1_1Forms.html">MessageGateway.Forms</a></div><div class="ttdef"><b>Definition:</b> <a href="FormularioBase_8cs_source.html#l00015">FormularioBase.cs:16</a></div></div>
+<div class="ttc" id="anamespaceMessageGateway_1_1Handlers_html"><div class="ttname"><a href="namespaceMessageGateway_1_1Handlers.html">MessageGateway.Handlers</a></div><div class="ttdef"><b>Definition:</b> <a href="HandlerInviteInicio_8cs_source.html#l00010">HandlerInviteInicio.cs:11</a></div></div>
+<div class="ttc" id="anamespaceMessageGateway_html"><div class="ttname"><a href="namespaceMessageGateway.html">MessageGateway</a></div><div class="ttdef"><b>Definition:</b> <a href="AdaptadorTelegram_8cs_source.html#l00017">AdaptadorTelegram.cs:18</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_401a26ac121ff7f62e3c7da9e1b7d817.html">MessageGateway</a></li><li class="navelem"><a class="el" href="dir_1be6f437e75cc1d7e0084a82d66f8966.html">Forms</a></li><li class="navelem"><a class="el" href="dir_99e9c6c4fd866440c3fea8accf0f2f65.html">PreLogin</a></li><li class="navelem"><b>RegistroEmprendedor.cs</b></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

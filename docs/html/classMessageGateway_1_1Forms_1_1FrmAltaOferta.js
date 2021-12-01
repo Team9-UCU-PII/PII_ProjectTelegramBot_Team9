@@ -1,0 +1,25 @@
+var classMessageGateway_1_1Forms_1_1FrmAltaOferta =
+[
+    [ "FrmAltaOferta", "classMessageGateway_1_1Forms_1_1FrmAltaOferta.html#aa59b3a357da99ab9e91fbcf3bc8e8d78", null ],
+    [ "Cantidad", "classMessageGateway_1_1Forms_1_1FrmAltaOferta.html#a4604b1121c10820fa146ed4835d28bb8", null ],
+    [ "Descripcion", "classMessageGateway_1_1Forms_1_1FrmAltaOferta.html#ade8e2a56d08552e9e1ef950d4ed1fe9f", null ],
+    [ "Moneda", "classMessageGateway_1_1Forms_1_1FrmAltaOferta.html#aac72e585961062e4c4cd20a9f0459de7", null ],
+    [ "ofertaModificable", "classMessageGateway_1_1Forms_1_1FrmAltaOferta.html#a9c1afd78d86414b7a35e7e4f0796a08c", null ],
+    [ "PrecioUnitario", "classMessageGateway_1_1Forms_1_1FrmAltaOferta.html#af0284dac4f7a115b4e25c4e0e9f82503", null ],
+    [ "categoria", "classMessageGateway_1_1Forms_1_1FrmAltaOferta.html#a77392f81f333d5519a0d009e63f44c75", null ],
+    [ "city", "classMessageGateway_1_1Forms_1_1FrmAltaOferta.html#af09ff6524bcd0e291a6098ecc78c2ed8", null ],
+    [ "CurrentState", "classMessageGateway_1_1Forms_1_1FrmAltaOferta.html#a6de010def3208597cd1c140622374d7a", null ],
+    [ "CurrentStateLocation", "classMessageGateway_1_1Forms_1_1FrmAltaOferta.html#a02dc8629a8db48cb74ea0a72800197cd", null ],
+    [ "CurrentStateResiduo", "classMessageGateway_1_1Forms_1_1FrmAltaOferta.html#a058756673378a4b162112cc88612c612", null ],
+    [ "descripcion", "classMessageGateway_1_1Forms_1_1FrmAltaOferta.html#a9eec54f770a47d95ddece6f0860dbd0c", null ],
+    [ "direccion", "classMessageGateway_1_1Forms_1_1FrmAltaOferta.html#acde6347d42813a1f5653587730a2c1dc", null ],
+    [ "dpto", "classMessageGateway_1_1Forms_1_1FrmAltaOferta.html#a784178242145977492d37370e720bb07", null ],
+    [ "FrecuenciaRestock", "classMessageGateway_1_1Forms_1_1FrmAltaOferta.html#affde71c780f26ac9e6c26f69dc1acb3f", null ],
+    [ "habilitaciones", "classMessageGateway_1_1Forms_1_1FrmAltaOferta.html#abd6d9005a76dec109b88b120018b9d85", null ],
+    [ "InstanciaLoggeada", "classMessageGateway_1_1Forms_1_1FrmAltaOferta.html#abe9948fc475748076b8c155a3dc0ad3f", null ],
+    [ "Oferta", "classMessageGateway_1_1Forms_1_1FrmAltaOferta.html#af6c41e2dc3c6963958c43d9977a01770", null ],
+    [ "residuo", "classMessageGateway_1_1Forms_1_1FrmAltaOferta.html#ac8094eff1880213ac825f374b683d1b5", null ],
+    [ "Ubicacion", "classMessageGateway_1_1Forms_1_1FrmAltaOferta.html#ad3b0ef193254a4c79fa563aba395a0ce", null ],
+    [ "unit", "classMessageGateway_1_1Forms_1_1FrmAltaOferta.html#a56bceabe63734bcbdeaea0cb9901af73", null ],
+    [ "Vendedor", "classMessageGateway_1_1Forms_1_1FrmAltaOferta.html#ab02844c001ff0e6c07faf689df83f8c7", null ]
+];

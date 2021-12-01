@@ -1,0 +1,37 @@
+digraph "MessageGateway.Forms.FrmAltaOferta"
+{
+ // INTERACTIVE_SVG=YES
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{MessageGateway.Forms.Frm\lAltaOferta\n|+ Oferta\l+ FrecuenciaRestock\l+ Ubicacion\l+ Vendedor\l+ InstanciaLoggeada\l+ CurrentState\l+ CurrentStateResiduo\l+ residuo\l+ descripcion\l+ unit\ly 6 más...\l|+ FrmAltaOferta()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Formulario que recopilara la información necesaria para crear una publicacion."];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node2 [label="{FormularioBase\n|+ messageHandler\l|+ ReceiveMessage()\l+ ChangeForm()\l# FormularioBase()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classMessageGateway_1_1Forms_1_1FormularioBase.html",tooltip="Superclase para todos los formularios."];
+  Node3 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node3 [label="{IFormulario\n||+ ReceiveMessage()\l+ ChangeForm()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interfaceMessageGateway_1_1Forms_1_1IFormulario.html",tooltip="Interfaz que engloba todos los forularios y sus metodos principales."];
+  Node4 -> Node2 [color="grey25",fontsize="10",style="solid",label=" +gateway" ,arrowhead="odiamond",fontname="Helvetica"];
+  Node4 [label="{MessageGateway.IGateway\n|+ Instancia\l+ ObtenerLinkInvitacion\l|+ EnviarMensaje()\l+ EnviarUbicacionEnMapa()\l+ ObtenerFormularioActual()\l+ CambiarFormulario()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interfaceMessageGateway_1_1IGateway.html",tooltip="Interfaz que engloba las diferentes salidas y entradas posibles de mensaje de invitación al bot (mail..."];
+  Node3 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node5 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node5 [label="{ILocationForm\n|+ direccion\l+ city\l+ dpto\l+ CurrentStateLocation\l+ Ubicacion\l|}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interfaceMessageGateway_1_1Forms_1_1ILocationForm.html",tooltip="Interfaz que engloba todos los formularios que necesitan una instancia de Location."];
+  Node6 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node6 [label="{IResiduoForm\n|+ residuo\l+ descripcion\l+ unit\l+ categoria\l+ habilitaciones\l+ CurrentStateResiduo\l|}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interfaceMessageGateway_1_1Forms_1_1IResiduoForm.html",tooltip="Interfaz que engloba los formularios que necesitan de un residuo."];
+  Node7 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node7 [label="{IPostLogin\n|+ InstanciaLoggeada\l|}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interfaceMessageGateway_1_1Forms_1_1IPostLogin.html",tooltip="Interfaz para condicionar y controlar que despues del login no se pierda referencia al IUsuario vincu..."];
+  Node8 -> Node1 [color="grey25",fontsize="10",style="solid",label=" +Descripcion\n+Moneda" ,arrowhead="odiamond",fontname="Helvetica"];
+  Node8 [label="{string\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node9 -> Node1 [color="grey25",fontsize="10",style="solid",label=" +PrecioUnitario" ,arrowhead="odiamond",fontname="Helvetica"];
+  Node9 [label="{double\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node10 -> Node1 [color="grey25",fontsize="10",style="solid",label=" +Cantidad" ,arrowhead="odiamond",fontname="Helvetica"];
+  Node10 [label="{int\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node11 -> Node1 [color="grey25",fontsize="10",style="solid",label=" +ofertaModificable" ,arrowhead="odiamond",fontname="Helvetica"];
+  Node11 [label="{ClassLibrary.Publication.\lPublicacion\n|+ Residuo\l+ PrecioUnitario\l+ Moneda\l+ Cantidad\l+ LugarRetiro\l+ Vendedor\l+ Descripcion\l+ Categoria\l+ Comprado\l+ PrecioTotal\l|+ Publicacion()\l+ Publicacion()\l+ GetTextToPrint()\l+ JsonSave()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classClassLibrary_1_1Publication_1_1Publicacion.html",tooltip="Tipo base de publicación, comprende Descripcion, Residuo, Precio, Moneda, Cantidad,..."];
+  Node12 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node12 [label="{JsonConvertibleBase\n|+ SerializationID\l|+ JsonSave()\l+ operator==()\l+ operator!=()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classImporters_1_1Json_1_1JsonConvertibleBase.html",tooltip="Clase base abstracta que redefine los operadores == y != para determinar si dos objetos son iguales e..."];
+  Node13 -> Node12 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node13 [label="{IJsonConvertible\n|+ SerializationID\l|+ JsonSave()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interfaceImporters_1_1Json_1_1IJsonConvertible.html",tooltip="Interfaz que permite a la librería de clases marcar las clases que se persisten en formato JSON...."];
+  Node14 -> Node13 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node14 [label="{IPersistible\n||}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interfaceImporters_1_1IPersistible.html",tooltip="Identifica las clases que se espera que la base de datos persista."];
+  Node15 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node15 [label="{IPrintable\n||+ GetTextToPrint()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interfaceClassLibrary_1_1Publication_1_1IPrintable.html",tooltip="Interfaz que unifica tipos cuyo objetivo es devolver texto al bot para imprimir y retornar al usuario..."];
+}

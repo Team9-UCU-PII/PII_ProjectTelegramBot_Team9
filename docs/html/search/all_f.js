@@ -1,5 +1,12 @@
 var searchData=
 [
-  ['telegramservice_78',['TelegramService',['../classMessageGateway_1_1TelegramService.html',1,'MessageGateway']]],
-  ['transacciones_79',['Transacciones',['../classBotCore_1_1Publication_1_1Transacciones.html',1,'BotCore::Publication']]]
+  ['receivemessage_242',['ReceiveMessage',['../classMessageGateway_1_1Forms_1_1FormularioBase.html#a4ba82c6d59a039ea4e19bb22b0858178',1,'MessageGateway.Forms.FormularioBase.ReceiveMessage()'],['../interfaceMessageGateway_1_1Forms_1_1IFormulario.html#ab27459614709e0c8f1a85d6d8cda7679',1,'MessageGateway.Forms.IFormulario.ReceiveMessage()']]],
+  ['referencehandler_243',['ReferenceHandler',['../classReferenceHandler.html',1,'']]],
+  ['reporte_244',['Reporte',['../classBotCore_1_1Publication_1_1Reporte.html',1,'BotCore::Publication']]],
+  ['reportefinal_245',['reporteFinal',['../classMessageGateway_1_1Forms_1_1FrmReporte.html#a25c06ba03e34f48d2a047ffbcd86e1a5',1,'MessageGateway::Forms::FrmReporte']]],
+  ['residuo_246',['Residuo',['../classClassLibrary_1_1Publication_1_1Residuo.html',1,'ClassLibrary::Publication']]],
+  ['residuo_247',['residuo',['../interfaceMessageGateway_1_1Forms_1_1IResiduoForm.html#aafd2daa4831fe85038aae33da35c067f',1,'MessageGateway.Forms.IResiduoForm.residuo()'],['../classMessageGateway_1_1Forms_1_1FrmAltaOferta.html#ac8094eff1880213ac825f374b683d1b5',1,'MessageGateway.Forms.FrmAltaOferta.residuo()']]],
+  ['residuo_248',['Residuo',['../classClassLibrary_1_1Publication_1_1Publicacion.html#a17778c6c9812e51bec1b8ad359e6d7d1',1,'ClassLibrary.Publication.Publicacion.Residuo()'],['../classClassLibrary_1_1Publication_1_1Residuo.html#a7c0aa641469fc68a2eb0c17ec5f462e4',1,'ClassLibrary.Publication.Residuo.Residuo(Categoria categoria, string descripcion, string unidadMedida, List&lt; Habilitacion &gt; habilitaciones)'],['../classClassLibrary_1_1Publication_1_1Residuo.html#a8fb26cd9484893338719a129b1d5e987',1,'ClassLibrary.Publication.Residuo.Residuo()']]],
+  ['result_249',['result',['../classMessageGateway_1_1Forms_1_1FrmRegistroDatosLogin.html#a6d6413f361fe00e284a5871b31d5b249',1,'MessageGateway::Forms::FrmRegistroDatosLogin']]],
+  ['rubro_250',['Rubro',['../classClassLibrary_1_1User_1_1Emprendedor.html#aeef4e7a252452a810efc6b245a3242ab',1,'ClassLibrary.User.Emprendedor.Rubro()'],['../classClassLibrary_1_1User_1_1Empresa.html#ab7aa3d67f3f6d87e767030b5e1dcf06c',1,'ClassLibrary.User.Empresa.Rubro()'],['../classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html#af62d8279c684d70713472eb7b1cfe622',1,'MessageGateway.Forms.FrmRegistroEmprendedor.Rubro()'],['../classMessageGateway_1_1Forms_1_1FrmRegistroEmpresa.html#aa2e42755f346032c3b0d202ab33ad32c',1,'MessageGateway.Forms.FrmRegistroEmpresa.Rubro()']]]
 ];

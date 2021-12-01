@@ -1,0 +1,14 @@
+digraph "MessageGateway.Forms.FrmRegistroEmpresa"
+{
+ // INTERACTIVE_SVG=YES
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{MessageGateway.Forms.Frm\lRegistroEmpresa\n|+ NombrePublico\l+ Rubro\l+ Descripcion\l+ Contacto\l+ EmpresaPreCreada\l+ UserCreds\l+ CurrentState\l+ EmpresaFinal\l+ CurrentStateLocation\l+ Ubicacion\l+ dpto\l+ city\l+ direccion\l|+ FrmRegistroEmpresa()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Formulario que engloba la creacion de una empresa."];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node2 [label="{FormularioBase\n|+ gateway\l+ messageHandler\l|+ ReceiveMessage()\l+ ChangeForm()\l# FormularioBase()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classMessageGateway_1_1Forms_1_1FormularioBase.html",tooltip="Superclase para todos los formularios."];
+  Node3 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node3 [label="{IFormulario\n||+ ReceiveMessage()\l+ ChangeForm()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interfaceMessageGateway_1_1Forms_1_1IFormulario.html",tooltip="Interfaz que engloba todos los forularios y sus metodos principales."];
+  Node4 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node4 [label="{ILocationForm\n|+ direccion\l+ city\l+ dpto\l+ CurrentStateLocation\l+ Ubicacion\l|}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interfaceMessageGateway_1_1Forms_1_1ILocationForm.html",tooltip="Interfaz que engloba todos los formularios que necesitan una instancia de Location."];
+}

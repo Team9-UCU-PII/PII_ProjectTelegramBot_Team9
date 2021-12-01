@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Proyecto de PII
-   &#160;<span id="projectnumber">1</span>
+   &#160;<span id="projectnumber">3</span>
    </div>
    <div id="projectbrief">Projecto para curso de Programacion 2 en la UCU, por el equipo 9 de la tarde</div>
   </td>
@@ -104,16 +104,16 @@ Diagrama de colaboración para BotCore.User.GestorInvitaciones:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Métodos públicos</h2></td></tr>
-<tr class="memitem:ad2c15d4d36caab1fff1ccdfafdb0017c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBotCore_1_1User_1_1GestorInvitaciones.html#ad2c15d4d36caab1fff1ccdfafdb0017c">EnviarInvitacion&lt; T &gt;</a> (string destinatario, string nombreTemp)</td></tr>
-<tr class="memdesc:ad2c15d4d36caab1fff1ccdfafdb0017c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo que crea la <a class="el" href="classBotCore_1_1User_1_1Invitacion.html" title="Clase mediadora entre GestorInvitaciones y los , representa la invitación en si, y encapsula el enlac...">Invitacion</a> y la envia al destinatario especificado.  <a href="classBotCore_1_1User_1_1GestorInvitaciones.html#ad2c15d4d36caab1fff1ccdfafdb0017c">Más...</a><br /></td></tr>
-<tr class="separator:ad2c15d4d36caab1fff1ccdfafdb0017c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af46a7b1f46fc1c78c0c76b98752580c1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classBotCore_1_1User_1_1Invitacion.html">Invitacion</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBotCore_1_1User_1_1GestorInvitaciones.html#af46a7b1f46fc1c78c0c76b98752580c1">ValidarInvitacion</a> (string usuarioAceptante, string enlace)</td></tr>
-<tr class="memdesc:af46a7b1f46fc1c78c0c76b98752580c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo utilizado para validar que la invitación fue aceptada. Es utilizado externamente por <a class="el" href="namespaceMessageGateway.html">MessageGateway</a>.  <a href="classBotCore_1_1User_1_1GestorInvitaciones.html#af46a7b1f46fc1c78c0c76b98752580c1">Más...</a><br /></td></tr>
-<tr class="separator:af46a7b1f46fc1c78c0c76b98752580c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab357d7dc58aadb505155810e100289f5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classClassLibrary_1_1User_1_1Invitacion.html">Invitacion</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBotCore_1_1User_1_1GestorInvitaciones.html#ab357d7dc58aadb505155810e100289f5">AlmacenarInvitacion</a> (string nombreTempUsuario)</td></tr>
+<tr class="memdesc:ab357d7dc58aadb505155810e100289f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo que crea la Invitacion y la envia al destinatario especificado. Se trata de una implementación de patrón Creator, ya que considerando la muy estrecha relación entre esta clase y la clase Invitacion, es razonable que la responsabilidad de instanciar esa clase recaiga en este Gestor, de forma que el resto de clases quedan libres de la responsabilidad de crear objetos Invitacion.  <a href="classBotCore_1_1User_1_1GestorInvitaciones.html#ab357d7dc58aadb505155810e100289f5">Más...</a><br /></td></tr>
+<tr class="separator:ab357d7dc58aadb505155810e100289f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb9da0e550346ac516f19ace4800d7b3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBotCore_1_1User_1_1GestorInvitaciones.html#acb9da0e550346ac516f19ace4800d7b3">ValidarInvitacion</a> (string token, out <a class="el" href="classClassLibrary_1_1User_1_1Invitacion.html">Invitacion</a> invite)</td></tr>
+<tr class="memdesc:acb9da0e550346ac516f19ace4800d7b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo utilizado para validar que la invitación fue aceptada.  <a href="classBotCore_1_1User_1_1GestorInvitaciones.html#acb9da0e550346ac516f19ace4800d7b3">Más...</a><br /></td></tr>
+<tr class="separator:acb9da0e550346ac516f19ace4800d7b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Atributos públicos</h2></td></tr>
-<tr class="memitem:acb931a329517157f15edae313b84c4ab"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="classBotCore_1_1User_1_1Invitacion.html">Invitacion</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBotCore_1_1User_1_1GestorInvitaciones.html#acb931a329517157f15edae313b84c4ab">InvitacionesEnviadas</a> = new List&lt;<a class="el" href="classBotCore_1_1User_1_1Invitacion.html">Invitacion</a>&gt;()</td></tr>
+<tr class="memitem:acb931a329517157f15edae313b84c4ab"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="classClassLibrary_1_1User_1_1Invitacion.html">Invitacion</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBotCore_1_1User_1_1GestorInvitaciones.html#acb931a329517157f15edae313b84c4ab">InvitacionesEnviadas</a> = new List&lt;<a class="el" href="classClassLibrary_1_1User_1_1Invitacion.html">Invitacion</a>&gt;()</td></tr>
 <tr class="memdesc:acb931a329517157f15edae313b84c4ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lista donde se almacenan las invitaciones enviadas para mantener un registro.  <a href="classBotCore_1_1User_1_1GestorInvitaciones.html#acb931a329517157f15edae313b84c4ab">Más...</a><br /></td></tr>
 <tr class="separator:acb931a329517157f15edae313b84c4ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -122,32 +122,58 @@ Propiedades</h2></td></tr>
 <tr class="memitem:a38fb50ea03d29eabd90cabf104d1b6c9"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classBotCore_1_1User_1_1GestorInvitaciones.html">GestorInvitaciones</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBotCore_1_1User_1_1GestorInvitaciones.html#a38fb50ea03d29eabd90cabf104d1b6c9">Instancia</a><code> [get]</code></td></tr>
 <tr class="memdesc:a38fb50ea03d29eabd90cabf104d1b6c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo de acceso al singleton.  <a href="classBotCore_1_1User_1_1GestorInvitaciones.html#a38fb50ea03d29eabd90cabf104d1b6c9">Más...</a><br /></td></tr>
 <tr class="separator:a38fb50ea03d29eabd90cabf104d1b6c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aed4d6216b98c2ddf84e2e5c6d4709c84"><td class="memItemLeft" align="right" valign="top"><a class="el" href="interfaceMessageGateway_1_1IGateway.html">IGateway</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBotCore_1_1User_1_1GestorInvitaciones.html#aed4d6216b98c2ddf84e2e5c6d4709c84">GatewayMensajes</a><code> [get, set]</code></td></tr>
-<tr class="memdesc:aed4d6216b98c2ddf84e2e5c6d4709c84"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene o establece el gateway para enviar la invitación.  <a href="classBotCore_1_1User_1_1GestorInvitaciones.html#aed4d6216b98c2ddf84e2e5c6d4709c84">Más...</a><br /></td></tr>
-<tr class="separator:aed4d6216b98c2ddf84e2e5c6d4709c84"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
 <div class="textblock"><p>Clase que se encarga de generar usuarios temporales y enviarselo a personas para facilitar su registro de manera personal. </p>
 
-<p class="definition">Definición en la línea <a class="el" href="GestorInvitaciones_8cs_source.html#l00023">23</a> del archivo <a class="el" href="GestorInvitaciones_8cs_source.html">GestorInvitaciones.cs</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="GestorInvitaciones_8cs_source.html#l00022">22</a> del archivo <a class="el" href="GestorInvitaciones_8cs_source.html">GestorInvitaciones.cs</a>.</p>
 </div><h2 class="groupheader">Documentación de las funciones miembro</h2>
-<a id="ad2c15d4d36caab1fff1ccdfafdb0017c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad2c15d4d36caab1fff1ccdfafdb0017c">&#9670;&nbsp;</a></span>EnviarInvitacion&lt; T &gt;()</h2>
+<a id="ab357d7dc58aadb505155810e100289f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab357d7dc58aadb505155810e100289f5">&#9670;&nbsp;</a></span>AlmacenarInvitacion()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void BotCore.User.GestorInvitaciones.EnviarInvitacion&lt; T &gt; </td>
+          <td class="memname"><a class="el" href="classClassLibrary_1_1User_1_1Invitacion.html">Invitacion</a> BotCore.User.GestorInvitaciones.AlmacenarInvitacion </td>
           <td>(</td>
           <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>destinatario</em>, </td>
+          <td class="paramname"><em>nombreTempUsuario</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Metodo que crea la Invitacion y la envia al destinatario especificado. Se trata de una implementación de patrón Creator, ya que considerando la muy estrecha relación entre esta clase y la clase Invitacion, es razonable que la responsabilidad de instanciar esa clase recaiga en este Gestor, de forma que el resto de clases quedan libres de la responsabilidad de crear objetos Invitacion. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nombreTempUsuario</td><td>el nombre provisorio con el que se almacena el usuario.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>La invitación creada.</dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="GestorInvitaciones_8cs_source.html#l00061">61</a> del archivo <a class="el" href="GestorInvitaciones_8cs_source.html">GestorInvitaciones.cs</a>.</p>
+
+</div>
+</div>
+<a id="acb9da0e550346ac516f19ace4800d7b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb9da0e550346ac516f19ace4800d7b3">&#9670;&nbsp;</a></span>ValidarInvitacion()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool BotCore.User.GestorInvitaciones.ValidarInvitacion </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>token</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>nombreTemp</em>&#160;</td>
+          <td class="paramtype">out <a class="el" href="classClassLibrary_1_1User_1_1Invitacion.html">Invitacion</a>&#160;</td>
+          <td class="paramname"><em>invite</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -157,81 +183,21 @@ Propiedades</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Metodo que crea la <a class="el" href="classBotCore_1_1User_1_1Invitacion.html" title="Clase mediadora entre GestorInvitaciones y los , representa la invitación en si, y encapsula el enlac...">Invitacion</a> y la envia al destinatario especificado. </p>
+<p>Metodo utilizado para validar que la invitación fue aceptada. </p>
 <dl class="params"><dt>Parámetros</dt><dd>
   <table class="params">
-    <tr><td class="paramname">destinatario</td><td>El contacto objetivo (username).</td></tr>
-    <tr><td class="paramname">nombreTemp</td><td>Nombre placeholder para el IUsuario, el destinatario lo sobreescribirá luego.</td></tr>
+    <tr><td class="paramname">token</td><td>el código que el usuario debe ingresar para aceptar la invitación.</td></tr>
+    <tr><td class="paramname">invite</td><td>la invitación aceptada, o null si no se encontró una invitación con ese token.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="tparams"><dt>Parámetros del template</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">T</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-<div class="typeconstraint">
-<dl><dt><b>Restriciones de tipo</b></dt><dd>
-<table border="0" cellspacing="2" cellpadding="0">
-<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>IUsuario</em></td><td>&#160;</td></tr>
-<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>new()</em></td><td>&#160;</td></tr>
-</table>
-</dd>
-</dl>
-</div>
+<dl class="section return"><dt>Devuelve</dt><dd>true si existía una invitación que aceptar, de lo contrario false.</dd></dl>
 
-<p class="definition">Definición en la línea <a class="el" href="GestorInvitaciones_8cs_source.html#l00066">66</a> del archivo <a class="el" href="GestorInvitaciones_8cs_source.html">GestorInvitaciones.cs</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="GestorInvitaciones_8cs_source.html#l00076">76</a> del archivo <a class="el" href="GestorInvitaciones_8cs_source.html">GestorInvitaciones.cs</a>.</p>
 <div class="dynheader">
-Gráfico de llamadas para esta función:</div>
+Gráfico de llamadas a esta función:</div>
 <div class="dyncontent">
 <div class="center"><!-- SVG 1 -->
-</div>
-</div>
-
-</div>
-</div>
-<a id="af46a7b1f46fc1c78c0c76b98752580c1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af46a7b1f46fc1c78c0c76b98752580c1">&#9670;&nbsp;</a></span>ValidarInvitacion()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classBotCore_1_1User_1_1Invitacion.html">Invitacion</a> BotCore.User.GestorInvitaciones.ValidarInvitacion </td>
-          <td>(</td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>usuarioAceptante</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>enlace</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Metodo utilizado para validar que la invitación fue aceptada. Es utilizado externamente por <a class="el" href="namespaceMessageGateway.html">MessageGateway</a>. </p>
-<dl class="params"><dt>Parámetros</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">usuarioAceptante</td><td><code>string</code>.</td></tr>
-    <tr><td class="paramname">enlace</td><td><code>string</code>.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Devuelve</dt><dd><a class="el" href="classBotCore_1_1User_1_1Invitacion.html" title="Clase mediadora entre GestorInvitaciones y los , representa la invitación en si, y encapsula el enlac...">Invitacion</a>.</dd></dl>
-
-<p class="definition">Definición en la línea <a class="el" href="GestorInvitaciones_8cs_source.html#l00085">85</a> del archivo <a class="el" href="GestorInvitaciones_8cs_source.html">GestorInvitaciones.cs</a>.</p>
-<div class="dynheader">
-Gráfico de llamadas para esta función:</div>
-<div class="dyncontent">
-<div class="center"><!-- SVG 2 -->
 </div>
 </div>
 
@@ -245,45 +211,18 @@ Gráfico de llamadas para esta función:</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">List&lt;<a class="el" href="classBotCore_1_1User_1_1Invitacion.html">Invitacion</a>&gt; BotCore.User.GestorInvitaciones.InvitacionesEnviadas = new List&lt;<a class="el" href="classBotCore_1_1User_1_1Invitacion.html">Invitacion</a>&gt;()</td>
+          <td class="memname">List&lt;<a class="el" href="classClassLibrary_1_1User_1_1Invitacion.html">Invitacion</a>&gt; BotCore.User.GestorInvitaciones.InvitacionesEnviadas = new List&lt;<a class="el" href="classClassLibrary_1_1User_1_1Invitacion.html">Invitacion</a>&gt;()</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Lista donde se almacenan las invitaciones enviadas para mantener un registro. </p>
 
-<p class="definition">Definición en la línea <a class="el" href="GestorInvitaciones_8cs_source.html#l00058">58</a> del archivo <a class="el" href="GestorInvitaciones_8cs_source.html">GestorInvitaciones.cs</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="GestorInvitaciones_8cs_source.html#l00050">50</a> del archivo <a class="el" href="GestorInvitaciones_8cs_source.html">GestorInvitaciones.cs</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Documentación de propiedades</h2>
-<a id="aed4d6216b98c2ddf84e2e5c6d4709c84"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aed4d6216b98c2ddf84e2e5c6d4709c84">&#9670;&nbsp;</a></span>GatewayMensajes</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="interfaceMessageGateway_1_1IGateway.html">IGateway</a> BotCore.User.GestorInvitaciones.GatewayMensajes</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Obtiene o establece el gateway para enviar la invitación. </p>
-<p>Por Defecto: TelegramService. Se puede establecer cualquier .</p>
-
-<p class="definition">Definición en la línea <a class="el" href="GestorInvitaciones_8cs_source.html#l00053">53</a> del archivo <a class="el" href="GestorInvitaciones_8cs_source.html">GestorInvitaciones.cs</a>.</p>
-
-</div>
-</div>
 <a id="a38fb50ea03d29eabd90cabf104d1b6c9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a38fb50ea03d29eabd90cabf104d1b6c9">&#9670;&nbsp;</a></span>Instancia</h2>
 
@@ -307,7 +246,7 @@ Gráfico de llamadas para esta función:</div>
 <p>Metodo de acceso al singleton. </p>
 <p><a class="el" href="classBotCore_1_1User_1_1GestorInvitaciones.html" title="Clase que se encarga de generar usuarios temporales y enviarselo a personas para facilitar su registr...">GestorInvitaciones</a>.</p>
 
-<p class="definition">Definición en la línea <a class="el" href="GestorInvitaciones_8cs_source.html#l00034">34</a> del archivo <a class="el" href="GestorInvitaciones_8cs_source.html">GestorInvitaciones.cs</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="GestorInvitaciones_8cs_source.html#l00032">32</a> del archivo <a class="el" href="GestorInvitaciones_8cs_source.html">GestorInvitaciones.cs</a>.</p>
 
 </div>
 </div>

@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Proyecto de PII
-   &#160;<span id="projectnumber">1</span>
+   &#160;<span id="projectnumber">3</span>
    </div>
    <div id="projectbrief">Projecto para curso de Programacion 2 en la UCU, por el equipo 9 de la tarde</div>
   </td>
@@ -97,26 +97,20 @@ $(document).ready(function(){initNavTree('IDatabase_8cs_source.html',''); initRe
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceImporters.html">Importers</a></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;{</div>
-<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="interfaceImporters_1_1IDatabase.html">   14</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">interface </span><a class="code" href="interfaceImporters_1_1IDatabase.html">IDatabase</a></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    {</div>
-<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="interfaceImporters_1_1IDatabase.html#a946dbaa57773b87a8b2e727700ebc60f">   20</a></span>&#160;        <span class="keyword">static</span> <a class="code" href="interfaceImporters_1_1IDatabase.html">IDatabase</a> <a class="code" href="interfaceImporters_1_1IDatabase.html#a946dbaa57773b87a8b2e727700ebc60f">Instancia</a> { <span class="keyword">get</span>; }</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="interfaceImporters_1_1IDatabase.html#ad21f13bbaba1fcaa7d286aa468b4599e">   27</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interfaceImporters_1_1IDatabase.html#ad21f13bbaba1fcaa7d286aa468b4599e">Insertar&lt;T&gt;</a>(T objeto);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="interfaceImporters_1_1IDatabase.html#ae5a67deda8ae49976f122ee348eed974">   35</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interfaceImporters_1_1IDatabase.html#ae5a67deda8ae49976f122ee348eed974">Actualizar&lt;T&gt;</a>(T objetoOriginal, T objetoModificado);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keyword">internal</span> <span class="keyword">interface </span>IDatabase</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keyword">static</span> IDatabase Instancia { <span class="keyword">get</span>; }</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keywordtype">void</span> Insertar&lt;T&gt;(T objeto) where T : IPersistible;</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        List&lt;T&gt; <a class="code" href="interfaceImporters_1_1IDatabase.html#ac5d8338149eb4b9f49c3ab164c4a529b">Obtener&lt;T&gt;</a>();</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="interfaceImporters_1_1IDatabase.html#a598f5606b009a2f08babd5925102a25c">   49</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interfaceImporters_1_1IDatabase.html#a598f5606b009a2f08babd5925102a25c">Eliminar&lt;T&gt;</a>(T objeto);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    }</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div>
-<div class="ttc" id="ainterfaceImporters_1_1IDatabase_html"><div class="ttname"><a href="interfaceImporters_1_1IDatabase.html">Importers.IDatabase</a></div><div class="ttdoc">Interaz de acceso a la base de datos.</div><div class="ttdef"><b>Definition:</b> <a href="IDatabase_8cs_source.html#l00014">IDatabase.cs:15</a></div></div>
-<div class="ttc" id="ainterfaceImporters_1_1IDatabase_html_a598f5606b009a2f08babd5925102a25c"><div class="ttname"><a href="interfaceImporters_1_1IDatabase.html#a598f5606b009a2f08babd5925102a25c">Importers.IDatabase.Eliminar&lt; T &gt;</a></div><div class="ttdeci">void Eliminar&lt; T &gt;(T objeto)</div><div class="ttdoc">Borrar.</div></div>
-<div class="ttc" id="ainterfaceImporters_1_1IDatabase_html_a946dbaa57773b87a8b2e727700ebc60f"><div class="ttname"><a href="interfaceImporters_1_1IDatabase.html#a946dbaa57773b87a8b2e727700ebc60f">Importers.IDatabase.Instancia</a></div><div class="ttdeci">static IDatabase Instancia</div><div class="ttdoc">Obtiene instancia del singleton.</div><div class="ttdef"><b>Definition:</b> <a href="IDatabase_8cs_source.html#l00020">IDatabase.cs:20</a></div></div>
-<div class="ttc" id="ainterfaceImporters_1_1IDatabase_html_ac5d8338149eb4b9f49c3ab164c4a529b"><div class="ttname"><a href="interfaceImporters_1_1IDatabase.html#ac5d8338149eb4b9f49c3ab164c4a529b">Importers.IDatabase.Obtener&lt; T &gt;</a></div><div class="ttdeci">List&lt; T &gt; Obtener&lt; T &gt;()</div><div class="ttdoc">Leer.</div></div>
-<div class="ttc" id="ainterfaceImporters_1_1IDatabase_html_ad21f13bbaba1fcaa7d286aa468b4599e"><div class="ttname"><a href="interfaceImporters_1_1IDatabase.html#ad21f13bbaba1fcaa7d286aa468b4599e">Importers.IDatabase.Insertar&lt; T &gt;</a></div><div class="ttdeci">void Insertar&lt; T &gt;(T objeto)</div><div class="ttdoc">Guardar.</div></div>
-<div class="ttc" id="ainterfaceImporters_1_1IDatabase_html_ae5a67deda8ae49976f122ee348eed974"><div class="ttname"><a href="interfaceImporters_1_1IDatabase.html#ae5a67deda8ae49976f122ee348eed974">Importers.IDatabase.Actualizar&lt; T &gt;</a></div><div class="ttdeci">void Actualizar&lt; T &gt;(T objetoOriginal, T objetoModificado)</div><div class="ttdoc">Sobreescribir.</div></div>
-<div class="ttc" id="anamespaceImporters_html"><div class="ttname"><a href="namespaceImporters.html">Importers</a></div><div class="ttdef"><b>Definition:</b> <a href="DataAccess_8cs_source.html#l00009">DataAccess.cs:10</a></div></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keywordtype">void</span> Actualizar&lt;T&gt;(T objetoOriginal, T objetoModificado) where T : IPersistible;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        List&lt;T&gt; Obtener&lt;T&gt;() where T : class, IPersistible;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordtype">void</span> Eliminar&lt;T&gt;(T objeto) where T : IPersistible;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    }</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}</div>
+<div class="ttc" id="anamespaceImporters_html"><div class="ttname"><a href="namespaceImporters.html">Importers</a></div><div class="ttdef"><b>Definition:</b> <a href="DataAccess_8cs_source.html#l00011">DataAccess.cs:12</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

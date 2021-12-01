@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Proyecto de PII
-   &#160;<span id="projectnumber">1</span>
+   &#160;<span id="projectnumber">3</span>
    </div>
    <div id="projectbrief">Projecto para curso de Programacion 2 en la UCU, por el equipo 9 de la tarde</div>
   </td>
@@ -91,23 +91,30 @@ $(document).ready(function(){initNavTree('IUsuario_8cs_source.html',''); initRes
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// &lt;copyright file=&quot;IUsuario.cs&quot; company=&quot;Universidad Católica del Uruguay&quot;&gt;</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//     Copyright (c) Programación II. Derechos reservados.</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">// &lt;/copyright&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">// Patrón utilizado: Low coupling.</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">// Ayuda a mantener el acoplamiento bajo en tareas relacionadas con Empresa y Emprendedores.</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">//--------------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceClassLibrary_1_1User.html">ClassLibrary.User</a></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;{</div>
-<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="interfaceClassLibrary_1_1User_1_1IUsuario.html">   14</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">interface </span><a class="code" href="interfaceClassLibrary_1_1User_1_1IUsuario.html">IUsuario</a></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    {</div>
-<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="interfaceClassLibrary_1_1User_1_1IUsuario.html#ad4c1af96b21186b2ebe793a638957cdc">   20</a></span>&#160;        <a class="code" href="classClassLibrary_1_1User_1_1DatosLogin.html">DatosLogin</a> <a class="code" href="classClassLibrary_1_1User_1_1DatosLogin.html">DatosLogin</a> { <span class="keyword">get</span>; }</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="interfaceClassLibrary_1_1User_1_1IUsuario.html#a01b987208d5c4beee8ee3ceb81e47fc4">   26</a></span>&#160;        <span class="keywordtype">string</span> <a class="code" href="interfaceClassLibrary_1_1User_1_1IUsuario.html#a01b987208d5c4beee8ee3ceb81e47fc4">Nombre</a> { <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    }</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;}</div>
-<div class="ttc" id="aclassClassLibrary_1_1User_1_1DatosLogin_html"><div class="ttname"><a href="classClassLibrary_1_1User_1_1DatosLogin.html">ClassLibrary.User.DatosLogin</a></div><div class="ttdoc">Las instancias de esta clase representan los usuarios creados en el bot, almacendando la empresa o em...</div><div class="ttdef"><b>Definition:</b> <a href="DatosLogin_8cs_source.html#l00014">DatosLogin.cs:15</a></div></div>
-<div class="ttc" id="ainterfaceClassLibrary_1_1User_1_1IUsuario_html"><div class="ttname"><a href="interfaceClassLibrary_1_1User_1_1IUsuario.html">ClassLibrary.User.IUsuario</a></div><div class="ttdoc">Interfaz que engloba tanto empresas como emprendimientos.</div><div class="ttdef"><b>Definition:</b> <a href="IUsuario_8cs_source.html#l00014">IUsuario.cs:15</a></div></div>
-<div class="ttc" id="ainterfaceClassLibrary_1_1User_1_1IUsuario_html_a01b987208d5c4beee8ee3ceb81e47fc4"><div class="ttname"><a href="interfaceClassLibrary_1_1User_1_1IUsuario.html#a01b987208d5c4beee8ee3ceb81e47fc4">ClassLibrary.User.IUsuario.Nombre</a></div><div class="ttdeci">string Nombre</div><div class="ttdoc">Obtiene o establece el nombre de la empresa/emprendimiento.</div><div class="ttdef"><b>Definition:</b> <a href="IUsuario_8cs_source.html#l00026">IUsuario.cs:26</a></div></div>
-<div class="ttc" id="anamespaceClassLibrary_1_1User_html"><div class="ttname"><a href="namespaceClassLibrary_1_1User.html">ClassLibrary.User</a></div><div class="ttdef"><b>Definition:</b> <a href="DatosLogin_8cs_source.html#l00007">DatosLogin.cs:8</a></div></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">// Patrones utilizado: Low coupling e inversión de dependencias.</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">// Ayuda a mantener el acoplamiento bajo en tareas relacionadas con Empresa y Emprendedores al implementar</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">// una interfaz que es común a ambas clases.</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">//--------------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">using</span> <a class="code" href="namespaceImporters.html">Importers</a>;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">using</span> <a class="code" href="namespaceImporters.html">Importers</a>.<a class="code" href="namespaceImporters_1_1Json.html">Json</a>;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceClassLibrary_1_1User.html">ClassLibrary.User</a></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;{</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="interfaceClassLibrary_1_1User_1_1IUsuario.html">   18</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">interface </span><a class="code" href="interfaceClassLibrary_1_1User_1_1IUsuario.html">IUsuario</a> : <a class="code" href="interfaceImporters_1_1Json_1_1IJsonConvertible.html">IJsonConvertible</a></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    {</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="interfaceClassLibrary_1_1User_1_1IUsuario.html#ad4c1af96b21186b2ebe793a638957cdc">   24</a></span>&#160;        <a class="code" href="classClassLibrary_1_1User_1_1DatosLogin.html">DatosLogin</a> <a class="code" href="classClassLibrary_1_1User_1_1DatosLogin.html">DatosLogin</a> { <span class="keyword">get</span>; }</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="interfaceClassLibrary_1_1User_1_1IUsuario.html#a01b987208d5c4beee8ee3ceb81e47fc4">   30</a></span>&#160;        <span class="keywordtype">string</span> <a class="code" href="interfaceClassLibrary_1_1User_1_1IUsuario.html#a01b987208d5c4beee8ee3ceb81e47fc4">Nombre</a> { <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    }</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;}</div>
+<div class="ttc" id="aclassClassLibrary_1_1User_1_1DatosLogin_html"><div class="ttname"><a href="classClassLibrary_1_1User_1_1DatosLogin.html">ClassLibrary.User.DatosLogin</a></div><div class="ttdoc">Las instancias de esta clase representan los usuarios creados en el bot, almacendando la empresa o em...</div><div class="ttdef"><b>Definition:</b> <a href="DatosLogin_8cs_source.html#l00017">DatosLogin.cs:18</a></div></div>
+<div class="ttc" id="ainterfaceClassLibrary_1_1User_1_1IUsuario_html"><div class="ttname"><a href="interfaceClassLibrary_1_1User_1_1IUsuario.html">ClassLibrary.User.IUsuario</a></div><div class="ttdoc">Interfaz que engloba tanto empresas como emprendimientos.</div><div class="ttdef"><b>Definition:</b> <a href="IUsuario_8cs_source.html#l00018">IUsuario.cs:19</a></div></div>
+<div class="ttc" id="ainterfaceClassLibrary_1_1User_1_1IUsuario_html_a01b987208d5c4beee8ee3ceb81e47fc4"><div class="ttname"><a href="interfaceClassLibrary_1_1User_1_1IUsuario.html#a01b987208d5c4beee8ee3ceb81e47fc4">ClassLibrary.User.IUsuario.Nombre</a></div><div class="ttdeci">string Nombre</div><div class="ttdoc">Obtiene o establece el nombre de la empresa/emprendimiento.</div><div class="ttdef"><b>Definition:</b> <a href="IUsuario_8cs_source.html#l00030">IUsuario.cs:30</a></div></div>
+<div class="ttc" id="ainterfaceImporters_1_1Json_1_1IJsonConvertible_html"><div class="ttname"><a href="interfaceImporters_1_1Json_1_1IJsonConvertible.html">Importers.Json.IJsonConvertible</a></div><div class="ttdoc">Interfaz que permite a la librería de clases marcar las clases que se persisten en formato JSON....</div><div class="ttdef"><b>Definition:</b> <a href="IJsonConvertible_8cs_source.html#l00009">IJsonConvertible.cs:10</a></div></div>
+<div class="ttc" id="anamespaceClassLibrary_1_1User_html"><div class="ttname"><a href="namespaceClassLibrary_1_1User.html">ClassLibrary.User</a></div><div class="ttdef"><b>Definition:</b> <a href="DatosLogin_8cs_source.html#l00010">DatosLogin.cs:11</a></div></div>
+<div class="ttc" id="anamespaceImporters_1_1Json_html"><div class="ttname"><a href="namespaceImporters_1_1Json.html">Importers.Json</a></div><div class="ttdef"><b>Definition:</b> <a href="DatabaseJson_8cs_source.html#l00008">DatabaseJson.cs:9</a></div></div>
+<div class="ttc" id="anamespaceImporters_html"><div class="ttname"><a href="namespaceImporters.html">Importers</a></div><div class="ttdef"><b>Definition:</b> <a href="DataAccess_8cs_source.html#l00011">DataAccess.cs:12</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

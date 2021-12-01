@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Proyecto de PII
-   &#160;<span id="projectnumber">1</span>
+   &#160;<span id="projectnumber">3</span>
    </div>
    <div id="projectbrief">Projecto para curso de Programacion 2 en la UCU, por el equipo 9 de la tarde</div>
   </td>
@@ -91,7 +91,7 @@ $(document).ready(function(){initNavTree('interfaceClassLibrary_1_1Publication_1
 </div><!--header-->
 <div class="contents">
 
-<p>Interfaz que unifica tipos cuyo objetivo es devolver texto al bot para imprimir y retornar al usuario.  
+<p>Interfaz que unifica tipos cuyo objetivo es devolver texto al bot para imprimir y retornar al usuario. Se considera una aplicación de patrón Expert ya que es una clase que implementa <a class="el" href="interfaceClassLibrary_1_1Publication_1_1IPrintable.html" title="Interfaz que unifica tipos cuyo objetivo es devolver texto al bot para imprimir y retornar al usuario...">IPrintable</a> aquella que posee toda la información necesaria para retornar una representación suya como cadena de texto. Si no aplicásemos este patrón, cada Handler necesitaría armar por su cuenta las cadenas con los atributos de cada clase, lo cual no solo es más propenso a errores e inconsistencias de formato sino que también puede violar la Ley de Demeter al generar mucho más acoplamiento del necesario entre las clases.  
  <a href="interfaceClassLibrary_1_1Publication_1_1IPrintable.html#details">Más...</a></p>
 <div class="dynheader">
 Diagrama de herencias de ClassLibrary.Publication.IPrintable</div>
@@ -113,9 +113,9 @@ Métodos públicos</h2></td></tr>
 <tr class="separator:ac50ab3078085d322406ead727fea88cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
-<div class="textblock"><p>Interfaz que unifica tipos cuyo objetivo es devolver texto al bot para imprimir y retornar al usuario. </p>
+<div class="textblock"><p>Interfaz que unifica tipos cuyo objetivo es devolver texto al bot para imprimir y retornar al usuario. Se considera una aplicación de patrón Expert ya que es una clase que implementa <a class="el" href="interfaceClassLibrary_1_1Publication_1_1IPrintable.html" title="Interfaz que unifica tipos cuyo objetivo es devolver texto al bot para imprimir y retornar al usuario...">IPrintable</a> aquella que posee toda la información necesaria para retornar una representación suya como cadena de texto. Si no aplicásemos este patrón, cada Handler necesitaría armar por su cuenta las cadenas con los atributos de cada clase, lo cual no solo es más propenso a errores e inconsistencias de formato sino que también puede violar la Ley de Demeter al generar mucho más acoplamiento del necesario entre las clases. </p>
 
-<p class="definition">Definición en la línea <a class="el" href="IPrintable_8cs_source.html#l00013">13</a> del archivo <a class="el" href="IPrintable_8cs_source.html">IPrintable.cs</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="IPrintable_8cs_source.html#l00018">18</a> del archivo <a class="el" href="IPrintable_8cs_source.html">IPrintable.cs</a>.</p>
 </div><h2 class="groupheader">Documentación de las funciones miembro</h2>
 <a id="ac50ab3078085d322406ead727fea88cf"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac50ab3078085d322406ead727fea88cf">&#9670;&nbsp;</a></span>GetTextToPrint()</h2>
@@ -135,7 +135,7 @@ Métodos públicos</h2></td></tr>
 <p>Metodo caracteristico de printable, arma el string con formato deseado. </p>
 <dl class="section return"><dt>Devuelve</dt><dd><code>string</code>.</dd></dl>
 
-<p>Implementado en <a class="el" href="classClassLibrary_1_1Publication_1_1Venta.html#a57d44eeacbcc53c9fa3a5e6bdf02822d">ClassLibrary.Publication.Venta</a>, <a class="el" href="classClassLibrary_1_1Publication_1_1Residuo.html#ace9179c6e87b693f691ec01454708860">ClassLibrary.Publication.Residuo</a>, <a class="el" href="classClassLibrary_1_1Publication_1_1Publicacion.html#af3befc29102354b7e130727fb0b4bcb9">ClassLibrary.Publication.Publicacion</a> y <a class="el" href="classBotCore_1_1Publication_1_1Reporte.html#a450662445fe95ccd1a9fc6ac47f49801">BotCore.Publication.Reporte</a>.</p>
+<p>Implementado en <a class="el" href="classClassLibrary_1_1Publication_1_1Venta.html#a57d44eeacbcc53c9fa3a5e6bdf02822d">ClassLibrary.Publication.Venta</a>, <a class="el" href="classClassLibrary_1_1Publication_1_1Residuo.html#ace9179c6e87b693f691ec01454708860">ClassLibrary.Publication.Residuo</a>, <a class="el" href="classClassLibrary_1_1Publication_1_1PublicacionRecurrente.html#aa09a9e95e37d05699ca494f193b85316">ClassLibrary.Publication.PublicacionRecurrente</a>, <a class="el" href="classClassLibrary_1_1Publication_1_1Publicacion.html#a9a77718a4f224162b02fda7db053ceb9">ClassLibrary.Publication.Publicacion</a> y <a class="el" href="classBotCore_1_1Publication_1_1Reporte.html#a450662445fe95ccd1a9fc6ac47f49801">BotCore.Publication.Reporte</a>.</p>
 
 </div>
 </div>

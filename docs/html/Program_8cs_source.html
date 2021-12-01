@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Proyecto de PII
-   &#160;<span id="projectnumber">1</span>
+   &#160;<span id="projectnumber">3</span>
    </div>
    <div id="projectbrief">Projecto para curso de Programacion 2 en la UCU, por el equipo 9 de la tarde</div>
   </td>
@@ -94,17 +94,51 @@ $(document).ready(function(){initNavTree('Program_8cs_source.html',''); initResi
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//--------------------------------------------------------------------------------</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">using</span> System;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="namespaceConsoleApplication.html">    9</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceConsoleApplication.html">ConsoleApplication</a></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;{</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class </span>Program</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    {</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> Main()</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        {</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        }</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    }</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;}</div>
-<div class="ttc" id="anamespaceConsoleApplication_html"><div class="ttname"><a href="namespaceConsoleApplication.html">ConsoleApplication</a></div><div class="ttdef"><b>Definition:</b> <a href="Program_8cs_source.html#l00009">Program.cs:10</a></div></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">using</span> <a class="code" href="namespaceMessageGateway.html">MessageGateway</a>;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">using</span> <a class="code" href="namespaceBotCore.html">BotCore</a>.<a class="code" href="namespaceBotCore_1_1User.html">User</a>;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">using</span> <a class="code" href="namespaceClassLibrary.html">ClassLibrary</a>.<a class="code" href="namespaceClassLibrary_1_1User.html">User</a>;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">using</span> <a class="code" href="namespaceImporters.html">Importers</a>.<a class="code" href="namespaceImporters_1_1Json.html">Json</a>;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="namespaceConsoleApplication.html">   13</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceConsoleApplication.html">ConsoleApplication</a></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;{</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class </span>Program</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  {</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keyword">private</span> <span class="keyword">static</span> <a class="code" href="interfaceMessageGateway_1_1IMessage.html">IMessage</a> lastMSG;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> Main()</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;      Console.WriteLine(<span class="stringliteral">&quot;is on now&quot;</span>);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;      <a class="code" href="interfaceMessageGateway_1_1IGateway.html">IGateway</a> client = <a class="code" href="classMessageGateway_1_1AdaptadorTelegram.html">AdaptadorTelegram</a>.<a class="code" href="classMessageGateway_1_1AdaptadorTelegram.html#afcc3f4fc808256d23c694f41439c2da6">Instancia</a>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;      Console.WriteLine(<a class="code" href="classBotCore_1_1User_1_1GestorInvitaciones.html">GestorInvitaciones</a>.<a class="code" href="classBotCore_1_1User_1_1GestorInvitaciones.html#a38fb50ea03d29eabd90cabf104d1b6c9">Instancia</a>.<a class="code" href="classBotCore_1_1User_1_1GestorInvitaciones.html#ab357d7dc58aadb505155810e100289f5">AlmacenarInvitacion</a>(<span class="stringliteral">&quot;UCM&quot;</span>).<a class="code" href="classClassLibrary_1_1User_1_1Invitacion.html#a576043edb1ef9e0bdb39a49af3883cda">Token</a>);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;      <span class="keywordflow">while</span> (<span class="keyword">true</span>)</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;      {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keywordflow">if</span> (<span class="stringliteral">&quot;mesi&quot;</span> == <span class="stringliteral">&quot;mesi&quot;</span>)</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        {</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        }</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;      }</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    }</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  }</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div>
+<div class="ttc" id="aclassBotCore_1_1User_1_1GestorInvitaciones_html"><div class="ttname"><a href="classBotCore_1_1User_1_1GestorInvitaciones.html">BotCore.User.GestorInvitaciones</a></div><div class="ttdoc">Clase que se encarga de generar usuarios temporales y enviarselo a personas para facilitar su registr...</div><div class="ttdef"><b>Definition:</b> <a href="GestorInvitaciones_8cs_source.html#l00022">GestorInvitaciones.cs:23</a></div></div>
+<div class="ttc" id="aclassBotCore_1_1User_1_1GestorInvitaciones_html_a38fb50ea03d29eabd90cabf104d1b6c9"><div class="ttname"><a href="classBotCore_1_1User_1_1GestorInvitaciones.html#a38fb50ea03d29eabd90cabf104d1b6c9">BotCore.User.GestorInvitaciones.Instancia</a></div><div class="ttdeci">static GestorInvitaciones Instancia</div><div class="ttdoc">Metodo de acceso al singleton.</div><div class="ttdef"><b>Definition:</b> <a href="GestorInvitaciones_8cs_source.html#l00032">GestorInvitaciones.cs:33</a></div></div>
+<div class="ttc" id="aclassBotCore_1_1User_1_1GestorInvitaciones_html_ab357d7dc58aadb505155810e100289f5"><div class="ttname"><a href="classBotCore_1_1User_1_1GestorInvitaciones.html#ab357d7dc58aadb505155810e100289f5">BotCore.User.GestorInvitaciones.AlmacenarInvitacion</a></div><div class="ttdeci">Invitacion AlmacenarInvitacion(string nombreTempUsuario)</div><div class="ttdoc">Metodo que crea la Invitacion y la envia al destinatario especificado. Se trata de una implementación...</div><div class="ttdef"><b>Definition:</b> <a href="GestorInvitaciones_8cs_source.html#l00061">GestorInvitaciones.cs:61</a></div></div>
+<div class="ttc" id="aclassClassLibrary_1_1User_1_1Invitacion_html_a576043edb1ef9e0bdb39a49af3883cda"><div class="ttname"><a href="classClassLibrary_1_1User_1_1Invitacion.html#a576043edb1ef9e0bdb39a49af3883cda">ClassLibrary.User.Invitacion.Token</a></div><div class="ttdeci">string Token</div><div class="ttdoc">Este token unico identifica la invitación de las demas.</div><div class="ttdef"><b>Definition:</b> <a href="Invitacion_8cs_source.html#l00051">Invitacion.cs:52</a></div></div>
+<div class="ttc" id="aclassMessageGateway_1_1AdaptadorTelegram_html"><div class="ttname"><a href="classMessageGateway_1_1AdaptadorTelegram.html">MessageGateway.AdaptadorTelegram</a></div><div class="ttdoc">Esta clase instanciaría el chat y bot, y almacenaría mensaje por mensaje que va recibiendo como strin...</div><div class="ttdef"><b>Definition:</b> <a href="AdaptadorTelegram_8cs_source.html#l00024">AdaptadorTelegram.cs:25</a></div></div>
+<div class="ttc" id="aclassMessageGateway_1_1AdaptadorTelegram_html_afcc3f4fc808256d23c694f41439c2da6"><div class="ttname"><a href="classMessageGateway_1_1AdaptadorTelegram.html#afcc3f4fc808256d23c694f41439c2da6">MessageGateway.AdaptadorTelegram.Instancia</a></div><div class="ttdeci">static AdaptadorTelegram Instancia</div><div class="ttdoc">Obitene acceso a la instancia del singleton de Adaptador.</div><div class="ttdef"><b>Definition:</b> <a href="AdaptadorTelegram_8cs_source.html#l00032">AdaptadorTelegram.cs:33</a></div></div>
+<div class="ttc" id="ainterfaceMessageGateway_1_1IGateway_html"><div class="ttname"><a href="interfaceMessageGateway_1_1IGateway.html">MessageGateway.IGateway</a></div><div class="ttdoc">Interfaz que engloba las diferentes salidas y entradas posibles de mensaje de invitación al bot (mail...</div><div class="ttdef"><b>Definition:</b> <a href="IGateway_8cs_source.html#l00014">IGateway.cs:15</a></div></div>
+<div class="ttc" id="ainterfaceMessageGateway_1_1IMessage_html"><div class="ttname"><a href="interfaceMessageGateway_1_1IMessage.html">MessageGateway.IMessage</a></div><div class="ttdoc">Interfaz que engloba los tipos mensaje de las diferentes plataformas de mensaje.</div><div class="ttdef"><b>Definition:</b> <a href="IMessage_8cs_source.html#l00014">IMessage.cs:15</a></div></div>
+<div class="ttc" id="anamespaceBotCore_1_1User_html"><div class="ttname"><a href="namespaceBotCore_1_1User.html">BotCore.User</a></div><div class="ttdef"><b>Definition:</b> <a href="Autenticacion_8cs_source.html#l00013">Autenticacion.cs:14</a></div></div>
+<div class="ttc" id="anamespaceBotCore_html"><div class="ttname"><a href="namespaceBotCore.html">BotCore</a></div><div class="ttdef"><b>Definition:</b> <a href="BotCore_2Publications_2Busqueda_8cs_source.html#l00017">Busqueda.cs:18</a></div></div>
+<div class="ttc" id="anamespaceClassLibrary_1_1User_html"><div class="ttname"><a href="namespaceClassLibrary_1_1User.html">ClassLibrary.User</a></div><div class="ttdef"><b>Definition:</b> <a href="DatosLogin_8cs_source.html#l00010">DatosLogin.cs:11</a></div></div>
+<div class="ttc" id="anamespaceClassLibrary_html"><div class="ttname"><a href="namespaceClassLibrary.html">ClassLibrary</a></div><div class="ttdef"><b>Definition:</b> <a href="Distance_8cs_source.html#l00007">Distance.cs:8</a></div></div>
+<div class="ttc" id="anamespaceConsoleApplication_html"><div class="ttname"><a href="namespaceConsoleApplication.html">ConsoleApplication</a></div><div class="ttdef"><b>Definition:</b> <a href="Program_8cs_source.html#l00013">Program.cs:14</a></div></div>
+<div class="ttc" id="anamespaceImporters_1_1Json_html"><div class="ttname"><a href="namespaceImporters_1_1Json.html">Importers.Json</a></div><div class="ttdef"><b>Definition:</b> <a href="DatabaseJson_8cs_source.html#l00008">DatabaseJson.cs:9</a></div></div>
+<div class="ttc" id="anamespaceImporters_html"><div class="ttname"><a href="namespaceImporters.html">Importers</a></div><div class="ttdef"><b>Definition:</b> <a href="DataAccess_8cs_source.html#l00011">DataAccess.cs:12</a></div></div>
+<div class="ttc" id="anamespaceMessageGateway_html"><div class="ttname"><a href="namespaceMessageGateway.html">MessageGateway</a></div><div class="ttdef"><b>Definition:</b> <a href="AdaptadorTelegram_8cs_source.html#l00017">AdaptadorTelegram.cs:18</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

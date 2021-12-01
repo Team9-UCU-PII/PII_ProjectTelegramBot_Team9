@@ -1,4 +1,22 @@
 var searchData=
 [
-  ['gestorinvitaciones_95',['GestorInvitaciones',['../classBotCore_1_1User_1_1GestorInvitaciones.html',1,'BotCore::User']]]
+  ['filtroporcategoria_307',['FiltroPorCategoria',['../classBotCore_1_1Publication_1_1Filters_1_1FiltroPorCategoria.html',1,'BotCore::Publication::Filters']]],
+  ['filtroporempresa_308',['FiltroPorEmpresa',['../classBotCore_1_1Publication_1_1Filters_1_1FiltroPorEmpresa.html',1,'BotCore::Publication::Filters']]],
+  ['filtroporfrecuenciarestock_309',['FiltroPorFrecuenciaRestock',['../classBotCore_1_1Publication_1_1Filters_1_1FiltroPorFrecuenciaRestock.html',1,'BotCore::Publication::Filters']]],
+  ['filtroporlugarretiro_310',['FiltroPorLugarRetiro',['../classBotCore_1_1Publication_1_1Filters_1_1FiltroPorLugarRetiro.html',1,'BotCore::Publication::Filters']]],
+  ['filtroporpreciomaximo_311',['FiltroPorPrecioMaximo',['../classBotCore_1_1Publication_1_1Filters_1_1FiltroPorPrecioMaximo.html',1,'BotCore::Publication::Filters']]],
+  ['filtroporresiduo_312',['FiltroPorResiduo',['../classBotCore_1_1Publication_1_1Filters_1_1FiltroPorResiduo.html',1,'BotCore::Publication::Filters']]],
+  ['formulariobase_313',['FormularioBase',['../classMessageGateway_1_1Forms_1_1FormularioBase.html',1,'MessageGateway::Forms']]],
+  ['frmaceptarinvitacion_314',['FrmAceptarInvitacion',['../classMessageGateway_1_1Forms_1_1FrmAceptarInvitacion.html',1,'MessageGateway::Forms']]],
+  ['frmaltaoferta_315',['FrmAltaOferta',['../classMessageGateway_1_1Forms_1_1FrmAltaOferta.html',1,'MessageGateway::Forms']]],
+  ['frmbienvenida_316',['FrmBienvenida',['../classMessageGateway_1_1Forms_1_1FrmBienvenida.html',1,'MessageGateway::Forms']]],
+  ['frmbusqueda_317',['FrmBusqueda',['../classMessageGateway_1_1Forms_1_1FrmBusqueda.html',1,'MessageGateway::Forms']]],
+  ['frmlogin_318',['FrmLogin',['../classMessageGateway_1_1Forms_1_1FrmLogin.html',1,'MessageGateway::Forms']]],
+  ['frmmenuemprendedor_319',['FrmMenuEmprendedor',['../classMessageGateway_1_1Forms_1_1FrmMenuEmprendedor.html',1,'MessageGateway::Forms']]],
+  ['frmmenuempresa_320',['FrmMenuEmpresa',['../classMessageGateway_1_1Forms_1_1FrmMenuEmpresa.html',1,'MessageGateway::Forms']]],
+  ['frmmodoferta_321',['FrmModOferta',['../classMessageGateway_1_1Forms_1_1FrmModOferta.html',1,'MessageGateway::Forms']]],
+  ['frmregistrodatoslogin_322',['FrmRegistroDatosLogin',['../classMessageGateway_1_1Forms_1_1FrmRegistroDatosLogin.html',1,'MessageGateway::Forms']]],
+  ['frmregistroemprendedor_323',['FrmRegistroEmprendedor',['../classMessageGateway_1_1Forms_1_1FrmRegistroEmprendedor.html',1,'MessageGateway::Forms']]],
+  ['frmregistroempresa_324',['FrmRegistroEmpresa',['../classMessageGateway_1_1Forms_1_1FrmRegistroEmpresa.html',1,'MessageGateway::Forms']]],
+  ['frmreporte_325',['FrmReporte',['../classMessageGateway_1_1Forms_1_1FrmReporte.html',1,'MessageGateway::Forms']]]
 ];

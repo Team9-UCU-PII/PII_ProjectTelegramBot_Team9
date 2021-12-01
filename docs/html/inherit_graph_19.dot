@@ -1,0 +1,9 @@
+digraph "Representación gráfica de la clase"
+{
+ // INTERACTIVE_SVG=YES
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node0 [label="MessageGateway.TelegramBot",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classMessageGateway_1_1TelegramBot.html",tooltip="Esta clase representa el bot en si y su cliente, accede a los handlers a traves de un adaptador que i..."];
+}

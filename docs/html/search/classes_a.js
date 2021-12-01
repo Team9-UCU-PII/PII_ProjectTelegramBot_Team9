@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['telegramservice_107',['TelegramService',['../classMessageGateway_1_1TelegramService.html',1,'MessageGateway']]],
-  ['transacciones_108',['Transacciones',['../classBotCore_1_1Publication_1_1Transacciones.html',1,'BotCore::Publication']]]
+  ['location_365',['Location',['../classClassLibrary_1_1LocationAPI_1_1Location.html',1,'ClassLibrary::LocationAPI']]],
+  ['locationapiclient_366',['LocationApiClient',['../classClassLibrary_1_1LocationAPI_1_1LocationApiClient.html',1,'ClassLibrary::LocationAPI']]]
 ];

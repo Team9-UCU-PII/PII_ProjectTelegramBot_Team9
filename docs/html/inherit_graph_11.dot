@@ -5,5 +5,5 @@ digraph "Representación gráfica de la clase"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node0 [label="Importers.DataAccess",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classImporters_1_1DataAccess.html",tooltip="Clase que utilizará el bot para acceder a la base de datos."];
+  Node0 [label="Importers.Json.JsonExporter",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classImporters_1_1Json_1_1JsonExporter.html",tooltip="Clase que exporta objetos de tipo IJsonConvertible a strings en formato JSON. Implementación del visi..."];
 }

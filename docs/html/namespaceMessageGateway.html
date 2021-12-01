@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Proyecto de PII
-   &#160;<span id="projectnumber">1</span>
+   &#160;<span id="projectnumber">3</span>
    </div>
    <div id="projectbrief">Projecto para curso de Programacion 2 en la UCU, por el equipo 9 de la tarde</div>
   </td>
@@ -84,6 +84,7 @@ $(document).ready(function(){initNavTree('namespaceMessageGateway.html',''); ini
 
 <div class="header">
   <div class="summary">
+<a href="#namespaces">Namespaces</a> &#124;
 <a href="#nested-classes">Clases</a>  </div>
   <div class="headertitle">
 <div class="title">Referencia del Namespace MessageGateway</div>  </div>
@@ -92,11 +93,29 @@ $(document).ready(function(){initNavTree('namespaceMessageGateway.html',''); ini
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Clases</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceMessageGateway_1_1IGateway.html">IGateway</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interfaz que engloba las diferentes salidas posibles de mensaje de invitación al bot (mail, chat de telegram, etc).  <a href="interfaceMessageGateway_1_1IGateway.html#details">Más...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMessageGateway_1_1AdaptadorTelegram.html">AdaptadorTelegram</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Esta clase instanciaría el chat y bot, y almacenaría mensaje por mensaje que va recibiendo como string. Permite portar la aplicación a Telegram siguiendo el patrón Adapter al heredar de la clase base que implementa <a class="el" href="interfaceMessageGateway_1_1IGateway.html" title="Interfaz que engloba las diferentes salidas y entradas posibles de mensaje de invitación al bot (mail...">IGateway</a>  <a href="classMessageGateway_1_1AdaptadorTelegram.html#details">Más...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMessageGateway_1_1TelegramService.html">TelegramService</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clase placeholder del Bot a enviar mensajes.  <a href="classMessageGateway_1_1TelegramService.html#details">Más...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMessageGateway_1_1ChatManager.html">ChatManager</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clase delegable de tareas de almacenamiento de ingormación de chats para permitir simultaneidad de conversaciones.  <a href="classMessageGateway_1_1ChatManager.html#details">Más...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMessageGateway_1_1GatewayBase.html">GatewayBase</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clase base que al implementar la interfaz <a class="el" href="interfaceMessageGateway_1_1IGateway.html" title="Interfaz que engloba las diferentes salidas y entradas posibles de mensaje de invitación al bot (mail...">IGateway</a> sigue el principio de inversión de dependencias.  <a href="classMessageGateway_1_1GatewayBase.html#details">Más...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceMessageGateway_1_1IGateway.html">IGateway</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interfaz que engloba las diferentes salidas y entradas posibles de mensaje de invitación al bot (mail, chat de telegram, etc).  <a href="interfaceMessageGateway_1_1IGateway.html#details">Más...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceMessageGateway_1_1IMessage.html">IMessage</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interfaz que engloba los tipos mensaje de las diferentes plataformas de mensaje.  <a href="interfaceMessageGateway_1_1IMessage.html#details">Más...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMessageGateway_1_1MessageBase.html">MessageBase</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Superclase de los mensajes a recibirse.  <a href="classMessageGateway_1_1MessageBase.html#details">Más...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMessageGateway_1_1TelegramBot.html">TelegramBot</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Esta clase representa el bot en si y su cliente, accede a los handlers a traves de un adaptador que implementa .  <a href="classMessageGateway_1_1TelegramBot.html#details">Más...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMessageGateway_1_1TelegramMessageAdapter.html">TelegramMessageAdapter</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adaptador del mensaje de telegram a la interfaz .  <a href="classMessageGateway_1_1TelegramMessageAdapter.html#details">Más...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->

@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Proyecto de PII
-   &#160;<span id="projectnumber">1</span>
+   &#160;<span id="projectnumber">3</span>
    </div>
    <div id="projectbrief">Projecto para curso de Programacion 2 en la UCU, por el equipo 9 de la tarde</div>
   </td>
@@ -103,12 +103,18 @@ Diagrama de colaboración para BotCore.Publication.Publicador:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Métodos públicos</h2></td></tr>
-<tr class="memitem:aeef6b3a0d7d040bafc962a47b77ae9d9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBotCore_1_1Publication_1_1Publicador.html#aeef6b3a0d7d040bafc962a47b77ae9d9">PublicarOferta</a> (<a class="el" href="classClassLibrary_1_1Publication_1_1Residuo.html">Residuo</a> residuo, double precioUnitario, string moneda, int cantidad, string lugarRetiro, <a class="el" href="classClassLibrary_1_1User_1_1Empresa.html">Empresa</a> vendedor, string descripcion)</td></tr>
-<tr class="memdesc:aeef6b3a0d7d040bafc962a47b77ae9d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crea y persiste en memoria la publicación.  <a href="classBotCore_1_1Publication_1_1Publicador.html#aeef6b3a0d7d040bafc962a47b77ae9d9">Más...</a><br /></td></tr>
-<tr class="separator:aeef6b3a0d7d040bafc962a47b77ae9d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3e6ab0e04d0734cdc373983430476095"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBotCore_1_1Publication_1_1Publicador.html#a3e6ab0e04d0734cdc373983430476095">PublicarOfertaRecurrente</a> (<a class="el" href="classClassLibrary_1_1Publication_1_1Residuo.html">Residuo</a> residuo, double precioUnitario, string moneda, int cantidad, string lugarRetiro, <a class="el" href="classClassLibrary_1_1User_1_1Empresa.html">Empresa</a> vendedor, string descripcion, int frecuenciaAnualRestock)</td></tr>
-<tr class="memdesc:a3e6ab0e04d0734cdc373983430476095"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crea y persiste en memoria una nueva publicación recurrente.  <a href="classBotCore_1_1Publication_1_1Publicador.html#a3e6ab0e04d0734cdc373983430476095">Más...</a><br /></td></tr>
-<tr class="separator:a3e6ab0e04d0734cdc373983430476095"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b6971753d044f2920a08191bbde087c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBotCore_1_1Publication_1_1Publicador.html#a0b6971753d044f2920a08191bbde087c">PublicarOferta</a> (<a class="el" href="classClassLibrary_1_1Publication_1_1Residuo.html">Residuo</a> residuo, double precioUnitario, string moneda, int cantidad, <a class="el" href="classClassLibrary_1_1LocationAPI_1_1Location.html">Location</a> lugarRetiro, <a class="el" href="classClassLibrary_1_1User_1_1Empresa.html">Empresa</a> vendedor, string descripcion, <a class="el" href="classClassLibrary_1_1Publication_1_1Categoria.html">Categoria</a> categoria)</td></tr>
+<tr class="memdesc:a0b6971753d044f2920a08191bbde087c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crea y persiste en memoria la publicación.  <a href="classBotCore_1_1Publication_1_1Publicador.html#a0b6971753d044f2920a08191bbde087c">Más...</a><br /></td></tr>
+<tr class="separator:a0b6971753d044f2920a08191bbde087c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03e27ea8e68f495083736dbfb295580b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBotCore_1_1Publication_1_1Publicador.html#a03e27ea8e68f495083736dbfb295580b">ActualizarOferta</a> (<a class="el" href="classClassLibrary_1_1Publication_1_1Publicacion.html">Publicacion</a> ofertaOld, <a class="el" href="classClassLibrary_1_1Publication_1_1Publicacion.html">Publicacion</a> ofertaNew)</td></tr>
+<tr class="memdesc:a03e27ea8e68f495083736dbfb295580b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo que toma dos publicaciones y sustituye una por otra en la base de datos.  <a href="classBotCore_1_1Publication_1_1Publicador.html#a03e27ea8e68f495083736dbfb295580b">Más...</a><br /></td></tr>
+<tr class="separator:a03e27ea8e68f495083736dbfb295580b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a77dead554b3dca7ad3094ea2b94d41"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBotCore_1_1Publication_1_1Publicador.html#a4a77dead554b3dca7ad3094ea2b94d41">ActualizarOfertaRecurrente</a> (<a class="el" href="classClassLibrary_1_1Publication_1_1PublicacionRecurrente.html">PublicacionRecurrente</a> ofertaOld, <a class="el" href="classClassLibrary_1_1Publication_1_1PublicacionRecurrente.html">PublicacionRecurrente</a> ofertaNew)</td></tr>
+<tr class="memdesc:a4a77dead554b3dca7ad3094ea2b94d41"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo que toma dos publicaciones recurrentes y sustituye una por otra en la base de datos.  <a href="classBotCore_1_1Publication_1_1Publicador.html#a4a77dead554b3dca7ad3094ea2b94d41">Más...</a><br /></td></tr>
+<tr class="separator:a4a77dead554b3dca7ad3094ea2b94d41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9fa20f087837ed7d67011ef3dda2bec6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBotCore_1_1Publication_1_1Publicador.html#a9fa20f087837ed7d67011ef3dda2bec6">PublicarOfertaRecurrente</a> (<a class="el" href="classClassLibrary_1_1Publication_1_1Residuo.html">Residuo</a> residuo, double precioUnitario, string moneda, int cantidad, <a class="el" href="classClassLibrary_1_1LocationAPI_1_1Location.html">Location</a> lugarRetiro, <a class="el" href="classClassLibrary_1_1User_1_1Empresa.html">Empresa</a> vendedor, string descripcion, <a class="el" href="classClassLibrary_1_1Publication_1_1Categoria.html">Categoria</a> categoria, int frecuenciaAnualRestock)</td></tr>
+<tr class="memdesc:a9fa20f087837ed7d67011ef3dda2bec6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crea y persiste en memoria una nueva publicación recurrente.  <a href="classBotCore_1_1Publication_1_1Publicador.html#a9fa20f087837ed7d67011ef3dda2bec6">Más...</a><br /></td></tr>
+<tr class="separator:a9fa20f087837ed7d67011ef3dda2bec6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Propiedades</h2></td></tr>
@@ -119,10 +125,94 @@ Propiedades</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
 <div class="textblock"><p>Clase creadora de instancias y persistidora de publicación. </p>
 
-<p class="definition">Definición en la línea <a class="el" href="Publicador_8cs_source.html#l00021">21</a> del archivo <a class="el" href="Publicador_8cs_source.html">Publicador.cs</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="Publicador_8cs_source.html#l00023">23</a> del archivo <a class="el" href="Publicador_8cs_source.html">Publicador.cs</a>.</p>
 </div><h2 class="groupheader">Documentación de las funciones miembro</h2>
-<a id="aeef6b3a0d7d040bafc962a47b77ae9d9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeef6b3a0d7d040bafc962a47b77ae9d9">&#9670;&nbsp;</a></span>PublicarOferta()</h2>
+<a id="a03e27ea8e68f495083736dbfb295580b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03e27ea8e68f495083736dbfb295580b">&#9670;&nbsp;</a></span>ActualizarOferta()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BotCore.Publication.Publicador.ActualizarOferta </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classClassLibrary_1_1Publication_1_1Publicacion.html">Publicacion</a>&#160;</td>
+          <td class="paramname"><em>ofertaOld</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classClassLibrary_1_1Publication_1_1Publicacion.html">Publicacion</a>&#160;</td>
+          <td class="paramname"><em>ofertaNew</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Metodo que toma dos publicaciones y sustituye una por otra en la base de datos. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ofertaOld</td><td>La oferta vieja</td></tr>
+    <tr><td class="paramname">ofertaNew</td><td>la oferta nueva.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definición en la línea <a class="el" href="Publicador_8cs_source.html#l00087">87</a> del archivo <a class="el" href="Publicador_8cs_source.html">Publicador.cs</a>.</p>
+
+</div>
+</div>
+<a id="a4a77dead554b3dca7ad3094ea2b94d41"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a77dead554b3dca7ad3094ea2b94d41">&#9670;&nbsp;</a></span>ActualizarOfertaRecurrente()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BotCore.Publication.Publicador.ActualizarOfertaRecurrente </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classClassLibrary_1_1Publication_1_1PublicacionRecurrente.html">PublicacionRecurrente</a>&#160;</td>
+          <td class="paramname"><em>ofertaOld</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classClassLibrary_1_1Publication_1_1PublicacionRecurrente.html">PublicacionRecurrente</a>&#160;</td>
+          <td class="paramname"><em>ofertaNew</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Metodo que toma dos publicaciones recurrentes y sustituye una por otra en la base de datos. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ofertaOld</td><td>La oferta recurrente vieja</td></tr>
+    <tr><td class="paramname">ofertaNew</td><td>la oferta recurrente nueva.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definición en la línea <a class="el" href="Publicador_8cs_source.html#l00097">97</a> del archivo <a class="el" href="Publicador_8cs_source.html">Publicador.cs</a>.</p>
+<div class="dynheader">
+Gráfico de llamadas a esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 1 -->
+</div>
+</div>
+
+</div>
+</div>
+<a id="a0b6971753d044f2920a08191bbde087c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b6971753d044f2920a08191bbde087c">&#9670;&nbsp;</a></span>PublicarOferta()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -154,7 +244,7 @@ Propiedades</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">string&#160;</td>
+          <td class="paramtype"><a class="el" href="classClassLibrary_1_1LocationAPI_1_1Location.html">Location</a>&#160;</td>
           <td class="paramname"><em>lugarRetiro</em>, </td>
         </tr>
         <tr>
@@ -167,7 +257,13 @@ Propiedades</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>descripcion</em>&#160;</td>
+          <td class="paramname"><em>descripcion</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classClassLibrary_1_1Publication_1_1Categoria.html">Categoria</a>&#160;</td>
+          <td class="paramname"><em>categoria</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -187,22 +283,29 @@ Propiedades</h2></td></tr>
     <tr><td class="paramname">lugarRetiro</td><td><code>string</code>.</td></tr>
     <tr><td class="paramname">vendedor</td><td>Empresa.</td></tr>
     <tr><td class="paramname">descripcion</td><td><code>string</code>.</td></tr>
+    <tr><td class="paramname">categoria</td><td><code>string</code>.</td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definición en la línea <a class="el" href="Publicador_8cs_source.html#l00057">57</a> del archivo <a class="el" href="Publicador_8cs_source.html">Publicador.cs</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="Publicador_8cs_source.html#l00060">60</a> del archivo <a class="el" href="Publicador_8cs_source.html">Publicador.cs</a>.</p>
 <div class="dynheader">
 Gráfico de llamadas para esta función:</div>
 <div class="dyncontent">
-<div class="center"><!-- SVG 1 -->
+<div class="center"><!-- SVG 2 -->
+</div>
+</div>
+<div class="dynheader">
+Gráfico de llamadas a esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 3 -->
 </div>
 </div>
 
 </div>
 </div>
-<a id="a3e6ab0e04d0734cdc373983430476095"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3e6ab0e04d0734cdc373983430476095">&#9670;&nbsp;</a></span>PublicarOfertaRecurrente()</h2>
+<a id="a9fa20f087837ed7d67011ef3dda2bec6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9fa20f087837ed7d67011ef3dda2bec6">&#9670;&nbsp;</a></span>PublicarOfertaRecurrente()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -234,7 +337,7 @@ Gráfico de llamadas para esta función:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">string&#160;</td>
+          <td class="paramtype"><a class="el" href="classClassLibrary_1_1LocationAPI_1_1Location.html">Location</a>&#160;</td>
           <td class="paramname"><em>lugarRetiro</em>, </td>
         </tr>
         <tr>
@@ -248,6 +351,12 @@ Gráfico de llamadas para esta función:</div>
           <td></td>
           <td class="paramtype">string&#160;</td>
           <td class="paramname"><em>descripcion</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classClassLibrary_1_1Publication_1_1Categoria.html">Categoria</a>&#160;</td>
+          <td class="paramname"><em>categoria</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -273,16 +382,23 @@ Gráfico de llamadas para esta función:</div>
     <tr><td class="paramname">lugarRetiro</td><td><code>string</code>.</td></tr>
     <tr><td class="paramname">vendedor</td><td>Empresa.</td></tr>
     <tr><td class="paramname">descripcion</td><td><code>string</code>.</td></tr>
+    <tr><td class="paramname">categoria</td><td><code>Categoria</code>.</td></tr>
     <tr><td class="paramname">frecuenciaAnualRestock</td><td><code>int</code>.</td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definición en la línea <a class="el" href="Publicador_8cs_source.html#l00080">80</a> del archivo <a class="el" href="Publicador_8cs_source.html">Publicador.cs</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="Publicador_8cs_source.html#l00114">114</a> del archivo <a class="el" href="Publicador_8cs_source.html">Publicador.cs</a>.</p>
 <div class="dynheader">
 Gráfico de llamadas para esta función:</div>
 <div class="dyncontent">
-<div class="center"><!-- SVG 2 -->
+<div class="center"><!-- SVG 4 -->
+</div>
+</div>
+<div class="dynheader">
+Gráfico de llamadas a esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 5 -->
 </div>
 </div>
 
@@ -312,7 +428,7 @@ Gráfico de llamadas para esta función:</div>
 <p>Obtiene la instancia del Singleton. </p>
 <p><a class="el" href="classBotCore_1_1Publication_1_1Publicador.html" title="Clase creadora de instancias y persistidora de publicación.">Publicador</a>.</p>
 
-<p class="definition">Definición en la línea <a class="el" href="Publicador_8cs_source.html#l00031">31</a> del archivo <a class="el" href="Publicador_8cs_source.html">Publicador.cs</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="Publicador_8cs_source.html#l00033">33</a> del archivo <a class="el" href="Publicador_8cs_source.html">Publicador.cs</a>.</p>
 
 </div>
 </div>

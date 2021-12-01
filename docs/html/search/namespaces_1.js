@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['classlibrary_113',['ClassLibrary',['../namespaceClassLibrary.html',1,'']]],
-  ['consoleapplication_114',['ConsoleApplication',['../namespaceConsoleApplication.html',1,'']]],
-  ['publication_115',['Publication',['../namespaceClassLibrary_1_1Publication.html',1,'ClassLibrary']]],
-  ['user_116',['User',['../namespaceClassLibrary_1_1User.html',1,'ClassLibrary']]]
+  ['classlibrary_385',['ClassLibrary',['../namespaceClassLibrary.html',1,'']]],
+  ['consoleapplication_386',['ConsoleApplication',['../namespaceConsoleApplication.html',1,'']]],
+  ['locationapi_387',['LocationAPI',['../namespaceClassLibrary_1_1LocationAPI.html',1,'ClassLibrary']]],
+  ['publication_388',['Publication',['../namespaceClassLibrary_1_1Publication.html',1,'ClassLibrary']]],
+  ['user_389',['User',['../namespaceClassLibrary_1_1User.html',1,'ClassLibrary']]]
 ];

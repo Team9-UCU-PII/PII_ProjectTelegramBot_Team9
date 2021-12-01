@@ -1,0 +1,27 @@
+digraph "MessageGateway.Forms.IFormulario.ChangeForm"
+{
+ // INTERACTIVE_SVG=YES
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="MessageGateway.Forms.IFormulario.\lChangeForm",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Metodo que cambia el formulario donde esta parado el usuario."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="MessageGateway.Handlers.\lAceptarInvitacion.HandlerValidar\lCodigo.InternalHandle",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classMessageGateway_1_1Handlers_1_1AceptarInvitacion_1_1HandlerValidarCodigo.html#a7134ab3aae517f1e49f8eea2520a7488",tooltip="Internal handle que revisa si existe el token y redirecciona acordemente."];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="MessageGateway.Handlers.\lEscape.HandlerEscape.Internal\lHandle",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classMessageGateway_1_1Handlers_1_1Escape_1_1HandlerEscape.html#afac279e0dd2e3a61c39ed2b6bdf6a540",tooltip="Internal Handle que revisa donde esta parado el user y devuelve al ultimo form generico/menu pricipal..."];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="MessageGateway.Handlers.\lListadoPublicaciones.Handler\lListadoPublicaciones.InternalHandle",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classMessageGateway_1_1Handlers_1_1ListadoPublicaciones_1_1HandlerListadoPublicaciones.html#acb81f8f38dcf6e21cd59a8b18ecd7dff",tooltip="InternalHandle, muestra las publicaciones filtradas y los detalles de una publicación según el nombre..."];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="MessageGateway.Handlers.\lLogin.HandlerLogin.InternalHandle",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classMessageGateway_1_1Handlers_1_1Login_1_1HandlerLogin.html#ac27bedaf3215fef56cdda5489cfca907",tooltip="Internal Handle que Toma username, lo busca en base de datos, y despues comprueba si la contraseña co..."];
+  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="MessageGateway.Handlers.\lMenuEmprendedor.HandlerOpciones\lMenuEmprendedor.InternalHandle",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classMessageGateway_1_1Handlers_1_1MenuEmprendedor_1_1HandlerOpcionesMenuEmprendedor.html#add92ac4870e23b76e4175d83e7fc6b90",tooltip="Método InternalHandle que redirecciona a formularios según la opción seleccionada."];
+  Node1 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="MessageGateway.Handlers.\lMenuEmpresa.HandlerOpcionesMenu\lEmpresa.InternalHandle",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classMessageGateway_1_1Handlers_1_1MenuEmpresa_1_1HandlerOpcionesMenuEmpresa.html#a2e6c7ffa0b06ba6f2763745b7f1b808d",tooltip="Método InternalHandle que redirecciona a formularios según la opción seleccionada."];
+  Node1 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="MessageGateway.Handlers.\lRegistroDatosLogin.HandlerReg\lDatosLogin.InternalHandle",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classMessageGateway_1_1Handlers_1_1RegistroDatosLogin_1_1HandlerRegDatosLogin.html#a4fb95068275b3351fc2aacb4d3a37fd0",tooltip="Internal Hnadle que revisa no repetir el username con base de datos y toma y confirma la contraseña."];
+  Node1 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="MessageGateway.Handlers.\lHandlerRegistroEmprendedor.Internal\lHandle",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classMessageGateway_1_1Handlers_1_1HandlerRegistroEmprendedor.html#ab2ba4834dbfef44f2524182b4c3f4716",tooltip="Internal handle que presenta un menu para ir completando el registro. Delega la tarea de registro de ..."];
+  Node1 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 [label="MessageGateway.Handlers.\lHandlerRegEmpresa.InternalHandle",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classMessageGateway_1_1Handlers_1_1HandlerRegEmpresa.html#a41b714ae45eb296fefb2ed360595eca4",tooltip="Internal Handle que va tomando los datos necesarios. Location es delegado al HandlerLocation."];
+}

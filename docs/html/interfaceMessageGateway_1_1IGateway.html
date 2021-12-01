@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Proyecto de PII
-   &#160;<span id="projectnumber">1</span>
+   &#160;<span id="projectnumber">3</span>
    </div>
    <div id="projectbrief">Projecto para curso de Programacion 2 en la UCU, por el equipo 9 de la tarde</div>
   </td>
@@ -92,7 +92,7 @@ $(document).ready(function(){initNavTree('interfaceMessageGateway_1_1IGateway.ht
 </div><!--header-->
 <div class="contents">
 
-<p>Interfaz que engloba las diferentes salidas posibles de mensaje de invitación al bot (mail, chat de telegram, etc).  
+<p>Interfaz que engloba las diferentes salidas y entradas posibles de mensaje de invitación al bot (mail, chat de telegram, etc).  
  <a href="interfaceMessageGateway_1_1IGateway.html#details">Más...</a></p>
 <div class="dynheader">
 Diagrama de herencias de MessageGateway.IGateway</div>
@@ -109,41 +109,50 @@ Diagrama de colaboración para MessageGateway.IGateway:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Métodos públicos</h2></td></tr>
-<tr class="memitem:a433ec0c2b7de22ca99f367368d5e549f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceMessageGateway_1_1IGateway.html#a433ec0c2b7de22ca99f367368d5e549f">EnviarMensaje</a> (string destinatario, string texto)</td></tr>
-<tr class="memdesc:a433ec0c2b7de22ca99f367368d5e549f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Método de envío de mensaje.  <a href="interfaceMessageGateway_1_1IGateway.html#a433ec0c2b7de22ca99f367368d5e549f">Más...</a><br /></td></tr>
-<tr class="separator:a433ec0c2b7de22ca99f367368d5e549f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4a4f825305017f7380dc1ef55a7c0a58"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceMessageGateway_1_1IGateway.html#a4a4f825305017f7380dc1ef55a7c0a58">EnviarInvitacion</a> (string destinatario, string texto)</td></tr>
-<tr class="memdesc:a4a4f825305017f7380dc1ef55a7c0a58"><td class="mdescLeft">&#160;</td><td class="mdescRight">Método para enviar la invitacion a traves del medio.  <a href="interfaceMessageGateway_1_1IGateway.html#a4a4f825305017f7380dc1ef55a7c0a58">Más...</a><br /></td></tr>
-<tr class="separator:a4a4f825305017f7380dc1ef55a7c0a58"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63a7916c662aa820f92db8a5f18f2231"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceMessageGateway_1_1IGateway.html#a63a7916c662aa820f92db8a5f18f2231">EnviarMensaje</a> (<a class="el" href="interfaceMessageGateway_1_1IMessage.html">IMessage</a> texto)</td></tr>
+<tr class="memdesc:a63a7916c662aa820f92db8a5f18f2231"><td class="mdescLeft">&#160;</td><td class="mdescRight">Método de envío de mensaje.  <a href="interfaceMessageGateway_1_1IGateway.html#a63a7916c662aa820f92db8a5f18f2231">Más...</a><br /></td></tr>
+<tr class="separator:a63a7916c662aa820f92db8a5f18f2231"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea61b7d80609649e7abe4866f1ae2c6a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceMessageGateway_1_1IGateway.html#aea61b7d80609649e7abe4866f1ae2c6a">EnviarUbicacionEnMapa</a> (<a class="el" href="interfaceMessageGateway_1_1IMessage.html">IMessage</a> mensaje, float latitud, float longitud)</td></tr>
+<tr class="memdesc:aea61b7d80609649e7abe4866f1ae2c6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Método que permite enviar foto (especialmente para api de localización).  <a href="interfaceMessageGateway_1_1IGateway.html#aea61b7d80609649e7abe4866f1ae2c6a">Más...</a><br /></td></tr>
+<tr class="separator:aea61b7d80609649e7abe4866f1ae2c6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5fc6cd163df6fe616496dd15dfe26c7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="interfaceMessageGateway_1_1Forms_1_1IFormulario.html">IFormulario</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceMessageGateway_1_1IGateway.html#ab5fc6cd163df6fe616496dd15dfe26c7">ObtenerFormularioActual</a> (string chatID)</td></tr>
+<tr class="memdesc:ab5fc6cd163df6fe616496dd15dfe26c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Método que retorna el formulario en el que se ubica actualmente la conversación con un usuario.  <a href="interfaceMessageGateway_1_1IGateway.html#ab5fc6cd163df6fe616496dd15dfe26c7">Más...</a><br /></td></tr>
+<tr class="separator:ab5fc6cd163df6fe616496dd15dfe26c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e0945ca375e10f374d62f8bfde003a5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceMessageGateway_1_1IGateway.html#a4e0945ca375e10f374d62f8bfde003a5">CambiarFormulario</a> (<a class="el" href="interfaceMessageGateway_1_1Forms_1_1IFormulario.html">IFormulario</a> next, string chatID)</td></tr>
+<tr class="memdesc:a4e0945ca375e10f374d62f8bfde003a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cambia el formulario que procesa los mensajes de un usuario.  <a href="interfaceMessageGateway_1_1IGateway.html#a4e0945ca375e10f374d62f8bfde003a5">Más...</a><br /></td></tr>
+<tr class="separator:a4e0945ca375e10f374d62f8bfde003a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Propiedades</h2></td></tr>
 <tr class="memitem:a13877154988a604511a3ec7da5114673"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="interfaceMessageGateway_1_1IGateway.html">IGateway</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceMessageGateway_1_1IGateway.html#a13877154988a604511a3ec7da5114673">Instancia</a><code> [get]</code></td></tr>
 <tr class="memdesc:a13877154988a604511a3ec7da5114673"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene acceso al singleton.  <a href="interfaceMessageGateway_1_1IGateway.html#a13877154988a604511a3ec7da5114673">Más...</a><br /></td></tr>
 <tr class="separator:a13877154988a604511a3ec7da5114673"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab65b226acb40995a4dac89eb2aac0c94"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceMessageGateway_1_1IGateway.html#ab65b226acb40995a4dac89eb2aac0c94">ObtenerLinkInvitacion</a><code> [get]</code></td></tr>
+<tr class="memdesc:ab65b226acb40995a4dac89eb2aac0c94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Método para generar la invitacion a traves del medio.  <a href="interfaceMessageGateway_1_1IGateway.html#ab65b226acb40995a4dac89eb2aac0c94">Más...</a><br /></td></tr>
+<tr class="separator:ab65b226acb40995a4dac89eb2aac0c94"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
-<div class="textblock"><p>Interfaz que engloba las diferentes salidas posibles de mensaje de invitación al bot (mail, chat de telegram, etc). </p>
+<div class="textblock"><p>Interfaz que engloba las diferentes salidas y entradas posibles de mensaje de invitación al bot (mail, chat de telegram, etc). </p>
 
-<p class="definition">Definición en la línea <a class="el" href="IGateway_8cs_source.html#l00012">12</a> del archivo <a class="el" href="IGateway_8cs_source.html">IGateway.cs</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="IGateway_8cs_source.html#l00014">14</a> del archivo <a class="el" href="IGateway_8cs_source.html">IGateway.cs</a>.</p>
 </div><h2 class="groupheader">Documentación de las funciones miembro</h2>
-<a id="a4a4f825305017f7380dc1ef55a7c0a58"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4a4f825305017f7380dc1ef55a7c0a58">&#9670;&nbsp;</a></span>EnviarInvitacion()</h2>
+<a id="a4e0945ca375e10f374d62f8bfde003a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e0945ca375e10f374d62f8bfde003a5">&#9670;&nbsp;</a></span>CambiarFormulario()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void MessageGateway.IGateway.EnviarInvitacion </td>
+          <td class="memname">void MessageGateway.IGateway.CambiarFormulario </td>
           <td>(</td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>destinatario</em>, </td>
+          <td class="paramtype"><a class="el" href="interfaceMessageGateway_1_1Forms_1_1IFormulario.html">IFormulario</a>&#160;</td>
+          <td class="paramname"><em>next</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>texto</em>&#160;</td>
+          <td class="paramname"><em>chatID</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -153,16 +162,16 @@ Propiedades</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Método para enviar la invitacion a traves del medio. </p>
+<p>Cambia el formulario que procesa los mensajes de un usuario. </p>
 <dl class="params"><dt>Parámetros</dt><dd>
   <table class="params">
-    <tr><td class="paramname">destinatario</td><td><code>string</code> identificador necesario para el envío de la invitación. </td></tr>
-    <tr><td class="paramname">texto</td><td>La invitación como <code>string</code>.</td></tr>
+    <tr><td class="paramname">next</td><td>el nuevo formulario que procesa los mensajes.</td></tr>
+    <tr><td class="paramname">chatID</td><td>el ID del chat al cual se le cambia el formulario.</td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Implementado en <a class="el" href="classMessageGateway_1_1TelegramService.html#ad4928fe6efb2a8b3c9c3c1f14107c703">MessageGateway.TelegramService</a>.</p>
+<p>Implementado en <a class="el" href="classMessageGateway_1_1GatewayBase.html#ae31d99ea84003f7312de7187cc45e5c8">MessageGateway.GatewayBase</a>.</p>
 <div class="dynheader">
 Gráfico de llamadas a esta función:</div>
 <div class="dyncontent">
@@ -172,8 +181,8 @@ Gráfico de llamadas a esta función:</div>
 
 </div>
 </div>
-<a id="a433ec0c2b7de22ca99f367368d5e549f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a433ec0c2b7de22ca99f367368d5e549f">&#9670;&nbsp;</a></span>EnviarMensaje()</h2>
+<a id="a63a7916c662aa820f92db8a5f18f2231"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63a7916c662aa820f92db8a5f18f2231">&#9670;&nbsp;</a></span>EnviarMensaje()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -181,14 +190,48 @@ Gráfico de llamadas a esta función:</div>
         <tr>
           <td class="memname">void MessageGateway.IGateway.EnviarMensaje </td>
           <td>(</td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>destinatario</em>, </td>
+          <td class="paramtype"><a class="el" href="interfaceMessageGateway_1_1IMessage.html">IMessage</a>&#160;</td>
+          <td class="paramname"><em>texto</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Método de envío de mensaje. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">texto</td><td><code>string</code>: El mensaje en sí.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implementado en <a class="el" href="classMessageGateway_1_1GatewayBase.html#a6494831cefbfa80cfae0e6990b6b9981">MessageGateway.GatewayBase</a> y <a class="el" href="classMessageGateway_1_1AdaptadorTelegram.html#a3838f9a35e0e1899f493a6f1f8aa0910">MessageGateway.AdaptadorTelegram</a>.</p>
+
+</div>
+</div>
+<a id="aea61b7d80609649e7abe4866f1ae2c6a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea61b7d80609649e7abe4866f1ae2c6a">&#9670;&nbsp;</a></span>EnviarUbicacionEnMapa()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MessageGateway.IGateway.EnviarUbicacionEnMapa </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="interfaceMessageGateway_1_1IMessage.html">IMessage</a>&#160;</td>
+          <td class="paramname"><em>mensaje</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>texto</em>&#160;</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>latitud</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>longitud</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -198,16 +241,38 @@ Gráfico de llamadas a esta función:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Método de envío de mensaje. </p>
+<p>Método que permite enviar foto (especialmente para api de localización). </p>
+
+<p>Implementado en <a class="el" href="classMessageGateway_1_1GatewayBase.html#aafa4bfae5a8be58f0092fa8f88118903">MessageGateway.GatewayBase</a> y <a class="el" href="classMessageGateway_1_1AdaptadorTelegram.html#ad5da06fb2f32417e2707fa62c8e50176">MessageGateway.AdaptadorTelegram</a>.</p>
+
+</div>
+</div>
+<a id="ab5fc6cd163df6fe616496dd15dfe26c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5fc6cd163df6fe616496dd15dfe26c7">&#9670;&nbsp;</a></span>ObtenerFormularioActual()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="interfaceMessageGateway_1_1Forms_1_1IFormulario.html">IFormulario</a> MessageGateway.IGateway.ObtenerFormularioActual </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>chatID</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Método que retorna el formulario en el que se ubica actualmente la conversación con un usuario. </p>
 <dl class="params"><dt>Parámetros</dt><dd>
   <table class="params">
-    <tr><td class="paramname">destinatario</td><td><code>string</code> identificador necesario para el envío. </td></tr>
-    <tr><td class="paramname">texto</td><td><code>string</code>: El mensaje en sí.</td></tr>
+    <tr><td class="paramname">chatID</td><td>el ID del chat del usuario</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Devuelve</dt><dd>El formulario que procesa actualmente los mensajes del usuario.</dd></dl>
 
-<p>Implementado en <a class="el" href="classMessageGateway_1_1TelegramService.html#acd5722f7ee4f834ee0df65b1b70f0c06">MessageGateway.TelegramService</a>.</p>
+<p>Implementado en <a class="el" href="classMessageGateway_1_1GatewayBase.html#a5327e5bb3a076f42bea6eec3d6ad9365">MessageGateway.GatewayBase</a>.</p>
 
 </div>
 </div>
@@ -235,7 +300,33 @@ Gráfico de llamadas a esta función:</div>
 <p>Obtiene acceso al singleton. </p>
 <p>Instancia .</p>
 
-<p class="definition">Definición en la línea <a class="el" href="IGateway_8cs_source.html#l00018">18</a> del archivo <a class="el" href="IGateway_8cs_source.html">IGateway.cs</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="IGateway_8cs_source.html#l00020">20</a> del archivo <a class="el" href="IGateway_8cs_source.html">IGateway.cs</a>.</p>
+
+</div>
+</div>
+<a id="ab65b226acb40995a4dac89eb2aac0c94"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab65b226acb40995a4dac89eb2aac0c94">&#9670;&nbsp;</a></span>ObtenerLinkInvitacion</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string MessageGateway.IGateway.ObtenerLinkInvitacion</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Método para generar la invitacion a traves del medio. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="IGateway_8cs_source.html#l00036">36</a> del archivo <a class="el" href="IGateway_8cs_source.html">IGateway.cs</a>.</p>
 
 </div>
 </div>

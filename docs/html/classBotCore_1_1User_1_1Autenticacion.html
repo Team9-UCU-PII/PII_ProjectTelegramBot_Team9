@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Proyecto de PII
-   &#160;<span id="projectnumber">1</span>
+   &#160;<span id="projectnumber">3</span>
    </div>
    <div id="projectbrief">Projecto para curso de Programacion 2 en la UCU, por el equipo 9 de la tarde</div>
   </td>
@@ -84,7 +84,7 @@ $(document).ready(function(){initNavTree('classBotCore_1_1User_1_1Autenticacion.
 
 <div class="header">
   <div class="summary">
-<a href="#pub-static-methods">Métodos públicos estáticos</a> &#124;
+<a href="#pub-methods">Métodos públicos</a> &#124;
 <a href="#properties">Propiedades</a> &#124;
 <a href="classBotCore_1_1User_1_1Autenticacion-members.html">Lista de todos los miembros</a>  </div>
   <div class="headertitle">
@@ -101,11 +101,11 @@ Diagrama de colaboración para BotCore.User.Autenticacion:</div>
 </div>
 </div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
-Métodos públicos estáticos</h2></td></tr>
-<tr class="memitem:a014201ad8684befe7b8f1a4da683d1e6"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBotCore_1_1User_1_1Autenticacion.html#a014201ad8684befe7b8f1a4da683d1e6">ValidarUsuario</a> (string nombreUsuario, string contrasenia)</td></tr>
-<tr class="memdesc:a014201ad8684befe7b8f1a4da683d1e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo que toma colaboracion de DataAccess para comprobar el inicio de sesión.  <a href="classBotCore_1_1User_1_1Autenticacion.html#a014201ad8684befe7b8f1a4da683d1e6">Más...</a><br /></td></tr>
-<tr class="separator:a014201ad8684befe7b8f1a4da683d1e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Métodos públicos</h2></td></tr>
+<tr class="memitem:a7373183ade7ccd35ef828cfccfe4c029"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBotCore_1_1User_1_1Autenticacion.html#a7373183ade7ccd35ef828cfccfe4c029">ValidarUsuario</a> (string nombreUsuario, string contrasenia, out <a class="el" href="interfaceClassLibrary_1_1User_1_1IUsuario.html">IUsuario</a> organizacion)</td></tr>
+<tr class="memdesc:a7373183ade7ccd35ef828cfccfe4c029"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo que toma colaboracion de DataAccess para comprobar el inicio de sesión.  <a href="classBotCore_1_1User_1_1Autenticacion.html#a7373183ade7ccd35ef828cfccfe4c029">Más...</a><br /></td></tr>
+<tr class="separator:a7373183ade7ccd35ef828cfccfe4c029"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Propiedades</h2></td></tr>
@@ -116,19 +116,16 @@ Propiedades</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
 <div class="textblock"><p>Esta clase se encarga de tomar datos para loggear una persona y verificar su informacion a la hora de iniciar sesión. </p>
 
-<p class="definition">Definición en la línea <a class="el" href="Autenticacion_8cs_source.html#l00020">20</a> del archivo <a class="el" href="Autenticacion_8cs_source.html">Autenticacion.cs</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="Autenticacion_8cs_source.html#l00019">19</a> del archivo <a class="el" href="Autenticacion_8cs_source.html">Autenticacion.cs</a>.</p>
 </div><h2 class="groupheader">Documentación de las funciones miembro</h2>
-<a id="a014201ad8684befe7b8f1a4da683d1e6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a014201ad8684befe7b8f1a4da683d1e6">&#9670;&nbsp;</a></span>ValidarUsuario()</h2>
+<a id="a7373183ade7ccd35ef828cfccfe4c029"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7373183ade7ccd35ef828cfccfe4c029">&#9670;&nbsp;</a></span>ValidarUsuario()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static bool BotCore.User.Autenticacion.ValidarUsuario </td>
+          <td class="memname">bool BotCore.User.Autenticacion.ValidarUsuario </td>
           <td>(</td>
           <td class="paramtype">string&#160;</td>
           <td class="paramname"><em>nombreUsuario</em>, </td>
@@ -137,7 +134,13 @@ Propiedades</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>contrasenia</em>&#160;</td>
+          <td class="paramname"><em>contrasenia</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">out <a class="el" href="interfaceClassLibrary_1_1User_1_1IUsuario.html">IUsuario</a>&#160;</td>
+          <td class="paramname"><em>organizacion</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -145,24 +148,26 @@ Propiedades</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Metodo que toma colaboracion de DataAccess para comprobar el inicio de sesión. </p>
 <dl class="params"><dt>Parámetros</dt><dd>
   <table class="params">
-    <tr><td class="paramname">nombreUsuario</td><td></td></tr>
-    <tr><td class="paramname">contrasenia</td><td></td></tr>
+    <tr><td class="paramname">nombreUsuario</td><td>String de username.</td></tr>
+    <tr><td class="paramname">contrasenia</td><td>String de password.</td></tr>
+    <tr><td class="paramname">organizacion</td><td>IUsuario saliente.</td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Devuelve</dt><dd><code>true</code> si nombreUsuario y contrasenia están viculados en DatosLogin en la base de datos.</dd></dl>
 
 <p class="definition">Definición en la línea <a class="el" href="Autenticacion_8cs_source.html#l00053">53</a> del archivo <a class="el" href="Autenticacion_8cs_source.html">Autenticacion.cs</a>.</p>
+<div class="dynheader">
+Gráfico de llamadas a esta función:</div>
+<div class="dyncontent">
+<div class="center"><!-- SVG 1 -->
+</div>
+</div>
 
 </div>
 </div>
@@ -189,7 +194,7 @@ Propiedades</h2></td></tr>
 
 <p>Metodo de acceso al singleton. </p>
 
-<p class="definition">Definición en la línea <a class="el" href="Autenticacion_8cs_source.html#l00032">32</a> del archivo <a class="el" href="Autenticacion_8cs_source.html">Autenticacion.cs</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="Autenticacion_8cs_source.html#l00031">31</a> del archivo <a class="el" href="Autenticacion_8cs_source.html">Autenticacion.cs</a>.</p>
 
 </div>
 </div>

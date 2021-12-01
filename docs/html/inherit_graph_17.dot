@@ -1,0 +1,13 @@
+digraph "Representación gráfica de la clase"
+{
+ // INTERACTIVE_SVG=YES
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node0 [label="MessageGateway.IGateway",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interfaceMessageGateway_1_1IGateway.html",tooltip="Interfaz que engloba las diferentes salidas y entradas posibles de mensaje de invitación al bot (mail..."];
+  Node0 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 [label="MessageGateway.GatewayBase",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classMessageGateway_1_1GatewayBase.html",tooltip="Clase base que al implementar la interfaz IGateway sigue el principio de inversión de dependencias."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="MessageGateway.Adaptador\lTelegram",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classMessageGateway_1_1AdaptadorTelegram.html",tooltip="Esta clase instanciaría el chat y bot, y almacenaría mensaje por mensaje que va recibiendo como strin..."];
+}

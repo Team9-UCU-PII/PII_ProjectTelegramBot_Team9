@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Proyecto de PII
-   &#160;<span id="projectnumber">1</span>
+   &#160;<span id="projectnumber">3</span>
    </div>
    <div id="projectbrief">Projecto para curso de Programacion 2 en la UCU, por el equipo 9 de la tarde</div>
   </td>
@@ -93,34 +93,44 @@ $(document).ready(function(){initNavTree('RegistroUsuario_8cs_source.html',''); 
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">// &lt;/copyright&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">// Patrón utilizado: Creator.</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">// Esta clase utiliza este patrón porque crea nuevos usuarios y los persiste en DataAccess.</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">//--------------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">using</span> <a class="code" href="namespaceClassLibrary.html">ClassLibrary</a>.<a class="code" href="namespaceClassLibrary_1_1User.html">User</a>;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">using</span> <a class="code" href="namespaceImporters.html">Importers</a>;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceBotCore_1_1User.html">BotCore.User</a></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;{</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class </span>RegistroUsuario</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    {</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> RegistrarUsuario&lt;T&gt;(<span class="keywordtype">string</span> nombreUsuario, <span class="keywordtype">string</span> contrasenia, T usuario) where T : <a class="code" href="interfaceClassLibrary_1_1User_1_1IUsuario.html">IUsuario</a></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        {</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            <a class="code" href="classImporters_1_1DataAccess.html">DataAccess</a> da = <a class="code" href="classImporters_1_1DataAccess.html">DataAccess</a>.<a class="code" href="classImporters_1_1DataAccess.html#a8ea8dbff728176cea094a2a659c537cb">Instancia</a>;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            <a class="code" href="classClassLibrary_1_1User_1_1DatosLogin.html">DatosLogin</a> dl = <span class="keyword">new</span> <a class="code" href="classClassLibrary_1_1User_1_1DatosLogin.html">DatosLogin</a>(nombreUsuario, contrasenia, usuario);</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            da.Insertar(usuario);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            da.Insertar(dl);</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">// Esta clase utiliza este patrón porque es la única encargada de instanciar objetos de tipo DatosLogin</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">// nuevos usuarios y los persiste en DataAccess.</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">//--------------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">using</span> <a class="code" href="namespaceClassLibrary.html">ClassLibrary</a>.<a class="code" href="namespaceClassLibrary_1_1User.html">User</a>;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">using</span> <a class="code" href="namespaceImporters.html">Importers</a>;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">using</span> System.Linq;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceBotCore_1_1User.html">BotCore.User</a></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;{</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class </span>RegistroUsuario</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <a class="code" href="classImporters_1_1DataAccess.html">DataAccess</a> da = <a class="code" href="classImporters_1_1DataAccess.html">DataAccess</a>.<a class="code" href="classImporters_1_1DataAccess.html#a8ea8dbff728176cea094a2a659c537cb">Instancia</a>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">bool</span> UsuarioYaExiste(<span class="keywordtype">string</span> nombre)</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        {</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            <span class="keywordtype">int</span> cantidadUsuarios = da.Obtener&lt;<a class="code" href="classClassLibrary_1_1User_1_1DatosLogin.html">DatosLogin</a>&gt;().Where(dl =&gt; dl.NombreUsuario == nombre).Count();</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            <span class="keywordflow">return</span> cantidadUsuarios &gt; 0;</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        }</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    }</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;}</div>
-<div class="ttc" id="aclassClassLibrary_1_1User_1_1DatosLogin_html"><div class="ttname"><a href="classClassLibrary_1_1User_1_1DatosLogin.html">ClassLibrary.User.DatosLogin</a></div><div class="ttdoc">Las instancias de esta clase representan los usuarios creados en el bot, almacendando la empresa o em...</div><div class="ttdef"><b>Definition:</b> <a href="DatosLogin_8cs_source.html#l00014">DatosLogin.cs:15</a></div></div>
-<div class="ttc" id="aclassImporters_1_1DataAccess_html"><div class="ttname"><a href="classImporters_1_1DataAccess.html">Importers.DataAccess</a></div><div class="ttdoc">Clase que utilizará el bot para acceder a la base de datos.</div><div class="ttdef"><b>Definition:</b> <a href="DataAccess_8cs_source.html#l00015">DataAccess.cs:16</a></div></div>
-<div class="ttc" id="aclassImporters_1_1DataAccess_html_a8ea8dbff728176cea094a2a659c537cb"><div class="ttname"><a href="classImporters_1_1DataAccess.html#a8ea8dbff728176cea094a2a659c537cb">Importers.DataAccess.Instancia</a></div><div class="ttdeci">static DataAccess Instancia</div><div class="ttdoc">Obtiene acceso al singleton.</div><div class="ttdef"><b>Definition:</b> <a href="DataAccess_8cs_source.html#l00021">DataAccess.cs:22</a></div></div>
-<div class="ttc" id="ainterfaceClassLibrary_1_1User_1_1IUsuario_html"><div class="ttname"><a href="interfaceClassLibrary_1_1User_1_1IUsuario.html">ClassLibrary.User.IUsuario</a></div><div class="ttdoc">Interfaz que engloba tanto empresas como emprendimientos.</div><div class="ttdef"><b>Definition:</b> <a href="IUsuario_8cs_source.html#l00014">IUsuario.cs:15</a></div></div>
-<div class="ttc" id="anamespaceBotCore_1_1User_html"><div class="ttname"><a href="namespaceBotCore_1_1User.html">BotCore.User</a></div><div class="ttdef"><b>Definition:</b> <a href="Autenticacion_8cs_source.html#l00014">Autenticacion.cs:15</a></div></div>
-<div class="ttc" id="anamespaceClassLibrary_1_1User_html"><div class="ttname"><a href="namespaceClassLibrary_1_1User.html">ClassLibrary.User</a></div><div class="ttdef"><b>Definition:</b> <a href="DatosLogin_8cs_source.html#l00007">DatosLogin.cs:8</a></div></div>
-<div class="ttc" id="anamespaceClassLibrary_html"><div class="ttname"><a href="namespaceClassLibrary.html">ClassLibrary</a></div><div class="ttdef"><b>Definition:</b> <a href="Categoria_8cs_source.html#l00007">Categoria.cs:8</a></div></div>
-<div class="ttc" id="anamespaceImporters_html"><div class="ttname"><a href="namespaceImporters.html">Importers</a></div><div class="ttdef"><b>Definition:</b> <a href="DataAccess_8cs_source.html#l00009">DataAccess.cs:10</a></div></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> RegistrarUsuario&lt;T&gt;(<span class="keywordtype">string</span> nombreUsuario, <span class="keywordtype">string</span> contrasenia, T usuario) where T : <a class="code" href="interfaceClassLibrary_1_1User_1_1IUsuario.html">IUsuario</a></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        {</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            <a class="code" href="classImporters_1_1DataAccess.html">DataAccess</a> da = <a class="code" href="classImporters_1_1DataAccess.html">DataAccess</a>.<a class="code" href="classImporters_1_1DataAccess.html#a8ea8dbff728176cea094a2a659c537cb">Instancia</a>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            <a class="code" href="classClassLibrary_1_1User_1_1DatosLogin.html">DatosLogin</a> dl = <span class="keyword">new</span> <a class="code" href="classClassLibrary_1_1User_1_1DatosLogin.html">DatosLogin</a>(nombreUsuario, contrasenia, usuario);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            da.Insertar(usuario);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            da.Insertar(dl);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        }</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    }</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div>
+<div class="ttc" id="aclassClassLibrary_1_1User_1_1DatosLogin_html"><div class="ttname"><a href="classClassLibrary_1_1User_1_1DatosLogin.html">ClassLibrary.User.DatosLogin</a></div><div class="ttdoc">Las instancias de esta clase representan los usuarios creados en el bot, almacendando la empresa o em...</div><div class="ttdef"><b>Definition:</b> <a href="DatosLogin_8cs_source.html#l00017">DatosLogin.cs:18</a></div></div>
+<div class="ttc" id="aclassImporters_1_1DataAccess_html"><div class="ttname"><a href="classImporters_1_1DataAccess.html">Importers.DataAccess</a></div><div class="ttdoc">Clase que utilizará el bot para acceder a la base de datos.</div><div class="ttdef"><b>Definition:</b> <a href="DataAccess_8cs_source.html#l00017">DataAccess.cs:18</a></div></div>
+<div class="ttc" id="aclassImporters_1_1DataAccess_html_a8ea8dbff728176cea094a2a659c537cb"><div class="ttname"><a href="classImporters_1_1DataAccess.html#a8ea8dbff728176cea094a2a659c537cb">Importers.DataAccess.Instancia</a></div><div class="ttdeci">static DataAccess Instancia</div><div class="ttdoc">Obtiene acceso al singleton. Gracias a la correcta implementación del patrón Adapter en la base de da...</div><div class="ttdef"><b>Definition:</b> <a href="DataAccess_8cs_source.html#l00026">DataAccess.cs:27</a></div></div>
+<div class="ttc" id="ainterfaceClassLibrary_1_1User_1_1IUsuario_html"><div class="ttname"><a href="interfaceClassLibrary_1_1User_1_1IUsuario.html">ClassLibrary.User.IUsuario</a></div><div class="ttdoc">Interfaz que engloba tanto empresas como emprendimientos.</div><div class="ttdef"><b>Definition:</b> <a href="IUsuario_8cs_source.html#l00018">IUsuario.cs:19</a></div></div>
+<div class="ttc" id="anamespaceBotCore_1_1User_html"><div class="ttname"><a href="namespaceBotCore_1_1User.html">BotCore.User</a></div><div class="ttdef"><b>Definition:</b> <a href="Autenticacion_8cs_source.html#l00013">Autenticacion.cs:14</a></div></div>
+<div class="ttc" id="anamespaceClassLibrary_1_1User_html"><div class="ttname"><a href="namespaceClassLibrary_1_1User.html">ClassLibrary.User</a></div><div class="ttdef"><b>Definition:</b> <a href="DatosLogin_8cs_source.html#l00010">DatosLogin.cs:11</a></div></div>
+<div class="ttc" id="anamespaceClassLibrary_html"><div class="ttname"><a href="namespaceClassLibrary.html">ClassLibrary</a></div><div class="ttdef"><b>Definition:</b> <a href="Distance_8cs_source.html#l00007">Distance.cs:8</a></div></div>
+<div class="ttc" id="anamespaceImporters_html"><div class="ttname"><a href="namespaceImporters.html">Importers</a></div><div class="ttdef"><b>Definition:</b> <a href="DataAccess_8cs_source.html#l00011">DataAccess.cs:12</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

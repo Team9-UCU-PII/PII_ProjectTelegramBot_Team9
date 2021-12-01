@@ -1,6 +1,7 @@
 var namespaceImporters =
 [
+    [ "Json", "namespaceImporters_1_1Json.html", "namespaceImporters_1_1Json" ],
+    [ "Memoria", "namespaceImporters_1_1Memoria.html", null ],
     [ "DataAccess", "classImporters_1_1DataAccess.html", "classImporters_1_1DataAccess" ],
-    [ "DatabaseMemoria", "classImporters_1_1DatabaseMemoria.html", "classImporters_1_1DatabaseMemoria" ],
-    [ "IDatabase", "interfaceImporters_1_1IDatabase.html", "interfaceImporters_1_1IDatabase" ]
+    [ "IPersistible", "interfaceImporters_1_1IPersistible.html", null ]
 ];
