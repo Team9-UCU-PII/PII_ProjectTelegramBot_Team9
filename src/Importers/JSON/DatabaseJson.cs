@@ -7,7 +7,12 @@ using System.Text.Json;
 
 namespace Importers.Json
 {
-    internal class DatabaseJson : IDatabase
+    /// <summary>
+    /// Esta clase es una implementación de IDatabase, y define todos los métodos necesarios para 
+    /// implementar todas las responsabilidades definidas en la interfaz. El código cliente depende de
+    /// esta forma de los métodos definidos en la interfaz, y no de los detalles de cada implementación.
+    /// </summary>
+    internal sealed class DatabaseJson : IDatabase
     {
         private const string K_StorageFolderRoot = "Data\\";
         private Dictionary<Type, string> generatedFolderPaths;

@@ -11,9 +11,11 @@ using System.Linq;
 namespace Importers.Memoria
 {
     /// <summary>
-    /// Esta clase manejara la logica cercana al acceso a la base de datos.
+    /// Esta clase es una implementación de IDatabase, y define todos los métodos necesarios para 
+    /// implementar todas las responsabilidades definidas en la interfaz. El código cliente depende de
+    /// esta forma de los métodos definidos en la interfaz, y no de los detalles de cada implementación.
     /// </summary>
-    internal class DatabaseMemoria : IDatabase
+    internal sealed class DatabaseMemoria : IDatabase
     {
         /// <summary>
         /// Obtiene acceso al singleton.

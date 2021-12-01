@@ -13,6 +13,10 @@ namespace ClassLibrary.Publication
 {
   /// <summary>
   /// Subclase de <see cref = "Publicacion"/>, añade propiedad de Recurrencia del residuo.
+  /// Sus anulaciones de los métodos GetTextToPrint() y JsonSave() ya definidos en la clase base se
+  /// pueden considerar una aplicación del patrón Polymorphism, ya que aprovechan el encadenamiento
+  /// dinámico para que los mensajes que solicitan la ejecución de esos métodos disparen la ejecución
+  /// de sus implementaciones en esta subclase y no en la clase base.
   /// </summary>
   public class PublicacionRecurrente : Publicacion
   {
