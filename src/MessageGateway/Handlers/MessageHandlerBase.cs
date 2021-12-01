@@ -2,6 +2,11 @@
 // <copyright file="MessageHandlerBase.cs" company="Universidad Católica del Uruguay">
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
+//
+// Pricnipio utilizado: DIP
+// La clase MessageHandlerBase implementa la interfaz IMessageHandler siguiendo 
+// el principio de inversión de dependencias, para que dicha clase no
+// dependa o se vea afectado ante cambios en cada handler (subclases).
 //--------------------------------------------------------------------------------
 
 using System.Linq;

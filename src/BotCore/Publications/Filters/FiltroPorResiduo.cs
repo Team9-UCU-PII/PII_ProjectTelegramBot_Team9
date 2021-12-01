@@ -26,7 +26,8 @@ namespace BotCore.Publication.Filters
         /// <summary>
         /// Método que recibe el tipo de filtro y el siguiente filtro de búsqueda.
         /// </summary>
-        /// <param name="residuo"><see cref = "Residuo"/>.</param>
+        /// <param name="tipoResiduo">String con el tipo de residuo a buscar.</param>
+
         /// <param name="next"><see cref = "IFiltroBusqueda"/>.</param>
         public FiltroPorResiduo(string tipoResiduo, IFiltroBusqueda next = null)
         {

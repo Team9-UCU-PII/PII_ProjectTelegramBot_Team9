@@ -57,7 +57,7 @@ namespace MessageGateway.Handlers
 
                 if((CurrentForm as FrmBusqueda).CurrentState == FasesBusqueda.tomandoFiltroEmpresa)
                 {
-                sb.Append("Añadido filtro. \n");
+                sb.AppendLine("Añadido filtro. \n");
                 (CurrentForm as FrmBusqueda).AddFilter(new FiltroPorEmpresa(new Empresa(message.TxtMensaje)));
                 }
 
@@ -80,7 +80,7 @@ namespace MessageGateway.Handlers
 
                 if ((CurrentForm as FrmBusqueda).CurrentState == FasesBusqueda.tomandoFiltroCategoria)
                 {
-                    sb.Append("Añadido el filtro");
+                    sb.AppendLine("Añadido el filtro");
                     (CurrentForm as FrmBusqueda).AddFilter(new FiltroPorCategoria(new Categoria(message.TxtMensaje)));
                 }
 
@@ -112,7 +112,7 @@ namespace MessageGateway.Handlers
 
                 if ((CurrentForm as FrmBusqueda).CurrentState == FasesBusqueda.tomandoFiltroLugarRetiro2)
                 {
-                    sb.Append("Añadido el filtro");
+                    sb.AppendLine("Añadido el filtro");
                     (CurrentForm as FrmBusqueda).AddFilter(new FiltroPorLugarRetiro((message.TxtMensaje), (CurrentForm as FrmBusqueda).dpto));
                 }
 
@@ -137,7 +137,7 @@ namespace MessageGateway.Handlers
                 {
                     if (double.TryParse(message.TxtMensaje, out double valor))
                     {
-                        sb.Append("Añadido el filtro.");
+                        sb.AppendLine("Añadido el filtro.");
                         (CurrentForm as FrmBusqueda).AddFilter(new FiltroPorPrecioMaximo(valor));
                     }
                     else
@@ -151,6 +151,40 @@ namespace MessageGateway.Handlers
                 sb.Append($"¿Quieres filtrar las publicaciones por frecuencia de restock?\n");
                 response = sb.ToString();
                 (CurrentForm as FrmBusqueda).CurrentState = FasesBusqueda.FiltroFrecuenciaRestock;
+                return true;
+            }
+            else if (message.TxtMensaje.ToLower() == "si" && (CurrentForm as FrmBusqueda).CurrentState == FasesBusqueda.FiltroFrecuenciaRestock)
+            {
+                StringBuilder sb = new StringBuilder();
+                sb.Append($"¿Con que frecuencia anual?\n");
+                response = sb.ToString();
+                (CurrentForm as FrmBusqueda).CurrentState = FasesBusqueda.tomandoFiltroFrecuenciaRestock;
+                return true;
+            }
+            else if ((message.TxtMensaje.ToLower() == "no" && (CurrentForm as FrmBusqueda).CurrentState == FasesBusqueda.FiltroFrecuenciaRestock)
+            || (CurrentForm as FrmBusqueda).CurrentState == FasesBusqueda.tomandoFiltroFrecuenciaRestock)
+            {
+                StringBuilder sb = new StringBuilder();
+
+                if((CurrentForm as FrmBusqueda).CurrentState == FasesBusqueda.tomandoFiltroFrecuenciaRestock)
+                {
+                    if (int.TryParse(message.TxtMensaje, out int valor))
+                    {
+                        sb.Append("Añadido el filtro.");
+                        (CurrentForm as FrmBusqueda).AddFilter(new FiltroPorFrecuenciaRestock(valor));
+                    }
+                    else
+                    {
+                        sb.Append("Ingresa un valor numerico maximo.");
+                        response = sb.ToString();
+                        return true;
+                    }
+                }
+
+                sb.Append($"¿Listo para buscar?\n");
+                response = sb.ToString();
+                (CurrentForm as FrmBusqueda).CurrentState = FasesBusqueda.Done;
+                (CurrentForm as IListableForm).CurrentStateListado = ListadoPublicaciones.HandlerListadoPublicaciones.fasesListado.Inicio;
                 return true;
             }
             else
@@ -179,37 +213,67 @@ namespace MessageGateway.Handlers
             /// Se espera respuesta si quiere filtrar por empresa.
             /// </summary>
             FiltroEmpresa,
+
+            ///Se espera si se toma el filtro Empresa.
             tomandoFiltroEmpresa,
 
             /// <summary>
             /// Se espera respuesta si quiere filtrar por ecategoría.
             /// </summary>
             FiltroCategoria,
+
+            ///Esperando el Filtro de Categoria
             tomandoFiltroCategoria,
 
             /// <summary>
             /// Se espera respuesta si quiere filtrar por lugar de retiro.
             /// </summary>
             FiltroLugarRetiro,
+
+            /// <summary>
+            /// Se espera respuesta por el lugar de retiro (dpto).
+            /// </summary>
             tomandoFiltroLugarRetiro1,
+
+            /// <summary>
+            /// Se espera respuesta por el lugar de retiro (ciudad).
+            /// </summary>
             tomandoFiltroLugarRetiro2,
 
             /// <summary>
             /// Se espera respuesta si quiere filtrar por residuo.
             /// </summary>
             FiltroResiduo,
+
+            /// <summary>
+            /// Se espera respuesta por el tipo de residuo.
+            /// </summary>
             tomandoFiltroResiduo,
 
             /// <summary>
             /// Se espera respuesta si quiere filtrar por precio máximo.
             /// </summary>
             FiltroPrecioMaximo,
+
+            /// <summary>
+            /// Se espera respuesta por el precio máximo a pagar.
+            /// </summary>
             tomandoFiltroPrecioMaximo,
 
             /// <summary>
             /// Se espera respuesta si quiere filtrar por frecuencia de restock.
             /// </summary>
-            FiltroFrecuenciaRestock
+            FiltroFrecuenciaRestock,
+
+            /// <summary>
+            /// Se espera respuesta por frecuencia de restock.
+            /// </summary>
+            tomandoFiltroFrecuenciaRestock,
+
+            /// <summary>
+            /// Finalizada la búsqueda.
+            /// </summary>
+            Done
         }
     }
 }

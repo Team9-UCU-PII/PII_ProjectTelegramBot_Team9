@@ -2,6 +2,9 @@
 // <copyright file="Reporte.cs" company="Universidad Católica del Uruguay">
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
+//
+// Patrón utilizado: Expert
+// La clase Reporte es la que tiene toda la información necesaria para generar el reporte de publicaciones vendidas.
 //--------------------------------------------------------------------------------
 
 using System;
@@ -62,7 +65,7 @@ namespace BotCore.Publication
         public static Reporte Generar(DateTime fechaInicio, DateTime fechaFin, IUsuario usuario)
         {
             List<Venta> ventas = DataAccess.Instancia.Obtener<Venta>();
-            ventas = ventas.Where((Venta v) => v.Comprador == usuario || v.Publicacion.Vendedor == usuario).ToList();
+            ventas = ventas.Where((Venta v) => (v.Comprador == usuario || v.Publicacion.Vendedor == usuario) && (v.Fecha >= fechaInicio && v.Fecha <= fechaFin)).ToList();
             return new Reporte(fechaInicio, fechaFin, ventas, usuario);
         }
 

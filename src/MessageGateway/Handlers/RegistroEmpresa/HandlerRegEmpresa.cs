@@ -102,7 +102,7 @@ namespace MessageGateway.Handlers
                 da.Insertar(empresa.DatosLogin);
 
                 (CurrentForm as FrmRegistroEmpresa).CurrentState = fasesRegEmpresa.Done;
-                (CurrentForm as FrmRegistroEmpresa).ChangeForm(new FrmRegistroDatosLogin((CurrentForm as FrmRegistroEmpresa).EmpresaFinal), message.ChatID);
+                CurrentForm.ChangeForm(new FrmMenuEmpresa((CurrentForm as FrmRegistroEmpresa).EmpresaFinal), message.ChatID);
                 return true;
             }
             else

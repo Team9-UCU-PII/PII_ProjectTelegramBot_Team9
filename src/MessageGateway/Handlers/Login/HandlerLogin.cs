@@ -5,11 +5,10 @@
 //--------------------------------------------------------------------------------
 
 using ClassLibrary.User;
-using System.Collections.Generic;
 using System.Text;
 using MessageGateway.Forms;
-using Importers;
-using System.Linq;
+
+using BotCore.User;
 
 namespace MessageGateway.Handlers.Login
 {
@@ -61,24 +60,22 @@ namespace MessageGateway.Handlers.Login
             }
             else if ((CurrentForm as FrmLogin).CurrentState == fasesLogin.tomandoPass)
             {
+                Autenticacion auth = Autenticacion.Instancia;
                 StringBuilder sb = new StringBuilder();
                 string userBuscado = (CurrentForm as FrmLogin).NombreUsuario;
                 string pass = message.TxtMensaje;
-                List<DatosLogin> allUsers = dataBase.Obtener<DatosLogin>();
-                DatosLogin usuario = allUsers.Where(dl => dl.NombreUsuario==userBuscado && dl.Contrasenia==pass).SingleOrDefault();
 
-                if (usuario != null)
+                if (auth.ValidarUsuario(userBuscado, pass, out IUsuario org))
                 {
                     sb.Append($"Iniciada Sesión Correctamente!");
                     response = sb.ToString();
-                    switch (usuario.Usuario)
+                    if (org is Emprendedor)
                     {
-                        case Emprendedor e:
-                            CurrentForm.ChangeForm(new FrmMenuEmprendedor(e), message.ChatID);
-                            break;
-                        case Empresa e:
-                            CurrentForm.ChangeForm(new FrmMenuEmpresa(e), message.ChatID);
-                            break;
+                        CurrentForm.ChangeForm(new FrmMenuEmprendedor(org), message.ChatID);
+                    }
+                    else
+                    {
+                        CurrentForm.ChangeForm(new FrmMenuEmpresa(org), message.ChatID);
                     }
                     return true;
                 }
@@ -117,6 +114,5 @@ namespace MessageGateway.Handlers.Login
             /// </summary>
             tomandoPass
         }
-        private DataAccess dataBase = DataAccess.Instancia;
     }
 }

@@ -6,8 +6,9 @@
     <members>
         <member name="T:MessageGateway.AdaptadorTelegram">
             <summary>
-            Esta clase instanciaría el chat y bot, y almacenaría mensaje por mensaje que va recibiendo como string.
-            Permite implementar gateway a telegram.
+            Esta clase instanciaría el chat y bot, y almacenaría mensaje por mensaje que va recibiendo
+            como string. Permite portar la aplicación a Telegram siguiendo el patrón Adapter al heredar
+            de la clase base que implementa IGateway
             </summary>
         </member>
         <member name="P:MessageGateway.AdaptadorTelegram.Instancia">
@@ -25,23 +26,1627 @@
             <summary>
             Metodo de la interfaz <see iref ="IGateway"/>, envia un string como mensaje.
             </summary>
-            <param name="mensaje"><see langword ="string"/>.</param>
-        </member>
-        <member name="P:MessageGateway.AdaptadorTelegram.MensajeRecibido">
-            <summary>
-            Obtiene el ultimo mensaje recibido.
-            </summary>
-            <value><see iref ="IMessage"/>.</value>
+            <param name="mensaje">el IMessage a enviar.</param>
         </member>
         <member name="P:MessageGateway.AdaptadorTelegram.ObtenerLinkInvitacion">
             <summary>
             Obtiene el link pertinente para hablar con el bot.
             </summary>
         </member>
+        <member name="P:MessageGateway.AdaptadorTelegram.Conversaciones">
+            <summary>
+            Diccionario que almacena el formulario actual de las distintas conversaciones que 
+            mantiene el bot con los distintos usuarios.
+            </summary>
+        </member>
         <member name="M:MessageGateway.AdaptadorTelegram.EnviarUbicacionEnMapa(MessageGateway.IMessage,System.Single,System.Single)">
             <summary>
-            Método que envía una ubicacion al usuario.
+            Metodo que envia un mensaje de tipo ubicacion vinculado a un valor de latitud y longitud.
             </summary>
+            <param name="mensaje">IMessage: info del chat.</param>
+            <param name="latitud">Float: valor de latitud</param>
+            <param name="longitud">Float: valor de longitud.</param>
+        </member>
+        <member name="T:MessageGateway.ChatManager">
+            <summary>
+            Clase delegable de tareas de almacenamiento de ingormación de chats
+            para permitir simultaneidad de conversaciones.
+            </summary>
+        </member>
+        <member name="P:MessageGateway.ChatManager.Instancia">
+            <summary>
+            Atributo estatico de accesso al singleton.
+            </summary>
+            <value>ChatManager.</value>
+        </member>
+        <member name="M:MessageGateway.ChatManager.ObtenerFormularioActual(System.String)">
+            <summary>
+            Método que retorna el formulario en el que se ubica actualmente la conversación con un usuario.
+            </summary>
+            <param name="chatID">el ID del chat del usuario</param>
+            <returns>El formulario que procesa actualmente los mensajes del usuario.</returns>
+        </member>
+        <member name="M:MessageGateway.ChatManager.CambiarFormulario(MessageGateway.Forms.IFormulario,System.String)">
+            <summary>
+            Cambia el formulario que procesa los mensajes de un usuario.
+            </summary>
+            <param name="next">el nuevo formulario que procesa los mensajes.</param>
+            <param name="chatID">el ID del chat al cual se le cambia el formulario.</param>
+        </member>
+        <member name="M:MessageGateway.ChatManager.CrearConversacion(System.String)">
+            <summary>
+            Crea una nueva conversación con un usuario.
+            </summary>
+            <param name="chatID">el ID del usuario para el cual se crea la conversación.</param>
+        </member>
+        <member name="T:MessageGateway.Forms.FormularioBase">
+            <summary>
+            Superclase para todos los formularios.
+            </summary>
+        </member>
+        <member name="P:MessageGateway.Forms.FormularioBase.messageHandler">
+            <summary>
+            Propiedad protegida que asigna al formulario como CurrentForm de todos los handlers que determine
+            dentro de si.
+            </summary>
+            <value>IMessageHandler</value>
+        </member>
+        <member name="M:MessageGateway.Forms.FormularioBase.#ctor">
+            <summary>
+            Constructor base de Formulario.
+            </summary>
+        </member>
+        <member name="M:MessageGateway.Forms.FormularioBase.ReceiveMessage(MessageGateway.IMessage)">
+            <summary>
+            Metodo que pasa el mensaje recibido por todos los handlers contenidos en el formulario
+            y devuelve la respuesta dada por los handlers.
+            </summary>
+            <param name="message">IMessage.</param>
+            <returns>String.</returns>
+        </member>
+        <member name="M:MessageGateway.Forms.FormularioBase.ChangeForm(MessageGateway.Forms.IFormulario,System.String)">
+            <summary>
+            Metodo que finaliza un formulario y abre uno nuevo.
+            </summary>
+            <param name="next">IFormulario.</param>
+            <param name="chatID">String.</param>
+        </member>
+        <member name="T:MessageGateway.Forms.IFormulario">
+            <summary>
+            Interfaz que engloba todos los forularios y sus metodos principales.
+            </summary>
+        </member>
+        <member name="M:MessageGateway.Forms.IFormulario.ReceiveMessage(MessageGateway.IMessage)">
+            <summary>
+            Metodo que pase el mensaje por los handlers y devuelva una respuesta para el user
+            </summary>
+            <param name="mensaje">IMessage.</param>
+            <returns>String.</returns>
+        </member>
+        <member name="M:MessageGateway.Forms.IFormulario.ChangeForm(MessageGateway.Forms.IFormulario,System.String)">
+            <summary>
+            Metodo que cambia el formulario donde esta parado el usuario.
+            </summary>
+            <param name="next"></param>
+            <param name="chatID"></param>
+        </member>
+        <member name="T:MessageGateway.Forms.IListableForm">
+            <summary>
+            Interfaz para las publicaciones filtradas.
+            </summary>
+        </member>
+        <member name="P:MessageGateway.Forms.IListableForm.publicacionesFiltradas">
+            <summary>
+            Lista en la que se guardan las publicaciones filtradas.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:MessageGateway.Forms.IListableForm.CurrentStateListado">
+            <summary>
+            Obtiene o establece el estado de construccion del listado.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:MessageGateway.Forms.IListableForm.publicacionSeparada">
+            <summary>
+            Lista para guardar la publicación con detalles.
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:MessageGateway.Forms.ILocationForm">
+            <summary>
+            Interfaz que engloba todos los formularios que necesitan una instancia de Location.
+            </summary>
+        </member>
+        <member name="P:MessageGateway.Forms.ILocationForm.direccion">
+            <summary>
+            La direccion, calle y puerta.
+            </summary>
+            <value>String.</value>
+        </member>
+        <member name="P:MessageGateway.Forms.ILocationForm.city">
+            <summary>
+            La ciudad.
+            </summary>
+            <value>String.</value>
+        </member>
+        <member name="P:MessageGateway.Forms.ILocationForm.dpto">
+            <summary>
+            El departamento.
+            </summary>
+            <value>String.</value>
+        </member>
+        <member name="P:MessageGateway.Forms.ILocationForm.CurrentStateLocation">
+            <summary>
+            Obtiene o establece el estado de construccion del Location.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:MessageGateway.Forms.ILocationForm.Ubicacion">
+            <summary>
+            Instancia de Location Construida a partir del resto de propiedades.
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:MessageGateway.Forms.IResiduoForm">
+            <summary>
+            Interfaz que engloba los formularios que necesitan de un residuo.
+            </summary>
+        </member>
+        <member name="P:MessageGateway.Forms.IResiduoForm.residuo">
+            <summary>
+            La instancia del residuo que se crea a partir de las siguientes propiedades.
+            </summary>
+            <value>Residuo.</value>
+        </member>
+        <member name="P:MessageGateway.Forms.IResiduoForm.descripcion">
+            <summary>
+            Descripción del residuo.
+            </summary>
+            <value>String.</value>
+        </member>
+        <member name="P:MessageGateway.Forms.IResiduoForm.unit">
+            <summary>
+            Unidad de Medida (Lts, Kg, etc...).
+            </summary>
+            <value>String.</value>
+        </member>
+        <member name="P:MessageGateway.Forms.IResiduoForm.categoria">
+            <summary>
+            Categoria del residuo.
+            </summary>
+            <value>Categoria.</value>
+        </member>
+        <member name="P:MessageGateway.Forms.IResiduoForm.habilitaciones">
+            <summary>
+            Lista de habilitaciones necesarias para obtener el residuo.
+            </summary>
+            <value>List de Habilitacion</value>
+        </member>
+        <member name="P:MessageGateway.Forms.IResiduoForm.CurrentStateResiduo">
+            <summary>
+            Obtiene o establece el estado de la construcción del resiudo.
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:MessageGateway.Forms.FrmAltaOferta">
+            <summary>
+            Formulario que recopilara la información necesaria para crear una publicacion.
+            </summary>
+        </member>
+        <member name="P:MessageGateway.Forms.FrmAltaOferta.Oferta">
+            <summary>
+            Oferta resultante.
+            </summary>
+            <value>Publicacion.</value>
+        </member>
+        <member name="F:MessageGateway.Forms.FrmAltaOferta.PrecioUnitario">
+            <summary>
+            Precio por unidad del residuo.
+            </summary>
+        </member>
+        <member name="F:MessageGateway.Forms.FrmAltaOferta.Moneda">
+            <summary>
+            Moneda que la caracterizará.
+            </summary>
+        </member>
+        <member name="F:MessageGateway.Forms.FrmAltaOferta.Cantidad">
+            <summary>
+            Cantidad del residuo segun la unidad dada.
+            </summary>
+        </member>
+        <member name="P:MessageGateway.Forms.FrmAltaOferta.FrecuenciaRestock">
+            <summary>
+            Frecuencia en meses de reposición de residuo recurrente.
+            </summary>
+            <value>Int.</value>
+        </member>
+        <member name="P:MessageGateway.Forms.FrmAltaOferta.Ubicacion">
+            <summary>
+            Ubicación del residuo.
+            </summary>
+            <value><see cref = "T:ClassLibrary.LocationAPI.Location" />.</value>
+        </member>
+        <member name="P:MessageGateway.Forms.FrmAltaOferta.Vendedor">
+            <summary>
+            La empresa vendedora.
+            </summary>
+        </member>
+        <member name="P:MessageGateway.Forms.FrmAltaOferta.InstanciaLoggeada">
+            <summary>
+            Propiedad que permite acceder a la empresa loggeada.
+            </summary>
+            <value>Empresa.</value>
+        </member>
+        <member name="F:MessageGateway.Forms.FrmAltaOferta.Descripcion">
+            <summary>
+            Descripcion de la publicación.
+            </summary>
+        </member>
+        <member name="M:MessageGateway.Forms.FrmAltaOferta.#ctor(ClassLibrary.User.IUsuario)">
+            <summary>
+            Constructor del formulario creador de publicaciones con sus handlers.
+            </summary>
+        </member>
+        <member name="P:MessageGateway.Forms.FrmAltaOferta.CurrentState">
+            <summary>
+            El estado del formulario, dado por su handler principal.
+            </summary>
+            <value><see langword = "enum"/> de HandlerAltaOferta.fasesAltaOferta.</value>
+        </member>
+        <member name="P:MessageGateway.Forms.FrmAltaOferta.CurrentStateResiduo">
+            <summary>
+            El estado del formulario, para la subconstruccion del residuo.
+            </summary>
+            <value><see langword = "enum"/> de HandlerNewResiduo.fasesResiduo.</value>
+        </member>
+        <member name="P:MessageGateway.Forms.FrmAltaOferta.residuo">
+            <summary>
+            El residuo creado a partir de las propiedades de IResiduoForm.
+            </summary>
+            <value><see cref = "T:ClassLibrary.Publication.Residuo" />.</value>
+        </member>
+        <member name="P:MessageGateway.Forms.FrmAltaOferta.descripcion">
+            <summary>
+            Descripcion para el residuo.
+            </summary>
+            <value>String.</value>
+        </member>
+        <member name="P:MessageGateway.Forms.FrmAltaOferta.unit">
+            <summary>
+            Unidad de medida del residuo.
+            </summary>
+            <value>String.</value>
+        </member>
+        <member name="P:MessageGateway.Forms.FrmAltaOferta.categoria">
+            <summary>
+            Categoria del residuo (tambien abarca la de la publicación en si).
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:MessageGateway.Forms.FrmAltaOferta.habilitaciones">
+            <summary>
+            Habilitaciones para el residuo.
+            </summary>
+            <value>List de Habilitacion</value>
+        </member>
+        <member name="P:MessageGateway.Forms.FrmAltaOferta.CurrentStateLocation">
+            <summary>
+            El estado del formulario respecto la construccion de Location.
+            </summary>
+            <value><see langword = "enum"/> de HandlerLocation.faseLocation.</value>
+        </member>
+        <member name="P:MessageGateway.Forms.FrmAltaOferta.city">
+            <summary>
+            Ciudad donde se retira lo publicado.
+            </summary>
+            <value>String.</value>
+        </member>
+        <member name="P:MessageGateway.Forms.FrmAltaOferta.dpto">
+            <summary>
+            Departamento donde se retira lo publicado.
+            </summary>
+            <value>String.</value>
+        </member>
+        <member name="P:MessageGateway.Forms.FrmAltaOferta.direccion">
+            <summary>
+            Direccion donde se retira lo publicado.
+            </summary>
+            <value>String.</value>
+        </member>
+        <member name="T:MessageGateway.Forms.FrmBusqueda">
+            <summary>
+            Formulario que recopilara la información necesaria para buscar las ofertas según los filtros.
+            </summary>
+        </member>
+        <member name="M:MessageGateway.Forms.FrmBusqueda.#ctor(ClassLibrary.User.IUsuario)">
+            <summary>
+            Constructor del formulario de búsqueda de ofertas con sus handlers.
+            </summary>
+        </member>
+        <member name="F:MessageGateway.Forms.FrmBusqueda.dpto">
+            <summary>
+            Departamento a buscarse.
+            </summary>
+        </member>
+        <member name="P:MessageGateway.Forms.FrmBusqueda.CurrentState">
+            <summary>
+            El estado del formulario, dado por su handler principal.
+            </summary>
+            <value><see langword = "enum"/> de HandlerBusqueda.FasesBusqueda.</value>
+        </member>
+        <member name="P:MessageGateway.Forms.FrmBusqueda.InstanciaLoggeada">
+            <summary>
+            Obtiene o establece el Emprendedor iniciado.
+            </summary>
+            <value>Emprendedor.</value>
+        </member>
+        <member name="P:MessageGateway.Forms.FrmBusqueda.cadenaFilters">
+            <summary>
+            Obtiene o establece los filtros que se desean utilizar.
+            </summary>
+            <value>IFiltroBUsqueda.</value>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:MessageGateway.Forms.FrmBusqueda.publicacionesFiltradas" -->
+        <member name="M:MessageGateway.Forms.FrmBusqueda.AddFilter(BotCore.Publication.Filters.IFiltroBusqueda)">
+            <summary>
+            Metodo que crea una cadena de filtros nueva, o añade las solicitadas.
+            </summary>
+            <param name="filtro">IFiltroBusqueda.</param>
+        </member>
+        <member name="T:MessageGateway.Forms.IPostLogin">
+            <summary>
+            Interfaz para condicionar y controlar que despues del login no se pierda referencia al
+            IUsuario vinculado para las operaciones del bot.
+            </summary>
+        </member>
+        <member name="P:MessageGateway.Forms.IPostLogin.InstanciaLoggeada">
+            <summary>
+            Obtiene o establece el IUsuario.
+            </summary>
+            <value>Empresa o Emprendedor.</value>
+        </member>
+        <member name="T:MessageGateway.Forms.FrmMenuEmprendedor">
+            <summary>
+            Primer formulario del chat luego del login o el registro de un emprendedor.
+            </summary>
+        </member>
+        <member name="M:MessageGateway.Forms.FrmMenuEmprendedor.#ctor(ClassLibrary.User.IUsuario)">
+            <summary>
+            Constructor del formulario con sus handlers.
+            </summary>
+        </member>
+        <member name="F:MessageGateway.Forms.FrmMenuEmprendedor.CurrentState">
+            <summary>
+            Estado del formulario dado por el handler MenuEmprendedor.
+            </summary>
+        </member>
+        <member name="P:MessageGateway.Forms.FrmMenuEmprendedor.InstanciaLoggeada">
+            <summary>
+            Obtiene o establece la instancia que refiere el emprendedor en este form.
+            </summary>
+            <value>Emprendedor.</value>
+        </member>
+        <member name="T:MessageGateway.Forms.FrmMenuEmpresa">
+            <summary>
+            Primer formulario del chat luego del login o el registro de una empresa.
+            </summary>
+        </member>
+        <member name="M:MessageGateway.Forms.FrmMenuEmpresa.#ctor(ClassLibrary.User.IUsuario)">
+            <summary>
+            Constructor del formulario con sus handlers.
+            </summary>
+        </member>
+        <member name="F:MessageGateway.Forms.FrmMenuEmpresa.CurrentState">
+            <summary>
+            Estado del formulario dado por el HandlerMenuEmpresa.
+            </summary>
+        </member>
+        <member name="P:MessageGateway.Forms.FrmMenuEmpresa.InstanciaLoggeada">
+            <summary>
+            Obtiene o establece la instancia de la empresa parada en el menu.
+            </summary>
+            <value>Empresa.</value>
+        </member>
+        <member name="T:MessageGateway.Forms.FrmModOferta">
+            <summary>
+            Formulario que buscara las ofertas de la empresa y permite cambiarlas en la base de datos.
+            </summary>
+        </member>
+        <member name="M:MessageGateway.Forms.FrmModOferta.#ctor(ClassLibrary.User.IUsuario)">
+            <summary>
+            Constructor del formulario de Modificar Oferta de ofertas con sus handlers.
+            </summary>
+        </member>
+        <member name="P:MessageGateway.Forms.FrmModOferta.CurrentState">
+            <summary>
+            El estado del formulario, dado por su handler principal.
+            </summary>
+            <value><see langword = "enum"/> de HandlerListadoPublicaciones.fasesListado.</value>
+        </member>
+        <member name="P:MessageGateway.Forms.FrmModOferta.InstanciaLoggeada">
+            <summary>
+            Obtiene o establece el Emprendedor iniciado.
+            </summary>
+            <value>Emprendedor.</value>
+        </member>
+        <member name="P:MessageGateway.Forms.FrmModOferta.cadenaFilters">
+            <summary>
+            Obtiene el filtro de empresa para ver sus publicaciones unicamente.
+            </summary>
+            <value>IFiltroBusqueda.</value>
+        </member>
+        <member name="P:MessageGateway.Forms.FrmModOferta.publicacionesFiltradas">
+            <summary>
+             Guarda las publicaciones de la empresa loggeada unicamente.
+             </summary>
+             <value>List de Publicacion.</value>
+        </member>
+        <member name="T:MessageGateway.Forms.FrmReporte">
+            <summary>
+            Formulario que recopila la información para poder crear un reporte.
+            </summary>
+        </member>
+        <member name="M:MessageGateway.Forms.FrmReporte.#ctor(ClassLibrary.User.IUsuario)">
+            <summary>
+            Constructor del formulario con su handler.
+            </summary>
+        </member>
+        <member name="P:MessageGateway.Forms.FrmReporte.AnioInicio">
+            <summary>
+            Año de inicio para pasar al DataTime para el reporte.
+            </summary>
+            <value>int</value>
+        </member>
+        <member name="P:MessageGateway.Forms.FrmReporte.MesInicio">
+            <summary>
+            Mes de inicio para pasar al DataTime para el reporte.
+            </summary>
+            <value>int</value>
+        </member>
+        <member name="P:MessageGateway.Forms.FrmReporte.DiaInicio">
+            <summary>
+            Día de inicio para pasar al DataTime para el reporte.
+            </summary>
+            <value>int</value>
+        </member>
+        <member name="P:MessageGateway.Forms.FrmReporte.AnioFin">
+            <summary>
+            Año de fin para pasar al DataTime para el reporte.
+            </summary>
+            <value>int</value>
+        </member>
+        <member name="P:MessageGateway.Forms.FrmReporte.MesFin">
+            <summary>
+            Mes de fin para pasar al DataTime para el reporte.
+            </summary>
+            <value>int</value>
+        </member>
+        <member name="P:MessageGateway.Forms.FrmReporte.DiaFin">
+            <summary>
+            Día de fin para pasar al DataTime para el reporte.
+            </summary>
+            <value>int</value>
+        </member>
+        <member name="P:MessageGateway.Forms.FrmReporte.InstanciaLoggeada">
+            <summary>
+            Para acceder a al usuario loggeado.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:MessageGateway.Forms.FrmReporte.reporteFinal">
+            <summary>
+            El reporte final creado.
+            </summary>
+            <value><see cref = "T:BotCore.Publication.Reporte" />.</value>
+        </member>
+        <member name="P:MessageGateway.Forms.FrmReporte.CurrentState">
+            <summary>
+            EL estado del formulario.
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:MessageGateway.Forms.FrmAceptarInvitacion">
+            <summary>
+            Formulario que regula las invitaciones hechas por los admins.
+            </summary>
+        </member>
+        <member name="M:MessageGateway.Forms.FrmAceptarInvitacion.#ctor">
+            <summary>
+            Constructor del formulario con sus handler correspondientes.
+            </summary>
+        </member>
+        <member name="F:MessageGateway.Forms.FrmAceptarInvitacion.CurrentState">
+            <summary>
+            El estado local del formulario, regulado por su handler principal HandlerInviteInicio.
+            </summary>
+        </member>
+        <member name="T:MessageGateway.Forms.FrmBienvenida">
+            <summary>
+            Primer formulario del chat, lleva al inicio de sesion, invitacion o registro.
+            </summary>
+        </member>
+        <member name="M:MessageGateway.Forms.FrmBienvenida.#ctor">
+            <summary>
+            Constructor del formulario y sus handlers.
+            </summary>
+        </member>
+        <member name="F:MessageGateway.Forms.FrmBienvenida.CurrentState">
+            <summary>
+            Estado del formulario dado por su Handler Principal HandlerBienvenida.
+            </summary>
+        </member>
+        <member name="T:MessageGateway.Forms.FrmLogin">
+            <summary>
+            Formulario que engloba el inicio de sesión.
+            </summary>
+        </member>
+        <member name="F:MessageGateway.Forms.FrmLogin.NombreUsuario">
+            <summary>
+            Username que se tratara de loggear.
+            </summary>
+        </member>
+        <member name="M:MessageGateway.Forms.FrmLogin.#ctor">
+            <summary>
+            Constructor de formulario y sus handlers necesarios.
+            </summary>
+        </member>
+        <member name="F:MessageGateway.Forms.FrmLogin.CurrentState">
+            <summary>
+            Estado del handlerLogin.
+            </summary>
+        </member>
+        <member name="T:MessageGateway.Forms.FrmRegistroDatosLogin">
+            <summary>
+            Formulario que engloba la creacion de un datosLogin nuevo.
+            </summary>
+        </member>
+        <member name="P:MessageGateway.Forms.FrmRegistroDatosLogin.OrganizacionEnRegistro">
+            <summary>
+            Atributo en caso de venirse de una invitación.
+            </summary>
+            <value>IUsuario.</value>
+        </member>
+        <member name="F:MessageGateway.Forms.FrmRegistroDatosLogin.NombreUsuario">
+            <summary>
+            El Username con el que se identifica.
+            </summary>
+        </member>
+        <member name="F:MessageGateway.Forms.FrmRegistroDatosLogin.Password">
+            <summary>
+            La contraseña a asignarsele.
+            </summary>
+        </member>
+        <member name="F:MessageGateway.Forms.FrmRegistroDatosLogin.passChkr">
+            <summary>
+            Sostiene la contraseña para confirmarla.
+            </summary>
+        </member>
+        <member name="P:MessageGateway.Forms.FrmRegistroDatosLogin.result">
+            <summary>
+            Obtiene el DatosLogin resultante de los datos tomados.
+            </summary>
+        </member>
+        <member name="M:MessageGateway.Forms.FrmRegistroDatosLogin.#ctor(ClassLibrary.User.Empresa)">
+            <summary>
+            Constructor del formulario y sus handlers para un invitado.
+            </summary>
+            <param name="organizacion">Empresa Invitada</param>
+        </member>
+        <member name="M:MessageGateway.Forms.FrmRegistroDatosLogin.#ctor">
+            <summary>
+            Constructor generico del formulario y sus handlers.
+            </summary>
+        </member>
+        <member name="F:MessageGateway.Forms.FrmRegistroDatosLogin.CurrentState">
+            <summary>
+            El estado de la creacion de los DatosLogin.
+            </summary>
+        </member>
+        <member name="T:MessageGateway.Forms.FrmRegistroEmprendedor">
+            <summary>
+            Formulario que recopilara la información necesaria para registrar un emprendedor.
+            </summary>
+        </member>
+        <member name="P:MessageGateway.Forms.FrmRegistroEmprendedor.emprendedorFinal">
+            <summary>
+            Retorna el emprendedor resultante si cumple todos los requisitos.
+            </summary>
+            <value>Emprendedor.</value>
+        </member>
+        <member name="F:MessageGateway.Forms.FrmRegistroEmprendedor.Nombre">
+            <summary>
+            Nombre del emprendedor.
+            </summary>
+        </member>
+        <member name="P:MessageGateway.Forms.FrmRegistroEmprendedor.Ubicacion">
+            <summary>
+            Ubicación del emprendedor.
+            </summary>
+            <value><see cref = "T:ClassLibrary.LocationAPI.Location" />.</value>
+        </member>
+        <member name="F:MessageGateway.Forms.FrmRegistroEmprendedor.Rubro">
+            <summary>
+            Rubro del emprendedor.
+            </summary>
+        </member>
+        <member name="F:MessageGateway.Forms.FrmRegistroEmprendedor.Especializacion">
+            <summary>
+            Especialización del emprendedor.
+            </summary>
+        </member>
+        <member name="P:MessageGateway.Forms.FrmRegistroEmprendedor.habilitaciones">
+            <summary>
+            Habilitaciones del emprendedor.
+            </summary>
+            <value>List de Habilitacion</value>
+        </member>
+        <member name="F:MessageGateway.Forms.FrmRegistroEmprendedor.LoginCred">
+            <summary>
+            User Loggeado anteriormente.
+            </summary>
+        </member>
+        <member name="M:MessageGateway.Forms.FrmRegistroEmprendedor.#ctor(ClassLibrary.User.DatosLogin)">
+            <summary>
+            Constructor del formulario de registro de emprendedores con sus handlers.
+            </summary>
+        </member>
+        <member name="P:MessageGateway.Forms.FrmRegistroEmprendedor.CurrentState">
+            <summary>
+            El estado del formulario, dado por su handler principal.
+            </summary>
+            <value><see langword = "enum"/> de HandlerRegistroEmprendedor.FasesRegEmprendedor.</value>
+        </member>
+        <member name="P:MessageGateway.Forms.FrmRegistroEmprendedor.CurrentStateLocation">
+            <summary>
+            El estado del formulario respecto la construccion de Location.
+            </summary>
+            <value><see langword = "enum"/> de HandlerLocation.faseLocation.</value>
+        </member>
+        <member name="P:MessageGateway.Forms.FrmRegistroEmprendedor.city">
+            <summary>
+            Ciudad donde se encuentra el emprendedor.
+            </summary>
+            <value>String.</value>
+        </member>
+        <member name="P:MessageGateway.Forms.FrmRegistroEmprendedor.dpto">
+            <summary>
+            Departamento donde se encuentra el emprendedor.
+            </summary>
+            <value>String.</value>
+        </member>
+        <member name="P:MessageGateway.Forms.FrmRegistroEmprendedor.direccion">
+            <summary>
+            Dirección donde se encuentra el emprendedor.
+            </summary>
+            <value>String.</value>
+        </member>
+        <member name="T:MessageGateway.Forms.FrmRegistroEmpresa">
+            <summary>
+            Formulario que engloba la creacion de una empresa.
+            </summary>
+        </member>
+        <member name="F:MessageGateway.Forms.FrmRegistroEmpresa.NombrePublico">
+            <summary>
+            El nombre publico de la empresa.
+            </summary>
+        </member>
+        <member name="F:MessageGateway.Forms.FrmRegistroEmpresa.Rubro">
+            <summary>
+            Rubro de la empresa.
+            </summary>
+        </member>
+        <member name="F:MessageGateway.Forms.FrmRegistroEmpresa.Descripcion">
+            <summary>
+            Descripción de la empresa.
+            </summary>
+        </member>
+        <member name="F:MessageGateway.Forms.FrmRegistroEmpresa.Contacto">
+            <summary>
+            Un medio de contacto con la empresa.
+            </summary>
+        </member>
+        <member name="F:MessageGateway.Forms.FrmRegistroEmpresa.EmpresaPreCreada">
+            <summary>
+            Instancia de Empresa precargada (desde una invitación).
+            </summary>
+        </member>
+        <member name="F:MessageGateway.Forms.FrmRegistroEmpresa.UserCreds">
+            <summary>
+            Credenciales de loggeo de la empresa.
+            </summary>
+        </member>
+        <member name="P:MessageGateway.Forms.FrmRegistroEmpresa.EmpresaFinal">
+            <summary>
+            LA empresa que se crea desde este form.
+            </summary>
+            <value>Empresa.</value>
+        </member>
+        <member name="M:MessageGateway.Forms.FrmRegistroEmpresa.#ctor(ClassLibrary.User.IUsuario,ClassLibrary.User.DatosLogin)">
+            <summary>
+            Formulario encargado de almacenar la informacion para registrar una empresa.
+            </summary>
+        </member>
+        <member name="F:MessageGateway.Forms.FrmRegistroEmpresa.CurrentState">
+            <summary>
+            Estado del formulario respecto la creacion gral de la Empresa.
+            </summary>
+        </member>
+        <member name="P:MessageGateway.Forms.FrmRegistroEmpresa.CurrentStateLocation">
+            <summary>
+            Estado de la construccion del Location especificamente.
+            </summary>
+            <value><see langword = "enum"/> de HandlerLocation.faseLocation.</value>
+        </member>
+        <member name="P:MessageGateway.Forms.FrmRegistroEmpresa.Ubicacion">
+            <summary>
+            Ubicación del local o sede de la Empresa.
+            </summary>
+            <value>Location.</value>
+        </member>
+        <member name="P:MessageGateway.Forms.FrmRegistroEmpresa.dpto">
+            <summary>
+            Departamento de la sede.
+            </summary>
+            <value>String.</value>
+        </member>
+        <member name="P:MessageGateway.Forms.FrmRegistroEmpresa.city">
+            <summary>
+            Ciudad de la sede.
+            </summary>
+            <value>String.</value>
+        </member>
+        <member name="P:MessageGateway.Forms.FrmRegistroEmpresa.direccion">
+            <summary>
+            Direccion de la sede (calle y puerta o Km).
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:MessageGateway.GatewayBase">
+             <summary>
+            Clase base que al implementar la interfaz IGateway sigue el principio de inversión de dependencias.
+             </summary>
+        </member>
+        <member name="F:MessageGateway.GatewayBase.startupTime">
+            <summary>
+            Momento en que se inicio el bot desde consola.
+            </summary>
+        </member>
+        <member name="F:MessageGateway.GatewayBase.chatManager">
+            <summary>
+            Para reducir el acoplamiento, usamos composición para delegar las peticiones de cambio
+            de estado de las conversaciones en la instancia de la clase ChatManager.
+            </summary>
+        </member>
+        <member name="M:MessageGateway.GatewayBase.#ctor">
+            <summary>
+            Constructor vacío.
+            </summary>
+        </member>
+        <member name="M:MessageGateway.GatewayBase.EnviarMensaje(MessageGateway.IMessage)">
+            <summary>
+            Envía un mensaje de texto a través del Gateway actual.
+            </summary>
+            <param name="mensaje">el IMessage a enviar.</param>
+        </member>
+        <member name="M:MessageGateway.GatewayBase.EnviarUbicacionEnMapa(MessageGateway.IMessage,System.Single,System.Single)">
+            <summary>
+            Envía una ubicación a usando el Gateway y servicio de localización actuales.
+            </summary>
+            <param name="mensaje">el texto que acompaña la ubicación.</param>
+            <param name="latitud">latitud de la ubicación enviada.</param>
+            <param name="longitud">longitud de la ubicación enviada.</param>
+        </member>
+        <member name="P:MessageGateway.GatewayBase.ObtenerLinkInvitacion">
+            <summary>
+            Obtiene el enlace al bot en la plataforma actual.
+            </summary>
+            <value>El enlace al chatbot en la plataforma.</value>
+        </member>
+        <member name="M:MessageGateway.GatewayBase.CrearConversacion(System.String)">
+            <summary>
+            Crea una nueva conversación con un usuario.
+            </summary>
+            <param name="chatID">el ID del usuario para el cual se crea la conversación.</param>
+        </member>
+        <member name="M:MessageGateway.GatewayBase.ObtenerFormularioActual(System.String)">
+            <summary>
+            Método que retorna el formulario en el que se ubica actualmente la conversación con un usuario.
+            </summary>
+            <param name="chatID">el ID del chat del usuario</param>
+            <returns>El formulario que procesa actualmente los mensajes del usuario.</returns>
+        </member>
+        <member name="M:MessageGateway.GatewayBase.CambiarFormulario(MessageGateway.Forms.IFormulario,System.String)">
+            <summary>
+            Cambia el formulario que procesa los mensajes de un usuario.
+            </summary>
+            <param name="next">el nuevo formulario que procesa los mensajes.</param>
+            <param name="chatID">el ID del chat al cual se le cambia el formulario.</param>
+        </member>
+        <member name="T:MessageGateway.Handlers.AceptarInvitacion.HandlerInviteInicio">
+            <summary>
+            Handler de invitaciones, inicio.
+            </summary>
+        </member>
+        <member name="M:MessageGateway.Handlers.AceptarInvitacion.HandlerInviteInicio.#ctor(MessageGateway.Handlers.IMessageHandler)">
+            <summary>
+            Constructor. Las palabras clave son nulas ya que es producto directo del menu de Bienvenida.
+            </summary>
+            <param name="next"></param>
+        </member>
+        <member name="M:MessageGateway.Handlers.AceptarInvitacion.HandlerInviteInicio.InternalHandle(MessageGateway.IMessage,System.String@)">
+            <summary>
+            Handle interno. Invita al usuario a ingresar su token de invitacion.
+            </summary>
+            <param name="message">IMessage pasado por el form.</param>
+            <param name="response">Response.</param>
+            <returns>True: si se pudo manejar el mensaje.</returns>
+        </member>
+        <member name="T:MessageGateway.Handlers.AceptarInvitacion.HandlerInviteInicio.faseInvite">
+            <summary>
+            Fases del checkeo de la invitacion.
+            </summary>
+        </member>
+        <member name="F:MessageGateway.Handlers.AceptarInvitacion.HandlerInviteInicio.faseInvite.Inicio">
+            Entrada a ingresar el token.
+        </member>
+        <member name="F:MessageGateway.Handlers.AceptarInvitacion.HandlerInviteInicio.faseInvite.LeyendoToken">
+            Chekeando Token en base de datos.
+        </member>
+        <member name="T:MessageGateway.Handlers.AceptarInvitacion.HandlerValidarCodigo">
+            <summary>
+            Handler que tomara un token y revisara en base de datos si es valido.
+            </summary>
+        </member>
+        <member name="M:MessageGateway.Handlers.AceptarInvitacion.HandlerValidarCodigo.#ctor(MessageGateway.Handlers.IMessageHandler)">
+            <summary>
+            Cosntructor con palabrasclave vacio porque viene directo del handler anterior.
+            </summary>
+            <param name="next"></param>
+        </member>
+        <member name="M:MessageGateway.Handlers.AceptarInvitacion.HandlerValidarCodigo.InternalHandle(MessageGateway.IMessage,System.String@)">
+            <summary>
+            Internal handle que revisa si existe el token y redirecciona acordemente.
+            </summary>
+            <param name="message">IMessage desde el form.</param>
+            <param name="response">String de respuesta al User.</param>
+            <returns>True: si se pudo manejar el mensaje.</returns>
+        </member>
+        <member name="T:MessageGateway.Handlers.HandlerAltaOferta">
+            <summary>
+            Handler principal de la creacion de publicaciones.
+            </summary>
+        </member>
+        <member name="M:MessageGateway.Handlers.HandlerAltaOferta.#ctor(MessageGateway.Handlers.IMessageHandler)">
+            <summary>
+            Constructor, al instanciarse en un form ya le asigna a este sus estados iniciales necesarios.
+            </summary>
+            <param name="next">Siguiente IHandler</param>
+        </member>
+        <member name="M:MessageGateway.Handlers.HandlerAltaOferta.InternalHandle(MessageGateway.IMessage,System.String@)">
+            <summary>
+            Internal handle que presenta un menu para ir completando la creacion de oferta.
+            Delega tareas de creacion de residuo y location a sus handlers particulares.
+            </summary>
+            <param name="message">IMessage traido del form.</param>
+            <param name="response">String respuesta al user.</param>
+            <returns>True: si se pudo manejar el mensaje.</returns>
+        </member>
+        <member name="T:MessageGateway.Handlers.HandlerAltaOferta.fasesAltaOferta">
+            <summary>
+            Las diferentes fases que este handler necesita para completar toda su información
+            </summary>
+        </member>
+        <member name="F:MessageGateway.Handlers.HandlerAltaOferta.fasesAltaOferta.Inicio">
+            <summary>
+            Iniciador del handler.
+            </summary>
+        </member>
+        <member name="F:MessageGateway.Handlers.HandlerAltaOferta.fasesAltaOferta.Eligiendo">
+            <summary>
+            El user esta parado en el menu.
+            </summary>
+        </member>
+        <member name="F:MessageGateway.Handlers.HandlerAltaOferta.fasesAltaOferta.tomandoCantidad">
+            <summary>
+            Se espera la cantidad en el proximo msj.
+            </summary>
+        </member>
+        <member name="F:MessageGateway.Handlers.HandlerAltaOferta.fasesAltaOferta.tomandoMoneda">
+            <summary>
+            Se espera la moneda.
+            </summary>
+        </member>
+        <member name="F:MessageGateway.Handlers.HandlerAltaOferta.fasesAltaOferta.tomandoPrecio">
+            <summary>
+            Se espera el precio por unidad.
+            </summary>
+        </member>
+        <member name="F:MessageGateway.Handlers.HandlerAltaOferta.fasesAltaOferta.tomandoDescripcion">
+            <summary>
+            Se espera una descripción.
+            </summary>
+        </member>
+        <member name="F:MessageGateway.Handlers.HandlerAltaOferta.fasesAltaOferta.tomandoRecurrencia">
+            Esperando recurrencia.
+        </member>
+        <member name="F:MessageGateway.Handlers.HandlerAltaOferta.fasesAltaOferta.Done">
+            Lista la publicación.
+        </member>
+        <member name="T:MessageGateway.Handlers.HandlerNewResiduo">
+            <summary>
+            Handler con el destino de crear un residuo.
+            </summary>
+        </member>
+        <member name="M:MessageGateway.Handlers.HandlerNewResiduo.#ctor(MessageGateway.Handlers.IMessageHandler)">
+            <summary>
+            Constructor, se agregan palabras clave para menus que lo invoquen.
+            </summary>
+            <param name="next">IHandler siguiente.</param>
+        </member>
+        <member name="M:MessageGateway.Handlers.HandlerNewResiduo.InternalHandle(MessageGateway.IMessage,System.String@)">
+            <summary>
+            InternalHandle que va tomando las cualidades necesarias para crear un residuo.
+            </summary>
+            <param name="message">IMessage traido del form.</param>
+            <param name="response">Respuesta al User.</param>
+            <returns>True: si se pudo manejar el mensaje.</returns>
+        </member>
+        <member name="T:MessageGateway.Handlers.HandlerNewResiduo.fasesResiduo">
+            <summary>
+            Las fases requeridas para crear un residuo.
+            </summary>
+        </member>
+        <member name="F:MessageGateway.Handlers.HandlerNewResiduo.fasesResiduo.Inicio">
+            Esperando ser llamado.
+        </member>
+        <member name="F:MessageGateway.Handlers.HandlerNewResiduo.fasesResiduo.Descripcion">
+            esperando la descripcion.
+        </member>
+        <member name="F:MessageGateway.Handlers.HandlerNewResiduo.fasesResiduo.UnidadMedida">
+            Esperando la unidad de medida.
+        </member>
+        <member name="F:MessageGateway.Handlers.HandlerNewResiduo.fasesResiduo.Categoria">
+            Esperando la Categoria del residuo.
+        </member>
+        <member name="F:MessageGateway.Handlers.HandlerNewResiduo.fasesResiduo.Habilitaciones">
+            Tomando las habilitaciones necesarias.
+        </member>
+        <member name="F:MessageGateway.Handlers.HandlerNewResiduo.fasesResiduo.Done">
+            Terminado el residuo (si no se quiere poder sobreescribir).
+        </member>
+        <member name="T:MessageGateway.Handlers.Bienvenida.HandlerBienvenida">
+            <summary>
+            Handler principal de bienvenida al user.
+            </summary>
+        </member>
+        <member name="M:MessageGateway.Handlers.Bienvenida.HandlerBienvenida.#ctor(MessageGateway.Handlers.IMessageHandler)">
+            <summary>
+            Cosntructor que reacciona al comando de inicialización de bot /start.
+            </summary>
+            <param name="next">IHandler siguiente</param>
+        </member>
+        <member name="M:MessageGateway.Handlers.Bienvenida.HandlerBienvenida.InternalHandle(MessageGateway.IMessage,System.String@)">
+            <summary>
+            Internal Handle que devuelve un menu y redirecciona a la opción seleccionada.
+            </summary>
+            <param name="message">IMessage traido del Form.</param>
+            <param name="response">String respuesta al user.</param>
+            <returns>True: si se pudo manejar.</returns>
+        </member>
+        <member name="T:MessageGateway.Handlers.Bienvenida.HandlerBienvenida.faseWelcome">
+            <summary>
+            Las fases necesarias de la bienenida.
+            </summary>
+        </member>
+        <member name="F:MessageGateway.Handlers.Bienvenida.HandlerBienvenida.faseWelcome.Inicio">
+            Recien inicalizado bot.
+        </member>
+        <member name="F:MessageGateway.Handlers.Bienvenida.HandlerBienvenida.faseWelcome.Eligiendo">
+            Eligiendo del menu
+        </member>
+        <member name="F:MessageGateway.Handlers.Bienvenida.HandlerBienvenida.faseWelcome.choosingRegister">
+            Eligiendo registrarse como empresa o emprendedor.
+        </member>
+        <member name="T:MessageGateway.Handlers.HandlerBusqueda">
+            <summary>
+            Handler principal de la búsqueda de ofertas.
+            </summary>
+        </member>
+        <member name="M:MessageGateway.Handlers.HandlerBusqueda.#ctor(MessageGateway.Handlers.IMessageHandler)">
+            <summary>
+            Constructor, al instanciarse en un form ya le asigna a este sus estados iniciales necesarios.
+            </summary>
+            <param name="next">Siguiente IHandler.</param>
+        </member>
+        <member name="M:MessageGateway.Handlers.HandlerBusqueda.InternalHandle(MessageGateway.IMessage,System.String@)">
+            <summary>
+            Internal handle que va mostrando los distintos tipos de filtros.
+            </summary>
+            <param name="message">IMessage traido del form.</param>
+            <param name="response">String respuesta al user.</param>
+            <returns>True: si se pudo manejar el mensaje.</returns>
+        </member>
+        <member name="T:MessageGateway.Handlers.HandlerBusqueda.FasesBusqueda">
+            <summary>
+            Las diferentes fases que este handler necesita para completar toda su información.
+            </summary>
+        </member>
+        <member name="F:MessageGateway.Handlers.HandlerBusqueda.FasesBusqueda.Inicio">
+            <summary>
+            Iniciador del handler.
+            </summary>
+        </member>
+        <member name="F:MessageGateway.Handlers.HandlerBusqueda.FasesBusqueda.Eligiendo">
+            <summary>
+            El user está parado en el menú.
+            </summary>
+        </member>
+        <member name="F:MessageGateway.Handlers.HandlerBusqueda.FasesBusqueda.FiltroEmpresa">
+            <summary>
+            Se espera respuesta si quiere filtrar por empresa.
+            </summary>
+        </member>
+        <member name="F:MessageGateway.Handlers.HandlerBusqueda.FasesBusqueda.tomandoFiltroEmpresa">
+            Se espera si se toma el filtro Empresa.
+        </member>
+        <member name="F:MessageGateway.Handlers.HandlerBusqueda.FasesBusqueda.FiltroCategoria">
+            <summary>
+            Se espera respuesta si quiere filtrar por ecategoría.
+            </summary>
+        </member>
+        <member name="F:MessageGateway.Handlers.HandlerBusqueda.FasesBusqueda.tomandoFiltroCategoria">
+            Esperando el Filtro de Categoria
+        </member>
+        <member name="F:MessageGateway.Handlers.HandlerBusqueda.FasesBusqueda.FiltroLugarRetiro">
+            <summary>
+            Se espera respuesta si quiere filtrar por lugar de retiro.
+            </summary>
+        </member>
+        <member name="F:MessageGateway.Handlers.HandlerBusqueda.FasesBusqueda.tomandoFiltroLugarRetiro1">
+            Primera parte para tomar el lugar de retiro.
+        </member>
+        <member name="F:MessageGateway.Handlers.HandlerBusqueda.FasesBusqueda.tomandoFiltroLugarRetiro2">
+            segunda parte, ya tomado el lugar.
+        </member>
+        <member name="F:MessageGateway.Handlers.HandlerBusqueda.FasesBusqueda.FiltroResiduo">
+            <summary>
+            Se espera respuesta si quiere filtrar por residuo.
+            </summary>
+        </member>
+        <member name="F:MessageGateway.Handlers.HandlerBusqueda.FasesBusqueda.tomandoFiltroResiduo">
+            esperando el residuo a buscarse.
+        </member>
+        <member name="F:MessageGateway.Handlers.HandlerBusqueda.FasesBusqueda.FiltroPrecioMaximo">
+            <summary>
+            Se espera respuesta si quiere filtrar por precio máximo.
+            </summary>
+        </member>
+        <member name="F:MessageGateway.Handlers.HandlerBusqueda.FasesBusqueda.tomandoFiltroPrecioMaximo">
+            tomando el valor maximo dispuesto a pagar.
+        </member>
+        <member name="F:MessageGateway.Handlers.HandlerBusqueda.FasesBusqueda.FiltroFrecuenciaRestock">
+            <summary>
+            Se espera respuesta si quiere filtrar por frecuencia de restock.
+            </summary>
+        </member>
+        <member name="F:MessageGateway.Handlers.HandlerBusqueda.FasesBusqueda.tomandoFiltroFrecuenciaRestock">
+            Esperando cuantas veces al año se desea que se restockee.
+        </member>
+        <member name="F:MessageGateway.Handlers.HandlerBusqueda.FasesBusqueda.Done">
+            Finalizado el filtrado y handler.
+        </member>
+        <member name="T:MessageGateway.Handlers.Escape.HandlerEscape">
+            <summary>
+            Handler que permite en cualquier estado de conversación que se encuentre, cancelar el proceso y volver al ultimo menu.
+            </summary>
+        </member>
+        <member name="M:MessageGateway.Handlers.Escape.HandlerEscape.#ctor(MessageGateway.Handlers.IMessageHandler)">
+            <summary>
+            Constructor de palabra clave "Abortar" que puede ser invocada en cualquier momento.
+            </summary>
+            <param name="next">IHandler siguiente.</param>
+        </member>
+        <member name="M:MessageGateway.Handlers.Escape.HandlerEscape.InternalHandle(MessageGateway.IMessage,System.String@)">
+            <summary>
+            Internal Handle que revisa donde esta parado el user y 
+            devuelve al ultimo form generico/menu pricipal acorde.
+            </summary>
+            <param name="message">IMessage traido del Form.</param>
+            <param name="response">String Respuesta al user.</param>
+            <returns>True: si se pudo manejar el mensaje.</returns>
+        </member>
+        <member name="T:MessageGateway.Handlers.ListadoPublicaciones.HandlerListadoPublicaciones">
+            <summary>
+            Handler encargado de mostrar publicaciones según los filtros aplicados por el usuario.
+            </summary>
+        </member>
+        <member name="M:MessageGateway.Handlers.ListadoPublicaciones.HandlerListadoPublicaciones.#ctor(MessageGateway.Handlers.IMessageHandler)">
+            <summary>
+            Constructor, no recibe palabra clave.
+            </summary>
+            <param name="next"></param>
+        </member>
+        <member name="M:MessageGateway.Handlers.ListadoPublicaciones.HandlerListadoPublicaciones.InternalHandle(MessageGateway.IMessage,System.String@)">
+            <summary>
+            InternalHandle, muestra las publicaciones filtradas y los detalles de una publicación según el nombre.
+            Devuelve un mapa con la ubicación o permite realizar la compra según la opción elegida.
+            </summary>
+            <param name="message"></param>
+            <param name="response"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MessageGateway.Handlers.ListadoPublicaciones.HandlerListadoPublicaciones.fasesListado">
+            <summary>
+            Fases del listado de publicaciones.
+            </summary>
+        </member>
+        <member name="F:MessageGateway.Handlers.ListadoPublicaciones.HandlerListadoPublicaciones.fasesListado.Inicio">
+            Primera fase.
+        </member>
+        <member name="F:MessageGateway.Handlers.ListadoPublicaciones.HandlerListadoPublicaciones.fasesListado.EligiendoDetalles">
+            Elegir la publicacion de la que quiero ver detalles.
+        </member>
+        <member name="F:MessageGateway.Handlers.ListadoPublicaciones.HandlerListadoPublicaciones.fasesListado.VerUbicacion">
+            Mandar mapa con la ubicación.
+        </member>
+        <member name="F:MessageGateway.Handlers.ListadoPublicaciones.HandlerListadoPublicaciones.fasesListado.Done">
+            Final.
+        </member>
+        <member name="T:MessageGateway.Handlers.HandlerLocation">
+            <summary>
+            Handler encargado de tomar datos para generar un Location.
+            </summary>
+        </member>
+        <member name="M:MessageGateway.Handlers.HandlerLocation.#ctor(MessageGateway.Handlers.IMessageHandler)">
+            <summary>
+            Constructor. La palabra clave dada es para el menu de AltaOferta
+            </summary>
+            <param name="next"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MessageGateway.Handlers.HandlerLocation.InternalHandle(MessageGateway.IMessage,System.String@)">
+            <summary>
+            Internal Handle, va tomando los strings necesarios para el GetLocation del API.
+            </summary>
+            <param name="message">IMessage traido del form.</param>
+            <param name="response">String respuesta al user.</param>
+            <returns></returns>
+        </member>
+        <member name="T:MessageGateway.Handlers.HandlerLocation.faseLocation">
+            <summary>
+            Fases necesarias para crear un Location.
+            </summary>
+        </member>
+        <member name="F:MessageGateway.Handlers.HandlerLocation.faseLocation.Inicio">
+            Fase de entrada por Menu
+        </member>
+        <member name="F:MessageGateway.Handlers.HandlerLocation.faseLocation.tomandoMvdeo">
+            Revisando si es en montevideo o no (atajo.)
+        </member>
+        <member name="F:MessageGateway.Handlers.HandlerLocation.faseLocation.tomandoDpto">
+            Esperando el departamento.
+        </member>
+        <member name="F:MessageGateway.Handlers.HandlerLocation.faseLocation.tomandoCity">
+            Esperando la ciudad.
+        </member>
+        <member name="F:MessageGateway.Handlers.HandlerLocation.faseLocation.tomandoDireccion">
+            Esperando la calle y puerta (o Km).
+        </member>
+        <member name="F:MessageGateway.Handlers.HandlerLocation.faseLocation.Done">
+            Se termino de formar la ubicacion.
+        </member>
+        <member name="T:MessageGateway.Handlers.IMessageHandler">
+            <summary>
+            Interfaz que engloba a los handlers y sus metodos y propiedades basicos.
+            </summary>
+        </member>
+        <member name="P:MessageGateway.Handlers.IMessageHandler.CurrentForm">
+            <summary>
+            El formulario que buscan completar.
+            </summary>
+            <value>IFormulario.</value>
+        </member>
+        <member name="P:MessageGateway.Handlers.IMessageHandler.Next">
+            <summary>
+            El siguiente handler en caso de no poder procesar el mensaje.
+            </summary>
+            <value>IMessageHandler</value>
+        </member>
+        <member name="M:MessageGateway.Handlers.IMessageHandler.Handle(MessageGateway.IMessage,System.String@)">
+            <summary>
+            Intentar manejar el mensaje y sacar una respuesta o pasar al siguiente.
+            </summary>
+            <param name="mensaje">IMessage desde un Form.</param>
+            <param name="response">String respuesta para el user.</param>
+            <returns>IMessageHandler.</returns>
+        </member>
+        <member name="T:MessageGateway.Handlers.Login.HandlerLogin">
+            <summary>
+            Handler encargado de tomar inicio de sesion y corroborar datos en base de datos.
+            </summary>
+        </member>
+        <member name="M:MessageGateway.Handlers.Login.HandlerLogin.#ctor(MessageGateway.Handlers.IMessageHandler)">
+            <summary>
+            Constructor con palabras clave en blanco por ser traido directo.
+            </summary>
+            <param name="next"></param>
+        </member>
+        <member name="M:MessageGateway.Handlers.Login.HandlerLogin.InternalHandle(MessageGateway.IMessage,System.String@)">
+            <summary>
+            Internal Handle que Toma username, lo busca en base de datos, y despues comprueba si la
+            contraseña coincide.
+            </summary>
+            <param name="message">IMessage traido del form.</param>
+            <param name="response">String respuesta al user.</param>
+            <returns>True: si se pudo manejar.</returns>
+        </member>
+        <member name="T:MessageGateway.Handlers.Login.HandlerLogin.fasesLogin">
+            <summary>
+            Fases necesarias para iniciar sesión.
+            </summary>
+        </member>
+        <member name="F:MessageGateway.Handlers.Login.HandlerLogin.fasesLogin.Inicio">
+            <summary>
+            Se inicio el handler.
+            </summary>
+        </member>
+        <member name="F:MessageGateway.Handlers.Login.HandlerLogin.fasesLogin.tomandoUser">
+            <summary>
+            Se esta esperando el nombre de usuario.
+            </summary>
+        </member>
+        <member name="F:MessageGateway.Handlers.Login.HandlerLogin.fasesLogin.tomandoPass">
+            <summary>
+            Se esta tomando la contraseña.
+            </summary>
+        </member>
+        <member name="T:MessageGateway.Handlers.MenuEmprendedor.HandlerMenuEmprendedor">
+            <summary>
+            Handler principal del menú del emprendedor.
+            </summary>
+        </member>
+        <member name="M:MessageGateway.Handlers.MenuEmprendedor.HandlerMenuEmprendedor.#ctor(MessageGateway.Handlers.IMessageHandler)">
+            <summary>
+            Constructor del handler que reacciona a la palabra clave Menu.
+            </summary>
+            <param name="next">IHandler siguiente.</param>
+        </member>
+        <member name="M:MessageGateway.Handlers.MenuEmprendedor.HandlerMenuEmprendedor.InternalHandle(MessageGateway.IMessage,System.String@)">
+            <summary>
+            Método InternalHandle que devuelve un menú y deriva a la opción seleccionada.
+            </summary>
+            <param name="message">IMessage traido del Form.</param>
+            <param name="response">La respuesta al usuario.</param>
+            <returns>True: si se pudo manejar.</returns>
+        </member>
+        <member name="T:MessageGateway.Handlers.MenuEmprendedor.HandlerMenuEmprendedor.faseMenuEmprendedor">
+            <summary>
+            Las fases del menu del emprendedor.
+            </summary>
+        </member>
+        <member name="F:MessageGateway.Handlers.MenuEmprendedor.HandlerMenuEmprendedor.faseMenuEmprendedor.Inicio">
+            Fase inicializadora del handler, imprime el menu.
+        </member>
+        <member name="F:MessageGateway.Handlers.MenuEmprendedor.HandlerMenuEmprendedor.faseMenuEmprendedor.Eligiendo">
+            Fase esperando a elegir una opcion del menu.
+        </member>
+        <member name="T:MessageGateway.Handlers.MenuEmprendedor.HandlerOpcionesMenuEmprendedor">
+            <summary>
+            Handler que según la opción seleccionada, redirecciona al formulario correspondiente a la acción.
+            </summary>
+        </member>
+        <member name="M:MessageGateway.Handlers.MenuEmprendedor.HandlerOpcionesMenuEmprendedor.#ctor(MessageGateway.Handlers.IMessageHandler)">
+            <summary>
+            El constructor, las palabras claves hacen referencia a la opciones del menú del emprendedor.
+            </summary>
+            <param name="next"></param>
+        </member>
+        <member name="M:MessageGateway.Handlers.MenuEmprendedor.HandlerOpcionesMenuEmprendedor.InternalHandle(MessageGateway.IMessage,System.String@)">
+            <summary>
+            Método InternalHandle que redirecciona a formularios según la opción seleccionada.
+            </summary>
+            <param name="message">IMessage traido del form.</param>
+            <param name="response">String de la respuesta al usuario.</param>
+            <returns>True: si se pudo manejar el mensaje.</returns>
+        </member>
+        <member name="T:MessageGateway.Handlers.MenuEmpresa.HandlerMenuEmpresa">
+            <summary>
+            Handler principal del menu de empresa.
+            </summary>
+        </member>
+        <member name="M:MessageGateway.Handlers.MenuEmpresa.HandlerMenuEmpresa.#ctor(MessageGateway.Handlers.IMessageHandler)">
+            <summary>
+            El constructor, reacciona a la palabra clave MenuEmpresa.
+            </summary>
+            <param name="next">IHandler siguiente</param>
+        </member>
+        <member name="M:MessageGateway.Handlers.MenuEmpresa.HandlerMenuEmpresa.InternalHandle(MessageGateway.IMessage,System.String@)">
+            <summary>
+            Método InternalHandle que devuelve un menú y deriva a la opción seleccionada.
+            </summary>
+            <param name="message">IMessage traido del form.</param>
+            <param name="response">String de la respuesta al usuario.</param>
+            <returns>True: si se pudo manejar.</returns>
+        </member>
+        <member name="T:MessageGateway.Handlers.MenuEmpresa.HandlerMenuEmpresa.faseMenuEmpresa">
+            <summary>
+            Las fases del menú de empresa.
+            </summary>
+        </member>
+        <member name="F:MessageGateway.Handlers.MenuEmpresa.HandlerMenuEmpresa.faseMenuEmpresa.Inicio">
+            Iniciado el menu.
+        </member>
+        <member name="F:MessageGateway.Handlers.MenuEmpresa.HandlerMenuEmpresa.faseMenuEmpresa.Eligiendo">
+            Se esta eligiendo una opción.
+        </member>
+        <member name="T:MessageGateway.Handlers.MenuEmpresa.HandlerOpcionesMenuEmpresa">
+            <summary>
+            Handler que según la opción seleccionada, redirecciona al formulario correspondiente a la acción.
+            </summary>
+        </member>
+        <member name="M:MessageGateway.Handlers.MenuEmpresa.HandlerOpcionesMenuEmpresa.#ctor(MessageGateway.Handlers.IMessageHandler)">
+            <summary>
+            El constructor, las palabras claves hacen referencia a la opciones del menú de la empresa.
+            </summary>
+            <param name="next"></param>
+        </member>
+        <member name="M:MessageGateway.Handlers.MenuEmpresa.HandlerOpcionesMenuEmpresa.InternalHandle(MessageGateway.IMessage,System.String@)">
+            <summary>
+            Método InternalHandle que redirecciona a formularios según la opción seleccionada.
+            </summary>
+            <param name="message">IMessage traido del form.</param>
+            <param name="response">String de la respuesta al usuario.</param>
+            <returns>True: si se pudo manejar el mensaje.</returns>
+        </member>
+        <member name="T:MessageGateway.Handlers.MessageHandlerBase">
+            <summary>
+            Superclase a todos los handlers.
+            </summary>
+        </member>
+        <member name="P:MessageGateway.Handlers.MessageHandlerBase.Next">
+            <summary>
+            Obtiene o establece el siguiente handler.
+            </summary>
+            <value>IMessageHandler</value>
+        </member>
+        <member name="P:MessageGateway.Handlers.MessageHandlerBase.CurrentForm">
+            <summary>
+            Obtiene o establece el formulario donde se está parado.
+            </summary>
+            <value>IFormulario</value>
+        </member>
+        <member name="M:MessageGateway.Handlers.MessageHandlerBase.#ctor(System.String[],MessageGateway.Handlers.IMessageHandler)">
+            <summary>
+            Constructor base de Handler.
+            </summary>
+            <param name="keywords">Palabras clave que se queiren que el handler atrape.</param>
+            <param name="next">Siguiente Handler.</param>
+        </member>
+        <member name="M:MessageGateway.Handlers.MessageHandlerBase.CanHandle(MessageGateway.IMessage)">
+            <summary>
+            Determina si se puede manejar la palabra (EN MINUSCULA) desde las palabras clave.
+            </summary>
+            <param name="message">Meensaje a Corroborar.</param>
+            <returns>True: si lo puede manejar/ es su responsabilidad.</returns>
+        </member>
+        <member name="M:MessageGateway.Handlers.MessageHandlerBase.Handle(MessageGateway.IMessage,System.String@)">
+            <summary>
+            Intenta manejar el mensaje, si no puede lo manda al siguiente, si no existe un siguiente
+            retorna null.
+            </summary>
+            <param name="message">IMessage a procesar.</param>
+            <param name="response">String respuesta al User.</param>
+            <returns></returns>
+        </member>
+        <member name="M:MessageGateway.Handlers.MessageHandlerBase.InternalHandle(MessageGateway.IMessage,System.String@)">
+            <summary>
+            Especificación y desarrollo del proceso de manejo.
+            </summary>
+            <param name="message">Mensaje a intentar procesar.</param>
+            <param name="response">String: Respuesta despeus de procesado.</param>
+            <returns>True: si se pudo procesar.</returns>
+        </member>
+        <member name="T:MessageGateway.Handlers.RegistroDatosLogin.HandlerRegDatosLogin">
+            <summary>
+            Handler que permite crear un nuevo datosLogin.
+            </summary>
+        </member>
+        <member name="M:MessageGateway.Handlers.RegistroDatosLogin.HandlerRegDatosLogin.#ctor(MessageGateway.Handlers.IMessageHandler)">
+            <summary>
+            Constructor de palabras clave vacia por ser traido directamente.
+            </summary>
+            <param name="next"></param>
+        </member>
+        <member name="M:MessageGateway.Handlers.RegistroDatosLogin.HandlerRegDatosLogin.InternalHandle(MessageGateway.IMessage,System.String@)">
+            <summary>
+            Internal Hnadle que revisa no repetir el username con base de datos y toma y confirma la
+            contraseña.
+            </summary>
+            <param name="message">IMessage traido del form.</param>
+            <param name="response">String respuesta al user.</param>
+            <returns>True: si se pudo manejar el mensaje.</returns>
+        </member>
+        <member name="T:MessageGateway.Handlers.RegistroDatosLogin.HandlerRegDatosLogin.faseRegDL">
+            <summary>
+            Fases necesarias para registrarse.
+            </summary>
+        </member>
+        <member name="F:MessageGateway.Handlers.RegistroDatosLogin.HandlerRegDatosLogin.faseRegDL.Inicio">
+            <summary>
+            Iniciado el registro.
+            </summary>
+        </member>
+        <member name="F:MessageGateway.Handlers.RegistroDatosLogin.HandlerRegDatosLogin.faseRegDL.tomandoUser">
+            <summary>
+            Tomando el username y comprobando no esté tomado.
+            </summary>
+        </member>
+        <member name="F:MessageGateway.Handlers.RegistroDatosLogin.HandlerRegDatosLogin.faseRegDL.tomandoPass">
+            <summary>
+            Esperando una contraseña.
+            </summary>
+        </member>
+        <member name="F:MessageGateway.Handlers.RegistroDatosLogin.HandlerRegDatosLogin.faseRegDL.confirmandoPass">
+            <summary>
+            Repitiendo la contraseña.
+            </summary>
+        </member>
+        <member name="F:MessageGateway.Handlers.RegistroDatosLogin.HandlerRegDatosLogin.faseRegDL.Done">
+            <summary>
+            Finalizado el registro.
+            </summary>
+        </member>
+        <member name="T:MessageGateway.Handlers.HandlerRegistroEmprendedor">
+            <summary>
+            Handler principal del registro de emprendedores.
+            </summary>
+        </member>
+        <member name="M:MessageGateway.Handlers.HandlerRegistroEmprendedor.#ctor(MessageGateway.Handlers.IMessageHandler)">
+            <summary>
+            Constructor, al instanciarse en un form ya le asigna a este sus estados iniciales necesarios.
+            </summary>
+            <param name="next">Siguiente IHandler.</param>
+        </member>
+        <member name="M:MessageGateway.Handlers.HandlerRegistroEmprendedor.InternalHandle(MessageGateway.IMessage,System.String@)">
+            <summary>
+            Internal handle que presenta un menu para ir completando el registro.
+            Delega la tarea de registro de location a sus handler particular.
+            </summary>
+            <param name="message">IMessage traido del form.</param>
+            <param name="response">String respuesta al user.</param>
+            <returns>True: si se pudo manejar el mensaje.</returns>
+        </member>
+        <member name="T:MessageGateway.Handlers.HandlerRegistroEmprendedor.FasesRegEmprendedor">
+            <summary>
+            Las diferentes fases que este handler necesita para completar toda su información.
+            </summary>
+        </member>
+        <member name="F:MessageGateway.Handlers.HandlerRegistroEmprendedor.FasesRegEmprendedor.Inicio">
+            <summary>
+            Iniciador del handler.
+            </summary>
+        </member>
+        <member name="F:MessageGateway.Handlers.HandlerRegistroEmprendedor.FasesRegEmprendedor.Eligiendo">
+            <summary>
+            El user está parado en el menú.
+            </summary>
+        </member>
+        <member name="F:MessageGateway.Handlers.HandlerRegistroEmprendedor.FasesRegEmprendedor.TomandoNombre">
+            <summary>
+            Se espera el nombre del emprendedor.
+            </summary>
+        </member>
+        <member name="F:MessageGateway.Handlers.HandlerRegistroEmprendedor.FasesRegEmprendedor.TomandoRubro">
+            <summary>
+            Se espera el rubro del emprendedor.
+            </summary>
+        </member>
+        <member name="F:MessageGateway.Handlers.HandlerRegistroEmprendedor.FasesRegEmprendedor.TomandoEspecializacion">
+            <summary>
+            Se espera la especialización del emprendedor.
+            </summary>
+        </member>
+        <member name="F:MessageGateway.Handlers.HandlerRegistroEmprendedor.FasesRegEmprendedor.TomandoHabilitacion">
+            <summary>
+            Se espera las habilitaciones del emprendedor.
+            </summary>
+        </member>
+        <member name="F:MessageGateway.Handlers.HandlerRegistroEmprendedor.FasesRegEmprendedor.Done">
+            Finalizado el registro.
+        </member>
+        <member name="T:MessageGateway.Handlers.HandlerRegEmpresa">
+            <summary>
+            Handler encargado de crear una nueva empresa.
+            </summary>
+        </member>
+        <member name="M:MessageGateway.Handlers.HandlerRegEmpresa.#ctor(MessageGateway.Handlers.IMessageHandler)">
+            <summary>
+            Constructor en blanco porque es invocado directamente.
+            </summary>
+            <param name="next">IHandler siguiente.</param>
+        </member>
+        <member name="M:MessageGateway.Handlers.HandlerRegEmpresa.InternalHandle(MessageGateway.IMessage,System.String@)">
+            <summary>
+            Internal Handle que va tomando los datos necesarios. Location es delegado al HandlerLocation.
+            </summary>
+            <param name="message">IMessage traido del form.</param>
+            <param name="response">String. Repsuesta al user.</param>
+            <returns>True: si se pudo procesar el mensaje.</returns>
+        </member>
+        <member name="T:MessageGateway.Handlers.HandlerRegEmpresa.fasesRegEmpresa">
+            <summary>
+            Fases para controlar en que parte se halla del formulario el usuario.
+            </summary>
+        </member>
+        <member name="F:MessageGateway.Handlers.HandlerRegEmpresa.fasesRegEmpresa.Inicio">
+            Se inició el registro.
+        </member>
+        <member name="F:MessageGateway.Handlers.HandlerRegEmpresa.fasesRegEmpresa.tomandoNombre">
+            Esperando el nombre publico.
+        </member>
+        <member name="F:MessageGateway.Handlers.HandlerRegEmpresa.fasesRegEmpresa.tomandoRubro">
+            Esperando el rubro.
+        </member>
+        <member name="F:MessageGateway.Handlers.HandlerRegEmpresa.fasesRegEmpresa.tomandoDescripcion">
+            Tomando una descripcion.
+        </member>
+        <member name="F:MessageGateway.Handlers.HandlerRegEmpresa.fasesRegEmpresa.tomandoContacto">
+            Tomando el contacto.
+        </member>
+        <member name="F:MessageGateway.Handlers.HandlerRegEmpresa.fasesRegEmpresa.ArmandoLocation">
+            Finalizado y construido el Location.
+        </member>
+        <member name="F:MessageGateway.Handlers.HandlerRegEmpresa.fasesRegEmpresa.Done">
+            Listo el registro.
+        </member>
+        <member name="T:MessageGateway.Handlers.HandlerReporte">
+            <summary>
+            Handler de creación de los reportes.
+            </summary>
+        </member>
+        <member name="M:MessageGateway.Handlers.HandlerReporte.#ctor(MessageGateway.Handlers.IMessageHandler)">
+            <summary>
+            Constructor, palabra clave "reporte".
+            </summary>
+            <param name="next">Siguiente IHandler</param>
+        </member>
+        <member name="M:MessageGateway.Handlers.HandlerReporte.InternalHandle(MessageGateway.IMessage,System.String@)">
+            <summary>
+            InternalHandle que va obteniendo los dieferentes datos de fechas para crear el reporte y luego lo muestra.
+            </summary>
+            <param name="message">IMessage traido del form.</param>
+            <param name="response">String de respuesta al usuario.</param>
+            <returns>True: si se pudo manejar.</returns>
+        </member>
+        <member name="T:MessageGateway.Handlers.HandlerReporte.faseReporte">
+            <summary>
+            Fases del reporte.
+            </summary>
+        </member>
+        <member name="F:MessageGateway.Handlers.HandlerReporte.faseReporte.Inicio">
+            Inicia el handler.
+        </member>
+        <member name="F:MessageGateway.Handlers.HandlerReporte.faseReporte.AnioInicio">
+            Se espera el año de inicio en el próximo mensaje.
+        </member>
+        <member name="F:MessageGateway.Handlers.HandlerReporte.faseReporte.MesInicio">
+            Se espera el mes de inicio en el próximo mensaje.
+        </member>
+        <member name="F:MessageGateway.Handlers.HandlerReporte.faseReporte.DiaInicio">
+            Se espera el día de inicio en el próximo mensaje.
+        </member>
+        <member name="F:MessageGateway.Handlers.HandlerReporte.faseReporte.AnioFin">
+            Se espera el año de fin en el próximo mensaje.
+        </member>
+        <member name="F:MessageGateway.Handlers.HandlerReporte.faseReporte.MesFin">
+            Se espera el mes de fin en el próximo mensaje.
+        </member>
+        <member name="F:MessageGateway.Handlers.HandlerReporte.faseReporte.DiaFin">
+            Se espera el día de fin en el próximo mensaje.
+        </member>
+        <member name="F:MessageGateway.Handlers.HandlerReporte.faseReporte.Done">
+            Muestra el reporte terminado.
         </member>
         <member name="T:MessageGateway.IGateway">
             <summary>
@@ -70,11 +1675,19 @@
             Método para generar la invitacion a traves del medio.
             </summary>
         </member>
-        <member name="P:MessageGateway.IGateway.MensajeRecibido">
+        <member name="M:MessageGateway.IGateway.ObtenerFormularioActual(System.String)">
             <summary>
-            Propiedad que permite leer el mensaje recibido.
+            Método que retorna el formulario en el que se ubica actualmente la conversación con un usuario.
             </summary>
-            <value><see langword ="string"/>.</value>
+            <param name="chatID">el ID del chat del usuario</param>
+            <returns>El formulario que procesa actualmente los mensajes del usuario.</returns>
+        </member>
+        <member name="M:MessageGateway.IGateway.CambiarFormulario(MessageGateway.Forms.IFormulario,System.String)">
+            <summary>
+            Cambia el formulario que procesa los mensajes de un usuario.
+            </summary>
+            <param name="next">el nuevo formulario que procesa los mensajes.</param>
+            <param name="chatID">el ID del chat al cual se le cambia el formulario.</param>
         </member>
         <member name="T:MessageGateway.IMessage">
             <summary>
@@ -92,6 +1705,30 @@
             Obtiene un string con el texto del mensaje que se recibió o envía.
             </summary>
             <value><see langword ="string"/>.</value>
+        </member>
+        <member name="T:MessageGateway.MessageBase">
+            <summary>
+            Superclase de los mensajes a recibirse.
+            </summary>
+        </member>
+        <member name="P:MessageGateway.MessageBase.ChatID">
+            <summary>
+            Obtiene o Establece la Id del chat relacionado al mensaje.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:MessageGateway.MessageBase.TxtMensaje">
+            <summary>
+            Obtiene o Establece el string con el texto del mensaje.
+            </summary>
+            <value>String.</value>
+        </member>
+        <member name="M:MessageGateway.MessageBase.#ctor(System.String,System.String)">
+            <summary>
+            Contructor genérico del mensaje para sus herederos.
+            </summary>
+            <param name="chatID">Id del chat a crear el mensaje.</param>
+            <param name="txtMensaje">Texto a mensajear.</param>
         </member>
         <member name="T:MessageGateway.TelegramBot">
             <summary>

@@ -2,6 +2,11 @@
 // <copyright file="FormularioBase.cs" company="Universidad Católica del Uruguay">
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
+//
+// Pricnipio utilizado: DIP
+// La clase FormularioBase implementa la interfaz IFormulario siguiendo 
+// el principio de inversión de dependencias, para que dicha clase no
+// dependa o se vea afectado ante cambios en cada formulario (subclases).
 //--------------------------------------------------------------------------------
 
 using MessageGateway.Handlers;
@@ -14,7 +19,7 @@ namespace MessageGateway.Forms
     /// </summary>
     public abstract class FormularioBase : IFormulario
     {
-        private IGateway gateway = AdaptadorTelegram.Instancia;
+        public IGateway gateway = AdaptadorTelegram.Instancia;
 
         private IMessageHandler _messageHandler;
 

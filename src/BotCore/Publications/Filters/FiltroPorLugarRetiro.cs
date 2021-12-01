@@ -21,13 +21,14 @@ namespace BotCore.Publication.Filters
         public IFiltroBusqueda Next {get; set;}
 
         private string Ciudad;
-
+       
         private string Dpto;
 
         /// <summary>
         /// Método que recibe el tipo de filtro y el siguiente filtro de búsqueda.
         /// </summary>
-        /// <param name="lugarRetiro"><see cref = "Publicacion"/>.</param>
+        /// <param name="ciudad">String con la ciudad buscada.</param>
+        /// <param name="dpto">String con el departamento a buscar.</param>
         /// <param name="next"><see cref = "IFiltroBusqueda"/>.</param>
         public FiltroPorLugarRetiro(string ciudad, string dpto, IFiltroBusqueda next = null)
         {

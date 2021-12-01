@@ -36,7 +36,7 @@ namespace MessageGateway.Handlers.Escape
         {
             if (this.CanHandle(message))
             {
-                response = "Cancelando y volviendo...";
+                response = "Cancelando y volviendo...\n Escribe \"Menu\" para ver tus opciones.";
                 if 
                 (
                     this.CurrentForm is FrmAceptarInvitacion ||

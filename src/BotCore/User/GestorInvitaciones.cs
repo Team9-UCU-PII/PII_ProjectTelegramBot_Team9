@@ -57,6 +57,7 @@ namespace BotCore.User
         /// de crear objetos Invitacion.
         /// </summary>
         /// <param name="nombreTempUsuario">el nombre provisorio con el que se almacena el usuario.</param>
+        /// <returns>La invitación creada.</returns>
         public Invitacion AlmacenarInvitacion(string nombreTempUsuario)
         {
             Empresa user = new Empresa(nombreTempUsuario);

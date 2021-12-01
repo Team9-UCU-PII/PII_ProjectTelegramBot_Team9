@@ -4,14 +4,10 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 
-using System;
 using System.Text;
-using System.Collections.Generic;
-using ClassLibrary.Publication;
 using ClassLibrary.User;
 using MessageGateway.Forms;
-using ClassLibrary.LocationAPI;
-using Importers;
+using BotCore.User;
 
 namespace MessageGateway.Handlers
 {
@@ -112,7 +108,7 @@ namespace MessageGateway.Handlers
                 (CurrentForm as FrmRegistroEmprendedor).CurrentState = FasesRegEmprendedor.TomandoHabilitacion;
                 return true;
             }
-            else if (message.TxtMensaje != "Ninguna" && message.TxtMensaje != "Listo" && (CurrentForm as FrmRegistroEmprendedor).CurrentState == FasesRegEmprendedor.TomandoHabilitacion)
+            else if ((message.TxtMensaje.ToLower() != "ninguna" && message.TxtMensaje.ToLower() != "listo") && (CurrentForm as FrmRegistroEmprendedor).CurrentState == FasesRegEmprendedor.TomandoHabilitacion)
             {
                 StringBuilder sb = new StringBuilder();
                 sb.Append($"Habilitación guardada con éxito!");
@@ -120,7 +116,7 @@ namespace MessageGateway.Handlers
                 (CurrentForm as FrmRegistroEmprendedor).habilitaciones.Add(new Habilitacion(message.TxtMensaje));
                 return true;
             }
-            else if ((message.TxtMensaje == "Ninguna" || message.TxtMensaje == "Listo") && (CurrentForm as FrmRegistroEmprendedor).CurrentState == FasesRegEmprendedor.TomandoHabilitacion)
+            else if ((message.TxtMensaje.ToLower() == "ninguna" || message.TxtMensaje.ToLower() == "listo") && (CurrentForm as FrmRegistroEmprendedor).CurrentState == FasesRegEmprendedor.TomandoHabilitacion)
             {
                 StringBuilder sb = new StringBuilder();
                 sb.Append($"Habilitaciones guardadas con éxito!");
@@ -138,8 +134,7 @@ namespace MessageGateway.Handlers
                     sb.Append("Emprendedor Creado, ¡Bienvenido!");
                     response = sb.ToString();
 
-                    da.Insertar(emprendedor);
-                    da.Insertar(emprendedor.DatosLogin);
+                    RegistroUsuario.RegistrarUsuario<Emprendedor>(emprendedor.DatosLogin.NombreUsuario, emprendedor.DatosLogin.Contrasenia, emprendedor);
 
                     CurrentForm.ChangeForm( new FrmMenuEmprendedor(emprendedor), message.ChatID);
                     return true;
@@ -210,6 +205,5 @@ namespace MessageGateway.Handlers
             ///Finalizado el registro.
             Done
         }
-        private DataAccess da = DataAccess.Instancia;
     }
 }
