@@ -5,7 +5,12 @@ using System.IO;
 namespace Importers.Json
 {
     /// <summary>
-    /// Clase que exporta objetos de tipo IJsonConvertible a strings en formato JSON.
+    /// Clase que exporta objetos de tipo IJsonConvertible a strings en formato JSON. Implementación
+    /// del visitante del patrón Visitor, que visita una clase visitable (que implementa
+    /// IJsonConvertible) y realiza una operación específica sobre ella (en este caso, la serialización).
+    /// La principal ventaja es que se evita la necesidad de cambios extensos en las responsabilidades
+    /// de la clase visitada, evitando clases frágiles, y mantiene sus responsabilidades con alta
+    /// cohesión.
     /// </summary>
     public class JsonExporter
     {

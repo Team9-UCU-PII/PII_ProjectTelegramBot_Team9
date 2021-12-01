@@ -17,7 +17,10 @@ namespace Importers
     public class DataAccess
     {
         /// <summary>
-        /// Obtiene acceso al singleton.
+        /// Obtiene acceso al singleton. Gracias a la correcta implementación del patrón Adapter en la
+        /// base de datos, se puede configurar la capa de Data Access para funcionar con cualquier
+        /// clase que implemente IDatabase, cambiando simplemente el objeto que se pasa como argumento
+        /// a su constructor.
         /// </summary>
         /// <value><see cref = "DataAccess"/>.</value>
         public static DataAccess Instancia

@@ -4,7 +4,8 @@
 // </copyright>
 //
 // Patrón utilizado: Creator.
-// Esta clase utiliza este patrón porque crea nuevos usuarios y los persiste en DataAccess.
+// Esta clase utiliza este patrón porque es la única encargada de instanciar objetos de tipo DatosLogin
+// nuevos usuarios y los persiste en DataAccess.
 //--------------------------------------------------------------------------------
 
 using ClassLibrary.User;

@@ -18,7 +18,12 @@ using Nito.AsyncEx;
 namespace ClassLibrary.LocationAPI
 {
     /// <summary>
-    /// Un cliente de la API de localización.
+    /// Un cliente de la API de localización. Aplica el patrón Creator ya que se encarga exclusivamente
+    /// de crear objetos de tipo Location y Distance para su uso en el resto del sistema. Esto es aquí
+    /// especialmente importante ya que estos objetos dependen para su creación de una API externa.
+    /// Si no se aplicara este patrón, haciendo que varias clases dependieran directamente de este
+    /// servicio y hubiese un cambio en la API consumida, implicaría realizar cambios en una cantidad
+    /// mucho más significativa del código, al hallarse muchas más clases acopladas a este servicio.
     /// </summary>
     public class LocationApiClient : IDisposable
     {

@@ -51,6 +51,10 @@ namespace BotCore.User
 
         /// <summary>
         /// Metodo que crea la <see cref = "Invitacion"/> y la envia al destinatario especificado.
+        /// Se trata de una implementación de patrón Creator, ya que considerando la muy estrecha relación
+        /// entre esta clase y la clase Invitacion, es razonable que la responsabilidad de instanciar
+        /// esa clase recaiga en este Gestor, de forma que el resto de clases quedan libres de la responsabilidad
+        /// de crear objetos Invitacion.
         /// </summary>
         /// <param name="nombreTempUsuario">el nombre provisorio con el que se almacena el usuario.</param>
         /// <returns>La invitación creada.</returns>

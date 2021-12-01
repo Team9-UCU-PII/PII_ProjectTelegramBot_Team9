@@ -9,7 +9,15 @@ using System.Collections.Generic;
 namespace Importers
 {
     /// <summary>
-    /// Interaz de acceso a la base de datos.
+    /// Interfaz de acceso a la base de datos. Definimos esta interfaz guiándonos por el patrón Adapter
+    /// y el principio de inversión de dependencias, de forma que la capa de Data Access (para la base
+    /// de datos el código cliente) no depende de las implementaciones concretas de una base de datos,
+    /// sino de una abstracción. De esta forma, los cambios en la implementación interna de cada mecanismo
+    /// de persistencia son imperceptibles para el código que envía los mensajes, ya que este se comunica
+    /// a través de la interfaz.
+    /// Además, es un buen ejemplo del principio OCP, ya que es posible extender el programa agregando
+    /// nuevas opciones de persistencia (una base de datos propiamente dicha, por ejemplo), pero no es
+    /// posible modificar las ya existentes.
     /// </summary>
     internal interface IDatabase
     {
